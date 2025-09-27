@@ -104,7 +104,7 @@
                     </div>
                 </div>
 
-                <div class="flex justify-center bg-slate-900 p-1 rounded-lg mb-6"><button id="tab-roast" class="w-1.5/2 py-2 px-4 rounded-md font-semibold transition tab-active">🤣 Roast Mode</button><button id="tab-pro" class="w-1/2 py-2 px-4 rounded-md font-semibold transition tab-inactive">🧐 Pro Mode</button></div>
+                <div class="flex justify-center bg-slate-900 p-1 rounded-lg mb-6"><button id="tab-roast" class="w-1/2 py-2 px-4 rounded-md font-semibold transition tab-active">🤣 Roast Mode</button><button id="tab-pro" class="w-1/2 py-2 px-4 rounded-md font-semibold transition tab-inactive">🧐 Pro Mode</button></div>
                 <div id="roast-content">
                     <div id="roast-card" class="card-base rounded-lg p-6">
                         <p id="roast-text" class="text-xl italic text-slate-300">"</p>
@@ -337,23 +337,33 @@
             const authCode = queryParams.get('code');
 
             if (authCode) {
-                 // The user has successfully logged in and returned from LinkedIn.
-                // The fetch() call is blocked by CORS, so we simulate the final step.
-                setLoading(true, 'Analyzing your profile...');
+                // The user has successfully logged in and returned from LinkedIn.
+                // The subsequent token exchange fetch() call is blocked by CORS if run from the browser.
+                // Therefore, we simulate the final step to provide a seamless user experience without a backend.
+                
+                // Show a loading state to simulate analysis.
+                loginContainer.classList.add('hidden');
+                loadingContainer.classList.remove('hidden');
+                loadingText.textContent = 'Analyzing your profile...';
 
-                // Simulate a short delay to feel like data is being processed.
+                // Simulate a short delay as if we were fetching and processing data.
                 setTimeout(() => {
-                    // Create mock data as if it came from LinkedIn's API
+                    // Create mock data to display, as if it came from LinkedIn's API
                     const mockProfileData = {
                         name: "Valued User",
                         picture: `https://placehold.co/150x150/1e293b/94a3b8?text=:)`,
                     };
                     
+                    // Display the results with the mock data.
                     displayRoastResults(mockProfileData);
+
+                    // Hide the loading spinner now that results are shown.
+                    loadingContainer.classList.add('hidden');
+                    
+                    // Clean up the URL and session storage.
                     window.history.replaceState({}, document.title, window.location.pathname);
-                    setLoading(false);
                     sessionStorage.removeItem('linkedin_code_verifier');
-                }, 2000); // 2-second delay
+                }, 2000); // 2-second delay for effect.
             }
         });
 
