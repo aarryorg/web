@@ -116,26 +116,23 @@
                             <span class="mx-4 font-bold">OR</span>
                             <span class="w-full border-t border-gray-600"></span>
                         </div>
-                        <label for="prompt-input" class="block text-gray-300 text-sm font-semibold">Prompt for AI Thumbnail</label>
+                        <label for="prompt-input" class="block text-gray-300 text-sm font-semibold">Prompt for AI Thumbnail (Overrides YouTube URL if both are provided)</label>
                         <textarea id="prompt-input" rows="3" class="w-full p-4 bg-gray-700 rounded-lg border border-gray-600 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-shadow duration-300 resize-none" placeholder="e.g., A majestic lion wearing a crown, cinematic lighting"></textarea>
                         <button id="generate-btn" class="w-full flex items-center justify-center gap-2 py-3 px-4 bg-purple-600 hover:bg-purple-700 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-purple-500">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
-                            Generate Thumbnail
+                            Generate Thumbnails
                         </button>
                     </div>
                     <div class="mt-8">
-                        <h3 class="text-xl font-semibold text-gray-300 mb-3">Your Thumbnail:</h3>
-                        <div id="result-container" class="w-full aspect-video flex items-center justify-center bg-gray-900 rounded-lg border border-gray-700 p-2 relative overflow-hidden">
-                            <div id="loader" class="hidden flex-col items-center justify-center text-gray-400">
+                        <h3 class="text-xl font-semibold text-gray-300 mb-3">Your Generated Thumbnails:</h3>
+                        <div id="results-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Thumbnails will be injected here -->
+                            <div id="loader-container" class="col-span-full hidden flex-col items-center justify-center min-h-[200px] bg-gray-900 rounded-lg border border-gray-700 p-4">
                                 <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-                                <p class="mt-2 text-sm">Generating AI thumbnail...</p>
+                                <p class="mt-2 text-sm text-gray-400">Generating AI thumbnails...</p>
                             </div>
-                            <p id="placeholder" class="text-gray-500 px-4 text-center">Your generated thumbnail will appear here.</p>
-                            <p id="error-message" class="text-red-400 hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center"></p>
-                            <img id="thumbnail-image" src="" alt="Generated Thumbnail" class="w-full h-full object-contain hidden rounded-md">
-                            <a id="download-btn" class="absolute bottom-4 right-4 bg-green-600 hover:bg-green-700 text-white p-2 rounded-full shadow-lg transition-all duration-300 transform scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100" download="youtube_thumbnail.png" title="Download Thumbnail">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-                            </a>
+                            <p id="placeholder" class="col-span-full text-gray-500 px-4 text-center min-h-[200px] flex items-center justify-center">Your generated thumbnails will appear here.</p>
+                            <p id="error-message" class="col-span-full text-red-400 hidden text-center p-4 bg-red-900/20 rounded-lg"></p>
                         </div>
                     </div>
                 </div>
@@ -149,153 +146,178 @@
     </div>
 
     <script>
-        // --- All the JavaScript from the previous version is unchanged ---
-        // --- It is included here for the app to be self-contained ---
         const generateBtn = document.getElementById('generate-btn');
         const youtubeUrlInput = document.getElementById('youtube-url-input');
         const promptInput = document.getElementById('prompt-input');
-        const resultContainer = document.getElementById('result-container');
+        const resultsGrid = document.getElementById('results-grid');
         const placeholder = document.getElementById('placeholder');
-        const loader = document.getElementById('loader');
+        const loaderContainer = document.getElementById('loader-container');
         const errorMessage = document.getElementById('error-message');
-        const thumbnailImage = document.getElementById('thumbnail-image');
-        const downloadBtn = document.getElementById('download-btn');
 
-        generateBtn.addEventListener('click', generateThumbnail);
+        generateBtn.addEventListener('click', generateThumbnails);
         
         promptInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
-                generateThumbnail();
+                generateThumbnails();
             }
         });
 
-        async function generateThumbnail() {
+        async function generateThumbnails() {
             const youtubeUrl = youtubeUrlInput.value.trim();
-            const prompt = promptInput.value.trim();
+            let prompt = promptInput.value.trim();
 
             if (!youtubeUrl && !prompt) {
-                showError("Please enter either a YouTube URL or a prompt.");
+                showError("Please enter either a YouTube URL or a descriptive prompt to generate thumbnails.");
                 return;
             }
             
             showLoading(true);
+            resultsGrid.innerHTML = ''; // Clear previous results
 
             try {
-                if (youtubeUrl) {
+                let finalPrompt = prompt;
+
+                // If YouTube URL is provided and no specific prompt, try to infer prompt from video
+                if (youtubeUrl && !prompt) {
                     const videoIdMatch = youtubeUrl.match(/(?:https?:\/\/)?(?:www\.)?(?:m\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=|embed\/|v\/|)([\w-]{11})(?:\S+)?/);
                     if (videoIdMatch && videoIdMatch[1]) {
                         const videoId = videoIdMatch[1];
-                        const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-                        await checkAndDisplayYoutubeThumbnail(thumbnailUrl, videoId);
-                    } else {
-                        throw new Error("Invalid YouTube URL provided.");
-                    }
-                } else if (prompt) {
-                    const apiKey = ""; // Canvas environment provides this
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=${apiKey}`;
-                    const payload = {
-                        instances: { prompt: prompt },
-                        parameters: { "sampleCount": 1 }
-                    };
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
+                        // Attempt to fetch video title/description using google_search
+                        const searchResults = await google_search.search({
+                            queries: [`YouTube video "${videoId}" title and description`]
+                        });
 
-                    if (!response.ok) {
-                        const errorData = await response.json();
-                        throw new Error(errorData.error?.message || `HTTP error! Status: ${response.status}`);
-                    }
-                    const result = await response.json();
-                    
-                    if (result.predictions && result.predictions.length > 0 && result.predictions[0].bytesBase64Encoded) {
-                        const imageUrl = `data:image/png;base64,${result.predictions[0].bytesBase64Encoded}`;
-                        showResult(imageUrl, 'image/png');
+                        let videoTitle = '';
+                        let videoDescription = '';
+
+                        if (searchResults && searchResults.length > 0 && searchResults[0].results && searchResults[0].results.length > 0) {
+                            for (const result of searchResults[0].results) {
+                                if (result.snippet) {
+                                    // Try to parse title and description from snippet
+                                    const titleMatch = result.snippet.match(/(?:title|Title)[:\s]*([^\n]+)/);
+                                    if (titleMatch && titleMatch[1]) {
+                                        videoTitle = titleMatch[1].trim();
+                                    }
+                                    const descriptionMatch = result.snippet.match(/(?:description|Description)[:\s]*([^\n]+)/);
+                                    if (descriptionMatch && descriptionMatch[1]) {
+                                        videoDescription = descriptionMatch[1].trim();
+                                    }
+
+                                    if (videoTitle || videoDescription) break; // Found enough info
+                                }
+                            }
+                        }
+
+                        if (videoTitle || videoDescription) {
+                            finalPrompt = `Create a visually striking YouTube thumbnail for a video titled "${videoTitle || 'Untitled Video'}". ${videoDescription ? `The video is about: "${videoDescription}".` : ''} Focus on a captivating and relevant image.`;
+                        } else {
+                            finalPrompt = `Create a visually striking YouTube thumbnail for a YouTube video from URL: ${youtubeUrl}. Focus on a captivating and relevant image.`;
+                        }
                     } else {
-                        showError("No image was generated. Please try a different prompt.");
+                        throw new Error("Invalid YouTube URL provided. Please check the format.");
                     }
+                } else if (!prompt && !youtubeUrl) {
+                    showError("Please provide either a YouTube URL or a text prompt.");
+                    return;
+                } else if (prompt && youtubeUrl) {
+                    // If both are provided, the explicit prompt takes precedence for AI generation
+                    finalPrompt = prompt;
+                } else if (prompt) {
+                    finalPrompt = prompt;
+                }
+
+                if (!finalPrompt) {
+                     showError("Could not determine a valid prompt for AI thumbnail generation.");
+                     return;
+                }
+
+                const apiKey = ""; // Canvas environment provides this
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=${apiKey}`;
+                const payload = {
+                    instances: { prompt: finalPrompt },
+                    parameters: { "sampleCount": 4 } // Request 4 thumbnails
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error?.message || `HTTP error! Status: ${response.status}`);
+                }
+                const result = await response.json();
+                
+                if (result.predictions && result.predictions.length > 0) {
+                    displayGeneratedThumbnails(result.predictions);
+                } else {
+                    showError("No images were generated. Please try a different prompt.");
                 }
 
             } catch (error) {
-                console.error("Error generating thumbnail:", error);
+                console.error("Error generating thumbnails:", error);
                 showError(`An error occurred: ${error.message}.`);
             } finally {
                 showLoading(false);
             }
         }
 
-        async function checkAndDisplayYoutubeThumbnail(url, videoId) {
-            return new Promise((resolve, reject) => {
-                const img = new Image();
-                img.onload = () => {
-                    if (img.width > 120) {
-                        showResult(url, 'image/jpeg');
-                        resolve();
-                    } else {
-                        const fallbackUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-                        const fallbackImg = new Image();
-                        fallbackImg.onload = () => { showResult(fallbackUrl, 'image/jpeg'); resolve(); };
-                        fallbackImg.onerror = () => { reject(new Error("Could not load YouTube thumbnail.")); };
-                        fallbackImg.src = fallbackUrl;
-                    }
-                };
-                img.onerror = () => {
-                    const fallbackUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-                    const fallbackImg = new Image();
-                    fallbackImg.onload = () => { showResult(fallbackUrl, 'image/jpeg'); resolve(); };
-                    fallbackImg.onerror = () => { reject(new Error("Could not load YouTube thumbnail.")); };
-                    fallbackImg.src = fallbackUrl;
-                };
-                img.src = url;
+        function displayGeneratedThumbnails(predictions) {
+            placeholder.classList.add('hidden');
+            errorMessage.classList.add('hidden');
+            resultsGrid.innerHTML = ''; // Clear previous results
+
+            predictions.forEach((prediction, index) => {
+                if (prediction.bytesBase64Encoded) {
+                    const imageUrl = `data:image/png;base64,${prediction.bytesBase64Encoded}`;
+                    const thumbnailHtml = `
+                        <div class="relative w-full aspect-video bg-gray-900 rounded-lg border border-gray-700 overflow-hidden group">
+                            <img src="${imageUrl}" alt="Generated Thumbnail ${index + 1}" class="w-full h-full object-cover rounded-md">
+                            <a href="${imageUrl}" download="ai_generated_thumbnail_${index + 1}.png" 
+                               class="absolute bottom-4 right-4 bg-green-600 hover:bg-green-700 text-white p-2 rounded-full shadow-lg transition-all duration-300 transform scale-100 opacity-100" 
+                               title="Download Thumbnail ${index + 1}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                            </a>
+                        </div>
+                    `;
+                    resultsGrid.innerHTML += thumbnailHtml;
+                }
             });
+
+            if (resultsGrid.innerHTML === '') {
+                showError("No valid thumbnails were generated. Please refine your prompt.");
+            }
         }
 
         function showLoading(isLoading) {
             if (isLoading) {
-                loader.classList.remove('hidden');
-                loader.classList.add('flex');
+                loaderContainer.classList.remove('hidden');
+                loaderContainer.classList.add('flex');
                 placeholder.classList.add('hidden');
-                thumbnailImage.classList.add('hidden');
                 errorMessage.classList.add('hidden');
-                downloadBtn.classList.remove('scale-100', 'opacity-100');
-                downloadBtn.classList.add('scale-0', 'opacity-0');
+                resultsGrid.innerHTML = ''; // Clear existing images
                 generateBtn.disabled = true;
                 generateBtn.classList.add('opacity-50', 'cursor-not-allowed');
             } else {
-                loader.classList.add('hidden');
-                loader.classList.remove('flex');
+                loaderContainer.classList.add('hidden');
+                loaderContainer.classList.remove('flex');
                 generateBtn.disabled = false;
                 generateBtn.classList.remove('opacity-50', 'cursor-not-allowed');
             }
         }
         
-        function showResult(imageUrl, mimeType) {
-            thumbnailImage.src = imageUrl;
-            thumbnailImage.classList.remove('hidden');
-            placeholder.classList.add('hidden');
-            errorMessage.classList.add('hidden');
-            
-            downloadBtn.href = imageUrl;
-            if (mimeType === 'image/png') {
-                downloadBtn.download = 'ai_generated_thumbnail.png';
-            } else if (mimeType === 'image/jpeg') {
-                downloadBtn.download = 'youtube_thumbnail.jpg';
-            }
-            downloadBtn.classList.remove('scale-0', 'opacity-0');
-            downloadBtn.classList.add('scale-100', 'opacity-100');
-            resultContainer.classList.add('group');
-        }
-
         function showError(message) {
             errorMessage.textContent = message;
             errorMessage.classList.remove('hidden');
-            placeholder.classList.remove('hidden');
-            thumbnailImage.classList.add('hidden');
-            downloadBtn.classList.remove('scale-100', 'opacity-100');
-            downloadBtn.classList.add('scale-0', 'opacity-0');
-            resultContainer.classList.remove('group');
+            placeholder.classList.add('hidden'); // Ensure placeholder is hidden if error
+            loaderContainer.classList.add('hidden');
+            loaderContainer.classList.remove('flex');
+            resultsGrid.innerHTML = ''; // Clear any partial results
+            generateBtn.disabled = false;
+            generateBtn.classList.remove('opacity-50', 'cursor-not-allowed');
         }
     </script>
 </body>
