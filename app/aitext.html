@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Text Generation App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .lds-ring {
+            display: inline-block;
+            position: relative;
+            width: 40px;
+            height: 40px;
+        }
+        .lds-ring div {
+            box-sizing: border-box;
+            display: block;
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            margin: 4px;
+            border: 4px solid #fff;
+            border-radius: 50%;
+            animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            border-color: #fff transparent transparent transparent;
+        }
+        .lds-ring div:nth-child(1) {
+            animation-delay: -0.45s;
+        }
+        .lds-ring div:nth-child(2) {
+            animation-delay: -0.3s;
+        }
+        .lds-ring div:nth-child(3) {
+            animation-delay: -0.15s;
+        }
+        @keyframes lds-ring {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen p-4">
+
+    <div class="w-full max-w-2xl bg-gray-800 rounded-2xl shadow-2xl p-6 md:p-8">
+        <!-- Header -->
+        <div class="text-center mb-6">
+            <h1 class="text-3xl md:text-4xl font-bold text-cyan-400">AI Content Generator</h1>
+            <p class="text-gray-400 mt-2">Enter a prompt below and let the AI work its magic.</p>
+        </div>
+
+        <!-- Input Section -->
+        <div class="space-y-4">
+            <label for="prompt-input" class="sr-only">Your Prompt</label>
+            <textarea id="prompt-input" rows="4" class="w-full p-4 bg-gray-700 rounded-lg border border-gray-600 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-shadow duration-300 resize-none" placeholder="e.g., Write a short poem about space exploration..."></textarea>
+            <button id="generate-btn" class="w-full flex items-center justify-center gap-2 py-3 px-4 bg-cyan-600 hover:bg-cyan-700 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-cyan-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+                Generate
+            </button>
+        </div>
+
+        <!-- Output Section -->
+        <div class="mt-8">
+            <h2 class="text-xl font-semibold text-gray-300 mb-3">AI Response:</h2>
+            <div id="result-container" class="w-full min-h-[150px] p-4 bg-gray-900 rounded-lg border border-gray-700 whitespace-pre-wrap overflow-y-auto">
+                <div id="loader" class="hidden flex-col items-center justify-center text-gray-500">
+                    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                    <p class="mt-2">Generating response...</p>
+                </div>
+                <p id="placeholder" class="text-gray-500">Your generated content will appear here.</p>
+                <p id="error-message" class="text-red-400 hidden"></p>
+                <div id="result-text"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const generateBtn = document.getElementById('generate-btn');
+        const promptInput = document.getElementById('prompt-input');
+        const resultContainer = document.getElementById('result-container');
+        const resultText = document.getElementById('result-text');
+        const placeholder = document.getElementById('placeholder');
+        const loader = document.getElementById('loader');
+        const errorMessage = document.getElementById('error-message');
+
+        generateBtn.addEventListener('click', generateContent);
+        
+        // Allow submitting with Enter key + Shift
+        promptInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                generateContent();
+            }
+        });
+
+
+        async function generateContent() {
+            const prompt = promptInput.value.trim();
+            if (!prompt) {
+                showError("Please enter a prompt first.");
+                return;
+            }
+
+            // --- UI Setup for loading ---
+            showLoading(true);
+
+            // --- Gemini API Call ---
+            // IMPORTANT: An empty API key is used here.
+            // The execution environment will automatically provide a valid key.
+            const apiKey = "";
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{
+                    parts: [{
+                        text: prompt
+                    }]
+                }]
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error?.message || `HTTP error! Status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                
+                if (result.candidates && result.candidates.length > 0) {
+                    const generatedText = result.candidates[0].content.parts[0].text;
+                    showResult(generatedText);
+                } else {
+                    showError("No content was generated. Please try a different prompt.");
+                }
+
+            } catch (error) {
+                console.error("API Call Error:", error);
+                showError(`An error occurred: ${error.message}. Please check the console for details.`);
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        function showLoading(isLoading) {
+            if (isLoading) {
+                loader.classList.remove('hidden');
+                loader.classList.add('flex');
+                placeholder.classList.add('hidden');
+                resultText.textContent = '';
+                errorMessage.classList.add('hidden');
+                generateBtn.disabled = true;
+                generateBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            } else {
+                loader.classList.add('hidden');
+                loader.classList.remove('flex');
+                generateBtn.disabled = false;
+                generateBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+        }
+        
+        function showResult(text) {
+            resultText.textContent = text;
+            placeholder.classList.add('hidden');
+            errorMessage.classList.add('hidden');
+        }
+
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.classList.remove('hidden');
+            placeholder.classList.add('hidden');
+            resultText.textContent = '';
+        }
+    </script>
+
+</body>
+</html>
