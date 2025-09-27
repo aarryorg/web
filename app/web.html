@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Roast My Website - Brutally Honest Feedback</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+            background-image: radial-gradient(circle at 1px 1px, #334155 1px, transparent 0);
+            background-size: 20px 20px;
+            scroll-behavior: smooth;
+        }
+        .pro-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .tab-active {
+            background-color: #4f46e5; /* Indigo 600 */
+            color: white;
+        }
+        .tab-inactive {
+            background-color: #334155; /* Slate 700 */
+            color: #cbd5e1; /* Slate 300 */
+        }
+        #roast-card, .testimonial-card, .shame-card, .feature-card {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border: 1px solid #334155;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-card:hover, .shame-card:hover, .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .glow-effect {
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.5), 0 0 30px rgba(59, 130, 246, 0.3);
+        }
+    </style>
+</head>
+<body class="text-slate-200">
+
+    <div class="container mx-auto px-4 py-8 md:py-12">
+        <!-- Header -->
+        <header class="text-center max-w-3xl mx-auto mb-10">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight">
+                Your Website is <span class="text-indigo-400">Probably</span> a Joke.
+            </h1>
+            <p class="mt-4 text-lg md:text-xl text-slate-400">
+                Let our AI tell you why. Get hilarious, brutally honest, and surprisingly useful feedback in 60 seconds. No sign-up required.
+            </p>
+        </header>
+
+        <!-- Main Application -->
+        <main id="roaster" class="w-full max-w-3xl mx-auto bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl shadow-2xl p-6 md:p-8 glow-effect">
+            
+            <div class="flex flex-col sm:flex-row gap-3">
+                <input type="text" id="url-input" class="w-full p-4 bg-slate-900 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" placeholder="example.com">
+                <button id="roast-btn" class="flex justify-center items-center gap-2 bg-indigo-600 text-white font-semibold py-4 px-6 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-indigo-500 transition-all duration-200 disabled:bg-indigo-400/50 disabled:cursor-not-allowed whitespace-nowrap">
+                    <svg id="spinner" class="animate-spin -ml-1 mr-2 h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                    <span id="button-text">🔥 Roast Me!</span>
+                </button>
+            </div>
+             <div id="error-message" class="hidden mt-4 p-3 text-sm bg-red-900/50 text-red-300 border border-red-800 rounded-lg"></div>
+
+            <!-- Results Section (hidden by default) -->
+            <div id="results-section" class="hidden mt-8">
+                <div class="text-center mb-6"><h2 class="text-slate-400 text-sm font-medium uppercase tracking-wider">Roast Score</h2><p id="roast-score" class="text-7xl font-extrabold text-white mt-1">--</p></div>
+                <div class="flex justify-center bg-slate-900 p-1 rounded-lg mb-6"><button id="tab-roast" class="w-1/2 py-2 px-4 rounded-md font-semibold transition tab-active">🤣 Roast Mode</button><button id="tab-pro" class="w-1/2 py-2 px-4 rounded-md font-semibold transition tab-inactive">🧐 Pro Mode</button></div>
+                <div id="roast-content">
+                    <div id="roast-card" class="rounded-lg p-6"><p id="roast-text" class="text-xl italic text-slate-300">"</p><div class="mt-6 flex justify-between items-center"><span class="text-indigo-400 font-bold">AIRoastMy.site</span><button id="share-btn" class="flex items-center gap-2 text-sm bg-slate-700 hover:bg-slate-600 px-3 py-1.5 rounded-md transition"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/></svg>Share the Shame</button></div></div>
+                </div>
+                <div id="pro-content" class="hidden">
+                    <div class="pro-card-grid"><div class="bg-slate-900/70 p-4 rounded-lg border border-slate-700"><h3 class="font-bold text-white mb-2">📈 SEO</h3><ul id="pro-seo" class="list-disc list-inside text-sm text-slate-300 space-y-1"></ul></div><div class="bg-slate-900/70 p-4 rounded-lg border border-slate-700"><h3 class="font-bold text-white mb-2">🎨 UX & Design</h3><ul id="pro-ux" class="list-disc list-inside text-sm text-slate-300 space-y-1"></ul></div><div class="bg-slate-900/70 p-4 rounded-lg border border-slate-700"><h3 class="font-bold text-white mb-2">⚡️ Performance</h3><ul id="pro-speed" class="list-disc list-inside text-sm text-slate-300 space-y-1"></ul></div><div class="bg-slate-900/70 p-4 rounded-lg border border-slate-700"><h3 class="font-bold text-white mb-2">📝 Content</h3><ul id="pro-content-list" class="list-disc list-inside text-sm text-slate-300 space-y-1"></ul></div></div>
+                    <div class="mt-6 text-center bg-indigo-900/50 border border-indigo-700 p-4 rounded-lg"><p class="font-semibold">Want to fix this mess? Unlock the full report.</p><button class="mt-2 bg-white text-indigo-700 font-bold py-2 px-4 rounded-lg hover:bg-slate-200 transition">Unlock Pro Report</button></div>
+                </div>
+            </div>
+        </main>
+
+        <!-- How it Works Section -->
+        <section class="text-center max-w-4xl mx-auto my-20 md:my-32">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white">How We Crush Your Soul (For a Good Cause)</h2>
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="flex flex-col items-center">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-slate-800 border border-slate-700 text-indigo-400 font-extrabold text-2xl">1</div>
+                    <h3 class="mt-4 text-xl font-bold text-white">Drop Your URL</h3>
+                    <p class="mt-2 text-slate-400">Don't be shy. We promise we've seen worse. Probably.</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-slate-800 border border-slate-700 text-indigo-400 font-extrabold text-2xl">2</div>
+                    <h3 class="mt-4 text-xl font-bold text-white">Prepare for Impact</h3>
+                    <p class="mt-2 text-slate-400">Our AI scans your site for crimes against design, speed, and common sense.</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-slate-800 border border-slate-700 text-indigo-400 font-extrabold text-2xl">3</div>
+                    <h3 class="mt-4 text-xl font-bold text-white">Share & Repair</h3>
+                    <p class="mt-2 text-slate-400">Share the hilarious roast card, then use the "Pro Mode" to actually fix it.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Get Roasted Section -->
+        <section class="text-center max-w-4xl mx-auto my-20 md:my-32">
+             <h2 class="text-3xl md:text-4xl font-extrabold text-white">Why Subject Yourself to This?</h2>
+             <p class="mt-4 text-lg text-slate-400">Because your best friend is too polite and your mom thinks everything you do is "just wonderful." You need the cold, hard, algorithmic truth.</p>
+             <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="feature-card p-6 rounded-xl"><h3 class="text-xl font-bold text-indigo-400">Find Your Blind Spots</h3><p class="mt-2 text-slate-400">You stare at your site for hours. You can't see the glaringly obvious button that leads to nowhere. Our AI can. And it will judge you for it.</p></div>
+                <div class="feature-card p-6 rounded-xl"><h3 class="text-xl font-bold text-indigo-400">Go Viral (For Better or Worse)</h3><p class="mt-2 text-slate-400">Share your hilarious roast card. People love a good train wreck. Your terrible design choices could be your ticket to fame.</p></div>
+                <div class="feature-card p-6 rounded-xl"><h3 class="text-xl font-bold text-indigo-400">Actually Get Better</h3><p class="mt-2 text-slate-400">Behind every sarcastic jab is a real, actionable insight. Swallow your pride, fix the issues, and maybe, just maybe, make more money.</p></div>
+             </div>
+        </section>
+        
+        <!-- Hall of Shame Section -->
+        <section class="my-20 md:my-32">
+             <h2 class="text-3xl md:text-4xl font-extrabold text-white text-center">Hall of Shame</h2>
+             <p class="mt-4 text-lg text-slate-400 text-center">Some of our favorite roasts. Don't worry, yours can't be worse... right?</p>
+             <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="shame-card rounded-lg p-6 flex flex-col"><p class="text-lg italic text-slate-300 flex-grow">"Your 'About Us' page has more stock photos than a budget dental ad. Are any of you real people?"</p><p class="mt-4 text-sm text-slate-500 font-semibold">- Roasted: <span class="text-slate-300">CorporateSynergySolutions.biz</span></p></div>
+                <div class="shame-card rounded-lg p-6 flex flex-col"><p class="text-lg italic text-slate-300 flex-grow">"Congratulations on making a website that's not mobile-friendly. My grandpa's Nokia 3310 called, it wants its screen resolution back."</p><p class="mt-4 text-sm text-slate-500 font-semibold">- Roasted: <span class="text-slate-300">GerrysGourmetJams.com</span></p></div>
+                <div class="shame-card rounded-lg p-6 flex flex-col"><p class="text-lg italic text-slate-300 flex-grow">"This site has more pop-ups than a whack-a-mole game. I came for a blog post and left with three newsletter subscriptions and a coupon for a product I don't want."</p><p class="mt-4 text-sm text-slate-500 font-semibold">- Roasted: <span class="text-slate-300">ClickFunnelsExtreme.io</span></p></div>
+             </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="max-w-4xl mx-auto my-20 md:my-32">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white text-center">What Our Victims... Er, Users Say</h2>
+            <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="testimonial-card rounded-lg p-6"><p class="text-slate-300 italic">"I thought my website was a masterpiece. The AI told me it had the personality of unbuttered toast. I cried for a week, rebuilt it, and my conversion rate tripled. Thanks, I guess?"</p><p class="mt-4 font-bold text-white">- Sarah K., Recovering Graphic Designer</p></div>
+                 <div class="testimonial-card rounded-lg p-6"><p class="text-slate-300 italic">"The roast was so brutal I had to show my entire team. We spent the afternoon laughing, then the next month fixing everything the AI pointed out. Our load time is finally faster than a glacier."</p><p class="mt-4 font-bold text-white">- Mike R., Startup Founder</p></div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center border-t border-slate-800 pt-10 mt-20">
+            <h3 class="text-2xl md:text-3xl font-extrabold text-white">Ready for Your Humbling?</h3>
+            <p class="mt-2 text-slate-400">Paste your URL above. It's free. Your ego is the only thing it might cost you.</p>
+            <div class="mt-6"><a href="#roaster" class="bg-indigo-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-indigo-700 transition">Get Your Free Roasting</a></div>
+            <div class="mt-8 text-sm text-slate-500"><p>&copy; 2025 AI Roast My Site. All rights reserved. Built with tears and sarcasm.</p></div>
+        </footer>
+    </div>
+
+    <script>
+        const urlInput = document.getElementById('url-input');
+        const roastBtn = document.getElementById('roast-btn');
+        const buttonText = document.getElementById('button-text');
+        const spinner = document.getElementById('spinner');
+        const errorMessage = document.getElementById('error-message');
+        
+        const resultsSection = document.getElementById('results-section');
+        const roastScoreEl = document.getElementById('roast-score');
+        
+        const tabRoast = document.getElementById('tab-roast');
+        const tabPro = document.getElementById('tab-pro');
+        const roastContent = document.getElementById('roast-content');
+        const proContent = document.getElementById('pro-content');
+        
+        const roastTextEl = document.getElementById('roast-text');
+        const proSeoEl = document.getElementById('pro-seo');
+        const proUxEl = document.getElementById('pro-ux');
+        const proSpeedEl = document.getElementById('pro-speed');
+        const proContentListEl = document.getElementById('pro-content-list');
+
+        const mockRoasts = ["Your website loads slower than my grandma sending a text. Did you build this on a dial-up connection?", "I've seen more compelling designs on a 1998 GeoCities page. The flashing GIFs were a nice touch though... oh wait, you don't have any. Missed opportunity.", "Your color palette is... a choice. It screams 'I let my 5-year-old pick the colors while blindfolded'.", "This site has more pop-ups than a whack-a-mole game. I came here for information, not a seizure.", "Navigating your site is like trying to solve a Rubik's Cube in the dark. I gave up and now I'm just sad."];
+        const mockProData = {
+            seo: ["Missing meta description on 5 pages.", "Alt text missing on 12 images.", "No H1 tag found on the homepage."],
+            ux: ["Buttons are too small for mobile devices.", "Contrast ratio for body text is too low.", "Navigation menu is confusing on smaller screens."],
+            speed: ["First Contentful Paint is 3.4s (Slow).", "Compressing images could save 2.1MB.", "Reduce unused JavaScript."],
+            content: ["Grammar mistakes found in the 'About Us' section.", "Tone of voice is inconsistent across pages.", "Keyword stuffing detected in blog posts."]
+        };
+        
+        function setLoading(isLoading) {
+            roastBtn.disabled = isLoading;
+            spinner.classList.toggle('hidden', !isLoading);
+            buttonText.textContent = isLoading ? 'Roasting...' : '🔥 Roast Me!';
+        }
+
+        function displayError(message) {
+            errorMessage.textContent = message;
+            errorMessage.classList.remove('hidden');
+        }
+
+        function clearState() {
+            errorMessage.classList.add('hidden');
+            resultsSection.classList.add('hidden');
+        }
+
+        tabRoast.addEventListener('click', () => {
+            roastContent.classList.remove('hidden');
+            proContent.classList.add('hidden');
+            tabRoast.classList.replace('tab-inactive', 'tab-active');
+            tabPro.classList.replace('tab-active', 'tab-inactive');
+        });
+        
+        tabPro.addEventListener('click', () => {
+            proContent.classList.remove('hidden');
+            roastContent.classList.add('hidden');
+            tabPro.classList.replace('tab-inactive', 'tab-active');
+            tabRoast.classList.replace('tab-active', 'tab-inactive');
+        });
+
+        roastBtn.addEventListener('click', async () => {
+            let url = urlInput.value.trim();
+            if (!url) {
+                displayError("Please enter a website URL to roast.");
+                return;
+            }
+
+            // Prepend https:// if no protocol is specified
+            if (!/^https?:\/\//i.test(url)) {
+                url = 'https://' + url;
+            }
+
+            try { 
+                new URL(url); 
+            } catch (_) {
+                displayError("That doesn't look like a valid URL. Try again.");
+                return;
+            }
+
+            clearState();
+            setLoading(true);
+
+            await new Promise(resolve => setTimeout(resolve, 2500)); 
+
+            try {
+                const roastScore = Math.floor(Math.random() * 60) + 20;
+                const roastText = mockRoasts[Math.floor(Math.random() * mockRoasts.length)];
+
+                roastScoreEl.textContent = roastScore;
+                roastTextEl.textContent = `"${roastText}"`;
+                
+                proSeoEl.innerHTML = mockProData.seo.map(item => `<li>${item}</li>`).join('');
+                proUxEl.innerHTML = mockProData.ux.map(item => `<li>${item}</li>`).join('');
+                proSpeedEl.innerHTML = mockProData.speed.map(item => `<li>${item}</li>`).join('');
+                proContentListEl.innerHTML = mockProData.content.map(item => `<li>${item}</li>`).join('');
+
+                resultsSection.classList.remove('hidden');
+                resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            } catch (error) {
+                displayError("Something went wrong during the roast. Please try again.");
+                console.error("Roast simulation failed:", error);
+            } finally {
+                setLoading(false);
+            }
+        });
+    </script>
+</body>
+</html>
+
