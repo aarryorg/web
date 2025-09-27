@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Landing Page Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #4f46e5;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* Custom scrollbar for webkit browsers */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #a7a7a7;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        .main-content {
+             height: calc(100vh - 4rem); /* Full height minus nav height */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    
+    <!-- App Navigation -->
+    <nav class="bg-white shadow-md w-full sticky top-0 z-20">
+        <div class="max-w-screen-2xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 font-bold text-xl text-indigo-600">
+                    My AI App Suite
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="aipage.html" class="bg-indigo-100 text-indigo-700 px-3 py-2 rounded-md text-sm font-medium" aria-current="page">AI Landing Page Generator</a>
+                        <a href="Thumbly.html" class="text-gray-500 hover:bg-gray-200 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium">thumbnail maker  </a>
+                        <a href="aitext.html" class="text-gray-500 hover:bg-gray-200 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium">AI prompt Genarator</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex flex-col lg:flex-row main-content">
+        <!-- Input Panel -->
+        <div class="lg:w-2/5 xl:w-1/3 bg-white p-6 lg:p-8 shadow-2xl lg:h-full lg:overflow-y-auto">
+            <header class="mb-8">
+                <h1 class="text-3xl font-extrabold text-gray-900">Landing Page Generator</h1>
+                <p class="text-gray-600 mt-2">Provide your product details, and let our AI team build a high-converting, SEO-optimized page for you.</p>
+            </header>
+
+            <form id="generator-form" class="space-y-6">
+                <div>
+                    <label for="prompt" class="block text-sm font-semibold text-gray-700 mb-1">1. Main Content Prompt</label>
+                    <textarea id="prompt" rows="5" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" placeholder="e.g., A subscription service called 'SynthWave AI' that creates royalty-free lofi music for video creators. The tone should be modern and exciting..."></textarea>
+                </div>
+
+                <div>
+                    <label for="product-url" class="block text-sm font-semibold text-gray-700 mb-1">2. Product/Company URL</label>
+                    <input type="url" id="product-url" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" placeholder="https://www.yourproduct.com">
+                </div>
+
+                <div>
+                    <label for="video-url" class="block text-sm font-semibold text-gray-700 mb-1">3. YouTube or Video URL</label>
+                    <input type="url" id="video-url" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" placeholder="https://www.youtube.com/watch?v=...">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="cta-text" class="block text-sm font-semibold text-gray-700 mb-1">4. CTA Button Text</label>
+                        <input type="text" id="cta-text" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" placeholder="e.g., Get Early Access">
+                    </div>
+                    <div>
+                        <label for="cta-link" class="block text-sm font-semibold text-gray-700 mb-1">5. CTA Destination Link</label>
+                        <input type="url" id="cta-link" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" placeholder="https://example.com/signup">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">6. Social Media Links (Optional)</label>
+                    <div class="space-y-3 mt-2">
+                        <input type="url" id="social-facebook" class="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" placeholder="Facebook URL">
+                        <input type="url" id="social-twitter" class="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" placeholder="Twitter / X URL">
+                        <input type="url" id="social-linkedin" class="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" placeholder="LinkedIn URL">
+                        <input type="url" id="social-instagram" class="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" placeholder="Instagram URL">
+                    </div>
+                </div>
+
+                <button type="submit" id="generate-btn" class="w-full bg-indigo-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-300 transition-transform transform hover:scale-105 flex items-center justify-center shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                    Build My Landing Page
+                </button>
+            </form>
+            <div id="error-box" class="hidden mt-4 p-4 bg-red-100 text-red-800 border border-red-300 rounded-lg"></div>
+        </div>
+
+        <!-- Output Panel -->
+        <div class="lg:w-3/5 xl:w-2/3 p-6 lg:p-8 flex flex-col bg-gray-100 lg:h-full">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-2xl font-bold text-gray-900">Generated Output</h2>
+                <div class="flex space-x-2 rounded-lg bg-gray-200 p-1">
+                    <button id="preview-btn" class="flex-1 font-semibold py-2 px-4 rounded-md text-sm transition bg-white text-indigo-600 shadow">Preview</button>
+                    <button id="code-btn" class="flex-1 font-semibold py-2 px-4 rounded-md text-sm transition text-gray-600">HTML</button>
+                </div>
+                 <button id="copy-btn" class="hidden bg-green-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-green-600 transition flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" /><path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" /></svg>
+                    Copy Code
+                </button>
+            </div>
+
+            <div id="output-container" class="flex-grow bg-white rounded-lg shadow-inner border border-gray-200 overflow-hidden relative">
+                <div id="loader-container" class="hidden absolute inset-0 bg-white bg-opacity-80 flex flex-col items-center justify-center z-10">
+                    <div class="loader"></div>
+                    <p class="mt-4 text-gray-600 font-medium">AI team at work: Analyzing & building...</p>
+                </div>
+
+                <iframe id="preview-frame" class="w-full h-full border-0"></iframe>
+
+                <div id="code-container" class="hidden w-full h-full">
+                    <pre class="h-full w-full"><code id="code-block" class="language-html h-full w-full block overflow-auto p-4 text-sm bg-gray-900 text-white"></code></pre>
+                </div>
+
+                <div id="placeholder" class="flex items-center justify-center h-full text-gray-400">
+                    <div class="text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                        <p class="mt-2 text-lg">Your generated page will appear here</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('generator-form');
+        const generateBtn = document.getElementById('generate-btn');
+        const errorBox = document.getElementById('error-box');
+        
+        const loaderContainer = document.getElementById('loader-container');
+        const placeholder = document.getElementById('placeholder');
+        
+        const previewBtn = document.getElementById('preview-btn');
+        const codeBtn = document.getElementById('code-btn');
+        const copyBtn = document.getElementById('copy-btn');
+        
+        const previewFrame = document.getElementById('preview-frame');
+        const codeContainer = document.getElementById('code-container');
+        const codeBlock = document.getElementById('code-block');
+
+        let generatedCode = '';
+
+        // Tab functionality
+        previewBtn.addEventListener('click', () => {
+            previewFrame.classList.remove('hidden');
+            codeContainer.classList.add('hidden');
+            copyBtn.classList.add('hidden');
+            
+            previewBtn.classList.add('bg-white', 'text-indigo-600', 'shadow');
+            codeBtn.classList.remove('bg-white', 'text-indigo-600', 'shadow');
+        });
+
+        codeBtn.addEventListener('click', () => {
+            previewFrame.classList.add('hidden');
+            codeContainer.classList.remove('hidden');
+            if(generatedCode) copyBtn.classList.remove('hidden');
+
+            codeBtn.classList.add('bg-white', 'text-indigo-600', 'shadow');
+            previewBtn.classList.remove('bg-white', 'text-indigo-600', 'shadow');
+        });
+
+        copyBtn.addEventListener('click', () => {
+            if (generatedCode) {
+                 try {
+                    const textArea = document.createElement('textarea');
+                    textArea.value = generatedCode;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+
+                    copyBtn.innerHTML = `Copied!`;
+                    setTimeout(() => {
+                        copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" /><path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" /></svg> Copy Code`;
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy text: ', err);
+                    displayError('Failed to copy code. Please copy it manually.');
+                }
+            }
+        });
+
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const userPrompt = document.getElementById('prompt').value.trim();
+            const productUrl = document.getElementById('product-url').value.trim();
+            const videoUrl = document.getElementById('video-url').value.trim();
+            const ctaText = document.getElementById('cta-text').value.trim();
+            const ctaLink = document.getElementById('cta-link').value.trim();
+            
+            const facebookUrl = document.getElementById('social-facebook').value.trim();
+            const twitterUrl = document.getElementById('social-twitter').value.trim();
+            const linkedinUrl = document.getElementById('social-linkedin').value.trim();
+            const instagramUrl = document.getElementById('social-instagram').value.trim();
+
+            if (!userPrompt || !productUrl || !videoUrl || !ctaText || !ctaLink) {
+                displayError('Please fill out all required fields (1-5).');
+                return;
+            }
+            
+            clearOutput();
+            setLoading(true);
+
+            const fullPrompt = `
+                USER PROMPT: Create a landing page for: ${userPrompt}.
+                PRODUCT URL: ${productUrl}
+                VIDEO URL: ${videoUrl}
+                CTA BUTTON TEXT: ${ctaText}
+                CTA BUTTON LINK: ${ctaLink}
+                SOCIAL MEDIA LINKS (Optional):
+                - Facebook: ${facebookUrl || 'N/A'}
+                - Twitter: ${twitterUrl || 'N/A'}
+                - LinkedIn: ${linkedinUrl || 'N/A'}
+                - Instagram: ${instagramUrl || 'N/A'}
+            `;
+
+            const systemInstruction = {
+                parts: [{
+                    text: `You are a world-class team: a Digital Marketing Strategist, a Senior UX/UI Designer, an SEO Specialist, and a Full-Stack Developer. Your goal is to create a single-file, high-converting, SEO-optimized, and visually stunning HTML landing page.
+
+                    **Phase 1: Strategy & Content (Marketing & SEO)**
+                    1.  **Analyze Sources:** Deeply analyze the user's prompt and all provided URLs (Product URL, Video, Social Media) to extract the brand voice, key features, benefits, and target audience.
+                    2.  **Craft Copy:** Write compelling, benefit-driven copy. Generate a powerful, SEO-friendly headline (H1) and a persuasive subheadline. Write concise text for feature sections.
+                    3.  **SEO Keyword Integration:** Naturally weave relevant keywords from your analysis into the copy.
+                    4.  **Meta Tags:** Create a concise and compelling <title> tag (under 60 characters) and a meta description (under 160 characters).
+
+                    **Phase 2: Design & UX (UI/UX Designer)**
+                    1.  **Typography & Color:** Choose a modern, legible font pairing (e.g., from Google Fonts) and a professional color palette that reflects the brand identity from your analysis.
+                    2.  **Visual Hierarchy:** Design a clean, intuitive layout with abundant whitespace. Guide the user's eye naturally down the page towards the CTA.
+                    3.  **User Experience:** Add subtle, elegant CSS animations or transitions (e.g., on-scroll fade-ins) to enhance engagement. Do not use jarring or distracting animations.
+                    4.  **Mobile-First Design (CRITICAL):** Design for mobile FIRST. The page must be perfectly responsive, with large tap targets and flawless rendering on all screen sizes. No horizontal scrollbars.
+
+                    **Phase 3: Development & SEO Implementation (Developer & SEO Specialist)**
+                    1.  **Single File HTML:** Generate a single, complete HTML file. All CSS and JavaScript must be internal.
+                    2.  **Styling:** Use Tailwind CSS from the CDN (<script src="https://cdn.tailwindcss.com"><\/script>).
+                    3.  **Semantic HTML & Accessibility:** Use semantic HTML5 tags (<header>, <main>, <section>, <nav>, <footer>). Ensure images have descriptive \`alt\` tags for accessibility and SEO.
+                    4.  **Schema Markup (JSON-LD):** This is MANDATORY. Embed a \`<script type="application/ld+json">\` in the \`<head>\`. The schema should be for a 'Product', 'Service', or 'LocalBusiness', based on your analysis. Dynamically populate fields like 'name', 'description', 'url', and 'image' from the user's info.
+                    5.  **Structure:** Build the page with these sections in a high-converting order: Hero Section, Video, Features/Benefits, CTA, Footer.
+                    6.  **Conditional Footer:** If social media links are provided, add a footer with SVG icons. Otherwise, omit it.
+                    7.  **Placeholders:** Use 'https://placehold.co/' for images, e.g., \`https://placehold.co/600x400/6366f1/ffffff?text=Feature+Image\`.
+
+                    Your final output must be ONLY the raw HTML code, starting with \`<!DOCTYPE html>\` and ending with \`</html>\`. Do not include any explanations or markdown.
+                    `
+                }]
+            };
+
+            try {
+                const apiKey = ""; // Canvas will provide the key
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                const payload = {
+                    contents: [{ parts: [{ text: fullPrompt }] }],
+                    systemInstruction: systemInstruction,
+                };
+                
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.status} ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                const candidate = result.candidates?.[0];
+
+                if (candidate && candidate.content?.parts?.[0]?.text) {
+                    generatedCode = candidate.content.parts[0].text;
+                    displayOutput(generatedCode);
+                } else {
+                    let errorMessage = "The AI returned an empty or invalid response.";
+                    if(result.promptFeedback && result.promptFeedback.blockReason){
+                       errorMessage = `Request was blocked. Reason: ${result.promptFeedback.blockReason}. Please adjust your prompt.`;
+                    }
+                    throw new Error(errorMessage);
+                }
+
+            } catch (error) {
+                console.error("Error calling Gemini API:", error);
+                displayError(`An error occurred: ${error.message}`);
+            } finally {
+                setLoading(false);
+            }
+        });
+
+        function setLoading(isLoading) {
+            if (isLoading) {
+                loaderContainer.classList.remove('hidden');
+                placeholder.classList.add('hidden');
+                generateBtn.disabled = true;
+                generateBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                generateBtn.querySelector('svg').classList.add('animate-spin');
+            } else {
+                loaderContainer.classList.add('hidden');
+                generateBtn.disabled = false;
+                generateBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                generateBtn.querySelector('svg').classList.remove('animate-spin');
+            }
+        }
+
+        function displayError(message) {
+            errorBox.textContent = message;
+            errorBox.classList.remove('hidden');
+            setTimeout(() => errorBox.classList.add('hidden'), 5000);
+        }
+
+        function clearOutput() {
+            errorBox.classList.add('hidden');
+            previewFrame.srcdoc = '';
+            codeBlock.textContent = '';
+            placeholder.classList.remove('hidden');
+            generatedCode = '';
+            copyBtn.classList.add('hidden');
+        }
+
+        function displayOutput(code) {
+            placeholder.classList.add('hidden');
+            previewFrame.srcdoc = code;
+            codeBlock.textContent = code;
+            previewBtn.click();
+        }
+
+    </script>
+</body>
+</html>
+
