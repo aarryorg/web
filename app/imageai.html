@@ -572,7 +572,7 @@
                 const payload = {
                     contents: [{
                         parts: [
-                            { text: "Remove the background from this image. Make the background fully transparent. Isolate the main subject, which could be a person, animal, or object, with clean and precise edges. Output the result as a PNG with a transparent alpha channel." },
+                            { text: "Perform a professional-grade, high-accuracy background removal on this image. The primary goal is to perfectly isolate the main subject (person, animal, or object) with studio-quality precision.\n\nKey instructions:\n1. **Edge Precision:** Create incredibly clean, sharp, and precise edges around the subject.\n2. **Fine Detail Preservation:** Meticulously preserve all fine details, especially individual strands of hair, fur, or complex textures. Do not crop or blur these details.\n3. **Handle Complex Areas:** Accurately process intricate areas, such as gaps between arms and a body, or through the handle of an object.\n4. **Natural Edges:** Apply a very subtle feathering or anti-aliasing to the mask edge to ensure the subject will blend naturally into a new background without a harsh, 'cut-out' look.\n5. **Output Format:** The final output must be a PNG image with a fully transparent alpha channel for the background." },
                             { inlineData: { mimeType: "image/png", data: base64ImageData } }
                         ]
                     }],
