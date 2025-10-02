@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline AI Image Toolbox</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overscroll-behavior: none;
+        }
+        .tool-panel {
+            scrollbar-width: thin;
+            scrollbar-color: #4a5568 #2d3748;
+        }
+        .tool-panel::-webkit-scrollbar {
+            width: 8px;
+        }
+        .tool-panel::-webkit-scrollbar-track {
+            background: #2d3748;
+        }
+        .tool-panel::-webkit-scrollbar-thumb {
+            background-color: #4a5568;
+            border-radius: 10px;
+            border: 2px solid #2d3748;
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 6px;
+            background: #4a5568;
+            border-radius: 5px;
+            outline: none;
+            opacity: 0.7;
+            transition: opacity .2s;
+        }
+        input[type="range"]:hover {
+            opacity: 1;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #81e6d9;
+            cursor: pointer;
+            border-radius: 50%;
+            border: 2px solid #1a202c;
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            background: #81e6d9;
+            cursor: pointer;
+            border-radius: 50%;
+            border: 2px solid #1a202c;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #81e6d9;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        canvas {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 0.5rem;
+        }
+        #object-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            pointer-events: none; /* Pass clicks through to the canvas */
+        }
+        .bounding-box {
+            position: absolute;
+            border: 2px solid #81e6d9;
+            background-color: rgba(129, 230, 217, 0.2);
+            pointer-events: all; /* Make boxes clickable */
+            cursor: pointer;
+        }
+        .bounding-box:hover {
+            background-color: rgba(129, 230, 217, 0.4);
+        }
+        .bounding-box-label {
+            position: absolute;
+            bottom: 100%;
+            left: -2px;
+            background-color: #81e6d9;
+            color: #1a202c;
+            padding: 2px 6px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 4px 4px 0 0;
+            white-space: nowrap;
+        }
+        #notification {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            border-radius: 8px;
+            color: white;
+            z-index: 50;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 flex flex-col h-screen overflow-hidden">
+
+    <!-- Header -->
+    <header class="bg-gray-800 shadow-lg z-10">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-white flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-teal-400"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path><path d="M5 3v4"></path><path d="M19 17v4"></path><path d="M3 5h4"></path><path d="M17 19h4"></path></svg>
+                Offline AI Image Toolbox
+            </h1>
+            <label for="imageLoader" class="cursor-pointer bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-200 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                Upload Image
+            </label>
+            <input type="file" id="imageLoader" name="imageLoader" class="hidden" accept="image/*"/>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col md:flex-row overflow-hidden">
+
+        <!-- Toolbar -->
+        <aside class="w-full md:w-80 bg-gray-800 p-4 overflow-y-auto tool-panel flex-shrink-0">
+            <div id="controls-panel" class="space-y-6">
+
+                <!-- AI Tools -->
+                <div>
+                    <h3 class="text-lg font-semibold border-b-2 border-gray-600 pb-2 mb-4">AI Tools</h3>
+                    <div class="space-y-3">
+                        <button id="aiEnhance" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M12 3c.3 0 .5.2.8.4l1.8 1.8c.4.4.7.9.7 1.4v2.8c0 .5-.2 1-.4 1.4l-1.8 1.8c-.2.2-.5.4-.8.4s-.5-.2-.8-.4l-1.8-1.8c-.4-.4-.7-.9-.7-1.4V6.6c0-.5.2-1 .4-1.4l1.8-1.8c.2-.2.5-.4.8-.4z"></path><path d="M12 12c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4z"></path><path d="M20 12c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4z"></path><path d="M4 12c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4z"></path></svg>
+                            Auto-Enhance
+                        </button>
+                         <button id="aiSharpen" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            Magic Sharpen
+                        </button>
+                        <button id="aiScanObjects" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1-.9-2-2-2Z"></path></svg>
+                            Scan for Objects
+                         </button>
+                         <button id="aiRemoveBg" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 0 2l-.15.08a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.1a2 2 0 0 1 0-2l.15-.08a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2-2.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                             Remove Background
+                          </button>
+                    </div>
+                </div>
+
+                <!-- Manual Adjustments -->
+                <div>
+                    <h3 class="text-lg font-semibold border-b-2 border-gray-600 pb-2 mb-4">Manual Adjustments</h3>
+                    <div class="space-y-4">
+                        <div class="flex flex-col">
+                            <label for="brightness" class="mb-1 text-sm font-medium">Brightness</label>
+                            <input type="range" id="brightness" min="0" max="200" value="100" class="w-full">
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="contrast" class="mb-1 text-sm font-medium">Contrast</label>
+                            <input type="range" id="contrast" min="0" max="200" value="100" class="w-full">
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="saturation" class="mb-1 text-sm font-medium">Saturation</label>
+                            <input type="range" id="saturate" min="0" max="200" value="100" class="w-full">
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="grayscale" class="mb-1 text-sm font-medium">Grayscale</label>
+                            <input type="range" id="grayscale" min="0" max="100" value="0" class="w-full">
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="sepia" class="mb-1 text-sm font-medium">Sepia</label>
+                            <input type="range" id="sepia" min="0" max="100" value="0" class="w-full">
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="hue" class="mb-1 text-sm font-medium">Hue Rotate</label>
+                            <input type="range" id="hue-rotate" min="0" max="360" value="0" class="w-full">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div>
+                    <h3 class="text-lg font-semibold border-b-2 border-gray-600 pb-2 mb-4">Actions</h3>
+                    <div class="space-y-3">
+                        <button id="reset" class="w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M3 2v6h6"></path><path d="M21 12A9 9 0 0 0 6 5.3L3 8"></path><path d="M21 22v-6h-6"></path><path d="M3 12a9 9 0 0 0 15 6.7l3-2.7"></path></svg>
+                            Reset
+                        </button>
+                        <button id="download" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            Download
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="no-controls" class="hidden text-center text-gray-400">
+                <p>Upload an image to get started.</p>
+            </div>
+        </aside>
+
+        <!-- Image Canvas -->
+        <section id="canvas-container" class="flex-1 bg-gray-900 flex items-center justify-center p-4 relative overflow-auto">
+            <div id="placeholder" class="text-center text-gray-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                <h2 class="text-2xl font-semibold">Your image will appear here</h2>
+                <p class="mt-2">Upload a file to start editing.</p>
+            </div>
+            <canvas id="canvas" class="hidden"></canvas>
+            <div id="object-overlay"></div>
+            <div id="loader" class="absolute hidden">
+                <div class="loader"></div>
+                <p class="mt-4 text-white font-semibold">Applying AI magic...</p>
+            </div>
+            <div id="notification"></div>
+        </section>
+
+    </main>
+
+    <script>
+        // --- DOM Element References ---
+        const imageLoader = document.getElementById('imageLoader');
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const canvasContainer = document.getElementById('canvas-container');
+        
+        const placeholder = document.getElementById('placeholder');
+        const loader = document.getElementById('loader');
+        const notification = document.getElementById('notification');
+        const controlsPanel = document.getElementById('controls-panel');
+        const noControls = document.getElementById('no-controls');
+        
+        // AI Tools
+        const aiEnhanceBtn = document.getElementById('aiEnhance');
+        const aiSharpenBtn = document.getElementById('aiSharpen');
+        const aiScanObjectsBtn = document.getElementById('aiScanObjects');
+        const aiRemoveBgBtn = document.getElementById('aiRemoveBg');
+
+        // Manual Adjustments
+        const brightnessSlider = document.getElementById('brightness');
+        const contrastSlider = document.getElementById('contrast');
+        const saturateSlider = document.getElementById('saturate');
+        const grayscaleSlider = document.getElementById('grayscale');
+        const sepiaSlider = document.getElementById('sepia');
+        const hueSlider = document.getElementById('hue-rotate');
+
+        // Actions
+        const resetBtn = document.getElementById('reset');
+        const downloadBtn = document.getElementById('download');
+        
+        let originalImage = null; // Will always hold the latest version of the image being edited
+        let initialImageForReset = null; // A snapshot of the very first uploaded image for the reset button
+        let foregroundImage = null; // Holds the image with background removed
+        let detectedObjects = [];
+        let notificationTimeout;
+
+        // --- Core Functions ---
+
+        function showControls() {
+            controlsPanel.classList.remove('hidden');
+            noControls.classList.add('hidden');
+        }
+
+        function hideControls() {
+            controlsPanel.classList.add('hidden');
+            noControls.classList.remove('hidden');
+        }
+        
+        hideControls();
+        imageLoader.addEventListener('change', e => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = event => {
+                const img = new Image();
+                img.onload = () => {
+                    originalImage = img;
+                    initialImageForReset = img;
+                    foregroundImage = null;
+                    const containerRect = canvasContainer.getBoundingClientRect();
+                    const scale = Math.min(containerRect.width / originalImage.width, containerRect.height / originalImage.height, 1);
+                    canvas.width = originalImage.width * scale;
+                    canvas.height = originalImage.height * scale;
+                    
+                    ctx.drawImage(originalImage, 0, 0, canvas.width, canvas.height);
+
+                    placeholder.classList.add('hidden');
+                    canvas.classList.remove('hidden');
+                    resetFilters();
+                    showControls();
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+
+        function applyFilters() {
+            if (!originalImage) return;
+            const filter = `
+                brightness(${brightnessSlider.value}%)
+                contrast(${contrastSlider.value}%)
+                saturate(${saturateSlider.value}%)
+                grayscale(${grayscaleSlider.value}%)
+                sepia(${sepiaSlider.value}%)
+                hue-rotate(${hueSlider.value}deg)
+            `;
+            ctx.filter = filter;
+            ctx.drawImage(originalImage, 0, 0, canvas.width, canvas.height);
+        }
+
+        function resetFilters() {
+            brightnessSlider.value = 100;
+            contrastSlider.value = 100;
+            saturateSlider.value = 100;
+            grayscaleSlider.value = 0;
+            sepiaSlider.value = 0;
+            hueSlider.value = 0;
+            
+            clearObjects();
+            if (initialImageForReset) {
+                 ctx.filter = 'none';
+                 originalImage = initialImageForReset;
+                 ctx.drawImage(originalImage, 0, 0, canvas.width, canvas.height);
+            }
+            foregroundImage = null;
+        }
+
+        // --- "AI" Simulated & Real Functions ---
+
+        function showLoader(show, message = "Applying AI magic...") {
+            loader.querySelector('p').textContent = message;
+            loader.style.display = show ? 'flex' : 'none';
+        }
+        
+        function showNotification(message, isError = false) {
+            clearTimeout(notificationTimeout);
+            notification.textContent = message;
+            notification.style.backgroundColor = isError ? '#e53e3e' : '#2d3748';
+            notification.style.opacity = '1';
+
+            notificationTimeout = setTimeout(() => {
+                notification.style.opacity = '0';
+            }, 3000);
+        }
+
+        function simulateAIProcess(processFunction, message = "Applying AI magic...") {
+            if (!originalImage) return;
+            showLoader(true, message);
+            setTimeout(() => {
+                processFunction();
+                showLoader(false);
+            }, 1000); // Simulate processing delay
+        }
+        
+        aiEnhanceBtn.addEventListener('click', async () => {
+            if (!originalImage) return;
+
+            if (navigator.onLine) {
+                await enhanceWithGemini();
+            } else {
+                showNotification("Offline mode: Using basic enhancement.", false);
+                simulateAIProcess(() => {
+                    brightnessSlider.value = 110;
+                    contrastSlider.value = 120;
+                    saturateSlider.value = 120;
+                    applyFilters();
+                });
+            }
+        });
+
+        async function enhanceWithGemini() {
+            showLoader(true, "AI is enhancing your image...");
+            try {
+                const base64ImageData = canvas.toDataURL('image/jpeg').split(',')[1];
+                
+                const apiKey = ""; 
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent?key=${apiKey}`;
+                
+                const payload = {
+                    contents: [{
+                        parts: [
+                            { text: "Perform a professional portrait enhancement on this image. Identify the main subject (person or animal). Apply the following enhancements: 1. Adjust overall lighting and color balance for a vibrant, natural look. 2. For human or animal subjects, enhance the clarity and detail in the eyes, adding a subtle catchlight if appropriate. 3. Improve the texture and detail of hair, fur, or feathers. 4. Ensure skin tones (if applicable) are accurate and flattering, avoiding an over-processed look. 5. Slightly soften the background to create a gentle separation and draw focus to the subject. The final result should be a high-quality, professional-looking portrait. Do not add or remove any elements." },
+                            { inlineData: { mimeType: "image/jpeg", data: base64ImageData } }
+                        ]
+                    }],
+                    generationConfig: {
+                        responseModalities: ['IMAGE']
+                    },
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API request failed with status ${response.status}`);
+                }
+
+                const result = await response.json();
+                const newBase64Data = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
+
+                if (!newBase64Data) {
+                    throw new Error("No image data found in AI response.");
+                }
+
+                const newImageUrl = `data:image/png;base64,${newBase64Data}`;
+                const enhancedImage = new Image();
+                enhancedImage.onload = () => {
+                    originalImage = enhancedImage; 
+                    foregroundImage = null;
+                    const scale = Math.min(canvasContainer.clientWidth / originalImage.width, canvasContainer.clientHeight / originalImage.height, 1);
+                    canvas.width = originalImage.width * scale;
+                    canvas.height = originalImage.height * scale;
+                    
+                    ctx.drawImage(enhancedImage, 0, 0, canvas.width, canvas.height);
+                    
+                    brightnessSlider.value = 100;
+                    contrastSlider.value = 100;
+                    saturateSlider.value = 100;
+                    grayscaleSlider.value = 0;
+                    sepiaSlider.value = 0;
+                    hueSlider.value = 0;
+                    ctx.filter = 'none';
+
+                    showNotification("AI enhancement complete!", false);
+                };
+                enhancedImage.src = newImageUrl;
+
+            } catch (error) {
+                console.error("Gemini enhancement failed:", error);
+                showNotification("AI enhancement failed. Please check your connection.", true);
+            } finally {
+                showLoader(false);
+            }
+        }
+        
+        aiSharpenBtn.addEventListener('click', async () => {
+            if (!originalImage) return;
+
+            if (navigator.onLine) {
+                await sharpenWithGemini();
+            } else {
+                 showNotification("Offline mode: Using basic sharpen.", false);
+                simulateAIProcess(() => {
+                    applyConvolution([ 0, -1, 0, -1, 5, -1, 0, -1, 0 ]);
+                });
+            }
+        });
+
+        async function sharpenWithGemini() {
+            showLoader(true, "AI is sharpening the image...");
+            try {
+                const base64ImageData = canvas.toDataURL('image/jpeg').split(',')[1];
+                
+                const apiKey = ""; 
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent?key=${apiKey}`;
+                
+                const payload = {
+                    contents: [{
+                        parts: [
+                            { text: "Intelligently sharpen this image, focusing on the main subject (e.g., a person or animal). Enhance details in features like eyes, hair, and textures while avoiding over-sharpening the background or skin to prevent a noisy or unnatural look. Produce a crisp, clear, high-quality result." },
+                            { inlineData: { mimeType: "image/jpeg", data: base64ImageData } }
+                        ]
+                    }],
+                    generationConfig: {
+                        responseModalities: ['IMAGE']
+                    },
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API request failed with status ${response.status}`);
+                }
+
+                const result = await response.json();
+                const newBase64Data = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
+
+                if (!newBase64Data) {
+                    throw new Error("No image data found in AI response.");
+                }
+
+                const newImageUrl = `data:image/png;base64,${newBase64Data}`;
+                const sharpenedImage = new Image();
+                sharpenedImage.onload = () => {
+                    originalImage = sharpenedImage; 
+                    foregroundImage = null;
+                    const scale = Math.min(canvasContainer.clientWidth / originalImage.width, canvasContainer.clientHeight / originalImage.height, 1);
+                    canvas.width = originalImage.width * scale;
+                    canvas.height = originalImage.height * scale;
+                    
+                    ctx.drawImage(sharpenedImage, 0, 0, canvas.width, canvas.height);
+                    
+                    brightnessSlider.value = 100;
+                    contrastSlider.value = 100;
+                    saturateSlider.value = 100;
+                    grayscaleSlider.value = 0;
+                    sepiaSlider.value = 0;
+                    hueSlider.value = 0;
+                    ctx.filter = 'none';
+
+                    showNotification("AI sharpen complete!", false);
+                };
+                sharpenedImage.src = newImageUrl;
+
+            } catch (error) {
+                console.error("Gemini sharpen failed:", error);
+                showNotification("AI sharpen failed. Please check your connection.", true);
+            } finally {
+                showLoader(false);
+            }
+        }
+
+        aiScanObjectsBtn.addEventListener('click', () => {
+            simulateAIProcess(() => {
+                clearObjects();
+                // Simulate detecting 3-4 objects
+                for (let i = 0; i < Math.floor(Math.random() * 2) + 3; i++) {
+                    const w = (Math.random() * 0.3 + 0.15) * canvas.width;
+                    const h = (Math.random() * 0.4 + 0.2) * canvas.height;
+                    const x = Math.random() * (canvas.width - w);
+                    const y = Math.random() * (canvas.height - h);
+                    const label = ['Object', 'Person', 'Text', 'Icon'][Math.floor(Math.random() * 4)];
+                    detectedObjects.push({ x, y, w, h, label });
+                }
+                drawObjects();
+            }, "Scanning image...");
+        });
+
+        aiRemoveBgBtn.addEventListener('click', async () => {
+            if (!originalImage) return;
+
+            if (navigator.onLine) {
+                await removeBackgroundWithGemini();
+            } else {
+                showNotification("Background removal requires an internet connection.", true);
+            }
+        });
+
+        async function removeBackgroundWithGemini() {
+            showLoader(true, "AI is removing the background...");
+            try {
+                const base64ImageData = canvas.toDataURL('image/png').split(',')[1];
+                
+                const apiKey = ""; 
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent?key=${apiKey}`;
+                
+                const payload = {
+                    contents: [{
+                        parts: [
+                            { text: "Remove the background from this image. Make the background fully transparent. Isolate the main subject, which could be a person, animal, or object, with clean and precise edges. Output the result as a PNG with a transparent alpha channel." },
+                            { inlineData: { mimeType: "image/png", data: base64ImageData } }
+                        ]
+                    }],
+                    generationConfig: {
+                        responseModalities: ['IMAGE']
+                    },
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API request failed with status ${response.status}`);
+                }
+
+                const result = await response.json();
+                const newBase64Data = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
+
+                if (!newBase64Data) {
+                    throw new Error("No image data found in AI response.");
+                }
+
+                const newImageUrl = `data:image/png;base64,${newBase64Data}`;
+                const removedBgImage = new Image();
+                removedBgImage.onload = () => {
+                    originalImage = removedBgImage;
+                    foregroundImage = removedBgImage;
+                    const scale = Math.min(canvasContainer.clientWidth / originalImage.width, canvasContainer.clientHeight / originalImage.height, 1);
+                    canvas.width = originalImage.width * scale;
+                    canvas.height = originalImage.height * scale;
+                    
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(removedBgImage, 0, 0, canvas.width, canvas.height);
+                    
+                    brightnessSlider.value = 100;
+                    contrastSlider.value = 100;
+                    saturateSlider.value = 100;
+                    grayscaleSlider.value = 0;
+                    sepiaSlider.value = 0;
+                    hueSlider.value = 0;
+                    ctx.filter = 'none';
+
+                    showNotification("AI background removal complete!", false);
+                };
+                removedBgImage.src = newImageUrl;
+
+            } catch (error) {
+                console.error("Gemini background removal failed:", error);
+                showNotification("AI background removal failed. Please try again.", true);
+            } finally {
+                showLoader(false);
+            }
+        }
+        
+        function drawObjects() {
+             if (!initialImageForReset) return;
+            // Redraw initial image before drawing boxes
+            ctx.drawImage(initialImageForReset, 0, 0, canvas.width, canvas.height);
+            applyFilters();
+
+            detectedObjects.forEach((obj, index) => {
+                ctx.strokeStyle = '#81e6d9';
+                ctx.lineWidth = 2;
+                ctx.strokeRect(obj.x, obj.y, obj.w, obj.h);
+                
+                ctx.fillStyle = '#81e6d9';
+                ctx.font = 'bold 14px Inter';
+                ctx.fillText(obj.label, obj.x + 5, obj.y + 18);
+            });
+        }
+        
+        function clearObjects(clearArray = true) {
+            if(clearArray) detectedObjects = [];
+             if (originalImage) {
+                ctx.drawImage(originalImage, 0, 0, canvas.width, canvas.height);
+                applyFilters();
+             }
+        }
+
+        function applyConvolution(kernel) {
+            if (!originalImage) return;
+            const srcData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const dstData = ctx.createImageData(canvas.width, canvas.height);
+            const src = srcData.data;
+            const dst = dstData.data;
+            const width = canvas.width;
+            const height = canvas.height;
+            const side = Math.round(Math.sqrt(kernel.length));
+            const halfSide = Math.floor(side / 2);
+
+            for (let y = 0; y < height; y++) {
+                for (let x = 0; x < width; x++) {
+                    let r = 0, g = 0, b = 0, a = 255;
+                    for (let cy = 0; cy < side; cy++) {
+                        for (let cx = 0; cx < side; cx++) {
+                            const scy = y + cy - halfSide;
+                            const scx = x + cx - halfSide;
+                            if (scy >= 0 && scy < height && scx >= 0 && scx < width) {
+                                const srcOffset = (scy * width + scx) * 4;
+                                const wt = kernel[cy * side + cx];
+                                r += src[srcOffset] * wt;
+                                g += src[srcOffset + 1] * wt;
+                                b += src[srcOffset + 2] * wt;
+                            }
+                        }
+                    }
+                    const dstOffset = (y * width + x) * 4;
+                    dst[dstOffset] = r;
+                    dst[dstOffset + 1] = g;
+                    dst[dstOffset + 2] = b;
+                    dst[dstOffset + 3] = a;
+                }
+            }
+            ctx.putImageData(dstData, 0, 0);
+            originalImage.src = canvas.toDataURL();
+        }
+
+        // --- Event Listeners ---
+        [brightnessSlider, contrastSlider, saturateSlider, grayscaleSlider, sepiaSlider, hueSlider].forEach(slider => {
+            slider.addEventListener('input', () => {
+                if(!originalImage) return;
+                applyFilters();
+                // drawObjects(); // Redraw objects on top of filters
+            });
+        });
+
+        resetBtn.addEventListener('click', resetFilters);
+
+        downloadBtn.addEventListener('click', () => {
+            if (!originalImage) return;
+            const link = document.createElement('a');
+            link.download = 'edited-image.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+
+    </script>
+</body>
+</html>
+
