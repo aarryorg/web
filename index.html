@@ -448,6 +448,18 @@
                 mobileMenu.classList.add('hidden');
             });
         });
+        // Dropdown menu toggle
+        const aiToolsButton = document.getElementById('ai-tools-button');
+        const aiToolsDropdown = document.getElementById('ai-tools-dropdown');
+        aiToolsButton.addEventListener('click', () => {
+            aiToolsDropdown.classList.toggle('hidden');
+        });
+        // Close dropdown when clicking outside
+        window.addEventListener('click', function(event) {
+            if (!aiToolsButton.contains(event.target) && !aiToolsDropdown.contains(event.target)) {
+                aiToolsDropdown.classList.add('hidden');
+            }
+        });
 
         // Simple form submission handler
         const contactForm = document.getElementById('contact-form');
@@ -497,6 +509,8 @@
             });
         });
 
+        
+
         // Accordion functionality for dropdowns
         const accordionButtons = document.querySelectorAll('.accordion-button');
         accordionButtons.forEach(button => {
@@ -518,6 +532,9 @@
                 }
             });
         });
+
+
+        
     </script>
 </body>
 </html>
