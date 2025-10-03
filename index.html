@@ -3,571 +3,626 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aarry Limited - Shopify Services & Web Development</title>
+    <title>Aarry Limited - Global Shopify Plus & eCommerce Growth Agency</title>
+    <meta name="description" content="Aarry Limited is an accredited Shopify Plus agency specializing in headless commerce, custom development, and data-driven digital marketing for ambitious global brands.">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f7f9fc;
-            color: #333;
+            background-color: #f8fafc;
+            color: #1a202c;
         }
-        .mega-menu {
-            display: none;
-        }
-        .group:hover .mega-menu {
-            display: block;
-        }
-        .tab-content {
-            display: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
+        /* Accordion-specific styles */
         .accordion-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-in-out;
+            transition: max-height 0.7s ease-in-out;
         }
         .accordion-content.open {
-            max-height: 1000px; /* A large value to handle content of varying height */
+            max-height: 2000px; /* Large value for content */
+        }
+
+        /* Styles for sections that animate on scroll */
+        .hidden-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+        }
+        .hidden-section.open {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .mobile-nav-overlay {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-nav-overlay.open {
+            transform: translateX(0);
+        }
+        body.overflow-hidden {
+            overflow: hidden;
+        }
+        .brand-gradient-text {
+            background: linear-gradient(to right, #4f46e5, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.39);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(79, 70, 229, 0.5);
+        }
+        .client-logo {
+            filter: grayscale(100%) opacity(60%);
+            transition: all 0.3s ease;
+        }
+        .client-logo:hover {
+            filter: grayscale(0%) opacity(100%);
         }
     </style>
+
+    <!-- AI SEO - Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Aarry Limited",
+      "url": "https://www.aarry.org",
+      "logo": "https://placehold.co/200x60/1a202c/ffffff?text=Aarry.",
+      "description": "Aarry Limited is a globally recognized, accredited Shopify Plus Partner agency specializing in custom eCommerce development, headless commerce, and data-driven digital marketing strategies for high-growth brands.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "House 522/A, Road 8, Shewrapara",
+        "addressLocality": "Dhaka",
+        "postalCode": "1216",
+        "addressCountry": "BD"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+88001777510221",
+        "contactType": "sales",
+        "email": "info@aarry.org"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/aarry"
+      ]
+    }
+    </script>
 </head>
 <body class="antialiased">
 
-    <!-- Header - Mobile & Desktop Responsive -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-        <a href="#home" class="text-2xl font-extrabold text-gray-800">Aarry Limited</a>
-        <nav class="hidden md:flex space-x-6 items-center">
-            
-         <!--  <a href="#services" class="text-gray-600 hover:text-gray-900 transition-colors duration-300 font-medium">Services</a>  -->
-            <div class="relative group">
-                <button id="services-menu-button" class="text-gray-600 hover:text-gray-900 transition-colors duration-300 font-medium flex items-center space-x-1 focus:outline-none">
-                    <span>Services</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
-                <div id="services-menu-dropdown" class="absolute hidden group-hover:block bg-white shadow-lg rounded-md mt-2 p-6 w-[700px] z-10">
-                    <div class="grid grid-cols-3 gap-8">
-                        <div>
-                            <p class="font-semibold text-gray-800 mb-3">eCommerce Development</p>
-                            <a href="#" class="block text-sm py-1.5 text-gray-700 hover:text-indigo-600">Shopify Store Setup</a>
-                            <a href="#" class="block text-sm py-1.5 text-gray-700 hover:text-indigo-600">Custom Development</a>
-                            <a href="#" class="block text-sm py-1.5 text-gray-700 hover:text-indigo-600">Platform Migrations</a>
-                            <a href="#" class="block text-sm py-1.5 text-gray-700 hover:text-indigo-600">App Integrations</a>
-                        </div>
-                        <div>
-                            <p class="font-semibold text-gray-800 mb-3">Digital Marketing</p>
-                            <a href="#" class="block text-sm py-1.5 text-gray-700 hover:text-indigo-600">AEO</a>
-                            <a href="seo.html" class="block text-sm py-1.5 text-gray-700 hover:text-indigo-600">SEO</a>
-                            <a href="#" class="block text-sm py-1.5 text-gray-700 hover:text-indigo-600">Content Strategy</a>
-                            <a href="cro.html" class="block text-sm py-1.5 text-gray-700 hover:text-indigo-600">CRO & A/B Testing</a>
-                            <a href="email-sms.html" class="block text-sm py-1.5 text-gray-700 hover:text-indigo-600">Email & SMS Automation</a>
-                            <a href="#" class="block text-sm py-1.5 text-gray-700 hover:text-indigo-600">PPC Management</a>
-                        </div>
-                        <div>
-                            <p class="font-semibold text-gray-800 mb-3">Strategy & Consulting</p>
-                            <a href="#" class="block text-sm py-1.5 text-gray-700 hover:text-indigo-600">eCommerce Roadmapping</a>
-                            <a href="#" class="block text-sm py-1.5 text-gray-700 hover:text-indigo-600">Technical Audits</a>
-                            <a href="#" class="block text-sm py-1.5 text-gray-700 hover:text-indigo-600">Internationalization Strategy</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-black text-gray-900 tracking-tighter">Aarry.</a>
+            <button id="mobile-menu-open-button" class="text-gray-600 hover:text-indigo-600 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
 
-            <div class="relative group">
-                <button id="ai-tools-button" class="text-gray-600 hover:text-gray-900 transition-colors duration-300 font-medium flex items-center space-x-1 focus:outline-none">
-                    <span>AI Tools</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-nav" class="mobile-nav-overlay fixed inset-0 bg-white z-[100] p-4">
+        <div class="flex justify-between items-center mb-10">
+            <span class="text-2xl font-black text-gray-900 tracking-tighter">Menu</span>
+            <button id="mobile-menu-close-button" class="text-gray-500 hover:text-gray-900">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-2">
+             <div>
+                <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
+                    <span>Services</span>
+                    <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div id="ai-tools-dropdown" class="absolute hidden group-hover:block bg-white shadow-lg rounded-md mt-2 py-2 w-48 z-10">
-                    <a href="app/web.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">AI web check</a>
-                    <a href="aipage.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">AI Landing Page</a>
-                    <a href="app/imageai.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Image AI</a>
-                    <a href="app/Thumbly.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">AI thumbnail maker</a>
-                    <a href="app/aitext.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">AI prompt</a>
+                <div class="accordion-content pl-6 pt-1">
+                    <a href="services/shopify.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">eCommerce Development</a>
+                    <a href="services" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Digital Marketing</a>
+                    <a href="#services" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Strategy & Consulting</a>
                 </div>
             </div>
-            <a href="blogs.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-300 font-medium">Blogs</a>
-            <a href="case_study.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-300 font-medium">Case Study</a>
-            <a href="portfolio.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-300 font-medium">Portfolio</a>
-            <a href="#about" class="text-gray-600 hover:text-gray-900 transition-colors duration-300 font-medium">About Us</a>
-            <a href="#contact" class="text-white bg-indigo-600 hover:bg-indigo-700 px-6 py-2 rounded-full font-semibold transition-colors duration-300 shadow-md">Get a Quote</a>
+            <div>
+                <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
+                    <span>AI Tools</span>
+                    <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content pl-6 pt-1">
+                    <a href="#" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">AI Web Check</a>
+                    <a href="#" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">AI Landing Page</a>
+                </div>
+            </div>
+            <a href="#" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Blogs</a>
+            <a href="#our-work" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Portfolio</a>
+            <a href="#about" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">About Us</a>
+            <a href="#contact" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Book a Call</a>
         </nav>
-        <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-        </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg py-2">
-        <a href="#services" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">Services</a>
-        <a href="app/web.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">AI web check</a>
-        <a href="aipage.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">AI Landing Page</a>
-        <a href="app/imageai.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">Image AI</a>
-        <a href="app/Thumbly.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">AI thumbnail maker</a>
-        <a href="app/aitext.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">AI prompt</a>
-        <a href="blogs.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">Blogs</a>
-        <a href="case_study.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">Case Study</a>
-        <a href="portfolio.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">Portfolio</a>
-        <a href="#about" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">About Us</a>
-        <a href="#contact" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">Get a Quote</a>
-    </div>
-</header>
 
     <!-- Page Content Container -->
     <main>
-
-        <!-- Home Page Section -->
-        <section id="home" class="py-20 bg-gray-100">
+        <!-- Home Section -->
+        <section id="home" class="py-24 bg-white">
             <div class="container mx-auto px-4 text-center">
-                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
-                    Your Partner for Strategic Shopify & Shopify Plus Growth
+                <h1 class="text-4xl md:text-6xl font-black text-gray-900 leading-tight tracking-tighter mb-6">
+                    Build. Grow. Convert.<br>Your Partner in <span class="brand-gradient-text">Global eCommerce Excellence.</span>
                 </h1>
-                <p class="text-lg text-gray-600 mb-8 max-w-3xl mx-auto">
-                    We are an accredited Shopify Experts agency, partnering with ambitious brands across the globe to design, develop, launch, and grow online stores. We leverage the power of design, data, and a people-first approach to deliver strategic e-commerce solutions that drive results.
+                <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
+                    We are an accredited Shopify Plus agency engineering scalable, high-conversion eCommerce experiences for the world's most ambitious brands.
                 </p>
-                <a href="#contact" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">
-                    Tell us about your brand
+                <a href="#results" class="cta-scroll-button cta-button bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-10 rounded-full text-lg">
+                    See Our Proven Results
                 </a>
+            </div>
+        </section>
+
+        <!-- Proven Results & Global Trust Section -->
+        <section id="results" class="py-24 bg-gray-50 hidden-section">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Data-Driven, Results-Obsessed</h2>
+                    <p class="text-lg text-gray-600 mt-3 max-w-3xl mx-auto">We measure success by the metrics that matter most to your bottom line.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center max-w-6xl mx-auto">
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                        <p class="text-5xl font-black text-indigo-600">40%</p>
+                        <p class="mt-2 text-lg font-semibold text-gray-800">Average Conversion Rate Uplift</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                        <p class="text-5xl font-black text-indigo-600">150%</p>
+                        <p class="mt-2 text-lg font-semibold text-gray-800">Increase in Organic Traffic (YoY)</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                        <p class="text-5xl font-black text-indigo-600">5x</p>
+                        <p class="mt-2 text-lg font-semibold text-gray-800">Average Return on Ad Spend (ROAS)</p>
+                    </div>
+                </div>
+                <div class="mt-16">
+                    <p class="text-center text-gray-500 font-semibold uppercase tracking-widest mb-6">Powering the world's leading brands on Shopify</p>
+                    <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
+                        <img src="https://logo.clearbit.com/gymshark.com" alt="Gymshark Logo" class="client-logo h-8">
+                        <img src="https://logo.clearbit.com/allbirds.com" alt="Allbirds Logo" class="client-logo h-8">
+                        <img src="https://logo.clearbit.com/heinz.com" alt="Heinz Logo" class="client-logo h-8">
+                        <img src="https://logo.clearbit.com/fashionnova.com" alt="Fashion Nova Logo" class="client-logo h-8">
+                        <img src="https://logo.clearbit.com/kyliecosmetics.com" alt="Kylie Cosmetics Logo" class="client-logo h-8">
+                    </div>
+                </div>
+                 <div class="text-center mt-12">
+                     <a href="#services" class="cta-scroll-button cta-button bg-gray-800 hover:bg-gray-900 text-white font-bold py-4 px-10 rounded-full text-lg">
+                        Explore Our Services
+                    </a>
+                </div>
             </div>
         </section>
         
         <!-- Services Section -->
-        <section id="services" class="py-20 bg-white">
+        <section id="services" class="py-24 bg-white hidden-section">
             <div class="container mx-auto px-4">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Our Services</h2>
-                    <p class="text-gray-600 mt-2 max-w-3xl mx-auto">We design, develop, launch & grow Shopify stores for ambitious ecommerce brands around the globe.</p>
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Our Architecture of Growth</h2>
+                    <p class="text-lg text-gray-600 mt-3 max-w-3xl mx-auto">A holistic suite of services designed to build enduring value and market leadership.</p>
                 </div>
-                <div class="flex flex-col md:flex-row gap-8">
-                    <!-- Left-side Navigation (Tabs on desktop, stacked on mobile) -->
-                    <div class="md:w-1/3 space-y-4">
-                        <div id="tab-design-dev" class="tab-button active p-6 bg-indigo-600 text-white rounded-lg shadow-md cursor-pointer transition-transform duration-300 transform hover:scale-105">
-                            <h3 class="text-xl font-bold">Design & Development</h3>
-                        </div>
-                        <div id="tab-cro" class="tab-button p-6 bg-gray-200 text-gray-800 rounded-lg shadow-md cursor-pointer transition-transform duration-300 transform hover:scale-105">
-                            <h3 class="text-xl font-bold">CRO</h3>
-                        </div>
-                        <div id="tab-seo" class="tab-button p-6 bg-gray-200 text-gray-800 rounded-lg shadow-md cursor-pointer transition-transform duration-300 transform hover:scale-105">
-                            <h3 class="text-xl font-bold">SEO</h3>
-                        </div>
-                        <div id="tab-email" class="tab-button p-6 bg-gray-200 text-gray-800 rounded-lg shadow-md cursor-pointer transition-transform duration-300 transform hover:scale-105">
-                            <h3 class="text-xl font-bold">Email & SMS Marketing</h3>
-                        </div>
-                    </div>
-                    <!-- Right-side Content -->
-                    <div class="md:w-2/3 p-6 bg-gray-50 rounded-lg shadow-md">
-                        <!-- Design & Development Content -->
-                        <div id="content-design-dev" class="tab-content active">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-4">Design & Development</h3>
-                            <p class="text-gray-700 mb-6">We partner with brands to design, develop, launch & grow ecommerce stores to amplify growth. We are an accredited Shopify Agency that combines creative and engaging design with leading Shopify development & technical expertise to build bespoke stores alongside your brand strategy.</p>
-                            <div class="space-y-4">
-                                <!-- Accordion Items - Optimized for mobile view -->
-                                <div class="border-b border-gray-200 pb-4">
-                                    <div class="flex justify-between items-center cursor-pointer accordion-button">
-                                        <h4 class="text-lg font-semibold text-gray-800">New build projects</h4>
-                                        <svg class="w-6 h-6 transform transition-transform duration-300 rotate-0" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-                                    </div>
-                                    <div class="accordion-content pt-2">
-                                        <p class="text-gray-600 leading-relaxed">We support merchants in choosing pre-built Shopify themes and provide customisation services. Our in-house developers build world-class e-commerce solutions that have won multiple awards. We pride ourselves on delivering projects on budget and on time, with our people-first values at the core.</p>
-                                    </div>
-                                </div>
-                                <div class="border-b border-gray-200 pb-4">
-                                    <div class="flex justify-between items-center cursor-pointer accordion-button">
-                                        <h4 class="text-lg font-semibold text-gray-800">Support & Growth</h4>
-                                        <svg class="w-6 h-6 transform transition-transform duration-300 rotate-0" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-                                    </div>
-                                    <div class="accordion-content pt-2">
-                                        <p class="text-gray-600 leading-relaxed">Not only do we launch stores, but we also support merchants with our monthly memberships. These packages are a balance between dedicated support and conversion rate improvement services, giving you access to our entire team of specialists for ongoing growth and consultation.</p>
-                                    </div>
-                                </div>
-                                <div class="border-b border-gray-200 pb-4">
-                                    <div class="flex justify-between items-center cursor-pointer accordion-button">
-                                        <h4 class="text-lg font-semibold text-gray-800">Development Services</h4>
-                                        <svg class="w-6 h-6 transform transition-transform duration-300 rotate-0" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-                                    </div>
-                                    <div class="accordion-content pt-2">
-                                        <p class="text-gray-600 leading-relaxed">We develop stores and apps with the very best technology and skill. Our services include:
-                                            <ul class="list-disc list-inside mt-2">
-                                                <li>Custom Themes</li>
-                                                <li>Headless Builds</li>
-                                                <li>Shopify Apps</li>
-                                                <li>Shopify Hydrogen</li>
-                                            </ul>
-                                            We build with the latest frameworks, optimized for speed, technical SEO, and compliance, ensuring every store is future-proof.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="border-b border-gray-200 pb-4">
-                                    <div class="flex justify-between items-center cursor-pointer accordion-button">
-                                        <h4 class="text-lg font-semibold text-gray-800">Design Services</h4>
-                                        <svg class="w-6 h-6 transform transition-transform duration-300 rotate-0" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-                                    </div>
-                                    <div class="accordion-content pt-2">
-                                        <p class="text-gray-600 leading-relaxed">Our dedicated UX creative web designers craft unique ideas that push the boundaries of online experiences. We use data to inform our wireframes and designs, ensuring every page maximizes on-site engagement and optimizes the buying experience for your customers. We work closely with brands to design beautiful, commercially driven, and on-brand user experiences.</p>
-                                    </div>
-                                </div>
-                                <div class="border-b border-gray-200 pb-4">
-                                    <div class="flex justify-between items-center cursor-pointer accordion-button">
-                                        <h4 class="text-lg font-semibold text-gray-800">Internationalisation</h4>
-                                        <svg class="w-6 h-6 transform transition-transform duration-300 rotate-0" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-                                    </div>
-                                    <div class="accordion-content pt-2">
-                                        <p class="text-gray-600 leading-relaxed">We have supported many brands with international e-commerce strategies, to ensure you can deliver a local and tailored experience for customers wherever in the world they are shopping from. We are experts in both multi-store and single-store international architecture, leaving you in control of pricing, currency, geolocation, and unique content per region.</p>
-                                    </div>
-                                </div>
-                                <div class="border-b border-gray-200 pb-4">
-                                    <div class="flex justify-between items-center cursor-pointer accordion-button">
-                                        <h4 class="text-lg font-semibold text-gray-800">Migrations & Replatforming</h4>
-                                        <svg class="w-6 h-6 transform transition-transform duration-300 rotate-0" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-                                    </div>
-                                    <div class="accordion-content pt-2">
-                                        <p class="text-gray-600 leading-relaxed">We are experts in delivering seamless re-platforming and Shopify migration services. We ensure an easy and swift process from start to finish, with a breadth of experience in helping merchants migrate from platforms like Magento, WooCommerce, and BigCommerce, ensuring all data remains untouched.</p>
-                                    </div>
-                                </div>
+                <div class="space-y-8 max-w-4xl mx-auto">
+                     <div class="p-8 bg-gray-50 rounded-xl border border-gray-200">
+                        <div class="flex items-start space-x-6">
+                            <div class="flex-shrink-0 bg-indigo-100 p-3 rounded-lg">
+                                <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
                             </div>
-                            <div class="mt-6 text-center">
-                                <a href="design-development.html" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">
-                                    Explore Design & Development
-                                </a>
-                            </div>
-                        </div>
-                        <!-- CRO Content -->
-                        <div id="content-cro" class="tab-content">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-4">Conversion Rate Optimisation (CRO)</h3>
-                            <p class="text-gray-700 mb-6">Ready to grow your ecommerce store? We support merchants by improving on-site experiences with our commercially driven CRO strategies. Our services provide an expert team to help you sustainably grow and hit your conversion rate targets.</p>
-                            <div class="space-y-4">
-                                <div class="border-b border-gray-200 pb-4">
-                                    <div class="flex justify-between items-center cursor-pointer accordion-button">
-                                        <h4 class="text-lg font-semibold text-gray-800">Conversion Rate Optimisation</h4>
-                                        <svg class="w-6 h-6 transform transition-transform duration-300 rotate-0" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-                                    </div>
-                                    <div class="accordion-content pt-2">
-                                        <p class="text-gray-600 leading-relaxed">Our CRO strategies start from site-wide customer experience audits to allow us to craft UI/UX design tests, improve on-site functionality, and deliver long-term strategic consultancy, all tested with vigorous split A/B campaigns. We deliver CRO through our membership service which also considers other key growth metrics including average order value and lifetime value.</p>
-                                    </div>
-                                </div>
-                                <div class="border-b border-gray-200 pb-4">
-                                    <div class="flex justify-between items-center cursor-pointer accordion-button">
-                                        <h4 class="text-lg font-semibold text-gray-800">Data-Driven Strategies</h4>
-                                        <svg class="w-6 h-6 transform transition-transform duration-300 rotate-0" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-                                    </div>
-                                    <div class="accordion-content pt-2">
-                                        <p class="text-gray-600 leading-relaxed">Combining our experience, human analysis, and AI, we use logical strategic thinking to develop data-centric and focused campaigns. We review a range of competitors and analyze traffic from web analytics, heat mapping, and visitor recordings to shape our strategy. We also suggest qualitative customer feedback campaigns to gain first reviews of your customer's experience.</p>
-                                    </div>
-                                </div>
-                                <div class="border-b border-gray-200 pb-4">
-                                    <div class="flex justify-between items-center cursor-pointer accordion-button">
-                                        <h4 class="text-lg font-semibold text-gray-800">Ecommerce Audits</h4>
-                                        <svg class="w-6 h-6 transform transition-transform duration-300 rotate-0" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-                                    </div>
-                                    <div class="accordion-content pt-2">
-                                        <p class="text-gray-600 leading-relaxed">Our UX and technical e-commerce store audits identify key opportunities. We explore friction points within your user journey using analytics, heat mapping, and funnel analysis. Our technical audits aim to improve key elements such as accessibility, core web vitals, and load speed. We also offer audit services for SEO, Email, and SMS to help you identify key growth areas.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mt-6 text-center">
-                                <a href="cro.html" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">
-                                    Explore CRO
-                                </a>
-                            </div>
-                        </div>
-                        <!-- SEO Content -->
-                        <div id="content-seo" class="tab-content">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-4">Shopify SEO</h3>
-                            <p class="text-gray-700 mb-6">We help Shopify store owners get more organic traffic and sales with down-to-earth e-commerce SEO strategies we've developed over years of working with 150+ Shopify businesses.</p>
-                            <div class="space-y-4">
-                                <div class="border-b border-gray-200 pb-4">
-                                    <div class="flex justify-between items-center cursor-pointer accordion-button">
-                                        <h4 class="text-lg font-semibold text-gray-800">My Shopify SEO Expertise</h4>
-                                        <svg class="w-6 h-6 transform transition-transform duration-300 rotate-0" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-                                    </div>
-                                    <div class="accordion-content pt-2">
-                                        <p class="text-gray-600 leading-relaxed">I combine technical expertise with e-commerce conversion strategy to help Shopify store owners like you increase visibility and sales. My specialized approach covers:</p>
-                                        <ul class="list-disc list-inside mt-2 text-gray-600">
-                                            <li>**Technical Shopify Optimization:** Fixing platform-specific issues that hold back your store's performance.</li>
-                                            <li>**Product & Collection SEO:** Strategically optimizing your product catalog for maximum search visibility.</li>
-                                            <li>**Content & Conversion Strategy:** Creating content that both ranks in search results and effectively converts browsers into buyers.</li>
-                                        </ul>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-2">eCommerce Development</h3>
+                                <p class="text-gray-600 mb-6">We architect, build, and optimize enterprise-grade Shopify Plus stores engineered for performance, scalability, and conversion.</p>
+                                <div class="border-t border-gray-200 pt-4">
+                                    <button class="flex justify-between items-center w-full cursor-pointer accordion-button">
+                                        <h4 class="text-lg font-semibold text-gray-800">Core Development Services</h4>
+                                        <svg class="w-6 h-6 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                                    </button>
+                                    <div class="accordion-content pt-4">
+                                        <div class="space-y-6">
+                                            <!-- Item 1 -->
+                                            <div class="flex items-start space-x-4">
+                                                <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 p-2 rounded-full mt-1">
+                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                                                </div>
+                                                <div>
+                                                    <h5 class="font-semibold text-gray-800">Bespoke Theme Development</h5>
+                                                    <p class="text-gray-600 text-sm">Pixel-perfect, mobile-first themes that embody your brand and maximize UX.</p>
+                                                </div>
+                                            </div>
+                                            <!-- Item 2 -->
+                                            <div class="flex items-start space-x-4">
+                                                <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 p-2 rounded-full mt-1">
+                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                                </div>
+                                                <div>
+                                                    <h5 class="font-semibold text-gray-800">Headless Commerce</h5>
+                                                    <p class="text-gray-600 text-sm">Future-proof your stack with flexible, high-speed headless builds using Hydrogen and Oxygen.</p>
+                                                </div>
+                                            </div>
+                                            <!-- Item 3 -->
+                                            <div class="flex items-start space-x-4">
+                                                <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 p-2 rounded-full mt-1">
+                                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                                                </div>
+                                                <div>
+                                                    <h5 class="font-semibold text-gray-800">Custom App Development</h5>
+                                                    <p class="text-gray-600 text-sm">Extend Shopify's functionality with private apps tailored to your unique business logic.</p>
+                                                </div>
+                                            </div>
+                                            <!-- Item 4 -->
+                                            <div class="flex items-start space-x-4">
+                                                <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 p-2 rounded-full mt-1">
+                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                                                </div>
+                                                <div>
+                                                    <h5 class="font-semibold text-gray-800">Seamless Platform Migrations</h5>
+                                                    <p class="text-gray-600 text-sm">Expert-led, zero-downtime migrations from Magento, WooCommerce, or BigCommerce.</p>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="border-b border-gray-200 pb-4">
-                                    <div class="flex justify-between items-center cursor-pointer accordion-button">
-                                        <h4 class="text-lg font-semibold text-gray-800">Shopify SEO Challenges I Solve</h4>
-                                        <svg class="w-6 h-6 transform transition-transform duration-300 rotate-0" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-                                    </div>
-                                    <div class="accordion-content pt-2">
-                                        <p class="text-gray-600 leading-relaxed">After working with dozens of stores, I've developed specialized approaches to overcome common challenges:</p>
-                                        <ul class="list-disc list-inside mt-2 text-gray-600">
-                                            <li>**Product Catalog Optimization:** Structuring complex catalogs for both users and search engines.</li>
-                                            <li>**Technical Shopify Limitations:** Developing workarounds for common platform constraints.</li>
-                                            <li>**Competitive Marketplaces:** Finding and targeting overlooked opportunities for quick wins.</li>
-                                            <li>**Site Speed Optimization:** Balancing high-quality imagery with fast load times.</li>
-                                            <li>**International SEO:** Implementing proper hreflang and localized content strategies.</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="border-b border-gray-200 pb-4">
-                                    <div class="flex justify-between items-center cursor-pointer accordion-button">
-                                        <h4 class="text-lg font-semibold text-gray-800">My Shopify SEO Methodology</h4>
-                                        <svg class="w-6 h-6 transform transition-transform duration-300 rotate-0" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-                                    </div>
-                                    <div class="accordion-content pt-2">
-                                        <p class="text-gray-600 leading-relaxed">A proven approach developed specifically for the unique challenges of Shopify stores:</p>
-                                        <ol class="list-decimal list-inside mt-2 text-gray-600 space-y-2">
-                                            <li>**Technical Foundation:** Fixing Shopify-specific technical issues.</li>
-                                            <li>**Catalog Architecture:** Strategically organizing products and categories.</li>
-                                            <li>**On-Page Optimization:** Creating compelling, keyword-rich content.</li>
-                                            <li>**Content Strategy:** Developing helpful content that targets buyer-intent keywords.</li>
-                                            <li>**Authority Building:** Earning relevant backlinks to boost domain authority.</li>
-                                            <li>**Conversion Optimization:** Continuously testing and improving elements to turn visitors into customers.</li>
-                                        </ol>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mt-6 text-center">
-                                <a href="seo.html" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">
-                                    Explore SEO
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <!-- Email & SMS Marketing Content -->
-                        <div id="content-email" class="tab-content">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-4">Email & SMS Marketing</h3>
-                            <p class="text-gray-700 mb-6">Keep customers coming back with our retention-focused content marketing service. We focus on strategic and targeted email and SMS marketing to communicate with the right customers at the right time.</p>
-                            <div class="space-y-4">
-                                <p class="text-gray-600 leading-relaxed">Our strategies leverage email marketing to engage more customers from their first interaction with your store. We'll segment customers into tailored groups to send them exactly the right type of communication unique to their buying journey, powered by intelligent marketing automation email flows. We supplement our email marketing with SMS communication, including campaigns and automated flows, and integrate with your wider business, for triggers such as subscriptions and loyalty programs.</p>
-                            </div>
-                            <div class="mt-6 text-center">
-                                <a href="email-sms.html" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">
-                                    Explore Email & SMS Marketing
-                                </a>
                             </div>
                         </div>
                     </div>
+                    <div class="p-8 bg-gray-50 rounded-xl border border-gray-200">
+                        <div class="flex items-start space-x-6">
+                            <div class="flex-shrink-0 bg-indigo-100 p-3 rounded-lg">
+                                <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-2">Digital Marketing</h3>
+                                <p class="text-gray-600 mb-6">Our data-driven marketing programs are designed not just for traffic, but for profitable, sustainable growth and customer lifetime value.</p>
+                                 <div class="border-t border-gray-200 pt-4">
+                                    <button class="flex justify-between items-center w-full cursor-pointer accordion-button">
+                                        <h4 class="text-lg font-semibold text-gray-800">Performance Marketing Services</h4>
+                                        <svg class="w-6 h-6 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                                    </button>
+                                    <div class="accordion-content pt-4">
+                                        <div class="space-y-6">
+                                            <div class="flex items-start space-x-4">
+                                                <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 p-2 rounded-full mt-1">
+                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                                                </div>
+                                                <div>
+                                                    <h5 class="font-semibold text-gray-800">Conversion Rate Optimization (CRO)</h5>
+                                                    <p class="text-gray-600 text-sm">A rigorous, data-led methodology of A/B testing and UX refinement to lift conversions.</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start space-x-4">
+                                                <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 p-2 rounded-full mt-1">
+                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                                </div>
+                                                <div>
+                                                    <h5 class="font-semibold text-gray-800">Technical SEO for eCommerce</h5>
+                                                    <p class="text-gray-600 text-sm">Dominate SERPs by optimizing site architecture, speed, and schema for maximum visibility.</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start space-x-4">
+                                                <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 p-2 rounded-full mt-1">
+                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path></svg>
+                                                </div>
+                                                <div>
+                                                    <h5 class="font-semibold text-gray-800">Lifecycle Marketing</h5>
+                                                    <p class="text-gray-600 text-sm">Sophisticated Email & SMS automations that nurture leads, recover carts, and build loyalty.</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start space-x-4">
+                                                <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 p-2 rounded-full mt-1">
+                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01"></path></svg>
+                                                </div>
+                                                <div>
+                                                    <h5 class="font-semibold text-gray-800">Paid Media Management (PPC)</h5>
+                                                    <p class="text-gray-600 text-sm">ROI-focused campaign management across Google, Meta, and TikTok to acquire customers profitably.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8 bg-gray-50 rounded-xl border border-gray-200">
+                        <div class="flex items-start space-x-6">
+                           <div class="flex-shrink-0 bg-indigo-100 p-3 rounded-lg">
+                               <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                           </div>
+                           <div>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-2">Strategy & Consulting</h3>
+                                <p class="text-gray-600 mb-6">We provide C-level strategic guidance to align your technology stack and marketing efforts with your long-term commercial objectives.</p>
+                                <div class="border-t border-gray-200 pt-4">
+                                    <button class="flex justify-between items-center w-full cursor-pointer accordion-button">
+                                        <h4 class="text-lg font-semibold text-gray-800">Strategic Advisory Services</h4>
+                                        <svg class="w-6 h-6 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                                    </button>
+                                    <div class="accordion-content pt-4">
+                                        <div class="space-y-6">
+                                            <div class="flex items-start space-x-4">
+                                                <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 p-2 rounded-full mt-1">
+                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 16.382V5.618a1 1 0 00-1.447-.894L15 7m-6 3l6-3"></path></svg>
+                                                </div>
+                                                <div>
+                                                    <h5 class="font-semibold text-gray-800">eCommerce Growth Roadmapping</h5>
+                                                    <p class="text-gray-600 text-sm">A comprehensive, multi-quarter plan for scalable and profitable growth.</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start space-x-4">
+                                                <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 p-2 rounded-full mt-1">
+                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                                </div>
+                                                <div>
+                                                    <h5 class="font-semibold text-gray-800">Technical & Performance Audits</h5>
+                                                    <p class="text-gray-600 text-sm">In-depth analysis of your site's health, from code quality to Core Web Vitals.</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start space-x-4">
+                                                <div class="flex-shrink-0 bg-indigo-100 text-indigo-600 p-2 rounded-full mt-1">
+                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h1a2 2 0 002-2v-1a2 2 0 012-2h1.945M7.737 11l-.261-2.611a1 1 0 01.964-1.211l.309.044a1 1 0 01.622 1.564l-.309.044a1 1 0 01-1.211-.964zm10.526 0l-.26-2.611a1 1 0 00-.965-1.211l-.309.044a1 1 0 00-.621 1.564l.309.044a1 1 0 001.21.964zM12 21a9 9 0 100-18 9 9 0 000 18z"></path></svg>
+                                                </div>
+                                                <div>
+                                                    <h5 class="font-semibold text-gray-800">Internationalization Strategy</h5>
+                                                    <p class="text-gray-600 text-sm">Expert guidance on cross-border sales, localization, and multi-currency setup.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                     <a href="#tech" class="cta-scroll-button cta-button bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-10 rounded-full text-lg">
+                        Discover Our Tech Edge
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- Our Portfolio Section -->
-        <section id="our-work" class="py-20 bg-gray-100">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                    Some of our work that we are pretty damn proud of...
-                </h2>
-                <p class="text-lg text-gray-600 mb-6 max-w-2xl mx-auto">Take a look at how we've helped other brands grow and thrive. Our portfolio speaks for itself.</p>
-                <a href="portfolio.html" class="inline-block text-indigo-600 hover:text-indigo-800 font-semibold text-lg">See our portfolio &rarr;</a>
-            </div>
-        </section>
-
-        <!-- About Us Section -->
-        <section id="about" class="py-20 bg-white">
+        <!-- Technology & AI Edge Section -->
+        <section id="tech" class="py-24 bg-gray-900 text-white hidden-section">
             <div class="container mx-auto px-4">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">About Aarry Limited</h2>
-                    <p class="text-gray-600 mt-2">We're an accredited Shopify Experts agency, specializing in a full suite of e-commerce solutions.</p>
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold">Our Technology & AI Edge</h2>
+                    <p class="text-lg text-gray-400 mt-3 max-w-3xl mx-auto">We leverage cutting-edge technology and AI to deliver smarter, faster, and more effective eCommerce solutions.</p>
                 </div>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto items-center">
-                    <div>
-                        <p class="text-gray-700 leading-relaxed mb-4">
-                            The Shopify community is large, and it's hard to know where to look. We are a recognized Shopify Plus Partner, a level of accreditation that demonstrates our expertise in managing fast-growing and large-scale e-commerce businesses.
-                        </p>
-                        <p class="text-gray-700 leading-relaxed mb-4">
-                            When you choose us, you're investing in a partnership with a proactive agency that offers strategic suggestions to help your business grow. We are a full team, not a single freelancer, and we exclusively build with Shopify, meaning we understand the platform's architecture inside and out.
-                        </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <div class="bg-gray-800 p-8 rounded-xl">
+                        <h3 class="text-xl font-bold mb-3">AI-Powered Insights</h3>
+                        <p class="text-gray-400">We utilize machine learning models to analyze customer behavior, predict trends, and personalize user experiences at scale.</p>
                     </div>
-                    <div>
-                        <img src="https://placehold.co/600x400/808080/FFFFFF?text=About+Us" alt="Team members of Aarry Limited smiling at a meeting." class="rounded-lg shadow-xl">
+                    <div class="bg-gray-800 p-8 rounded-xl">
+                        <h3 class="text-xl font-bold mb-3">Headless & Composable</h3>
+                        <p class="text-gray-400">Our expertise in modern frameworks like Hydrogen and Next.js allows us to build lightning-fast, flexible storefronts.</p>
                     </div>
+                    <div class="bg-gray-800 p-8 rounded-xl">
+                        <h3 class="text-xl font-bold mb-3">Data-Driven CRO</h3>
+                        <p class="text-gray-400">We go beyond basic A/B testing, using AI-driven analytics to identify high-impact optimization opportunities.</p>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                     <a href="#our-work" class="cta-scroll-button cta-button bg-white hover:bg-gray-200 text-gray-900 font-bold py-4 px-10 rounded-full text-lg">
+                        See Our Work
+                    </a>
                 </div>
             </div>
         </section>
         
-        <!-- Contact Page Section -->
-        <section id="contact" class="py-20 bg-gray-100">
-            <div class="container mx-auto px-4">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Get in touch</h2>
-                    <p class="text-gray-600 mt-2">Get a Free Project Discovery Worth $2,500.</p>
+        <!-- Our Portfolio Section -->
+        <section id="our-work" class="py-24 bg-white hidden-section">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Proven Results for Ambitious Brands
+                </h2>
+                <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">We don't just build websites; we build revenue-generating assets. Explore our success stories.</p>
+                <a href="#" class="inline-block text-indigo-600 hover:text-indigo-800 font-bold text-lg">See our portfolio &rarr;</a>
+                 <div class="text-center mt-12">
+                     <a href="#about" class="cta-scroll-button cta-button bg-gray-800 hover:bg-gray-900 text-white font-bold py-4 px-10 rounded-full text-lg">
+                        Why Partner With Aarry?
+                    </a>
                 </div>
-                <div class="max-w-2xl mx-auto bg-white p-8 md:p-12 rounded-lg shadow-xl">
-                    <form id="contact-form" class="space-y-6">
-                        <div>
-                            <label for="name" class="block text-gray-700 font-medium mb-2">Name<span class="text-red-500">*</span></label>
-                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
-                        </div>
-                        <div>
-                            <label for="email" class="block text-gray-700 font-medium mb-2">Email<span class="text-red-500">*</span></label>
-                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
-                        </div>
-                        <div>
-                            <label for="phone" class="block text-gray-700 font-medium mb-2">Phone<span class="text-red-500">*</span></label>
-                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
-                        </div>
-                        <div>
-                            <label for="website" class="block text-gray-700 font-medium mb-2">Website</label>
-                            <input type="url" id="website" name="website" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                        </div>
-                        <div>
-                            <label for="message" class="block text-gray-700 font-medium mb-2">Message<span class="text-red-500">*</span></label>
-                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-4 rounded-md shadow-lg transform hover:scale-105 transition-all duration-300">
-                            Get Free Project Discovery
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-24 bg-gray-50 hidden-section">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">The Aarry Difference</h2>
+                    <p class="text-lg text-gray-600 mt-3">An accredited Shopify Plus Partner agency built on expertise and global experience.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto items-center">
+                    <div class="md:pr-8">
+                         <img src="https://placehold.co/600x450/e2e8f0/4a5568?text=Our+Team" alt="Team at Aarry Limited" class="rounded-xl shadow-xl w-full h-auto">
+                    </div>
+                    <div class="text-center md:text-left">
+                        <p class="text-xl text-gray-700 leading-relaxed mb-6">
+                           As recognized Shopify Plus Partners, we are in the top 1% of agencies globally, specializing in complex, high-volume eCommerce businesses from New York to London and beyond.
+                        </p>
+                        <p class="text-lg text-gray-600 leading-relaxed">
+                            You get a dedicated team of certified experts—strategists, developers, and marketers—who function as an extension of your own team, committed to your growth.
+                        </p>
+                    </div>
+                </div>
+                 <div class="text-center mt-12">
+                     <a href="#faq" class="cta-scroll-button cta-button bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-10 rounded-full text-lg">
+                        Have Questions?
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-24 bg-white hidden-section">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Frequently Asked Questions</h2>
+                    <p class="text-lg text-gray-600 mt-3 max-w-3xl mx-auto">Clear answers to common questions about partnering with a Shopify Plus agency.</p>
+                </div>
+                <div class="max-w-4xl mx-auto space-y-4">
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg">
+                        <button class="w-full flex justify-between items-center p-6 text-left font-semibold text-lg accordion-button">
+                            <span>Why should we choose Shopify Plus?</span>
+                            <svg class="w-6 h-6 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
                         </button>
-                        <div id="form-message" class="hidden text-center mt-4 p-3 rounded-md font-semibold"></div>
-                    </form>
+                        <div class="accordion-content px-6 pb-6">
+                            <p class="text-gray-600">Shopify Plus is the enterprise-level solution for high-volume merchants. It offers greater customization, dedicated support, unlimited bandwidth, and advanced features like Shopify Functions and customizable checkout, which are essential for scaling your business globally.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg">
+                        <button class="w-full flex justify-between items-center p-6 text-left font-semibold text-lg accordion-button">
+                            <span>What is headless commerce and do we need it?</span>
+                            <svg class="w-6 h-6 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                        </button>
+                        <div class="accordion-content px-6 pb-6">
+                            <p class="text-gray-600">Headless commerce decouples your front-end (the website your customers see) from your back-end (Shopify's admin). This allows for unparalleled design freedom, lightning-fast site speeds using modern frameworks, and the ability to push content to any device (mobile apps, IoT, etc.). It's ideal for brands that prioritize a unique user experience and top-tier performance.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg">
+                        <button class="w-full flex justify-between items-center p-6 text-left font-semibold text-lg accordion-button">
+                            <span>How do you handle project management and communication?</span>
+                            <svg class="w-6 h-6 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                        </button>
+                        <div class="accordion-content px-6 pb-6">
+                            <p class="text-gray-600">We believe in radical transparency. Every project is assigned a dedicated project manager and you'll have full visibility into progress via shared Slack channels and project management tools like Asana or Jira. We hold regular check-in meetings to ensure alignment and are always available for our partners.</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="text-center mt-12">
+                     <a href="#contact" class="cta-scroll-button cta-button bg-gray-800 hover:bg-gray-900 text-white font-bold py-4 px-10 rounded-full text-lg">
+                        Let's Talk
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 bg-gray-50 hidden-section">
+            <div class="container mx-auto px-4 text-center">
+                <div class="max-w-2xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Ready to Elevate Your Brand?</h2>
+                    <p class="text-lg text-gray-600 mb-8">Schedule a complimentary, no-obligation strategy call to discuss your project and unlock your growth potential.</p>
+                    <a href="https://calendly.com/kaocher/meeting" target="_blank" rel="noopener noreferrer" class="cta-button inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-10 rounded-full text-lg">
+                        Book Your Free Consultation
+                    </a>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer - Grid layout adapts for mobile -->
-    <footer class="bg-gray-800 text-white py-12">
-        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 text-center md:text-left">
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
             <div>
-                <h3 class="text-xl font-bold mb-4">Office</h3>
-                <p>House 522/A, Road 8, Shewrapara,<br>Mirpur-10, Dhaka 1216, Bangladesh</p>
-                <p class="mt-2">2526 W. 5th Street,<br>Charlotte, NC 28208, USA</p>
+                <h3 class="text-2xl font-black tracking-tighter mb-4">Aarry.</h3>
+                <p class="text-gray-400">Your global partner in strategic Shopify growth. We serve clients from our offices in Dhaka and Charlotte.</p>
             </div>
             <div>
-                <h3 class="text-xl font-bold mb-4">Contact</h3>
-                <p>P: (888) 725-0182</p>
-                <p>F: (323) 920-0390</p>
-                <a href="mailto:info@aarrylimited.com" class="text-indigo-400 hover:text-indigo-300 transition-colors duration-300">E: Get a Free Proposal</a>
-            </div>
-            <div>
-                <h3 class="text-xl font-bold mb-4">Services</h3>
-                <ul class="space-y-2">
-                    <li><a href="design-development.html" class="text-gray-400 hover:text-white transition-colors duration-300">Design & Development</a></li>
-                    <li><a href="cro.html" class="text-gray-400 hover:text-white transition-colors duration-300">CRO</a></li>
-                    <li><a href="seo.html" class="text-gray-400 hover:text-white transition-colors duration-300">SEO</a></li>
-                    <li><a href="email-sms.html" class="text-gray-400 hover:text-white transition-colors duration-300">Email & SMS Marketing</a></li>
+                <h3 class="text-lg font-semibold mb-4">Core Services</h3>
+                <ul class="space-y-3">
+                    <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Shopify Plus Development</a></li>
+                    <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Headless Commerce</a></li>
+                    <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Digital Marketing</a></li>
+                    <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Growth Consulting</a></li>
                 </ul>
             </div>
             <div>
-                <h3 class="text-xl font-bold mb-4">Follow Us</h3>
-                <div class="flex justify-center md:justify-start space-x-4">
-                    <a href="https://www.facebook.com/AarryLimited/" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-300">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.5c-.552 0-.5.215-.5.643v1.857h2l-.25 2h-1.75v6h-3v-6h-2v-2h2v-2.75c0-2.203 1.055-3.25 3.393-3.25h1.607v3z"/></svg>
-                    </a>
-                    <a href="https://www.linkedin.com/company/aarry" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-300">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.694 0-1.25-.561-1.25-1.25s.556-1.25 1.25-1.25 1.25.561 1.25 1.25-.556 1.25-1.25 1.25zm11 6.891h-2v-3.561c0-.853-.16-1.542-.924-1.542-.676 0-1.014.506-1.189.992-.066.184-.083.439-.083.7v3.311h-2v-6h2v.916c.304-.461.852-1.116 1.93-1.116 1.258 0 2.17 1.056 2.17 3.321v3.881z"/></svg>
-                    </a>
-                    <a href="https://x.com/AarryLimited" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-300">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.728 9.292c.045.39.045.787.045 1.185 0 3.053-2.31 6.58-6.58 6.58-1.305 0-2.527-.378-3.553-1.026.18.02.36.02.54 0 .978 0 1.884-.338 2.604-.925-.91.018-1.673-.615-1.933-1.432.14.026.276.04.416.04.202 0 .4-.026.586-.075-1.045-.224-1.83-1.134-1.83-2.223 0-.087.01-.173.024-.256.31.173.676.28 1.06.29-.624-.418-1.03-1.127-1.03-1.921 0-.422.115-.818.31-1.166 1.133 1.396 2.825 2.31 4.757 2.417-.035-.175-.054-.356-.054-.543 0-1.31.99-2.378 2.378-2.378.68 0 1.296.287 1.728.756.54-.105 1.04-.303 1.49-.57-.18.56-.56 1.033-1.06 1.328z"/></svg>
-                    </a>
-                </div>
-                <div class="mt-4 text-center md:text-left">
-                    <a href="https://share.google/mNIPQFVNIQYI5XcMC" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-300">Google My Business</a>
-                    <a href="https://aarry.quora.com/" target="_blank" class="ml-4 text-gray-400 hover:text-white transition-colors duration-300">Quora</a>
-                </div>
+                <h3 class="text-lg font-semibold mb-4">Company</h3>
+                 <ul class="space-y-3">
+                    <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Connect</h3>
+                <ul class="space-y-3">
+                     <li><a href="mailto:info@aarrylimited.com" class="text-gray-400 hover:text-white transition-colors">info@aarrylimited.com</a></li>
+                     <li><a href="#" class="text-gray-400 hover:text-white transition-colors">LinkedIn</a></li>
+                </ul>
             </div>
         </div>
-        <div class="mt-8 container mx-auto px-4 text-center border-t border-gray-700 pt-6">
-            <p>&copy; 2024 Aarry Limited. All Rights Reserved.</p>
+        <div class="mt-12 container mx-auto px-4 text-center border-t border-gray-700 pt-8">
+            <p class="text-gray-500">&copy; <span id="year"></span> Aarry Limited. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-        // Dropdown menu toggle
-        const aiToolsButton = document.getElementById('ai-tools-button');
-        const aiToolsDropdown = document.getElementById('ai-tools-dropdown');
-        aiToolsButton.addEventListener('click', () => {
-            aiToolsDropdown.classList.toggle('hidden');
-        });
-        // Close dropdown when clicking outside
-        window.addEventListener('click', function(event) {
-            if (!aiToolsButton.contains(event.target) && !aiToolsDropdown.contains(event.target)) {
-                aiToolsDropdown.classList.add('hidden');
-            }
-        });
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.body;
 
-        // Simple form submission handler
-        const contactForm = document.getElementById('contact-form');
-        const formMessage = document.getElementById('form-message');
+            // --- Mobile Menu Handler ---
+            const mobileNav = document.getElementById('mobile-nav');
+            const openNavButton = document.getElementById('mobile-menu-open-button');
+            const closeNavButton = document.getElementById('mobile-menu-close-button');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            const openMobileNav = () => { mobileNav.classList.add('open'); body.classList.add('overflow-hidden'); };
+            const closeMobileNav = () => { mobileNav.classList.remove('open'); body.classList.remove('overflow-hidden'); };
 
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault();
+            openNavButton.addEventListener('click', openMobileNav);
+            closeNavButton.addEventListener('click', closeMobileNav);
+            navLinks.forEach(link => link.addEventListener('click', closeMobileNav));
 
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData.entries());
+            // --- Accordion Handler ---
+            const accordionButtons = document.querySelectorAll('.accordion-button, .mobile-accordion-button');
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('svg');
+                    const isOpening = content.classList.toggle('open');
+                    
+                    if (icon) { icon.classList.toggle('rotate-180'); }
 
-            console.log('Form Submitted:', data);
-
-            formMessage.textContent = 'Thank you for your message! We will get back to you shortly.';
-            formMessage.classList.remove('hidden');
-            formMessage.classList.add('bg-green-200', 'text-green-800');
-            contactForm.reset();
-
-            setTimeout(() => {
-                formMessage.classList.add('hidden');
-                formMessage.classList.remove('bg-green-200', 'text-green-800');
-            }, 5000);
-        });
-
-        // Tabs functionality for services section
-        const tabButtons = document.querySelectorAll('.tab-button');
-        const tabContents = document.querySelectorAll('.tab-content');
-
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Deactivate all buttons and hide all content
-                tabButtons.forEach(btn => {
-                    btn.classList.remove('active', 'bg-indigo-600', 'text-white');
-                    btn.classList.add('bg-gray-200', 'text-gray-800');
+                    content.style.maxHeight = isOpening ? content.scrollHeight + 'px' : '0';
                 });
-                tabContents.forEach(content => {
-                    content.classList.remove('active');
+            });
+
+            // --- CTA Smooth Scroll Handler ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
                 });
-
-                // Activate the clicked button and show its content
-                const contentId = button.id.replace('tab-', 'content-');
-                const contentToShow = document.getElementById(contentId);
-                
-                button.classList.add('active', 'bg-indigo-600', 'text-white');
-                button.classList.remove('bg-gray-200', 'text-gray-800');
-                contentToShow.classList.add('active');
             });
-        });
+            
+            // --- Animate Sections on Scroll ---
+            const hiddenSections = document.querySelectorAll('.hidden-section');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
 
-        
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('open');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
 
-        // Accordion functionality for dropdowns
-        const accordionButtons = document.querySelectorAll('.accordion-button');
-        accordionButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const content = button.nextElementSibling;
-                const icon = button.querySelector('svg');
-
-                if (content.classList.contains('open')) {
-                    content.classList.remove('open');
-                    icon.classList.remove('rotate-180');
-                } else {
-                    // Close other accordions
-                    document.querySelectorAll('.accordion-content.open').forEach(openContent => {
-                        openContent.classList.remove('open');
-                        openContent.previousElementSibling.querySelector('svg').classList.remove('rotate-180');
-                    });
-                    content.classList.add('open');
-                    icon.classList.add('rotate-180');
-                }
+            hiddenSections.forEach(section => {
+                sectionObserver.observe(section);
             });
+
+
+            // --- Dynamic Year in Footer ---
+            document.getElementById('year').textContent = new Date().getFullYear();
         });
-
-
-        
     </script>
 </body>
 </html>
+
+
