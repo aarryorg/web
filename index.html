@@ -38,39 +38,48 @@
 
     <!-- Header - Mobile & Desktop Responsive -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#home" class="text-2xl font-extrabold text-gray-800">Aarry Limited</a>
-            <!-- Desktop Navigation Menu -->
-            <nav class="hidden md:flex space-x-6 items-center">
-                <a href="#services" class="text-gray-600 hover:text-gray-900 transition-colors duration-300 font-medium">Services</a>
-                <!-- New links added here -->
-                <a href="app/web.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-300 font-medium">AI web check</a>
-                <a href="aipage.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-300 font-medium">AI Landing Page</a>
-                <a href="app/imageai.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-300 font-medium">Image AI </a>
-                <a href="app/Thumbly.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-300 font-medium">AI thumbnail maker</a>
-                <a href="app/aitext.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-300 font-medium">AI prompt </a>
-                <a href="blogs.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-300 font-medium">Blogs</a>
-                <a href="case_study.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-300 font-medium">Case Study</a>
-                <a href="portfolio.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-300 font-medium">Portfolio</a>
-                <a href="#about" class="text-gray-600 hover:text-gray-900 transition-colors duration-300 font-medium">About Us</a>
-                <a href="#contact" class="text-white bg-indigo-600 hover:bg-indigo-700 px-6 py-2 rounded-full font-semibold transition-colors duration-300 shadow-md">Get a Quote</a>
-            </nav>
-            <!-- Mobile Menu Button - Visible only on mobile -->
-            <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
-        </div>
-        <!-- Mobile Menu - Toggled with JavaScript -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg py-2">
-            <a href="#services" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">Services</a>
-            <!-- New links added here -->
-            <a href="blogs.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">Blogs</a>
-            <a href="case_study.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">Case Study</a>
-            <a href="portfolio.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">Portfolio</a>
-            <a href="#about" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">About Us</a>
-            <a href="#contact" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">Get a Quote</a>
-        </div>
-    </header>
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="#home" class="text-2xl font-extrabold text-gray-800">Aarry Limited</a>
+        <nav class="hidden md:flex space-x-6 items-center">
+            <a href="#services" class="text-gray-600 hover:text-gray-900 transition-colors duration-300 font-medium">Services</a>
+
+            <div class="relative group">
+                <button id="ai-tools-button" class="text-gray-600 hover:text-gray-900 transition-colors duration-300 font-medium flex items-center space-x-1 focus:outline-none">
+                    <span>AI Tools</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div id="ai-tools-dropdown" class="absolute hidden group-hover:block bg-white shadow-lg rounded-md mt-2 py-2 w-48 z-10">
+                    <a href="app/web.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">AI web check</a>
+                    <a href="aipage.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">AI Landing Page</a>
+                    <a href="app/imageai.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Image AI</a>
+                    <a href="app/Thumbly.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">AI thumbnail maker</a>
+                    <a href="app/aitext.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">AI prompt</a>
+                </div>
+            </div>
+            <a href="blogs.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-300 font-medium">Blogs</a>
+            <a href="case_study.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-300 font-medium">Case Study</a>
+            <a href="portfolio.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-300 font-medium">Portfolio</a>
+            <a href="#about" class="text-gray-600 hover:text-gray-900 transition-colors duration-300 font-medium">About Us</a>
+            <a href="#contact" class="text-white bg-indigo-600 hover:bg-indigo-700 px-6 py-2 rounded-full font-semibold transition-colors duration-300 shadow-md">Get a Quote</a>
+        </nav>
+        <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg py-2">
+        <a href="#services" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">Services</a>
+        <a href="app/web.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">AI web check</a>
+        <a href="aipage.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">AI Landing Page</a>
+        <a href="app/imageai.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">Image AI</a>
+        <a href="app/Thumbly.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">AI thumbnail maker</a>
+        <a href="app/aitext.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">AI prompt</a>
+        <a href="blogs.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">Blogs</a>
+        <a href="case_study.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">Case Study</a>
+        <a href="portfolio.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">Portfolio</a>
+        <a href="#about" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">About Us</a>
+        <a href="#contact" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">Get a Quote</a>
+    </div>
+</header>
 
     <!-- Page Content Container -->
     <main>
