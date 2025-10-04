@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day to Day Vintage - Modern E-Commerce Preview</title>
+    <!-- Load Tailwind CSS for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+        /* Custom Variables and Base Styles */
+        :root {
+            --color-primary: #36454F; /* Deep Charcoal/Vintage Black */
+            --color-secondary: #C39953; /* Warm Gold/Patina */
+            --color-background: #F8F4E1; /* Creamy White */
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-background);
+            color: var(--color-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Base Component Styles */
+        .header-container {
+            border-bottom: 1px solid rgba(54, 69, 79, 0.1);
+            padding: 15px 20px;
+            background-color: var(--color-background);
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        /* Hero Section Typography */
+        .hero {
+            background-color: var(--color-primary);
+            color: var(--color-background);
+            text-align: center;
+            padding: 80px 5% 60px;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: 3em; 
+            margin-bottom: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-family: var(--font-sans);
+            font-weight: 300;
+            font-size: 1.1em;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .shop-button {
+            display: inline-block;
+            background-color: var(--color-secondary);
+            color: var(--color-primary);
+            padding: 12px 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s, transform 0.2s;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px rgba(195, 153, 83, 0.4);
+        }
+
+        .shop-button:hover {
+            background-color: #d1a868; 
+            transform: translateY(-2px);
+        }
+
+        /* Product Card Styles */
+        .section-title {
+            text-align: center;
+            font-family: var(--font-serif);
+            font-size: 2.5em; 
+            margin-bottom: 40px;
+            padding-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        /* Filter Bar Placeholder Style */
+        .filter-bar {
+            border-bottom: 1px solid rgba(54, 69, 79, 0.1);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            font-size: 0.9em;
+            font-weight: 500;
+            color: #666;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .filter-option {
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .filter-option:hover {
+            color: var(--color-primary);
+        }
+
+
+        .product-card {
+            background-color: var(--color-background);
+            border: 1px solid rgba(54, 69, 79, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border-radius: 10px; 
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px; 
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05); /* Slight zoom on hover */
+        }
+
+        .tag {
+            background-color: var(--color-secondary);
+            color: var(--color-primary);
+            font-size: 10px;
+            padding: 4px 10px;
+            display: inline-block;
+            text-transform: uppercase;
+            font-weight: 700;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+        
+        .product-info h3 {
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 4px;
+            font-family: var(--font-serif);
+        }
+        
+        .product-price {
+            font-weight: 700;
+            font-size: 1.3em;
+            color: var(--color-secondary); 
+            margin-bottom: 10px;
+        }
+        
+        /* Quick Shop Overlay (Modern E-commerce Feature) */
+        .quick-shop-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(54, 69, 79, 0.9);
+            z-index: 5;
+            padding: 15px 10px;
+            transition: transform 0.3s ease-out;
+            transform: translateY(100%); /* Start hidden (desktop) */
+        }
+        
+        .product-card:hover .quick-shop-overlay {
+            transform: translateY(0); /* Slide up on hover */
+        }
+        
+        .quick-shop-btn {
+            display: block;
+            width: 100%;
+            background-color: var(--color-secondary);
+            color: var(--color-primary);
+            padding: 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        
+        /* Mobile Specific Overrides */
+        @media (max-width: 767px) {
+            .hero h1 { font-size: 2.2em; letter-spacing: 2px; }
+            .hero p { font-size: 0.95em; }
+            
+            /* Keep Quick Shop always visible on mobile for easy tapping */
+            .quick-shop-overlay {
+                position: static;
+                transform: none; 
+                background-color: transparent;
+                padding: 10px 15px 15px;
+            }
+            .filter-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .filter-bar > div {
+                margin-top: 10px;
+            }
+        }
+        
+        /* Desktop/Tablet Styles */
+        @media (min-width: 768px) {
+            .mobile-only { display: none !important; }
+            .desktop-only { display: block !important; }
+            
+            .header-container { padding: 20px 5%; }
+            .logo { flex-grow: 0; }
+            .product-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (min-width: 1024px) {
+            .product-grid { grid-template-columns: repeat(4, 1fr); }
+            .hero h1 { font-size: 4em; }
+        }
+
+        /* Hidden by Default */
+        .mobile-only { display: block; }
+        .desktop-only { display: none; }
+        #mobile-nav-links { display: none; }
+
+    </style>
+    <script>
+        // JavaScript for mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-nav-links');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</head>
+<body>
+
+    <header>
+        <div class="header-container flex justify-between items-center">
+            
+            <!-- Mobile Menu Icon (Hamburger) -->
+            <div class="hamburger mobile-only cursor-pointer p-2" onclick="toggleMobileMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-gray-700">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </div>
+
+            <a href="#" class="logo">Day to Day Vintage</a>
+            
+            <!-- Desktop Navigation: UPDATED TO SCROLL -->
+            <nav class="desktop-only flex items-center">
+                <a href="#shop-all-inventory" class="ml-6 hover:text-secondary transition-colors font-medium text-sm tracking-widest">Shop All</a>
+                <a href="#featured" class="ml-6 hover:text-secondary transition-colors font-medium text-sm tracking-widest">Featured</a>
+                <a href="#" class="ml-6 hover:text-secondary transition-colors font-medium text-sm tracking-widest">Market Event</a>
+                <a href="#" class="ml-6 hover:text-secondary transition-colors font-medium text-sm tracking-widest">About Us</a>
+            </nav>
+
+            <!-- Search/Cart Icons (Desktop & Mobile) -->
+            <div class="flex items-center space-x-4">
+                 <!-- Search Icon -->
+                <a href="#" class="p-2 cursor-pointer hover:text-secondary transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </a>
+                 <!-- Cart Icon -->
+                <a href="#" class="p-2 cursor-pointer hover:text-secondary transition-colors relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <!-- Small cart count badge -->
+                    <span class="absolute top-0 right-0 inline-flex items-center justify-center px-1 py-0.5 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full">3</span>
+                </a>
+            </div>
+            
+        </div>
+        
+        <!-- Mobile Navigation Links: UPDATED TO SCROLL -->
+        <nav id="mobile-nav-links" class="mobile-only">
+            <a href="#shop-all-inventory" onclick="toggleMobileMenu()" class="block p-3 text-center border-t border-gray-200">Shop All</a>
+            <a href="#featured" onclick="toggleMobileMenu()" class="block p-3 text-center border-t border-gray-200">Featured</a>
+            <a href="#" onclick="toggleMobileMenu()" class="block p-3 text-center border-t border-gray-200">Market Event</a>
+            <a href="#" onclick="toggleMobileMenu()" class="block p-3 text-center border-t border-gray-200">About Us</a>
+            <a href="#" onclick="toggleMobileMenu()" class="block p-3 text-center border-y border-gray-200">Contact</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <!-- Modernized Hero Text -->
+        <h1>The Vintage Edit.</h1>
+        <p class="font-light">Hand-curated clothing and memorabilia from the 40s to the 2000s, sourced daily in North Park, San Diego.</p>
+        <a href="#shop-all-inventory" class="shop-button">Shop Full Inventory</a>
+    </div>
+
+    <main class="container mx-auto px-4">
+        
+        <!-- FEATURED SECTION -->
+        <h2 class="section-title" id="featured">Featured Arrivals</h2>
+        
+        <!-- Featured Product Grid -->
+        <div class="product-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 pb-20">
+
+            <!-- Product 1: Americana/Denim (Levi's) -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/4F6272/fff?text=Vintage+Denim" 
+                             alt="Vintage Levi's 501" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Americana</span>
+                    <h3 class="mt-1">Vintage Levi's 501 Light Wash</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <p class="product-price text-center md:hidden">$75.00</p>
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $75.00</a>
+                </div>
+            </div>
+
+            <!-- Product 2: Workwear (Carhartt) -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/8B4513/fff?text=Durable+Workwear" 
+                             alt="Carhartt Duck Active Jacket" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Workwear</span>
+                    <h3 class="mt-1">Carhartt Duck Active Jacket (Faded)</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <p class="product-price text-center md:hidden">$99.00</p>
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $99.00</a>
+                </div>
+            </div>
+
+            <!-- Product 3: Streetwear (Polo Sport) -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/0047AB/fff?text=90s+Streetwear" 
+                             alt="90s Polo Sport Half-Zip Fleece" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Streetwear</span>
+                    <h3 class="mt-1">90s Polo Sport Half-Zip Fleece</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <p class="product-price text-center md:hidden">$65.00</p>
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $65.00</a>
+                </div>
+            </div>
+
+            <!-- Product 4: True Vintage (1950s Rayon Shirt) -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/B58863/fff?text=1950s+True+Vintage" 
+                             alt="1950s Rayon Loop Collar Shirt" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">True Vintage</span>
+                    <h3 class="mt-1">1950s Rayon Loop Collar Shirt</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <p class="product-price text-center md:hidden">$130.00</p>
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $130.00</a>
+                </div>
+            </div>
+            
+            <!-- Product 5: Band/Tour Tee (Brockum/Winterland) -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/222222/fff?text=Brockum+Tour+Tee" 
+                             alt="90s Brockum Tour T-Shirt" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Streetwear / Music</span>
+                    <h3 class="mt-1">90s Brockum Tour T-Shirt</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <p class="product-price text-center md:hidden">$85.00</p>
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $85.00</a>
+                </div>
+            </div>
+            
+            <!-- Product 6: Y2K -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/90AFC5/fff?text=Y2K+Fashion" 
+                             alt="Early 2000s Low Rise Denim Skirt" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Y2K</span>
+                    <h3 class="mt-1">Early 2000s Low Rise Denim Skirt</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <p class="product-price text-center md:hidden">$40.00</p>
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $40.00</a>
+                </div>
+            </div>
+            
+        </div>
+        
+        <hr class="border-t border-secondary my-12 opacity-50">
+
+        <!-- SHOP ALL INVENTORY SECTION -->
+        <h2 class="section-title text-3xl" id="shop-all-inventory">Shop All Vintage</h2>
+        
+        <!-- Conceptual Filter Bar -->
+        <div class="filter-bar px-2 mb-8">
+            <div class="text-gray-600 font-medium tracking-wide">
+                12 Items Found
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="hidden sm:inline">Filter By:</span>
+                <span class="filter-option">All Categories</span>
+                <span class="filter-option">Outerwear</span>
+                <span class="filter-option">Tees</span>
+                <select class="bg-transparent border border-gray-300 p-1 rounded-md text-sm cursor-pointer">
+                    <option>Sort: Best Match</option>
+                    <option>Sort: Price Low to High</option>
+                    <option>Sort: Newest</option>
+                </select>
+            </div>
+        </div>
+
+
+        <!-- Shop All Product Grid (12 Products Total) -->
+        <div class="product-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 pb-20">
+
+            <!-- Featured Products (Repeated for consistency) -->
+            
+            <!-- Product 1: Americana/Denim -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/4F6272/fff?text=Vintage+Denim" alt="Vintage Levi's 501" onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Americana</span>
+                    <h3 class="mt-1">Vintage Levi's 501 Light Wash</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $75.00</a>
+                </div>
+            </div>
+
+            <!-- Product 2: Workwear -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/8B4513/fff?text=Durable+Workwear" alt="Carhartt Duck Active Jacket" onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Workwear</span>
+                    <h3 class="mt-1">Carhartt Duck Active Jacket (Faded)</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $99.00</a>
+                </div>
+            </div>
+            
+            <!-- Product 3: Streetwear -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/0047AB/fff?text=90s+Streetwear" alt="90s Polo Sport Half-Zip Fleece" onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Streetwear</span>
+                    <h3 class="mt-1">90s Polo Sport Half-Zip Fleece</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $65.00</a>
+                </div>
+            </div>
+            
+            <!-- Product 4: True Vintage -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/B58863/fff?text=1950s+True+Vintage" alt="1950s Rayon Loop Collar Shirt" onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">True Vintage</span>
+                    <h3 class="mt-1">1950s Rayon Loop Collar Shirt</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $130.00</a>
+                </div>
+            </div>
+            
+            <!-- Product 5: Band/Tour Tee -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/222222/fff?text=Brockum+Tour+Tee" alt="90s Brockum Tour T-Shirt" onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Streetwear / Music</span>
+                    <h3 class="mt-1">90s Brockum Tour T-Shirt</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $85.00</a>
+                </div>
+            </div>
+            
+            <!-- Product 6: Y2K -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/90AFC5/fff?text=Y2K+Fashion" alt="Early 2000s Low Rise Denim Skirt" onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Y2K</span>
+                    <h3 class="mt-1">Early 2000s Low Rise Denim Skirt</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $40.00</a>
+                </div>
+            </div>
+
+            <!-- NEW PRODUCT 7: Military Surplus -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/556B2F/fff?text=Military+Surplus" 
+                             alt="Vintage US Army Field Jacket" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Military Surplus</span>
+                    <h3 class="mt-1">Vintage US Army Field Jacket M-65</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $110.00</a>
+                </div>
+            </div>
+
+            <!-- NEW PRODUCT 8: Flannel/Plaid -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/8B0000/fff?text=Heavyweight+Flannel" 
+                             alt="Heavyweight Red Plaid Flannel" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Americana / Workwear</span>
+                    <h3 class="mt-1">Heavyweight Red Plaid Flannel</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $45.00</a>
+                </div>
+            </div>
+
+            <!-- NEW PRODUCT 9: Sportswear -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/FFD700/000?text=Vintage+Sportswear" 
+                             alt="Vintage Nike Track Jacket" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Sportswear</span>
+                    <h3 class="mt-1">Vintage Nike Track Jacket (Yellow)</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $70.00</a>
+                </div>
+            </div>
+
+            <!-- NEW PRODUCT 10: Western Wear -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/D2B48C/36454F?text=Western+Suede" 
+                             alt="70s Suede Leather Vest" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Western</span>
+                    <h3 class="mt-1">70s Suede Leather Vest with Fringe</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $150.00</a>
+                </div>
+            </div>
+
+            <!-- NEW PRODUCT 11: Graphic Tee (Art) -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/40E0D0/fff?text=Art+Tee" 
+                             alt="90s Abstract Art Graphic Tee" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Graphic Tee</span>
+                    <h3 class="mt-1">90s Abstract Art Graphic Tee</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $55.00</a>
+                </div>
+            </div>
+
+            <!-- NEW PRODUCT 12: Sustainable/Outdoors -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/A2B59E/36454F?text=Outdoor+Fleece" 
+                             alt="Vintage Patagonia Synchilla Fleece" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Outdoor</span>
+                    <h3 class="mt-1">Vintage Patagonia Synchilla Fleece</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $80.00</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    
+    <!-- Market Event Highlight Section -->
+    <div class="container mx-auto px-4 py-12 my-10 bg-gray-100 rounded-xl shadow-lg border border-gray-200">
+        <h2 class="section-title text-2xl md:text-3xl mb-4 text-center text-primary">Market Event</h2>
+        <p class="text-center text-xl font-bold mb-4 text-secondary">Happens Every 3rd Saturday of Each Month!</p>
+        <p class="text-center text-lg mb-4 text-gray-700 max-w-2xl mx-auto">Join us at North Park Way for the largest gathering of curated vintage goods, accessories, jewelry, and more from dozens of vendors.</p>
+        <p class="text-center text-md italic text-gray-600">Next Event: January 18th, 2025.</p>
+    </div>
+
+    <footer class="mt-auto">
+        <!-- Updated Footer with Real Data -->
+        <div class="bg-primary text-background py-8 px-4 text-center">
+            <h4 class="font-serif text-xl mb-4 tracking-wider">Day to Day Vintage</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm max-w-5xl mx-auto">
+                <div>
+                    <strong class="text-secondary block mb-1">Store Address</strong>
+                    <p>3063 University Ave, San Diego, CA</p>
+                </div>
+                <div>
+                    <strong class="text-secondary block mb-1">Hours</strong>
+                    <p>Open Daily: 11:00 AM - 7:00 PM</p>
+                    <p class="text-xs opacity-75 mt-1">(Market event hours may vary)</p>
+                </div>
+                <div>
+                    <strong class="text-secondary block mb-1">Contact</strong>
+                    <p>(858) 218-6795</p>
+                    <p>info@daytodayvintage.com</p>
+                </div>
+            </div>
+            <p class="mt-6 text-xs opacity-75">Follow us on social media @DaytoDayVintage | Copyright © 2025</p>
+        </div>
+    </footer>
+
+</body>
+</html>
