@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Cleaned Title Tag -->
+    <title>Shopify CRO Service: Conversion Rate Optimization for Revenue Uplift</title>
+    
+    <!-- AI SEO Meta Description: Focuses on traffic conversion, data, and revenue increase -->
+    <meta name="description" content="Stop wasting traffic. Our Shopify CRO service uses scientific A/B testing, data analysis, and UX psychology to increase your conversion rate and maximize revenue from existing users.">
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1a202c;
+        }
+
+        /* --- AARRY BRANDING COLORS & STYLES --- */
+        .brand-indigo { background-color: #4f46e5; }
+        .brand-gradient-text {
+            background: linear-gradient(to right, #4f46e5, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-bg {
+            /* Dark Gray to Deep Indigo Gradient for dark sections */
+            background: linear-gradient(135deg, #1e293b 0%, #312e81 100%);
+        }
+
+        /* CTA Button Styling (using Indigo shadow) */
+        .cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.39);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(79, 70, 229, 0.5);
+        }
+        
+        /* Service Page Specific Styles */
+        .section-header {
+            border-left: 5px solid #4f46e5; /* Indigo accent */
+            padding-left: 1rem;
+        }
+        .client-logo-item {
+            filter: grayscale(100%) opacity(70%);
+            transition: all 0.3s;
+        }
+        .client-logo-item:hover {
+            filter: grayscale(0%) opacity(100%);
+        }
+        
+        /* UPDATED FAQ STYLES for better visual appeal */
+        .faq-item-card {
+            background-color: #ffffff; /* White background for clean look */
+            border: 1px solid #e0e7ff; /* Light Indigo border */
+            border-radius: 0.5rem;
+            transition: box-shadow 0.3s;
+        }
+        .faq-item-card:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Mobile Nav Overrides */
+        .mobile-nav-overlay {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-nav-overlay.open {
+            transform: translateX(0);
+        }
+        body.overflow-hidden {
+            overflow: hidden;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-in-out;
+        }
+        .accordion-content.open {
+            max-height: 2000px; 
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 640px) {
+            .hero-content { padding: 1.5rem; }
+            .step-card { padding: 1.5rem; }
+            .tech-stack-icon { width: 40px; height: 40px; }
+        }
+    </style>
+
+    <!-- START: AI SEO - JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Shopify Conversion Rate Optimization Service",
+      "provider": {
+        "@type": "Organization",
+        "name": "Aarry Limited",
+        "url": "https://www.aarry.org",
+        "logo": "https://placehold.co/200x60/1a202c/ffffff?text=Aarry."
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "Global"
+      },
+      "description": "Scientific A/B testing and UX optimization for high-growth Shopify and Shopify Plus stores, guaranteeing measurable revenue uplift.",
+      "audience": {
+        "@type": "Audience",
+        "name": "High-Traffic, High-Growth eCommerce Brands"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How quickly will we see results from the CRO service?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The initial conversion rate audit and hypothesis testing phase typically takes 4-6 weeks. Measurable results (revenue uplift) are usually seen within the first 3 months as winning tests are implemented and scaled across the site."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What specific areas do you test on a Shopify store?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We focus on high-impact areas: Product Page (A/B testing copy, imagery, and layout), Checkout Flow (reducing friction, optimizing form fields), Homepage/Landing Pages (improving hero and CTA clarity), and Mobile UX (ensuring speed and tap target optimization)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What tools do you use for A/B testing and user research?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We are platform-agnostic but routinely deploy and manage tests using tools like Google Optimize, VWO, or professional solutions built on Headless architectures. For research, we use Hotjar (heatmaps/recordings), Google Analytics 4, and qualitative customer surveys."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does CRO benefit our SEO performance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "By improving the user experience (UX) and site speed, CRO directly benefits SEO. Google uses UX signals like reduced bounce rate and increased time-on-page (Dwell Time) as ranking factors. A faster, more usable site that converts better is heavily favored by search engines."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is CRO a one-time project or an ongoing service?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For sustained, high-level growth, CRO is an ongoing retainer service. Conversion rates degrade over time as customer behavior changes. We implement a perpetual testing calendar to ensure you continuously find new conversion wins and maintain market efficiency."
+          }
+        }
+      ]
+    }
+    </script>
+    <!-- END: AI SEO - JSON-LD Schema Markup -->
+</head>
+<body class="antialiased">
+
+    <!-- Header (Consistent) -->
+    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="../" class="text-2xl font-black text-gray-900 tracking-tighter">Aarry Limited</a>
+            <button id="mobile-menu-open-button" class="text-gray-600 hover:text-indigo-600 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay (Consistent) -->
+    <div id="mobile-nav" class="mobile-nav-overlay fixed inset-0 bg-white z-[100] p-4">
+        <div class="flex justify-between items-center mb-10">
+            <span class="text-2xl font-black text-gray-900 tracking-tighter">Menu</span>
+            <button id="mobile-menu-close-button" class="text-gray-500 hover:text-gray-900">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-2">
+             <div>
+                <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
+                    <span>Services</span>
+                    <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content pl-6 pt-1">
+                    <a href="../services/shopify.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">eCommerce Development</a>
+                    <a href="headless-shopify-development.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Headless Commerce</a>
+                    <a href="shopify-migration-service.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Store Migration</a>
+                </div>
+            </div>
+            <div>
+                <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
+                    <span>Digital Marketing</span>
+                    <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content pl-6 pt-1">
+                    <a href="shopify-seo-service.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Digital Marketing (SEO)</a>
+                    <a href="shopify-cro-service.html" class="nav-link block py-2 text-indigo-600 font-bold">CRO Services</a>
+                </div>
+            </div>
+            <a href="../blogs.html" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Blogs</a>
+            <a href="../case-studies.html" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Case Studies</a>
+            <a href="../portfolio.html" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Portfolio</a>
+            <a href="../#about" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">About Us</a>
+            <a href="#contact" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Book a Call</a>
+        </nav>
+    </div>
+
+    <!-- Page Content Container -->
+    <main>
+        <!-- Header & Hero Section -->
+        <header class="gradient-bg text-white py-16 md:py-24 shadow-xl">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center hero-content">
+                <!-- H1: Focused on Conversion and Revenue -->
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">
+                    <span class="text-indigo-400">Shopify CRO Service:</span> Turn Browsers into Buyers with Data Science
+                </h1>
+                <!-- AI Overview Hook -->
+                <p class="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto mb-10">
+                    Maximize your revenue without increasing ad spend. We use rigorous **A/B testing** and **user psychology** to fix friction points and significantly boost your store's conversion rate.
+                </p>
+                
+                <!-- Primary CTA - Using Indigo color scheme -->
+                <a href="#contact" class="inline-block cta-button bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-xl text-lg md:text-xl uppercase tracking-wider">
+                    Get Your Free Conversion Audit
+                </a>
+            </div>
+        </header>
+
+        <!-- THE PAIN POINTS / CHALLENGES SECTION (Data-Driven Focus) -->
+        <section class="py-16 bg-white" id="painpoints">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                 <!-- Internal Link for context -->
+                <p class="text-center text-gray-500 mb-8 text-sm">
+                    CRO works best on fast sites. Learn about our services: <a href="headless-shopify-development.html" class="text-indigo-600 hover:text-indigo-800 underline">Headless Development</a> | <a href="shopify-seo-service.html" class="text-indigo-600 hover:text-indigo-800 underline">Shopify SEO</a>.
+                </p>
+                <!-- H2: Focused on Client Fears -->
+                <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center section-header">
+                    Why Most Stores Underperform on Conversions
+                </h2>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    
+                    <!-- Pain Point 1: Wasted Traffic -->
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg border-t-4 border-indigo-600">
+                        <div class="flex items-center mb-3">
+                            <svg class="w-8 h-8 text-indigo-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2-3 .895-3 2 1.343 2 3 2m0-8V6m0 12v-2m-6-2H6m12 0h-2"></path></svg>
+                            <h3 class="text-xl font-semibold text-gray-900">Wasted Ad Spend and Traffic</h3>
+                        </div>
+                        <p class="text-gray-600 mb-3">
+                            You're driving high-cost traffic, but poor page experience leaks up to 98% of potential customers. Low conversion rates destroy your return on ad spend (ROAS).
+                        </p>
+                        <p class="font-semibold text-indigo-700">
+                            Our Solution: We plug those leaks, increasing the efficiency of every dollar you spend on acquisition.
+                        </p>
+                    </div>
+                    
+                    <!-- Pain Point 2: Guesswork -->
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg border-t-4 border-indigo-600">
+                        <div class="flex items-center mb-3">
+                            <svg class="w-8 h-8 text-indigo-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6.25a.25.25 0 01.4-.2l7 5.25a.25.25 0 010 .4l-7 5.25a.25.25 0 01-.4-.2V19zM12 12V3"></path></svg>
+                            <h3 class="text-xl font-semibold text-gray-900">Reliance on Guesswork and Trends</h3>
+                        </div>
+                        <p class="text-gray-600 mb-3">
+                            Implementing changes based on forum advice, competitor trends, or personal preference often leads to **negative results**. You need science, not superstition.
+                        </p>
+                        <p class="font-semibold text-indigo-700">
+                            Our Solution: Every change is a test. We only implement code-level changes after statistical significance proves a revenue uplift.
+                        </p>
+                    </div>
+                    
+                    <!-- Pain Point 3: Checkout Friction -->
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg border-t-4 border-indigo-600">
+                        <div class="flex items-center mb-3">
+                            <svg class="w-8 h-8 text-indigo-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 2h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-3"></path></svg>
+                            <h3 class="text-xl font-semibold text-gray-900">Friction in the Conversion Funnel</h3>
+                        </div>
+                        <p class="text-gray-600 mb-3">
+                            Complex forms, slow mobile load times, weak calls-to-action (CTAs), and confusing navigation derail users right before they hit "Buy."
+                        </p>
+                        <p class="font-semibold text-indigo-700">
+                            Our Solution: Deep-dive analysis on cart and checkout abandonment points using session recordings and heatmaps to pinpoint and eliminate friction.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CRO METHODOLOGY SECTION (Transparency/E-A-T) -->
+        <section class="py-16 bg-gray-100" id="methodology">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-header">
+                    The Aarry Scientific CRO Methodology
+                </h2>
+                
+                <div class="space-y-12">
+                    <!-- Phase 1: Audit -->
+                    <div class="step-card bg-white p-8 rounded-xl shadow-2xl flex flex-col md:flex-row items-start md:space-x-6 space-y-4">
+                        <div class="flex-shrink-0 text-indigo-600 text-4xl font-extrabold mb-2 md:mr-0">01</div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-semibold mb-2">Data Diagnostics and Audit</h3>
+                            <p class="text-gray-600 mb-4">We start by analyzing existing data to find where the revenue is leaking and what users are struggling with.</p>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                                <li>**GA4 & Analytics Deep Dive:** Identifying funnel drop-offs and high-bounce pages.</li>
+                                <li>**User Behavior Mapping:** Using heatmaps and session recordings to see *how* users interact.</li>
+                                <li>**Technical UX Score:** Assessing mobile usability, speed, and Core Web Vitals performance.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Phase 2: Hypothesis & Design -->
+                    <div class="step-card bg-white p-8 rounded-xl shadow-2xl flex flex-col md:flex-row items-start md:space-x-6 space-y-4">
+                        <div class="flex-shrink-0 text-indigo-600 text-4xl font-extrabold mb-2 md:mr-0">02</div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-semibold mb-2">Hypothesis Generation and A/B Design</h3>
+                            <p class="text-gray-600 mb-4">We translate friction points into statistically sound hypotheses, designing high-impact test variations.</p>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                                <li>**Prioritization:** Ranking test ideas by potential impact and ease of implementation.</li>
+                                <li>**Creative Development:** Designing alternate layouts, CTAs, and trust elements.</li>
+                                <li>**Statistical Setup:** Ensuring tests run long enough to achieve **95% statistical significance.**</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Phase 3: Testing & Validation -->
+                    <div class="step-card bg-white p-8 rounded-xl shadow-2xl flex flex-col md:flex-row items-start md:space-x-6 space-y-4">
+                        <div class="flex-shrink-0 text-indigo-600 text-4xl font-extrabold mb-2 md:mr-0">03</div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-semibold mb-2">Rigorous A/B Testing and Deployment</h3>
+                            <p class="text-gray-600 mb-4">We deploy and manage the tests, closely monitoring data until a statistically proven winner emerges.</p>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                                <li>**Testing Tools Integration:** Deploying tests through Google Optimize or equivalent platforms.</li>
+                                <li>**Traffic Segmentation:** Running tests on specific segments (e.g., Mobile Users, New Visitors) for deeper insight.</li>
+                                <li>**Winner Implementation:** Applying the proven winning variant to the live code (or <a href="headless-shopify-development.html" class="text-indigo-600 hover:underline">Headless Front End</a>).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Phase 4: Reporting & Scaling -->
+                    <div class="step-card bg-white p-8 rounded-xl shadow-2xl flex flex-col md:flex-row items-start md:space-x-6 space-y-4">
+                        <div class="flex-shrink-0 text-indigo-600 text-4xl font-extrabold mb-2 md:mr-0">04</div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-semibold mb-2">Continuous Reporting and Scaling</h3>
+                            <p class="text-gray-600 mb-4">CRO is perpetual. We report on revenue uplift and roll out new tests to ensure exponential growth.</p>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                                <li>**Revenue-Focused Reports:** Clear monthly summaries detailing total $\text{ROI}$ and conversion rate percentage gains.</li>
+                                <li>**Documentation:** Creating a knowledge base of test results and learned user behavior.</li>
+                                <li>**Perpetual Testing Calendar:** Initiating the next round of high-impact tests immediately.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS & SOCIAL PROOF SECTION (Consistent) -->
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-header">
+                    Verified Revenue Uplift Success Stories
+                </h2>
+                <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- Testimonial 1 (High ROI Focus) -->
+                    <div class="bg-indigo-50 p-6 rounded-xl shadow-md border-t-4 border-indigo-600">
+                        <p class="text-gray-700 italic mb-4">"Within four months, Aarry's CRO program delivered a 38% conversion rate uplift. The revenue generated made our entire marketing budget infinitely more efficient."</p>
+                        <p class="font-semibold text-gray-900">- Jessica L., Luxury Goods D2C</p>
+                        <p class="text-sm text-indigo-700">Result: 38% Conversion Lift</p>
+                    </div>
+                    <!-- Testimonial 2 (Checkout Fix Focus) -->
+                    <div class="bg-indigo-50 p-6 rounded-xl shadow-md border-t-4 border-indigo-600">
+                        <p class="text-gray-700 italic mb-4">"They fixed the checkout abandonment issue we'd had for years. Their single-page optimization test reduced cart abandonment by 15 points. Truly scientific work."</p>
+                        <p class="font-semibold text-gray-900">- Alex M., Health & Wellness Ecom</p>
+                        <p class="text-sm text-indigo-700">Result: 15% Cart Abandonment Reduction</p>
+                    </div>
+                    <!-- Testimonial 3 (Mobile Speed/UX) -->
+                    <div class="bg-indigo-50 p-6 rounded-xl shadow-md border-t-4 border-indigo-600">
+                        <p class="text-gray-700 italic mb-4">"The mobile UX audit was brutal, but necessary. Implementing their changes led to a 4.5% conversion increase on mobile alone. The focus on data is unmatched."</p>
+                        <p class="font-semibold text-gray-900">- David T., Global Tech Accessories</p>
+                        <p class="text-sm text-indigo-700">Result: 4.5% Mobile Conversion Increase</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ SECTION -->
+        <section id="faq" class="py-24 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 section-header">
+                        Conversion Rate Optimization Questions Answered
+                    </h2>
+                    <p class="text-lg text-gray-600 mt-3 max-w-3xl mx-auto">Understanding the science behind maximizing your existing traffic and revenue.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                    
+                    <!-- FAQ COLUMN 1: METHODOLOGY -->
+                    <div class="space-y-4 p-6 bg-white rounded-xl shadow-xl">
+                        <h3 class="text-2xl font-bold text-indigo-600 mb-4">Methodology and Testing</h3>
+                        
+                        <!-- Q1.1 (Results Speed) -->
+                        <div class="faq-item-card">
+                            <button class="w-full flex justify-between items-center p-4 text-left font-semibold accordion-button">
+                                <span>How quickly will we see results from the CRO service?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-4 pb-4 border-t border-gray-100">
+                                <p class="text-gray-600">The initial conversion rate audit and hypothesis testing phase typically takes **4-6 weeks**. Measurable results (revenue uplift) are usually seen within the first **3 months** as winning tests are implemented and scaled across the site.</p>
+                            </div>
+                        </div>
+
+                        <!-- Q1.2 (Test Areas) -->
+                        <div class="faq-item-card">
+                            <button class="w-full flex justify-between items-center p-4 text-left font-semibold accordion-button">
+                                <span>What specific areas do you test on a Shopify store?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-4 pb-4 border-t border-gray-100">
+                                <p class="text-gray-600">We focus on high-impact areas: Product Page (A/B testing copy, imagery, and layout), Checkout Flow (reducing friction, optimizing form fields), Homepage/Landing Pages (improving hero and CTA clarity), and Mobile UX (ensuring speed and tap target optimization).</p>
+                            </div>
+                        </div>
+
+                        <!-- Q1.3 (Tools) -->
+                        <div class="faq-item-card">
+                            <button class="w-full flex justify-between items-center p-4 text-left font-semibold accordion-button">
+                                <span>What tools do you use for A/B testing and user research?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-4 pb-4 border-t border-gray-100">
+                                <p class="text-gray-600">We are platform-agnostic but routinely deploy and manage tests using tools like Google Optimize, VWO, or professional solutions built on Headless architectures. For research, we use Hotjar (heatmaps/recordings), Google Analytics 4, and qualitative customer surveys.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ COLUMN 2: STRATEGY & SEO ALIGNMENT -->
+                    <div class="space-y-4 p-6 bg-white rounded-xl shadow-xl">
+                        <h3 class="text-2xl font-bold text-indigo-600 mb-4">Strategy and SEO Alignment</h3>
+                        
+                        <!-- Q2.1 (SEO Benefit) -->
+                        <div class="faq-item-card">
+                            <button class="w-full flex justify-between items-center p-4 text-left font-semibold accordion-button">
+                                <span>How does CRO benefit our SEO performance?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-4 pb-4 border-t border-gray-100">
+                                <p class="text-gray-600">By improving the user experience (UX) and site speed, CRO directly benefits SEO. Google uses UX signals like reduced bounce rate and increased time-on-page (Dwell Time) as ranking factors. A faster, more usable site that converts better is heavily favored by search engines. This aligns perfectly with our <a href="shopify-seo-service.html" class="text-indigo-600 hover:underline">Shopify SEO services</a>.</p>
+                            </div>
+                        </div>
+
+                        <!-- Q2.2 (Ongoing Service) -->
+                        <div class="faq-item-card">
+                            <button class="w-full flex justify-between items-center p-4 text-left font-semibold accordion-button">
+                                <span>Is CRO a one-time project or an ongoing service?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-4 pb-4 border-t border-gray-100">
+                                <p class="text-gray-600">For sustained, high-level growth, CRO is an **ongoing retainer service**. Conversion rates degrade over time as customer behavior changes. We implement a perpetual testing calendar to ensure you continuously find new conversion wins and maintain market efficiency.</p>
+                            </div>
+                        </div>
+
+                        <!-- Q2.3 (CRO for New Stores) -->
+                        <div class="faq-item-card">
+                            <button class="w-full flex justify-between items-center p-4 text-left font-semibold accordion-button">
+                                <span>Should we start CRO on a brand new Shopify store?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-4 pb-4 border-t border-gray-100">
+                                <p class="text-gray-600">We recommend building sufficient traffic (ideally 15,000+ monthly visitors) before dedicating budget to full CRO. Without enough data volume, A/B tests can't reach statistical significance. For new stores, we focus on foundational UX and technical SEO first.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section (Consistent) -->
+        <section id="contact" class="py-24 bg-white">
+            <div class="container mx-auto px-4 text-center">
+                <div class="max-w-2xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Ready to Maximize Your Revenue Per Visitor?</h2>
+                    <p class="text-lg text-gray-600 mb-8">Stop guessing and start proving. Get a complimentary conversion audit to identify your highest-impact test areas.</p>
+                    <a href="https://calendly.com/kaocher/meeting" target="_blank" rel="noopener noreferrer" class="cta-button inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-10 rounded-full text-lg">
+                        Book Your Free Conversion Audit
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Consistent) -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+            <div>
+                <h3 class="text-2xl font-black tracking-tighter mb-4">Aarry.</h3>
+                <p class="text-gray-400">Your global partner in strategic Shopify growth. We serve clients from our offices in Dhaka and Charlotte.</p>
+                <!-- Social Links Added -->
+                <div class="flex justify-center md:justify-start space-x-4 mt-4">
+                    <a href="https://www.linkedin.com/company/aarry" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-indigo-500 transition-colors">
+                        <img src="https://placehold.co/24x24/1a202c/ffffff?text=L" alt="LinkedIn" class="w-6 h-6">
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-indigo-500 transition-colors">
+                         <img src="https://placehold.co/24x24/1a202c/ffffff?text=F" alt="Facebook" class="w-6 h-6">
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-indigo-500 transition-colors">
+                         <img src="https://placehold.co/24x24/1a202c/ffffff?text=I" alt="Instagram" class="w-6 h-6">
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Core Services</h3>
+                <ul class="space-y-3">
+                    <li><a href="../#services" class="text-gray-400 hover:text-white transition-colors">Shopify Plus Development</a></li>
+                    <li><a href="headless-shopify-development.html" class="text-gray-400 hover:text-white transition-colors">Headless Commerce</a></li>
+                    <li><a href="shopify-seo-service.html" class="text-gray-400 hover:text-white transition-colors">Digital Marketing (SEO)</a></li>
+                    <li><a href="../#services" class="text-gray-400 hover:text-white transition-colors">Growth Consulting</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Company</h3>
+                <ul class="space-y-3">
+                    <li><a href="../#about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+                    <li><a href="../blogs.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Connect</h3>
+                <ul class="space-y-3">
+                    <li><a href="mailto:info@aarrylimited.com" class="text-gray-400 hover:text-white transition-colors">info@aarrylimited.com</a></li>
+                    <li><a href="https://www.linkedin.com/company/aarry" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-12 container mx-auto px-4 text-center border-t border-gray-700 pt-8">
+            <p class="text-gray-500">&copy; <span id="year"></span> Aarry Limited. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.body;
+
+            // --- Mobile Menu Handler ---
+            const mobileNav = document.getElementById('mobile-nav');
+            const openNavButton = document.getElementById('mobile-menu-open-button');
+            const closeNavButton = document.getElementById('mobile-menu-close-button');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            const openMobileNav = () => { mobileNav.classList.add('open'); body.classList.add('overflow-hidden'); };
+            const closeMobileNav = () => { mobileNav.classList.remove('open'); body.classList.remove('overflow-hidden'); };
+
+            openNavButton.addEventListener('click', openMobileNav);
+            closeNavButton.addEventListener('click', closeMobileNav);
+            navLinks.forEach(link => link.addEventListener('click', closeMobileNav));
+
+            // --- Accordion Handler (for FAQs) ---
+            const accordionButtons = document.querySelectorAll('.accordion-button');
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('svg');
+                    const isOpening = content.classList.toggle('open');
+                    
+                    if (icon) { icon.classList.toggle('rotate-180'); }
+
+                    // Close other open accordions in the same FAQ category column
+                    const parentColumn = button.closest('.space-y-4');
+                    if (parentColumn) {
+                        parentColumn.querySelectorAll('.accordion-content.open').forEach(otherContent => {
+                            if (otherContent !== content) {
+                                otherContent.classList.remove('open');
+                                otherContent.style.maxHeight = '0';
+                                const otherIcon = otherContent.previousElementSibling.querySelector('svg');
+                                if (otherIcon) {
+                                    otherIcon.classList.remove('rotate-180');
+                                }
+                            }
+                        });
+                    }
+
+                    content.style.maxHeight = isOpening ? content.scrollHeight + 'px' : '0';
+                });
+            });
+            
+            // --- Mobile Accordion Handler (for Mobile Menu) ---
+            const mobileAccordionButtons = document.querySelectorAll('.mobile-accordion-button');
+            mobileAccordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('svg');
+                    const isOpening = content.classList.toggle('open');
+                    
+                    if (icon) { icon.classList.toggle('rotate-180'); }
+
+                    content.style.maxHeight = isOpening ? content.scrollHeight + 'px' : '0';
+                });
+            });
+
+
+            // --- CTA Smooth Scroll Handler ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // --- Dynamic Year in Footer ---
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
