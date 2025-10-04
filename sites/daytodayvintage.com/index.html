@@ -18,6 +18,10 @@
             --font-sans: 'Inter', sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: var(--font-sans);
             background-color: var(--color-background);
@@ -88,7 +92,7 @@
             transform: translateY(-2px);
         }
 
-        /* Product Card Styles */
+        /* Product Card & Section Styles */
         .section-title {
             text-align: center;
             font-family: var(--font-serif);
@@ -97,6 +101,26 @@
             padding-top: 20px;
             text-transform: uppercase;
             letter-spacing: 3px;
+        }
+        
+        /* Filter Bar Placeholder Style */
+        .filter-bar {
+            border-bottom: 1px solid rgba(54, 69, 79, 0.1);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            font-size: 0.9em;
+            font-weight: 500;
+            color: #666;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .filter-option {
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .filter-option:hover {
+            color: var(--color-primary);
         }
 
         .product-card {
@@ -154,7 +178,7 @@
         .product-price {
             font-weight: 700;
             font-size: 1.3em;
-            color: var(--color-secondary); /* Highlight price */
+            color: var(--color-secondary); 
             margin-bottom: 10px;
         }
         
@@ -187,6 +211,30 @@
             font-size: 0.9em;
         }
         
+        /* About Us Section Specific Styles */
+        .about-section {
+            padding: 40px 0;
+            border-top: 1px solid rgba(54, 69, 79, 0.1);
+        }
+
+        .about-heading {
+            font-family: var(--font-serif);
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: var(--color-secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .about-content-block {
+            padding: 20px;
+            border: 1px solid rgba(54, 69, 79, 0.1);
+            background-color: #fff; /* Bright white box for text */
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            min-height: 150px;
+        }
+        
         /* Mobile Specific Overrides */
         @media (max-width: 767px) {
             .hero h1 { font-size: 2.2em; letter-spacing: 2px; }
@@ -198,6 +246,13 @@
                 transform: none; 
                 background-color: transparent;
                 padding: 10px 15px 15px;
+            }
+            .filter-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .filter-bar > div {
+                margin-top: 10px;
             }
         }
         
@@ -228,6 +283,100 @@
             const menu = document.getElementById('mobile-nav-links');
             menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
         }
+
+        /**
+         * Fetches 'About Us' content from the Gemini API.
+         * Implements exponential backoff for retries.
+         */
+        async function fetchAboutUsContent() {
+            const systemPrompt = "You are a copywriter for a high-end, curated vintage clothing store called 'Day to Day Vintage' based in North Park, San Diego. The store specializes in carefully selected, high-quality vintage clothing from the 1940s to the 2000s. Your response MUST be a single JSON object conforming to the provided schema. Write three separate, distinct sections for an 'About Us' page: 1. A short, compelling 'Our Story' (2-3 sentences, max 40 words). 2. A section on the 'Curators/Founders' focusing on passion and expertise (2-3 sentences, max 40 words). 3. A section on 'Sourcing & Sustainability' (2-3 sentences, max 50 words).";
+            const userQuery = "Generate the three sections of content for the 'Day to Day Vintage' About Us page.";
+            const apiKey = ""; 
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+            
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+                generationConfig: {
+                    responseMimeType: "application/json",
+                    responseSchema: {
+                        type: "OBJECT",
+                        properties: {
+                            story: { type: "STRING", description: "Our Story section." },
+                            curators: { type: "STRING", description: "The Curators/Founders section." },
+                            sourcing: { type: "STRING", description: "Sourcing and Sustainability section." }
+                        }
+                    }
+                }
+            };
+
+            const maxRetries = 5;
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    const candidate = result.candidates?.[0];
+
+                    if (candidate && candidate.content?.parts?.[0]?.text) {
+                        const jsonText = candidate.content.parts[0].text;
+                        return JSON.parse(jsonText);
+                    } else {
+                        console.error("Gemini API response structure invalid.");
+                        throw new Error("Invalid response structure.");
+                    }
+                } catch (error) {
+                    console.error("Attempt failed:", i + 1, error.message);
+                    if (i === maxRetries - 1) throw error; 
+                    const delay = Math.pow(2, i) * 1000;
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                }
+            }
+        }
+        
+        // Function to update the DOM with fetched content
+        async function updateAboutUsContent() {
+            const storyElement = document.getElementById('about-story-content');
+            const curatorsElement = document.getElementById('about-curators-content');
+            const sourcingElement = document.getElementById('about-sourcing-content');
+
+            // Fallback content (used as placeholder and on failure)
+            const fallbackContent = {
+                story: "Day to Day Vintage was born from a passion for timeless garments and the vibrant history woven into every stitch. Established in the heart of North Park, San Diego, we meticulously hand-select quality pieces from the 1940s through the 2000s, ensuring every item tells a unique story.",
+                curators: "Our founders are lifelong collectors with a keen eye for authenticity and condition. We believe in providing knowledgeable guidance, treating the process of finding your next vintage piece as a shared, personal journey.",
+                sourcing: "Sustainability is at our core. We ethically source our entire collection, championing slow fashion by giving clothes a second life and reducing environmental impact. Every purchase supports a circular economy."
+            };
+
+            try {
+                // Set loading state (if needed, here we use the fallback text as the immediate placeholder)
+                
+                const content = await fetchAboutUsContent();
+
+                // Update content successfully
+                storyElement.textContent = content.story;
+                curatorsElement.textContent = content.curators;
+                sourcingElement.textContent = content.sourcing;
+
+            } catch (error) {
+                console.error("Failed to fetch AI content, using fallback.", error);
+                // Ensure fallback content is set if the API fails
+                storyElement.textContent = fallbackContent.story;
+                curatorsElement.textContent = fallbackContent.curators;
+                sourcingElement.textContent = fallbackContent.sourcing;
+            }
+        }
+
+        // Run the content update on window load
+        window.onload = updateAboutUsContent;
+
     </script>
 </head>
 <body>
@@ -246,12 +395,12 @@
 
             <a href="#" class="logo">Day to Day Vintage</a>
             
-            <!-- Desktop Navigation -->
+            <!-- Desktop Navigation: UPDATED TO SCROLL -->
             <nav class="desktop-only flex items-center">
-                <a href="#" class="ml-6 hover:text-secondary transition-colors font-medium text-sm tracking-widest">Shop All</a>
-                <a href="#" class="ml-6 hover:text-secondary transition-colors font-medium text-sm tracking-widest">Daily Restock</a>
-                <a href="#" class="ml-6 hover:text-secondary transition-colors font-medium text-sm tracking-widest">Market Event</a>
-                <a href="#" class="ml-6 hover:text-secondary transition-colors font-medium text-sm tracking-widest">About Us</a>
+                <a href="#shop-all-inventory" class="ml-6 hover:text-secondary transition-colors font-medium text-sm tracking-widest">Shop All</a>
+                <a href="#featured" class="ml-6 hover:text-secondary transition-colors font-medium text-sm tracking-widest">Featured</a>
+                <a href="#about-us" class="ml-6 hover:text-secondary transition-colors font-medium text-sm tracking-widest">About Us</a>
+                <a href="#" class="ml-6 hover:text-secondary transition-colors font-medium text-sm tracking-widest">Contact</a>
             </nav>
 
             <!-- Search/Cart Icons (Desktop & Mobile) -->
@@ -277,13 +426,13 @@
             
         </div>
         
-        <!-- Mobile Navigation Links -->
+        <!-- Mobile Navigation Links: UPDATED TO SCROLL -->
         <nav id="mobile-nav-links" class="mobile-only">
-            <a href="#" class="block p-3 text-center border-t border-gray-200">Shop All</a>
-            <a href="#" class="block p-3 text-center border-t border-gray-200">Daily Restock</a>
-            <a href="#" class="block p-3 text-center border-t border-gray-200">Market Event</a>
-            <a href="#" class="block p-3 text-center border-t border-gray-200">About Us</a>
-            <a href="#" class="block p-3 text-center border-y border-gray-200">Contact</a>
+            <a href="#shop-all-inventory" onclick="toggleMobileMenu()" class="block p-3 text-center border-t border-gray-200">Shop All</a>
+            <a href="#featured" onclick="toggleMobileMenu()" class="block p-3 text-center border-t border-gray-200">Featured</a>
+            <a href="#about-us" onclick="toggleMobileMenu()" class="block p-3 text-center border-t border-gray-200">About Us</a>
+            <a href="#" onclick="toggleMobileMenu()" class="block p-3 text-center border-t border-gray-200">Contact</a>
+            <a href="#" onclick="toggleMobileMenu()" class="block p-3 text-center border-y border-gray-200">Market Event</a>
         </nav>
     </header>
 
@@ -291,13 +440,15 @@
         <!-- Modernized Hero Text -->
         <h1>The Vintage Edit.</h1>
         <p class="font-light">Hand-curated clothing and memorabilia from the 40s to the 2000s, sourced daily in North Park, San Diego.</p>
-        <a href="#featured" class="shop-button">Shop Daily Restocks</a>
+        <a href="#shop-all-inventory" class="shop-button">Shop Full Inventory</a>
     </div>
 
     <main class="container mx-auto px-4">
-        <h2 class="section-title" id="featured">Latest Arrivals</h2>
         
-        <!-- Updated Product Grid with clear CTA logic -->
+        <!-- FEATURED SECTION -->
+        <h2 class="section-title" id="featured">Featured Arrivals</h2>
+        
+        <!-- Featured Product Grid -->
         <div class="product-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 pb-20">
 
             <!-- Product 1: Americana/Denim (Levi's) -->
@@ -313,7 +464,6 @@
                     <span class="tag">Americana</span>
                     <h3 class="mt-1">Vintage Levi's 501 Light Wash</h3>
                 </div>
-                <!-- Quick Shop Overlay for seamless purchase -->
                 <div class="quick-shop-overlay">
                     <p class="product-price text-center md:hidden">$75.00</p>
                     <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $75.00</a>
@@ -416,16 +566,297 @@
             </div>
             
         </div>
+        
+        <hr class="border-t border-secondary my-12 opacity-50">
+
+        <!-- SHOP ALL INVENTORY SECTION -->
+        <h2 class="section-title text-3xl" id="shop-all-inventory">Shop All Vintage</h2>
+        
+        <!-- Conceptual Filter Bar -->
+        <div class="filter-bar px-2 mb-8">
+            <div class="text-gray-600 font-medium tracking-wide">
+                12 Items Found
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="hidden sm:inline">Filter By:</span>
+                <span class="filter-option">All Categories</span>
+                <span class="filter-option">Outerwear</span>
+                <span class="filter-option">Tees</span>
+                <select class="bg-transparent border border-gray-300 p-1 rounded-md text-sm cursor-pointer">
+                    <option>Sort: Best Match</option>
+                    <option>Sort: Price Low to High</option>
+                    <option>Sort: Newest</option>
+                </select>
+            </div>
+        </div>
+
+
+        <!-- Shop All Product Grid (12 Products Total) -->
+        <div class="product-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 pb-20">
+
+            <!-- Product 1: Americana/Denim -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/4F6272/fff?text=Vintage+Denim" alt="Vintage Levi's 501" onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Americana</span>
+                    <h3 class="mt-1">Vintage Levi's 501 Light Wash</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $75.00</a>
+                </div>
+            </div>
+
+            <!-- Product 2: Workwear -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/8B4513/fff?text=Durable+Workwear" alt="Carhartt Duck Active Jacket" onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Workwear</span>
+                    <h3 class="mt-1">Carhartt Duck Active Jacket (Faded)</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $99.00</a>
+                </div>
+            </div>
+            
+            <!-- Product 3: Streetwear -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/0047AB/fff?text=90s+Streetwear" alt="90s Polo Sport Half-Zip Fleece" onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Streetwear</span>
+                    <h3 class="mt-1">90s Polo Sport Half-Zip Fleece</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $65.00</a>
+                </div>
+            </div>
+            
+            <!-- Product 4: True Vintage -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/B58863/fff?text=1950s+True+Vintage" alt="1950s Rayon Loop Collar Shirt" onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">True Vintage</span>
+                    <h3 class="mt-1">1950s Rayon Loop Collar Shirt</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $130.00</a>
+                </div>
+            </div>
+            
+            <!-- Product 5: Band/Tour Tee -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/222222/fff?text=Brockum+Tour+Tee" alt="90s Brockum Tour T-Shirt" onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Streetwear / Music</span>
+                    <h3 class="mt-1">90s Brockum Tour T-Shirt</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $85.00</a>
+                </div>
+            </div>
+            
+            <!-- Product 6: Y2K -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/90AFC5/fff?text=Y2K+Fashion" alt="Early 2000s Low Rise Denim Skirt" onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Y2K</span>
+                    <h3 class="mt-1">Early 2000s Low Rise Denim Skirt</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $40.00</a>
+                </div>
+            </div>
+
+            <!-- NEW PRODUCT 7: Military Surplus -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/556B2F/fff?text=Military+Surplus" 
+                             alt="Vintage US Army Field Jacket" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Military Surplus</span>
+                    <h3 class="mt-1">Vintage US Army Field Jacket M-65</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $110.00</a>
+                </div>
+            </div>
+
+            <!-- NEW PRODUCT 8: Flannel/Plaid -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/8B0000/fff?text=Heavyweight+Flannel" 
+                             alt="Heavyweight Red Plaid Flannel" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Americana / Workwear</span>
+                    <h3 class="mt-1">Heavyweight Red Plaid Flannel</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $45.00</a>
+                </div>
+            </div>
+
+            <!-- NEW PRODUCT 9: Sportswear -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/FFD700/000?text=Vintage+Sportswear" 
+                             alt="Vintage Nike Track Jacket" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Sportswear</span>
+                    <h3 class="mt-1">Vintage Nike Track Jacket (Yellow)</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $70.00</a>
+                </div>
+            </div>
+
+            <!-- NEW PRODUCT 10: Western Wear -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/D2B48C/36454F?text=Western+Suede" 
+                             alt="70s Suede Leather Vest" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Western</span>
+                    <h3 class="mt-1">70s Suede Leather Vest with Fringe</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $150.00</a>
+                </div>
+            </div>
+
+            <!-- NEW PRODUCT 11: Graphic Tee (Art) -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/40E0D0/fff?text=Art+Tee" 
+                             alt="90s Abstract Art Graphic Tee" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Graphic Tee</span>
+                    <h3 class="mt-1">90s Abstract Art Graphic Tee</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $55.00</a>
+                </div>
+            </div>
+
+            <!-- NEW PRODUCT 12: Sustainable/Outdoors -->
+            <div class="product-card">
+                <a href="#">
+                    <div class="product-image">
+                        <img src="https://placehold.co/400x300/A2B59E/36454F?text=Outdoor+Fleece" 
+                             alt="Vintage Patagonia Synchilla Fleece" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/300x300/F8F4E1/36454F?text=Image+Unavailable';" />
+                    </div>
+                </a>
+                <div class="product-info p-3 text-left">
+                    <span class="tag">Outdoor</span>
+                    <h3 class="mt-1">Vintage Patagonia Synchilla Fleece</h3>
+                </div>
+                <div class="quick-shop-overlay">
+                    <a href="#" class="quick-shop-btn transition-colors hover:bg-opacity-90">Quick Shop $80.00</a>
+                </div>
+            </div>
+
+        </div>
+        
+        <hr class="border-t border-secondary my-12 opacity-50">
+
+        <!-- ABOUT US SECTION -->
+        <section id="about-us" class="about-section pt-10 pb-24">
+            <h2 class="section-title text-3xl mb-12">Our Story & Ethos</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Left Column: Story Text and Curator Info -->
+                <div>
+                    <!-- Our Story -->
+                    <div class="about-content-block mb-10">
+                        <h3 class="about-heading">Our Story </h3>
+                        <p id="about-story-content" class="text-gray-700">
+                            Day to Day Vintage was born from a passion for timeless garments and the vibrant history woven into every stitch. Established in the heart of North Park, San Diego, we meticulously hand-select quality pieces from the 1940s through the 2000s, ensuring every item tells a unique story. (Loading content...)
+                        </p>
+                    </div>
+
+                    <!-- The Curators -->
+                    <div class="about-content-block">
+                        <h3 class="about-heading">The Curators </h3>
+                        <p id="about-curators-content" class="text-gray-700">
+                            Our founders are lifelong collectors with a keen eye for authenticity and condition. We believe in providing knowledgeable guidance, treating the process of finding your next vintage piece as a shared, personal journey. (Loading content...)
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right Column: Sourcing & Imagery -->
+                <div>
+                    <!-- Image/Art Block -->
+                    <div class="h-64 md:h-96 rounded-xl overflow-hidden mb-10 shadow-xl border-4 border-secondary">
+                         <img src="https://placehold.co/600x400/36454F/F8F4E1?text=Aesthetic+Vintage+Sourcing" 
+                             alt="Stylized photo of vintage clothing piles or a hand selecting a garment" 
+                             class="w-full h-full object-cover opacity-90 transition-opacity duration-500 hover:opacity-100" />
+                    </div>
+
+                    <!-- Sourcing & Sustainability -->
+                    <div class="about-content-block">
+                        <h3 class="about-heading">Sourcing & Sustainability</h3>
+                        <p id="about-sourcing-content" class="text-gray-700">
+                            Sustainability is at our core. We ethically source our entire collection, championing slow fashion by giving clothes a second life and reducing environmental impact. Every purchase supports a circular economy. (Loading content...)
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Market Event Highlight Section -->
+        <div class="py-12 my-10 bg-gray-100 rounded-xl shadow-lg border border-gray-200">
+            <h2 class="section-title text-2xl md:text-3xl mb-4 text-center text-primary">Market Event</h2>
+            <p class="text-center text-xl font-bold mb-4 text-secondary">Happens Every 3rd Saturday of Each Month!</p>
+            <p class="text-center text-lg mb-4 text-gray-700 max-w-2xl mx-auto">Join us at North Park Way for the largest gathering of curated vintage goods, accessories, jewelry, and more from dozens of vendors.</p>
+            <p class="text-center text-md italic text-gray-600">Next Event: January 18th, 2025.</p>
+        </div>
     </main>
     
-    <!-- Market Event Highlight Section -->
-    <div class="container mx-auto px-4 py-12 my-10 bg-gray-100 rounded-xl shadow-lg border border-gray-200">
-        <h2 class="section-title text-2xl md:text-3xl mb-4 text-center text-primary">Market Event</h2>
-        <p class="text-center text-xl font-bold mb-4 text-secondary">Happens Every 3rd Saturday of Each Month!</p>
-        <p class="text-center text-lg mb-4 text-gray-700 max-w-2xl mx-auto">Join us at North Park Way for the largest gathering of curated vintage goods, accessories, jewelry, and more from dozens of vendors.</p>
-        <p class="text-center text-md italic text-gray-600">Next Event: January 18th, 2025.</p>
-    </div>
-
     <footer class="mt-auto">
         <!-- Updated Footer with Real Data -->
         <div class="bg-primary text-background py-8 px-4 text-center">
@@ -438,6 +869,7 @@
                 <div>
                     <strong class="text-secondary block mb-1">Hours</strong>
                     <p>Open Daily: 11:00 AM - 7:00 PM</p>
+                    <p class="text-xs opacity-75 mt-1">(Market event hours may vary)</p>
                 </div>
                 <div>
                     <strong class="text-secondary block mb-1">Contact</strong>
