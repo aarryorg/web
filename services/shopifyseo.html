@@ -1,118 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aarry Limited - Global Shopify Plus & eCommerce Growth Agency</title>
-    <meta name="description" content="Aarry Limited is an accredited Shopify Plus agency specializing in headless commerce, custom development, and data-driven digital marketing for ambitious global brands.">
-
+    <title>Shopify SEO: The Definitive Infographic | Aarry Limited</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-            color: #1a202c;
-        }
-        /* Accordion-specific styles */
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.7s ease-in-out;
-        }
-        .accordion-content.open {
-            max-height: 2000px; /* Large value for content */
-        }
-
-        /* Styles for sections that animate on scroll */
-        .hidden-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
-        }
-        .hidden-section.open {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .mobile-nav-overlay {
-            transform: translateX(100%);
-            transition: transform 0.3s ease-in-out;
-        }
-        .mobile-nav-overlay.open {
-            transform: translateX(0);
-        }
-        body.overflow-hidden {
-            overflow: hidden;
-        }
-        .brand-gradient-text {
-            background: linear-gradient(to right, #4f46e5, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .cta-button {
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.39);
-        }
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px 0 rgba(79, 70, 229, 0.5);
-        }
-        .client-logo {
-            filter: grayscale(100%) opacity(60%);
-            transition: all 0.3s ease;
-        }
-        .client-logo:hover {
-            filter: grayscale(0%) opacity(100%);
-        }
-    </style>
-
-    <!-- AI SEO - Schema Markup -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Aarry Limited",
-      "url": "https://www.aarry.org",
-      "logo": "https://placehold.co/200x60/1a202c/ffffff?text=Aarry.",
-      "description": "Aarry Limited is a globally recognized, accredited Shopify Plus Partner agency specializing in custom eCommerce development, headless commerce, and data-driven digital marketing strategies for high-growth brands.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "House 522/A, Road 8, Shewrapara",
-        "addressLocality": "Dhaka",
-        "postalCode": "1216",
-        "addressCountry": "BD"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+88001777510221",
-        "contactType": "sales",
-        "email": "info@aarry.org"
-      },
-      "sameAs": [
-        "https://www.linkedin.com/company/aarry"
-      ]
-    }
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #F8F9FA;
         }
+        /* Enforcing mobile height on charts for better visual impact when stacked */
         .chart-container {
             position: relative;
             width: 100%;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            height: 320px;
-            max-height: 400px;
-        }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 350px;
-            }
+            height: 400px; 
+            max-height: 500px;
         }
         .kpi-card {
             background-color: #FFFFFF;
@@ -122,7 +32,7 @@
             text-align: center;
         }
         .kpi-number {
-            font-size: 3.75rem;
+            font-size: 3rem;
             font-weight: 900;
             color: #005F73;
         }
@@ -141,7 +51,7 @@
         .flow-step {
             display: flex;
             align-items: center;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
         .flow-number {
             background-color: #EE9B00;
@@ -169,16 +79,31 @@
             margin: -0.5rem 0;
             padding-left: 2rem;
         }
+        .mobile-nav-overlay {
+            display: none; /* Initially hidden */
+            overflow-y: auto;
+        }
+        .accordion-content {
+            display: none; /* Initially hidden */
+        }
+        .mobile-accordion-button .transition-transform {
+            transition: transform 0.3s ease;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-    <header class="bg-white shadow-md sticky top-0 z-10">
-        <div class="container mx-auto px-6 py-4">
-            <h1 class="text-3xl font-bold text-center text-[#005F73]">Shopify SEO: A Visual Guide to Dominating Search</h1>
-            <p class="text-center text-lg text-gray-600 mt-2">Unlocking organic growth for e-commerce stores in 2025 and beyond.</p>
+    <!-- CUSTOM SITE HEADER START -->
+    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-black text-gray-900 tracking-tighter">Aarry Limited</a>
+            
+            <button id="mobile-menu-open-button" class="text-gray-600 hover:text-indigo-600 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
         </div>
     </header>
+
     <!-- Mobile Navigation Overlay -->
     <div id="mobile-nav" class="mobile-nav-overlay fixed inset-0 bg-white z-[100] p-4">
         <div class="flex justify-between items-center mb-10">
@@ -188,7 +113,7 @@
             </button>
         </div>
         <nav class="flex flex-col space-y-2">
-             <div>
+            <div>
                 <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
                     <span>Services</span>
                     <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -216,26 +141,34 @@
             <a href="#contact" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Book a Call</a>
         </nav>
     </div>
+    <!-- CUSTOM SITE HEADER END -->
 
     <main class="container mx-auto p-4 md:p-8">
         
+        <header class="mb-8 pt-4">
+            <h1 class="text-4xl font-extrabold text-center text-[#005F73]">Shopify SEO: A Visual Guide to Dominating Search</h1>
+            <p class="text-center text-lg text-gray-600 mt-2">Unlocking organic growth for e-commerce stores in 2025 and beyond.</p>
+        </header>
+
         <section id="overview" class="mb-12">
             <p class="section-intro">Organic search is not just a traffic source; it's the lifeblood of sustainable e-commerce success. For Shopify merchants, mastering SEO means capturing high-intent customers at the exact moment they're ready to buy, building brand authority, and reducing reliance on paid advertising.</p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            
+            <!-- Removed md:grid-cols-3 -->
+            <div class="grid grid-cols-1 gap-6 md:gap-8 text-center">
                 <div class="kpi-card">
                     <div class="kpi-number">47%</div>
                     <div class="kpi-label">of All E-commerce Traffic</div>
-                    <p class="text-gray-600 mt-2">Nearly half of all visitors to e-commerce sites arrive from organic search, making it the largest single source of traffic.</p>
+                    <p class="text-gray-600 mt-2 text-sm">Nearly half of all visitors to e-commerce sites arrive from organic search, making it the largest single source of traffic.</p>
                 </div>
                 <div class="kpi-card">
                     <div class="kpi-number">61%</div>
                     <div class="kpi-label">Higher Close Rate</div>
-                    <p class="text-gray-600 mt-2">Leads generated through SEO have a significantly higher conversion rate compared to those from outbound marketing efforts.</p>
+                    <p class="text-gray-600 mt-2 text-sm">Leads generated through SEO have a significantly higher conversion rate compared to those from outbound marketing efforts.</p>
                 </div>
                 <div class="kpi-card">
                     <div class="kpi-number">~0</div>
                     <div class="kpi-label">Cost-Per-Click</div>
-                    <p class="text-gray-600 mt-2">While SEO requires investment in strategy and content, each organic click is free, delivering unparalleled long-term ROI.</p>
+                    <p class="text-gray-600 mt-2 text-sm">While SEO requires investment in strategy and content, each organic click is free, delivering unparalleled long-term ROI.</p>
                 </div>
             </div>
         </section>
@@ -243,16 +176,19 @@
         <section id="technical-seo" class="mb-12">
              <h2 class="text-3xl font-bold text-center mb-4 text-[#005F73]">The Technical SEO Foundation</h2>
              <p class="section-intro">Shopify handles many technical aspects of SEO automatically, but merchants must actively manage key areas to ensure peak performance. Neglecting these foundational elements can render all other SEO efforts ineffective.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+             
+             <!-- Removed md:grid-cols-2 -->
+            <div class="grid grid-cols-1 gap-6 md:gap-8 items-center">
                 <div class="bg-white rounded-lg shadow-md p-6">
-                    <h3 class="text-xl font-semibold mb-4 text-center">Most Common Shopify Technical SEO Issues</h3>
+                    <h3 class="text-xl font-semibold mb-4 text-center text-[#0A9396]">Most Common Shopify Technical SEO Issues</h3>
                     <div class="chart-container">
                         <canvas id="technicalIssuesChart"></canvas>
                     </div>
+                    <p class="text-sm text-gray-600 mt-4 text-center">**Duplicate Content** is the leading issue, often caused by unfiltered collection pages and improper use of canonical tags. Addressing these is crucial for effective crawl budget management.</p>
                 </div>
                 <div class="bg-white rounded-lg shadow-md p-6">
-                     <h3 class="text-xl font-semibold mb-2 text-[#0A9396]">Site Speed is Non-Negotiable</h3>
-                     <p class="text-gray-600 mb-4">A slow store not only frustrates users but also severely impacts search rankings. Every second counts, especially on mobile devices where the majority of e-commerce browsing occurs. Optimizing images, leveraging fast themes, and minimizing app usage are critical.</p>
+                     <h3 class="text-xl font-semibold mb-2 text-center text-[#0A9396]">Site Speed is Non-Negotiable</h3>
+                     <p class="text-gray-600 mb-4 text-center">A slow store not only frustrates users but also severely impacts search rankings. The drop in conversions after just a few seconds of load time is significant, highlighting the importance of image and theme optimization.</p>
                      <div class="chart-container">
                         <canvas id="siteSpeedChart"></canvas>
                     </div>
@@ -263,17 +199,19 @@
         <section id="content-strategy" class="mb-12">
             <h2 class="text-3xl font-bold text-center mb-4 text-[#005F73]">Content & Keyword Strategy</h2>
             <p class="section-intro">Content is the engine of SEO. For Shopify stores, this extends beyond product descriptions. A robust content strategy targeting the entire customer journey—from awareness to purchase—is essential for attracting and converting organic traffic.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            
+            <!-- Removed md:grid-cols-2 -->
+            <div class="grid grid-cols-1 gap-6 md:gap-8 items-center">
                  <div class="bg-white rounded-lg shadow-md p-6">
                     <h3 class="text-xl font-semibold mb-2 text-center text-[#0A9396]">Traffic Sources for Shopify Stores</h3>
-                    <p class="text-gray-600 mb-4 text-center">A healthy traffic profile is diverse. While organic search should be a primary focus, it works in concert with other channels. SEO enhances the effectiveness of social media and direct traffic by building brand recognition and trust.</p>
-                    <div class="chart-container mx-auto" style="max-width: 400px;">
+                    <p class="text-gray-600 mb-4 text-sm text-center">A healthy traffic profile is diverse. **Organic Search** remains the largest single component, providing high-quality, sustainable traffic that builds domain authority over time.</p>
+                    <div class="chart-container mx-auto" style="max-height: 400px; max-width: 400px; height: 350px;">
                         <canvas id="trafficSourcesChart"></canvas>
                     </div>
                 </div>
                 <div class="bg-white rounded-lg shadow-md p-6">
-                    <h3 class="text-xl font-semibold mb-4 text-center">The Power of a SEO-Driven Blog</h3>
-                    <p class="text-gray-600 mb-4">A blog is the single most powerful tool for a Shopify store to build topical authority. By answering customer questions and solving their problems, you attract qualified traffic and create natural internal linking opportunities to your product and collection pages, boosting their ranking potential.</p>
+                    <h3 class="text-xl font-semibold mb-4 text-center text-[#0A9396]">The Power of a SEO-Driven Blog</h3>
+                    <p class="text-gray-600 mb-4 text-sm text-center">A blog is the single most powerful tool for a Shopify store to build topical authority. Businesses that blog consistently see a substantial increase in average monthly organic sessions.</p>
                      <div class="chart-container">
                         <canvas id="blogImpactChart"></canvas>
                     </div>
@@ -281,10 +219,10 @@
             </div>
         </section>
 
-        <section id="workflow" class="mb-12 md:col-span-2">
+        <section id="workflow" class="mb-12">
             <h2 class="text-3xl font-bold text-center mb-4 text-[#005F73]">A Continuous SEO Workflow</h2>
             <p class="section-intro">SEO is not a one-time task; it's an ongoing process of research, implementation, and refinement. Following a structured workflow ensures consistent progress and adaptation to the ever-changing search landscape.</p>
-            <div class="bg-white rounded-lg shadow-md p-8 max-w-2xl mx-auto">
+            <div class="bg-white rounded-lg shadow-md p-6 md:p-8 max-w-2xl mx-auto">
                 <div class="flow-step">
                     <div class="flow-number">1</div>
                     <div class="flow-text">
@@ -329,7 +267,7 @@
 
     </main>
 
-   <!-- Footer -->
+    <!-- Footer -->
     <footer class="bg-gray-900 text-white py-16">
         <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
             <div>
@@ -347,7 +285,7 @@
             </div>
             <div>
                 <h3 class="text-lg font-semibold mb-4">Company</h3>
-                 <ul class="space-y-3">
+                   <ul class="space-y-3">
                     <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
                     <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
                     <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
@@ -356,8 +294,8 @@
             <div>
                 <h3 class="text-lg font-semibold mb-4">Connect</h3>
                 <ul class="space-y-3">
-                     <li><a href="mailto:info@aarrylimited.com" class="text-gray-400 hover:text-white transition-colors">info@aarrylimited.com</a></li>
-                     <li><a href="#" class="text-gray-400 hover:text-white transition-colors">LinkedIn</a></li>
+                    <li><a href="mailto:info@aarrylimited.com" class="text-gray-400 hover:text-white transition-colors">info@aarrylimited.com</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">LinkedIn</a></li>
                 </ul>
             </div>
         </div>
@@ -365,82 +303,71 @@
             <p class="text-gray-500">&copy; <span id="year"></span> Aarry Limited. All Rights Reserved.</p>
         </div>
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const body = document.body;
-
-            // --- Mobile Menu Handler ---
-            const mobileNav = document.getElementById('mobile-nav');
-            const openNavButton = document.getElementById('mobile-menu-open-button');
-            const closeNavButton = document.getElementById('mobile-menu-close-button');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            const openMobileNav = () => { mobileNav.classList.add('open'); body.classList.add('overflow-hidden'); };
-            const closeMobileNav = () => { mobileNav.classList.remove('open'); body.classList.remove('overflow-hidden'); };
-
-            openNavButton.addEventListener('click', openMobileNav);
-            closeNavButton.addEventListener('click', closeMobileNav);
-            navLinks.forEach(link => link.addEventListener('click', closeMobileNav));
-
-            // --- Accordion Handler ---
-            const accordionButtons = document.querySelectorAll('.accordion-button, .mobile-accordion-button');
-            accordionButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const content = button.nextElementSibling;
-                    const icon = button.querySelector('svg');
-                    const isOpening = content.classList.toggle('open');
-                    
-                    if (icon) { icon.classList.toggle('rotate-180'); }
-
-                    content.style.maxHeight = isOpening ? content.scrollHeight + 'px' : '0';
-                });
-            });
-
-            // --- CTA Smooth Scroll Handler ---
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetSection = document.querySelector(targetId);
-                    if (targetSection) {
-                        targetSection.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            // --- Animate Sections on Scroll ---
-            const hiddenSections = document.querySelectorAll('.hidden-section');
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-
-            const sectionObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('open');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            hiddenSections.forEach(section => {
-                sectionObserver.observe(section);
-            });
-
-
-            // --- Dynamic Year in Footer ---
-            document.getElementById('year').textContent = new Date().getFullYear();
-        });
-    </script>
+    <!-- CUSTOM SITE FOOTER END -->
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             
+            // --- Header/Mobile Menu Logic Start ---
+            const mobileNav = document.getElementById('mobile-nav');
+            const openButton = document.getElementById('mobile-menu-open-button');
+            const closeButton = document.getElementById('mobile-menu-close-button');
+            const accordionButtons = document.querySelectorAll('.mobile-accordion-button');
+            
+            // Hide the mobile menu initially (handled by CSS but ensured here for redundancy)
+            mobileNav.style.display = 'none';
+
+            openButton.addEventListener('click', () => {
+                mobileNav.style.display = 'block';
+            });
+
+            closeButton.addEventListener('click', () => {
+                mobileNav.style.display = 'none';
+                // Close any open accordions when closing the main menu
+                accordionButtons.forEach(button => {
+                    const content = button.nextElementSibling;
+                    const svg = button.querySelector('svg');
+                    if (content.style.display === 'block') {
+                        content.style.display = 'none';
+                        if (svg) svg.style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const svg = button.querySelector('svg');
+                    
+                    // Close other open accordions
+                    accordionButtons.forEach(otherButton => {
+                        if (otherButton !== button) {
+                            const otherContent = otherButton.nextElementSibling;
+                            const otherSvg = otherButton.querySelector('svg');
+                            if (otherContent.style.display === 'block') {
+                                otherContent.style.display = 'none';
+                                if (otherSvg) otherSvg.style.transform = 'rotate(0deg)';
+                            }
+                        }
+                    });
+                    
+                    // Toggle current accordion
+                    if (content.style.display === 'block') {
+                        content.style.display = 'none';
+                        if (svg) svg.style.transform = 'rotate(0deg)';
+                    } else {
+                        content.style.display = 'block';
+                        if (svg) svg.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+            
+            // Set current year for the footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // --- Header/Mobile Menu Logic End ---
+            
+            // --- Chart.js Logic Start ---
             const brilliantBlues = ['#005F73', '#0A9396', '#94D2BD', '#E9D8A6', '#EE9B00', '#CA6702', '#BB3E03'];
 
             function wrapLabel(label) {
@@ -622,6 +549,7 @@
                     }
                 });
             }
+            // --- Chart.js Logic End ---
         });
     </script>
 </body>
