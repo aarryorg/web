@@ -89,6 +89,20 @@
         .mobile-accordion-button .transition-transform {
             transition: transform 0.3s ease;
         }
+        /* Custom service card styling for visual richness and contrast */
+        .service-card-rich {
+            background-color: #FFFFFF;
+            border-left: 4px solid #0A9396;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 10px 15px -3px rgba(0, 95, 115, 0.1), 0 4px 6px -2px rgba(0, 95, 115, 0.05);
+        }
+        .service-card-rich:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 95, 115, 0.2), 0 10px 10px -5px rgba(0, 95, 115, 0.04);
+        }
+        .service-card-icon {
+            color: #EE9B00; /* Accent color */
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -143,7 +157,49 @@
     </div>
     <!-- CUSTOM SITE HEADER END -->
 
-    <main class="container mx-auto p-4 md:p-8">
+    <main class="container mx-auto p-4">
+        
+        <!-- NEW AGENCY SEO SERVICE SECTION START (Optimized for AI/Richness) -->
+        <section id="agency-services" class="mb-12 p-6 bg-white rounded-xl shadow-2xl border-t-8 border-[#EE9B00]">
+            <h2 class="text-3xl font-extrabold text-center mb-2 text-[#005F73]">Partnering for Growth: Comprehensive Shopify SEO Agency Services</h2>
+            <p class="text-center text-lg text-gray-600 mb-6">Aarry Limited drives sustainable **eCommerce growth** by mastering all four critical pillars of **Shopify SEO**.</p>
+            
+            <div class="space-y-6">
+                
+                <div class="service-card-rich p-4 rounded-lg">
+                    <h3 class="font-bold text-xl text-[#005F73] flex items-center mb-1">
+                        <span class="service-card-icon mr-3 text-2xl">⚙️</span> Technical SEO Audit & Speed
+                    </h3>
+                    <p class="text-sm text-gray-700">We conduct deep **Technical SEO Audits** to optimize your **Core Web Vitals**, resolve rendering blocks, fix crawl errors, and manage canonical tags, ensuring a flawless foundation for search ranking.</p>
+                </div>
+                
+                <div class="service-card-rich p-4 rounded-lg">
+                    <h3 class="font-bold text-xl text-[#005F73] flex items-center mb-1">
+                        <span class="service-card-icon mr-3 text-2xl">🏷️</span> Product & Schema Optimization
+                    </h3>
+                    <p class="text-sm text-gray-700">Maximizing visibility for your commercial pages. We implement advanced **Product Schema Markup** and target **high-intent keywords** to achieve **Rich Snippets** and boost product listing click-through rates.</p>
+                </div>
+                
+                <div class="service-card-rich p-4 rounded-lg">
+                    <h3 class="font-bold text-xl text-[#005F73] flex items-center mb-1">
+                        <span class="service-card-icon mr-3 text-2xl">✍️</span> Conversion-Focused Content Strategy
+                    </h3>
+                    <p class="text-sm text-gray-700">Building **Topical Authority** through strategic content creation (blogs, guides). We map content to the buyer journey, driving organic traffic that is highly likely to convert into customers.</p>
+                </div>
+                
+                <div class="service-card-rich p-4 rounded-lg">
+                    <h3 class="font-bold text-xl text-[#005F73] flex items-center mb-1">
+                        <span class="service-card-icon mr-3 text-2xl">🔗</span> Authority & Link Building
+                    </h3>
+                    <p class="text-sm text-gray-700">Elevate your store's ranking power. Our **Off-Page SEO** strategies acquire high-quality, relevant backlinks, substantially increasing your **Domain Rating (DR)** and competitive position.</p>
+                </div>
+            </div>
+            
+            <a href="https://calendly.com/kaocher/meeting" target="_blank" class="mt-8 block text-center bg-[#EE9B00] hover:bg-[#CA6702] text-white font-bold py-3 rounded-lg transition-colors shadow-md">
+                Book Your Free Shopify SEO Growth Session
+            </a>
+        </section>
+        <!-- NEW AGENCY SEO SERVICE SECTION END -->
         
         <header class="mb-8 pt-4">
             <h1 class="text-4xl font-extrabold text-center text-[#005F73]">Shopify SEO: A Visual Guide to Dominating Search</h1>
@@ -153,8 +209,8 @@
         <section id="overview" class="mb-12">
             <p class="section-intro">Organic search is not just a traffic source; it's the lifeblood of sustainable e-commerce success. For Shopify merchants, mastering SEO means capturing high-intent customers at the exact moment they're ready to buy, building brand authority, and reducing reliance on paid advertising.</p>
             
-            <!-- Removed md:grid-cols-3 -->
-            <div class="grid grid-cols-1 gap-6 md:gap-8 text-center">
+            <!-- Enforced single-column stacking -->
+            <div class="grid grid-cols-1 gap-6 text-center">
                 <div class="kpi-card">
                     <div class="kpi-number">47%</div>
                     <div class="kpi-label">of All E-commerce Traffic</div>
@@ -177,8 +233,8 @@
              <h2 class="text-3xl font-bold text-center mb-4 text-[#005F73]">The Technical SEO Foundation</h2>
              <p class="section-intro">Shopify handles many technical aspects of SEO automatically, but merchants must actively manage key areas to ensure peak performance. Neglecting these foundational elements can render all other SEO efforts ineffective.</p>
              
-             <!-- Removed md:grid-cols-2 -->
-            <div class="grid grid-cols-1 gap-6 md:gap-8 items-center">
+            <!-- Enforced single-column stacking -->
+            <div class="grid grid-cols-1 gap-6 items-center">
                 <div class="bg-white rounded-lg shadow-md p-6">
                     <h3 class="text-xl font-semibold mb-4 text-center text-[#0A9396]">Most Common Shopify Technical SEO Issues</h3>
                     <div class="chart-container">
@@ -200,8 +256,8 @@
             <h2 class="text-3xl font-bold text-center mb-4 text-[#005F73]">Content & Keyword Strategy</h2>
             <p class="section-intro">Content is the engine of SEO. For Shopify stores, this extends beyond product descriptions. A robust content strategy targeting the entire customer journey—from awareness to purchase—is essential for attracting and converting organic traffic.</p>
             
-            <!-- Removed md:grid-cols-2 -->
-            <div class="grid grid-cols-1 gap-6 md:gap-8 items-center">
+            <!-- Enforced single-column stacking -->
+            <div class="grid grid-cols-1 gap-6 items-center">
                  <div class="bg-white rounded-lg shadow-md p-6">
                     <h3 class="text-xl font-semibold mb-2 text-center text-[#0A9396]">Traffic Sources for Shopify Stores</h3>
                     <p class="text-gray-600 mb-4 text-sm text-center">A healthy traffic profile is diverse. **Organic Search** remains the largest single component, providing high-quality, sustainable traffic that builds domain authority over time.</p>
@@ -222,7 +278,7 @@
         <section id="workflow" class="mb-12">
             <h2 class="text-3xl font-bold text-center mb-4 text-[#005F73]">A Continuous SEO Workflow</h2>
             <p class="section-intro">SEO is not a one-time task; it's an ongoing process of research, implementation, and refinement. Following a structured workflow ensures consistent progress and adaptation to the ever-changing search landscape.</p>
-            <div class="bg-white rounded-lg shadow-md p-6 md:p-8 max-w-2xl mx-auto">
+            <div class="bg-white rounded-lg shadow-md p-6 max-w-2xl mx-auto">
                 <div class="flow-step">
                     <div class="flow-number">1</div>
                     <div class="flow-text">
