@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Cleaned Title Tag -->
+    <title>Shopify Migration Service: Zero SEO Loss and Seamless Data Transfer</title>
+    
+    <!-- AI SEO Meta Description: Directly addresses primary fear and promise -->
+    <meta name="description" content="Migrate your store to Shopify (from Magento, Salesforce, WooCommerce, etc.) with zero SEO rank loss and 100% data integrity. Our certified experts ensure a seamless, fixed-cost transition.">
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1a202c;
+        }
+
+        /* --- AARRY BRANDING COLORS & STYLES --- */
+        .brand-indigo { background-color: #4f46e5; }
+        .brand-gradient-text {
+            background: linear-gradient(to right, #4f46e5, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-bg {
+            /* Dark Gray to Deep Indigo Gradient for dark sections */
+            background: linear-gradient(135deg, #1e293b 0%, #312e81 100%);
+        }
+
+        /* CTA Button Styling (using Indigo shadow) */
+        .cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.39);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(79, 70, 229, 0.5);
+        }
+        
+        /* Service Page Specific Styles */
+        .section-header {
+            border-left: 5px solid #4f46e5; /* Indigo accent */
+            padding-left: 1rem;
+        }
+        .client-logo-item {
+            filter: grayscale(100%) opacity(70%);
+            transition: all 0.3s;
+        }
+        .client-logo-item:hover {
+            filter: grayscale(0%) opacity(100%);
+        }
+        
+        /* UPDATED FAQ STYLES for better visual appeal */
+        .faq-item-card {
+            background-color: #ffffff; /* White background for clean look */
+            border: 1px solid #e0e7ff; /* Light Indigo border */
+            border-radius: 0.5rem;
+            transition: box-shadow 0.3s;
+        }
+        .faq-item-card:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Mobile Nav Overrides */
+        .mobile-nav-overlay {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-nav-overlay.open {
+            transform: translateX(0);
+        }
+        body.overflow-hidden {
+            overflow: hidden;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-in-out;
+        }
+        .accordion-content.open {
+            max-height: 2000px; 
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 640px) {
+            .hero-content { padding: 1.5rem; }
+            .step-card { padding: 1.5rem; }
+            .tech-stack-icon { width: 40px; height: 40px; }
+        }
+    </style>
+
+    <!-- START: AI SEO - JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Shopify Migration Service",
+      "provider": {
+        "@type": "Organization",
+        "name": "Aarry Limited",
+        "url": "https://www.aarry.org",
+        "logo": "https://placehold.co/200x60/1a202c/ffffff?text=Aarry."
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "Global"
+      },
+      "description": "Expert eCommerce migration service guaranteeing zero SEO traffic loss and 100% data integrity when moving high-volume stores from Magento, Salesforce, WooCommerce, or legacy platforms to Shopify Plus.",
+      "audience": {
+        "@type": "Audience",
+        "name": "Enterprise and High-Growth eCommerce Brands"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can you guarantee zero loss of Google rankings after the migration?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "While Google's algorithm means we cannot promise zero fluctuation, we guarantee zero permanent loss of your hard-earned traffic and authority. Our exhaustive 301 redirect map (one for every page) and canonicalization audit ensures link equity is preserved during the move."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you handle thousands of redirect URLs from our old platform?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We perform a comprehensive crawl of your entire live site, map every old URL to its corresponding new Shopify URL (1:1), and bulk upload the verified 301 redirects directly into the Shopify platform before launch. We then monitor for 404s for 60 days post-launch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will customer passwords and order history transfer correctly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Order history, customer names, and addresses transfer seamlessly. Due to security protocols, customer passwords cannot be transferred. Customers will receive a link to securely reset their password upon first login to the new Shopify store."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does the average migration take from start to finish?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The timeline depends on complexity (data volume, custom integrations). A standard migration (WooCommerce/BigCommerce to Shopify Plus) typically takes 8 to 12 weeks. A complex migration (Magento/Custom Platform with ERP integration) may take 12 to 20 weeks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is your migration service fixed-cost or hourly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We conduct a fixed-cost discovery phase to audit your current store's data and complexity. This allows us to provide a transparent, fixed-price quote for the entire migration project, ensuring you face zero scope creep or surprise hourly bills."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the process for testing the new store before launch?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We utilize a private staging environment for rigorous QA over multiple weeks. Testing includes transactional flow (checkout, payments), form submission validation, mobile responsiveness, integration functionality, and a final link check using tools like Screaming Frog to validate all 301 redirects are working."
+          }
+        }
+      ]
+    }
+    </script>
+    <!-- END: AI SEO - JSON-LD Schema Markup -->
+</head>
+<body class="antialiased">
+
+    <!-- Header (Consistent) -->
+    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="../" class="text-2xl font-black text-gray-900 tracking-tighter">Aarry Limited</a>
+            <button id="mobile-menu-open-button" class="text-gray-600 hover:text-indigo-600 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay (Consistent) -->
+    <div id="mobile-nav" class="mobile-nav-overlay fixed inset-0 bg-white z-[100] p-4">
+        <div class="flex justify-between items-center mb-10">
+            <span class="text-2xl font-black text-gray-900 tracking-tighter">Menu</span>
+            <button id="mobile-menu-close-button" class="text-gray-500 hover:text-gray-900">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-2">
+             <div>
+                <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
+                    <span>Services</span>
+                    <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content pl-6 pt-1">
+                    <a href="../services/shopify.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">eCommerce Development</a>
+                    <a href="headless-shopify-development.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Headless Commerce</a>
+                    <a href="shopify-migration-service.html" class="nav-link block py-2 text-indigo-600 font-bold">Store Migration</a>
+                </div>
+            </div>
+            <div>
+                <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
+                    <span>Digital Marketing</span>
+                    <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content pl-6 pt-1">
+                    <a href="shopify-seo-service.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Digital Marketing (SEO)</a>
+                    <a href="shopify-cro-service.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">CRO Services</a>
+                </div>
+            </div>
+            <a href="../blogs.html" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Blogs</a>
+            <a href="../case-studies.html" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Case Studies</a>
+            <a href="../portfolio.html" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Portfolio</a>
+            <a href="../#about" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">About Us</a>
+            <a href="#contact" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Book a Call</a>
+        </nav>
+    </div>
+
+    <!-- Page Content Container -->
+    <main>
+        <!-- Header & Hero Section -->
+        <header class="gradient-bg text-white py-16 md:py-24 shadow-xl">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center hero-content">
+                <!-- H1: Focused on Zero Risk, High Intent -->
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">
+                    <span class="text-indigo-400">Risk-Free Shopify Migration:</span> Zero SEO Loss and 100% Data Integrity
+                </h1>
+                <!-- AI Overview Hook -->
+                <p class="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto mb-10">
+                    Migrating your store from Magento, WooCommerce, or BigCommerce doesn't have to cost you traffic. We guarantee a **seamless transition** with no downtime and preserved SEO authority.
+                </p>
+                
+                <!-- Primary CTA - Using Indigo color scheme -->
+                <a href="#contact" class="inline-block cta-button bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-xl text-lg md:text-xl uppercase tracking-wider">
+                    Start Your Risk-Free Migration
+                </a>
+            </div>
+        </header>
+
+        <!-- THE PAIN POINTS / CHALLENGES SECTION (Data-Driven Focus) -->
+        <section class="py-16 bg-white" id="challenges">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                 <!-- Internal Link for context -->
+                <p class="text-center text-gray-500 mb-8 text-sm">
+                    Migrating to Shopify Plus? View our full <a href="headless-shopify-development.html" class="text-indigo-600 hover:text-indigo-800 underline">Headless Development Services</a>.
+                </p>
+                <!-- H2: Focused on Client Fears -->
+                <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center section-header">
+                    The 3 Biggest Fears of Every eCommerce Migration
+                </h2>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    
+                    <!-- Fear 1: SEO Loss -->
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg border-t-4 border-indigo-600">
+                        <div class="flex items-center mb-3">
+                            <svg class="w-8 h-8 text-indigo-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                            <h3 class="text-xl font-semibold text-gray-900">SEO Ranking Collapse</h3>
+                        </div>
+                        <p class="text-gray-600 mb-3">
+                            The #1 fear: Losing years of organic authority due to poor 301 redirects or incorrect indexation handling during the platform switch.
+                        </p>
+                        <p class="font-semibold text-indigo-700">
+                            Our Solution: Manual 1:1 URL mapping, GSC verification, and an immediate post-launch SEO audit to preserve all link equity.
+                        </p>
+                    </div>
+                    
+                    <!-- Fear 2: DATA INTEGRITY -->
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg border-t-4 border-indigo-600">
+                        <div class="flex items-center mb-3">
+                            <svg class="w-8 h-8 text-indigo-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            <h3 class="text-xl font-semibold text-gray-900">Corrupt or Missing Data</h3>
+                        </div>
+                        <p class="text-gray-600 mb-3">
+                            Incomplete transfer of customer profiles, order history, product variants, and crucial meta-fields from legacy systems.
+                        </p>
+                        <p class="font-semibold text-indigo-700">
+                            Our Solution: Custom data scrubbing scripts and two-stage validation process to ensure 100% transfer of all business-critical information.
+                        </p>
+                    </div>
+                    
+                    <!-- Fear 3: DOWNTIME -->
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg border-t-4 border-indigo-600">
+                        <div class="flex items-center mb-3">
+                            <svg class="w-8 h-8 text-indigo-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <h3 class="text-xl font-semibold text-gray-900">Unacceptable Store Downtime</h3>
+                        </div>
+                        <p class="text-gray-600 mb-3">
+                            Every hour the store is offline during a major sales period costs thousands in lost revenue and damages brand trust.
+                        </p>
+                        <p class="font-semibold text-indigo-700">
+                            Our Solution: Phased deployment with a final domain switch that takes **minutes**, not hours, ensuring near-zero impact on sales.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PLATFORMS WE MIGRATE SECTION (Authority) - ENHANCED -->
+        <section class="py-12 gradient-bg text-white" id="platforms">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- H2: Assertive title showing broad expertise -->
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-header">
+                    We Are Experts in Migrating From All Major eCommerce Platforms
+                </h2>
+                
+                <div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-6 max-w-6xl mx-auto">
+                    
+                    <!-- Platform 1: Magento -->
+                    <div class="text-center">
+                        <img src="https://placehold.co/50x50/1f2937/ffffff?text=Mg" alt="Magento Logo" class="tech-stack-icon mx-auto rounded-lg">
+                        <p class="mt-2 text-sm font-semibold text-indigo-400">Magento 1 & 2</p>
+                        <p class="text-xs text-gray-400">Complex Data Handling</p>
+                    </div>
+                    
+                    <!-- Platform 2: BigCommerce -->
+                    <div class="text-center">
+                        <img src="https://placehold.co/50x50/1f2937/ffffff?text=BC" alt="BigCommerce Logo" class="tech-stack-icon mx-auto rounded-lg">
+                        <p class="mt-2 text-sm font-semibold text-indigo-400">BigCommerce</p>
+                        <p class="text-xs text-gray-400">API-Driven Transfers</p>
+                    </div>
+                    
+                    <!-- Platform 3: WooCommerce -->
+                    <div class="text-center">
+                        <img src="https://placehold.co/50x50/1f2937/ffffff?text=W" alt="WooCommerce Logo" class="tech-stack-icon mx-auto rounded-lg">
+                        <p class="mt-2 text-sm font-semibold text-indigo-400">WooCommerce</p>
+                        <p class="text-xs text-gray-400">Database Integrity</p>
+                    </div>
+                    
+                    <!-- Platform 4: Salesforce Commerce Cloud -->
+                    <div class="text-center">
+                        <img src="https://placehold.co/50x50/1f2937/ffffff?text=SFCC" alt="Salesforce Commerce Cloud Logo" class="tech-stack-icon mx-auto rounded-lg">
+                        <p class="mt-2 text-sm font-semibold text-indigo-400">Salesforce CC</p>
+                        <p class="text-xs text-gray-400">Enterprise Data Models</p>
+                    </div>
+
+                    <!-- Platform 5: Oracle/SAP Commerce -->
+                    <div class="text-center">
+                        <img src="https://placehold.co/50x50/1f2937/ffffff?text=SAP" alt="SAP Commerce Logo" class="tech-stack-icon mx-auto rounded-lg">
+                        <p class="mt-2 text-sm font-semibold text-indigo-400">Oracle / SAP</p>
+                        <p class="text-xs text-gray-400">Legacy ERP Integration</p>
+                    </div>
+                    
+                    <!-- Platform 6: Custom/Legacy -->
+                    <div class="text-center">
+                        <img src="https://placehold.co/50x50/1f2937/ffffff?text=CS" alt="Custom System Logo" class="tech-stack-icon mx-auto rounded-lg">
+                        <p class="mt-2 text-sm font-semibold text-indigo-400">Custom Systems</p>
+                        <p class="text-xs text-gray-400">Bespoke Migration Scripts</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE 4-PHASE MIGRATION PROCESS (Transparency/E-A-T) -->
+        <section class="py-16 bg-gray-50" id="process">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-header">
+                    The Aarry 4-Step SEO-Safe Migration Process
+                </h2>
+                
+                <div class="space-y-12">
+                    <!-- Phase 1: Planning & Audit -->
+                    <div class="step-card bg-white p-8 rounded-xl shadow-2xl flex flex-col md:flex-row items-start md:space-x-6 space-y-4">
+                        <div class="flex-shrink-0 text-indigo-600 text-4xl font-extrabold mb-2 md:mr-0">01</div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-semibold mb-2">Pre-Migration Audit and Mapping</h3>
+                            <p class="text-gray-600 mb-4">We begin by comprehensively documenting your current store and developing a foolproof migration plan.</p>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                                <li>**Full URL Export:** Collecting every critical URL for **301 redirect mapping.**</li>
+                                <li>**Data Integrity Check:** Auditing products, customers, and order history schema.</li>
+                                <li>**New Architecture Design:** Defining new Shopify collection and navigation structure.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Phase 2: Data Transfer & Development -->
+                    <div class="step-card bg-white p-8 rounded-xl shadow-2xl flex flex-col md:flex-row items-start md:space-x-6 space-y-4">
+                        <div class="flex-shrink-0 text-indigo-600 text-4xl font-extrabold mb-2 md:mr-0">02</div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-semibold mb-2">Staging Build, Data Transfer, and QA</h3>
+                            <p class="text-gray-600 mb-4">Data is securely moved and the new Shopify Plus storefront is built and tested in a private staging environment.</p>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                                <li>**Initial Data Push:** Transferring primary assets (products, categories, content).</li>
+                                <li>**Theme Implementation:** Installing and configuring the new (or Headless) Shopify theme.</li>
+                                <li>**Transaction QA:** Testing payment gateways, shipping, and fulfillment logic.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Phase 3: SEO Validation & Redirects -->
+                    <div class="step-card bg-white p-8 rounded-xl shadow-2xl flex flex-col md:flex-row items-start md:space-x-6 space-y-4">
+                        <div class="flex-shrink-0 text-indigo-600 text-4xl font-extrabold mb-2 md:mr-0">03</div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-semibold mb-2">Final SEO Check and 301 Deployment</h3>
+                            <p class="text-gray-600 mb-4">This is the most critical stage where we lock in your authority and prevent 404 errors.</p>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                                <li>**Redirect Deployment:** Uploading the complete, verified 1:1 301 redirect map.</li>
+                                <li>**On-Page Optimization:** Ensuring all meta titles and descriptions are optimized. (Leveraging our <a href="shopify-seo-service.html" class="text-indigo-600 hover:underline">Shopify SEO expertise</a>).</li>
+                                <li>**Final Data Sync:** Moving the last batch of customer/order data just before launch.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Phase 4: Launch & Handover -->
+                    <div class="step-card bg-white p-8 rounded-xl shadow-2xl flex flex-col md:flex-row items-start md:space-x-6 space-y-4">
+                        <div class="flex-shrink-0 text-indigo-600 text-4xl font-extrabold mb-2 md:mr-0">04</div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-semibold mb-2">Go-Live, Monitoring and Handoff</h3>
+                            <p class="text-gray-600 mb-4">The moment of truth: A flawless launch followed by intensive monitoring to catch any post-launch issues.</p>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                                <li>**Domain Switch:** Executing the domain switch in minutes to ensure near-zero downtime.</li>
+                                <li>**GSC Monitoring:** Immediate monitoring for crawl errors and indexing issues.</li>
+                                <li>**Training & Support:** Full training for your team and 60 days of post-migration support.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS & SOCIAL PROOF SECTION (Consistent) -->
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-header">
+                    Proven SEO Safe Migration Success Stories
+                </h2>
+                <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- Testimonial 1 (Migration Focus) -->
+                    <div class="bg-indigo-50 p-6 rounded-xl shadow-md border-t-4 border-indigo-600">
+                        <p class="text-gray-700 italic mb-4">"We moved from Magento to Shopify Plus. Aarry's promise of zero traffic loss held true. Our organic channel saw a 5% gain in the first month post-launch."</p>
+                        <p class="font-semibold text-gray-900">- Chris R., Global Footwear Brand</p>
+                        <p class="text-sm text-indigo-700">Migration: Magento 2 to Shopify Plus</p>
+                    </div>
+                    <!-- Testimonial 2 (Data Integrity Focus) -->
+                    <div class="bg-indigo-50 p-6 rounded-xl shadow-md border-t-4 border-indigo-600">
+                        <p class="text-gray-700 italic mb-4">"The data transfer was flawless. All 5 years of customer and order history, which was our biggest concern, moved perfectly. The process was stress-free."</p>
+                        <p class="font-semibold text-gray-900">- Sarah V., Specialty Food eCommerce</p>
+                        <p class="text-sm text-indigo-700">Migration: WooCommerce to Shopify</p>
+                    </div>
+                    <!-- Testimonial 3 (Downtime Focus) -->
+                    <div class="bg-indigo-50 p-6 rounded-xl shadow-md border-t-4 border-indigo-600">
+                        <p class="text-gray-700 italic mb-4">"We had zero unexpected downtime. The domain switch took under 15 minutes. This expertise during a critical phase was worth every penny."</p>
+                        <p class="font-semibold text-gray-900">- Ben T., Tech Accessories Retailer</p>
+                        <p class="text-sm text-indigo-700">Migration: Custom Platform to Headless</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ SECTION -->
+        <section id="faq" class="py-24 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 section-header">
+                        Migration Risk Mitigation Questions Answered
+                    </h2>
+                    <p class="text-lg text-gray-600 mt-3 max-w-3xl mx-auto">Addressing the critical fears around data, traffic, and platform complexity.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                    
+                    <!-- FAQ COLUMN 1: SEO & DATA INTEGRITY -->
+                    <div class="space-y-4 p-6 bg-white rounded-xl shadow-xl">
+                        <h3 class="text-2xl font-bold text-indigo-600 mb-4">SEO and Data Integrity</h3>
+                        
+                        <!-- Q1.1 (SEO Loss) -->
+                        <div class="faq-item-card">
+                            <button class="w-full flex justify-between items-center p-4 text-left font-semibold accordion-button">
+                                <span>Can you guarantee zero loss of Google rankings after the migration?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-4 pb-4 border-t border-gray-100">
+                                <p class="text-gray-600">While Google's algorithm means we cannot promise zero *fluctuation*, **we guarantee zero permanent loss of your hard-earned traffic and authority**. Our exhaustive 301 redirect map (one for every page) and canonicalization audit ensures link equity is preserved during the move.</p>
+                            </div>
+                        </div>
+
+                        <!-- Q1.2 (Redirects) -->
+                        <div class="faq-item-card">
+                            <button class="w-full flex justify-between items-center p-4 text-left font-semibold accordion-button">
+                                <span>How do you handle thousands of redirect URLs from our old platform?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-4 pb-4 border-t border-gray-100">
+                                <p class="text-gray-600">We perform a comprehensive crawl of your entire live site, map every old URL to its corresponding new Shopify URL (1:1), and bulk upload the verified 301 redirects directly into the Shopify platform before launch. We then monitor for 404s for 60 days post-launch.</p>
+                            </div>
+                        </div>
+
+                        <!-- Q1.3 (Data Transfer) -->
+                        <div class="faq-item-card">
+                            <button class="w-full flex justify-between items-center p-4 text-left font-semibold accordion-button">
+                                <span>Will customer passwords and order history transfer correctly?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-4 pb-4 border-t border-gray-100">
+                                <p class="text-gray-600">Order history, customer names, and addresses transfer seamlessly. Due to security protocols, customer passwords cannot be transferred. Customers will receive a link to securely reset their password upon first login to the new Shopify store.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ COLUMN 2: PROCESS & INVESTMENT -->
+                    <div class="space-y-4 p-6 bg-white rounded-xl shadow-xl">
+                        <h3 class="text-2xl font-bold text-indigo-600 mb-4">Process and Investment</h3>
+                        
+                        <!-- Q2.1 (Migration Time) -->
+                        <div class="faq-item-card">
+                            <button class="w-full flex justify-between items-center p-4 text-left font-semibold accordion-button">
+                                <span>How long does the average migration take from start to finish?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-4 pb-4 border-t border-gray-100">
+                                <p class="text-gray-600">The timeline depends on complexity (data volume, custom integrations). A standard migration (WooCommerce/BigCommerce to Shopify Plus) typically takes **8 to 12 weeks**. A complex migration (Magento/Custom Platform with ERP integration) may take **12 to 20 weeks**.</p>
+                            </div>
+                        </div>
+
+                        <!-- Q2.2 (Cost Model) -->
+                        <div class="faq-item-card">
+                            <button class="w-full flex justify-between items-center p-4 text-left font-semibold accordion-button">
+                                <span>Is your migration service fixed-cost or hourly?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-4 pb-4 border-t border-gray-100">
+                                <p class="text-gray-600">We conduct a **fixed-cost discovery phase** to audit your current store's data and complexity. This allows us to provide a transparent, **fixed-price quote** for the entire migration project, ensuring you face zero scope creep or surprise hourly bills.</p>
+                            </div>
+                        </div>
+
+                        <!-- Q2.3 (Testing) -->
+                        <div class="faq-item-card">
+                            <button class="w-full flex justify-between items-center p-4 text-left font-semibold accordion-button">
+                                <span>What is the process for testing the new store before launch?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-4 pb-4 border-t border-gray-100">
+                                <p class="text-gray-600">We utilize a private staging environment for rigorous $\text{QA}$ over multiple weeks. Testing includes transactional flow (checkout, payments), form submission validation, mobile responsiveness, integration functionality, and a final link check using tools like Screaming Frog to validate all 301 redirects are working.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section (Consistent) -->
+        <section id="contact" class="py-24 bg-white">
+            <div class="container mx-auto px-4 text-center">
+                <div class="max-w-2xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Stop Worrying About Migration Risk</h2>
+                    <p class="text-lg text-gray-600 mb-8">Schedule a complimentary audit to receive your migration roadmap and a guaranteed fixed-price quote.</p>
+                    <a href="https://calendly.com/kaocher/meeting" target="_blank" rel="noopener noreferrer" class="cta-button inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-10 rounded-full text-lg">
+                        Book Your Free Migration Audit
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Consistent) -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+            <div>
+                <h3 class="text-2xl font-black tracking-tighter mb-4">Aarry.</h3>
+                <p class="text-gray-400">Your global partner in strategic Shopify growth. We serve clients from our offices in Dhaka and Charlotte.</p>
+                <!-- Social Links Added -->
+                <div class="flex justify-center md:justify-start space-x-4 mt-4">
+                    <a href="https://www.linkedin.com/company/aarry" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-indigo-500 transition-colors">
+                        <img src="https://placehold.co/24x24/1a202c/ffffff?text=L" alt="LinkedIn" class="w-6 h-6">
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-indigo-500 transition-colors">
+                         <img src="https://placehold.co/24x24/1a202c/ffffff?text=F" alt="Facebook" class="w-6 h-6">
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-indigo-500 transition-colors">
+                         <img src="https://placehold.co/24x24/1a202c/ffffff?text=I" alt="Instagram" class="w-6 h-6">
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Core Services</h3>
+                <ul class="space-y-3">
+                    <li><a href="../#services" class="text-gray-400 hover:text-white transition-colors">Shopify Plus Development</a></li>
+                    <li><a href="headless-shopify-development.html" class="text-gray-400 hover:text-white transition-colors">Headless Commerce</a></li>
+                    <li><a href="shopify-seo-service.html" class="text-gray-400 hover:text-white transition-colors">Digital Marketing (SEO)</a></li>
+                    <li><a href="../#services" class="text-gray-400 hover:text-white transition-colors">Growth Consulting</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Company</h3>
+                <ul class="space-y-3">
+                    <li><a href="../#about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+                    <li><a href="../blogs.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Connect</h3>
+                <ul class="space-y-3">
+                    <li><a href="mailto:info@aarrylimited.com" class="text-gray-400 hover:text-white transition-colors">info@aarrylimited.com</a></li>
+                    <li><a href="https://www.linkedin.com/company/aarry" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-12 container mx-auto px-4 text-center border-t border-gray-700 pt-8">
+            <p class="text-gray-500">&copy; <span id="year"></span> Aarry Limited. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.body;
+
+            // --- Mobile Menu Handler ---
+            const mobileNav = document.getElementById('mobile-nav');
+            const openNavButton = document.getElementById('mobile-menu-open-button');
+            const closeNavButton = document.getElementById('mobile-menu-close-button');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            const openMobileNav = () => { mobileNav.classList.add('open'); body.classList.add('overflow-hidden'); };
+            const closeMobileNav = () => { mobileNav.classList.remove('open'); body.classList.remove('overflow-hidden'); };
+
+            openNavButton.addEventListener('click', openMobileNav);
+            closeNavButton.addEventListener('click', closeMobileNav);
+            navLinks.forEach(link => link.addEventListener('click', closeMobileNav));
+
+            // --- Accordion Handler (for FAQs) ---
+            const accordionButtons = document.querySelectorAll('.accordion-button');
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('svg');
+                    const isOpening = content.classList.toggle('open');
+                    
+                    if (icon) { icon.classList.toggle('rotate-180'); }
+
+                    // Close other open accordions in the same FAQ category column
+                    const parentColumn = button.closest('.space-y-4');
+                    if (parentColumn) {
+                        parentColumn.querySelectorAll('.accordion-content.open').forEach(otherContent => {
+                            if (otherContent !== content) {
+                                otherContent.classList.remove('open');
+                                otherContent.style.maxHeight = '0';
+                                const otherIcon = otherContent.previousElementSibling.querySelector('svg');
+                                if (otherIcon) {
+                                    otherIcon.classList.remove('rotate-180');
+                                }
+                            }
+                        });
+                    }
+
+                    content.style.maxHeight = isOpening ? content.scrollHeight + 'px' : '0';
+                });
+            });
+            
+            // --- Mobile Accordion Handler (for Mobile Menu) ---
+            const mobileAccordionButtons = document.querySelectorAll('.mobile-accordion-button');
+            mobileAccordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('svg');
+                    const isOpening = content.classList.toggle('open');
+                    
+                    if (icon) { icon.classList.toggle('rotate-180'); }
+
+                    content.style.maxHeight = isOpening ? content.scrollHeight + 'px' : '0';
+                });
+            });
+
+
+            // --- CTA Smooth Scroll Handler ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // --- Dynamic Year in Footer ---
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
