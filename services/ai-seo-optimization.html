@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI SEO Optimization Service - Future-Proof Your Ranking</title>
+    <meta name="description" content="Aarry Limited provides advanced AI SEO services (Generative Engine Optimization) to secure top citations in Google AI Overviews, Perplexity, and ChatGPT for high-growth platforms.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1a202c;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-in-out;
+        }
+        .accordion-content.open {
+            max-height: 2000px;
+        }
+        .hidden-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+        }
+        .hidden-section.open {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .mobile-nav-overlay {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-nav-overlay.open {
+            transform: translateX(0);
+        }
+        body.overflow-hidden {
+            overflow: hidden;
+        }
+        .brand-gradient-text {
+            background: linear-gradient(to right, #4f46e5, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.39);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(79, 70, 229, 0.5);
+        }
+        .pillar-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .pillar-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.1);
+        }
+        .proof-point {
+            background-color: #4f46e5;
+            color: #ffffff;
+            font-weight: 700;
+        }
+    </style>
+
+    <!-- ADVANCED AI SEO SCHEMA MARKUP -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "AI SEO Optimization",
+      "provider": {
+        "@type": "Organization",
+        "name": "Aarry Limited",
+        "url": "https://aarry.org"
+      },
+      "name": "AI SEO Optimization Service for Enterprise Platforms",
+      "description": "Expert services to future-proof your digital visibility by optimizing for Generative Engine Optimization (GEO), securing top citations in Google's AI Overviews, Perplexity, and other large language models.",
+      "areaServed": {
+        "@type": "ServiceArea",
+        "name": "Global High-Growth Brands"
+      },
+      "image": "https://placehold.co/1200x600/4f46e5/ffffff?text=AI+SEO+Optimization",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "AI SEO Consulting and Implementation Packages"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Generative Engine Optimization (GEO) and why is it replacing traditional SEO?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GEO is the practice of optimizing content specifically to be cited and summarized by Large Language Models (LLMs) like Google's AI Overview, Perplexity, and ChatGPT. It focuses less on keyword density and more on E-E-A-T, factual accuracy, structured data, and providing definitive, cite-worthy answers. Traditional SEO is reactive; GEO is proactive."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does Aarry ensure E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We implement a strict content quality framework that requires subject matter expertise validation. This includes integrating author schema, featuring real-world case studies, citing unique data points, and ensuring transparent authorship to signal to search engines that your content is trustworthy and written by a credible source."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the biggest risk of ignoring AI SEO today?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The biggest risk is invisibility. As Google integrates AI Overviews directly into search results, users receive immediate answers without clicking traditional links. If your content isn't optimized for these AI summaries, your brand will lose visibility and traffic volume, effectively being bypassed by the primary answer layer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is AI SEO only for large language models, or does it help traditional ranking?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AI SEO significantly boosts traditional ranking. By focusing on semantic relevance, user intent, Core Web Vitals, and structured data—all key to AI citation—you simultaneously satisfy Google's core ranking systems. The goal is dual visibility: to rank in the blue links *and* be cited in the AI Overview."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which AI search engines do you optimize our content for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our GEO strategy targets the dominant generative platforms: Google AI Overview (SGE) for massive market reach, Perplexity for in-depth research queries (often used by high-value buyers), and ChatGPT/other LLMs for content generation and research that may cite web sources."
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+<body class="antialiased">
+
+    <!-- Header (Consistent across all Aarry Limited pages) -->
+    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="https://aarry.org" class="text-2xl font-black text-gray-900 tracking-tighter">Aarry Limited</a>
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8 items-center text-sm font-semibold">
+                <!-- Services Dropdown (Expanded for clarity on services) -->
+                <div class="relative group">
+                    <button class="text-gray-600 hover:text-indigo-600 flex items-center">
+                        Services
+                        <svg class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="absolute hidden group-hover:block bg-white shadow-xl rounded-lg py-2 w-56 mt-2 z-50 border border-gray-100">
+                        <a href="headless-shopify-development.html" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50">Headless Development</a>
+                        <a href="shopify-seo-service.html" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50">Shopify SEO Service</a>
+                        <a href="shopify-migration-service.html" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50">Platform Migration</a>
+                        <a href="shopify-cro-service.html" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50">CRO Service</a>
+                        <a href="#" class="block px-4 py-2 font-bold text-indigo-600 hover:bg-indigo-50">AI SEO Optimization</a>
+                    </div>
+                </div>
+                <!-- Simple Links -->
+                <a href="../case-studies.html" class="text-gray-600 hover:text-indigo-600">Case Studies</a>
+                <a href="../portfolio.html" class="text-gray-600 hover:text-indigo-600">Portfolio</a>
+                <a href="../about.html" class="text-gray-600 hover:text-indigo-600">About Us</a>
+                <a href="#contact" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full transition-colors cta-button">Book a Strategy Call</a>
+            </nav>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-open-button" class="md:hidden text-gray-600 hover:text-indigo-600 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay (Same as other pages for consistency) -->
+    <div id="mobile-nav" class="mobile-nav-overlay fixed inset-0 bg-white z-[100] p-4 md:hidden">
+        <div class="flex justify-between items-center mb-10">
+            <span class="text-2xl font-black text-gray-900 tracking-tighter">Menu</span>
+            <button id="mobile-menu-close-button" class="text-gray-500 hover:text-gray-900">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-2">
+            <!-- Simplified accordion for services -->
+            <div>
+                <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
+                    <span>Services</span>
+                    <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content pl-6 pt-1 space-y-2">
+                    <a href="headless-shopify-development.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Headless Development</a>
+                    <a href="shopify-seo-service.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Shopify SEO Service</a>
+                    <a href="shopify-migration-service.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Platform Migration</a>
+                    <a href="shopify-cro-service.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">CRO Service</a>
+                    <a href="#" class="nav-link block py-2 text-indigo-600 font-bold hover:bg-indigo-50 rounded-lg">AI SEO Optimization</a>
+                </div>
+            </div>
+            <a href="../case-studies.html" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Case Studies</a>
+            <a href="../portfolio.html" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Portfolio</a>
+            <a href="#contact" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Book a Call</a>
+        </nav>
+    </div>
+
+    <!-- Page Content Container -->
+    <main>
+        <!-- Hero Section: AI SEO Focus -->
+        <section id="hero" class="py-20 md:py-32 bg-white">
+            <div class="container mx-auto px-4 text-center max-w-5xl">
+                <p class="text-sm font-semibold uppercase tracking-widest text-indigo-600 mb-3">Generative Engine Optimization (GEO)</p>
+                <h1 class="text-4xl md:text-6xl font-black text-gray-900 leading-tight tracking-tighter mb-6">
+                    Future Proof Your Ranking with AI SEO Optimization
+                </h1>
+                <p class="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
+                    We transition high-growth brands from outdated SEO methods to a data-driven strategy, guaranteeing maximum visibility in **Google AI Overviews (SGE), Perplexity, and other large language models**.
+                </p>
+                <a href="#contact" class="cta-button inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-10 rounded-full text-lg shadow-lg shadow-indigo-500/50">
+                    Secure Your AI SEO Strategy
+                </a>
+            </div>
+        </section>
+
+        <!-- The Problem: The Invisibility Risk -->
+        <section id="problem" class="py-20 bg-gray-50 hidden-section">
+            <div class="container mx-auto px-4 max-w-5xl">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">
+                    The Problem: Your Content Is Being Bypassed
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="p-6 bg-white rounded-xl shadow-lg border border-gray-200 pillar-card">
+                        <div class="text-4xl mb-4 text-indigo-600">🤖</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">The Zero-Click Death</h3>
+                        <p class="text-gray-600 text-sm">AI Overviews provide instant answers, eliminating the click for 60%+ of queries. If you're not cited, you're invisible.</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-xl shadow-lg border border-gray-200 pillar-card">
+                        <div class="text-4xl mb-4 text-indigo-600">🚫</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">E-E-A-T Scrutiny</h3>
+                        <p class="text-gray-600 text-sm">AI models rigorously check for factual accuracy and author credibility (E-E-A-T). Generic content is ignored and filtered out.</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-xl shadow-lg border border-gray-200 pillar-card">
+                        <div class="text-4xl mb-4 text-indigo-600">🐌</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Legacy Tech Bottlenecks</h3>
+                        <p class="text-gray-600 text-sm">Legacy architecture or complex monolithic systems struggle with the speed and data-integrity required for GEO.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Solution: AI Search Engine Optimization (GEO Focus) -->
+        <section id="geo-solution" class="py-20 bg-white hidden-section">
+            <div class="container mx-auto px-4 max-w-5xl">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-16">
+                    Our Generative Engine Optimization (GEO) Framework
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <p class="text-xl font-semibold text-gray-800 mb-6">
+                            We don't optimize for keywords; we optimize for **citation**. Our proprietary GEO framework ensures your site is seen as the definitive, trustworthy source by every major language model.
+                        </p>
+                        <ul class="space-y-4 text-gray-700">
+                            <li class="flex items-start space-x-3">
+                                <span class="text-indigo-600 font-bold text-xl flex-shrink-0">✓</span>
+                                <span class="pt-1">**Citation Modeling:** Structuring content (lists, tables, definitions) that LLMs prefer to pull into Overviews.</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <span class="text-indigo-600 font-bold text-xl flex-shrink-0">✓</span>
+                                <span class="pt-1">**Structured Data Mastery:** Implementing advanced, clean schema markup to feed facts directly to the Knowledge Graph.</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <span class="text-indigo-600 font-bold text-xl flex-shrink-0">✓</span>
+                                <span class="pt-1">**Authority Signaling:** Enhancing author profiles and factual content to satisfy the highest E-E-A-T standards.</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <span class="text-indigo-600 font-bold text-xl flex-shrink-0">✓</span>
+                                <span class="pt-1">**Real-Time Data Feeds:** Connecting product and knowledge sources securely to ensure AI models always reference fresh, accurate data.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img src="https://placehold.co/600x400/e0e7ff/4f46e5?text=AI+Search+Citation+Strategy" alt="Diagram showing content feeding into AI Overviews" class="rounded-xl shadow-2xl w-full">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section: Winning on Key AI Surfaces -->
+        <section id="ai-surfaces" class="py-20 bg-gray-100 hidden-section">
+            <div class="container mx-auto px-4 max-w-6xl">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">
+                    Winning the Generative War: Ranking on Key AI Surfaces
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Google AI Overview (SGE) -->
+                    <div class="p-8 bg-white rounded-xl shadow-lg border-t-4 border-indigo-600 pillar-card">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3 flex items-center">
+                            <span class="mr-2">G</span> Google AI Overview
+                        </h3>
+                        <p class="text-gray-600 mb-4">Focus: **Topical Authority & Factual Clarity**</p>
+                        <ul class="text-sm text-gray-700 space-y-2">
+                            <li>Optimized for **concise, direct answers** (the core of the snippet).</li>
+                            <li>Targeting $\text{H}2$ and $\text{H}3$ headings with **question-based syntax**.</li>
+                            <li>Deployment of **Article and FAQ Schema** to feed structured data directly.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Perplexity -->
+                    <div class="p-8 bg-white rounded-xl shadow-lg border-t-4 border-indigo-600 pillar-card">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3 flex items-center">
+                            <span class="mr-2">P</span> Perplexity & Answer Engines
+                        </h3>
+                        <p class="text-gray-600 mb-4">Focus: **Depth, Freshness & Citation Diversity**</p>
+                        <ul class="text-sm text-gray-700 space-y-2">
+                            <li>Content strategy built on **in-depth pillar guides** (2,000+ words).</li>
+                            <li>Prioritize **recent and updated statistics** with clear source attribution.</li>
+                            <li>Building authority signals via **citations from third-party experts** (Digital PR).</li>
+                        </ul>
+                    </div>
+
+                    <!-- ChatGPT / LLMs -->
+                    <div class="p-8 bg-white rounded-xl shadow-lg border-t-4 border-indigo-600 pillar-card">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3 flex items-center">
+                            <span class="mr-2">C</span> ChatGPT & Enterprise LLMs
+                        </h3>
+                        <p class="text-gray-600 mb-4">Focus: **Context, Brand Voice & Data Feeds**</p>
+                        <ul class="text-sm text-gray-700 space-y-2">
+                            <li>Training your **brand's unique voice** into generative content creation.</li>
+                            <li>Ensuring product/service facts are available via **API/data connections** for LLM grounding.</li>
+                            <li>Optimizing content for **semantic relevance** beyond simple keywords.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Case Studies & Trust Section -->
+        <section id="proof" class="py-20 bg-white hidden-section">
+            <div class="container mx-auto px-4 max-w-5xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Proven Results in the Age of AI Search</h2>
+                    <p class="text-lg text-gray-600 mt-3 max-w-3xl mx-auto">We measure success by SGE citation rate, not just blue link ranking.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="bg-indigo-50 p-6 rounded-xl shadow-md">
+                        <p class="text-5xl font-black text-indigo-600 mb-1">94%</p>
+                        <p class="text-lg font-semibold text-gray-800">SGE Citation Rate Improvement</p>
+                        <p class="text-sm text-gray-600 mt-1">Achieved for a high-volume B2B data vendor.</p>
+                    </div>
+                    <div class="bg-indigo-50 p-6 rounded-xl shadow-md">
+                        <p class="text-5xl font-black text-indigo-600 mb-1">170%</p>
+                        <p class="text-lg font-semibold text-gray-800">Traffic Quality Increase</p>
+                        <p class="text-sm text-gray-600 mt-1">Higher-intent traffic from AI-grounded searches.</p>
+                    </div>
+                    <div class="bg-indigo-50 p-6 rounded-xl shadow-md">
+                        <p class="text-5xl font-black text-indigo-600 mb-1">Top 3</p>
+                        <p class="text-lg font-semibold text-gray-800">Positions Secured</p>
+                        <p class="text-sm text-gray-600 mt-1">Average ranking for key informational search queries.</p>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                    <a href="../case-studies.html" class="inline-block text-indigo-600 hover:text-indigo-800 font-bold text-lg border-b-2 border-indigo-600 hover:border-indigo-800 pb-1">Read All Our Generative SEO Success Stories &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- FAQ Section: Technical and Strategic -->
+        <section id="faq" class="py-20 bg-gray-50 hidden-section">
+            <div class="container mx-auto px-4 max-w-6xl">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Expert Answers: AI SEO Strategy Explained</h2>
+                    <p class="text-lg text-gray-600 mt-3 max-w-3xl mx-auto">Clear answers to the most complex questions about future-proofing your search ranking.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Column 1: Technical & Platform -->
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-gray-800 border-b pb-2 mb-4 border-gray-300">Technical Foundation</h3>
+                        <!-- FAQ 1 -->
+                        <div class="bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <button class="w-full flex justify-between items-center p-5 text-left font-semibold text-gray-800 accordion-button">
+                                <span>Does my monolithic architecture handle AI SEO?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-5 pb-5">
+                                <p class="text-gray-600 text-sm">Monolithic systems often struggle with the speed and granular data access AI requires. We start with a technical audit to identify bottlenecks (code bloat, slow APIs) that prevent high Core Web Vitals scores and clean Schema implementation, both critical for GEO.</p>
+                            </div>
+                        </div>
+                        <!-- FAQ 2 -->
+                        <div class="bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <button class="w-full flex justify-between items-center p-5 text-left font-semibold text-gray-800 accordion-button">
+                                <span>How important is Schema Markup for AI Overviews?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-5 pb-5">
+                                <p class="text-gray-600 text-sm">Schema Markup (structured data) is essential. It feeds facts and relationships directly to the search engine’s Knowledge Graph, which AI models use as a source of truth. Without clean, validated Schema, your data is much less likely to be cited by the AI.</p>
+                            </div>
+                        </div>
+                        <!-- FAQ 3 -->
+                        <div class="bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <button class="w-full flex justify-between items-center p-5 text-left font-semibold text-gray-800 accordion-button">
+                                <span>What is the role of speed (Core Web Vitals)?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-5 pb-5">
+                                <p class="text-gray-600 text-sm">High speed is non-negotiable. Google's AI favors a smooth user experience. We optimize for Core Web Vitals to ensure your site is fast, stable, and responsive, improving both traditional rankings and AI citation probability.</p>
+                            </div>
+                        </div>
+                        <!-- FAQ 4 -->
+                        <div class="bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <button class="w-full flex justify-between items-center p-5 text-left font-semibold text-gray-800 accordion-button">
+                                <span>Do I need to change my CMS for AI SEO?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-5 pb-5">
+                                <p class="text-gray-600 text-sm">Not necessarily. If your content management system (CMS) offers robust API access and flexible content modeling, we can optimize it. If it’s overly restrictive, we may recommend a shift towards a headless or composable architecture for long-term GEO success.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Content & Strategy -->
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-gray-800 border-b pb-2 mb-4 border-gray-300">Content & Strategy</h3>
+                        <!-- FAQ 5 -->
+                        <div class="bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <button class="w-full flex justify-between items-center p-5 text-left font-semibold text-gray-800 accordion-button">
+                                <span>Should I use AI to write all my content now?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-5 pb-5">
+                                <p class="text-gray-600 text-sm">AI is a powerful assistant, not a replacement. Generative content must be reviewed, edited, and infused with human Experience (the first 'E' of E-E-A-T) and unique data. We use AI for scaling drafts and optimization, but human experts provide the authority needed for citation.</p>
+                            </div>
+                        </div>
+                        <!-- FAQ 6 -->
+                        <div class="bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <button class="w-full flex justify-between items-center p-5 text-left font-semibold text-gray-800 accordion-button">
+                                <span>How do you find keywords in an AI-driven world?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-5 pb-5">
+                                <p class="text-gray-600 text-sm">We shift from simple keywords to **topic authority modeling**. We use advanced tools to identify user *intent gaps* and target long-tail, complex questions the AI struggles to answer, positioning your content as the definitive, easy-to-summarize source.</p>
+                            </div>
+                        </div>
+                        <!-- FAQ 7 -->
+                        <div class="bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <button class="w-full flex justify-between items-center p-5 text-left font-semibold text-gray-800 accordion-button">
+                                <span>What is the biggest change to content formatting?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-5 pb-5">
+                                <p class="text-gray-600 text-sm">Clarity and structure. AI models prefer numbered lists, tables, concise definitions, and clear $\text{H}2$/$\text{H}3$ headings. Content must be easily scannable and chunked so the AI can pull out exact answers for its summary. We rewrite content for machine readability first.</p>
+                            </div>
+                        </div>
+                        <!-- FAQ 8 -->
+                        <div class="bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <button class="w-full flex justify-between items-center p-5 text-left font-semibold text-gray-800 accordion-button">
+                                <span>Does link building still matter in AI SEO?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-5 pb-5">
+                                <p class="text-gray-600 text-sm">Absolutely. High-authority backlinks are the foundation of Authoritativeness (the 'A' in E-E-A-T). They validate your expertise to both Google's core algorithm and the AI models that decide which sources are credible enough to cite.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 3: The Aarry Advantage -->
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-gray-800 border-b pb-2 mb-4 border-gray-300">The Aarry Advantage</h3>
+                        <!-- FAQ 9 -->
+                        <div class="bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <button class="w-full flex justify-between items-center p-5 text-left font-semibold text-gray-800 accordion-button">
+                                <span>Why Aarry over a traditional SEO agency?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-5 pb-5">
+                                <p class="text-gray-600 text-sm">Traditional agencies are playing catch-up. Aarry operates strictly on the GEO framework, focusing on the technical and content criteria needed for AI Overviews. We build scalable, future-proof strategies rather than outdated keyword volume reports.</p>
+                            </div>
+                        </div>
+                        <!-- FAQ 10 -->
+                        <div class="bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <button class="w-full flex justify-between items-center p-5 text-left font-semibold text-gray-800 accordion-button">
+                                <span>What AI SEO tools do you integrate and use?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-5 pb-5">
+                                <p class="text-gray-600 text-sm">We use enterprise-grade tools like **Semrush AI Toolkit** (for predictive analysis), **Clearscope/MarketMuse** (for content depth and E-E-A-T scoring), and specialized **Schema Validators** to ensure technical excellence and competitive intelligence.</p>
+                            </div>
+                        </div>
+                        <!-- FAQ 11 -->
+                        <div class="bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <button class="w-full flex justify-between items-center p-5 text-left font-semibold text-gray-800 accordion-button">
+                                <span>How long does it take to see GEO results?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-5 pb-5">
+                                <p class="text-gray-600 text-sm">Technical foundation fixes (Schema, Speed) show impact in 1-2 months. Securing consistent AI Overview citations and building topical authority typically takes 4-6 months, but these results are more durable and provide a higher quality of traffic.</p>
+                            </div>
+                        </div>
+                        <!-- FAQ 12 -->
+                        <div class="bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <button class="w-full flex justify-between items-center p-5 text-left font-semibold text-gray-800 accordion-button">
+                                <span>What is the first step in starting our GEO project?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-5 pb-5">
+                                <p class="text-gray-600 text-sm">It begins with a comprehensive **Technical and Content Intelligence Audit**. We use AI to crawl your site, benchmark against top GEO competitors, and deliver a precise roadmap of the technical and content gaps preventing you from being cited by generative search engines.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 bg-indigo-600 hidden-section">
+            <div class="container mx-auto px-4 text-center">
+                <div class="max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Secure Your Future Rank?</h2>
+                    <p class="text-xl text-indigo-100 mb-8">Schedule a complimentary, no-obligation strategy call to discuss your platform and how we can achieve top AI citations.</p>
+                    <a href="https://calendly.com/kaocher/meeting" target="_blank" rel="noopener noreferrer" class="cta-button inline-block bg-white hover:bg-gray-200 text-indigo-600 font-bold py-4 px-10 rounded-full text-lg">
+                        Book Your Free GEO Strategy Session
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Consistent across all Aarry Limited pages) -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+            <div>
+                <h3 class="text-2xl font-black tracking-tighter mb-4">Aarry.</h3>
+                <p class="text-gray-400">Your global partner in strategic digital growth. We serve clients from our offices in Dhaka and Charlotte.</p>
+                <div class="flex justify-center md:justify-start space-x-4 mt-6">
+                    <a href="https://www.linkedin.com/company/aarry" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.381 1.11-2.5 2.48-2.5s2.48 1.119 2.48 2.5zm.02 4.5h-4.96v16h4.96v-16zm-2.47-2.93c-1.365 0-2.47 1.105-2.47 2.47s1.105 2.47 2.47 2.47 2.47-1.105 2.47-2.47-1.105-2.47-2.47-2.47zm7.52 1.93h-4.97v16h4.97v-8.398c0-4.664 6.726-4.484 6.726 0v8.398h4.97c0-7.828-8.117-7.534-11.72-4.104v4.104z"/></svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.795-1.574 2.164-2.722-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.795 6.045-4.091-.205-7.719-2.164-10.124-5.118-.424.767-.661 1.65-.661 2.641 0 1.781.954 3.376 2.41 4.266-.883-.023-1.715-.286-2.43-.668v.039c0 3.26 2.31 5.973 5.378 6.6-.484.135-.992.145-1.503.045.845 2.513 3.492 4.363 6.64 4.363 3.71 0 6.792-2.583 6.792-4.593 0-.34-.05-.678-.1-.998 1.105-.769 2.062-1.737 2.812-2.845z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Core Services</h3>
+                <ul class="space-y-3">
+                    <li><a href="headless-shopify-development.html" class="text-gray-400 hover:text-white transition-colors">Headless Development</a></li>
+                    <li><a href="shopify-seo-service.html" class="text-gray-400 hover:text-white transition-colors">Shopify SEO Service</a></li>
+                    <li><a href="shopify-cro-service.html" class="text-gray-400 hover:text-white transition-colors">Conversion Optimization</a></li>
+                    <li><a href="shopify-migration-service.html" class="text-gray-400 hover:text-white transition-colors">Platform Migration</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">AI Focus</h3>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Generative Engine Opt. (GEO)</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">E-E-A-T Audits</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Structured Data Consulting</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Connect</h3>
+                <ul class="space-y-3">
+                    <li><a href="mailto:info@aarry.org" class="text-gray-400 hover:text-white transition-colors">info@aarry.org</a></li>
+                    <li><p class="text-gray-400">+880 (17) 7751-0221</p></li>
+                    <li><p class="text-gray-400">Dhaka / Charlotte</p></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-12 container mx-auto px-4 text-center border-t border-gray-700 pt-8">
+            <p class="text-gray-500">&copy; <span id="year"></span> Aarry Limited. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.body;
+
+            // --- Mobile Menu Handler ---
+            const mobileNav = document.getElementById('mobile-nav');
+            const openNavButton = document.getElementById('mobile-menu-open-button');
+            const closeNavButton = document.getElementById('mobile-menu-close-button');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            const openMobileNav = () => { mobileNav.classList.add('open'); body.classList.add('overflow-hidden'); };
+            const closeMobileNav = () => { mobileNav.classList.remove('open'); body.classList.remove('overflow-hidden'); };
+
+            openNavButton.addEventListener('click', openMobileNav);
+            closeNavButton.addEventListener('click', closeMobileNav);
+            navLinks.forEach(link => link.addEventListener('click', closeMobileNav));
+
+            // --- Accordion Handler (Updated for elegance) ---
+            const accordionButtons = document.querySelectorAll('.accordion-button, .mobile-accordion-button');
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('svg');
+                    const isOpening = content.classList.toggle('open');
+
+                    // Close others in the same column/parent
+                    const parent = button.closest('.space-y-4');
+                    if(parent) {
+                        parent.querySelectorAll('.accordion-content.open').forEach(openContent => {
+                            if (openContent !== content) {
+                                openContent.classList.remove('open');
+                                openContent.style.maxHeight = '0';
+                                const openIcon = openContent.previousElementSibling.querySelector('svg');
+                                if (openIcon) { openIcon.classList.remove('rotate-180'); }
+                            }
+                        });
+                    }
+
+                    if (icon) { icon.classList.toggle('rotate-180'); }
+                    content.style.maxHeight = isOpening ? content.scrollHeight + 'px' : '0';
+                });
+            });
+
+            // --- CTA Smooth Scroll Handler ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // --- Animate Sections on Scroll ---
+            const hiddenSections = document.querySelectorAll('.hidden-section');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('open');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            hiddenSections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+
+
+            // --- Dynamic Year in Footer ---
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
