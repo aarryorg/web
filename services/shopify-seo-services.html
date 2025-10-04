@@ -45,18 +45,7 @@
             border-left: 5px solid #4f46e5; /* Indigo accent */
             padding-left: 1rem;
         }
-        .loading-animation {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            border-top: 4px solid #4f46e5; /* Indigo spinner */
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        /* Removed loading animation styles as AI section is gone */
 
         /* Mobile adjustments from previous iteration */
         @media (max-width: 640px) {
@@ -88,6 +77,17 @@
         .accordion-content.open {
             max-height: 2000px; 
         }
+        .client-logo-item {
+            filter: grayscale(100%) opacity(70%);
+            transition: all 0.3s;
+        }
+        .client-logo-item:hover {
+            filter: grayscale(0%) opacity(100%);
+        }
+        /* NEW FAQ STYLES */
+        .faq-category {
+            border: 1px solid #e0e7ff; /* Light Indigo border */
+        }
     </style>
 
     <!-- SEO Schema Markup (Updated for Service Page) -->
@@ -104,6 +104,40 @@
         "name": "Aarry Limited",
         "url": "https://www.aarry.org"
       }
+    }
+    </script>
+    
+    <!-- FAQ Schema Markup (NEW) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long does it take to see results from Shopify SEO?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "While technical fixes and on-page optimization show immediate positive shifts (within 1-2 months), substantial organic traffic and ranking improvements typically begin within 4 to 6 months. Achieving top positions on highly competitive keywords usually takes 9-12 months of consistent effort and authority building."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need Shopify Plus for advanced SEO features?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Shopify Plus offers powerful advantages, particularly in customizing the checkout process and accessing advanced API calls. However, our core technical SEO service addresses most critical ranking factors (speed, canonicalization, schema) regardless of whether you are on the Standard or Plus plan. Plus is highly recommended for high-volume, international merchants."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the most critical technical SEO issue on Shopify?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The most common and critical issue is **duplicate content** created by the platform's collection filtering and product tagging system. We dedicate significant effort to fixing these crawl budget and indexation issues using advanced canonical tag implementation and structured site architecture."
+          }
+        }
+      ]
     }
     </script>
 </head>
@@ -149,8 +183,8 @@
                     <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div class="accordion-content pl-6 pt-1">
-                    <!-- Linking to the internal AI assistant section -->
-                    <a href="#ai-assistant" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">AI Content Assistant (On this page)</a>
+                    <!-- Linking to the internal FAQ section which contains rich content -->
+                    <a href="#faq" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Shopify SEO FAQs</a>
                     <a href="#" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">AI Web Check</a>
                     <a href="#" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">AI Landing Page</a>
                 </div>
@@ -240,6 +274,21 @@
             </div>
         </section>
 
+        <!-- NEW CLIENT LOGOS STRIP (E-A-T) -->
+        <section class="py-12 bg-gray-100 border-t border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p class="text-gray-500 font-semibold uppercase tracking-widest mb-6">Brands Trust Our Shopify SEO Expertise</p>
+                <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
+                    <!-- Simulated high-end/large brand logos for E-A-T -->
+                    <img src="https://placehold.co/100x30/ffffff/4f46e5?text=DTC+Brand" alt="DTC Brand Logo" class="client-logo-item h-7">
+                    <img src="https://placehold.co/100x30/ffffff/4f46e5?text=Luxury+Goods" alt="Luxury Goods Logo" class="client-logo-item h-7">
+                    <img src="https://placehold.co/100x30/ffffff/4f46e5?text=Health+Co" alt="Health Co Logo" class="client-logo-item h-7">
+                    <img src="https://placehold.co/100x30/ffffff/4f46e5?text=Fashion+Retailer" alt="Fashion Retailer Logo" class="client-logo-item h-7">
+                    <img src="https://placehold.co/100x30/ffffff/4f46e5?text=C+P+G" alt="CPG Brand Logo" class="client-logo-item h-7">
+                </div>
+            </div>
+        </section>
+
         <!-- The 4-Pillar Service Process Section -->
         <section class="py-16 bg-gray-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -298,7 +347,7 @@
                             <p class="text-gray-600 mb-4">We secure high-quality links and provide crystal-clear reporting focused on revenue growth.</p>
                             <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
                                 <!-- Internal/External Linking strategy emphasized here -->
-                                <li>Strategic **High-Authority Backlink Acquisition** (Guest Posts, Resource Pages). <span class="text-xs text-gray-500">(See how our <a href="../case-studies.html" class="text-indigo-400 hover:underline">Case Studies</a> drive authority)</span></li>
+                                <li>Strategic **High-Authority Backlink Acquisition** (Guest Posts, Data Studies). <span class="text-xs text-gray-500">(See how our <a href="../case-studies.html" class="text-indigo-400 hover:underline">Case Studies</a> drive authority)</span></li>
                                 <li>Monthly reports focused on **$\text{ROI}$ and Organic Sales lift**, not just ranking fluctuations.</li>
                                 <li>Ongoing competitive analysis and strategy iteration for sustained growth.</li>
                             </ul>
@@ -314,84 +363,228 @@
             </div>
         </section>
 
-        <!-- AI Content Assistant (The App) Section -->
-        <section class="py-16 gradient-bg text-white" id="ai-assistant">
+        <!-- NEW TESTIMONIALS/SOCIAL PROOF SECTION -->
+        <section class="py-16 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center text-indigo-400 section-header">
-                    🚀 AI Content Assistant: Your Future Content Engine
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-header">
+                    What Our Clients Say About Our SEO
                 </h2>
-                <p class="text-lg text-gray-300 mb-8 text-center max-w-3xl mx-auto">
-                    Use our exclusive tool to instantly generate high-quality, SEO-focused content snippets (FAQs, definitions, quick tips) for your site. Powered by the Gemini API and grounded with real-time Google Search data.
-                </p>
-
-                <div class="bg-gray-800 p-8 rounded-xl shadow-2xl">
-                    <div class="mb-6">
-                        <label for="content-prompt" class="block text-lg font-medium text-white mb-2">
-                            What content do you want to generate?
-                        </label>
-                        <textarea id="content-prompt" rows="3" class="w-full p-3 rounded-lg text-gray-800 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Example: Write 3 FAQs about Shopify image optimization for speed."></textarea>
+                <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-indigo-50 p-6 rounded-xl shadow-md border-t-4 border-indigo-600">
+                        <p class="text-gray-700 italic mb-4">"Aarry's technical deep dive saved us. They fixed the duplicate content issues that three previous agencies couldn't figure out. Our non-brand organic traffic is up 120%."</p>
+                        <p class="font-semibold text-gray-900">- Jane Doe, Founder of Wellness Gear</p>
+                        <p class="text-sm text-indigo-700">Client since 2023</p>
                     </div>
-
-                    <div class="flex justify-center mb-6">
-                        <button id="generate-button" class="cta-button bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-10 rounded-xl flex items-center disabled:opacity-50" onclick="generateContent()">
-                            <span id="button-text">Generate Content</span>
-                            <div id="loading-indicator" class="loading-animation ml-3 hidden"></div>
-                        </button>
+                    <!-- Testimonial 2 -->
+                    <div class="bg-indigo-50 p-6 rounded-xl shadow-md border-t-4 border-indigo-600">
+                        <p class="text-gray-700 italic mb-4">"The strategic keyword mapping was game-changing. We moved from ranking for generic terms to dominating high-intent, long-tail product queries. The ROI speaks for itself."</p>
+                        <p class="font-semibold text-gray-900">- Alex Chen, CEO of Outdoor Tech</p>
+                        <p class="text-sm text-indigo-700">Shopify Plus Migration + SEO</p>
                     </div>
-                    
-                    <!-- Output Area -->
-                    <div id="content-output" class="mt-8">
-                        <h3 class="text-2xl font-semibold mb-4 text-white hidden" id="output-title">Generated SEO Content:</h3>
-                        <div id="generated-text" class="bg-gray-700 p-6 rounded-lg text-gray-200 whitespace-pre-wrap">
-                            <!-- AI content will appear here -->
-                        </div>
-                        
-                        <div id="sources-output" class="mt-4 text-sm text-gray-400">
-                            <!-- Grounding sources will appear here -->
-                        </div>
+                    <!-- Testimonial 3 -->
+                    <div class="bg-indigo-50 p-6 rounded-xl shadow-md border-t-4 border-indigo-600">
+                        <p class="text-gray-700 italic mb-4">"Their team is true Shopify SEO experts. We achieved page one rankings for our most competitive product category within 8 months, massively reducing our reliance on paid search."</p>
+                        <p class="font-semibold text-gray-900">- Sarah Miller, Head of E-commerce, Global Skincare</p>
+                        <p class="text-sm text-indigo-700">4x ROAS on Organic Channel</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Case Studies/E-A-T Section -->
-        <section class="py-16 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-header">
-                    📈 Real Results: Shopify SEO Success Stories
-                </h2>
-                <!-- Contextual Internal Link -->
-                <p class="text-center text-gray-500 mb-8 text-sm">
-                    Read more in our main <a href="../case-studies.html" class="text-indigo-600 hover:text-indigo-800 underline">Case Studies Portfolio</a>
-                </p>
+        <!-- NEW EXPANDED FAQ SECTION (Split into Categories for Visual Appeal and Richness) -->
+        <section id="faq" class="py-24 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 section-header">
+                        Deep Dive: Your Shopify SEO Questions Answered
+                    </h2>
+                    <p class="text-lg text-gray-600 mt-3 max-w-3xl mx-auto">We cut through the noise with practical, expert answers designed for serious e-commerce growth.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                    
+                    <!-- FAQ COLUMN 1: TECHNICAL SEO & SPEED -->
+                    <div class="space-y-4 p-6 bg-white rounded-xl shadow-lg faq-category">
+                        <h3 class="text-2xl font-bold text-indigo-600 mb-4">Technical SEO & Speed Fixes</h3>
+                        
+                        <!-- Q1.1 (Duplicate Content) -->
+                        <div class="border-b border-gray-100">
+                            <button class="w-full flex justify-between items-center py-4 text-left font-semibold accordion-button">
+                                <span>How do you eliminate Shopify's duplicate content issues?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content pb-4">
+                                <p class="text-gray-600">We utilize custom Liquid code edits to implement advanced canonical tags, control `noindex` directives on low-value pages (like filter URLs and tag pages), and optimize your robots.txt to guide Google's crawl budget effectively, preventing signal dilution.</p>
+                            </div>
+                        </div>
 
-                <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Mini Case Study 1 (Colors adapted) -->
-                    <div class="p-6 rounded-xl shadow-lg bg-indigo-50 border-l-4 border-indigo-600">
-                        <p class="text-lg font-semibold text-indigo-700 mb-2">Case Study: Luxury Watch Retailer</p>
-                        <p class="text-2xl font-bold text-gray-900 mb-4">
-                            $\text{+310\%}$ Organic Traffic Increase
-                        </p>
-                        <p class="text-gray-700">
-                            **Challenge:** Site penalized for years of duplicate manufacturer copy. <br>
-                            **Our Fix:** Full content audit, $\text{Hreflang}$ implementation for global targeting, and product page unique storytelling. <br>
-                            **Result:** 310% traffic growth in 11 months, with a **65\% reduction in ad spend.**
-                        </p>
-                        <a href="../case-studies.html#watch" class="text-indigo-600 font-semibold mt-3 inline-block hover:underline">Read Full Case Study &rarr;</a>
+                        <!-- Q1.2 (Speed Bottlenecks) -->
+                        <div class="border-b border-gray-100">
+                            <button class="w-full flex justify-between items-center py-4 text-left font-semibold accordion-button">
+                                <span>What is the biggest speed bottleneck on Shopify stores?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content pb-4">
+                                <p class="text-gray-600">It's nearly always **third-party apps and unoptimized images**. We conduct a deep audit to remove unnecessary JavaScript and CSS, lazy-load media, and ensure images are served in modern formats (like WebP) to pass Google’s Core Web Vitals tests.</p>
+                            </div>
+                        </div>
+
+                        <!-- Q1.3 (Image Optimization) -->
+                        <div class="border-b border-gray-100">
+                            <button class="w-full flex justify-between items-center py-4 text-left font-semibold accordion-button">
+                                <span>How do you optimize product images for both SEO and speed?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content pb-4">
+                                <p class="text-gray-600">We implement automatic compression and next-gen format delivery. Crucially, we write unique, keyword-rich **Alt Text** for every product image, giving search engines context and increasing visibility in Google Image Search.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Q1.4 (Structured Data) -->
+                        <div class="border-b border-gray-100">
+                            <button class="w-full flex justify-between items-center py-4 text-left font-semibold accordion-button">
+                                <span>What Structured Data is most important for a Shopify store?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content pb-4">
+                                <p class="text-gray-600">The most vital schemas are **Product, Review (AggregateRating), and Offer**, as these enable Rich Snippets in search results, boosting your Click-Through Rate (CTR) and visibility over competitors.</p>
+                            </div>
+                        </div>
+
+                        <!-- Q1.5 (Site Architecture) -->
+                        <div class="border-b border-gray-100">
+                            <button class="w-full flex justify-between items-center py-4 text-left font-semibold accordion-button">
+                                <span>Can you fix the inherent site structure issues on Shopify?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content pb-4">
+                                <p class="text-gray-600">While Shopify has a fixed URL structure (`/products/`, `/collections/`), we optimize internal linking, navigation menus, and use custom collection templates to create a logical, crawlable, and SEO-friendly hierarchy that maximizes link equity.</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <!-- FAQ COLUMN 2: CONTENT STRATEGY & AUTHORITY -->
+                    <div class="space-y-4 p-6 bg-white rounded-xl shadow-lg faq-category">
+                        <h3 class="text-2xl font-bold text-indigo-600 mb-4">Content Strategy & Authority</h3>
+                        
+                        <!-- Q2.1 (Keyword Difference) -->
+                        <div class="border-b border-gray-100">
+                            <button class="w-full flex justify-between items-center py-4 text-left font-semibold accordion-button">
+                                <span>How do you find high-converting keywords for e-commerce?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content pb-4">
+                                <p class="text-gray-600">We prioritize **transactional and commercial investigation** keywords (e.g., "best durable hiking boots" rather than "what are boots"). We analyze competitor ranking pages, search intent, and use conversion data to target long-tail terms that signal buyer readiness.</p>
+                            </div>
+                        </div>
+
+                        <!-- Q2.2 (Product Copy) -->
+                        <div class="border-b border-gray-100">
+                            <button class="w-full flex justify-between items-center py-4 text-left font-semibold accordion-button">
+                                <span>What's the difference between our copy and manufacturer copy?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content pb-4">
+                                <p class="text-gray-600">Manufacturer copy is often generic and duplicated across the internet (a major SEO fault). Our content is **100% unique**, addresses the buyer's pain points, emphasizes benefits over features, and strategically integrates keywords to satisfy the search query *and* drive the sale.</p>
+                            </div>
+                        </div>
+
+                        <!-- Q2.3 (Blogging Frequency) -->
+                        <div class="border-b border-gray-100">
+                            <button class="w-full flex justify-between items-center py-4 text-left font-semibold accordion-button">
+                                <span>How often should we blog for SEO and what should we write about?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content pb-4">
+                                <p class="text-gray-600">Quality trumps quantity. We recommend publishing 2-4 comprehensive articles (2,000+ words) monthly, focused on **topic clusters** that establish your brand as an authority (E-A-T) and internally link back to your money-making product and collection pages.</p>
+                            </div>
+                        </div>
+
+                        <!-- Q2.4 (Backlinks) -->
+                        <div class="border-b border-gray-100">
+                            <button class="w-full flex justify-between items-center py-4 text-left font-semibold accordion-button">
+                                <span>How do you secure high-quality backlinks for a Shopify store?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content pb-4">
+                                <p class="text-gray-600">We use three core strategies: **Unlinked Mention Outreach** (converting existing brand mentions into links), **Data-Driven Content** (creating research studies that bloggers cite), and highly personalized **Guest Post** pitches to industry-relevant, high-authority domains.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Q2.5 (Product Reviews) -->
+                        <div class="border-b border-gray-100">
+                            <button class="w-full flex justify-between items-center py-4 text-left font-semibold accordion-button">
+                                <span>Do product reviews really help my SEO ranking?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content pb-4">
+                                <p class="text-gray-600">Absolutely. Reviews serve two vital functions: They provide fresh, unique content to product pages, and they are essential for deploying the **AggregateRating Schema**, allowing you to display star ratings in Google search results (Rich Snippets), which dramatically increases CTR.</p>
+                            </div>
+                        </div>
+                        
                     </div>
 
-                    <!-- Mini Case Study 2 (Colors adapted) -->
-                    <div class="p-6 rounded-xl shadow-lg bg-indigo-50 border-l-4 border-indigo-600">
-                        <p class="text-lg font-semibold text-indigo-700 mb-2">Case Study: Niche Food & Beverage</p>
-                        <p class="text-2xl font-bold text-gray-900 mb-4">
-                            $\text{95\%}$ of Revenue is Now Organic
-                        </p>
-                        <p class="text-gray-700">
-                            **Challenge:** Reliance on high $\text{PPC}$ costs and lack of top-of-funnel content. <br>
-                            **Our Fix:** Technical speed optimization, building a 40-article topic cluster, and securing high-DA foodie blog backlinks. <br>
-                            **Result:** Dominated informational and commercial keywords, leading to **95\% organic revenue share.**
-                        </p>
-                        <a href="../case-studies.html#food" class="text-indigo-600 font-semibold mt-3 inline-block hover:underline">Read Full Case Study &rarr;</a>
+                    <!-- FAQ COLUMN 3: INVESTMENT & TIMELINE -->
+                    <div class="space-y-4 p-6 bg-white rounded-xl shadow-lg faq-category">
+                        <h3 class="text-2xl font-bold text-indigo-600 mb-4">Investment & Growth Timeline</h3>
+                        
+                        <!-- Q3.1 (Results Timeline) -->
+                        <div class="border-b border-gray-100">
+                            <button class="w-full flex justify-between items-center py-4 text-left font-semibold accordion-button">
+                                <span>How long until I see measurable organic sales results?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content pb-4">
+                                <p class="text-gray-600">You will see **technical improvements and indexation boosts within 1-2 months**. Significant traffic and keyword growth usually begins between 4-6 months. Our goal is to see a major impact on **organic revenue growth** starting in month 6, peaking between 9-12 months.</p>
+                            </div>
+                        </div>
+
+                        <!-- Q3.2 (Pricing) -->
+                        <div class="border-b border-gray-100">
+                            <button class="w-full flex justify-between items-center py-4 text-left font-semibold accordion-button">
+                                <span>How much does a professional Shopify SEO service cost?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content pb-4">
+                                <p class="text-gray-600">Our services range from mid-tier project fees (for technical audits and migrations) to high-value monthly retainers for comprehensive, long-term growth. We tailor our pricing based on your store's size, technical debt, and keyword competition. A transparent proposal follows our initial audit.</p>
+                            </div>
+                        </div>
+
+                        <!-- Q3.3 (Metrics) -->
+                        <div class="border-b border-gray-100">
+                            <button class="w-full flex justify-between items-center py-4 text-left font-semibold accordion-button">
+                                <span>What metrics do you report on besides organic traffic?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content pb-4">
+                                <p class="text-gray-600">We prioritize **revenue-driving metrics**: Organic Conversion Rate (CR), Revenue per Visitor (RPV), Customer Lifetime Value (CLV) from organic channels, and the true Return on Investment (ROI) of the SEO campaign. Traffic is a vanity metric; sales are reality.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Q3.4 (Shopify Plus) -->
+                        <div class="border-b border-gray-100">
+                            <button class="w-full flex justify-between items-center py-4 text-left font-semibold accordion-button">
+                                <span>Is Shopify Plus mandatory for the most advanced SEO features?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content pb-4">
+                                <p class="text-gray-600">No, but Plus gives us greater control over complex tasks like multi-region Hreflang setups and customizing the checkout domain for subdomains. For large-scale international or B2B operations, we strongly recommend leveraging the power of Plus.</p>
+                            </div>
+                        </div>
+
+                        <!-- Q3.5 (Guarantee) -->
+                        <div class="border-b border-gray-100">
+                            <button class="w-full flex justify-between items-center py-4 text-left font-semibold accordion-button">
+                                <span>Do you guarantee a \#1 ranking on Google?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content pb-4">
+                                <p class="text-gray-600">No reputable SEO agency can guarantee a #1 ranking, as the algorithm is controlled by Google. We **guarantee compliance** with all best practices, **transparent reporting**, and a **proven methodology** designed to maximize your organic revenue and minimize competitive risk.</p>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -461,129 +654,8 @@
     </footer>
 
     <script>
-        // API Key is automatically provided by the environment when left as an empty string.
-        const apiKey = ""; 
-        const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=" + apiKey;
+        // --- Shared JavaScript from Home Page (Only necessary utility functions retained) ---
         
-        const generateButton = document.getElementById('generate-button');
-        const promptInput = document.getElementById('content-prompt');
-        const generatedText = document.getElementById('generated-text');
-        const sourcesOutput = document.getElementById('sources-output');
-        const outputTitle = document.getElementById('output-title');
-        const loadingIndicator = document.getElementById('loading-indicator');
-        const buttonText = document.getElementById('button-text');
-
-        // Function to perform exponential backoff
-        async function fetchWithRetry(url, options, maxRetries = 5) {
-            for (let i = 0; i < maxRetries; i++) {
-                try {
-                    const response = await fetch(url, options);
-                    if (response.status !== 429 && response.ok) { // 429 is Rate Limit, which we retry
-                        return response;
-                    } else if (response.status === 429 && i < maxRetries - 1) {
-                        const delay = Math.pow(2, i) * 1000 + Math.random() * 1000;
-                        console.warn(`Rate limit hit. Retrying in ${Math.round(delay / 1000)}s...`);
-                        await new Promise(resolve => setTimeout(resolve, delay));
-                    } else {
-                        throw new Error(`API request failed with status ${response.status}`);
-                    }
-                } catch (error) {
-                    if (i === maxRetries - 1) {
-                        throw error;
-                    }
-                    const delay = Math.pow(2, i) * 1000 + Math.random() * 1000;
-                    console.error(`Fetch error: ${error.message}. Retrying in ${Math.round(delay / 1000)}s...`);
-                    await new Promise(resolve => setTimeout(resolve, delay));
-                }
-            }
-        }
-
-        async function generateContent() {
-            const userQuery = promptInput.value.trim();
-            if (!userQuery) {
-                generatedText.textContent = 'Please enter a topic or instruction for the AI in the text area above.';
-                outputTitle.classList.remove('hidden');
-                return;
-            }
-
-            // UI state: Disable button and show loading
-            generateButton.disabled = true;
-            buttonText.textContent = 'Generating...';
-            loadingIndicator.classList.remove('hidden');
-            generatedText.textContent = 'Thinking... analyzing real-time data...';
-            sourcesOutput.innerHTML = '';
-            outputTitle.classList.add('hidden');
-
-            // The System Prompt defines the AI's persona and rules
-            const systemPrompt = "You are a specialized Shopify SEO Content Strategist. Your task is to generate concise, high-value, and actionable content (FAQs, tips, definitions, or short blog snippets) strictly focused on helping Shopify store owners improve their SEO. Ensure the response is formatted cleanly using markdown (bold, lists, etc.) and is ready to be published. Use real-world examples or best practices where possible. All information MUST be grounded using Google Search.";
-
-            const payload = {
-                contents: [{ parts: [{ text: userQuery }] }],
-                // Enable Google Search grounding
-                tools: [{ "google_search": {} }],
-                systemInstruction: {
-                    parts: [{ text: systemPrompt }]
-                },
-            };
-
-            try {
-                const response = await fetchWithRetry(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                
-                const result = await response.json();
-                const candidate = result.candidates?.[0];
-
-                if (candidate && candidate.content?.parts?.[0]?.text) {
-                    const text = candidate.content.parts[0].text;
-                    
-                    // 1. Update generated text
-                    generatedText.textContent = text;
-                    outputTitle.classList.remove('hidden');
-
-                    // 2. Extract and display grounding sources
-                    let sourcesHtml = '<strong>Sources:</strong> ';
-                    let sources = [];
-                    const groundingMetadata = candidate.groundingMetadata;
-
-                    if (groundingMetadata && groundingMetadata.groundingAttributions) {
-                        sources = groundingMetadata.groundingAttributions
-                            .map(attribution => ({
-                                uri: attribution.web?.uri,
-                                title: attribution.web?.title,
-                            }))
-                            .filter(source => source.uri && source.title);
-                    }
-
-                    if (sources.length > 0) {
-                        // Using indigo for source links to match brand color
-                        sourcesHtml += sources.map((s, index) => 
-                            `<a href="${s.uri}" target="_blank" class="text-indigo-400 hover:underline">${s.title}</a>`
-                        ).join(' | ');
-                    } else {
-                        sourcesHtml += 'No specific search sources were used for grounding this result.';
-                    }
-                    sourcesOutput.innerHTML = sourcesHtml;
-
-                } else {
-                    generatedText.textContent = 'Error: Could not generate content. Please try a different prompt.';
-                    console.error('API response structure unexpected:', result);
-                }
-
-            } catch (error) {
-                generatedText.textContent = 'An error occurred during API communication. Please check your network or try again later.';
-                console.error('Fetch error:', error);
-            } finally {
-                // UI state: Re-enable button and hide loading
-                generateButton.disabled = false;
-                buttonText.textContent = 'Generate Content';
-                loadingIndicator.classList.add('hidden');
-            }
-        }
-        
-        // --- Shared JavaScript from Home Page ---
         document.addEventListener('DOMContentLoaded', function() {
             const body = document.body;
 
@@ -610,6 +682,21 @@
                     
                     if (icon) { icon.classList.toggle('rotate-180'); }
 
+                    // Close other open accordions in the same FAQ category column
+                    const parentColumn = button.closest('.space-y-4');
+                    if (parentColumn) {
+                        parentColumn.querySelectorAll('.accordion-content.open').forEach(otherContent => {
+                            if (otherContent !== content) {
+                                otherContent.classList.remove('open');
+                                otherContent.style.maxHeight = '0';
+                                const otherIcon = otherContent.previousElementSibling.querySelector('svg');
+                                if (otherIcon) {
+                                    otherIcon.classList.remove('rotate-180');
+                                }
+                            }
+                        });
+                    }
+
                     content.style.maxHeight = isOpening ? content.scrollHeight + 'px' : '0';
                 });
             });
@@ -627,8 +714,6 @@
                     }
                 });
             });
-            
-            // --- Animate Sections on Scroll (Removed for single page consistency, but left function logic if needed) ---
             
             // --- Dynamic Year in Footer ---
             document.getElementById('year').textContent = new Date().getFullYear();
