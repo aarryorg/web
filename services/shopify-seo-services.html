@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopify SEO Service: Rank Higher, Convert More & Skyrocket Sales</title>
+    <!-- Use Aarry's SEO Meta Data Strategy, focusing on the specific service -->
+    <meta name="description" content="Expert Shopify SEO Service by Aarry Limited. We fix technical faults (duplicate content, speed) and build domain authority to drive high-intent organic traffic and scale sales.">
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Match home page background */
+            background-color: #f8fafc;
+            color: #1a202c;
+        }
+
+        /* --- AARRY BRANDING COLORS & STYLES --- */
+        .brand-indigo { background-color: #4f46e5; }
+        .brand-gradient-text {
+            background: linear-gradient(to right, #4f46e5, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-bg {
+            /* Dark Gray to Deep Indigo Gradient for dark sections */
+            background: linear-gradient(135deg, #1e293b 0%, #312e81 100%);
+        }
+
+        /* CTA Button Styling (using Indigo shadow) */
+        .cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.39);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(79, 70, 229, 0.5);
+        }
+        
+        /* Service Page Specific Styles (Adapted from Red to Indigo) */
+        .section-header {
+            border-left: 5px solid #4f46e5; /* Indigo accent */
+            padding-left: 1rem;
+        }
+        .loading-animation {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #4f46e5; /* Indigo spinner */
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Mobile adjustments from previous iteration */
+        @media (max-width: 640px) {
+            .hero-content { padding: 1.5rem; }
+            .step-card { padding: 1.5rem; }
+            .social-ticker-wrap {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem; 
+            }
+        }
+
+        /* Mobile Nav Overrides */
+        .mobile-nav-overlay {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-nav-overlay.open {
+            transform: translateX(0);
+        }
+        body.overflow-hidden {
+            overflow: hidden;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-in-out;
+        }
+        .accordion-content.open {
+            max-height: 2000px; 
+        }
+    </style>
+
+    <!-- SEO Schema Markup (Updated for Service Page) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Shopify SEO Service: Rank Higher, Convert More & Skyrocket Sales",
+      "url": "https://www.aarry.org/services/shopify-seo-service.html",
+      "description": "Aarry Limited offers specialized Shopify SEO services, including technical audits, duplicate content fixes, speed optimization, and high-intent content strategy to drive sustainable organic sales growth.",
+      "serviceType": "Shopify SEO Service",
+      "provider": {
+        "@type": "Organization",
+        "name": "Aarry Limited",
+        "url": "https://www.aarry.org"
+      }
+    }
+    </script>
+</head>
+<body class="antialiased">
+
+    <!-- Header (Copied from home page) -->
+    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Internal link to Home -->
+            <a href="../" class="text-2xl font-black text-gray-900 tracking-tighter">Aarry Limited</a>
+            <button id="mobile-menu-open-button" class="text-gray-600 hover:text-indigo-600 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay (Copied and Links updated) -->
+    <div id="mobile-nav" class="mobile-nav-overlay fixed inset-0 bg-white z-[100] p-4">
+        <div class="flex justify-between items-center mb-10">
+            <span class="text-2xl font-black text-gray-900 tracking-tighter">Menu</span>
+            <button id="mobile-menu-close-button" class="text-gray-500 hover:text-gray-900">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-2">
+             <div>
+                <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
+                    <span>Services</span>
+                    <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content pl-6 pt-1">
+                    <!-- Links updated to use relative path to service siblings/parent folders -->
+                    <a href="../services/shopify.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">eCommerce Development</a>
+                    <!-- Highlighted current service page -->
+                    <a href="shopify-seo-service.html" class="nav-link block py-2 text-indigo-600 font-bold">Digital Marketing (Shopify SEO)</a> 
+                    <a href="../#services" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Strategy & Consulting</a>
+                </div>
+            </div>
+            <!-- Other menu items -->
+            <div>
+                <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
+                    <span>AI Tools</span>
+                    <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content pl-6 pt-1">
+                    <!-- Linking to the internal AI assistant section -->
+                    <a href="#ai-assistant" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">AI Content Assistant (On this page)</a>
+                    <a href="#" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">AI Web Check</a>
+                    <a href="#" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">AI Landing Page</a>
+                </div>
+            </div>
+            <a href="../blogs.html" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Blogs</a>
+            <a href="../case-studies.html" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Case Studies</a>
+            <a href="../portfolio.html" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Portfolio</a>
+            <a href="../#about" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">About Us</a>
+            <a href="#contact" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Book a Call</a>
+        </nav>
+    </div>
+
+    <!-- Page Content Container -->
+    <main>
+        <!-- Header & Hero Section (Content adapted) -->
+        <header class="bg-gray-900 text-white py-12 md:py-20 shadow-xl">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center hero-content">
+                <!-- H1: Primary Keyword Focus -->
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">
+                    <span class="text-indigo-400">Shopify SEO Service:</span> Rank Higher, Convert More & Skyrocket Sales
+                </h1>
+                <!-- Value Proposition (The AI Overview Hook) -->
+                <p class="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto mb-8">
+                    We deliver Shopify-specific SEO fixes and a content strategy built for e-commerce conversion, not just vanity traffic. Stop relying on expensive ads.
+                </p>
+
+                <!-- Social Proof Ticker (Simulated) -->
+                <div class="flex justify-center space-x-6 mb-10 social-ticker-wrap">
+                    <span class="text-sm font-semibold text-green-300 bg-gray-700 py-1 px-3 rounded-full">
+                        ✅ Trusted by 100+ Shopify Stores
+                    </span>
+                    <span class="text-sm font-semibold text-green-300 bg-gray-700 py-1 px-3 rounded-full">
+                        📈 Avg. Client Traffic Growth: +240%
+                    </span>
+                </div>
+                
+                <!-- Primary CTA - Using Indigo color scheme -->
+                <a href="#contact" class="inline-block cta-button bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-xl text-lg md:text-xl uppercase tracking-wider">
+                    👉 Get Your Free Shopify SEO Audit & Strategy
+                </a>
+            </div>
+        </header>
+
+        <!-- The Challenge & Your Solution (E-A-T Builder) Section -->
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Internal Link to Home Page Content (Contextual Backlink) -->
+                <p class="text-center text-gray-500 mb-8 text-sm">
+                    Part of the <a href="https://aarry.org/#services" class="text-indigo-600 hover:text-indigo-800 underline">Aarry Digital Marketing suite</a>
+                </p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center section-header">
+                    The Shopify Difference: Why Generic SEO Fails
+                </h2>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Challenge 1 (Colors adapted) -->
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-indigo-600">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">The Duplicate Content Epidemic</h3>
+                        <p class="text-gray-600">
+                            Shopify's default architecture creates hundreds of low-value, duplicate URLs (tag pages, filter variants). This confuses Google and dilutes your authority.
+                        </p>
+                        <p class="mt-3 font-semibold text-indigo-600">
+                            Our Solution: Advanced canonicalization and theme-level code customization to ensure Google only sees and ranks your money pages.
+                        </p>
+                    </div>
+                    <!-- Challenge 2 (Colors adapted) -->
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-indigo-600">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">Slow Speed from Apps & Bloated Code</h3>
+                        <p class="text-gray-600">
+                            Every app and theme customization slows your store down, crushing your Core Web Vitals score and frustrating mobile shoppers.
+                        </p>
+                        <p class="mt-3 font-semibold text-indigo-600">
+                            Our Solution: Aggressive code audit, image compression (WebP), and smart app consolidation to achieve top-tier load speeds across all devices.
+                        </p>
+                    </div>
+                    <!-- Challenge 3 (Colors adapted) -->
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-indigo-600">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">Untapped Product Page Potential</h3>
+                        <p class="text-gray-600">
+                            Copying manufacturer descriptions results in zero SEO value. Product pages must be compelling, unique, and conversion-focused.
+                        </p>
+                        <p class="mt-3 font-semibold text-indigo-600">
+                            Our Solution: Unique, buyer-persona-driven copy and implementation of Rich Snippets (Product Schema) to earn powerful search results visibility.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The 4-Pillar Service Process Section -->
+        <section class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-header">
+                    Our Proven 4-Phase Shopify SEO Process
+                </h2>
+                
+                <div class="space-y-12">
+                    <!-- Pillar 1 - Colors adapted -->
+                    <div class="step-card bg-white p-8 rounded-xl shadow-2xl flex flex-col md:flex-row items-start md:space-x-6 space-y-4">
+                        <div class="flex-shrink-0 text-indigo-600 text-4xl font-extrabold mb-2 md:mr-0">01</div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-semibold mb-2">Phase 1: Technical & Foundation Audit</h3>
+                            <p class="text-gray-600 mb-4">We start by fortifying the bedrock of your store to eliminate any ranking barriers.</p>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                                <li>Comprehensive **Core Web Vitals** performance testing and optimization.</li>
+                                <li>In-depth **Canonical & Indexation Health Check** to eliminate duplicate content.</li>
+                                <li>Full **Schema Markup Deployment** (Product, Review, Offer) for rich snippets.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 2 - Colors adapted -->
+                    <div class="step-card bg-white p-8 rounded-xl shadow-2xl flex flex-col md:flex-row items-start md:space-x-6 space-y-4">
+                        <div class="flex-shrink-0 text-indigo-600 text-4xl font-extrabold mb-2 md:mr-0">02</div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-semibold mb-2">Phase 2: High-Intent Keyword Strategy</h3>
+                            <p class="text-gray-600 mb-4">We find the keywords your customers use when they are ready to buy, not just when they are browsing.</p>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                                <li>Identification of **Transactional and Commercial** long-tail keywords.</li>
+                                <li>Competitor Content Gap Analysis to find immediate, low-hanging rank opportunities.</li>
+                                <li>**Keyword-to-Page Mapping** across all products, collections, and blog posts.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 3 - Colors adapted -->
+                    <div class="step-card bg-white p-8 rounded-xl shadow-2xl flex flex-col md:flex-row items-start md:space-x-6 space-y-4">
+                        <div class="flex-shrink-0 text-indigo-600 text-4xl font-extrabold mb-2 md:mr-0">03</div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-semibold mb-2">Phase 3: Conversion-Focused Content Execution</h3>
+                            <p class="text-gray-600 mb-4">We write, optimize, and publish content that satisfies both search engines and high-intent buyers.</p>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                                <li>Unique, **benefit-driven Product Descriptions** replacing generic manufacturer copy.</li>
+                                <li>Strategic **Internal Linking** to boost the authority of your top-selling products.</li>
+                                <li>Development of high-value **Buyer Guide & FAQ content** to dominate topic clusters.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 4 - Colors adapted -->
+                    <div class="step-card bg-white p-8 rounded-xl shadow-2xl flex flex-col md:flex-row items-start md:space-x-6 space-y-4">
+                        <div class="flex-shrink-0 text-indigo-600 text-4xl font-extrabold mb-2 md:mr-0">04</div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-semibold mb-2">Phase 4: Authority Building & Reporting</h3>
+                            <p class="text-gray-600 mb-4">We secure high-quality links and provide crystal-clear reporting focused on revenue growth.</p>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                                <!-- Internal/External Linking strategy emphasized here -->
+                                <li>Strategic **High-Authority Backlink Acquisition** (Guest Posts, Resource Pages). <span class="text-xs text-gray-500">(See how our <a href="../case-studies.html" class="text-indigo-400 hover:underline">Case Studies</a> drive authority)</span></li>
+                                <li>Monthly reports focused on **$\text{ROI}$ and Organic Sales lift**, not just ranking fluctuations.</li>
+                                <li>Ongoing competitive analysis and strategy iteration for sustained growth.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-12">
+                    <a href="#contact" class="inline-block cta-button bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-xl text-lg md:text-xl uppercase tracking-wider">
+                        Ready for a High-Performance Shopify Store?
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Content Assistant (The App) Section -->
+        <section class="py-16 gradient-bg text-white" id="ai-assistant">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center text-indigo-400 section-header">
+                    🚀 AI Content Assistant: Your Future Content Engine
+                </h2>
+                <p class="text-lg text-gray-300 mb-8 text-center max-w-3xl mx-auto">
+                    Use our exclusive tool to instantly generate high-quality, SEO-focused content snippets (FAQs, definitions, quick tips) for your site. Powered by the Gemini API and grounded with real-time Google Search data.
+                </p>
+
+                <div class="bg-gray-800 p-8 rounded-xl shadow-2xl">
+                    <div class="mb-6">
+                        <label for="content-prompt" class="block text-lg font-medium text-white mb-2">
+                            What content do you want to generate?
+                        </label>
+                        <textarea id="content-prompt" rows="3" class="w-full p-3 rounded-lg text-gray-800 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Example: Write 3 FAQs about Shopify image optimization for speed."></textarea>
+                    </div>
+
+                    <div class="flex justify-center mb-6">
+                        <button id="generate-button" class="cta-button bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-10 rounded-xl flex items-center disabled:opacity-50" onclick="generateContent()">
+                            <span id="button-text">Generate Content</span>
+                            <div id="loading-indicator" class="loading-animation ml-3 hidden"></div>
+                        </button>
+                    </div>
+                    
+                    <!-- Output Area -->
+                    <div id="content-output" class="mt-8">
+                        <h3 class="text-2xl font-semibold mb-4 text-white hidden" id="output-title">Generated SEO Content:</h3>
+                        <div id="generated-text" class="bg-gray-700 p-6 rounded-lg text-gray-200 whitespace-pre-wrap">
+                            <!-- AI content will appear here -->
+                        </div>
+                        
+                        <div id="sources-output" class="mt-4 text-sm text-gray-400">
+                            <!-- Grounding sources will appear here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Case Studies/E-A-T Section -->
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-header">
+                    📈 Real Results: Shopify SEO Success Stories
+                </h2>
+                <!-- Contextual Internal Link -->
+                <p class="text-center text-gray-500 mb-8 text-sm">
+                    Read more in our main <a href="../case-studies.html" class="text-indigo-600 hover:text-indigo-800 underline">Case Studies Portfolio</a>
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Mini Case Study 1 (Colors adapted) -->
+                    <div class="p-6 rounded-xl shadow-lg bg-indigo-50 border-l-4 border-indigo-600">
+                        <p class="text-lg font-semibold text-indigo-700 mb-2">Case Study: Luxury Watch Retailer</p>
+                        <p class="text-2xl font-bold text-gray-900 mb-4">
+                            $\text{+310\%}$ Organic Traffic Increase
+                        </p>
+                        <p class="text-gray-700">
+                            **Challenge:** Site penalized for years of duplicate manufacturer copy. <br>
+                            **Our Fix:** Full content audit, $\text{Hreflang}$ implementation for global targeting, and product page unique storytelling. <br>
+                            **Result:** 310% traffic growth in 11 months, with a **65\% reduction in ad spend.**
+                        </p>
+                        <a href="../case-studies.html#watch" class="text-indigo-600 font-semibold mt-3 inline-block hover:underline">Read Full Case Study &rarr;</a>
+                    </div>
+
+                    <!-- Mini Case Study 2 (Colors adapted) -->
+                    <div class="p-6 rounded-xl shadow-lg bg-indigo-50 border-l-4 border-indigo-600">
+                        <p class="text-lg font-semibold text-indigo-700 mb-2">Case Study: Niche Food & Beverage</p>
+                        <p class="text-2xl font-bold text-gray-900 mb-4">
+                            $\text{95\%}$ of Revenue is Now Organic
+                        </p>
+                        <p class="text-gray-700">
+                            **Challenge:** Reliance on high $\text{PPC}$ costs and lack of top-of-funnel content. <br>
+                            **Our Fix:** Technical speed optimization, building a 40-article topic cluster, and securing high-DA foodie blog backlinks. <br>
+                            **Result:** Dominated informational and commercial keywords, leading to **95\% organic revenue share.**
+                        </p>
+                        <a href="../case-studies.html#food" class="text-indigo-600 font-semibold mt-3 inline-block hover:underline">Read Full Case Study &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 bg-gray-50">
+            <div class="container mx-auto px-4 text-center">
+                <div class="max-w-2xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Ready to Elevate Your Brand?</h2>
+                    <p class="text-lg text-gray-600 mb-8">Schedule a complimentary, no-obligation strategy call to discuss your project and unlock your growth potential.</p>
+                    <a href="https://calendly.com/kaocher/meeting" target="_blank" rel="noopener noreferrer" class="cta-button inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-10 rounded-full text-lg">
+                        Book Your Free Consultation
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Copied and Links updated) -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+            <div>
+                <h3 class="text-2xl font-black tracking-tighter mb-4">Aarry.</h3>
+                <p class="text-gray-400">Your global partner in strategic Shopify growth. We serve clients from our offices in Dhaka and Charlotte.</p>
+                <!-- Social Links Added -->
+                <div class="flex justify-center md:justify-start space-x-4 mt-4">
+                    <a href="https://www.linkedin.com/company/aarry" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-indigo-500 transition-colors">
+                        <img src="https://placehold.co/24x24/1a202c/ffffff?text=L" alt="LinkedIn" class="w-6 h-6">
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-indigo-500 transition-colors">
+                         <img src="https://placehold.co/24x24/1a202c/ffffff?text=F" alt="Facebook" class="w-6 h-6">
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-indigo-500 transition-colors">
+                         <img src="https://placehold.co/24x24/1a202c/ffffff?text=I" alt="Instagram" class="w-6 h-6">
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Core Services</h3>
+                <ul class="space-y-3">
+                    <li><a href="../#services" class="text-gray-400 hover:text-white transition-colors">Shopify Plus Development</a></li>
+                    <li><a href="../#services" class="text-gray-400 hover:text-white transition-colors">Headless Commerce</a></li>
+                    <li><a href="shopify-seo-service.html" class="text-indigo-400 font-semibold hover:text-white transition-colors">Digital Marketing (SEO)</a></li>
+                    <li><a href="../#services" class="text-gray-400 hover:text-white transition-colors">Growth Consulting</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Company</h3>
+                <ul class="space-y-3">
+                    <li><a href="../#about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+                    <li><a href="../blogs.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Connect</h3>
+                <ul class="space-y-3">
+                    <li><a href="mailto:info@aarrylimited.com" class="text-gray-400 hover:text-white transition-colors">info@aarrylimited.com</a></li>
+                    <li><a href="https://www.linkedin.com/company/aarry" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-12 container mx-auto px-4 text-center border-t border-gray-700 pt-8">
+            <p class="text-gray-500">&copy; <span id="year"></span> Aarry Limited. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // API Key is automatically provided by the environment when left as an empty string.
+        const apiKey = ""; 
+        const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=" + apiKey;
+        
+        const generateButton = document.getElementById('generate-button');
+        const promptInput = document.getElementById('content-prompt');
+        const generatedText = document.getElementById('generated-text');
+        const sourcesOutput = document.getElementById('sources-output');
+        const outputTitle = document.getElementById('output-title');
+        const loadingIndicator = document.getElementById('loading-indicator');
+        const buttonText = document.getElementById('button-text');
+
+        // Function to perform exponential backoff
+        async function fetchWithRetry(url, options, maxRetries = 5) {
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (response.status !== 429 && response.ok) { // 429 is Rate Limit, which we retry
+                        return response;
+                    } else if (response.status === 429 && i < maxRetries - 1) {
+                        const delay = Math.pow(2, i) * 1000 + Math.random() * 1000;
+                        console.warn(`Rate limit hit. Retrying in ${Math.round(delay / 1000)}s...`);
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                    } else {
+                        throw new Error(`API request failed with status ${response.status}`);
+                    }
+                } catch (error) {
+                    if (i === maxRetries - 1) {
+                        throw error;
+                    }
+                    const delay = Math.pow(2, i) * 1000 + Math.random() * 1000;
+                    console.error(`Fetch error: ${error.message}. Retrying in ${Math.round(delay / 1000)}s...`);
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                }
+            }
+        }
+
+        async function generateContent() {
+            const userQuery = promptInput.value.trim();
+            if (!userQuery) {
+                generatedText.textContent = 'Please enter a topic or instruction for the AI in the text area above.';
+                outputTitle.classList.remove('hidden');
+                return;
+            }
+
+            // UI state: Disable button and show loading
+            generateButton.disabled = true;
+            buttonText.textContent = 'Generating...';
+            loadingIndicator.classList.remove('hidden');
+            generatedText.textContent = 'Thinking... analyzing real-time data...';
+            sourcesOutput.innerHTML = '';
+            outputTitle.classList.add('hidden');
+
+            // The System Prompt defines the AI's persona and rules
+            const systemPrompt = "You are a specialized Shopify SEO Content Strategist. Your task is to generate concise, high-value, and actionable content (FAQs, tips, definitions, or short blog snippets) strictly focused on helping Shopify store owners improve their SEO. Ensure the response is formatted cleanly using markdown (bold, lists, etc.) and is ready to be published. Use real-world examples or best practices where possible. All information MUST be grounded using Google Search.";
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                // Enable Google Search grounding
+                tools: [{ "google_search": {} }],
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                },
+            };
+
+            try {
+                const response = await fetchWithRetry(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                const result = await response.json();
+                const candidate = result.candidates?.[0];
+
+                if (candidate && candidate.content?.parts?.[0]?.text) {
+                    const text = candidate.content.parts[0].text;
+                    
+                    // 1. Update generated text
+                    generatedText.textContent = text;
+                    outputTitle.classList.remove('hidden');
+
+                    // 2. Extract and display grounding sources
+                    let sourcesHtml = '<strong>Sources:</strong> ';
+                    let sources = [];
+                    const groundingMetadata = candidate.groundingMetadata;
+
+                    if (groundingMetadata && groundingMetadata.groundingAttributions) {
+                        sources = groundingMetadata.groundingAttributions
+                            .map(attribution => ({
+                                uri: attribution.web?.uri,
+                                title: attribution.web?.title,
+                            }))
+                            .filter(source => source.uri && source.title);
+                    }
+
+                    if (sources.length > 0) {
+                        // Using indigo for source links to match brand color
+                        sourcesHtml += sources.map((s, index) => 
+                            `<a href="${s.uri}" target="_blank" class="text-indigo-400 hover:underline">${s.title}</a>`
+                        ).join(' | ');
+                    } else {
+                        sourcesHtml += 'No specific search sources were used for grounding this result.';
+                    }
+                    sourcesOutput.innerHTML = sourcesHtml;
+
+                } else {
+                    generatedText.textContent = 'Error: Could not generate content. Please try a different prompt.';
+                    console.error('API response structure unexpected:', result);
+                }
+
+            } catch (error) {
+                generatedText.textContent = 'An error occurred during API communication. Please check your network or try again later.';
+                console.error('Fetch error:', error);
+            } finally {
+                // UI state: Re-enable button and hide loading
+                generateButton.disabled = false;
+                buttonText.textContent = 'Generate Content';
+                loadingIndicator.classList.add('hidden');
+            }
+        }
+        
+        // --- Shared JavaScript from Home Page ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.body;
+
+            // --- Mobile Menu Handler ---
+            const mobileNav = document.getElementById('mobile-nav');
+            const openNavButton = document.getElementById('mobile-menu-open-button');
+            const closeNavButton = document.getElementById('mobile-menu-close-button');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            const openMobileNav = () => { mobileNav.classList.add('open'); body.classList.add('overflow-hidden'); };
+            const closeMobileNav = () => { mobileNav.classList.remove('open'); body.classList.remove('overflow-hidden'); };
+
+            openNavButton.addEventListener('click', openMobileNav);
+            closeNavButton.addEventListener('click', closeMobileNav);
+            navLinks.forEach(link => link.addEventListener('click', closeMobileNav));
+
+            // --- Accordion Handler ---
+            const accordionButtons = document.querySelectorAll('.accordion-button, .mobile-accordion-button');
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('svg');
+                    const isOpening = content.classList.toggle('open');
+                    
+                    if (icon) { icon.classList.toggle('rotate-180'); }
+
+                    content.style.maxHeight = isOpening ? content.scrollHeight + 'px' : '0';
+                });
+            });
+
+            // --- CTA Smooth Scroll Handler ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // --- Animate Sections on Scroll (Removed for single page consistency, but left function logic if needed) ---
+            
+            // --- Dynamic Year in Footer ---
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
