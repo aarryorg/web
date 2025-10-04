@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Cleaned Title Tag -->
+    <title>Shopify Headless Development: Lightning Speed, Unlimited UX and Growth</title>
+    
+    <meta name="description" content="Unlock peak performance with Shopify Headless Development (Hydrogen, Next.js). We build custom, fast, and flexible storefronts for enterprise-level growth.">
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1a202c;
+        }
+
+        /* --- AARRY BRANDING COLORS & STYLES --- */
+        .brand-indigo { background-color: #4f46e5; }
+        .brand-gradient-text {
+            background: linear-gradient(to right, #4f46e5, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-bg {
+            /* Dark Gray to Deep Indigo Gradient for dark sections */
+            background: linear-gradient(135deg, #1e293b 0%, #312e81 100%);
+        }
+
+        /* CTA Button Styling (using Indigo shadow) */
+        .cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.39);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(79, 70, 229, 0.5);
+        }
+        
+        /* Service Page Specific Styles */
+        .section-header {
+            border-left: 5px solid #4f46e5; /* Indigo accent */
+            padding-left: 1rem;
+        }
+        .client-logo-item {
+            filter: grayscale(100%) opacity(70%);
+            transition: all 0.3s;
+        }
+        .client-logo-item:hover {
+            filter: grayscale(0%) opacity(100%);
+        }
+        
+        /* UPDATED FAQ STYLES for better visual appeal */
+        .faq-item-card {
+            background-color: #ffffff; /* White background for clean look */
+            border: 1px solid #e0e7ff; /* Light Indigo border */
+            border-radius: 0.5rem;
+            transition: box-shadow 0.3s;
+        }
+        .faq-item-card:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Mobile Nav Overrides */
+        .mobile-nav-overlay {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-nav-overlay.open {
+            transform: translateX(0);
+        }
+        body.overflow-hidden {
+            overflow: hidden;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-in-out;
+        }
+        .accordion-content.open {
+            max-height: 2000px; 
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 640px) {
+            .hero-content { padding: 1.5rem; }
+            .step-card { padding: 1.5rem; }
+            .tech-stack-icon { width: 40px; height: 40px; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header (Consistent) -->
+    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="../" class="text-2xl font-black text-gray-900 tracking-tighter">Aarry Limited</a>
+            <button id="mobile-menu-open-button" class="text-gray-600 hover:text-indigo-600 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay (Consistent) -->
+    <div id="mobile-nav" class="mobile-nav-overlay fixed inset-0 bg-white z-[100] p-4">
+        <div class="flex justify-between items-center mb-10">
+            <span class="text-2xl font-black text-gray-900 tracking-tighter">Menu</span>
+            <button id="mobile-menu-close-button" class="text-gray-500 hover:text-gray-900">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-2">
+             <div>
+                <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
+                    <span>Services</span>
+                    <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content pl-6 pt-1">
+                    <a href="../services/shopify.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">eCommerce Development</a>
+                    <a href="../services/shopify-seo-service.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Digital Marketing (SEO)</a> 
+                    <a href="headless-shopify-development.html" class="nav-link block py-2 text-indigo-600 font-bold">Headless Commerce</a>
+                </div>
+            </div>
+            <div>
+                <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
+                    <span>AI Tools</span>
+                    <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content pl-6 pt-1">
+                    <a href="#benefits" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Headless Benefits</a>
+                    <a href="#" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">AI Web Check</a>
+                    <a href="#" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">AI Landing Page</a>
+                </div>
+            </div>
+            <a href="../blogs.html" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Blogs</a>
+            <a href="../case-studies.html" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Case Studies</a>
+            <a href="../portfolio.html" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Portfolio</a>
+            <a href="../#about" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">About Us</a>
+            <a href="#contact" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Book a Call</a>
+        </nav>
+    </div>
+
+    <!-- Page Content Container -->
+    <main>
+        <!-- Header & Hero Section -->
+        <header class="gradient-bg text-white py-16 md:py-24 shadow-xl">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center hero-content">
+                <!-- H1: Cleaned and Focused -->
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">
+                    <span class="text-indigo-400">Headless Shopify Development:</span> Lightning Speed, Unlimited UX and Growth
+                </h1>
+                <!-- Value Proposition (Hook) -->
+                <p class="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto mb-10">
+                    Escape Liquid theme limits. We architect and build high-performance, custom storefronts using **Hydrogen, Next.js, and Remix** to deliver enterprise-grade performance.
+                </p>
+                
+                <!-- Primary CTA - Using Indigo color scheme -->
+                <a href="#contact" class="inline-block cta-button bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-xl text-lg md:text-xl uppercase tracking-wider">
+                    Future-Proof My Store: Get a Headless Quote
+                </a>
+            </div>
+        </header>
+
+        <!-- THE PAIN POINTS / CHALLENGES SECTION (Data-Driven Focus) -->
+        <section class="py-16 bg-white" id="challenges">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Internal Link to another core service -->
+                <p class="text-center text-gray-500 mb-8 text-sm">
+                    Ensure your traffic converts. We integrate our **Headless Builds** with strategic <a href="shopify-cro-service.html" class="text-indigo-600 hover:text-indigo-800 underline">Shopify CRO Services</a>.
+                </p>
+                <!-- H2: Cleaned -->
+                <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center section-header">
+                    The Monoliths Limitations Why High-Growth Brands Go Headless
+                </h2>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    
+                    <!-- Pain Point 1: SLOW SPEED -->
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg border-t-4 border-indigo-600">
+                        <div class="flex items-center mb-3">
+                            <svg class="w-8 h-8 text-indigo-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <!-- H3: Cleaned -->
+                            <h3 class="text-xl font-semibold text-gray-900">Conversion Killing Site Speed</h3>
+                        </div>
+                        <p class="text-gray-600 mb-3">
+                            Traditional Liquid themes suffer from render-blocking assets and app bloat, leading to poor Core Web Vitals scores. **40% of users abandon a site if it takes more than 3 seconds to load.**
+                        </p>
+                        <p class="font-semibold text-indigo-700">
+                            Headless Solution: Our builds use Server-Side Rendering (SSR) for near-instant page loads.
+                        </p>
+                    </div>
+                    
+                    <!-- Pain Point 2: LACK OF FLEXIBILITY -->
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg border-t-4 border-indigo-600">
+                        <div class="flex items-center mb-3">
+                            <svg class="w-8 h-8 text-indigo-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.56.342 1.252.483 1.916.326z"></path></svg>
+                            <!-- H3: Cleaned -->
+                            <h3 class="text-xl font-semibold text-gray-900">Design and UX Restrictions</h3>
+                        </div>
+                        <p class="text-gray-600 mb-3">
+                            Monolithic architecture forces a uniform look. You cannot achieve unique, advanced UI animations, complex information architecture, or personalized user flows required by enterprise brands.
+                        </p>
+                        <p class="font-semibold text-indigo-700">
+                            Headless Solution: Full creative control. Build the exact shopping experience your brand demands without sacrificing Shopify's backend stability.
+                        </p>
+                    </div>
+                    
+                    <!-- Pain Point 3: INTEGRATION COMPLEXITY -->
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg border-t-4 border-indigo-600">
+                        <div class="flex items-center mb-3">
+                            <svg class="w-8 h-8 text-indigo-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                            <!-- H3: Cleaned -->
+                            <h3 class="text-xl font-semibold text-gray-900">Rigid Content and Integrations</h3>
+                        </div>
+                        <p class="text-gray-600 mb-3">
+                            Tightly coupled systems make integrating best-of-breed tools (ERP, external CMS, personalization engines) difficult and risky, leading to IT bottlenecks and slow time-to-market.
+                        </p>
+                        <p class="font-semibold text-indigo-700">
+                            Headless Solution: Composable Architecture. Connect Shopify's powerful backend to any external system via APIs for an agile, future-proof tech stack.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- TECHNOLOGY STACK SECTION (Showing Expertise) -->
+        <section class="py-16 gradient-bg text-white" id="tech-stack">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- H2: Cleaned -->
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-header">
+                    Our Headless Tech Stack: Speed UX and Simplicity
+                </h2>
+                
+                <div class="flex flex-wrap justify-center items-center gap-x-10 gap-y-6 max-w-4xl mx-auto">
+                    
+                    <!-- Stack Item 1: Shopify Plus -->
+                    <div class="text-center">
+                        <img src="https://placehold.co/50x50/1f2937/ffffff?text=S+" alt="Shopify Plus Logo" class="tech-stack-icon mx-auto rounded-lg">
+                        <p class="mt-2 text-sm font-semibold text-indigo-400">Shopify Plus</p>
+                        <p class="text-xs text-gray-400">The Commerce Engine</p>
+                    </div>
+                    
+                    <!-- Stack Item 2: Hydrogen -->
+                    <div class="text-center">
+                        <img src="https://placehold.co/50x50/1f2937/ffffff?text=H" alt="Hydrogen Logo" class="tech-stack-icon mx-auto rounded-lg">
+                        <p class="mt-2 text-sm font-semibold text-indigo-400">Hydrogen / Remix</p>
+                        <p class="text-xs text-gray-400">Performance Frontend</p>
+                    </div>
+                    
+                    <!-- Stack Item 3: Next.js -->
+                    <div class="text-center">
+                        <img src="https://placehold.co/50x50/1f2937/ffffff?text=N" alt="Next.js Logo" class="tech-stack-icon mx-auto rounded-lg">
+                        <p class="mt-2 text-sm font-semibold text-indigo-400">Next.js</p>
+                        <p class="text-xs text-gray-400">Custom React Build</p>
+                    </div>
+                    
+                    <!-- Stack Item 4: Contentful/Sanity -->
+                    <div class="text-center">
+                        <img src="https://placehold.co/50x50/1f2937/ffffff?text=CMS" alt="Contentful Logo" class="tech-stack-icon mx-auto rounded-lg">
+                        <p class="mt-2 text-sm font-semibold text-indigo-400">Contentful/Sanity</p>
+                        <p class="text-xs text-gray-400">Headless CMS</p>
+                    </div>
+                    
+                    <!-- Stack Item 5: AWS/Vercel -->
+                    <div class="text-center">
+                        <img src="https://placehold.co/50x50/1f2937/ffffff?text=CDN" alt="Vercel Logo" class="tech-stack-icon mx-auto rounded-lg">
+                        <p class="mt-2 text-sm font-semibold text-indigo-400">Vercel / CDN</p>
+                        <p class="text-xs text-gray-400">Global Deployment</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE 4-PHASE DEVELOPMENT PROCESS (E-A-T) -->
+        <section class="py-16 bg-gray-50" id="process">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- H2: Cleaned -->
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-header">
+                    Our Headless Development Roadmap
+                </h2>
+                
+                <div class="space-y-12">
+                    <!-- Phase 1: Strategy & Discovery -->
+                    <div class="step-card bg-white p-8 rounded-xl shadow-2xl flex flex-col md:flex-row items-start md:space-x-6 space-y-4">
+                        <div class="flex-shrink-0 text-indigo-600 text-4xl font-extrabold mb-2 md:mr-0">01</div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-semibold mb-2">Discovery and Architecture Planning</h3>
+                            <p class="text-gray-600 mb-4">We define the scope, map data flow, and select the optimal frontend framework (Hydrogen vs. Next.js) based on your exact performance and integration needs.</p>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                                <li>**API Strategy Mapping:** Defining all API endpoints (Shopify, CMS, ERP).</li>
+                                <li>**UX/UI Blueprinting:** Custom wireframes focused on LCP and CLS optimization.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Phase 2: Frontend Build & Integration -->
+                    <div class="step-card bg-white p-8 rounded-xl shadow-2xl flex flex-col md:flex-row items-start md:space-x-6 space-y-4">
+                        <div class="flex-shrink-0 text-indigo-600 text-4xl font-extrabold mb-2 md:mr-0">02</div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-semibold mb-2">Decoupling and Custom Frontend Build</h3>
+                            <p class="text-gray-600 mb-4">Our specialized developers build the custom storefront, connecting it flawlessly to Shopify's backend via the Storefront API and GraphQL.</p>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                                <li>**React/Remix Development:** Building a performant, mobile-first design.</li>
+                                <li>**Data Migration:** Ensuring product, customer, and order data is mapped correctly.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Phase 3: Performance & SEO Optimization -->
+                    <div class="step-card bg-white p-8 rounded-xl shadow-2xl flex flex-col md:flex-row items-start md:space-x-6 space-y-4">
+                        <div class="flex-shrink-0 text-indigo-600 text-4xl font-extrabold mb-2 md:mr-0">03</div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-semibold mb-2">Testing SEO and Launch Preparation</h3>
+                            <p class="text-gray-600 mb-4">We rigorously test all components, focusing on performance metrics and crucial SEO implementation for the new architecture.</p>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                                <!-- Crucial Internal Link -->
+                                <li>**Headless SEO Audit:** Full SSR validation and Structured Data deployment. (Learn about our dedicated <a href="shopify-seo-service.html" class="text-indigo-600 hover:underline">Shopify SEO Service</a>).</li>
+                                <li>**Security and Scalability Testing:** Stress testing the infrastructure for traffic spikes.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Phase 4: Launch & Handover -->
+                    <div class="step-card bg-white p-8 rounded-xl shadow-2xl flex flex-col md:flex-row items-start md:space-x-6 space-y-4">
+                        <div class="flex-shrink-0 text-indigo-600 text-4xl font-extrabold mb-2 md:mr-0">04</div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-semibold mb-2">Launch Monitoring and Support</h3>
+                            <p class="text-gray-600 mb-4">The store goes live, backed by continuous monitoring and a structured handover process to your internal teams.</p>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                                <li>**Post-Launch Monitoring:** Dedicated support for 90 days.</li>
+                                <li>**CRO Roadmap Delivery:** Strategy to begin optimizing your new, faster pages.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS & SOCIAL PROOF SECTION (Consistent) -->
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- H2: Cleaned -->
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-header">
+                    Client Validation: Speed UX and ROI
+                </h2>
+                <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-indigo-50 p-6 rounded-xl shadow-md border-t-4 border-indigo-600">
+                        <p class="text-gray-700 italic mb-4">"The move to headless increased our Core Web Vitals score from 'Red' to 'Green' immediately. Our mobile conversion rate jumped by 18% in the first month."</p>
+                        <p class="font-semibold text-gray-900">- Mark S., DTC Apparel Brand</p>
+                        <p class="text-sm text-indigo-700">Project: Hydrogen Headless Build</p>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="bg-indigo-50 p-6 rounded-xl shadow-md border-t-4 border-indigo-600">
+                        <p class="text-gray-700 italic mb-4">"Finally, we have full design freedom. We integrated Contentful and can now launch content-rich landing pages without touching the Shopify backend. A game changer for marketing agility."</p>
+                        <p class="font-semibold text-gray-900">- Chloe D., Home Goods Retailer</p>
+                        <p class="text-sm text-indigo-700">Project: Next.js + Contentful Integration</p>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="bg-indigo-50 p-6 rounded-xl shadow-md border-t-4 border-indigo-600">
+                        <p class="text-gray-700 italic mb-4">"The Aarry team handled the complex checkout customizations and ERP integrations seamlessly. We now have a true enterprise-grade stack without the monolithic limitations."</p>
+                        <p class="font-semibold text-gray-900">- Eric P., Global B2B Supplier</p>
+                        <p class="text-sm text-indigo-700">Project: Complex API Integration</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- REDESIGNED FAQ SECTION -->
+        <section id="faq" class="py-24 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <!-- H2: Cleaned -->
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 section-header">
+                        Headless Commerce Your Critical Questions Answered
+                    </h2>
+                    <p class="text-lg text-gray-600 mt-3 max-w-3xl mx-auto">Clear answers on performance, complexity, and the return on investment of decoupling.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                    
+                    <!-- FAQ COLUMN 1: PERFORMANCE & SEO MASTERY -->
+                    <div class="space-y-4 p-6 bg-white rounded-xl shadow-xl">
+                        <!-- H3: Cleaned -->
+                        <h3 class="text-2xl font-bold text-indigo-600 mb-4">Performance and SEO Mastery</h3>
+                        
+                        <!-- Q1.1 (Speed Guarantee) -->
+                        <div class="faq-item-card">
+                            <button class="w-full flex justify-between items-center p-4 text-left font-semibold accordion-button">
+                                <span>Does Headless actually guarantee a faster website?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-4 pb-4 border-t border-gray-100">
+                                <p class="text-gray-600">When implemented correctly, **yes**. Headless allows us to use SSR (Server-Side Rendering) and modern CDNs (Content Delivery Networks) that are fundamentally faster than monolithic themes. We aim for LCP (Largest Contentful Paint) under 1.5 seconds, which is crucial for Google rankings and conversion rates.</p>
+                            </div>
+                        </div>
+
+                        <!-- Q1.2 (SEO Complexity) -->
+                        <div class="faq-item-card">
+                            <button class="w-full flex justify-between items-center p-4 text-left font-semibold accordion-button">
+                                <span>Is not headless SEO more complex and risky?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-4 pb-4 border-t border-gray-100">
+                                <p class="text-gray-600">Only if done by inexperienced developers. We mitigate the risks by ensuring robust **Server-Side Rendering** and pre-rendering, guaranteeing search engines see a fully loaded HTML page. Our team includes dedicated SEO specialists who manage the migration and post-launch indexing, preventing rank loss.</p>
+                            </div>
+                        </div>
+
+                        <!-- Q1.3 (Hydrogen vs Next.js) -->
+                        <div class="faq-item-card">
+                            <button class="w-full flex justify-between items-center p-4 text-left font-semibold accordion-button">
+                                <span>Why choose Hydrogen/Remix over Next.js?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-4 pb-4 border-t border-gray-100">
+                                <p class="text-gray-600">While Next.js offers maximum flexibility, Hydrogen (powered by Remix) is built specifically by Shopify and provides tight integration with the Storefront API, better caching for e-commerce data, and simpler deployment via Shopify Oxygen, often resulting in lower long-term maintenance costs.</p>
+                            </div>
+                        </div>
+                        
+                         <!-- Q1.4 (Omnichannel) -->
+                        <div class="faq-item-card">
+                            <button class="w-full flex justify-between items-center p-4 text-left font-semibold accordion-button">
+                                <span>How does headless improve our omnichannel strategy?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-4 pb-4 border-t border-gray-100">
+                                <p class="text-gray-600">By decoupling the frontend, the same product and content data is pushed via API to your website, mobile app, in-store kiosk, and social channels simultaneously. This ensures a consistent, unified shopping experience everywhere your customer interacts with your brand.</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <!-- FAQ COLUMN 2: INVESTMENT & OPERATIONAL AGILITY -->
+                    <div class="space-y-4 p-6 bg-white rounded-xl shadow-xl">
+                        <!-- H3: Cleaned -->
+                        <h3 class="text-2xl font-bold text-indigo-600 mb-4">Investment and Operational Agility</h3>
+                        
+                        <!-- Q2.1 (Higher Cost) -->
+                        <div class="faq-item-card">
+                            <button class="w-full flex justify-between items-center p-4 text-left font-semibold accordion-button">
+                                <span>Is the upfront development cost significantly higher?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-4 pb-4 border-t border-gray-100">
+                                <p class="text-gray-600">The initial investment is higher than a templated theme. However, for high-growth brands, this cost is quickly offset by the **increased conversion rate, lower bounce rates, and the freedom from expensive PPC dependency** achieved by market-leading site performance.</p>
+                            </div>
+                        </div>
+
+                        <!-- Q2.2 (Maintenance) -->
+                        <div class="faq-item-card">
+                            <button class="w-full flex justify-between items-center p-4 text-left font-semibold accordion-button">
+                                <span>How complex is maintenance and feature deployment?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-4 pb-4 border-t border-gray-100">
+                                <p class="text-gray-600">While it requires specialized developers, maintenance becomes *easier* and *safer*. You can update the visual frontend without ever touching the critical Shopify backend, making rapid A/B testing and deployment of new channels risk-free and incredibly fast.</p>
+                            </div>
+                        </div>
+
+                        <!-- Q2.3 (Is Headless for Me?) -->
+                        <div class="faq-item-card">
+                            <button class="w-full flex justify-between items-center p-4 text-left font-semibold accordion-button">
+                                <span>Is Headless the right choice for every Shopify merchant?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-4 pb-4 border-t border-gray-100">
+                                <p class="text-gray-600">**No.** We only recommend headless architecture if you meet two conditions: You have **high-volume traffic** (needing speed/scalability), and you require **unique UX/design features** that standard Liquid themes cannot support (e.g., integrating AR/VR or a specialized CMS).</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Q2.4 (IT Bottleneck) -->
+                        <div class="faq-item-card">
+                            <button class="w-full flex justify-between items-center p-4 text-left font-semibold accordion-button">
+                                <span>Will Headless solve our marketing IT bottleneck?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-4 pb-4 border-t border-gray-100">
+                                <p class="text-gray-600">Yes. By using a decoupled CMS, your marketing and content teams gain full autonomy to publish, adjust, and deploy campaigns without relying on core developer support or risking the stability of the Shopify backend. Agility is the biggest operational win.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section (Consistent) -->
+        <section id="contact" class="py-24 bg-white">
+            <div class="container mx-auto px-4 text-center">
+                <div class="max-w-2xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Ready to Unlock Your Stores Peak Performance?</h2>
+                    <p class="text-lg text-gray-600 mb-8">Schedule a complimentary strategy call to determine if Headless Commerce is the right investment for your next phase of growth.</p>
+                    <a href="https://calendly.com/kaocher/meeting" target="_blank" rel="noopener noreferrer" class="cta-button inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-10 rounded-full text-lg">
+                        Book Your Free Strategy Session
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Consistent) -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+            <div>
+                <h3 class="text-2xl font-black tracking-tighter mb-4">Aarry.</h3>
+                <p class="text-gray-400">Your global partner in strategic Shopify growth. We serve clients from our offices in Dhaka and Charlotte.</p>
+                <!-- Social Links Added -->
+                <div class="flex justify-center md:justify-start space-x-4 mt-4">
+                    <a href="https://www.linkedin.com/company/aarry" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-indigo-500 transition-colors">
+                        <img src="https://placehold.co/24x24/1a202c/ffffff?text=L" alt="LinkedIn" class="w-6 h-6">
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-indigo-500 transition-colors">
+                         <img src="https://placehold.co/24x24/1a202c/ffffff?text=F" alt="Facebook" class="w-6 h-6">
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-indigo-500 transition-colors">
+                         <img src="https://placehold.co/24x24/1a202c/ffffff?text=I" alt="Instagram" class="w-6 h-6">
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Core Services</h3>
+                <ul class="space-y-3">
+                    <li><a href="../#services" class="text-gray-400 hover:text-white transition-colors">Shopify Plus Development</a></li>
+                    <li><a href="../#services" class="text-gray-400 hover:text-white transition-colors">Headless Commerce</a></li>
+                    <li><a href="shopify-seo-service.html" class="text-gray-400 hover:text-white transition-colors">Digital Marketing (SEO)</a></li>
+                    <li><a href="../#services" class="text-gray-400 hover:text-white transition-colors">Growth Consulting</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Company</h3>
+                <ul class="space-y-3">
+                    <li><a href="../#about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+                    <li><a href="../blogs.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Connect</h3>
+                <ul class="space-y-3">
+                    <li><a href="mailto:info@aarrylimited.com" class="text-gray-400 hover:text-white transition-colors">info@aarrylimited.com</a></li>
+                    <li><a href="https://www.linkedin.com/company/aarry" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-12 container mx-auto px-4 text-center border-t border-gray-700 pt-8">
+            <p class="text-gray-500">&copy; <span id="year"></span> Aarry Limited. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.body;
+
+            // --- Mobile Menu Handler ---
+            const mobileNav = document.getElementById('mobile-nav');
+            const openNavButton = document.getElementById('mobile-menu-open-button');
+            const closeNavButton = document.getElementById('mobile-menu-close-button');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            const openMobileNav = () => { mobileNav.classList.add('open'); body.classList.add('overflow-hidden'); };
+            const closeMobileNav = () => { mobileNav.classList.remove('open'); body.classList.remove('overflow-hidden'); };
+
+            openNavButton.addEventListener('click', openMobileNav);
+            closeNavButton.addEventListener('click', closeMobileNav);
+            navLinks.forEach(link => link.addEventListener('click', closeMobileNav));
+
+            // --- Accordion Handler (for FAQs) ---
+            const accordionButtons = document.querySelectorAll('.accordion-button');
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('svg');
+                    const isOpening = content.classList.toggle('open');
+                    
+                    if (icon) { icon.classList.toggle('rotate-180'); }
+
+                    // Close other open accordions in the same FAQ category column
+                    const parentColumn = button.closest('.space-y-4');
+                    if (parentColumn) {
+                        parentColumn.querySelectorAll('.accordion-content.open').forEach(otherContent => {
+                            if (otherContent !== content) {
+                                otherContent.classList.remove('open');
+                                otherContent.style.maxHeight = '0';
+                                const otherIcon = otherContent.previousElementSibling.querySelector('svg');
+                                if (otherIcon) {
+                                    otherIcon.classList.remove('rotate-180');
+                                }
+                            }
+                        });
+                    }
+
+                    content.style.maxHeight = isOpening ? content.scrollHeight + 'px' : '0';
+                });
+            });
+            
+            // --- Mobile Accordion Handler (for Mobile Menu) ---
+            const mobileAccordionButtons = document.querySelectorAll('.mobile-accordion-button');
+            mobileAccordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('svg');
+                    const isOpening = content.classList.toggle('open');
+                    
+                    if (icon) { icon.classList.toggle('rotate-180'); }
+
+                    content.style.maxHeight = isOpening ? content.scrollHeight + 'px' : '0';
+                });
+            });
+
+
+            // --- CTA Smooth Scroll Handler ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // --- Dynamic Year in Footer ---
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
