@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Shopify Developer Ecosystem: A 2025 Market & Career Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 384px;
+            }
+        }
+        .stat-card-main {
+            font-size: 4rem;
+            line-height: 1;
+            font-weight: 900;
+            color: #FFA600;
+        }
+        .flowchart-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-width: 120px;
+            padding: 1rem;
+            background-color: #ffffff;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .flowchart-arrow {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            height: 4px;
+            background-color: #d1d5db;
+        }
+        .flowchart-arrow::after {
+            content: '►';
+            color: #003F5C;
+            font-size: 1.5rem;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+        
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-black text-[#003F5C] mb-2">The Shopify Ecosystem</h1>
+            <p class="text-lg md:text-xl text-[#2F4B7C]">Your 2025 Guide to a Thriving Career in E-Commerce Development</p>
+        </header>
+        
+        <main class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <div class="lg:col-span-2 bg-white rounded-lg shadow-lg p-6 flex flex-col md:flex-row items-center justify-around text-center">
+                <div class="mb-6 md:mb-0">
+                    <h2 class="text-2xl font-bold text-[#003F5C] mb-2">Global Economic Impact</h2>
+                    <p class="stat-card-main">$630B+</p>
+                    <p class="text-lg text-[#2F4B7C]">Projected by end of 2025, fueled by millions of merchants.</p>
+                </div>
+                <div class="w-full md:w-1/3">
+                    <div class="chart-container h-64 md:h-72">
+                        <canvas id="marketShareChart"></canvas>
+                    </div>
+                </div>
+                <div class="mt-6 md:mt-0">
+                    <h2 class="text-2xl font-bold text-[#003F5C] mb-2">A Market Leader</h2>
+                    <p class="text-5xl font-black text-[#FFA600]">#2</p>
+                    <p class="text-lg text-[#2F4B7C]">Ranked globally in e-commerce platform market share.</p>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-2 bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-3xl font-bold text-[#003F5C] text-center mb-2">What Does a Shopify Expert Do?</h2>
+                <p class="text-center text-lg text-[#2F4B7C] mb-8">Shopify experts are the architects of online success, blending technical skill with business strategy to help brands grow.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-slate-50 p-6 rounded-lg text-center">
+                        <div class="text-4xl mb-3">💻</div>
+                        <h3 class="text-xl font-bold text-[#003F5C]">Strategic Development</h3>
+                        <p class="text-gray-600 mt-2">Custom theme building, app integrations, and backend logic to create unique, powerful stores.</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-lg text-center">
+                        <div class="text-4xl mb-3">🎨</div>
+                        <h3 class="text-xl font-bold text-[#003F5C]">UX/UI Design</h3>
+                        <p class="text-gray-600 mt-2">Designing intuitive, beautiful, and user-friendly storefronts that guide customers to checkout.</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-lg text-center">
+                        <div class="text-4xl mb-3">📈</div>
+                        <h3 class="text-xl font-bold text-[#003F5C]">Conversion Optimization</h3>
+                        <p class="text-gray-600 mt-2">Using data-driven A/B testing and analysis to increase the percentage of visitors who become customers.</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-lg text-center">
+                        <div class="text-4xl mb-3">⚡</div>
+                        <h3 class="text-xl font-bold text-[#003F5C]">Speed Optimization</h3>
+                        <p class="text-gray-600 mt-2">Optimizing code, images, and server requests to ensure lightning-fast page load times, crucial for SEO and sales.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-3xl font-bold text-center text-[#003F5C] mb-2">Career Paths & Demand</h2>
+                <p class="text-center text-lg text-[#2F4B7C] mb-6">The ecosystem offers diverse roles, each with high demand from a growing number of online businesses.</p>
+                <div class="chart-container">
+                    <canvas id="careerPathChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-3xl font-bold text-center text-[#003F5C] mb-2">Job Market Forecast</h2>
+                <p class="text-center text-lg text-[#2F4B7C] mb-6">The need for skilled Shopify professionals is projected to grow steadily as e-commerce continues to expand.</p>
+                <div class="chart-container">
+                    <canvas id="jobForecastChart"></canvas>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-3xl font-bold text-[#003F5C] text-center mb-2">Store Owner & Developer Collaboration</h2>
+                <p class="text-center text-lg text-[#2F4B7C] mb-8">A successful partnership follows a structured path from identifying a business need to launching a functional solution.</p>
+                <div class="flex flex-col md:flex-row items-stretch justify-center w-full space-y-4 md:space-y-0 md:space-x-4">
+                    <div class="flowchart-step">
+                        <div class="text-3xl mb-2">💡</div>
+                        <h3 class="font-bold text-[#003F5C]">Business Need</h3>
+                        <p class="text-sm text-gray-600">Store owner identifies a problem or opportunity.</p>
+                    </div>
+                    <div class="flowchart-arrow hidden md:flex"></div>
+                    <div class="flowchart-step">
+                        <div class="text-3xl mb-2">🔍</div>
+                        <h3 class="font-bold text-[#003F5C]">Discovery & Strategy</h3>
+                        <p class="text-sm text-gray-600">Developer analyzes the need and proposes a solution.</p>
+                    </div>
+                    <div class="flowchart-arrow hidden md:flex"></div>
+                    <div class="flowchart-step">
+                        <div class="text-3xl mb-2">🛠️</div>
+                        <h3 class="font-bold text-[#003F5C]">Development & Build</h3>
+                        <p class="text-sm text-gray-600">The expert codes the theme, app, or feature.</p>
+                    </div>
+                    <div class="flowchart-arrow hidden md:flex"></div>
+                    <div class="flowchart-step">
+                        <div class="text-3xl mb-2">✅</div>
+                        <h3 class="font-bold text-[#003F5C]">Testing & Launch</h3>
+                        <p class="text-sm text-gray-600">Rigorous testing followed by successful deployment.</p>
+                    </div>
+                     <div class="flowchart-arrow hidden md:flex"></div>
+                    <div class="flowchart-step">
+                        <div class="text-3xl mb-2">🚀</div>
+                        <h3 class="font-bold text-[#003F5C]">Growth & Iteration</h3>
+                        <p class="text-sm text-gray-600">Ongoing support and optimization based on data.</p>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="text-center mt-12 py-6 border-t border-slate-300">
+            <p class="text-gray-600">Infographic by Canvas Infographics. Data is illustrative and based on market projections for 2025.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const wrapLabel = (label, maxLength) => {
+            if (label.length <= maxLength) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxLength) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            lines.push(currentLine.trim());
+            return lines.filter(line => line);
+        };
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            } else {
+                return label;
+            }
+        };
+
+        const commonChartOptions = {
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#2F4B7C',
+                        font: {
+                            family: "'Inter', sans-serif"
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            }
+        };
+        
+        const brilliantBluesPalette = ['#003F5C', '#58508D', '#BC5090', '#FF6361', '#FFA600'];
+        const brilliantBluesPaletteFaded = ['rgba(0, 63, 92, 0.7)', 'rgba(88, 80, 141, 0.7)', 'rgba(188, 80, 144, 0.7)', 'rgba(255, 99, 97, 0.7)', 'rgba(255, 166, 0, 0.7)'];
+
+
+        const marketShareCtx = document.getElementById('marketShareChart').getContext('2d');
+        new Chart(marketShareCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Shopify', 'WooCommerce', 'Wix', 'Squarespace', 'Other'],
+                datasets: [{
+                    label: 'Market Share',
+                    data: [23, 21, 15, 12, 29],
+                    backgroundColor: brilliantBluesPalette,
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: { ...commonChartOptions,
+                plugins: { ...commonChartOptions.plugins,
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        });
+
+        const careerPathCtx = document.getElementById('careerPathChart').getContext('2d');
+        const careerLabels = [
+            'Freelance Store Developer', 
+            'Agency Developer', 
+            'Shopify App Developer', 
+            'Shopify Theme Developer'
+        ].map(label => wrapLabel(label, 16));
+
+        new Chart(careerPathCtx, {
+            type: 'bar',
+            data: {
+                labels: careerLabels,
+                datasets: [{
+                    label: 'Relative Demand (out of 10)',
+                    data: [9, 8, 7.5, 6],
+                    backgroundColor: brilliantBluesPaletteFaded,
+                    borderColor: brilliantBluesPalette,
+                    borderWidth: 2
+                }]
+            },
+            options: { ...commonChartOptions,
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        grid: { color: '#e0e0e0' },
+                        ticks: { color: '#2F4B7C' }
+                    },
+                    y: {
+                        grid: { display: false },
+                        ticks: { color: '#003F5C' }
+                    }
+                }
+            }
+        });
+
+        const jobForecastCtx = document.getElementById('jobForecastChart').getContext('2d');
+        new Chart(jobForecastCtx, {
+            type: 'line',
+            data: {
+                labels: ['2023', '2024', '2025', '2026', '2027'],
+                datasets: [{
+                    label: 'Projected Job Openings (in thousands)',
+                    data: [120, 135, 155, 180, 210],
+                    fill: true,
+                    backgroundColor: 'rgba(255, 166, 0, 0.2)',
+                    borderColor: '#FFA600',
+                    tension: 0.4
+                }]
+            },
+            options: { ...commonChartOptions,
+                scales: {
+                     x: {
+                        grid: { display: false },
+                        ticks: { color: '#2F4B7C' }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: '#e0e0e0' },
+                        ticks: { color: '#2F4B7C' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
