@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Search Strategy: The Seen & Trusted Brand Framework (S&T GEO)</title>
+    <meta name="description" content="Master Generative Engine Optimization (GEO) with the Seen & Trusted Framework. Learn how to earn both mentions in AI answers and citations as a credible source to multiply visibility.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1a202c;
+        }
+        /* Accordion styles retained for mobile menu consistency */
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.7s ease-in-out; }
+        .accordion-content.open { max-height: 2000px; }
+        .mobile-nav-overlay { transform: translateX(100%); transition: transform 0.3s ease-in-out; }
+        .mobile-nav-overlay.open { transform: translateX(0); }
+        body.overflow-hidden { overflow: hidden; }
+        .brand-gradient-text { background: linear-gradient(to right, #4f46e5, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .cta-button { transition: all 0.3s ease; box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.39); }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px 0 rgba(79, 70, 229, 0.5); }
+
+        /* Custom Styles for Blog Post Readability */
+        .article-content h2 {
+            font-size: 1.875rem; /* 3xl */
+            font-weight: 800; /* extra bold */
+            margin-top: 3rem; 
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #6366f1; /* indigo-500 */
+            padding-bottom: 0.5rem;
+            color: #1a202c;
+        }
+        .article-content h3 {
+            font-size: 1.5rem; /* 2xl */
+            font-weight: 700; /* bold */
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #4f46e5; /* indigo-600 */
+        }
+        .article-content p {
+            margin-bottom: 1rem;
+            line-height: 1.75;
+            color: #4a5568;
+        }
+    </style>
+
+    <!-- SEO Meta Tags & Canonicalization -->
+    <link rel="canonical" href="https://www.aarry.org/blogs/seo/ai-search-strategy-seen-trusted.html">
+    <meta property="og:title" content="AI Search Strategy: The Seen & Trusted Brand Framework (S&T GEO)" />
+    <meta property="og:description" content="The Seen & Trusted (S&T) Framework: The systematic approach to earning both mentions and citations in Google AI Overviews, ChatGPT, and other LLM platforms." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://www.aarry.org/ai-search-strategy-seen-trusted.html" />
+    <meta property="og:image" content="https://placehold.co/1200x630/4f46e5/ffffff?text=Seen+and+Trusted+Framework" />
+
+    <!-- Structured Data: Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "AI Search Strategy: The Seen & Trusted Brand Framework",
+      "image": [
+        "https://placehold.co/1200x630/4f46e5/ffffff?text=Seen+and+Trusted+Framework"
+      ],
+      "datePublished": "2025-09-26T08:00:00+06:00",
+      "dateModified": "2025-10-07T08:00:00+06:00",
+      "author": {
+        "@type": "Organization",
+        "name": "Aarry Strategy Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Aarry Limited",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://placehold.co/200x60/1a202c/ffffff?text=Aarry."
+        }
+      },
+      "description": "Master Generative Engine Optimization (GEO) with the Seen & Trusted Framework. Learn how to earn both mentions in AI answers and citations as a credible source to multiply visibility."
+    }
+    </script>
+    
+    <!-- Structured Data: FAQPage Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "What is the primary goal of the Seen & Trusted (S&T) Framework?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The goal is to move beyond simply ranking in organic search results and systematically earn both favorable brand mentions (Seen) and content citations (Trusted) within AI-generated summaries and conversations, such as Google AI Overviews and ChatGPT."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Why is AI visibility not just an SEO team's job?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AI systems pull signals from non-SEO sources, including customer reviews (Customer Success), feature transparency (Product Team), media coverage (PR Team), and community discussions (Support Team). Success requires synchronized, cross-departmental coordination."
+        }
+      }]
+    }
+    </script>
+</head>
+<body class="antialiased">
+
+    <!-- Header (Consistent) -->
+    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="https://aarry.org/" class="text-2xl font-black text-gray-900 tracking-tighter">Aarry Limited</a>
+            <button id="mobile-menu-open-button" class="text-gray-600 hover:text-indigo-600 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay (Consistent) -->
+    <div id="mobile-nav" class="mobile-nav-overlay fixed inset-0 bg-white z-[100] p-4">
+        <div class="flex justify-between items-center mb-10">
+            <span class="text-2xl font-black text-gray-900 tracking-tighter">Menu</span>
+            <button id="mobile-menu-close-button" class="text-gray-500 hover:text-gray-900">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-2">
+            <!-- Simplified mobile menu structure -->
+            <a href="blogs.html" class="nav-link block p-3 text-lg text-indigo-600 font-black bg-indigo-50 rounded-lg">Blogs</a>
+            <!-- Links for Tools, Templates, etc., would go here -->
+        </nav>
+    </div>
+
+    <!-- Page Content Container -->
+    <main>
+        <article class="py-16 md:py-20">
+            <div class="container mx-auto px-4 max-w-4xl">
+                
+                <!-- Post Metadata & Hero -->
+                <div class="text-center mb-10">
+                    <span class="inline-block bg-indigo-100 text-indigo-600 text-sm font-semibold px-3 py-1 rounded-full uppercase tracking-wide mb-3">AI & Future SEO</span>
+                    <h1 class="text-4xl md:text-5xl font-black text-gray-900 leading-tight mb-4">
+                        AI Search Strategy: The Seen & Trusted Brand Framework (S&T GEO)
+                    </h1>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-6">
+                        AI is already reshaping how buyers discover and choose brands. We propose the <span class="font-bold text-indigo-700">Seen & Trusted (S&T) Framework</span> to help your brand systematically earn both mentions and citations.
+                    </p>
+                    <div class="text-sm text-gray-500">
+                        <span class="font-semibold text-gray-800">By Aarry Strategy Team</span>
+                        <span class="mx-2">&bull;</span>
+                        <span>Sep. 26, 2025</span>
+                        <span class="mx-2">&bull;</span>
+                        <span>15 min read</span>
+                    </div>
+                </div>
+
+                <!-- Main Content Body -->
+                <div class="article-content bg-white p-6 md:p-10 rounded-xl shadow-lg">
+
+                    <!-- Hero Image for Visual Break -->
+                    <img src="https://placehold.co/1200x600/4f46e5/ffffff?text=Seen+and+Trusted+Framework+Diagram" alt="Diagram illustrating the Seen and Trusted Framework with two overlapping circles." class="w-full h-auto rounded-lg shadow-xl mb-12">
+
+
+                    <p class="lead text-lg font-medium text-gray-700">
+                        When someone asks an LLM (like ChatGPT or Google AI Mode) about your category, two things happen: your brand is <span class="font-bold">mentioned</span> in the answer, or your content is <span class="font-bold">cited</span> as proof. Most companies achieve one, but very few achieve both. The gap is the <span class="font-bold text-indigo-700">opportunity.</span>
+                    </p>
+
+                    <p>The S&T Framework helps you multiply visibility, trust, and conversions by aligning your efforts across platforms. SEO remains the foundation, but AI pulls signals from review sites, Reddit, news coverage, and support docs. When these signals are fragmented, your competitors win the conversation.</p>
+
+                    <a href="#" class="cta-button inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full text-lg mt-4 mb-8">
+                        Analyze your current AI visibility.
+                    </a>
+
+                    <!-- Section: Why AI Search Strategy Isn’t Just SEO’s Job -->
+                    <h2 id="non-seo">Why AI Search Strategy Isn’t Just SEO’s Job</h2>
+                    <p>Your content team can optimize every page on your site and still lose AI visibility to a competitor with weaker rankings but stronger <span class="font-semibold text-indigo-700">brand signals</span>. AI systems pull signals from everywhere, not just your website, mining the web for nuanced, third-party context.</p>
+                    
+                    <h3>The Distributed Signal Challenge</h3>
+                    <p>AI visibility is a product of synchronized, cross-departmental efforts. If one signal is weak, the entire brand sentiment suffers. Below are the key teams that drive the non-SEO signals AI relies on:</p>
+
+                    <div class="space-y-4 mt-6">
+                        <!-- Signal 1: Customer Success -->
+                        <div class="flex items-start p-4 bg-gray-50 rounded-xl border-l-4 border-indigo-500">
+                            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-1a1 1 0 00-1-1h-5m-1-5a4 4 0 100-8 4 4 0 000 8zm-2 1v5m-1 0a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m10-2h4"></path></svg>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Customer Success & Reviews</h4>
+                                <p class="text-sm text-gray-700">Drives high-quality, substantive reviews on G2 and Capterra. AI needs <span class="font-semibold text-indigo-700">detailed context</span> to cite when comparing products—not just ratings.</p>
+                            </div>
+                        </div>
+                        <!-- Signal 2: Product Team -->
+                        <div class="flex items-start p-4 bg-gray-50 rounded-xl border-l-4 border-indigo-500">
+                            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM7 8h10M7 12h4M7 16h4"></path></svg>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Product Team & Transparency</h4>
+                                <p class="text-sm text-gray-700">Controls whether pricing, features, and roadmaps are easily <span class="font-semibold text-indigo-700">findable</span> by the public. Hiding details leads AI to cite outdated or negative speculation from forums.</p>
+                            </div>
+                        </div>
+                        <!-- Signal 3: PR Team -->
+                        <div class="flex items-start p-4 bg-gray-50 rounded-xl border-l-4 border-indigo-500">
+                            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">PR Team & Authority Signals</h4>
+                                <p class="text-sm text-gray-700">Lands <span class="font-semibold text-indigo-700">media coverage</span> and analyst reports. These third-party mentions build the high-level trust signals AI systems use to determine a brand's authority.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Section: Playbook 1 – How to Get Seen (The Sentiment Battle) -->
+                    <h2 id="get-seen">Playbook 1 – How to Get Seen (The Sentiment Battle)</h2>
+                    <p>Getting <span class="font-bold text-indigo-700">"Seen"</span> means earning favorable mentions in AI responses without needing a direct citation link. This is the <span class="font-semibold text-indigo-700">sentiment battle</span>, where AI characterizes your brand (e.g., "affordable but limited" vs. "powerful and scalable").</p>
+
+                    <h3>The Four Drivers of Favorable Mentions</h3>
+                    <p>You must actively shape the context surrounding your brand. Here’s where AI platforms are mining for product characteristics:</p>
+
+                    <div class="grid md:grid-cols-2 gap-8 mt-8">
+                        <!-- Seen Driver 1: Review Sites -->
+                        <div class="p-6 bg-indigo-50 rounded-xl border border-indigo-200 shadow-md hover:shadow-lg transition-shadow">
+                            <svg class="w-8 h-8 text-indigo-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4m6 10v4M12 18h4m-4-6h.01M12 6h.01M6 18h.01M6 12h.01M18 6h.01M18 12h.01M12 18h.01"></path></svg>
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">Build Presence on the Right Review Sites</h4>
+                            <p class="text-gray-700 text-sm">Focus on platforms like <span class="font-semibold text-indigo-700">G2, Capterra, and Amazon</span>. Reward customers for writing reviews that are <span class="font-semibold text-indigo-700">detailed and substantive</span>—mentioning specific features, use cases, and outcomes, not just high ratings.</p>
+                        </div>
+                        <!-- Seen Driver 2: Community Discussions -->
+                        <div class="p-6 bg-indigo-50 rounded-xl border border-indigo-200 shadow-md hover:shadow-lg transition-shadow">
+                            <svg class="w-8 h-8 text-indigo-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m-4 4h4M9 10a2 2 0 100-4 2 2 0 000 4zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">Participate in Community Discussions</h4>
+                            <p class="text-gray-700 text-sm">Be <span class="font-semibold text-indigo-700">authentically present</span> on <span class="font-semibold text-indigo-700">Reddit, Quora, and Stack Overflow</span>. Answer questions, address misconceptions, and share knowledge. AI detects and prioritizes helpful, human responses over pure marketing pitches.</p>
+                        </div>
+                        <!-- Seen Driver 3: UGC and Social Proof -->
+                        <div class="p-6 bg-indigo-50 rounded-xl border border-indigo-200 shadow-md hover:shadow-lg transition-shadow">
+                            <svg class="w-8 h-8 text-indigo-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">Engineer UGC and Social Proof</h4>
+                            <p class="text-gray-700 text-sm">Encourage users to share their <span class="font-semibold text-indigo-700">wins and creative use cases</span> publicly (e.g., on LinkedIn). This real-world advocacy becomes visible training data that AI recognizes and amplifies, driving favorable sentiment.</p>
+                        </div>
+                        <!-- Seen Driver 4: Best Of Lists -->
+                        <div class="p-6 bg-indigo-50 rounded-xl border border-indigo-200 shadow-md hover:shadow-lg transition-shadow">
+                            <svg class="w-8 h-8 text-indigo-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">Secure "Best of" List Inclusions</h4>
+                            <p class="text-gray-700 text-sm">Comparison articles (Forbes, TechRadar) are key sources. Make journalists' jobs easy by providing a <span class="font-semibold text-indigo-700">dedicated press kit</span> with specs, images, and pricing. Target <span class="font-semibold text-indigo-700">category expansion</span> to multiply mentions.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Section: Playbook 2 – How to Be Trusted (The Authority Game) -->
+                    <h2 id="be-trusted">Playbook 2 – How to Be Trusted (The Authority Game)</h2>
+                    <p>The <span class="font-bold text-indigo-700">"Trusted"</span> playbook is about building the technical and factual authority necessary to be <span class="font-bold">cited</span> as evidence by AI systems. This is the <span class="font-semibold text-indigo-700">authority game</span>, where you prove you are the definitive, reliable source of information.</p>
+
+                    <h3>Five Ways to Build Citation Core Status</h3>
+                    <p>AI systems trust sources with verified information, structured data, and established credibility. You need to maximize confidence in what they are citing.</p>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+                        <!-- Trusted Driver 1: Optimize Site -->
+                        <div class="p-6 bg-gray-50 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow">
+                            <svg class="w-8 h-8 text-indigo-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">Optimize Your Official Site for AI</h4>
+                            <p class="text-gray-700 text-sm">Use <span class="font-semibold text-indigo-700">semantic HTML</span> (tables, lists, clean headings) and <span class="font-semibold text-indigo-700">Schema Markup</span> to ensure crawlers can easily parse key details. Fast, stable sites (passing Core Web Vitals) are preferred sources.</p>
+                        </div>
+                        <!-- Trusted Driver 2: Wikipedia/Knowledge Graph -->
+                        <div class="p-6 bg-gray-50 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow">
+                            <svg class="w-8 h-8 text-indigo-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.206 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.832 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.832 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.168 18 16.5 18s-3.332.477-4.5 1.253"></path></svg>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">Maintain Wikipedia & Knowledge Graph Accuracy</h4>
+                            <p class="text-gray-700 text-sm">Audit your <span class="font-semibold text-indigo-700">Wikipedia</span> and <span class="font-semibold text-indigo-700">Google Knowledge Panel</span> quarterly. Fix factual errors using credible third-party citations. This ensures AI's foundational understanding of your brand is correct.</p>
+                        </div>
+                        <!-- Trusted Driver 3: Transparent Pricing -->
+                        <div class="p-6 bg-gray-50 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow">
+                            <svg class="w-8 h-8 text-indigo-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01M12 16v-1m0 0s-2.16-1.551-3.69 1.401"></path></svg>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">Publish Transparent Pricing</h4>
+                            <p class="text-gray-700 text-sm">Hidden pricing leads AI to cite <span class="font-semibold text-indigo-700">negative speculation</span> from forums. Publish clear tier breakdowns, feature comparisons, and limitations to provide reliable, quotable data points.</p>
+                        </div>
+                        <!-- Trusted Driver 4: Documentation & FAQs -->
+                        <div class="p-6 bg-gray-50 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow">
+                            <svg class="w-8 h-8 text-indigo-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m-10-4v4m-2 4h14a2 2 0 002-2V7a2 2 0 00-2-2h-3.586a1 1 0 01-.707-.293l-1.414-1.414A1 1 0 009.586 3H5a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">Expand Documentation & FAQs</h4>
+                            <p class="text-gray-700 text-sm">AI systems seek detailed, <span class="font-semibold text-indigo-700">problem-solving content</span>. Create dedicated pages for common problems ("How to integrate X with Y") and use <span class="font-semibold text-indigo-700">HowTo/FAQ Schema</span> extensively.</p>
+                        </div>
+                        <!-- Trusted Driver 5: Original Research -->
+                        <div class="p-6 bg-gray-50 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow">
+                            <svg class="w-8 h-8 text-indigo-600 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-8v8m-4-8v8M4 16h16"></path></svg>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">Create Original Research That AI Wants to Cite</h4>
+                            <p class="text-gray-700 text-sm">Publish unique threat reports, industry surveys, or benchmark studies based on proprietary data. <span class="font-semibold text-indigo-700">Verified, quotable data</span> becomes evidence AI systems need to support their claims.</p>
+                        </div>
+                    </div>
+
+                    <!-- Section: Pulling It All Together -->
+                    <h2 id="pulling-it-together">Pulling It All Together – Running Both Playbooks</h2>
+                    <p>The <span class="font-bold text-indigo-700">Seen</span> (Sentiment) and <span class="font-bold text-indigo-700">Trusted</span> (Authority) playbooks must run simultaneously. You can't afford to wait. The brands winning AI search are testing, learning, and adjusting faster than their competition.</p>
+
+                    <h3>Three Steps to Execution: The S&T Launch Plan</h3>
+                    
+                    <div class="grid md:grid-cols-3 gap-6 mt-6">
+                        <!-- Step 1: Audit (Indigo/Purple Color Scheme) -->
+                        <div class="p-6 rounded-xl bg-indigo-50 border-t-4 border-indigo-600 shadow-lg">
+                            <div class="text-3xl font-black text-indigo-600 mb-2">1. Audit</div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">Current AI Visibility</h4>
+                            <p class="text-sm text-gray-700">Run test queries in ChatGPT and Google AI Mode for your brand, category, and problems. Note where you are <span class="text-indigo-700 font-semibold">mentioned (Seen)</span> and where you are <span class="text-indigo-700 font-semibold">cited (Trusted)</span>. Use this data to identify competitive gaps.</p>
+                        </div>
+                        <!-- Step 2: Build (Blue Color Scheme) -->
+                        <div class="p-6 rounded-xl bg-blue-50 border-t-4 border-blue-600 shadow-lg">
+                            <div class="text-3xl font-black text-blue-600 mb-2">2. Build</div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">Parallel Campaigns</h4>
+                            <p class="text-sm text-gray-700">Establish a shared, cross-departmental dashboard. While Customer Success runs review campaigns (Playbook 1), SEO/Engineering must improve site structure and docs (Playbook 2). <span class="text-blue-700 font-semibold">Coordination is the key.</span></p>
+                        </div>
+                        <!-- Step 3: Monitor (Cyan/Teal Color Scheme) -->
+                        <div class="p-6 rounded-xl bg-cyan-50 border-t-4 border-cyan-600 shadow-lg">
+                            <div class="text-3xl font-black text-cyan-600 mb-2">3. Monitor</div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">Iterate & Adapt</h4>
+                            <p class="text-sm text-gray-700">AI visibility shifts fast. Track mentions and citations monthly. If you have strong mentions but weak citations, ramp up Authority (Trusted). If you are cited but rarely mentioned, ramp up Sentiment (Seen).</p>
+                        </div>
+                    </div>
+
+
+                    <div class="mt-12 p-6 bg-indigo-50 border-l-4 border-indigo-600 rounded-lg">
+                        <p class="text-indigo-800 font-semibold text-lg">
+                            <span class="font-bold">The AI Visibility Window is Open.</span> Right now, AI visibility is anyone’s game. Move faster on the <span class="font-bold text-indigo-800">Seen & Trusted Framework</span> than established giants, and you can capture tomorrow’s buyers.
+                        </p>
+                    </div>
+
+                    <!-- FAQ Section (Drives FAQPage Schema) -->
+                    <h2 id="faq">Frequently Asked Questions about the S&T Framework</h2>
+                    <div class="max-w-4xl mx-auto space-y-4">
+                        <div class="bg-gray-50 border border-gray-200 rounded-lg">
+                            <button class="w-full flex justify-between items-center p-6 text-left font-semibold text-lg accordion-button">
+                                <span>What is the primary goal of the Seen & Trusted (S&T) Framework?</span>
+                                <svg class="w-6 h-6 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-6 pb-6">
+                                <p class="text-gray-600">The goal is to move beyond simply ranking in organic search results and systematically earn both favorable brand mentions (Seen) and content citations (Trusted) within AI-generated summaries and conversations, such as Google AI Overviews and ChatGPT.</p>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 border border-gray-200 rounded-lg">
+                            <button class="w-full flex justify-between items-center p-6 text-left font-semibold text-lg accordion-button">
+                                <span>Why is AI visibility not just an SEO team's job?</span>
+                                <svg class="w-6 h-6 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content px-6 pb-6">
+                                <p class="text-gray-600">AI systems pull signals from non-SEO sources, including customer reviews (Customer Success), feature transparency (Product Team), media coverage (PR Team), and community discussions (Support Team). Success requires synchronized, cross-departmental coordination.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <!-- Newsletter CTA Section (Consistent) -->
+        <section id="subscribe" class="py-24 bg-gray-900">
+            <div class="container mx-auto px-4 text-center">
+                <div class="max-w-2xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Get the Best Shopify Plus Insights Delivered.</h2>
+                    <p class="text-lg text-gray-400 mb-8">Join over 10,000 eCommerce leaders who receive our weekly technical and strategic updates.</p>
+                    <div class="mt-8 max-w-xl mx-auto flex flex-col md:flex-row gap-3">
+                        <input type="email" placeholder="Your work email" class="w-full p-4 border border-gray-700 bg-gray-800 text-white rounded-full focus:ring-indigo-500 focus:border-indigo-500 text-lg shadow-inner" />
+                        <button class="cta-button flex-shrink-0 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-8 rounded-full text-lg">
+                            Subscribe Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Consistent) -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+            <div>
+                <h3 class="text-2xl font-black tracking-tighter mb-4">Aarry.</h3>
+                <p class="text-gray-400">Your global partner in strategic Shopify growth. We serve clients from our offices in Dhaka and Charlotte.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Core Services</h3>
+                <ul class="space-y-3">
+                    <li><a href="services/shopify.html" class="text-gray-400 hover:text-white transition-colors">Shopify Plus Development</a></li>
+                    <li><a href="services/headless-shopify-development.html" class="text-gray-400 hover:text-white transition-colors">Headless Commerce</a></li>
+                    <li><a href="services/shopifyseo" class="text-gray-400 hover:text-white transition-colors">Digital Marketing</a></li>
+                    <li><a href="services/shopify-seo-services-plan.html" class="text-gray-400 hover:text-white transition-colors">Growth Consulting</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Company</h3>
+                <ul class="space-y-3">
+                    <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="blogs.html" class="text-indigo-400 font-bold hover:text-white transition-colors">Blog</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Connect</h3>
+                <ul class="space-y-3">
+                    <li><a href="mailto:ask@aarry.org" class="text-gray-400 hover:text-white transition-colors">ask@aarry.org</a></li>
+                    <li><a href="ttps://www.linkedin.com/company/aarry" class="text-gray-400 hover:text-white transition-colors">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-12 container mx-auto px-4 text-center border-t border-gray-700 pt-8">
+            <p class="text-gray-500">&copy; <span id="year"></span> Aarry Limited. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Accordion Handler ---
+            const accordionButtons = document.querySelectorAll('.accordion-button, .mobile-accordion-button');
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('svg');
+                    const isOpening = content.classList.toggle('open');
+                    
+                    if (icon) { icon.classList.toggle('rotate-180'); }
+
+                    content.style.maxHeight = isOpening ? content.scrollHeight + 'px' : '0';
+                });
+            });
+            // Placeholder script for functionality (omitted details for brevity, assumes existence)
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
