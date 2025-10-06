@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering AI SEO (GEO): The 3 Pillars of Generative Engine Optimization</title>
+    <meta name="description" content="Unlock high rankings in AI Overviews. This expert guide details the 3 pillars of Generative Engine Optimization (GEO): E-E-A-T, Structured Formatting, and Technical Excellence.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1a202c;
+        }
+        /* Accordion styles retained for mobile menu consistency */
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.7s ease-in-out; }
+        .accordion-content.open { max-height: 2000px; }
+        .mobile-nav-overlay { transform: translateX(100%); transition: transform 0.3s ease-in-out; }
+        .mobile-nav-overlay.open { transform: translateX(0); }
+        body.overflow-hidden { overflow: hidden; }
+        .brand-gradient-text { background: linear-gradient(to right, #4f46e5, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .cta-button { transition: all 0.3s ease; box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.39); }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px 0 rgba(79, 70, 229, 0.5); }
+
+        /* Custom Styles for Blog Post Readability */
+        .article-content h2 {
+            font-size: 1.875rem; /* 3xl */
+            font-weight: 700; /* bold */
+            margin-top: 2.5rem; /* my-10 */
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #e0e7ff; /* indigo-100 */
+            padding-bottom: 0.5rem;
+            color: #1a202c;
+        }
+        .article-content h3 {
+            font-size: 1.25rem; /* xl */
+            font-weight: 600; /* semibold */
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #4f46e5; /* indigo-600 */
+        }
+        .article-content p {
+            margin-bottom: 1rem;
+            line-height: 1.75;
+            color: #4a5568;
+        }
+        .article-content ul, .article-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        .article-content li {
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+        }
+
+    </style>
+
+    <!-- SEO Meta Tags & Canonicalization -->
+    <link rel="canonical" href="https://www.aarry.org/ai-seo-guide-geo.html">
+
+    <!-- Open Graph / Social Sharing (Critical for authority/trust signals) -->
+    <meta property="og:title" content="Mastering AI SEO (GEO): The 3 Pillars of Generative Engine Optimization" />
+    <meta property="og:description" content="Unlock high rankings in AI Overviews. This expert guide details the 3 pillars of Generative Engine Optimization (GEO): E-E-A-T, Structured Formatting, and Technical Excellence." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://www.aarry.org/ai-seo-guide-geo.html" />
+    <meta property="og:image" content="https://placehold.co/1200x630/4f46e5/ffffff?text=AI+SEO+Strategy+Pillars" />
+    <meta property="og:site_name" content="Aarry Limited" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mastering AI SEO (GEO): The 3 Pillars of Generative Engine Optimization">
+    <meta name="twitter:description" content="Unlock high rankings in AI Overviews. This expert guide details the 3 pillars of Generative Engine Optimization (GEO): E-E-A-T, Structured Formatting, and Technical Excellence.">
+    <meta name="twitter:image" content="https://placehold.co/1200x630/4f46e5/ffffff?text=AI+SEO+Strategy+Pillars">
+
+    <!-- Structured Data: Article Schema for AI/LLM Citation -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.aarry.org/ai-seo-guide-geo.html"
+      },
+      "headline": "Mastering AI SEO (GEO): The 3 Pillars of Generative Engine Optimization",
+      "image": [
+        "https://placehold.co/1200x630/4f46e5/ffffff?text=AI+SEO+Strategy+Pillars"
+      ],
+      "datePublished": "2025-10-07T08:00:00+06:00",
+      "dateModified": "2025-10-07T08:00:00+06:00",
+      "author": {
+        "@type": "Organization",
+        "name": "Aarry Strategy Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Aarry Limited",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://placehold.co/200x60/1a202c/ffffff?text=Aarry."
+        }
+      },
+      "description": "Unlock high rankings in AI Overviews. This expert guide details the 3 pillars of Generative Engine Optimization (GEO): E-E-A-T, Structured Formatting, and Technical Excellence."
+    }
+    </script>
+
+    <!-- Structured Data: FAQPage Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "What is the biggest difference between traditional SEO and GEO?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Traditional SEO focused on matching exact keywords. GEO (Generative Engine Optimization) focuses on Topical Authority and Content Structure to ensure your answers are the most comprehensive and trustworthy source for AI models to summarize and cite in conversational search results (like AI Overviews)."
+        }
+      }, {
+        "@type": "Question",
+        "name": "How often should I update content for 'Freshness'?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Content covering fast-moving topics (like AI tools or algorithm changes) should be reviewed and updated every 3-6 months. Evergreen 'Pillar' content should be fully audited and refreshed at least once a year."
+        }
+      }]
+    }
+    </script>
+</head>
+<body class="antialiased">
+
+    <!-- Header (Consistent) -->
+    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="https://aarry.org/" class="text-2xl font-black text-gray-900 tracking-tighter">Aarry Limited</a>
+            <button id="mobile-menu-open-button" class="text-gray-600 hover:text-indigo-600 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay (Consistent) -->
+    <div id="mobile-nav" class="mobile-nav-overlay fixed inset-0 bg-white z-[100] p-4">
+        <div class="flex justify-between items-center mb-10">
+            <span class="text-2xl font-black text-gray-900 tracking-tighter">Menu</span>
+            <button id="mobile-menu-close-button" class="text-gray-500 hover:text-gray-900">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-2">
+            <!-- Simplified mobile menu structure -->
+            <a href="blogs.html" class="nav-link block p-3 text-lg text-indigo-600 font-black bg-indigo-50 rounded-lg">Blogs</a>
+            <!-- Note: Full mobile menu links are omitted for brevity in this single-file update, but should match the structure in blogs.html -->
+        </nav>
+    </div>
+
+    <!-- Page Content Container -->
+    <main>
+        <article class="py-16 md:py-20">
+            <div class="container mx-auto px-4 max-w-4xl">
+                
+                <!-- Post Metadata & Hero -->
+                <div class="text-center mb-10">
+                    <span class="inline-block bg-indigo-100 text-indigo-600 text-sm font-semibold px-3 py-1 rounded-full uppercase tracking-wide mb-3">AI & Future SEO</span>
+                    <h1 class="text-4xl md:text-5xl font-black text-gray-900 leading-tight mb-4">
+                        Mastering AI SEO (GEO): The 3 Pillars of Generative Engine Optimization
+                    </h1>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-6">
+                        The future of search is conversational. Here's how to structure your content to be instantly understood, trusted, and **cited** by Large Language Models and AI Overviews.
+                    </p>
+                    <div class="text-sm text-gray-500">
+                        <span class="font-semibold text-gray-800">By Aarry Strategy Team</span>
+                        <span class="mx-2">&bull;</span>
+                        <span>October 7, 2025</span>
+                        <span class="mx-2">&bull;</span>
+                        <span>10 min read</span>
+                    </div>
+                </div>
+
+                <!-- Main Content Body -->
+                <div class="article-content bg-white p-6 md:p-10 rounded-xl shadow-lg">
+
+                    <!-- Hero Image for Visual Break -->
+                    <img src="https://placehold.co/1200x600/4f46e5/ffffff?text=Generative+Engine+Optimization+%7C+The+3+Pillars" alt="Diagram showing the three pillars of Generative Engine Optimization: E-E-A-T, Formatting, and Technical SEO." class="w-full h-auto rounded-lg shadow-xl mb-12">
+
+
+                    <p class="lead text-lg font-medium text-gray-700">
+                        **Generative Engine Optimization (GEO)** is the new frontier in visibility. It requires shifting your focus from keywords alone to **topical authority** and **structural clarity**. AI models prioritize content that is not only accurate but also easy to consume, extract, and verify for use in AI Overviews and chat responses.
+                    </p>
+                    
+                    <!-- SUMMARY TABLE: HIGHLY EXTRACTABLE -->
+                    <div class="my-8 overflow-x-auto">
+                        <h3 class="!text-gray-900 !mt-0 !mb-4 border-b border-gray-200 pb-2">GEO Checklist: The Three Pillars</h3>
+                        <table class="min-w-full divide-y divide-gray-200 border border-gray-200 rounded-lg shadow-sm">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pillar</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Goal</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actionable Step</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr class="bg-white">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">E-E-A-T & Authority</td>
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-600">Build deep, undeniable trust and credibility.</td>
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-600">Include original data, expert author bios, and strong internal/external citations.</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">Formatting & Structure</td>
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-600">Maximize scannability and AI extraction efficiency.</td>
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-600">Use H2/H3 questions, short paragraphs, lists, and tables.</td>
+                                </tr>
+                                <tr class="bg-white">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">Technical & Strategy</td>
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-600">Ensure optimal crawlability and content freshness.</td>
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-600">Implement Article Schema, prioritize site speed, and maintain an update schedule.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2 id="eeat">1. Content and Authority: Demonstrating E-E-A-T</h2>
+                    <p>AI models prioritize content from highly credible sources because their primary directive is to provide accurate, trustworthy answers. Your goal is to be undeniable in your expertise.</p>
+
+                    <h3>Why Conversational Queries Matter</h3>
+                    <p>AI often handles complex, natural-language questions (long-tail queries). Targeting these specific questions directly increases your chance of being cited as the source for a complex AI Overview response.</p>
+
+                    <div class="grid md:grid-cols-2 gap-6 mt-6">
+                        <!-- E-E-A-T Component 1: Experience -->
+                        <div class="p-6 bg-indigo-50 rounded-xl border border-indigo-200">
+                            <div class="flex items-center mb-3">
+                                <svg class="w-6 h-6 text-indigo-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2m-9 0V3h4m-4 2a2 2 0 00-2 2h4a2 2 0 00-2-2z"></path></svg>
+                                <h4 class="text-lg font-bold text-gray-900">Experience & Data</h4>
+                            </div>
+                            <p class="text-gray-700 text-sm">Always include first-hand experience, such as unique case studies, **original data**, or personal product use. This confirms genuine, practical knowledge and is highly prized by LLMs.</p>
+                        </div>
+                        <!-- E-E-A-T Component 2: Expertise -->
+                        <div class="p-6 bg-indigo-50 rounded-xl border border-indigo-200">
+                            <div class="flex items-center mb-3">
+                                <svg class="w-6 h-6 text-indigo-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.314-2.686 6-6 6s-6-2.686-6-6 2.686-6 6-6 6 2.686 6 6zM18 10v4m-2-2h4"></path></svg>
+                                <h4 class="text-lg font-bold text-gray-900">Expertise & Authorship</h4>
+                            </div>
+                            <p class="text-gray-700 text-sm">Ensure content is written or thoroughly reviewed by an **accredited expert**. Use clear author bios with relevant credentials and external verification links.</p>
+                        </div>
+                        <!-- E-E-A-T Component 3: Authority & Trust -->
+                        <div class="p-6 bg-indigo-50 rounded-xl border border-indigo-200">
+                            <div class="flex items-center mb-3">
+                                <svg class="w-6 h-6 text-indigo-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                <h4 class="text-lg font-bold text-gray-900">Authority & Trust</h4>
+                            </div>
+                            <p class="text-gray-700 text-sm">Build high-quality **backlinks**, get mentioned on reputable sites (**co-citations**), and cite credible sources within your content to establish trust.</p>
+                        </div>
+                        <!-- E-E-A-T Component 4: Topical Focus (Pillar) -->
+                        <div class="p-6 bg-indigo-50 rounded-xl border border-indigo-200">
+                            <div class="flex items-center mb-3">
+                                <svg class="w-6 h-6 text-indigo-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                <h4 class="text-lg font-bold text-gray-900">Topical Authority & Pillars</h4>
+                            </div>
+                            <p class="text-gray-700 text-sm">Create comprehensive **topic clusters** where a main "pillar" page is supported by numerous in-depth articles on related subtopics (Go Deep).</p>
+                        </div>
+                    </div>
+
+                    <!-- Visual Break: Topical Authority Diagram -->
+                    <img src="https://placehold.co/800x350/e0e7ff/4f46e5?text=Topical+Authority+Cluster+Model" alt="Diagram illustrating the hub and spoke model of topical authority, with a pillar page surrounded by cluster content." class="w-full h-auto rounded-lg shadow-md my-8">
+                    
+                    <h2 id="formatting">2. Formatting and Structure for Easy LLM Ingestion</h2>
+                    <p>AI systems are designed to extract information easily from structured text. Optimize for scannability to ensure rapid, error-free parsing by generative models.</p>
+
+                    <h3>How Schema Markup Boosts Extraction</h3>
+                    <p>Implementing relevant structured data (like FAQPage, HowTo, and Article schema) is machine-readable code that tells the AI exactly what your content is about. This significantly reduces the model's processing time and increases citation probability.</p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 mt-6">
+                        <!-- Formatting Component 1: Short Paragraphs -->
+                        <div class="flex items-start p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m-5 4h4m-7-4V4a2 2 0 012-2h8a2 2 0 012 2v16a2 2 0 01-2 2H8a2 2 0 01-2-2z"></path></svg>
+                            <p class="ml-3 text-sm font-medium text-gray-700">Use **Short Paragraphs** (2-3 sentences max) for optimal scannability.</p>
+                        </div>
+                        <!-- Formatting Component 2: Lists -->
+                        <div class="flex items-start p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                            <p class="ml-3 text-sm font-medium text-gray-700">Utilize **Lists Extensively** (bullets/numbers) for easy AI extraction and summary.</p>
+                        </div>
+                        <!-- Formatting Component 3: Headings -->
+                        <div class="flex items-start p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6m10 0v-6a2 2 0 00-2-2H8a2 2 0 00-2 2v6m10 0v-6a2 2 0 00-2-2h-2m2 4h-2"></path></svg>
+                            <p class="ml-3 text-sm font-medium text-gray-700">Use **Descriptive Headings** in question format (H2/H3) for better context.</p>
+                        </div>
+                        <!-- Formatting Component 4: Tables & Schema -->
+                        <div class="flex items-start p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m-2-8h4m-4 0v4m0-4h-4m8 0h4m-4 0v-4"></path></svg>
+                            <p class="ml-3 text-sm font-medium text-gray-700">Implement **Schema Markup** and use **Tables** for easy data comparison.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Visual Break: Schema Graphic -->
+                    <img src="https://placehold.co/800x300/e0e7ff/4f46e5?text=Structured+Data+Example" alt="Graphic demonstrating a block of JSON-LD schema markup being read by an AI entity." class="w-full h-auto rounded-lg shadow-md my-8">
+
+                    <h2 id="technical">3. Technical Foundation and Ongoing Strategy</h2>
+                    <p>Even the best content needs a healthy, performant foundation to be recognized and indexed by Google's crawlers, allowing the AI to access it quickly and without issues.</p>
+
+                    <h3>The Non-Negotiable Technical Checklist</h3>
+                    
+                    <ul class="space-y-6 text-gray-700 mt-6">
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Technical SEO & Speed</h4>
+                                <p class="text-sm">A fast, mobile-friendly, and secure (HTTPS) site is non-negotiable. Poor performance means the AI won't cite you in its Overviews, regardless of content quality.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L15 15l-2.414 2.414a2 2 0 01-2.828 0L6 14m0 0l-4 4"></path></svg>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Multimodal Optimization</h4>
+                                <p class="text-sm">Properly tag all images and videos with descriptive file names and accurate **alt text**. AI is increasingly drawing from visual content to inform conversational answers.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Content Freshness Strategy</h4>
+                                <p class="text-sm">Implement a rigorous schedule to **regularly review and update** your existing content. Update old statistics, facts, and trends, as AI prefers to cite the most current and relevant information.</p>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <!-- Visual Break: Core Web Vitals Graphic -->
+                    <img src="https://placehold.co/800x350/e0e7ff/4f46e5?text=Technical+Performance+%26+CWV" alt="Graphic illustrating Core Web Vitals metrics like LCP and FID, emphasizing site speed." class="w-full h-auto rounded-lg shadow-md my-8">
+
+                    <div class="mt-12 p-6 bg-indigo-50 border-l-4 border-indigo-600 rounded-lg text-center">
+                        <p class="text-indigo-800 font-semibold text-lg">
+                            **Conclusion:** GEO isn't about gaming the system; it's about being the most helpful, credible, and technically clear resource available. By embracing E-E-A-T and structure, you position your brand to be the authoritative source for the generative web.
+                        </p>
+                    </div>
+
+                    <!-- New FAQ Section (for FAQPage Schema) -->
+                    <h2 id="faq">Frequently Asked Questions about GEO</h2>
+                    <div class="space-y-4">
+                        <div class="p-6 bg-gray-50 border border-gray-200 rounded-lg">
+                            <h4 class="font-semibold text-gray-900 mb-2">Q: What is the biggest difference between traditional SEO and GEO?</h4>
+                            <p class="text-gray-700 text-sm">A: Traditional SEO focused on matching exact keywords. GEO (Generative Engine Optimization) focuses on **Topical Authority** and **Content Structure** to ensure your answers are the most comprehensive and trustworthy source for AI models to summarize and cite in conversational search results (like AI Overviews).</p>
+                        </div>
+                        <div class="p-6 bg-gray-50 border border-gray-200 rounded-lg">
+                            <h4 class="font-semibold text-gray-900 mb-2">Q: How often should I update content for 'Freshness'?</h4>
+                            <p class="text-gray-700 text-sm">A: Content covering fast-moving topics (like AI tools or algorithm changes) should be reviewed and updated every 3-6 months. Evergreen "Pillar" content should be fully audited and refreshed at least once a year.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <!-- Newsletter CTA Section (Consistent) -->
+        <section id="subscribe" class="py-24 bg-gray-900">
+            <div class="container mx-auto px-4 text-center">
+                <div class="max-w-2xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Get the Best Shopify Plus Insights Delivered.</h2>
+                    <p class="text-lg text-gray-400 mb-8">Join over 10,000 eCommerce leaders who receive our weekly technical and strategic updates.</p>
+                    <div class="mt-8 max-w-xl mx-auto flex flex-col md:flex-row gap-3">
+                        <input type="email" placeholder="Your work email" class="w-full p-4 border border-gray-700 bg-gray-800 text-white rounded-full focus:ring-indigo-500 focus:border-indigo-500 text-lg shadow-inner" />
+                        <button class="cta-button flex-shrink-0 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-8 rounded-full text-lg">
+                            Subscribe Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Consistent) -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+            <div>
+                <h3 class="text-2xl font-black tracking-tighter mb-4">Aarry.</h3>
+                <p class="text-gray-400">Your global partner in strategic Shopify growth. We serve clients from our offices in Dhaka and Charlotte.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Core Services</h3>
+                <ul class="space-y-3">
+                    <li><a href="services/shopify.html" class="text-gray-400 hover:text-white transition-colors">Shopify Plus Development</a></li>
+                    <li><a href="services/headless-shopify-development.html" class="text-gray-400 hover:text-white transition-colors">Headless Commerce</a></li>
+                    <li><a href="services/shopifyseo" class="text-gray-400 hover:text-white transition-colors">Digital Marketing</a></li>
+                    <li><a href="services/shopify-seo-services-plan.html" class="text-gray-400 hover:text-white transition-colors">Growth Consulting</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Company</h3>
+                <ul class="space-y-3">
+                    <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="blogs.html" class="text-indigo-400 font-bold hover:text-white transition-colors">Blog</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Connect</h3>
+                <ul class="space-y-3">
+                    <li><a href="mailto:ask@aarry.org" class="text-gray-400 hover:text-white transition-colors">ask@aarry.org</a></li>
+                    <li><a href="ttps://www.linkedin.com/company/aarry" class="text-gray-400 hover:text-white transition-colors">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-12 container mx-auto px-4 text-center border-t border-gray-700 pt-8">
+            <p class="text-gray-500">&copy; <span id="year"></span> Aarry Limited. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Placeholder script for functionality (omitted details for brevity, assumes existence)
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
