@@ -622,6 +622,177 @@
             document.getElementById('year').textContent = new Date().getFullYear();
         });
     </script>
+
+
+     // --- Whatsapp Sections  ---
+    <div class="whatsapp-widget-container">
+
+    <div class="whatsapp-chat-button" id="whatsapp-toggle">
+        <img src="https://aarry.org/image/whatsapp.png" alt="WhatsApp Icon">
+    </div>
+
+    <div class="whatsapp-widget-header" id="whatsapp-widget">
+        <div class="widget-header-close" id="widget-close-button">&times;</div>
+        <div class="widget-header-content">
+            <img class="widget-person-img" src="https://aarry.org/image/WhatsApp%20Image%202025-09-24%20at%2004.58.46%20(1).jpeg" alt="Support Person">
+            <div class="widget-person-info">
+                <h3>Kaocher Ahmed</h3>
+                <p>Shopify Expert </p>
+            </div>
+        </div>
+        <div class="widget-chat-start">
+            <a href="https://wa.me/8801777510221?text=Hello!%20I%20have%20a%20question%20from%20your%20website." target="_blank">
+                Start Chat
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    /* Main Container for the widget */
+    .whatsapp-widget-container {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    /* The main floating button */
+    .whatsapp-chat-button {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: #25D366;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .whatsapp-chat-button:hover {
+        transform: scale(1.1);
+    }
+    
+    .whatsapp-chat-button img {
+        width: 35px; /* Adjust size of icon inside the button */
+        height: 35px;
+    }
+
+    /* The pop-up widget header */
+    .whatsapp-widget-header {
+        width: 300px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        margin-bottom: 15px;
+        overflow: hidden;
+        display: none; /* Hidden by default */
+        animation: slideUp 0.3s ease-out;
+    }
+
+    /* Active class to show the widget */
+    .whatsapp-widget-header.active {
+        display: block;
+    }
+    
+    .widget-header-close {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        font-size: 20px;
+        color: #888;
+        cursor: pointer;
+    }
+
+    .widget-header-content {
+        background-color: #075E54; /* Dark WhatsApp Green */
+        color: white;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    .widget-person-img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 2px solid white;
+        margin-right: 15px;
+        object-fit: cover;
+    }
+
+    .widget-person-info h3 {
+        margin: 0;
+        font-size: 18px;
+        font-family: Arial, sans-serif;
+    }
+    
+    .widget-person-info p {
+        margin: 5px 0 0;
+        font-size: 14px;
+        font-family: Arial, sans-serif;
+        opacity: 0.9;
+    }
+
+    .widget-chat-start {
+        padding: 20px;
+        text-align: center;
+        background-color: #ffffff;
+    }
+
+    .widget-chat-start a {
+        display: inline-block;
+        padding: 12px 25px;
+        background-color: #25D366;
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        transition: background-color 0.2s;
+    }
+
+    .widget-chat-start a:hover {
+        background-color: #1DA851;
+    }
+    
+    /* Animation for the widget appearing */
+    @keyframes slideUp {
+        from {
+            transform: translateY(20px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const whatsappToggle = document.getElementById('whatsapp-toggle');
+        const whatsappWidget = document.getElementById('whatsapp-widget');
+        const closeButton = document.getElementById('widget-close-button');
+
+        // Function to toggle the widget visibility
+        function toggleWidget() {
+            whatsappWidget.classList.toggle('active');
+        }
+
+        // Event listener for the main chat button
+        whatsappToggle.addEventListener('click', toggleWidget);
+
+        // Event listener for the close button inside the widget
+        closeButton.addEventListener('click', toggleWidget);
+    });
+</script>
 </body>
 </html>
 
