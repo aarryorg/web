@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ব্যক্তিগত AI ফটো এডিটর</title>
+    <!-- Tailwind CSS লোড করা হচ্ছে -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* ফন্ট হিসেবে 'Inter' ব্যবহার করা হচ্ছে */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .container-bg {
+            background: linear-gradient(145deg, #ffffff, #e6e6e6);
+        }
+        .btn-primary {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+        }
+        .image-card {
+            min-height: 256px;
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            background-color: #e2e8f0;
+        }
+        /* কাস্টম স্পিনার */
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #fff;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 min-h-screen">
+
+    <div class="max-w-4xl mx-auto container-bg rounded-2xl shadow-2xl p-6 md:p-10">
+
+        <!-- হেডার -->
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-indigo-700">ব্যক্তিগত AI ফটো ম্যাজিক এডিটর</h1>
+            <p id="authStatus" class="text-gray-600 mt-2 text-lg">লগইন হচ্ছে...</p>
+        </header>
+
+        <!-- মূল ইনপুট বিভাগ -->
+        <div id="input-section" class="space-y-6">
+
+            <!-- ০. API কী ইনপুট (শর্তসাপেক্ষে দেখানো হবে) -->
+            <div id="apiKeySection" class="bg-red-50 p-5 rounded-xl shadow-lg border border-red-200 hidden">
+                <p class="text-lg font-semibold text-gray-700 mb-2">
+                    অনুগ্রহ করে আপনার Gemini API Key দিন (শুধুমাত্র একবার)
+                </p>
+                <input type="password" id="apiKeyInput" placeholder="আপনার API কী এখানে পেস্ট করুন" class="w-full p-3 border border-red-300 rounded-lg focus:ring-red-500 focus:border-red-500 transition duration-150 text-gray-800" />
+                <button onclick="saveApiKeyHandler()" id="saveKeyBtn" class="mt-3 w-full py-2 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition duration-150">
+                    API Key সংরক্ষণ করুন
+                </button>
+            </div>
+
+            <!-- ১. ছবি আপলোড -->
+            <div class="bg-white p-5 rounded-xl shadow-lg border border-gray-200">
+                <label class="block text-lg font-semibold text-gray-700 mb-2" for="imageUpload">
+                    ১. আপনার ছবি আপলোড করুন
+                </label>
+                <input type="file" id="imageUpload" accept="image/jpeg, image/png" class="w-full text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 cursor-pointer" />
+            </div>
+
+            <!-- ২. এডিট প্রম্পট -->
+            <div class="bg-white p-5 rounded-xl shadow-lg border border-gray-200">
+                <label class="block text-lg font-semibold text-gray-700 mb-2" for="editPrompt">
+                    ২. এডিট করার জন্য আপনার নির্দেশ লিখুন
+                </label>
+                <textarea id="editPrompt" rows="3" placeholder="উদাহরণ: ছবিতে একটি নীল টুপি যোগ করো, অথবা পটভূমিকে একটি মরুভূমি বানাও।" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 text-gray-800 resize-none"></textarea>
+            </div>
+
+            <!-- ৩. জেনারেট বাটন -->
+            <button onclick="handleImageGeneration()" id="generateBtn" class="w-full py-3 px-6 bg-indigo-600 text-white font-bold rounded-xl btn-primary flex items-center justify-center space-x-2 text-xl" disabled>
+                <span id="buttonText">ছবি তৈরি করুন</span>
+                <div id="spinner" class="hidden spinner"></div>
+            </button>
+            
+            <!-- বার্তা বা ত্রুটি প্রদর্শন -->
+            <div id="messageBox" class="text-center p-3 rounded-lg hidden font-medium"></div>
+
+        </div>
+
+        <!-- ফলাফল প্রদর্শন বিভাগ -->
+        <div id="result-section" class="mt-10 border-t border-gray-300 pt-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">ফলাফল</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- আপলোড করা ছবি -->
+                <div class="bg-white p-4 rounded-xl shadow-xl border border-gray-200">
+                    <h3 class="text-xl font-semibold text-center text-gray-700 mb-4">আপলোড করা ছবি</h3>
+                    <img id="sourceImage" src="https://placehold.co/512x512/cccccc/333333?text=ছবি+আপলোড+করুন" alt="Source Image Placeholder" class="image-card w-full rounded-lg shadow-inner">
+                </div>
+
+                <!-- এডিট করা ছবি -->
+                <div class="bg-white p-4 rounded-xl shadow-xl border border-gray-200">
+                    <h3 class="text-xl font-semibold text-center text-gray-700 mb-4">এডিট করা ছবি</h3>
+                    <img id="generatedImage" src="https://placehold.co/512x512/3b82f6/ffffff?text=ফলাফলের+জন্য+অপেক্ষা+করুন" alt="Generated Image Placeholder" class="image-card w-full rounded-lg shadow-inner">
+                    <button onclick="copyImageURL()" id="copyBtn" class="mt-4 w-full py-2 bg-green-500 text-white font-medium rounded-lg hover:bg-green-600 transition duration-150 hidden">
+                        ফলাফলের লিংক কপি করুন
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged, setPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc, onSnapshot, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Firebase কনফিগারেশন গ্লোবাল ভেরিয়েবল থেকে নেওয়া হচ্ছে
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        
+        let db;
+        let auth;
+        let userId = null;
+        let userApiKey = "";
+        const modelName = "gemini-2.5-flash-image-preview";
+        const FIREBASE_COLLECTION_NAME = 'user_settings';
+        const FIREBASE_DOC_ID = 'gemini_key_storage';
+        
+        // DOM উপাদান
+        const apiKeyInput = document.getElementById('apiKeyInput');
+        const apiKeySection = document.getElementById('apiKeySection');
+        const imageUpload = document.getElementById('imageUpload');
+        const editPrompt = document.getElementById('editPrompt');
+        const sourceImage = document.getElementById('sourceImage');
+        const generatedImage = document.getElementById('generatedImage');
+        const generateBtn = document.getElementById('generateBtn');
+        const buttonText = document.getElementById('buttonText');
+        const spinner = document.getElementById('spinner');
+        const messageBox = document.getElementById('messageBox');
+        const copyBtn = document.getElementById('copyBtn');
+        const authStatus = document.getElementById('authStatus');
+
+        let uploadedFile = null;
+
+        // --- Utility Functions ---
+
+        function getApiKeyDocRef(dbInstance, uid) {
+             // ব্যক্তিগত ডেটা পাথ: /artifacts/{appId}/users/{userId}/{collectionName}/{documentId}
+            return doc(dbInstance, `artifacts/${appId}/users/${uid}/${FIREBASE_COLLECTION_NAME}/${FIREBASE_DOC_ID}`);
+        }
+
+        /**
+         * মেসেজ বক্সে একটি বার্তা প্রদর্শন করে।
+         */
+        function showMessage(message, type = 'info') {
+            messageBox.textContent = message;
+            messageBox.className = 'text-center p-3 rounded-lg font-medium';
+            messageBox.classList.remove('hidden');
+
+            switch (type) {
+                case 'success':
+                    messageBox.classList.add('bg-green-100', 'text-green-800');
+                    break;
+                case 'error':
+                    messageBox.classList.add('bg-red-100', 'text-red-800');
+                    break;
+                case 'info':
+                default:
+                    messageBox.classList.add('bg-blue-100', 'text-blue-800');
+                    break;
+            }
+        }
+
+        /**
+         * বাটন এবং লোডিং স্টেট আপডেট করে।
+         */
+        function updateButtonState(isLoading = false) {
+            const isReady = userApiKey && uploadedFile && editPrompt.value.trim() !== '';
+            generateBtn.disabled = isLoading || !isReady;
+            buttonText.textContent = isLoading ? 'তৈরি করা হচ্ছে...' : 'ছবি তৈরি করুন';
+            spinner.classList.toggle('hidden', !isLoading);
+            generateBtn.classList.toggle('bg-indigo-600', !isLoading && isReady);
+            generateBtn.classList.toggle('bg-indigo-400', isLoading || !isReady);
+            if (!isLoading) {
+                copyBtn.classList.add('hidden');
+            }
+        }
+
+        /**
+         * Firebase থেকে ব্যবহারকারীর API Key লোড করে।
+         */
+        async function loadUserApiKeyFromFirestore(uid) {
+            try {
+                const docRef = getApiKeyDocRef(db, uid);
+                const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    if (data.apiKey) {
+                        userApiKey = data.apiKey;
+                        apiKeySection.classList.add('hidden');
+                        showMessage(`API কী লোড হয়েছে। User ID: ${uid.substring(0, 8)}...`, 'success');
+                        updateButtonState();
+                        return true;
+                    }
+                }
+            } catch (error) {
+                console.error("Firestore থেকে API কী লোড করতে সমস্যা:", error);
+                showMessage("API কী লোড করতে সমস্যা হয়েছে।", 'error');
+            }
+            // কী পাওয়া না গেলে, ইনপুট সেকশন দেখাও
+            apiKeySection.classList.remove('hidden');
+            return false;
+        }
+
+        /**
+         * ব্যবহারকারীর API Key Firestore এ সেভ করে।
+         */
+        async function saveUserApiKeyToFirestore(key) {
+            if (!userId) {
+                showMessage("লগইন না হওয়া পর্যন্ত কী সেভ করা যাবে না।", 'error');
+                return false;
+            }
+            if (!key || key.length < 20) {
+                showMessage("একটি বৈধ API কী দিন।", 'error');
+                return false;
+            }
+
+            try {
+                const docRef = getApiKeyDocRef(db, userId);
+                await setDoc(docRef, { apiKey: key, savedAt: new Date().toISOString() });
+                userApiKey = key;
+                apiKeySection.classList.add('hidden');
+                showMessage("API কী সফলভাবে সেভ করা হয়েছে এবং এখন ব্যবহার করা হচ্ছে!", 'success');
+                updateButtonState();
+                return true;
+            } catch (error) {
+                console.error("Firestore এ API কী সেভ করতে সমস্যা:", error);
+                showMessage(`কী সেভ করা যায়নি: ${error.message}`, 'error');
+                return false;
+            }
+        }
+        
+        // --- API Key সেভ করার বাটন হ্যান্ডলার ---
+        async function saveApiKeyHandler() {
+            const key = apiKeyInput.value.trim();
+            await saveUserApiKeyToFirestore(key);
+        }
+
+        // --- Firebase Initialization and Auth ---
+        
+        async function initFirebase() {
+            if (!firebaseConfig) {
+                console.error("Firebase config is missing.");
+                authStatus.textContent = "Firebase কনফিগারেশন অনুপস্থিত।";
+                showMessage("Firebase সেটআপ ব্যর্থ।", 'error');
+                return;
+            }
+
+            try {
+                const app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+                setLogLevel('debug'); // ডিবাগ লগিং চালু করা
+
+                // সেশন পার্সিসটেন্স সেট করা
+                await setPersistence(auth, browserSessionPersistence);
+
+                // Auth স্টেট চেঞ্জ লিসেনার
+                onAuthStateChanged(auth, async (user) => {
+                    if (user) {
+                        userId = user.uid;
+                        authStatus.textContent = `লগইন সফল! User ID: ${userId.substring(0, 8)}...`;
+                        // API Key লোড করার চেষ্টা করা
+                        await loadUserApiKeyFromFirestore(userId);
+                    } else {
+                        // যদি লগইন না হয়, তবে অ্যানোনিমাসলি সাইন ইন করার চেষ্টা করা
+                        authStatus.textContent = "লগইন হচ্ছে...";
+                        if (initialAuthToken) {
+                            await signInWithCustomToken(auth, initialAuthToken);
+                        } else {
+                            await signInAnonymously(auth);
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error("Firebase Initialization Error:", error);
+                authStatus.textContent = "লগইন ব্যর্থ।";
+                showMessage(`Firebase ত্রুটি: ${error.message}`, 'error');
+            }
+        }
+
+        // --- Core Application Logic ---
+
+        async function fetchWithRetry(url, options, maxRetries = 5) {
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (response.ok) return response;
+
+                    if (response.status === 429 || response.headers.get('Retry-After')) {
+                        const delay = Math.pow(2, i) * 1000 + Math.random() * 1000;
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                        continue;
+                    }
+                    
+                    const errorJson = await response.json();
+                    throw new Error(`API Error: ${response.status} - ${errorJson.error?.message || response.statusText}`);
+
+                } catch (error) {
+                    if (i === maxRetries - 1) throw error;
+                    const delay = Math.pow(2, i) * 1000 + Math.random() * 1000;
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                }
+            }
+        }
+
+        async function handleImageGeneration() {
+            const prompt = editPrompt.value.trim();
+            const apiKey = userApiKey;
+            
+            if (!apiKey) {
+                showMessage("অনুগ্রহ করে আপনার Gemini API Key দিন এবং সংরক্ষণ করুন।", 'error');
+                apiKeySection.classList.remove('hidden');
+                return;
+            }
+            if (!uploadedFile) {
+                showMessage("অনুগ্রহ করে প্রথমে একটি ছবি আপলোড করুন।", 'error');
+                return;
+            }
+            if (!prompt) {
+                showMessage("এডিট করার জন্য আপনার নির্দেশ লিখুন।", 'error');
+                return;
+            }
+            
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+
+            updateButtonState(true);
+            messageBox.classList.add('hidden');
+
+            try {
+                const base64ImageData = await fileToBase64(uploadedFile);
+
+                const payload = {
+                    contents: [{
+                        parts: [
+                            { text: prompt },
+                            {
+                                inlineData: {
+                                    mimeType: uploadedFile.type,
+                                    data: base64ImageData
+                                }
+                            }
+                        ]
+                    }],
+                    generationConfig: {
+                        responseModalities: ["IMAGE"]
+                    },
+                };
+
+                const response = await fetchWithRetry(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                const result = await response.json();
+                const base64Data = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
+
+                if (base64Data) {
+                    const imageUrl = `data:image/png;base64,${base64Data}`;
+                    generatedImage.src = imageUrl;
+                    copyBtn.classList.remove('hidden');
+                    showMessage("ছবি সফলভাবে এডিট করা হয়েছে!", 'success');
+                } else {
+                    const errorMsg = result.error?.message || "এডিটিং সফল হয়নি। আপনার কী সঠিক কি না, বা কোটা শেষ হয়েছে কি না দেখুন।";
+                    showMessage(`এডিটিং ত্রুটি: ${errorMsg}`, 'error');
+                    generatedImage.src = "https://placehold.co/512x512/f87171/ffffff?text=ত্রুটি";
+                }
+
+            } catch (error) {
+                console.error("ইমেজ জেনারেশন ত্রুটি:", error);
+                if (error.message.includes("400") || error.message.includes("API Key")) {
+                    showMessage("API কী ভুল বা অবৈধ। অনুগ্রহ করে আপনার কী চেক করুন।", 'error');
+                } else {
+                    showMessage(`ইমেজ তৈরি করার সময় সমস্যা হয়েছে: ${error.message}.`, 'error');
+                }
+                generatedImage.src = "https://placehold.co/512x512/f87171/ffffff?text=ত্রুটি";
+            } finally {
+                updateButtonState(false);
+            }
+        }
+
+        // --- Other Event Listeners ---
+
+        imageUpload.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                if (file.size > 5 * 1024 * 1024) { 
+                    showMessage("ফাইল সাইজ ৫MB এর কম হতে হবে।", 'error');
+                    imageUpload.value = '';
+                    uploadedFile = null;
+                    sourceImage.src = "https://placehold.co/512x512/cccccc/333333?text=ছবি+আপলোড+করুন";
+                    updateButtonState();
+                    return;
+                }
+                
+                uploadedFile = file;
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    sourceImage.src = e.target.result;
+                    generatedImage.src = "https://placehold.co/512x512/3b82f6/ffffff?text=ফলাফলের+জন্য+অপেক্ষা+করুন";
+                };
+                reader.readAsDataURL(file);
+            } else {
+                uploadedFile = null;
+            }
+            updateButtonState(); 
+        });
+        
+        editPrompt.addEventListener('input', updateButtonState);
+
+        function copyImageURL() {
+            const url = generatedImage.src;
+            if (url && !url.includes("placehold.co")) {
+                const tempInput = document.createElement("textarea");
+                tempInput.value = url;
+                document.body.
