@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaocher Ahamed | Shopify SEO & AI Strategy Consultant</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind for Inter font and custom colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': '#0e7490', // Teal-700 for accent
+                        'secondary': '#1f2937', // Gray-800 for dark sections
+                        'highlight': '#06b6d4', // Cyan-500
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Load Lucide Icons for aesthetic vectors -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Advanced AI SEO Optimization: JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": ["Person", "ProfessionalService"],
+          "@id": "https://example.com/kaocher-ahamed#person",
+          "name": "Kaocher Ahamed",
+          "jobTitle": "Certified Shopify SEO & AI Strategy Consultant",
+          "description": "Certified Shopify Expert & AI-Powered SEO Strategist specializing in technical Shopify SEO, CRO, and revenue stream building for e-commerce.",
+          "url": "https://example.com/",
+          "image": "https://placehold.co/500x500/0e7490/ffffff?text=KA", 
+          "sameAs": [
+            "https://calendly.com/kaocher/meeting?month=2025-10",
+            "https://linkedin.com/in/kaocher-ahamed"
+          ],
+          "areaServed": {
+            "@type": "ServiceArea",
+            "description": "Global E-commerce, focused on Shopify stores"
+          },
+          "serviceType": [
+            "Shopify SEO Consultant",
+            "AI SEO Strategy",
+            "E-commerce Conversion Optimization",
+            "Technical SEO"
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How is SEO different for Shopify stores?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Shopify has specific technical constraints (like URL structure and theme architecture) that require specialized knowledge. I've developed approaches for handling duplicate content issues (e.g., from collections/pagination) and maximizing the platform's strengths in structured data and mobile optimization—things generalists often miss."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How long until I see results from Shopify SEO?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Technical improvements usually show impact within 2-4 weeks. Initial ranking improvements for content typically appear around 2-3 months. Significant traffic increases generally come at 4-6 months, depending on domain authority and competition. I provide detailed analytics to track progress against clear expectations."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do I need to change my Shopify theme for better SEO?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Not necessarily. I can successfully optimize most themes with targeted customizations to fix critical issues like heading structure or mobile responsiveness. A theme change is only recommended if the current theme has fundamental structural problems or creates serious technical SEO constraints."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do you handle Shopify's duplicate content issues?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "I use a systematic approach involving canonical tags for products in multiple collections, strategic robots meta directives for pagination/filtering, and optimized content for major product variants. My method ensures search engines focus on the primary versions of your pages."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do you approach keyword research for e-commerce?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "My approach is product-focused. I analyze customer reviews, support questions, and competitor listings to identify terms with high purchase intent. Keywords are divided into product, category, problem/solution, and brand terms, aligning them strategically with your site's architecture to maximize revenue."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body class="font-sans bg-gray-50 text-gray-800">
+
+    <!-- Sticky Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+            <div class="text-2xl font-bold text-secondary">
+                <span class="text-primary">Kaocher</span> Ahamed
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#story" class="text-gray-600 hover:text-primary transition duration-300">My Story</a>
+                <a href="#shopify-seo-intro" class="text-gray-600 hover:text-primary transition duration-300">Shopify SEO</a>
+                <a href="#portfolio" class="text-gray-600 hover:text-primary transition duration-300">Portfolio</a>
+                <a href="#blog" class="text-gray-600 hover:text-primary transition duration-300">Blog</a>
+                <a href="#contact-form" class="text-white bg-primary px-3 py-1.5 rounded-full hover:bg-highlight transition duration-300">Get in Touch</a>
+            </div>
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button class="md:hidden text-gray-600" aria-label="Toggle menu" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute w-full bg-white shadow-xl">
+            <div class="px-4 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
+                <a href="#story" class="block w-full text-center text-gray-600 py-2 hover:bg-gray-50 rounded-lg">My Story</a>
+                <a href="#shopify-seo-intro" class="block w-full text-center text-gray-600 py-2 hover:bg-gray-50 rounded-lg">Shopify SEO</a>
+                <a href="#portfolio" class="block w-full text-center text-gray-600 py-2 hover:bg-gray-50 rounded-lg">Portfolio</a>
+                <a href="#blog" class="block w-full text-center text-gray-600 py-2 hover:bg-gray-50 rounded-lg">Blog</a>
+                <a href="#contact-form" class="block w-full text-center text-white bg-primary mt-2 py-2 rounded-lg hover:bg-highlight">Get in Touch</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-8">
+        <!-- 1. Hero Section -->
+        <section id="hero" class="bg-secondary text-white py-20 sm:py-32">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p class="text-primary font-semibold text-sm uppercase tracking-wider mb-2">AI-Powered E-commerce Growth Strategist</p>
+                <h1 class="text-4xl sm:text-6xl font-extrabold mb-4 leading-tight">
+                    Your <span class="text-highlight">Shopify SEO Expert</span> <br class="hidden sm:block"> for <span class="text-primary">Long-Term Revenue Streams.</span>
+                </h1>
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto mb-10">
+                    I don't just optimize websites; I am a Certified Shopify Expert transforming stores into powerful sales engines with data-driven strategies that boost targeted traffic, sales conversions, and long-term profit growth.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#contact-form" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full shadow-lg text-secondary bg-highlight hover:bg-cyan-400 transition duration-300 transform hover:scale-105">
+                        Rank My Shopify Store Now
+                    </a>
+                    <a href="#portfolio" class="inline-flex items-center justify-center px-8 py-3 border border-white text-base font-medium rounded-full text-white hover:bg-white hover:text-secondary transition duration-300 transform hover:scale-105">
+                        View My Work
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Container for subsequent sections -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+            <!-- 2. My Story -->
+            <section id="story" class="mb-20 pt-8">
+                <div class="md:grid md:grid-cols-2 md:gap-12 items-center">
+                    <div class="mb-8 md:mb-0">
+                        <span class="text-sm font-semibold text-primary uppercase">My Story</span>
+                        <h2 class="text-4xl font-bold text-gray-900 mt-2">A Freelancer with 10 Years of Experience</h2>
+                    </div>
+                    <div>
+                        <p class="text-lg text-gray-600 mb-4">
+                            Hello, I'm **Kaocher Ahamed**. As a **certified Shopify Expert** and seasoned SEO strategist, I help e-commerce entrepreneurs fix the deep technical issues that hold them back from growth. My approach is tailored, data-driven, and relentlessly focused on your ROI.
+                        </p>
+                        <p class="text-lg text-gray-600 mb-4">
+                            From custom checkouts to features Shopify doesn’t usually allow, I find ways to make it work. I focus on real, maintainable results, which is why most of my clients come back and stay long-term.
+                        </p>
+                        <p class="text-lg text-gray-600">
+                            Whether you're launching a new store or scaling an existing one, I provide a clear path to success. If your Shopify store feels limiting, let's fix that.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Career Journey -->
+            <section id="career" class="mb-20 pt-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-10 text-center">My Career Journey & Professional Experience</h2>
+                <div class="relative max-w-4xl mx-auto">
+                    <!-- Timeline Line -->
+                    <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gray-200 hidden md:block"></div>
+
+                    <!-- Timeline Item: Ecommerce Manager -->
+                    <div class="mb-8 flex justify-between items-center w-full right-timeline">
+                        <div class="order-1 w-full md:w-5/12"></div>
+                        <div class="z-10 hidden md:block flex items-center order-1 bg-primary shadow-xl w-6 h-6 rounded-full"></div>
+                        <div class="order-1 bg-white rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4 border-l-4 border-primary md:border-l-0 md:border-r-4">
+                            <h3 class="font-bold text-lg text-primary">Ecommerce Manager</h3>
+                            <p class="text-sm text-gray-600">Shopify Expert IT | Feb 2023 - Present</p>
+                            <p class="text-gray-700 mt-2">Leading a team managing 10+ Shopify stores, executing growth strategies through SEO, CRO, and paid media to drive measurable results.</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item: CTO (Left Side) -->
+                    <div class="mb-8 flex justify-between items-center w-full left-timeline">
+                        <div class="order-1 bg-white rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4 border-l-4 border-primary">
+                            <h3 class="font-bold text-lg text-primary">Chief Technology Officer</h3>
+                            <p class="text-sm text-gray-600">Aarry Limited | Jun 2022 - Jul 2023</p>
+                            <p class="text-gray-700 mt-2">Oversaw vision, operations, client management, and marketing for an app development company, from concept to launch.</p>
+                        </div>
+                        <div class="z-10 hidden md:block flex items-center order-1 bg-primary shadow-xl w-6 h-6 rounded-full"></div>
+                        <div class="order-1 w-full md:w-5/12"></div>
+                    </div>
+
+                    <!-- Timeline Item: SEO Manager (Right Side) -->
+                    <div class="mb-8 flex justify-between items-center w-full right-timeline">
+                        <div class="order-1 w-full md:w-5/12"></div>
+                        <div class="z-10 hidden md:block flex items-center order-1 bg-primary shadow-xl w-6 h-6 rounded-full"></div>
+                        <div class="order-1 bg-white rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4 border-l-4 border-primary md:border-l-0 md:border-r-4">
+                            <h3 class="font-bold text-lg text-primary">SEO Manager</h3>
+                            <p class="text-sm text-gray-600">nkd () the Waxing & Beauty School | Sep 2024 - Apr 2025</p>
+                            <p class="text-gray-700 mt-2">Directed the complete SEO strategy for a leading UK beauty school, implementing on-page, off-page, and technical optimizations.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Shopify SEO Detail Introduction & Expertise -->
+            <section id="shopify-seo-intro" class="mb-20 pt-8">
+                <div class="max-w-4xl mx-auto text-center mb-12">
+                    <span class="text-sm font-semibold text-primary uppercase">Specialized E-commerce Growth</span>
+                    <h2 class="text-4xl font-bold text-gray-900 mt-2">Shopify SEO Expert: Maximize Conversions with Best Shopify SEO Strategies</h2>
+                    <p class="text-lg text-gray-600 mt-4">
+                        I help Shopify store owners get more organic traffic and sales with down-to-earth e-commerce SEO strategies I've developed over years of working with **150+ Shopify businesses**.
+                    </p>
+                    <p class="text-xl font-medium text-gray-700 mt-4">
+                        I organize your Shopify store and technically optimize your store speed. I organize and optimize the **Collection page** and **Product page** to ensure your store **ranks higher on Google, is featured in AI Overviews**, and converts traffic from search and **LLMs** (Large Language Models), securing organic traffic and sales with zero paid advertising cost.
+                    </p>
+                    <div class="mt-8 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#shopify-packages" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-semibold rounded-full shadow-lg text-white bg-primary hover:bg-highlight transition duration-300 transform hover:scale-105">
+                            Rank My Shopify Store Now
+                        </a>
+                        <a href="#seo-checklist" class="inline-flex items-center justify-center px-6 py-3 border border-primary text-base font-semibold rounded-full text-primary bg-white hover:bg-primary hover:text-white transition duration-300">
+                            Get My Free Checklist
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Impact Statistics -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center bg-gray-100 p-8 rounded-xl shadow-inner">
+                    <div>
+                        <p class="text-4xl font-extrabold text-primary">92%</p>
+                        <p class="text-sm text-gray-600">Of shoppers search online before purchase</p>
+                    </div>
+                    <div>
+                        <p class="text-4xl font-extrabold text-primary">67%</p>
+                        <p class="text-sm text-gray-600">Higher conversion rates from organic search</p>
+                    </div>
+                    <div>
+                        <p class="text-4xl font-extrabold text-primary">127%</p>
+                        <p class="text-sm text-gray-600">Average revenue increase for optimized stores</p>
+                    </div>
+                    <div>
+                        <p class="text-4xl font-extrabold text-primary">5.9x</p>
+                        <p class="text-sm text-gray-600">Better ROI from SEO vs. paid advertising</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- My Shopify SEO Expertise -->
+            <section id="shopify-expertise" class="mb-20 pt-8">
+                <div class="text-center mb-12">
+                    <span class="text-sm font-semibold text-primary uppercase">My Core Value</span>
+                    <h2 class="text-4xl font-bold text-gray-900 mt-2">My Shopify SEO Expertise</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto mt-4">
+                        I combine technical expertise with e-commerce conversion strategy to optimize your Shopify store. This approach focuses on both user experience (UI/content) and maximizing Google visibility to drive sales.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Expertise Card 1: Technical Optimization -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-highlight">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Technical Shopify Optimization</h3>
+                        <p class="text-sm text-primary mb-3">Fixing platform-specific growth blockers.</p>
+                        <p class="text-gray-700">I fix platform-specific issues that hold back your store's organic visibility and performance. With hands-on experience fixing over **50 Shopify stores**, I've developed unique solutions for technical limitations that most SEO experts miss.</p>
+                    </div>
+
+                    <!-- Expertise Card 2: Product Page Strategy -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-highlight">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Product Page SEO</h3>
+                        <p class="text-sm text-primary mb-3">Targeting high-intent buyers.</p>
+                        <p class="text-gray-700">I strategically optimize your product catalog structure and content for maximum search visibility. I only target keywords with **actual buying intent**, not just high search volume, ensuring revenue-focused traffic.</p>
+                    </div>
+
+                    <!-- Expertise Card 3: Collection Page SEO -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-highlight">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Collection Page SEO & Organization</h3>
+                        <p class="text-sm text-primary mb-3">Organizing products for the user journey.</p>
+                        <p class="text-gray-700">I optimize and organize collection pages to showcase store products based on use cases and different approaches, ensuring your product-focused approach drives visibility and sales.</p>
+                    </div>
+
+                    <!-- Expertise Card 4: Content & Conversion -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-highlight">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Content & Conversion Strategy</h3>
+                        <p class="text-sm text-primary mb-3">Content that ranks *and* converts.</p>
+                        <p class="text-gray-700">I create content that both ranks in search results and effectively converts browsers into buyers. My background in **e-commerce CRO** ensures I focus on content that sells products, not just attracts passive visitors.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Shopify SEO Challenges I Solve -->
+            <section id="shopify-challenges" class="mb-20 pt-8 bg-secondary text-white p-12 rounded-xl shadow-2xl">
+                <div class="text-center mb-12">
+                    <span class="text-sm font-semibold text-highlight uppercase">Specialized Solutions</span>
+                    <h2 class="text-4xl font-bold mt-2">Shopify SEO Challenges I Solve</h2>
+                    <p class="text-lg text-gray-300 max-w-3xl mx-auto mt-4">
+                        After working with 50+ Shopify stores, I've developed my personal approaches to overcome these common challenges that halt growth.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Challenge 1: Catalog Optimization -->
+                    <div class="p-4 bg-gray-700/50 rounded-lg">
+                        <h3 class="text-xl font-bold text-highlight mb-2">Product Catalog Optimization</h3>
+                        <p class="text-sm text-gray-300">I implement custom collection hierarchies and product tagging systems that make even the most complex catalogs easy for both users and search engines to navigate.</p>
+                    </div>
+                    <!-- Challenge 2: Technical Limitations -->
+                    <div class="p-4 bg-gray-700/50 rounded-lg">
+                        <h3 class="text-xl font-bold text-highlight mb-2">Technical Shopify Limitations</h3>
+                        <p class="text-sm text-gray-300">Using my years of Shopify-specific experience, I've developed workarounds for common limitations like URL structures and duplicate content issues that most generic SEO experts miss.</p>
+                    </div>
+                    <!-- Challenge 3: Competitive Marketplaces -->
+                    <div class="p-4 bg-gray-700/50 rounded-lg">
+                        <h3 class="text-xl font-bold text-highlight mb-2">Competitive Marketplaces</h3>
+                        <p class="text-sm text-gray-300">I conduct deep competitor analyses to find the precise gaps in their strategies, then develop content that targets these overlooked opportunities for quick wins.</p>
+                    </div>
+                    <!-- Challenge 4: Site Speed -->
+                    <div class="p-4 bg-gray-700/50 rounded-lg">
+                        <h3 class="text-xl font-bold text-highlight mb-2">Site Speed Optimization</h3>
+                        <p class="text-sm text-gray-300">My process includes image compression workflows, theme code optimization, and third-party script management that maintains visual quality while dramatically improving load times.</p>
+                    </div>
+                    <!-- Challenge 5: User Experience -->
+                    <div class="p-4 bg-gray-700/50 rounded-lg">
+                        <h3 class="text-xl font-bold text-highlight mb-2">User Experience Optimisation</h3>
+                        <p class="text-sm text-gray-300">Optimization includes mobile view optimization, navigation workflows, and theme code management so users feel easy navigating through the complete checkout process.</p>
+                    </div>
+                    <!-- Challenge 6: International SEO -->
+                    <div class="p-4 bg-gray-700/50 rounded-lg">
+                        <h3 class="text-xl font-bold text-highlight mb-2">International SEO</h3>
+                        <p class="text-sm text-gray-300">I help stores expand internationally with proper hreflang implementation and localized content strategies tailored to Shopify's multi-language capabilities.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Shopify SEO Methodology -->
+            <section id="shopify-methodology" class="mb-20 pt-8">
+                <div class="text-center mb-12">
+                    <span class="text-sm font-semibold text-primary uppercase">My Proven Process</span>
+                    <h2 class="text-4xl font-bold text-gray-900 mt-2">My Shopify SEO Methodology</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto mt-4">
+                        A proven 6-step approach I've developed specifically for the unique challenges and opportunities of Shopify e-commerce stores.
+                    </p>
+                </div>
+
+                <ol class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Step 1: Technical Foundation -->
+                    <li class="p-6 bg-white rounded-xl shadow-lg flex flex-col">
+                        <span class="text-3xl font-extrabold text-highlight mb-2">Step 1</span>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Technical Foundation</h3>
+                        <p class="text-gray-700 text-sm">Fixing Shopify-specific technical issues like URL structure, duplicate content, and theme optimization. I start every project with a comprehensive technical audit.</p>
+                    </li>
+                    <!-- Step 2: Catalog Architecture -->
+                    <li class="p-6 bg-white rounded-xl shadow-lg flex flex-col">
+                        <span class="text-3xl font-extrabold text-highlight mb-2">Step 2</span>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Catalog Architecture</h3>
+                        <p class="text-gray-700 text-sm">Strategically organizing products, collections, and categories for optimal search visibility and user experience. Proper structure can increase organic visibility by 35-40%.</p>
+                    </li>
+                    <!-- Step 3: On-Page Optimization -->
+                    <li class="p-6 bg-white rounded-xl shadow-lg flex flex-col">
+                        <span class="text-3xl font-extrabold text-highlight mb-2">Step 3</span>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">On-Page Optimization</h3>
+                        <p class="text-gray-700 text-sm">Creating compelling, keyword-rich product descriptions, meta data, and structured data markup. My templates ensure conversion-focused copy with critical search terms.</p>
+                    </li>
+                    <!-- Step 4: Content Strategy -->
+                    <li class="p-6 bg-white rounded-xl shadow-lg flex flex-col">
+                        <span class="text-3xl font-extrabold text-highlight mb-2">Step 4</span>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Content Strategy</h3>
+                        <p class="text-gray-700 text-sm">Developing helpful content that targets buyer-intent keywords and guides customers through the purchase journey (awareness, consideration, decision).</p>
+                    </li>
+                    <!-- Step 5: Authority Building -->
+                    <li class="p-6 bg-white rounded-xl shadow-lg flex flex-col">
+                        <span class="text-3xl font-extrabold text-highlight mb-2">Step 5</span>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Authority Building</h3>
+                        <p class="text-gray-700 text-sm">Earning relevant backlinks and mentions that boost domain authority and category relevance by leveraging my network of e-commerce publishers.</p>
+                    </li>
+                    <!-- Step 6: Conversion Optimization -->
+                    <li class="p-6 bg-white rounded-xl shadow-lg flex flex-col">
+                        <span class="text-3xl font-extrabold text-highlight mb-2">Step 6</span>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Conversion Optimization</h3>
+                        <p class="text-gray-700 text-sm">Testing and improving elements that turn organic visitors into paying customers. Continuous A/B testing of product pages, navigation, and checkout processes.</p>
+                    </li>
+                </ol>
+            </section>
+
+            <!-- NKD Case Study & Why Choose Me -->
+            <section id="why-choose-me" class="mb-20 pt-8">
+                <div class="text-center mb-12">
+                    <span class="text-sm font-semibold text-primary uppercase">Why Specialization Matters</span>
+                    <h2 class="text-4xl font-bold text-gray-900 mt-2">Why Choose Me as Your Shopify SEO Expert</h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Expertise Highlights (Why Choose Me) -->
+                    <div class="space-y-6 order-2 lg:order-1">
+                        <div class="p-6 bg-white rounded-xl shadow-lg border-l-4 border-highlight">
+                            <h4 class="font-bold text-xl text-gray-900">Shopify Specific Technical Expertise</h4>
+                            <p class="text-gray-700 text-sm mt-1">With **7 years focused exclusively on Shopify**, I've mastered its unique technical structure to optimize elements generic experts often miss, like collections, product templates, and dynamic checkout features.</p>
+                        </div>
+                        <div class="p-6 bg-white rounded-xl shadow-lg border-l-4 border-highlight">
+                            <h4 class="font-bold text-xl text-gray-900">E-commerce Conversion Optimisation</h4>
+                            <p class="text-gray-700 text-sm mt-1">I optimize for *actual sales*, not just traffic. My holistic approach combines SEO with CRO for product page layouts, trust signals, and purchase journey optimization, leading to tangible revenue increases.</p>
+                        </div>
+                        <div class="p-6 bg-white rounded-xl shadow-lg border-l-4 border-highlight">
+                            <h4 class="font-bold text-xl text-gray-900">App Integration Knowledge</h4>
+                            <p class="text-gray-700 text-sm mt-1">I recommend the optimal tech stack—testing dozens of apps to ensure they provide SEO benefits without slowing your store down or creating conflicts.</p>
+                        </div>
+                        <div class="p-6 bg-white rounded-xl shadow-lg border-l-4 border-highlight">
+                            <h4 class="font-bold text-xl text-gray-900">Product-Focused Content Strategy</h4>
+                            <p class="text-gray-700 text-sm mt-1">I develop a unique methodology for creating content that not only ranks but also aligns with buyer intent at different stages, capturing customers throughout the entire purchase journey.</p>
+                        </div>
+                    </div>
+
+                    <!-- NKD Case Study Block -->
+                    <div class="bg-gray-100 p-8 rounded-xl shadow-inner order-1 lg:order-2">
+                        <h3 class="text-2xl font-bold text-primary mb-4">Real Shopify SEO Results: NKD Products</h3>
+                        <p class="text-lg text-gray-700 font-semibold mb-4">The Challenge</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-600 ml-4">
+                            <li>Critical technical SEO issues affecting site performance.</li>
+                            <li>Product page organization and structure problems.</li>
+                            <li>Limited content strategy for their niche.</li>
+                            <li>High bounce rates and low conversion rates.</li>
+                        </ul>
+                        <p class="text-lg text-gray-700 font-semibold mt-6 mb-4">My Approach & Impact</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-600 ml-4">
+                            <li>Improved site loading speed by **85%** through technical optimizations.</li>
+                            <li>Implemented complete structured data for all products.</li>
+                            <li>Restructured product pages with targeted keywords.</li>
+                            <li>**Result:** Significant increase in organic visibility and sales revenue.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Technical Toolkit (Existing Section) -->
+            <section id="toolkit" class="mb-20 pt-8">
+                <div class="text-center mb-12">
+                    <span class="text-sm font-semibold text-primary uppercase">Technical Toolkit</span>
+                    <h2 class="text-4xl font-bold text-gray-900 mt-2">Platforms & Expertise</h2>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+                    <!-- Icon Cards -->
+                    <div class="p-4 bg-white rounded-xl shadow-md text-center">
+                        <span class="text-4xl" role="img" aria-label="shopping cart">🛒</span>
+                        <p class="mt-2 text-sm font-medium text-gray-700">Shopify Plus</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-xl shadow-md text-center">
+                        <span class="text-4xl" role="img" aria-label="magnifying glass">🔍</span>
+                        <p class="mt-2 text-sm font-medium text-gray-700">Technical SEO</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-xl shadow-md text-center">
+                        <span class="text-4xl" role="img" aria-label="chart with up-arrow">📈</span>
+                        <p class="mt-2 text-sm font-medium text-gray-700">CRO</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-xl shadow-md text-center">
+                        <span class="text-4xl" role="img" aria-label="rocket">🚀</span>
+                        <p class="mt-2 text-sm font-medium text-gray-700">Speed Optimization</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-xl shadow-md text-center">
+                        <span class="text-4xl" role="img" aria-label="paint palette">🎨</span>
+                        <p class="mt-2 text-sm font-medium text-gray-700">Web Design</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-xl shadow-md text-center">
+                        <span class="text-4xl" role="img" aria-label="link">🔗</span>
+                        <p class="mt-2 text-sm font-medium text-gray-700">Ahrefs & SEMrush</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-xl shadow-md text-center">
+                        <span class="text-4xl" role="img" aria-label="bar chart">📊</span>
+                        <p class="mt-2 text-sm font-medium text-gray-700">Google Analytics 4</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-xl shadow-md text-center">
+                        <span class="text-4xl" role="img" aria-label="wrench">🛠️</span>
+                        <p class="mt-2 text-sm font-medium text-gray-700">Search Console</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-xl shadow-md text-center">
+                        <span class="text-4xl" role="img" aria-label="writing hand">✍️</span>
+                        <p class="mt-2 text-sm font-medium text-gray-700">Content Strategy</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-xl shadow-md text-center">
+                        <span class="text-4xl" role="img" aria-label="globe">🌐</span>
+                        <p class="mt-2 text-sm font-medium text-gray-700">WordPress</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. Proven Results / Portfolio (Existing Section) -->
+            <section id="portfolio" class="mb-20 pt-8">
+                <div class="text-center mb-12">
+                    <span class="text-sm font-semibold text-primary uppercase">Proven Results</span>
+                    <h2 class="text-4xl font-bold text-gray-900 mt-2">Client Success Stories</h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+                    <!-- Result Card 1 -->
+                    <div class="bg-secondary text-white p-8 rounded-xl shadow-lg flex flex-col justify-between">
+                        <p class="text-sm text-highlight font-semibold mb-4">E-commerce Brand Boost</p>
+                        <h3 class="text-2xl font-bold mb-4">$0 to $20k/Month</h3>
+                        <p class="text-gray-300">Grew a new store's revenue through organic traffic in just 8 months. Focus: High-value, long-tail keyword targeting.</p>
+                        <div class="mt-6">
+                            <span class="inline-block bg-gray-700 text-highlight text-xs font-semibold px-3 py-1 rounded-full">Organic Growth</span>
+                        </div>
+                    </div>
+
+                    <!-- Result Card 2 -->
+                    <div class="bg-secondary text-white p-8 rounded-xl shadow-lg flex flex-col justify-between">
+                        <p class="text-sm text-highlight font-semibold mb-4">Conversion Rate Optimization</p>
+                        <h3 class="text-2xl font-bold mb-4">Conversion Rate Doubled</h3>
+                        <p class="text-gray-300">Boosted conversion from 1.5% to 3% with site speed optimization, enhanced mobile UX, and strategic CRO testing.</p>
+                        <div class="mt-6">
+                            <span class="inline-block bg-gray-700 text-highlight text-xs font-semibold px-3 py-1 rounded-full">CRO & Speed</span>
+                        </div>
+                    </div>
+
+                    <!-- Result Card 3 -->
+                    <div class="bg-secondary text-white p-8 rounded-xl shadow-lg flex flex-col justify-between">
+                        <p class="text-sm text-highlight font-semibold mb-4">Authority Building</p>
+                        <h3 class="text-2xl font-bold mb-4">#1 Google Rankings</h3>
+                        <p class="text-gray-300">Achieved top rankings for high-value keywords, increasing leads by 300% through high-quality content and link building.</p>
+                        <div class="mt-6">
+                            <span class="inline-block bg-gray-700 text-highlight text-xs font-semibold px-3 py-1 rounded-full">Keyword Strategy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Case Study Metrics (Existing Section) -->
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-gray-900 mt-2">Real Results, Real Businesses</h3>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto mt-4">See how my specialized SEO strategies have helped companies achieve significant, measurable growth.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Metric Card 1: Organic Traffic -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-b-4 border-primary text-center">
+                        <p class="text-5xl font-extrabold text-primary">+105%</p>
+                        <p class="mt-2 font-medium text-gray-700">Organic Traffic</p>
+                        <p class="text-xs text-gray-500">SaaS Platform in 6 Months</p>
+                    </div>
+                    <!-- Metric Card 2: Conversion Rate -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-b-4 border-primary text-center">
+                        <p class="text-5xl font-extrabold text-primary">+40%</p>
+                        <p class="mt-2 font-medium text-gray-700">Conversion Rate</p>
+                        <p class="text-xs text-gray-500">Fintech Co. Landing Page Optimization</p>
+                    </div>
+                    <!-- Metric Card 3: ROI -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-b-4 border-primary text-center">
+                        <p class="text-5xl font-extrabold text-primary">320%</p>
+                        <p class="mt-2 font-medium text-gray-700">SEO ROI</p>
+                        <p class="text-xs text-gray-500">Achieved for a Fintech Client</p>
+                    </div>
+                    <!-- Metric Card 4: Enterprise Leads -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-b-4 border-primary text-center">
+                        <p class="text-5xl font-extrabold text-primary">+94%</p>
+                        <p class="mt-2 font-medium text-gray-700">Enterprise Leads</p>
+                        <p class="text-xs text-gray-500">AI Company Growth</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. Testimonials -->
+            <section id="testimonials" class="mb-20 pt-8">
+                <div class="text-center mb-12">
+                    <span class="text-sm font-semibold text-primary uppercase">Happy Clients</span>
+                    <h2 class="text-4xl font-bold text-gray-900 mt-2">What Clients Have to Say</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-highlight">
+                        <p class="italic text-gray-700">"Kaocher's work has always been exceedingly professional. He has an incredible knowledge of SEO. His analyses were excellent, and he was very pleasant to work with. We would definitely recommend working with him."</p>
+                        <div class="mt-4 pt-2 border-t border-gray-100">
+                            <p class="font-bold text-gray-900">Katerina Angelevska</p>
+                            <p class="text-sm text-gray-500">CMO at Herbano</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-highlight">
+                        <p class="italic text-gray-700">"Kaocher is professional, responsive and has a great knowledge of SEO. Following a thorough site audit, he developed an action plan and explained each step. We have already improved our ranking on a few keywords in a couple of months."</p>
+                        <div class="mt-4 pt-2 border-t border-gray-100">
+                            <p class="font-bold text-gray-900">Anais Bresle</p>
+                            <p class="text-sm text-gray-500">CMO at Operis</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-highlight">
+                        <p class="italic text-gray-700">"Working with Kaocher was a pleasure. He is an exceptional professional, with a deep understanding of SEO. The communication and project management were outstanding. He helped us improve our SEO rankings."</p>
+                        <div class="mt-4 pt-2 border-t border-gray-100">
+                            <p class="font-bold text-gray-900">Tommi Dahlberg</p>
+                            <p class="text-sm text-gray-500">CEO at Aavalabs</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Shopify SEO Service Packages & CTA -->
+            <section id="shopify-packages" class="mb-20 pt-8">
+                <div class="text-center mb-12">
+                    <span class="text-sm font-semibold text-primary uppercase">Specialised Service Packages</span>
+                    <h2 class="text-4xl font-bold text-gray-900 mt-2">Shopify SEO Service Packages</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Pricing Card 1: SEO Consulting -->
+                    <div class="bg-white p-8 rounded-xl shadow-2xl border-t-8 border-primary">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-2">Shopify SEO Consulting</h3>
+                        <p class="text-gray-500 mb-6">Perfect for store owners with an internal team that needs expert direction and strategy.</p>
+                        <p class="text-5xl font-extrabold text-primary mb-6">$2,000<span class="text-xl text-gray-500">/mo</span></p>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start"><svg class="w-5 h-5 text-primary mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>Full Shopify store SEO audit</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-primary mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>Shopify-specific action plan</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-primary mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>Product & collection strategy</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-primary mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>Technical Shopify optimization plan</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-primary mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>Unlimited support via email & Whatsapp</li>
+                        </ul>
+                        <a href="#contact-form" class="mt-8 block text-center bg-primary text-white py-3 rounded-full font-semibold hover:bg-highlight transition duration-300">Start Consulting</a>
+                    </div>
+
+                    <!-- Pricing Card 2: SEO Implementation -->
+                    <div class="bg-secondary text-white p-8 rounded-xl shadow-2xl border-t-8 border-highlight">
+                        <h3 class="text-3xl font-bold mb-2">Shopify SEO Implementation</h3>
+                        <p class="text-gray-300 mb-6">For store owners wanting hands-on implementation. Includes all consulting benefits plus done-for-you optimization.</p>
+                        <p class="text-5xl font-extrabold text-highlight mb-6">$4,000<span class="text-xl text-gray-300">/mo</span></p>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-start"><svg class="w-5 h-5 text-highlight mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>Everything in Consulting</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-highlight mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>**Hands-on implementation support**</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-highlight mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>Product description & collection page optimization</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-highlight mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>Content creation for key pages</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-highlight mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>Direct team management & training</li>
+                        </ul>
+                        <a href="#contact-form" class="mt-8 block text-center bg-highlight text-secondary py-3 rounded-full font-semibold hover:bg-cyan-400 transition duration-300">Hire SEO Expert</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Shopify SEO Audit Checklist CTA -->
+            <section id="seo-checklist" class="mb-20 pt-8">
+                <div class="bg-gray-100 p-8 rounded-xl shadow-lg">
+                    <h3 class="text-3xl font-bold text-gray-900 mb-4">The Ultimate Shopify SEO Guide & Audit Checklist</h3>
+                    <p class="text-lg text-gray-700 mb-6">Get a checklist specifically developed for Shopify store owners to identify and fix the most common SEO issues holding back your organic growth. Learn the **best practices** and **Shopify SEO tips** to immediately start optimizing your store.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>Technical SEO for Shopify themes</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>Product page optimization checklist</li>
+                        </ul>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>Collection page structure best practices</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>Content strategy for e-commerce conversion</li>
+                        </ul>
+                    </div>
+                    <p class="text-sm italic text-gray-600">This checklist distills the most impactful optimization opportunities into an actionable resource, unlike generic SEO advice.</p>
+                </div>
+            </section>
+
+
+            <!-- Shopify SEO FAQ -->
+            <section id="shopify-faq" class="mb-20 pt-8">
+                <div class="text-center mb-12">
+                    <span class="text-sm font-semibold text-primary uppercase">Common Questions</span>
+                    <h2 class="text-4xl font-bold text-gray-900 mt-2">FAQs: How to Improve Shopify SEO and Get Long-Term Results</h2>
+                </div>
+
+                <div class="space-y-6 max-w-4xl mx-auto">
+                    <!-- FAQ 1 -->
+                    <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-primary">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">How is SEO different for Shopify stores?</h3>
+                        <p class="text-gray-700 text-sm">Shopify has specific technical constraints (like URL structure and theme architecture) that require specialized knowledge. I've developed approaches for handling **duplicate content issues** (e.g., from collections/pagination) and maximizing the platform's strengths in structured data and mobile optimization—things generalists often miss.</p>
+                    </div>
+                    <!-- FAQ 2 -->
+                    <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-primary">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">How long until I see results from Shopify SEO?</h3>
+                        <p class="text-gray-700 text-sm">Technical improvements usually show impact within **2-4 weeks**. Initial ranking improvements for content typically appear around **2-3 months**. Significant traffic increases generally come at **4-6 months**, depending on domain authority and competition. I provide detailed analytics to track progress against clear expectations.</p>
+                    </div>
+                    <!-- FAQ 3 -->
+                    <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-primary">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Do I need to change my Shopify theme for better SEO?</h3>
+                        <p class="text-gray-700 text-sm">Not necessarily. I can successfully optimize most themes with targeted customizations to fix critical issues like heading structure or mobile responsiveness. A theme change is only recommended if the current theme has **fundamental structural problems** or creates serious technical SEO constraints.</p>
+                    </div>
+                    <!-- FAQ 4 -->
+                    <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-primary">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">How do you handle Shopify's duplicate content issues?</h3>
+                        <p class="text-gray-700 text-sm">I use a systematic approach involving **canonical tags** for products in multiple collections, strategic robots meta directives for pagination/filtering, and optimized content for major product variants. My method ensures search engines focus on the primary versions of your pages.</p>
+                    </div>
+                    <!-- FAQ 5 -->
+                    <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-primary">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">How do you approach keyword research for e-commerce?</h3>
+                        <p class="text-gray-700 text-sm">My approach is **product-focused**. I analyze customer reviews, support questions, and competitor listings to identify terms with **high purchase intent**. Keywords are divided into product, category, problem/solution, and brand terms, aligning them strategically with your site's architecture to maximize revenue.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 9. Blog/Latest Posts -->
+            <section id="blog" class="mb-20 pt-8">
+                <div class="text-center mb-12">
+                    <span class="text-sm font-semibold text-primary uppercase">Latest Posts & Updates</span>
+                    <h2 class="text-4xl font-bold text-gray-900 mt-2">Insights & Career Milestones</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Post 1 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                        <p class="text-xs text-gray-500 mb-2">September 20, 2025</p>
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">The Future of E-commerce: AI-Powered SEO and Personalization</h3>
+                        <p class="text-sm text-gray-600">AI-driven SEO tools can analyze vast amounts of data to predict trends and automate technical optimizations, giving stores an unprecedented competitive edge. By leveraging AI, we create hyper-personalized shopping experiences...</p>
+                        <a href="#" class="mt-3 inline-block text-sm font-semibold text-primary hover:text-highlight transition duration-300">Read More &rarr;</a>
+                    </div>
+                    <!-- Post 2 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                        <p class="text-xs text-gray-500 mb-2">August 15, 2025</p>
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">Why Your Shopify Store Speed is Costing You Sales (And How to Fix It)</h3>
+                        <p class="text-sm text-gray-600">A slow-loading store frustrates visitors and directly impacts your conversion rate and rankings. This post dives into the common culprits—from unoptimized images to inefficient theme code—and provides actionable steps to fix them.</p>
+                        <a href="#" class="mt-3 inline-block text-sm font-semibold text-primary hover:text-highlight transition duration-300">Read More &rarr;</a>
+                    </div>
+                    <!-- Post 3 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                        <p class="text-xs text-gray-500 mb-2">July 05, 2025</p>
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">Career Milestone: Launched Aarry Limited</h3>
+                        <p class="text-sm text-gray-600">Thrilled to announce the official launch of Aarry Limited, my venture into mobile app development. As founder and CEO, I'm leading a talented team to build innovative and high-quality mobile applications for clients.</p>
+                        <a href="#" class="mt-3 inline-block text-sm font-semibold text-primary hover:text-highlight transition duration-300">Read More &rarr;</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 10. Final CTA & Contact Form (Calendar Link) -->
+            <section id="contact-form" class="pt-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-primary text-white p-10 rounded-xl shadow-2xl text-center">
+                        <h2 class="text-4xl font-bold mb-4">Ready to Grow? Get a Free, Tailored SEO Strategy Analysis</h2>
+                        <p class="text-lg mb-8 max-w-2xl mx-auto text-gray-200">
+                            I help you succeed online with proven e-commerce SEO methods that deliver long-term ROI. Start with a risk-free consultation.
+                        </p>
+                        <a href="https://calendly.com/kaocher/meeting?month=2025-10" target="_blank" class="inline-flex items-center justify-center px-10 py-4 border border-transparent text-base font-bold rounded-full shadow-lg text-secondary bg-highlight hover:bg-cyan-400 transition duration-300 transform hover:scale-105">
+                            Book Your Strategy Call Now
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white mt-20 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
+            <div class="mb-4">
+                <p class="text-lg font-semibold text-highlight">Kaocher Ahamed</p>
+                <p class="text-gray-400">Shopify SEO & AI Strategy Consultant</p>
+            </div>
+            <div class="space-x-4 mb-4">
+                <a href="#story" class="text-gray-400 hover:text-primary transition duration-300">About</a>
+                <a href="#shopify-seo-intro" class="text-gray-400 hover:text-primary transition duration-300">Shopify SEO</a>
+                <a href="#portfolio" class="text-gray-400 hover:text-primary transition duration-300">Portfolio</a>
+                <a href="#contact-form" class="text-gray-400 hover:text-primary transition duration-300">Contact</a>
+            </div>
+            <p class="text-gray-500 mt-6">© 2025 Kaocher Ahamed. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Script to initialize Lucide icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
