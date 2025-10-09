@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- CORE SEO -->
+    <title>Paid Media Management (PPC) | Aarry Limited | Grow Your Shopify Store</title>
+    <meta name="description" content="Stop wasting ad spend. Our ROI-focused Paid Media Management services for Shopify brands deliver profitable customer acquisition on Google, Meta, and TikTok.">
+    <link rel="canonical" href="https://aarry.org/paid-media-management.html" />
+    <meta name="google-site-verification" content="2f5CLH_34PHbCK55HttgdvBLBcMEpajYF73bNjGqA5w" />
+
+    <!-- AI & SOCIAL MEDIA SEO META TAGS (SCHEMA MARKUP) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Paid Media Management for Shopify (PPC)",
+      "description": "ROI-focused paid media management. We build profitable customer acquisition campaigns on Google, Meta, and TikTok for ambitious eCommerce brands.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Aarry Limited",
+        "url": "https://aarry.org/"
+      },
+      "serviceType": "Pay-Per-Click Advertising",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Global"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "USD",
+        "description": "Custom monthly retainer based on ad spend and campaign complexity. Request a free proposal."
+      }
+    }
+    </script>
+    <meta property="og:title" content="Paid Media Management (PPC) Services | Aarry Limited">
+    <meta property="og:description" content="Stop wasting ad spend. We build profitable campaigns on Google, Meta & TikTok to grow your brand.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aarry.org/paid-media-management.html">
+    <meta property="og:image" content="https://placehold.co/1200x630/4f46e5/ffffff?text=Profitable+Paid+Media+for+eCommerce">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Paid Media Management (PPC) Services | Aarry Limited">
+    <meta name="twitter:description" content="Stop wasting ad spend. We build profitable campaigns on Google, Meta & TikTok to grow your brand.">
+    <meta name="twitter:image" content="https://placehold.co/1200x630/4f46e5/ffffff?text=Profitable+Paid+Media+for+eCommerce">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1a202c; }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.7s ease-in-out; }
+        .accordion-content.open { max-height: 2000px; }
+        .hidden-section { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out; }
+        .hidden-section.open { opacity: 1; transform: translateY(0); }
+        .mobile-nav-overlay { transform: translateX(100%); transition: transform 0.3s ease-in-out; }
+        .mobile-nav-overlay.open { transform: translateX(0); }
+        body.overflow-hidden { overflow: hidden; }
+        .brand-gradient-text { background: linear-gradient(to right, #4f46e5, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .cta-button { transition: all 0.3s ease; box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.39); }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px 0 rgba(79, 70, 229, 0.5); }
+        
+        /* Modal Styles */
+        .modal-overlay { visibility: hidden; opacity: 0; transition: visibility 0s 0.3s, opacity 0.3s ease; }
+        .modal-overlay.open { visibility: visible; opacity: 1; transition: visibility 0s, opacity 0.3s ease; }
+        .modal-content { transform: scale(0.95); opacity: 0; transition: transform 0.3s ease, opacity 0.3s ease; }
+        .modal-overlay.open .modal-content { transform: scale(1); opacity: 1; }
+
+        /* Tab Styles for Blueprint Section */
+        .blueprint-tab-content { display: none; }
+        .blueprint-tab-content.active { display: block; }
+
+        /* Client Logo & Marquee Styles */
+        .client-logo { filter: grayscale(100%) opacity(60%); transition: all 0.3s ease; }
+        .client-logo:hover { filter: grayscale(0%) opacity(100%); }
+        
+        @keyframes scroll-left {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        .marquee {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+        .marquee-track {
+            display: flex;
+            width: fit-content;
+            animation: scroll-left 40s linear infinite;
+        }
+         .marquee-track > * {
+            flex-shrink: 0;
+            margin: 0 2.5rem; /* 40px */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="https://aarry.org/" class="text-2xl font-black text-gray-900 tracking-tighter">Aarry Limited</a>
+            <button id="mobile-menu-open-button" class="lg:hidden text-gray-600 hover:text-indigo-600 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-nav" class="mobile-nav-overlay fixed inset-0 bg-white z-[100] p-4">
+        <div class="flex justify-between items-center mb-10">
+            <span class="text-2xl font-black text-gray-900 tracking-tighter">Menu</span>
+            <button id="mobile-menu-close-button" class="text-gray-500 hover:text-gray-900">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-2">
+            <div>
+                <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
+                    <span>Development Services</span>
+                    <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content pl-6 pt-1">
+                    <a href="https://aarry.org/services/shopify.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">eCommerce Development</a>
+                    <a href="https://aarry.org/services/headless-shopify-development.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Headless eCommerce</a>
+                    <a href="https://aarry.org/services/shopify-migration-service.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Store Migration</a>
+                </div>
+            </div>
+            <div>
+                <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
+                    <span>Digital Marketing</span>
+                    <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content pl-6 pt-1">
+                    <a href="https://aarry.org/services/shopify-seo-services.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Shopify SEO</a>
+                    <a href="paid-media-management.html" class="nav-link block py-2 text-indigo-600 font-bold">Paid Media (PPC)</a>
+                    <a href="https://aarry.org/services/shopify-cro-service.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Shopify CRO</a>
+                </div>
+            </div>
+            <a href="case-studies.html" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Case Studies</a>
+            <a href="about.html" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">About Us</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- 1. Hero Section -->
+        <section class="py-20 md:py-24 bg-white">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-6xl font-black text-gray-900 leading-tight tracking-tighter mb-6">
+                    Stop Wasting Ad Spend.<br>Start <span class="brand-gradient-text">Acquiring Customers Profitably.</span>
+                </h1>
+                <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
+                    Tired of PPC campaigns that don't deliver? Our expert team manages ROI-focused campaigns across Google, Meta, and TikTok that turn your ad budget into measurable revenue.
+                </p>
+                <a href="#contact" class="cta-scroll-button cta-button bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-10 rounded-full text-lg">
+                    Get My Free Ad Account Audit
+                </a>
+            </div>
+        </section>
+
+        <!-- 2. Platforms & Social Proof Section (INTERACTIVE) -->
+        <section class="py-20 md:py-24 bg-gray-50 hidden-section">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Our Expertise, Your Advantage</h2>
+                    <p class="text-lg text-gray-600 mt-3 max-w-3xl mx-auto">Click on a platform to see how we solve your biggest challenges and drive real results.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center max-w-5xl mx-auto">
+                    <!-- Google Ads Trigger -->
+                    <button data-modal-target="google-modal" class="modal-trigger bg-white p-8 rounded-xl shadow-lg border border-gray-200 text-left hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Ads_logo.svg" alt="Google Ads Logo" class="h-10 mb-4">
+                        <h3 class="text-xl font-bold text-gray-900">Google Ads</h3>
+                        <p class="mt-2 text-gray-600">Capture high-intent buyers with strategic Search, Shopping, Performance Max, and YouTube campaigns.</p>
+                        <span class="mt-4 inline-block font-semibold text-indigo-600">Learn More &rarr;</span>
+                    </button>
+                    <!-- Meta Ads Trigger -->
+                    <button data-modal-target="meta-modal" class="modal-trigger bg-white p-8 rounded-xl shadow-lg border border-gray-200 text-left hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+                         <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Meta-Logo.svg" alt="Meta Ads Logo" class="h-10 mb-4">
+                         <h3 class="text-xl font-bold text-gray-900">Meta Ads</h3>
+                         <p class="mt-2 text-gray-600">Drive demand and build loyal communities with sophisticated ad funnels on Facebook and Instagram.</p>
+                         <span class="mt-4 inline-block font-semibold text-indigo-600">Learn More &rarr;</span>
+                    </button>
+                    <!-- TikTok Ads Trigger -->
+                    <button data-modal-target="tiktok-modal" class="modal-trigger bg-white p-8 rounded-xl shadow-lg border border-gray-200 text-left hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg" alt="TikTok Ads Logo" class="h-10 mb-4">
+                        <h3 class="text-xl font-bold text-gray-900">TikTok Ads</h3>
+                        <p class="mt-2 text-gray-600">Engage a new generation of shoppers with creative, high-impact video campaigns that convert.</p>
+                        <span class="mt-4 inline-block font-semibold text-indigo-600">Learn More &rarr;</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 3. Our Process/Solution Section (TABBED DESIGN) -->
+        <section class="py-20 md:py-24 bg-white hidden-section">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Our Blueprint for Profitable Growth</h2>
+                    <p class="text-lg text-gray-600 mt-3 max-w-3xl mx-auto">Our proven, data-driven methodology ensures every dollar of your ad spend is accountable, transparent, and optimized for ROI.</p>
+                </div>
+                <div class="flex flex-col md:flex-row gap-8 max-w-6xl mx-auto">
+                    <!-- Left-side Navigation (Tabs) -->
+                    <div class="md:w-1/3 space-y-4">
+                        <div id="tab-step-1" class="blueprint-tab-button active p-6 bg-indigo-600 text-white rounded-lg shadow-md cursor-pointer transition-transform duration-300 transform hover:scale-105">
+                            <h3 class="text-xl font-bold">1. Strategy & Account Audit</h3>
+                        </div>
+                        <div id="tab-step-2" class="blueprint-tab-button p-6 bg-gray-200 text-gray-800 rounded-lg shadow-md cursor-pointer transition-transform duration-300 transform hover:scale-105">
+                            <h3 class="text-xl font-bold">2. Campaign Architecture</h3>
+                        </div>
+                        <div id="tab-step-3" class="blueprint-tab-button p-6 bg-gray-200 text-gray-800 rounded-lg shadow-md cursor-pointer transition-transform duration-300 transform hover:scale-105">
+                            <h3 class="text-xl font-bold">3. Launch & Daily Optimization</h3>
+                        </div>
+                        <div id="tab-step-4" class="blueprint-tab-button p-6 bg-gray-200 text-gray-800 rounded-lg shadow-md cursor-pointer transition-transform duration-300 transform hover:scale-105">
+                            <h3 class="text-xl font-bold">4. Reporting & Scaling</h3>
+                        </div>
+                    </div>
+                    <!-- Right-side Content -->
+                    <div class="md:w-2/3 p-6 md:p-8 bg-gray-50 rounded-lg shadow-inner">
+                        <!-- Step 1 Content -->
+                        <div id="content-step-1" class="blueprint-tab-content active">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">Strategy & Account Audit</h3>
+                            <div class="text-gray-700 space-y-4">
+                                <p>Our process begins with a comprehensive discovery phase to build a winning foundation. We don't just ask for your goals; we uncover the 'why' behind them. This includes:</p>
+                                <ul class="list-disc list-inside space-y-2 pl-2">
+                                    <li><strong>Full-Funnel Account Audit:</strong> A granular review of your existing ad accounts to identify wasted spend, missed opportunities, and technical issues like pixel tracking.</li>
+                                    <li><strong>Competitor & Market Analysis:</strong> We analyze what your top competitors are doing successfully (and unsuccessfully) to carve out a unique, profitable space for your brand.</li>
+                                    <li><strong>Ideal Customer Profiling:</strong> We work with you to build data-backed personas of your most profitable customers, ensuring our targeting is laser-focused from day one.</li>
+                                    <li><strong>KPI & Goal Alignment:</strong> We establish clear, measurable Key Performance Indicators (ROAS, CPA, LTV) that directly tie back to your business objectives.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Step 2 Content -->
+                        <div id="content-step-2" class="blueprint-tab-content">
+                             <h3 class="text-2xl font-bold text-gray-900 mb-4">Campaign Architecture & Creative</h3>
+                            <div class="text-gray-700 space-y-4">
+                                <p>With a solid strategy, we architect campaigns built for performance and scale. This is a technical and creative fusion designed to maximize every click:</p>
+                                <ul class="list-disc list-inside space-y-2 pl-2">
+                                    <li><strong>Granular Campaign Structure:</strong> We segment campaigns by intent, audience, and funnel stage (Prospecting, Retargeting, Retention) for ultimate control over budget allocation.</li>
+                                    <li><strong>Advanced Conversion Tracking:</strong> We ensure flawless implementation of platform pixels and the Conversions API (CAPI) to capture accurate data, even with privacy changes.</li>
+                                    <li><strong>Compelling Creative Direction:</strong> We develop data-driven ad copy and provide clear briefs for creative assets (images/videos) designed to stop the scroll and drive action.</li>
+                                    <li><strong>Audience Segmentation:</strong> We build a robust portfolio of audiences, including lookalikes, custom intent, retargeting pools, and value-based groups.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Step 3 Content -->
+                        <div id="content-step-3" class="blueprint-tab-content">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">Launch & Daily Optimization</h3>
+                            <div class="text-gray-700 space-y-4">
+                                <p>This is where the magic happens. A campaign launch is just the beginning; our team's daily, hands-on management is what drives consistent growth:</p>
+                                 <ul class="list-disc list-inside space-y-2 pl-2">
+                                    <li><strong>Proactive Bid & Budget Management:</strong> We monitor performance in real-time to shift budget towards winning campaigns and ad sets, ensuring your spend is always working its hardest.</li>
+                                    <li><strong>Rigorous A/B Testing:</strong> We operate a constant testing schedule for ad copy, headlines, creative, landing pages, and audiences to systematically beat our own controls.</li>
+                                    <li><strong>Audience Refinement:</strong> We analyze performance data to refine and discover new high-performing audiences, keeping your campaigns fresh and effective.</li>
+                                    <li><strong>Creative Iteration:</strong> We identify creative fatigue before it becomes a problem and work with you to cycle in new, data-informed ad concepts.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Step 4 Content -->
+                        <div id="content-step-4" class="blueprint-tab-content">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">Reporting & Scaling</h3>
+                            <div class="text-gray-700 space-y-4">
+                               <p>We believe a great agency partner provides total transparency. Our reporting is built to give you clarity and confidence in our shared progress, leading to intelligent scaling decisions:</p>
+                                <ul class="list-disc list-inside space-y-2 pl-2">
+                                    <li><strong>Customized Performance Dashboards:</strong> You get access to a live dashboard showing the most important KPIs, updated in real-time. No more confusing, static spreadsheets.</li>
+                                    <li><strong>Weekly & Monthly Insights:</strong> We provide regular reports that go beyond the numbers, explaining the *what*, the *why*, and the *what's next* for your campaigns.</li>
+                                    <li><strong>Strategic Scaling Roadmaps:</strong> Based on performance data, we identify opportunities to intelligently increase your ad spend, projecting the expected return and helping you grow your brand profitably and sustainably.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Proven Results & Client Trust Section -->
+        <section class="py-20 md:py-24 bg-gray-50 hidden-section">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Proof, Not Promises</h2>
+                    <p class="text-lg text-gray-600 mt-3 max-w-3xl mx-auto">We measure our success by the only metric that matters: yours. See how we've transformed ad spend into real, profitable growth for our partners.</p>
+                </div>
+
+                <!-- Data Visualizations Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">ROAS Transformation</h3>
+                        <p class="text-5xl font-black text-indigo-600">+210%</p>
+                        <p class="text-gray-600 mb-4">Average ROAS increase in 90 days.</p>
+                        <svg class="w-full h-16 text-indigo-500" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 38C15.8667 38 21.5333 11.8 33 12C46 12.2333 46.5 28.5 59.5 28.5C72.5 28.5 75.5 3 86.5 2" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Acquisition Cost</h3>
+                        <p class="text-5xl font-black text-green-600">-45%</p>
+                        <p class="text-gray-600 mb-4">Average decrease in Cost Per Acquisition.</p>
+                         <svg class="w-full h-16 text-green-500" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 2C15.8667 2 21.5333 28.2 33 28C46 27.7667 46.5 11.5 59.5 11.5C72.5 11.5 75.5 37 86.5 38" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                         <h3 class="text-xl font-bold text-gray-900 mb-2">Revenue Growth</h3>
+                        <p class="text-5xl font-black text-indigo-600">+300%</p>
+                        <p class="text-gray-600 mb-4">Client revenue growth (YoY) from our channels.</p>
+                         <svg class="w-full h-16 text-indigo-500" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="15" y="30" width="10" height="10" fill="currentColor" fill-opacity="0.3"/><rect x="35" y="22" width="10" height="18" fill="currentColor" fill-opacity="0.5"/><rect x="55" y="15" width="10" height="25" fill="currentColor" fill-opacity="0.7"/><rect x="75" y="2" width="10" height="38" fill="currentColor"/></svg>
+                    </div>
+                </div>
+
+                <!-- Testimonial Grid -->
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                     <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <svg class="w-10 h-10 text-gray-300 mb-4" fill="currentColor" viewBox="0 0 16 16"><path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z"/></svg>
+                        <blockquote class="text-gray-700 text-lg leading-relaxed">"Working with Aarry has been a game-changer. They built a comprehensive growth strategy, not just an ad campaign. Our ROAS has never been higher, and we finally have clarity on our marketing spend."</blockquote>
+                        <cite class="mt-4 block font-bold text-gray-900 not-italic">Jessica Chen, Founder <span class="text-indigo-600">@ a Shopify Fashion Brand</span></cite>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <svg class="w-10 h-10 text-gray-300 mb-4" fill="currentColor" viewBox="0 0 16 16"><path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z"/></svg>
+                        <blockquote class="text-gray-700 text-lg leading-relaxed">"Their reporting is what sets them apart. We get clear, actionable insights every week that actually help us make better business decisions. It feels like they're a true extension of our own team."</blockquote>
+                        <cite class="mt-4 block font-bold text-gray-900 not-italic">Michael Bell, CEO <span class="text-indigo-600">@ a Skincare Company</span></cite>
+                    </div>
+                </div>
+
+                <!-- Scrolling Partner Logos -->
+                <div class="mt-20 space-y-12">
+                     <!-- Payment Partners -->
+                    <div>
+                        <h4 class="text-center text-gray-500 font-semibold uppercase tracking-widest mb-8">Payment Gateway Partners</h4>
+                        <div class="marquee">
+                            <div class="marquee-track">
+                                <img src="https://logo.clearbit.com/paypal.com" alt="PayPal Logo" class="client-logo h-10">
+                                <img src="https://logo.clearbit.com/stripe.com" alt="Stripe Logo" class="client-logo h-10">
+                                <img src="https://logo.clearbit.com/payoneer.com" alt="Payoneer Logo" class="client-logo h-10">
+                                <img src="https://logo.clearbit.com/klarna.com" alt="Klarna Logo" class="client-logo h-8">
+                                <img src="https://logo.clearbit.com/afterpay.com" alt="Afterpay Logo" class="client-logo h-8">
+                                <img src="https://logo.clearbit.com/apple.com/apple-pay" alt="Apple Pay Logo" class="client-logo h-10">
+                                <!-- Duplicate for seamless scroll -->
+                                <img src="https://logo.clearbit.com/paypal.com" alt="PayPal Logo" class="client-logo h-10">
+                                <img src="https://logo.clearbit.com/stripe.com" alt="Stripe Logo" class="client-logo h-10">
+                                <img src="https://logo.clearbit.com/payoneer.com" alt="Payoneer Logo" class="client-logo h-10">
+                                <img src="https://logo.clearbit.com/klarna.com" alt="Klarna Logo" class="client-logo h-8">
+                                <img src="https://logo.clearbit.com/afterpay.com" alt="Afterpay Logo" class="client-logo h-8">
+                                <img src="https://logo.clearbit.com/apple.com/apple-pay" alt="Apple Pay Logo" class="client-logo h-10">
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Technology Partners -->
+                    <div>
+                        <h4 class="text-center text-gray-500 font-semibold uppercase tracking-widest mb-8">Technology & Development Partners</h4>
+                        <div class="marquee">
+                            <div class="marquee-track" style="animation-duration: 35s;">
+                                <img src="https://logo.clearbit.com/shopify.com" alt="Shopify Logo" class="client-logo h-10">
+                                <img src="https://logo.clearbit.com/github.com" alt="GitHub Logo" class="client-logo h-10">
+                                <img src="https://logo.clearbit.com/google.com" alt="Google Logo" class="client-logo h-9">
+                                <img src="https://logo.clearbit.com/vercel.com" alt="Vercel Logo" class="client-logo h-8">
+                                <img src="https://logo.clearbit.com/slack.com" alt="Slack Logo" class="client-logo h-10">
+                                <img src="https://logo.clearbit.com/figma.com" alt="Figma Logo" class="client-logo h-10">
+                                <!-- Duplicate for seamless scroll -->
+                                <img src="https://logo.clearbit.com/shopify.com" alt="Shopify Logo" class="client-logo h-10">
+                                <img src="https://logo.clearbit.com/github.com" alt="GitHub Logo" class="client-logo h-10">
+                                <img src="https://logo.clearbit.com/google.com" alt="Google Logo" class="client-logo h-9">
+                                <img src="https://logo.clearbit.com/vercel.com" alt="Vercel Logo" class="client-logo h-8">
+                                <img src="https://logo.clearbit.com/slack.com" alt="Slack Logo" class="client-logo h-10">
+                                <img src="https://logo.clearbit.com/figma.com" alt="Figma Logo" class="client-logo h-10">
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Advertising Partners -->
+                    <div>
+                        <h4 class="text-center text-gray-500 font-semibold uppercase tracking-widest mb-8">Advertising Platform Partners</h4>
+                        <div class="marquee">
+                            <div class="marquee-track">
+                                <img src="https://logo.clearbit.com/google.com" alt="Google Logo" class="client-logo h-9">
+                                <img src="https://logo.clearbit.com/meta.com" alt="Meta Logo" class="client-logo h-9">
+                                <img src="https://logo.clearbit.com/tiktok.com" alt="TikTok Logo" class="client-logo h-10">
+                                <img src="https://logo.clearbit.com/pinterest.com" alt="Pinterest Logo" class="client-logo h-9">
+                                <img src="https://logo.clearbit.com/snapchat.com" alt="Snapchat Logo" class="client-logo h-10">
+                                <img src="https://logo.clearbit.com/linkedin.com" alt="LinkedIn Logo" class="client-logo h-9">
+                                <!-- Duplicate for seamless scroll -->
+                                <img src="https://logo.clearbit.com/google.com" alt="Google Logo" class="client-logo h-9">
+                                <img src="https://logo.clearbit.com/meta.com" alt="Meta Logo" class="client-logo h-9">
+                                <img src="https://logo.clearbit.com/tiktok.com" alt="TikTok Logo" class="client-logo h-10">
+                                <img src="https://logo.clearbit.com/pinterest.com" alt="Pinterest Logo" class="client-logo h-9">
+                                <img src="https://logo.clearbit.com/snapchat.com" alt="Snapchat Logo" class="client-logo h-10">
+                                <img src="https://logo.clearbit.com/linkedin.com" alt="LinkedIn Logo" class="client-logo h-9">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 5. PRICING SECTION -->
+        <section id="pricing" class="py-20 md:py-24 bg-white hidden-section">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Simple, Transparent Pricing</h2>
+                    <p class="text-lg text-gray-600 mt-3 max-w-3xl mx-auto">Choose a plan that aligns with your growth stage. All plans are designed to deliver a positive return on your investment.</p>
+                </div>
+        
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-start">
+                    <div class="border border-gray-200 rounded-xl p-8 flex flex-col h-full">
+                        <h3 class="text-2xl font-bold text-gray-900">Starter</h3>
+                        <p class="text-gray-500 mt-2">For new brands and foundational growth.</p>
+                        <div class="mt-6">
+                            <span class="text-5xl font-black text-gray-900">$1,500</span>
+                            <span class="text-lg font-medium text-gray-500">/mo</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-1">+ 15% of Ad Spend</p>
+                        <ul class="mt-8 space-y-4 text-gray-700 flex-grow">
+                            <li class="flex items-center space-x-3">
+                                <svg class="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Up to <strong>$10,000/mo</strong> Ad Spend</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <svg class="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span><strong>2 Platforms</strong> (e.g., Google & Meta)</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <svg class="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Bi-Weekly Reporting</span>
+                            </li>
+                             <li class="flex items-center space-x-3">
+                                <svg class="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Monthly Strategy Call</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="mt-8 block w-full text-center bg-gray-800 hover:bg-gray-900 text-white font-semibold py-3 px-6 rounded-lg transition-colors">Choose Plan</a>
+                    </div>
+                    <div class="relative border-2 border-indigo-600 rounded-xl p-8 flex flex-col shadow-2xl h-full">
+                        <div class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2">
+                            <span class="bg-indigo-600 text-white text-xs font-bold uppercase tracking-wider px-4 py-1 rounded-full">Most Popular</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Growth</h3>
+                        <p class="text-gray-500 mt-2">For scaling brands ready to accelerate.</p>
+                        <div class="mt-6">
+                            <span class="text-5xl font-black text-gray-900">$3,000</span>
+                            <span class="text-lg font-medium text-gray-500">/mo</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-1">+ 12% of Ad Spend</p>
+                        <ul class="mt-8 space-y-4 text-gray-700 flex-grow">
+                             <li class="flex items-center space-x-3">
+                                <svg class="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Up to <strong>$50,000/mo</strong> Ad Spend</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <svg class="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Up to <strong>3 Platforms</strong></span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <svg class="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Weekly Reporting & Insights</span>
+                            </li>
+                             <li class="flex items-center space-x-3">
+                                <svg class="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Bi-Weekly Strategy Calls</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <svg class="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Proactive Creative Testing</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="cta-button mt-8 block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg">Choose Plan</a>
+                    </div>
+                    <div class="border border-gray-200 rounded-xl p-8 flex flex-col h-full">
+                         <h3 class="text-2xl font-bold text-gray-900">Scale</h3>
+                        <p class="text-gray-500 mt-2">For enterprise-level market leaders.</p>
+                        <div class="mt-6">
+                            <span class="text-5xl font-black text-gray-900">Custom</span>
+                            <span class="text-lg font-medium text-gray-500"><br>Bespoke pricing</span>
+                        </div>
+                         <p class="text-sm text-gray-500 mt-1 invisible">Placeholder</p>
+                        <ul class="mt-8 space-y-4 text-gray-700 flex-grow">
+                             <li class="flex items-center space-x-3">
+                                <svg class="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span><strong>Unlimited</strong> Ad Spend</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <svg class="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span><strong>All Platforms</strong> Managed</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <svg class="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Custom Dashboards & Reporting</span>
+                            </li>
+                             <li class="flex items-center space-x-3">
+                                <svg class="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Dedicated Account Director</span>
+                            </li>
+                             <li class="flex items-center space-x-3">
+                                <svg class="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Quarterly Business Reviews</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="mt-8 block w-full text-center bg-gray-800 hover:bg-gray-900 text-white font-semibold py-3 px-6 rounded-lg transition-colors">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. FAQ / Objections Section -->
+        <section class="py-20 md:py-24 bg-gray-50 hidden-section">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Your Questions, Answered</h2>
+                </div>
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <div class="bg-white border border-gray-200 rounded-lg">
+                        <button class="w-full flex justify-between items-center p-6 text-left font-semibold text-lg accordion-button">
+                            <span>What results can I realistically expect?</span>
+                            <svg class="w-6 h-6 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                        </button>
+                        <div class="accordion-content px-6 pb-6">
+                            <p class="text-gray-600">While results vary, our primary goal is always a profitable Return On Ad Spend (ROAS). We establish clear KPIs in our strategy phase and our clients typically see a significant, measurable improvement in performance within the first 60-90 days.</p>
+                        </div>
+                    </div>
+                     <div class="bg-white border border-gray-200 rounded-lg">
+                        <button class="w-full flex justify-between items-center p-6 text-left font-semibold text-lg accordion-button">
+                            <span>Do I retain ownership of the ad accounts?</span>
+                            <svg class="w-6 h-6 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                        </button>
+                        <div class="accordion-content px-6 pb-6">
+                            <p class="text-gray-600">Absolutely. You maintain 100% ownership of your ad accounts, pixels, and all historical data. We operate with full transparency by working through manager-level access, ensuring your assets are always secure and under your control.</p>
+                        </div>
+                    </div>
+                     <div class="bg-white border border-gray-200 rounded-lg">
+                        <button class="w-full flex justify-between items-center p-6 text-left font-semibold text-lg accordion-button">
+                            <span>How much does your management service cost?</span>
+                            <svg class="w-6 h-6 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                        </button>
+                        <div class="accordion-content px-6 pb-6">
+                            <p class="text-gray-600">Our fees are structured as a monthly retainer, typically based on a percentage of your total ad spend, with a minimum engagement level. This model aligns our success with yours. We provide a detailed, custom proposal after our initial free strategy call.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 7. Final CTA Section -->
+        <section id="contact" class="py-24 bg-white hidden-section">
+            <div class="container mx-auto px-4 text-center">
+                <div class="max-w-2xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Ready to Build a True Growth Engine?</h2>
+                    <p class="text-lg text-gray-600 mb-8">Let's build a profitable ad strategy for your brand. Schedule your free, no-obligation consultation and ad account audit today.</p>
+                    <a href="https://calendly.com/kaocher/meeting" target="_blank" rel="noopener noreferrer" class="cta-button inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-10 rounded-full text-lg">
+                        Book My Free Strategy Call
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+            <div>
+                <h3 class="text-2xl font-black tracking-tighter mb-4">Aarry.</h3>
+                <p class="text-gray-400">Your global partner in strategic Shopify growth.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Core Services</h3>
+                <ul class="space-y-3">
+                    <li><a href="services/shopify.html" class="text-gray-400 hover:text-white transition-colors">Shopify Development</a></li>
+                    <li><a href="paid-media-management.html" class="text-white font-semibold transition-colors">Paid Media (PPC)</a></li>
+                    <li><a href="services/shopify-seo-services.html" class="text-gray-400 hover:text-white transition-colors">Shopify SEO</a></li>
+                    <li><a href="services/shopify-cro-service.html" class="text-gray-400 hover:text-white transition-colors">Shopify CRO</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Company</h3>
+                <ul class="space-y-3">
+                    <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="case-studies.html" class="text-gray-400 hover:text-white transition-colors">Case Studies</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Connect</h3>
+                <ul class="space-y-3">
+                    <li><a href="mailto:ask@aarry.org" class="text-gray-400 hover:text-white transition-colors">ask@aarry.org</a></li>
+                    <li><a href="https://www.linkedin.com/company/aarry" class="text-gray-400 hover:text-white transition-colors">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-12 container mx-auto px-4 text-center border-t border-gray-700 pt-8">
+            <p class="text-gray-500">&copy; <span id="year"></span> Aarry Limited. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- MODALS SECTION -->
+    <div id="google-modal" class="modal-overlay fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-[200]">
+        <div class="modal-content bg-white rounded-lg shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+             <div class="p-6 md:p-8">
+                <div class="flex justify-between items-start">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Ads_logo.svg" alt="Google Ads Logo" class="h-10">
+                    <button class="modal-close text-gray-500 hover:text-gray-900 text-3xl">&times;</button>
+                </div>
+                <div class="mt-6 border-t pt-6">
+                    <h3 class="font-bold text-gray-800 text-lg mb-2">The Problem: Wasted Spend & Missed Opportunities</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>High CPCs from broad keywords that don't convert.</li>
+                        <li>Low Quality Scores that inflate costs and reduce visibility.</li>
+                        <li>Poorly structured Shopping feeds that miss out on sales.</li>
+                        <li>Confusion and lack of control over Performance Max campaigns.</li>
+                    </ul>
+                    <h3 class="font-bold text-gray-800 text-lg mt-6 mb-2">The Aarry Solution: Data-Driven Precision</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>Granular keyword research to target high-intent, long-tail searches.</li>
+                        <li>Compelling ad copy and landing page optimization to boost Quality Scores.</li>
+                        <li>Full Shopping feed optimization and management for maximum reach.</li>
+                        <li>Strategic PMax setup with asset group testing and data analysis.</li>
+                    </ul>
+                    <div class="mt-6 p-4 bg-indigo-50 rounded-lg">
+                        <h4 class="font-bold text-indigo-800">Proven Results</h4>
+                        <p class="text-indigo-700">For a fashion brand, we <strong class="font-extrabold">increased ROAS by 210%</strong> and <strong class="font-extrabold">decreased CPA by 45%</strong> in 3 months by rebuilding their Shopping campaigns.</p>
+                    </div>
+                    <div class="mt-6">
+                        <h4 class="font-bold text-gray-800">Why Choose Aarry for Google Ads?</h4>
+                        <p class="text-gray-600">We are certified Google Ads specialists who treat your budget like our own. We focus on profitable keywords and eliminate wasted spend to ensure your campaigns are a primary driver of revenue.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="meta-modal" class="modal-overlay fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-[200]">
+        <div class="modal-content bg-white rounded-lg shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+             <div class="p-6 md:p-8">
+                <div class="flex justify-between items-start">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Meta-Logo.svg" alt="Meta Ads Logo" class="h-10">
+                    <button class="modal-close text-gray-500 hover:text-gray-900 text-3xl">&times;</button>
+                </div>
+                <div class="mt-6 border-t pt-6">
+                    <h3 class="font-bold text-gray-800 text-lg mb-2">The Problem: Rising Costs & Tracking Issues</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>Skyrocketing CPMs and ad fatigue burning through your budget.</li>
+                        <li>Inaccurate attribution and data loss due to iOS 14+.</li>
+                        <li>Difficulty acquiring new customers outside of retargeting.</li>
+                        <li>Struggling to build a full-funnel strategy that works.</li>
+                    </ul>
+                    <h3 class="font-bold text-gray-800 text-lg mt-6 mb-2">The Aarry Solution: Creative Strategy & Full-Funnel Mastery</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>A rigorous creative testing framework to constantly find winning ads.</li>
+                        <li>Advanced audience segmentation (LALs, custom audiences) to find new buyers.</li>
+                        <li>Implementation of the Conversions API (CAPI) for better data accuracy.</li>
+                        <li>Building and optimizing Top-of-Funnel (ToFu), Middle (MoFu), and Bottom (BoFu) campaigns.</li>
+                    </ul>
+                    <div class="mt-6 p-4 bg-indigo-50 rounded-lg">
+                        <h4 class="font-bold text-indigo-800">Proven Results</h4>
+                        <p class="text-indigo-700">For a beauty startup, we scaled their prospecting campaigns to achieve a <strong class="font-extrabold">3.5x blended ROAS</strong> while increasing their ad spend by 400%.</p>
+                    </div>
+                    <div class="mt-6">
+                        <h4 class="font-bold text-gray-800">Why Choose Aarry for Meta Ads?</h4>
+                        <p class="text-gray-600">We combine data science with creative strategy. We understand that winning on Meta requires a constant cycle of testing and learning, and we have the systems to manage that process effectively for your brand.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="tiktok-modal" class="modal-overlay fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-[200]">
+        <div class="modal-content bg-white rounded-lg shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+             <div class="p-6 md:p-8">
+                <div class="flex justify-between items-start">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg" alt="TikTok Ads Logo" class="h-10">
+                    <button class="modal-close text-gray-500 hover:text-gray-900 text-3xl">&times;</button>
+                </div>
+                <div class="mt-6 border-t pt-6">
+                    <h3 class="font-bold text-gray-800 text-lg mb-2">The Problem: Creating Content That Connects</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>Your ads look like ads, and users scroll right past them.</li>
+                        <li>Struggling to keep up with trends and produce enough native-style creative.</li>
+                        <li>Unsure how to effectively use Spark Ads and creators.</li>
+                        <li>Difficulty measuring the true impact and ROI from TikTok campaigns.</li>
+                    </ul>
+                    <h3 class="font-bold text-gray-800 text-lg mt-6 mb-2">The Aarry Solution: Authentic Creative & Trend Integration</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>Creative strategy focused on User-Generated Content (UGC) and authentic, lo-fi video.</li>
+                        <li>A rapid iteration process to test new creative, hooks, and sounds weekly.</li>
+                        <li>Managing creator partnerships and leveraging Spark Ads for maximum social proof.</li>
+                        <li>Setting up proper attribution models to understand TikTok's role in the customer journey.</li>
+                    </ul>
+                    <div class="mt-6 p-4 bg-indigo-50 rounded-lg">
+                        <h4 class="font-bold text-indigo-800">Proven Results</h4>
+                        <p class="text-indigo-700">For an accessories brand, our UGC-focused TikTok strategy generated over <strong class="font-extrabold">5 million video views</strong> and drove a <strong class="font-extrabold">2.8x ROAS</strong> on prospecting campaigns.</p>
+                    </div>
+                    <div class="mt-6">
+                        <h4 class="font-bold text-gray-800">Why Choose Aarry for TikTok Ads?</h4>
+                        <p class="text-gray-600">We understand TikTok culture. We don't make ads; we make TikToks that sell. Our approach is built on authenticity and speed, allowing your brand to thrive on the world's fastest-growing platform.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.body;
+
+            // --- Mobile Menu Handler ---
+            const mobileNav = document.getElementById('mobile-nav');
+            const openNavButton = document.getElementById('mobile-menu-open-button');
+            const closeNavButton = document.getElementById('mobile-menu-close-button');
+            if (mobileNav) {
+                const navLinks = mobileNav.querySelectorAll('.nav-link');
+                const openMobileNav = () => { mobileNav.classList.add('open'); body.classList.add('overflow-hidden'); };
+                const closeMobileNav = () => { mobileNav.classList.remove('open'); body.classList.remove('overflow-hidden'); };
+                if (openNavButton) openNavButton.addEventListener('click', openMobileNav);
+                if (closeNavButton) closeNavButton.addEventListener('click', closeMobileNav);
+                navLinks.forEach(link => link.addEventListener('click', closeMobileNav));
+            }
+
+            // --- Accordion Handler (for FAQs) ---
+            const accordionButtons = document.querySelectorAll('.accordion-button, .mobile-accordion-button');
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    if (content && content.classList.contains('accordion-content')) {
+                        const icon = button.querySelector('svg:last-child');
+                        const isOpening = content.classList.toggle('open');
+                        if (icon) { icon.classList.toggle('rotate-180'); }
+                        content.style.maxHeight = isOpening ? content.scrollHeight + 'px' : '0';
+                    }
+                });
+            });
+
+            // --- Tabs functionality for Blueprint section ---
+            const blueprintTabButtons = document.querySelectorAll('.blueprint-tab-button');
+            const blueprintTabContents = document.querySelectorAll('.blueprint-tab-content');
+
+            blueprintTabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    blueprintTabButtons.forEach(btn => {
+                        btn.classList.remove('active', 'bg-indigo-600', 'text-white');
+                        btn.classList.add('bg-gray-200', 'text-gray-800');
+                    });
+                    blueprintTabContents.forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    const contentId = button.id.replace('tab-', 'content-');
+                    const contentToShow = document.getElementById(contentId);
+                    
+                    button.classList.add('active', 'bg-indigo-600', 'text-white');
+                    button.classList.remove('bg-gray-200', 'text-gray-800');
+                    if (contentToShow) {
+                        contentToShow.classList.add('active');
+                    }
+                });
+            });
+
+
+            // --- Smooth Scroll Handler ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+            
+            // --- Animate Sections on Scroll ---
+            const hiddenSections = document.querySelectorAll('.hidden-section');
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('open');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { root: null, rootMargin: '0px', threshold: 0.1 });
+            hiddenSections.forEach(section => sectionObserver.observe(section));
+
+            // --- Dynamic Year in Footer ---
+            const yearSpan = document.getElementById('year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+
+            // --- Interactive Modal Handler ---
+            const modalTriggers = document.querySelectorAll('.modal-trigger');
+            modalTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const targetModalId = trigger.getAttribute('data-modal-target');
+                    const targetModal = document.getElementById(targetModalId);
+                    if (targetModal) {
+                        targetModal.classList.add('open');
+                        body.classList.add('overflow-hidden');
+                    }
+                });
+            });
+
+            const modalOverlays = document.querySelectorAll('.modal-overlay');
+            modalOverlays.forEach(overlay => {
+                overlay.addEventListener('click', (e) => {
+                    if (e.target === overlay) {
+                        overlay.classList.remove('open');
+                        body.classList.remove('overflow-hidden');
+                    }
+                });
+            });
+
+            const modalCloseButtons = document.querySelectorAll('.modal-close');
+            modalCloseButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = button.closest('.modal-overlay');
+                    if (modal) {
+                        modal.classList.remove('open');
+                        body.classList.remove('overflow-hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
