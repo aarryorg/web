@@ -1,24 +1,24 @@
-/<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Aarry Limited SEO Blog | E-commerce & AI Strategies</title>
-    <meta name="description" content="Your central hub for expert insights on E-commerce SEO, Shopify optimization, and AI-driven strategies. Explore our guides, case studies, and more.">
+    <title>Blog Categories | Aarry Limited SEO Blog</title>
+    <meta name="description" content="Explore all our e-commerce SEO topics, from core fundamentals and Shopify guides to advanced AI strategies and analytics. Find the insights you need to grow.">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Schema Markup for Blog Landing Page -->
+    <!-- Schema Markup for Blog Category Page -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
-      "name": "The Aarry Limited SEO Blog",
-      "description": "The central hub for all blog posts and articles from Aarry Limited, focusing on E-commerce SEO, Shopify, and AI strategies.",
-      "url": "https://aarry.org/blogs/seo/",
+      "name": "Aarry Limited SEO Blog Categories",
+      "description": "A comprehensive directory of all e-commerce SEO topics and categories covered on the Aarry Limited blog.",
+      "url": "https://aarry.org/blogs/seo/categories",
       "publisher": {
         "@type": "Organization",
         "name": "Aarry Limited",
@@ -26,24 +26,7 @@
           "@type": "ImageObject",
           "url": "https://placehold.co/600x60/111827/ffffff?text=Aarry+Limited"
         }
-      },
-      "hasPart": [
-        {
-          "@type": "BlogPosting",
-          "headline": "10 Proven Tips to Boost Your Shopify Collection Page SEO",
-          "url": "https://aarry.org/blogs/seo/10-proven-tips-shopify-collection-page-seo.html"
-        },
-        {
-            "@type": "TechArticle",
-            "headline": "Product Optimization for E-commerce & Shopify SEO",
-            "url": "https://aarry.org/blogs/seo/product-optimization-for-ecommerce-or-shopify-store-seo.html"
-        },
-        {
-          "@type": "BlogPosting",
-          "headline": "The 3 Pillars of Generative Engine Optimization",
-          "url": "https://aarry.org/blogs/seo/The-3-Pillars-of-Generative-Engine-Optimization.html"
-        }
-      ]
+      }
     }
     </script>
 
@@ -56,156 +39,418 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .card-hover-effect {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .category-btn.active {
+            background-color: #4f46e5;
+            color: #ffffff;
         }
-        .card-hover-effect:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        .category-content {
+            display: none;
         }
-        .dark .card-hover-effect:hover {
-             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+        .category-content.active {
+            display: block;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-in-out;
+        }
+        .accordion-content.open {
+            max-height: 2000px; /* Large value for content */
+        }
+        .mobile-nav-overlay {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-nav-overlay.open {
+            transform: translateX(0);
+        }
+        body.overflow-hidden {
+            overflow: hidden;
+        }
+        .subcategory-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .subcategory-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.07);
+        }
+        .dark .subcategory-card:hover {
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
         }
     </style>
 </head>
 <body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 antialiased">
 
-    <!-- Header & Hero Section -->
-    <header class="bg-white dark:bg-gray-800 shadow-md">
-        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-gray-900 dark:text-white">
-                <a href="#">Aarry <span class="text-indigo-500">Blog</span></a>
-            </div>
-            <div>
-                 <button id="theme-toggle" class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700">
+    <!-- Header -->
+    <header class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="https://aarry.org/" class="text-2xl font-black text-gray-900 dark:text-white tracking-tighter">Aarry Limited</a>
+            <div class="flex items-center gap-2">
+                <button id="theme-toggle" class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700">
                     <!-- Icons will be injected by JS -->
                 </button>
+                <button id="mobile-menu-open-button" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
             </div>
-        </nav>
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center py-20 lg:py-28">
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white">
-                Insights for <span class="gradient-text">E-commerce Growth</span>
-            </h1>
-            <p class="mt-6 max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-400">
-                Your go-to resource for expert guides, data-driven strategies, and actionable tips on Shopify, AI, and the future of search.
-            </p>
         </div>
     </header>
 
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-nav" class="mobile-nav-overlay fixed inset-0 bg-white dark:bg-gray-900 z-[100] p-4">
+        <div class="flex justify-between items-center mb-10">
+            <span class="text-2xl font-black text-gray-900 dark:text-white tracking-tighter">Menu</span>
+            <button id="mobile-menu-close-button" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-2">
+              <div>
+                  <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 dark:text-gray-200 font-bold rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800">
+                      <span>Development Services</span>
+                      <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                  </button>
+                  <div class="accordion-content pl-6 pt-1">
+                      <a href="https://aarry.org/services/shopify.html" class="nav-link block py-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600">eCommerce Development</a>
+                      <a href="https://aarry.org/services/headless-shopify-development.html" class="nav-link block py-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600">Headless eCommerce</a>
+                      <a href="https://aarry.org/services/shopify-migration-service.html" class="nav-link block py-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600">Store Migration</a>
+                  </div>
+              </div>
+              <div>
+                  <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 dark:text-gray-200 font-bold rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800">
+                      <span>Digital Marketing</span>
+                      <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                  </button>
+                  <div class="accordion-content pl-6 pt-1">
+                      <a href="https://aarry.org/services/shopify-seo-services.html" class="nav-link block py-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600">Shopify SEO</a>
+                      <a href="https://aarry.org/services/shopify-cro-service.html" class="nav-link block py-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600">Shopify CRO</a>
+                       <a href="https://aarry.org/services/paid-media-ads.html" class="nav-link block py-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600">Paid Media Management</a>
+                  </div>
+              </div>
+              <a href="blog-landing-page.html" class="nav-link block p-3 text-lg text-gray-800 dark:text-gray-200 font-bold hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">Blog</a>
+              <a href="case-studies.html" class="nav-link block p-3 text-lg text-gray-800 dark:text-gray-200 font-bold hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">Case Studies</a>
+              <a href="about.html" class="nav-link block p-3 text-lg text-gray-800 dark:text-gray-200 font-bold hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">About Us</a>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="text-center py-16 lg:py-24 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+                Explore Our <span class="gradient-text">SEO Insights</span>
+            </h1>
+            <p class="mt-6 max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-400">
+                Dive into our comprehensive library of e-commerce topics. Select a category below to find the specific guides, strategies, and resources you need to grow.
+            </p>
+        </div>
+    </section>
+
     <!-- Main Content -->
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-
-        <!-- Shopify & E-commerce SEO Category -->
-        <section id="shopify-ecommerce-seo" class="mb-16">
-            <div class="flex items-center gap-4 mb-8">
-                <svg class="h-8 w-8 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c.51 0 .962-.343 1.087-.835l.383-1.437M7.5 14.25L5.106 5.165A2.25 2.25 0 002.854 3H2.25" /></svg>
-                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Shopify & E-commerce SEO</h2>
+        
+        <div id="category-view">
+            <!-- Category Filter Navigation -->
+            <div id="category-filters" class="mb-12 flex flex-wrap justify-center gap-2 md:gap-4">
+                <button class="category-btn active px-4 py-2 rounded-full font-semibold bg-white dark:bg-gray-800 shadow-sm text-gray-700 dark:text-gray-300 transition" data-target="all">All Categories</button>
+                <button class="category-btn px-4 py-2 rounded-full font-semibold bg-white dark:bg-gray-800 shadow-sm text-gray-700 dark:text-gray-300 transition" data-target="cat-1">Core Fundamentals</button>
+                <button class="category-btn px-4 py-2 rounded-full font-semibold bg-white dark:bg-gray-800 shadow-sm text-gray-700 dark:text-gray-300 transition" data-target="cat-2">Platforms</button>
+                <button class="category-btn px-4 py-2 rounded-full font-semibold bg-white dark:bg-gray-800 shadow-sm text-gray-700 dark:text-gray-300 transition" data-target="cat-3">Content Strategy</button>
+                <button class="category-btn px-4 py-2 rounded-full font-semibold bg-white dark:bg-gray-800 shadow-sm text-gray-700 dark:text-gray-300 transition" data-target="cat-4">Advanced SEO</button>
+                <button class="category-btn px-4 py-2 rounded-full font-semibold bg-white dark:bg-gray-800 shadow-sm text-gray-700 dark:text-gray-300 transition" data-target="cat-5">Analytics</button>
+                <button class="category-btn px-4 py-2 rounded-full font-semibold bg-white dark:bg-gray-800 shadow-sm text-gray-700 dark:text-gray-300 transition" data-target="cat-6">Tools & Resources</button>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Blog Post Card 1 -->
-                <a href="seo/10-proven-tips-shopify-collection-page-seo.html" class="block bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md card-hover-effect">
-                    <img src="https://placehold.co/600x400/374151/ffffff?text=Collection+Page+SEO" alt="Shopify collection page on a laptop screen" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <p class="text-sm text-indigo-500 font-semibold">Shopify SEO</p>
-                        <h3 class="mt-2 text-xl font-bold text-gray-900 dark:text-white">10 Proven Tips to Boost Collection Page SEO</h3>
-                        <p class="mt-3 text-gray-600 dark:text-gray-400 text-sm">Turn your collection pages into traffic-driving machines with these data-backed strategies.</p>
+
+            <!-- Categories Container -->
+            <div id="categories-container">
+
+                <!-- Category 1: Core SEO Fundamentals -->
+                <section id="cat-1" class="category-content active mb-16">
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Core SEO Fundamentals</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="subcategory-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md cursor-pointer" data-subcategory-target="On-Page SEO">
+                            <h3 class="text-xl font-bold mb-2">On-Page SEO</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Optimizing individual page elements.</p>
+                        </div>
+                        <div class="subcategory-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md cursor-pointer" data-subcategory-target="Technical SEO">
+                            <h3 class="text-xl font-bold mb-2">Technical SEO</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">The backend foundation for search visibility.</p>
+                        </div>
+                        <div class="subcategory-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md cursor-pointer" data-subcategory-target="Keyword Research">
+                            <h3 class="text-xl font-bold mb-2">Keyword Research</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Understanding what your customers search for.</p>
+                        </div>
+                        <div class="subcategory-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md cursor-pointer" data-subcategory-target="Link Building">
+                            <h3 class="text-xl font-bold mb-2">Link Building</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Building authority through backlinks.</p>
+                        </div>
+                         <div class="subcategory-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md cursor-pointer" data-subcategory-target="User Experience (UX) & SEO">
+                            <h3 class="text-xl font-bold mb-2">User Experience (UX) & SEO</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">How user behavior impacts rankings.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Category 2: Platform-Specific SEO -->
+                <section id="cat-2" class="category-content mb-16">
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Platform-Specific SEO</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                         <div class="subcategory-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md cursor-pointer" data-subcategory-target="Shopify SEO">
+                            <h3 class="text-xl font-bold mb-2">Shopify SEO</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Mastering the most popular e-commerce platform.</p>
+                        </div>
+                         <div class="subcategory-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md cursor-pointer" data-subcategory-target="WooCommerce SEO">
+                            <h3 class="text-xl font-bold mb-2">WooCommerce SEO</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Optimizing the WordPress e-commerce solution.</p>
+                        </div>
+                         <div class="subcategory-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md cursor-pointer" data-subcategory-target="BigCommerce SEO">
+                            <h3 class="text-xl font-bold mb-2">BigCommerce SEO</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Strategies for the BigCommerce platform.</p>
+                        </div>
+                         <div class="subcategory-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md cursor-pointer" data-subcategory-target="Headless Commerce SEO">
+                            <h3 class="text-xl font-bold mb-2">Headless Commerce SEO</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Technical SEO for modern JAMstack sites.</p>
+                        </div>
+                    </div>
+                </section>
+
+                 <!-- Category 3: Content & Marketing -->
+                <section id="cat-3" class="category-content mb-16">
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Content & Marketing Strategy</h2>
+                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="subcategory-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md cursor-pointer" data-subcategory-target="Product Page Optimization">
+                            <h3 class="text-xl font-bold mb-2">Product Page Optimization</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Techniques to convert more visitors.</p>
+                        </div>
+                        <div class="subcategory-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md cursor-pointer" data-subcategory-target="Collection & Category Page SEO">
+                            <h3 class="text-xl font-bold mb-2">Collection & Category Page SEO</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Optimizing your store's main navigation pages.</p>
+                        </div>
+                        <div class="subcategory-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md cursor-pointer" data-subcategory-target="Blogging for E-commerce">
+                            <h3 class="text-xl font-bold mb-2">Blogging for E-commerce</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Attracting top-of-funnel traffic with content.</p>
+                        </div>
+                         <div class="subcategory-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md cursor-pointer" data-subcategory-target="Video SEO">
+                            <h3 class="text-xl font-bold mb-2">Video SEO</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Using video to drive traffic and sales.</p>
+                        </div>
+                        <div class="subcategory-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md cursor-pointer" data-subcategory-target="User-Generated Content (UGC)">
+                            <h3 class="text-xl font-bold mb-2">User-Generated Content (UGC)</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Leveraging reviews and social proof.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="cat-4" class="category-content mb-16">
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Advanced SEO Techniques</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="subcategory-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md cursor-pointer" data-subcategory-target="AI & Search">
+                            <h3 class="text-xl font-bold mb-2">AI & Search</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Preparing for the future of search.</p>
+                        </div>
+                         <div class="subcategory-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md cursor-pointer" data-subcategory-target="Schema & Structured Data">
+                            <h3 class="text-xl font-bold mb-2">Schema & Structured Data</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Unlocking rich snippets and enhanced visibility.</p>
+                        </div>
+                        <div class="subcategory-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md cursor-pointer" data-subcategory-target="International SEO">
+                            <h3 class="text-xl font-bold mb-2">International SEO</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Expanding your reach across borders.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="cat-5" class="category-content mb-16">
+                     <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Analytics & Performance</h2>
+                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="subcategory-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md cursor-pointer" data-subcategory-target="Google Analytics 4 (GA4)">
+                            <h3 class="text-xl font-bold mb-2">Google Analytics 4 (GA4)</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Tracking e-commerce success with GA4.</p>
+                        </div>
+                         <div class="subcategory-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md cursor-pointer" data-subcategory-target="Google Search Console">
+                            <h3 class="text-xl font-bold mb-2">Google Search Console</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Diagnosing performance and technical issues.</p>
+                        </div>
+                        <div class="subcategory-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md cursor-pointer" data-subcategory-target="Conversion Rate Optimization">
+                            <h3 class="text-xl font-bold mb-2">Conversion Rate Optimization</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Turning traffic into revenue.</p>
+                        </div>
+                    </div>
+                </section>
+
+                 <section id="cat-6" class="category-content mb-16">
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Tools & Resources</h2>
+                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="subcategory-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md cursor-pointer" data-subcategory-target="SEO Tool Reviews">
+                            <h3 class="text-xl font-bold mb-2">SEO Tool Reviews</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">In-depth reviews of top SEO software.</p>
+                        </div>
+                         <div class="subcategory-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md cursor-pointer" data-subcategory-target="Case Studies">
+                            <h3 class="text-xl font-bold mb-2">Case Studies</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Real-world examples of SEO success.</p>
+                        </div>
+                         <div class="subcategory-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md cursor-pointer" data-subcategory-target="Guides & Checklists">
+                            <h3 class="text-xl font-bold mb-2">Guides & Checklists</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Actionable resources to guide your strategy.</p>
+                        </div>
+                        <div class="subcategory-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md cursor-pointer" data-subcategory-target="Infographics & Visuals">
+                            <h3 class="text-xl font-bold mb-2">Infographics & Visuals</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Complex topics made simple through design.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Posts View (Initially Hidden) -->
+        <div id="posts-view" class="hidden">
+            <button id="back-to-categories" class="mb-8 inline-flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-semibold hover:underline">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                Back to All Categories
+            </button>
+            <h2 id="posts-view-title" class="text-3xl font-bold text-gray-900 dark:text-white mb-8"></h2>
+            <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Blog posts will be dynamically shown here. The cards are pre-loaded but hidden by default -->
+                
+                <a href="10-proven-tips-shopify-collection-page-seo.html" class="blog-post-card hidden" data-category="Shopify SEO Collection & Category Page SEO">
+                    <div class="block bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md h-full">
+                        <img src="https://placehold.co/600x400/374151/ffffff?text=Collection+Page+SEO" alt="Shopify collection page on a laptop screen" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">10 Proven Tips to Boost Collection Page SEO</h3>
+                        </div>
                     </div>
                 </a>
-                <!-- Blog Post Card 2 -->
-                <a href="seo/product-optimization-for-ecommerce-or-shopify-store-seo.html" class="block bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md card-hover-effect">
-                    <img src="https://placehold.co/600x400/4f46e5/ffffff?text=A/B+Testing" alt="A diagram showing A/B testing principles" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <p class="text-sm text-indigo-500 font-semibold">CRO & Testing</p>
-                        <h3 class="mt-2 text-xl font-bold text-gray-900 dark:text-white">Product Page Optimization & A/B Testing Guide</h3>
-                        <p class="mt-3 text-gray-600 dark:text-gray-400 text-sm">A comprehensive guide to improving your product pages through data-driven A/B testing.</p>
+                
+                <a href="A-B_Testing_Guide.html" class="blog-post-card hidden" data-category="Product Page Optimization Conversion Rate Optimization">
+                    <div class="block bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md h-full">
+                        <img src="https://placehold.co/600x400/4f46e5/ffffff?text=A/B+Testing" alt="A diagram showing A/B testing principles" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">Product Page Optimization & A/B Testing Guide</h3>
+                        </div>
                     </div>
                 </a>
-                <!-- Blog Post Card 3 -->
-                <div class="block bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md card-hover-effect">
-                    <a href="seo/Shopify-SEO-Apps-Infographic-2025" class="block">
+
+                <a href="Shopify-SEO-Apps-Infographic-2025.html" class="blog-post-card hidden" data-category="Infographics & Visuals Shopify SEO">
+                     <div class="block bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md h-full">
                         <img src="https://placehold.co/600x400/10b981/ffffff?text=Infographic" alt="Infographic showing top Shopify SEO apps" class="w-full h-48 object-cover">
                         <div class="p-6">
-                            <p class="text-sm text-indigo-500 font-semibold">Infographics</p>
-                            <h3 class="mt-2 text-xl font-bold text-gray-900 dark:text-white">Top Shopify SEO Apps for 2025</h3>
-                            <p class="mt-3 text-gray-600 dark:text-gray-400 text-sm">A visual guide to the must-have Shopify apps for improving your store's SEO performance.</p>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">Top Shopify SEO Apps for 2025</h3>
                         </div>
-                    </a>
-                </div>
-            </div>
-        </section>
+                    </div>
+                </a>
 
-        <!-- AI & SEO Strategy Category -->
-        <section id="ai-seo-strategy">
-            <div class="flex items-center gap-4 mb-8">
-                <svg class="h-8 w-8 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.624L16.5 21.75l-.398-1.126a3.375 3.375 0 00-2.456-2.456L12.75 18l1.126-.398a3.375 3.375 0 002.456-2.456L16.5 14.25l.398 1.126a3.375 3.375 0 002.456 2.456L20.25 18l-1.126.398a3.375 3.375 0 00-2.456 2.456z" /></svg>
-                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">AI & SEO Strategy</h2>
-            </div>
+                <a href="The-Definitive-Top-10-AI-SEO-Tools.html" class="blog-post-card hidden" data-category="AI & Search SEO Tool Reviews">
+                     <div class="block bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md h-full">
+                        <img src="https://placehold.co/600x400/7c3aed/ffffff?text=AI+Tools" alt="Abstract representation of AI tools" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                           <h3 class="text-xl font-bold text-gray-900 dark:text-white">The Definitive Top 10 AI SEO Tools</h3>
+                        </div>
+                    </div>
+                </a>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                 <!-- Add more cards as new articles are created -->
-                <a href="seo/The-Definitive-Top-10-AI-SEO-Tools.html" class="block bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md card-hover-effect">
-                    <img src="https://placehold.co/600x400/7c3aed/ffffff?text=AI+Tools" alt="Abstract representation of AI tools" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <p class="text-sm text-purple-500 font-semibold">AI Tools</p>
-                        <h3 class="mt-2 text-xl font-bold text-gray-900 dark:text-white">The Definitive Top 10 AI SEO Tools</h3>
-                        <p class="mt-3 text-gray-600 dark:text-gray-400 text-sm">A deep dive into the top AI-powered tools that are reshaping the SEO landscape.</p>
+                 <a href="The-3-Pillars-of-Generative-Engine-Optimization.html" class="blog-post-card hidden" data-category="AI & Search">
+                     <div class="block bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md h-full">
+                        <img src="https://placehold.co/600x400/db2777/ffffff?text=GEO" alt="Three pillars representing a concept" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                           <h3 class="text-xl font-bold text-gray-900 dark:text-white">The 3 Pillars of Generative Engine Optimization</h3>
+                        </div>
                     </div>
                 </a>
-                <a href="seo/The-3-Pillars-of-Generative-Engine-Optimization.html" class="block bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md card-hover-effect">
-                    <img src="https://placehold.co/600x400/db2777/ffffff?text=GEO" alt="Three pillars representing a concept" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <p class="text-sm text-pink-500 font-semibold">Strategy</p>
-                        <h3 class="mt-2 text-xl font-bold text-gray-900 dark:text-white">The 3 Pillars of Generative Engine Optimization</h3>
-                        <p class="mt-3 text-gray-600 dark:text-gray-400 text-sm">Understand the core concepts of GEO to prepare your site for the future of AI search.</p>
+                 <a href="ai-search-strategy-seen-trusted.html" class="blog-post-card hidden" data-category="AI & Search">
+                     <div class="block bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md h-full">
+                        <img src="https://placehold.co/600x400/ea580c/ffffff?text=AI+Search" alt="Magnifying glass over AI text" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">AI Search Strategy: How to Be Seen & Trusted</h3>
+                        </div>
                     </div>
                 </a>
-                <a href="seo/ai-search-strategy-seen-trusted.html" class="block bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md card-hover-effect">
-                    <img src="https://placehold.co/600x400/ea580c/ffffff?text=AI+Search" alt="Magnifying glass over AI text" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <p class="text-sm text-orange-500 font-semibold">AI Search</p>
-                        <h3 class="mt-2 text-xl font-bold text-gray-900 dark:text-white">AI Search Strategy: How to Be Seen & Trusted</h3>
-                        <p class="mt-3 text-gray-600 dark:text-gray-400 text-sm">Learn how to adapt your content strategy to build trust and visibility in an AI-first world.</p>
-                    </div>
-                </a>
-                 <a href="seo/AI-SEO-Tools-Infographic.html" class="block bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md card-hover-effect">
-                    <img src="https://placehold.co/600x400/0891b2/ffffff?text=Infographic" alt="Infographic about AI SEO tools" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <p class="text-sm text-cyan-500 font-semibold">Infographic</p>
-                        <h3 class="mt-2 text-xl font-bold text-gray-900 dark:text-white">AI SEO Tools Infographic</h3>
-                        <p class="mt-3 text-gray-600 dark:text-gray-400 text-sm">A visual breakdown of the essential AI tools every SEO professional needs.</p>
-                    </div>
-                </a>
-                <a href="seo/AI-SEO-Tools-Interactive-Dashboard.html" class="block bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md card-hover-effect">
-                    <img src="https://placehold.co/600x400/65a30d/ffffff?text=Dashboard" alt="Interactive dashboard showing data" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <p class="text-sm text-lime-500 font-semibold">Interactive</p>
-                        <h3 class="mt-2 text-xl font-bold text-gray-900 dark:text-white">AI SEO Tools Interactive Dashboard</h3>
-                        <p class="mt-3 text-gray-600 dark:text-gray-400 text-sm">Explore data and insights on the top AI SEO tools with our interactive dashboard.</p>
-                    </div>
-                </a>
-                <!-- Placeholder for new articles -->
-                <div class="border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center p-6 text-center">
-                    <div>
-                        <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
-                        <h3 class="mt-2 text-lg font-medium text-gray-900 dark:text-white">More Articles Coming Soon</h3>
-                        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Stay tuned for more expert insights and guides.</p>
-                    </div>
-                </div>
+
             </div>
-        </section>
+             <div id="no-posts-message" class="hidden text-center py-16 bg-white dark:bg-gray-800 rounded-lg">
+                <p class="text-gray-500 dark:text-gray-400">No articles found for this topic yet. Check back soon!</p>
+            </div>
+        </div>
 
     </main>
 
-    <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-16">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-600 dark:text-gray-400">
-            <p>&copy; 2025 Aarry Limited. All Rights Reserved.</p>
-            <p class="text-sm mt-2">Published on aarry.org/blogs/seo/</p>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+            <div>
+                <h3 class="text-2xl font-black tracking-tighter mb-4">Aarry Limited</h3>
+                <p class="text-gray-400">Your global partner in strategic Shopify growth. We serve clients from our offices in Dhaka and Charlotte.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Core Services</h3>
+                <ul class="space-y-3">
+                    <li><a href="https://aarry.org/services/shopify.html" class="text-gray-400 hover:text-white transition-colors">Shopify Plus Development</a></li>
+                    <li><a href="https://aarry.org/services/headless-shopify-development.html" class="text-gray-400 hover:text-white transition-colors">Headless Commerce</a></li>
+                    <li><a href="https://aarry.org/services/shopify-seo-services.html" class="text-gray-400 hover:text-white transition-colors">Digital Marketing</a></li>
+                    <li><a href="https://aarry.org/services/shopify-seo-services-plan.html" class="text-gray-400 hover:text-white transition-colors">Growth Consulting</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Company</h3>
+                 <ul class="space-y-3">
+                    <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="blog-landing-page.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Connect</h3>
+                <ul class="space-y-3">
+                      <li><a href="mailto:ask@aarry.org" class="text-gray-400 hover:text-white transition-colors">ask@aarry.org</a></li>
+                      <li><a href="https://www.linkedin.com/company/aarry" class="text-gray-400 hover:text-white transition-colors">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-12 container mx-auto px-4 text-center border-t border-gray-700 pt-8">
+            <p class="text-gray-500">&copy; <span id="year"></span> Aarry Limited. All Rights Reserved.</p>
         </div>
     </footer>
 
+    <!-- Whatsapp Sections -->
+    <div class="whatsapp-widget-container fixed bottom-8 right-8 z-[1000] flex flex-col items-end">
+        <div id="whatsapp-widget" class="whatsapp-widget-header w-[300px] bg-gray-50 dark:bg-gray-800 rounded-lg shadow-2xl mb-4 overflow-hidden hidden animate-slide-up">
+            <div class="widget-header-content bg-teal-700 dark:bg-teal-800 text-white p-5 flex items-center relative">
+                 <button id="widget-close-button" class="widget-header-close absolute top-2 right-3 text-2xl text-white/70 hover:text-white">&times;</button>
+                <img class="widget-person-img w-14 h-14 rounded-full border-2 border-white mr-4 object-cover" src="https://aarry.org/image/WhatsApp%20Image%202025-09-24%20at%2004.58.46%20(1).jpeg" alt="Support Person">
+                <div class="widget-person-info">
+                    <h3 class="font-bold text-lg">Kaocher Ahmed</h3>
+                    <p class="text-sm opacity-90">Shopify Expert</p>
+                </div>
+            </div>
+            <div class="widget-chat-start p-5 text-center bg-white dark:bg-gray-700">
+                <a href="https://wa.me/8801777510221?text=Hello!%20I%20have%20a%20question%20from%20your%20website." target="_blank" class="inline-block px-6 py-3 bg-green-500 text-white font-bold rounded-full transition hover:bg-green-600">
+                    Start Chat
+                </a>
+            </div>
+        </div>
+        <div id="whatsapp-toggle" class="whatsapp-chat-button w-16 h-16 rounded-full bg-green-500 shadow-lg cursor-pointer flex justify-center items-center transition hover:scale-110">
+            <img src="https://aarry.org/image/whatsapp.png" alt="WhatsApp Icon" class="w-9 h-9">
+        </div>
+    </div>
+    
+    <style>
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .animate-slide-up {
+            animation: slideUp 0.3s ease-out;
+        }
+    </style>
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+        const body = document.body;
+
+        // --- Theme Toggle ---
         const themeToggleBtn = document.getElementById('theme-toggle');
         const sunIcon = `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>`;
         const moonIcon = `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>`;
@@ -230,6 +475,106 @@
             localStorage.setItem('theme', newTheme);
             applyTheme(newTheme);
         });
+
+        // --- Mobile Menu Handler ---
+        const mobileNav = document.getElementById('mobile-nav');
+        const openNavButton = document.getElementById('mobile-menu-open-button');
+        const closeNavButton = document.getElementById('mobile-menu-close-button');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        const openMobileNav = () => { mobileNav.classList.add('open'); body.classList.add('overflow-hidden'); };
+        const closeMobileNav = () => { mobileNav.classList.remove('open'); body.classList.remove('overflow-hidden'); };
+
+        openNavButton.addEventListener('click', openMobileNav);
+        closeNavButton.addEventListener('click', closeMobileNav);
+        navLinks.forEach(link => link.addEventListener('click', closeMobileNav));
+        
+        // --- Accordion Handler for Mobile Menu ---
+        const accordionButtons = document.querySelectorAll('.mobile-accordion-button');
+        accordionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('svg');
+                const isOpening = content.classList.toggle('open');
+                
+                if (icon) { icon.classList.toggle('rotate-180'); }
+                content.style.maxHeight = isOpening ? content.scrollHeight + 'px' : '0';
+            });
+        });
+
+        // --- Category Filtering ---
+        const filterButtons = document.querySelectorAll('#category-filters .category-btn');
+        const categories = document.querySelectorAll('#categories-container .category-content');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const target = button.getAttribute('data-target');
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                categories.forEach(category => {
+                    if (target === 'all' || category.id === target) {
+                        category.classList.add('active');
+                    } else {
+                        category.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // --- Subcategory to Posts View Logic ---
+        const categoryView = document.getElementById('category-view');
+        const postsView = document.getElementById('posts-view');
+        const backToCategoriesBtn = document.getElementById('back-to-categories');
+        const subcategoryCards = document.querySelectorAll('.subcategory-card');
+        const postsViewTitle = document.getElementById('posts-view-title');
+        const allPostCards = document.querySelectorAll('.blog-post-card');
+        const noPostsMessage = document.getElementById('no-posts-message');
+
+        subcategoryCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const subcategory = card.dataset.subcategoryTarget;
+                
+                categoryView.classList.add('hidden');
+                postsView.classList.remove('hidden');
+                
+                postsViewTitle.textContent = `Articles in: ${subcategory}`;
+
+                let postsFound = false;
+                allPostCards.forEach(post => {
+                    if (post.dataset.category.includes(subcategory)) {
+                        post.classList.remove('hidden');
+                        postsFound = true;
+                    } else {
+                        post.classList.add('hidden');
+                    }
+                });
+
+                if (postsFound) {
+                    noPostsMessage.classList.add('hidden');
+                } else {
+                    noPostsMessage.classList.remove('hidden');
+                }
+            });
+        });
+
+        backToCategoriesBtn.addEventListener('click', () => {
+            postsView.classList.add('hidden');
+            categoryView.classList.remove('hidden');
+        });
+        
+        // --- Dynamic Year in Footer ---
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // --- Whatsapp Widget ---
+        const whatsappToggle = document.getElementById('whatsapp-toggle');
+        const whatsappWidget = document.getElementById('whatsapp-widget');
+        const closeButton = document.getElementById('widget-close-button');
+
+        function toggleWidget() {
+            whatsappWidget.classList.toggle('hidden');
+        }
+        whatsappToggle.addEventListener('click', toggleWidget);
+        closeButton.addEventListener('click', toggleWidget);
     });
 </script>
 
