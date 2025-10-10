@@ -9,68 +9,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-            color: #1a202c;
-        }
-        /* Accordion-specific styles */
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.7s ease-in-out;
-        }
-        .accordion-content.open {
-            max-height: 2000px; /* Large value for content */
-        }
-
-        /* Styles for sections that animate on scroll */
-        .hidden-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
-        }
-        .hidden-section.open {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .mobile-nav-overlay {
-            transform: translateX(100%);
-            transition: transform 0.3s ease-in-out;
-        }
-        .mobile-nav-overlay.open {
-            transform: translateX(0);
-        }
-        body.overflow-hidden {
-            overflow: hidden;
-        }
-        .brand-gradient-text {
-            background: linear-gradient(to right, #4f46e5, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .cta-button {
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.39);
-        }
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px 0 rgba(79, 70, 229, 0.5);
-        }
-        .client-logo {
-            filter: grayscale(100%) opacity(60%);
-            transition: all 0.3s ease;
-        }
-        .client-logo:hover {
-            filter: grayscale(0%) opacity(100%);
-        }
-    </style>
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <!-- Schema Markup for Blog Category Page -->
     <script type="application/ld+json">
     {
@@ -109,67 +49,77 @@
         .category-content.active {
             display: block;
         }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-in-out;
+        }
+        .accordion-content.open {
+            max-height: 2000px; /* Large value for content */
+        }
+        .mobile-nav-overlay {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-nav-overlay.open {
+            transform: translateX(0);
+        }
+        body.overflow-hidden {
+            overflow: hidden;
+        }
     </style>
 </head>
 <body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 antialiased">
 
-<!-- Header -->
-    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+    <!-- Header -->
+    <header class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="https://aarry.org/" class="text-2xl font-black text-gray-900 tracking-tighter">Aarry Limited</a>
-            <button id="mobile-menu-open-button" class="text-gray-600 hover:text-indigo-600 focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
+            <a href="https://aarry.org/" class="text-2xl font-black text-gray-900 dark:text-white tracking-tighter">Aarry Limited</a>
+            <div class="flex items-center gap-2">
+                <button id="theme-toggle" class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <!-- Icons will be injected by JS -->
+                </button>
+                <button id="mobile-menu-open-button" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
         </div>
     </header>
 
     <!-- Mobile Navigation Overlay -->
-    <div id="mobile-nav" class="mobile-nav-overlay fixed inset-0 bg-white z-[100] p-4">
+    <div id="mobile-nav" class="mobile-nav-overlay fixed inset-0 bg-white dark:bg-gray-900 z-[100] p-4">
         <div class="flex justify-between items-center mb-10">
-            <span class="text-2xl font-black text-gray-900 tracking-tighter">Menu</span>
-            <button id="mobile-menu-close-button" class="text-gray-500 hover:text-gray-900">
+            <span class="text-2xl font-black text-gray-900 dark:text-white tracking-tighter">Menu</span>
+            <button id="mobile-menu-close-button" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
         </div>
         <nav class="flex flex-col space-y-2">
-             <div>
-                <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
-                    <span>Development Services</span>
-                    <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
-                <div class="accordion-content pl-6 pt-1">
-                    <a href="https://aarry.org/services/shopify.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">eCommerce Development</a>
-                    <a href="https://aarry.org/services/headless-shopify-development.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Headless eCommerce</a>
-                    <a href="https://aarry.org/services/shopify-migration-service.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Store Migration</a>
-                </div>
-            </div>
-            <div>
-                <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
-                    <span>Digital Marketing</span>
-                    <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
-                <div class="accordion-content pl-6 pt-1">
-                    <a href="https://aarry.org/services/shopify-seo-services.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Shopify SEO</a>
-                    <a href="https://aarry.org/services/shopify-cro-service.html" class="nav-link block py-2 text-indigo-600 font-bold">Shopify CRO</a>
-                     <a href="https://aarry.org/services/paid-media-ads.html" class="nav-link block py-2 text-indigo-600 font-bold">Paid Media Management</a>
-
-                    
-                </div>
-            </div>
-            <div>
-                <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
-                    <span>AI Tools</span>
-                    <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
-                <div class="accordion-content pl-6 pt-1">
-  
-                </div>
-            </div>
-            <a href="shopify-seo-expert.html" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Shopify seo Expert</a>
-            <a href="case-studies.html" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Case Studies</a>
-            <a href="portfolio.html" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Portfolio</a>
-            <a href="about.html" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">About Us</a>
-            
+              <div>
+                  <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 dark:text-gray-200 font-bold rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800">
+                      <span>Development Services</span>
+                      <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                  </button>
+                  <div class="accordion-content pl-6 pt-1">
+                      <a href="https://aarry.org/services/shopify.html" class="nav-link block py-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600">eCommerce Development</a>
+                      <a href="https://aarry.org/services/headless-shopify-development.html" class="nav-link block py-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600">Headless eCommerce</a>
+                      <a href="https://aarry.org/services/shopify-migration-service.html" class="nav-link block py-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600">Store Migration</a>
+                  </div>
+              </div>
+              <div>
+                  <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 dark:text-gray-200 font-bold rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800">
+                      <span>Digital Marketing</span>
+                      <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                  </button>
+                  <div class="accordion-content pl-6 pt-1">
+                      <a href="https://aarry.org/services/shopify-seo-services.html" class="nav-link block py-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600">Shopify SEO</a>
+                      <a href="https://aarry.org/services/shopify-cro-service.html" class="nav-link block py-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600">Shopify CRO</a>
+                       <a href="https://aarry.org/services/paid-media-ads.html" class="nav-link block py-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600">Paid Media Management</a>
+                  </div>
+              </div>
+              <a href="blog-landing-page.html" class="nav-link block p-3 text-lg text-gray-800 dark:text-gray-200 font-bold hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">Blog</a>
+              <a href="case-studies.html" class="nav-link block p-3 text-lg text-gray-800 dark:text-gray-200 font-bold hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">Case Studies</a>
+              <a href="about.html" class="nav-link block p-3 text-lg text-gray-800 dark:text-gray-200 font-bold hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg">About Us</a>
         </nav>
     </div>
 
@@ -206,7 +156,6 @@
             <section id="cat-1" class="category-content active mb-16">
                 <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Core SEO Fundamentals</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Subcategory cards here -->
                     <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
                         <h3 class="text-xl font-bold mb-2">On-Page SEO</h3>
                         <p class="text-sm text-gray-500 dark:text-gray-400">Optimizing individual page elements.</p>
@@ -336,34 +285,34 @@
         </div>
     </main>
 
-<!-- Footer -->
+    <!-- Footer -->
     <footer class="bg-gray-900 text-white py-16">
         <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
             <div>
-                <h3 class="text-2xl font-black tracking-tighter mb-4">Aarry.</h3>
+                <h3 class="text-2xl font-black tracking-tighter mb-4">Aarry Limited</h3>
                 <p class="text-gray-400">Your global partner in strategic Shopify growth. We serve clients from our offices in Dhaka and Charlotte.</p>
             </div>
             <div>
                 <h3 class="text-lg font-semibold mb-4">Core Services</h3>
                 <ul class="space-y-3">
-                    <li><a href="services/shopify.html" class="text-gray-400 hover:text-white transition-colors">Shopify Plus Development</a></li>
-                    <li><a href="services/headless-shopify-development.html" class="text-gray-400 hover:text-white transition-colors">Headless Commerce</a></li>
-                    <li><a href="services/shopifyseo" class="text-gray-400 hover:text-white transition-colors">Digital Marketing</a></li>
-                    <li><a href="services/shopify-seo-services-plan.html" class="text-gray-400 hover:text-white transition-colors">Growth Consulting</a></li>
+                    <li><a href="https://aarry.org/services/shopify.html" class="text-gray-400 hover:text-white transition-colors">Shopify Plus Development</a></li>
+                    <li><a href="https://aarry.org/services/headless-shopify-development.html" class="text-gray-400 hover:text-white transition-colors">Headless Commerce</a></li>
+                    <li><a href="https://aarry.org/services/shopify-seo-services.html" class="text-gray-400 hover:text-white transition-colors">Digital Marketing</a></li>
+                    <li><a href="https://aarry.org/services/shopify-seo-services-plan.html" class="text-gray-400 hover:text-white transition-colors">Growth Consulting</a></li>
                 </ul>
             </div>
             <div>
                 <h3 class="text-lg font-semibold mb-4">Company</h3>
                  <ul class="space-y-3">
                     <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-                 
+                    <li><a href="blog-landing-page.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
                 </ul>
             </div>
             <div>
                 <h3 class="text-lg font-semibold mb-4">Connect</h3>
                 <ul class="space-y-3">
-                     <li><a href="mailto:ask@aarry.org" class="text-gray-400 hover:text-white transition-colors">ask@aarry.org</a></li>
-                     <li><a href="ttps://www.linkedin.com/company/aarry" class="text-gray-400 hover:text-white transition-colors">LinkedIn</a></li>
+                      <li><a href="mailto:ask@aarry.org" class="text-gray-400 hover:text-white transition-colors">ask@aarry.org</a></li>
+                      <li><a href="https://www.linkedin.com/company/aarry" class="text-gray-400 hover:text-white transition-colors">LinkedIn</a></li>
                 </ul>
             </div>
         </div>
@@ -372,106 +321,48 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const body = document.body;
-
-            // --- Mobile Menu Handler ---
-            const mobileNav = document.getElementById('mobile-nav');
-            const openNavButton = document.getElementById('mobile-menu-open-button');
-            const closeNavButton = document.getElementById('mobile-menu-close-button');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            const openMobileNav = () => { mobileNav.classList.add('open'); body.classList.add('overflow-hidden'); };
-            const closeMobileNav = () => { mobileNav.classList.remove('open'); body.classList.remove('overflow-hidden'); };
-
-            openNavButton.addEventListener('click', openMobileNav);
-            closeNavButton.addEventListener('click', closeMobileNav);
-            navLinks.forEach(link => link.addEventListener('click', closeMobileNav));
-
-            // --- Accordion Handler ---
-            const accordionButtons = document.querySelectorAll('.accordion-button, .mobile-accordion-button');
-            accordionButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const content = button.nextElementSibling;
-                    const icon = button.querySelector('svg');
-                    const isOpening = content.classList.toggle('open');
-                    
-                    if (icon) { icon.classList.toggle('rotate-180'); }
-
-                    content.style.maxHeight = isOpening ? content.scrollHeight + 'px' : '0';
-                });
-            });
-
-            // --- CTA Smooth Scroll Handler ---
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetSection = document.querySelector(targetId);
-                    if (targetSection) {
-                        targetSection.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            // --- Animate Sections on Scroll ---
-            const hiddenSections = document.querySelectorAll('.hidden-section');
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-
-            const sectionObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('open');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            hiddenSections.forEach(section => {
-                sectionObserver.observe(section);
-            });
-
-
-            // --- Dynamic Year in Footer ---
-            document.getElementById('year').textContent = new Date().getFullYear();
-        });
-    </script>
-
-
-     // --- Whatsapp Sections  ---
-    <div class="whatsapp-widget-container">
-
-    <div class="whatsapp-chat-button" id="whatsapp-toggle">
-        <img src="https://aarry.org/image/whatsapp.png" alt="WhatsApp Icon">
-    </div>
-
-    <div class="whatsapp-widget-header" id="whatsapp-widget">
-        <div class="widget-header-close" id="widget-close-button">&times;</div>
-        <div class="widget-header-content">
-            <img class="widget-person-img" src="https://aarry.org/image/WhatsApp%20Image%202025-09-24%20at%2004.58.46%20(1).jpeg" alt="Support Person">
-            <div class="widget-person-info">
-                <h3>Kaocher Ahmed</h3>
-                <p>Shopify Expert </p>
+    <!-- Whatsapp Sections -->
+    <div class="whatsapp-widget-container fixed bottom-8 right-8 z-[1000] flex flex-col items-end">
+        <div id="whatsapp-widget" class="whatsapp-widget-header w-[300px] bg-gray-50 dark:bg-gray-800 rounded-lg shadow-2xl mb-4 overflow-hidden hidden animate-slide-up">
+            <div class="widget-header-content bg-teal-700 dark:bg-teal-800 text-white p-5 flex items-center relative">
+                 <button id="widget-close-button" class="widget-header-close absolute top-2 right-3 text-2xl text-white/70 hover:text-white">&times;</button>
+                <img class="widget-person-img w-14 h-14 rounded-full border-2 border-white mr-4 object-cover" src="https://aarry.org/image/WhatsApp%20Image%202025-09-24%20at%2004.58.46%20(1).jpeg" alt="Support Person">
+                <div class="widget-person-info">
+                    <h3 class="font-bold text-lg">Kaocher Ahmed</h3>
+                    <p class="text-sm opacity-90">Shopify Expert</p>
+                </div>
+            </div>
+            <div class="widget-chat-start p-5 text-center bg-white dark:bg-gray-700">
+                <a href="https://wa.me/8801777510221?text=Hello!%20I%20have%20a%20question%20from%20your%20website." target="_blank" class="inline-block px-6 py-3 bg-green-500 text-white font-bold rounded-full transition hover:bg-green-600">
+                    Start Chat
+                </a>
             </div>
         </div>
-        <div class="widget-chat-start">
-            <a href="https://wa.me/8801777510221?text=Hello!%20I%20have%20a%20question%20from%20your%20website." target="_blank">
-                Start Chat
-            </a>
+        <div id="whatsapp-toggle" class="whatsapp-chat-button w-16 h-16 rounded-full bg-green-500 shadow-lg cursor-pointer flex justify-center items-center transition hover:scale-110">
+            <img src="https://aarry.org/image/whatsapp.png" alt="WhatsApp Icon" class="w-9 h-9">
         </div>
     </div>
-
-</div>
+    
+    <style>
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .animate-slide-up {
+            animation: slideUp 0.3s ease-out;
+        }
+    </style>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+        const body = document.body;
+
         // --- Theme Toggle ---
         const themeToggleBtn = document.getElementById('theme-toggle');
         const sunIcon = `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>`;
@@ -498,6 +389,32 @@
             applyTheme(newTheme);
         });
 
+        // --- Mobile Menu Handler ---
+        const mobileNav = document.getElementById('mobile-nav');
+        const openNavButton = document.getElementById('mobile-menu-open-button');
+        const closeNavButton = document.getElementById('mobile-menu-close-button');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        const openMobileNav = () => { mobileNav.classList.add('open'); body.classList.add('overflow-hidden'); };
+        const closeMobileNav = () => { mobileNav.classList.remove('open'); body.classList.remove('overflow-hidden'); };
+
+        openNavButton.addEventListener('click', openMobileNav);
+        closeNavButton.addEventListener('click', closeMobileNav);
+        navLinks.forEach(link => link.addEventListener('click', closeMobileNav));
+        
+        // --- Accordion Handler for Mobile Menu ---
+        const accordionButtons = document.querySelectorAll('.mobile-accordion-button');
+        accordionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('svg');
+                const isOpening = content.classList.toggle('open');
+                
+                if (icon) { icon.classList.toggle('rotate-180'); }
+                content.style.maxHeight = isOpening ? content.scrollHeight + 'px' : '0';
+            });
+        });
+
         // --- Category Filtering ---
         const filterButtons = document.querySelectorAll('#category-filters .category-btn');
         const categories = document.querySelectorAll('#categories-container .category-content');
@@ -505,12 +422,8 @@
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const target = button.getAttribute('data-target');
-
-                // Update button styles
                 filterButtons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
-
-                // Update content visibility
                 categories.forEach(category => {
                     if (target === 'all' || category.id === target) {
                         category.classList.add('active');
@@ -520,151 +433,23 @@
                 });
             });
         });
-    });
-</script>
-<style>
-    /* Main Container for the widget */
-    .whatsapp-widget-container {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        z-index: 1000;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-    }
-
-    /* The main floating button */
-    .whatsapp-chat-button {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background-color: #25D366;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: transform 0.2s ease-in-out;
-    }
-
-    .whatsapp-chat-button:hover {
-        transform: scale(1.1);
-    }
-    
-    .whatsapp-chat-button img {
-        width: 35px; /* Adjust size of icon inside the button */
-        height: 35px;
-    }
-
-    /* The pop-up widget header */
-    .whatsapp-widget-header {
-        width: 300px;
-        background-color: #f9f9f9;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        margin-bottom: 15px;
-        overflow: hidden;
-        display: none; /* Hidden by default */
-        animation: slideUp 0.3s ease-out;
-    }
-
-    /* Active class to show the widget */
-    .whatsapp-widget-header.active {
-        display: block;
-    }
-    
-    .widget-header-close {
-        position: absolute;
-        top: 5px;
-        right: 10px;
-        font-size: 20px;
-        color: #888;
-        cursor: pointer;
-    }
-
-    .widget-header-content {
-        background-color: #075E54; /* Dark WhatsApp Green */
-        color: white;
-        padding: 20px;
-        display: flex;
-        align-items: center;
-    }
-
-    .widget-person-img {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        border: 2px solid white;
-        margin-right: 15px;
-        object-fit: cover;
-    }
-
-    .widget-person-info h3 {
-        margin: 0;
-        font-size: 18px;
-        font-family: Arial, sans-serif;
-    }
-    
-    .widget-person-info p {
-        margin: 5px 0 0;
-        font-size: 14px;
-        font-family: Arial, sans-serif;
-        opacity: 0.9;
-    }
-
-    .widget-chat-start {
-        padding: 20px;
-        text-align: center;
-        background-color: #ffffff;
-    }
-
-    .widget-chat-start a {
-        display: inline-block;
-        padding: 12px 25px;
-        background-color: #25D366;
-        color: white;
-        text-decoration: none;
-        border-radius: 25px;
-        font-family: Arial, sans-serif;
-        font-weight: bold;
-        transition: background-color 0.2s;
-    }
-
-    .widget-chat-start a:hover {
-        background-color: #1DA851;
-    }
-    
-    /* Animation for the widget appearing */
-    @keyframes slideUp {
-        from {
-            transform: translateY(20px);
-            opacity: 0;
-        }
-        to {
-            transform: translateY(0);
-            opacity: 1;
-        }
-    }
-</style>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
+        
+        // --- Dynamic Year in Footer ---
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // --- Whatsapp Widget ---
         const whatsappToggle = document.getElementById('whatsapp-toggle');
         const whatsappWidget = document.getElementById('whatsapp-widget');
         const closeButton = document.getElementById('widget-close-button');
 
-        // Function to toggle the widget visibility
         function toggleWidget() {
-            whatsappWidget.classList.toggle('active');
+            whatsappWidget.classList.toggle('hidden');
         }
-
-        // Event listener for the main chat button
         whatsappToggle.addEventListener('click', toggleWidget);
-
-        // Event listener for the close button inside the widget
         closeButton.addEventListener('click', toggleWidget);
     });
 </script>
+
 </body>
 </html>
+
