@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product optimization for ecommerce or shopify store seo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- SEO Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Product Optimization for E-commerce & Shopify SEO",
+      "description": "Improve your Conversion Rate Optimization (CRO) with this comprehensive guide to Product Page Optimization and A/B Testing for e-commerce and Shopify stores.",
+      "image": "https://placehold.co/1200x630/4f46e5/ffffff?text=A/B+Testing+Guide",
+      "datePublished": "2025-10-10",
+      "dateModified": "2025-10-10",
+      "author": {
+        "@type": "Organization",
+        "name": "aarry limited "
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "aarry limited",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://placehold.co/600x60/4f46e5/ffffff?text=Your+Logo"
+        }
+      },
+       "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.aarry.org/blogs/seo/product-optimization-for-ecommerce-or-shopify-store-seo.html"
+      }
+    }
+    </script>
+  <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #1a202c;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #4a5568;
+        }
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #718096;
+        }
+        h2, h3, section {
+            scroll-margin-top: 2rem;
+        }
+        .nav-link.active {
+            font-weight: 700;
+            color: #3b82f6;
+            transform: translateX(4px);
+        }
+        .dark .nav-link.active {
+            color: #60a5fa;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
+            <header class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">Product Optimization for E-commerce & Shopify SEO</h1>
+                <p class="text-lg text-gray-600 dark:text-gray-400">Your comprehensive guide to data-driven e-commerce product page optimization.</p>
+            </header>
+    <!-- Accessibility Controls -->
+    <div class="fixed bottom-4 right-4 z-50 flex flex-col items-center gap-2">
+        <button id="theme-toggle" class="p-2 rounded-full bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300">
+            <svg id="theme-icon-dark" class="h-6 w-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+            <svg id="theme-icon-light" class="h-6 w-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+        </button>
+        <button id="font-increase" class="w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-700 font-bold text-lg text-gray-700 dark:text-gray-300">+</button>
+        <button id="font-decrease" class="w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-700 font-bold text-lg text-gray-700 dark:text-gray-300">-</button>
+    </div>
+
+    <div id="content-container" class="container mx-auto max-w-4xl p-4 sm:p-6 md:p-8">
+        
+        <main>
+            <!-- New Summary Section -->
+            <section id="summary" class="mb-12 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                <div class="flex items-center gap-4 mb-4">
+                    <svg class="h-8 w-8 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.311a15.045 15.045 0 01-4.5 0m3.75-2.311a15.045 15.045 0 00-4.5 0M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <h2 class="text-2xl font-bold">Improve your CRO by Product Optimization </h2>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-300">Improve your CRO with Product Page Optimization and A/B Testing</h3>
+                <p class="my-4 text-gray-600 dark:text-gray-400">Use E-commerce Product Page Optimization to test different elements of your product page—including product images/videos, key features/value propositions, product descriptions, and promotional banners—to understand which combination results in the most engagement and conversions (purchases). As your test progresses, you can compare how each variation (treatment) performs against your original product page (baseline), then optimize your page using this information.</p>
+                
+                <div class="mt-6 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg border dark:border-gray-700">
+                    <h4 class="font-semibold mb-2 text-lg">Examples of What You Can Test:</h4>
+                    <ul class="list-disc list-inside space-y-2 text-sm">
+                        <li>Finding out if showcasing a specific lifestyle shot or value proposition (e.g., 'Free Shipping' vs. 'Eco-Friendly Materials') gets better results.</li>
+                        <li>Determining if highlighting a particular feature or culturally relevant content for a specific regional market results in an uptick in purchases in that location.</li>
+                        <li>Seeing if changing the placement or color of the "Add to Cart" button improves your conversion rate.</li>
+                        <li>Checking if including seasonal or time-sensitive promotional content leads to more sales.</li>
+                    </ul>
+                </div>
+                
+                <p class="mt-4 text-gray-600 dark:text-gray-400">To do this, you’ll create alternate versions of your product page, called treatments. These will be shown to a percentage of randomly selected visitors to your e-commerce site.</p>
+
+                <div class="mt-8">
+                    <h3 class="text-xl font-semibold mb-4 border-t pt-4 dark:border-gray-600">Setting Up Your Product Page Test</h3>
+                    <ol class="list-decimal list-inside space-y-4 text-gray-600 dark:text-gray-400">
+                        <li><strong>Provide a Reference Name:</strong> Name your test descriptively so you can easily identify it when viewing results—for example, "Q3 CTA Button Color Test with 3 variants" or "Winter Banner Test: Free Shipping vs. 15% Off."</li>
+                        <li><strong>Select the Number of Treatments:</strong> A test can include up to three treatments with alternate versions of your product page elements (images, descriptions, call-to-action (CTA) text, etc.).</li>
+                        <li><strong>Choose Your Traffic Proportion:</strong> Select the percentage of visitors who will be randomly selected to be shown a treatment instead of your original product page. For example, if you allocate 40% of your traffic to your test and have two treatments, each treatment receives 20% of your total traffic, and your original product page receives the remaining 60%. Visitors will see the same treatment throughout the duration of the test.</li>
+                        <li><strong>Estimate Your Test Duration:</strong> While often optional, this helps you understand if you're likely to reach statistically significant results within a reasonable timeframe (e.g., 30 days). The estimate is based on your product's existing performance, your desired improvement, and the need to reach at least 90% confidence. If the estimate is too long, consider changing your criteria (fewer treatments, higher traffic allocation, etc.).</li>
+                        <li><strong>Set Up Test Treatments:</strong> Focus on one key variable per treatment (e.g., only change the image, or only change the headline) so you can more easily determine which element led to a particular result. Remember, the more treatments you include, the longer it may take to reach conclusive results.</li>
+                    </ol>
+                </div>
+
+                <div class="mt-8">
+                    <h3 class="text-xl font-semibold mb-4 border-t pt-4 dark:border-gray-600">Monitoring and Applying Results</h3>
+                    <p class="mb-4 text-gray-600 dark:text-gray-400">To view your test’s progress, visit your analytics/A/B testing dashboard. You’ll see a performance report that indicates whether your test needs to collect more data or if a particular treatment is performing better or worse than the baseline. You can track key metrics like:</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4 text-sm">
+                        <li>Impressions/Views</li>
+                        <li>Conversion Rate (e.g., Product Page View to Purchase)</li>
+                        <li>Percent Improvement</li>
+                        <li>Confidence Level for each treatment compared to the baseline.</li>
+                    </ul>
+                    <div class="p-4 bg-green-50 dark:bg-gray-700/50 rounded-lg text-green-800 dark:text-green-200">
+                        <h4 class="font-bold">Applying a Winning Treatment</h4>
+                        <p class="mt-1">Based on your test results, once a treatment has been declared to be performing significantly better (typically with at least 90% confidence), you can choose to apply it to your original product page so it displays to everyone on your site. It's recommended to wait until you have statistically reliable data before making a permanent change. Note: Applying a treatment usually causes the test to end.</p>
+                    </div>
+                </div>
+            </section>
+            
+
+
+            <!-- Introduction Section -->
+            <section id="introduction" class="mb-12 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                <div class="flex items-center gap-4 mb-4">
+                    <svg class="h-8 w-8 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" /></svg>
+                    <h2 class="text-2xl font-bold">What is Product Page A/B Testing?</h2>
+                </div>
+                <p class="mb-6">E-commerce Product Page Optimization is the process of testing different elements of an online product page to boost customer engagement and, ultimately, purchases. This data-driven strategy uses alternate versions of the page, called <strong>treatments</strong>, which are shown to a randomly selected percentage of your website visitors. Their performance is then compared against the original page, known as the <strong>baseline</strong>, to identify which version performs better.</p>
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-4 text-center">
+                    <svg class="w-full h-auto" viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg">
+                        <defs><marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"/></marker></defs>
+                        <text x="30" y="20" font-family="Inter, sans-serif" font-size="12" fill="currentColor" class="dark:fill-gray-300">Visitors</text>
+                        <path d="M60,40 V80" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <path d="M60,80 L140,40" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <path d="M60,80 L140,120" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <rect x="150" y="20" width="100" height="40" rx="5" fill="#dbeafe" class="dark:fill-blue-900" stroke="#93c5fd" class="dark:stroke-blue-700" stroke-width="1"/>
+                        <text x="160" y="45" font-family="Inter, sans-serif" font-size="12" fill="currentColor" class="dark:fill-gray-300">Baseline (A)</text>
+                        <rect x="150" y="90" width="100" height="40" rx="5" fill="#d1fae5" class="dark:fill-green-900" stroke="#6ee7b7" class="dark:stroke-green-700" stroke-width="1"/>
+                        <text x="160" y="115" font-family="Inter, sans-serif" font-size="12" fill="currentColor" class="dark:fill-gray-300">Treatment (B)</text>
+                        <text x="280" y="65" font-family="Inter, sans-serif" font-size="14" fill="currentColor" class="dark:fill-gray-300">→</text>
+                        <text x="300" y="68" font-family="Inter, sans-serif" font-size="12" font-weight="bold" fill="currentColor" class="dark:fill-gray-300">Measure</text>
+                        <text x="300" y="83" font-family="Inter, sans-serif" font-size="12" fill="currentColor" class="dark:fill-gray-300">Conversions</text>
+                    </svg>
+                </div>
+            </section>
+
+            <nav class="mb-12 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md sticky top-4 z-40">
+                 <h2 class="text-2xl font-bold mb-4">Quick Navigation</h2>
+                 <ul id="toc" class="space-y-2">
+                    <li><a href="#summary" class="nav-link text-blue-500 hover:underline transition-all duration-200">Optimization & SEO Summary</a></li>
+                    <li><a href="#introduction" class="nav-link text-blue-500 hover:underline transition-all duration-200">What is A/B Testing?</a></li>
+                    <li><a href="#purpose" class="nav-link text-blue-500 hover:underline transition-all duration-200">The Purpose of Optimization</a></li>
+                    <li><a href="#elements" class="nav-link text-blue-500 hover:underline transition-all duration-200">Elements Available for Testing</a></li>
+                    <li><a href="#setup" class="nav-link text-blue-500 hover:underline transition-all duration-200">Setting Up Your Product Page Test</a></li>
+                    <li><a href="#results" class="nav-link text-blue-500 hover:underline transition-all duration-200">Understanding the Results</a></li>
+                 </ul>
+            </nav>
+
+
+            <section id="purpose" class="mb-12 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                <div class="flex items-center gap-4">
+                    <svg class="h-8 w-8 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-6.75c-.621 0-1.125.504-1.125 1.125V18.75m9 0h-9" /></svg>
+                    <h2 class="text-3xl font-bold">The Purpose of Optimization</h2>
+                </div>
+                <p class="my-6">The core purpose of optimization is to improve key performance metrics by making data-driven decisions rather than relying on guesswork. The process is designed to give you concrete evidence of what works for your audience.</p>
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold">Overarching Goal: Understanding Performance</h3>
+                    <p>The main goal is to test different product page elements to understand which combination results in the most engagement and conversions.</p>
+
+                    <h3 class="text-xl font-semibold">Key Desired Outcomes</h3>
+                    <ul class="list-none pl-4 space-y-3">
+                        <li class="flex items-start"><svg class="h-6 w-6 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span><strong>Improve Conversion Rate:</strong> Discover if changes, like modifying the color of the "Add to Cart" button, directly lead to more purchases per visitor.</span></li>
+                        <li class="flex items-start"><svg class="h-6 w-6 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span><strong>Increase Sales:</strong> Test if highlighting specific features or using seasonal promotions leads to a measurable increase in revenue.</span></li>
+                        <li class="flex items-start"><svg class="h-6 w-6 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span><strong>Identify Effective Value Propositions:</strong> Find out if specific messaging (e.g., 'Eco-Friendly Materials' vs. 'Free Shipping') resonates better with your customers.</span></li>
+                    </ul>
+                    <div class="p-4 bg-blue-50 dark:bg-gray-700/50 rounded-lg mt-6 border-l-4 border-blue-400">
+                        <h4 class="font-bold text-blue-800 dark:text-blue-200 flex items-center gap-2"><svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.624L16.5 21.75l-.398-1.126a3.375 3.375 0 00-2.456-2.456L12.75 18l1.126-.398a3.375 3.375 0 002.456-2.456L16.5 14.25l.398 1.126a3.375 3.375 0 002.456 2.456L20.25 18l-1.126.398a3.375 3.375 0 00-2.456 2.456z" /></svg>Actionable Task: Define Your Goals</h4>
+                        <p class="text-blue-700 dark:text-blue-300 mt-2">Before starting, clearly define what you want to achieve. Your goal will determine what you test and how you measure success.</p>
+                        <div class="mt-2 text-sm bg-white dark:bg-gray-800 p-3 rounded">
+                            <p class="font-semibold">[YOUR CONTENT HERE: List 2-3 primary goals for your next product page test.]</p>
+                            <ul class="list-disc list-inside mt-2">
+                                <li><strong>Goal 1:</strong> <!-- e.g., Increase add-to-cart rate by 5% --></li>
+                                <li><strong>Goal 2:</strong> <!-- e.g., Reduce bounce rate on the product page --></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="elements" class="mb-12 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                <div class="flex items-center gap-4">
+                    <svg class="h-8 w-8 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 4.5v15m6-15v15m-10.875 0h15.75c.621 0 1.125-.504 1.125-1.125V5.625c0-.621-.504-1.125-1.125-1.125H4.125a1.125 1.125 0 00-1.125 1.125v12.75c0 .621.504 1.125 1.125 1.125z" /></svg>
+                    <h2 class="text-3xl font-bold">Elements Available for Testing</h2>
+                </div>
+                <p class="my-6">Virtually any component of your product page can be tested. The key is to isolate changes to understand their specific impact. Here are the primary categories of elements you can optimize.</p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Card 1 -->
+                    <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg border dark:border-gray-700">
+                        <h3 class="font-semibold mb-2 flex items-center gap-2"><svg class="h-6 w-6 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" /></svg>Visual & Multimedia</h3>
+                        <ul class="list-disc list-inside space-y-2 text-sm">
+                            <li><strong>Product Images/Videos:</strong> Test angles, backgrounds, or a video vs. static image.</li>
+                            <li><strong>Lifestyle Shots:</strong> Compare professional photos against user-generated content.</li>
+                        </ul>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg border dark:border-gray-700">
+                        <h3 class="font-semibold mb-2 flex items-center gap-2"><svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.325 3.218.087 6.063.26 9.063.465 1.258.067 2.179.167 2.179.167v-4.5c0-.996-.804-1.8-1.8-1.8h-1.562c-.426 0-.828.169-1.131.472l-1.17.975-1.353.948c-.28.196-.589.326-.91.393zm-3.423.325c-.052.002-.105.004-.158.006-.432.043-.846.12-1.224.24-.96.307-1.536.84-1.536 1.537v4.5c0 .696.575 1.23 1.536 1.536.378.12.792.197 1.224.24.053.002.106.004.158.006h3.423c1.153-.032 2.294-.159 3.423-.325.564-.078 1.076-.213 1.547-.406" /></svg>Messaging & Value</h3>
+                        <ul class="list-disc list-inside space-y-2 text-sm">
+                            <li><strong>Product Descriptions:</strong> Test bullet points vs. a narrative paragraph.</li>
+                            <li><strong>Headlines:</strong> Try benefit-oriented vs. feature-focused tones.</li>
+                            <li><strong>Key Features:</strong> Test highlighting durability vs. ease of use.</li>
+                        </ul>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg border dark:border-gray-700">
+                        <h3 class="font-semibold mb-2 flex items-center gap-2"><svg class="h-6 w-6 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zm-7.518-.267A8.25 8.25 0 1120.25 10.5M8.288 14.212A5.25 5.25 0 1117.25 10.5" /></svg>Calls-to-Action (CTAs)</h3>
+                        <ul class="list-disc list-inside space-y-2 text-sm">
+                            <li><strong>Button Color/Placement:</strong> A simple color change can impact visibility.</li>
+                            <li><strong>Button Text:</strong> Test "Add to Cart" vs. "Buy Now" vs. "Get Yours Today".</li>
+                        </ul>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg border dark:border-gray-700">
+                        <h3 class="font-semibold mb-2 flex items-center gap-2"><svg class="h-6 w-6 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" /><path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" /></svg>Promotional Content</h3>
+                        <ul class="list-disc list-inside space-y-2 text-sm">
+                            <li><strong>Promotional Banners:</strong> Compare offers like "Free Shipping" vs. "15% Off".</li>
+                            <li><strong>Culturally Relevant Content:</strong> Test if localized messaging increases purchases.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="setup" class="mb-12">
+                <div class="flex items-center gap-4 mb-6">
+                    <svg class="h-8 w-8 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h12M3.75 3h16.5M3.75 3v1.5M16.5 3v1.5M12 16.5h3.375c.621 0 1.125-.504 1.125-1.125V6.375c0-.621-.504-1.125-1.125-1.125H6.375c-.621 0-1.125.504-1.125 1.125v9.375m12 1.5H3.75" /></svg>
+                    <h2 class="text-3xl font-bold">Setting Up Your Product Page Test</h2>
+                </div>
+                <p class="mb-8">A successful test requires a methodical setup. Follow these steps to ensure your test is controlled, measurable, and produces reliable results.</p>
+                <div class="space-y-6">
+                    <!-- Step 1 -->
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md flex gap-6 items-start">
+                        <div class="text-4xl font-bold text-blue-300 dark:text-blue-700">01</div>
+                        <div>
+                            <h3 class="text-xl font-semibold">Provide a Descriptive Reference Name</h3>
+                            <p class="mt-2 text-gray-600 dark:text-gray-400">Give your test a name that you can easily identify later. Be specific. <br><strong>Examples:</strong> <code>Q4_CTA_Button_Color_Test</code> or <code>Winter_Banner_Free_Shipping_vs_15_Off</code>.</p>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md flex gap-6 items-start">
+                        <div class="text-4xl font-bold text-blue-300 dark:text-blue-700">02</div>
+                        <div>
+                            <h3 class="text-xl font-semibold">Select the Number of Treatments</h3>
+                            <p class="mt-2 text-gray-600 dark:text-gray-400">You can typically test <strong>up to three alternate versions</strong> against your baseline. Remember, more treatments require more traffic to produce a reliable result, which can lengthen the test duration.</p>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md flex gap-6 items-start">
+                        <div class="text-4xl font-bold text-blue-300 dark:text-blue-700">03</div>
+                        <div>
+                            <h3 class="text-xl font-semibold">Choose Your Traffic Proportion</h3>
+                            <p class="mt-2 text-gray-600 dark:text-gray-400">Decide what percentage of your visitors will see the test versions. A visitor will consistently see the same version throughout the test to maintain data integrity.</p>
+                        </div>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md flex gap-6 items-start">
+                        <div class="text-4xl font-bold text-blue-300 dark:text-blue-700">04</div>
+                        <div>
+                            <h3 class="text-xl font-semibold">Estimate Your Test Duration</h3>
+                            <p class="mt-2 text-gray-600 dark:text-gray-400">Use an A/B test calculator to estimate how long you need to run the test based on traffic and current conversion rate. The goal is to collect enough data to achieve <strong>at least 90% confidence</strong>.</p>
+                        </div>
+                    </div>
+                    <!-- Step 5 -->
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md flex gap-6 items-start border-2 border-red-500">
+                         <div class="text-4xl font-bold text-red-400">05</div>
+                        <div>
+                            <h3 class="text-xl font-semibold">Set Up Treatments & Isolate Variables</h3>
+                            <p class="mt-2 text-gray-600 dark:text-gray-400">This is the most critical rule: <strong>change only one key variable per treatment</strong>. If you change the headline, image, AND button color, you won't know which change was responsible for the result.</p>
+                            <div class="mt-4 p-3 bg-gray-100 dark:bg-gray-700 rounded-md text-sm">
+                                <strong>[YOUR CONTENT HERE: Describe the single variable you will change for your first treatment.]</strong>
+                                <p class="mt-1"><strong>Treatment A Variable:</strong> <!-- e.g., Change the main product image from a studio shot to a lifestyle shot showing the product in use. All other elements will remain the same. --></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="results" class="mb-12 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                <div class="flex items-center gap-4">
+                     <svg class="h-8 w-8 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 100 15 7.5 7.5 0 000-15z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12.75 6.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12 9.75v3.75m0-3.75a1.5 1.5 0 10-3 0m3 0a1.5 1.5 0 10-3 0" /></svg>
+                    <h2 class="text-3xl font-bold">Understanding the Results</h2>
+                </div>
+                <p class="my-6">Once your test is running, monitor performance and interpret the results to make a final, data-backed decision.</p>
+                
+                <h3 class="text-xl font-semibold">Monitoring and Key Metrics</h3>
+                <p class="mb-4">Keep an eye on your A/B testing dashboard. You'll be tracking how each treatment performs against the baseline using these key metrics:</p>
+                <ul class="list-disc list-inside pl-4 mb-6 space-y-2">
+                    <li><strong>Conversion Rate:</strong> The ultimate measure of success (e.g., purchases per visitor).</li>
+                    <li><strong>Percent Improvement:</strong> How much better (or worse) a treatment is performing.</li>
+                    <li><strong>Confidence Level:</strong> The probability that the result is not due to random chance. Aim for <strong>90% or higher</strong>.</li>
+                    <li><strong>Impressions/Views:</strong> The number of visitors who have seen each version.</li>
+                </ul>
+
+                <div class="p-6 bg-green-50 dark:bg-gray-700/50 rounded-lg mt-4 text-green-800 dark:text-green-200 border-l-4 border-green-400">
+                    <h4 class="font-bold flex items-center gap-2"><svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>Making the Final Call</h4>
+                    <p class="mt-2">Do not end the test prematurely. Wait until you've reached your estimated duration and the desired confidence level. Once a treatment is declared a "winning treatment" with high confidence (e.g., 95%), you can apply that change permanently to your product page for all visitors. You have now successfully optimized your page based on real user data.</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center text-gray-500 dark:text-gray-400 mt-12 py-6 border-t dark:border-gray-700">
+            <p>&copy; <!-- [YOUR CONTENT HERE: Add Year and Your Company Name] --> 2025 Your Company Name. All Rights Reserved.</p>
+             <p class="text-sm">Guide updated on October 10, 2025.</p>
+        </footer>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // --- Accessibility Controls ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIconDark = document.getElementById('theme-icon-dark');
+        const themeIconLight = document.getElementById('theme-icon-light');
+        const fontIncreaseBtn = document.getElementById('font-increase');
+        const fontDecreaseBtn = document.getElementById('font-decrease');
+        const contentContainer = document.getElementById('content-container');
+
+        const applyTheme = (theme) => {
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+                themeIconLight.classList.remove('hidden');
+                themeIconDark.classList.add('hidden');
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeIconDark.classList.remove('hidden');
+                themeIconLight.classList.add('hidden');
+            }
+        };
+
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const currentTheme = savedTheme ? savedTheme : (prefersDark ? 'dark' : 'light');
+        applyTheme(currentTheme);
+
+        themeToggleBtn.addEventListener('click', () => {
+            const newTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+            localStorage.setItem('theme', newTheme);
+            applyTheme(newTheme);
+        });
+        
+        const getFontSize = () => parseFloat(getComputedStyle(contentContainer).fontSize);
+        const setFontSize = (size) => {
+            contentContainer.style.fontSize = `${size}px`;
+            localStorage.setItem('font-size', size);
+        };
+
+        const savedFontSize = localStorage.getItem('font-size');
+        if (savedFontSize) {
+            contentContainer.style.fontSize = `${savedFontSize}px`;
+        }
+
+        fontIncreaseBtn.addEventListener('click', () => {
+            let currentSize = getFontSize();
+            if (currentSize < 24) setFontSize(currentSize + 1);
+        });
+
+        fontDecreaseBtn.addEventListener('click', () => {
+            let currentSize = getFontSize();
+            if (currentSize > 12) setFontSize(currentSize - 1);
+        });
+
+        // --- Scroll Spy for Table of Contents ---
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('#toc .nav-link');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute('id');
+                const navLink = document.querySelector(`#toc .nav-link[href="#${id}"]`);
+
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    if (navLink) {
+                       navLink.classList.add('active');
+                    }
+                }
+            });
+        }, { rootMargin: "-30% 0px -70% 0px" });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+    });
+</script>
+
+</body>
+</html>
+
