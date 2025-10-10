@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Technical SEO for eCommerce | 2025 Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #6366f1, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        .icon-bg {
+            background-color: #e0e7ff; /* indigo-200 */
+            color: #4338ca; /* indigo-700 */
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #6366f1;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .section-gradient {
+            background: linear-gradient(180deg, #f8fafc 0%, #f0f9ff 100%);
+        }
+    </style>
+  <!-- AI SEO - Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Aarry Limited",
+      "url": "https://www.aarry.org",
+      "logo": "https://placehold.co/200x60/1a202c/ffffff?text=Aarry.",
+      "description": "Aarry Limited is a globally recognized, accredited Shopify Plus Partner agency specializing in custom eCommerce development, headless commerce, and data-driven digital marketing strategies for high-growth brands.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "House 522/A, Road 8, Shewrapara",
+        "addressLocality": "Dhaka",
+        "postalCode": "1216",
+        "addressCountry": "BD"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+88001777510221",
+        "contactType": "sales",
+        "email": "info@aarry.org"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/aarry"
+      ]
+    }
+    </script>
+</head>
+<body class="text-slate-800">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="https://aarry.org/index.html" class="text-2xl font-bold text-slate-900">Aarry.org SEO</a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#performance" class="text-slate-600 hover:text-indigo-600 font-medium nav-link">Performance</a>
+                    <a href="#crawling" class="text-slate-600 hover:text-indigo-600 font-medium nav-link">Indexing</a>
+                    <a href="#structured-data" class="text-slate-600 hover:text-indigo-600 font-medium nav-link">Schema</a>
+                    <a href="#advanced" class="text-slate-600 hover:text-indigo-600 font-medium nav-link">Advanced</a>
+                </nav>
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-slate-800 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
+             <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4">
+                <a href="#performance" class="block py-2 px-4 text-sm text-slate-700 hover:bg-indigo-50 rounded">Performance</a>
+                <a href="#crawling" class="block py-2 px-4 text-sm text-slate-700 hover:bg-indigo-50 rounded">Indexing</a>
+                <a href="#structured-data" class="block py-2 px-4 text-sm text-slate-700 hover:bg-indigo-50 rounded">Schema</a>
+                <a href="#advanced" class="block py-2 px-4 text-sm text-slate-700 hover:bg-indigo-50 rounded">Advanced</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12 md:py-20">
+
+        <!-- Hero Section -->
+        <section class="text-center mb-16 md:mb-24">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">
+                Master Technical SEO for <span class="gradient-text">eCommerce Success</span>
+            </h1>
+            <p class="max-w-3xl mx-auto text-lg md:text-xl text-slate-600">
+                Go beyond keywords. Build a powerful technical foundation to dominate search rankings, enhance user experience, and drive revenue for your online store.
+            </p>
+        </section>
+
+        <!-- Technical SEO Pillars Section -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="card p-6 flex flex-col items-center text-center">
+                <div class="icon-bg p-4 rounded-full mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gauge-circle"><path d="M15.6 3.3a10 10 0 1 0 5.1 5.1"/><circle cx="12" cy="12" r="2"/><path d="M13.4 10.6 19 5"/></svg></div>
+                <h3 class="text-xl font-bold mb-2 text-slate-900">Blazing Fast Speed</h3>
+                <p class="text-slate-600">Optimize Core Web Vitals to reduce bounce rates and improve conversions.</p>
+            </div>
+            <div class="card p-6 flex flex-col items-center text-center">
+                <div class="icon-bg p-4 rounded-full mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-smartphone"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div>
+                <h3 class="text-xl font-bold mb-2 text-slate-900">Mobile-First Experience</h3>
+                <p class="text-slate-600">Deliver a flawless experience on all devices, crucial for mobile-first indexing.</p>
+            </div>
+            <div class="card p-6 flex flex-col items-center text-center">
+                 <div class="icon-bg p-4 rounded-full mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sitemap"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 13h10"/><path d="M12 7v10"/><path d="M10 7H7v3"/><path d="M17 14h-3v3"/></svg></div>
+                <h3 class="text-xl font-bold mb-2 text-slate-900">Flawless Architecture</h3>
+                <p class="text-slate-600">Make it effortless for search engines to discover, crawl, and understand your pages.</p>
+            </div>
+            <div class="card p-6 flex flex-col items-center text-center">
+                 <div class="icon-bg p-4 rounded-full mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                <h3 class="text-xl font-bold mb-2 text-slate-900">Rich Results</h3>
+                <p class="text-slate-600">Use structured data to stand out with reviews, prices, and FAQs in search.</p>
+            </div>
+        </div>
+
+        <!-- Site Performance Section -->
+        <section id="performance" class="my-16 md:my-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Supercharge Your Site Performance</h2>
+                <p class="max-w-2xl mx-auto text-lg text-slate-600 mt-4">For eCommerce, speed isn't just a ranking factor—it's a revenue driver. A faster site leads to better engagement and higher conversion rates.</p>
+            </div>
+
+            <div class="space-y-10">
+                <div class="card p-8 grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3 text-slate-900">Optimize Core Web Vitals</h3>
+                        <p class="text-slate-600 mb-4">Google uses Core Web Vitals to measure user experience. Focus on LCP (load speed), INP (interactivity), and CLS (visual stability), especially on product and category pages.</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start"><span class="icon-bg text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">✓</span><span><strong>Compress Images:</strong> Use modern formats like WebP/AVIF and lazy loading.</span></li>
+                            <li class="flex items-start"><span class="icon-bg text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">✓</span><span><strong>Optimize Code:</strong> Minify CSS/JS, remove unused code, and defer non-critical scripts.</span></li>
+                            <li class="flex items-start"><span class="icon-bg text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">✓</span><span><strong>Fast Hosting & CDN:</strong> Reduce server response time (TTFB) with quality hosting and a global CDN. For ultimate performance, consider a <a href="https://aarry.org/services/headless-shopify-development.html" class="text-indigo-600 font-semibold hover:underline">headless Shopify</a> setup.</span></li>
+                        </ul>
+                    </div>
+                    <div class="hidden md:block">
+                        <img src="https://placehold.co/600x400/e0e7ff/4338ca?text=Core+Web+Vitals" alt="Core Web Vitals" class="rounded-lg shadow-md">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Crawling & Indexing Section -->
+        <section id="crawling" class="my-16 md:my-24 section-gradient -mx-6 px-6 py-16 md:py-24 rounded-lg">
+            <div class="container mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Ensure Flawless Crawling & Indexing</h2>
+                    <p class="max-w-2xl mx-auto text-lg text-slate-600 mt-4">Guide search engines to your most important pages and prevent them from wasting resources on low-value content.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card p-6">
+                        <h4 class="font-bold text-lg mb-2 text-slate-900">Manage Crawl Budget</h4>
+                        <p class="text-slate-600">Use `robots.txt` to block crawlers from faceted navigations (e.g., `?color=blue`), internal search results, and cart/checkout pages to preserve your crawl budget for valuable URLs.</p>
+                    </div>
+                    <div class="card p-6">
+                        <h4 class="font-bold text-lg mb-2 text-slate-900">Fix Duplicate Content</h4>
+                        <p class="text-slate-600">Use `rel="canonical"` tags on product variants and sorted/filtered category pages to point to the primary version, consolidating ranking signals.</p>
+                    </div>
+                    <div class="card p-6">
+                        <h4 class="font-bold text-lg mb-2 text-slate-900">Logical Site Architecture</h4>
+                        <p class="text-slate-600">A flat, intuitive site structure ensures any product is findable within 3-4 clicks. Our <a href="https://aarry.org/services/e-commerce-seo-services.html" class="text-indigo-600 font-semibold hover:underline">eCommerce SEO services</a> prioritize creating a scalable architecture.</p>
+                    </div>
+                     <div class="card p-6">
+                        <h4 class="font-bold text-lg mb-2 text-slate-900">Handle Out-of-Stock Products</h4>
+                        <p class="text-slate-600">For temporarily out-of-stock items, keep the URL live and offer email notifications. For permanently discontinued products, 301 redirect to a suitable alternative or parent category.</p>
+                    </div>
+                     <div class="card p-6">
+                        <h4 class="font-bold text-lg mb-2 text-slate-900">Dynamic XML Sitemaps</h4>
+                        <p class="text-slate-600">Ensure your sitemap automatically updates with new products and correctly reflects `lastmod` dates. This helps search engines discover fresh content faster.</p>
+                    </div>
+                     <div class="card p-6">
+                        <h4 class="font-bold text-lg mb-2 text-slate-900">Smart Internal Linking</h4>
+                        <p class="text-slate-600">Link from popular blog posts or pages to relevant product/category pages to pass authority. Explore our <a href="https://aarry.org/blogs/seo/index.html" class="text-indigo-600 font-semibold hover:underline">SEO blog</a> for more strategies.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Structured Data Section -->
+        <section id="structured-data" class="my-16 md:my-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Win the Click with Structured Data</h2>
+                <p class="max-w-2xl mx-auto text-lg text-slate-600 mt-4">Schema markup turns your standard search listing into a rich, informative result that grabs user attention and boosts click-through rates.</p>
+            </div>
+            <div class="card p-8 bg-slate-800 text-white grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                     <h3 class="text-2xl font-bold mb-3 text-white">Essential eCommerce Schema</h3>
+                     <p class="text-slate-300 mb-4">Implementing correct schema is vital for <a href="https://aarry.org/services/products-page-seo.html" class="text-indigo-300 font-semibold hover:underline">product page SEO</a>. Focus on these types:</p>
+                     <ul class="space-y-3">
+                         <li class="flex items-center"><code class="bg-slate-700 text-pink-400 px-2 py-1 rounded-md mr-3">Product</code><span> Enables price, availability, and star ratings in SERPs.</span></li>
+                         <li class="flex items-center"><code class="bg-slate-700 text-pink-400 px-2 py-1 rounded-md mr-3">FAQPage</code><span> Display common questions and answers directly under your listing, perfect for category pages.</span></li>
+                         <li class="flex items-center"><code class="bg-slate-700 text-pink-400 px-2 py-1 rounded-md mr-3">BreadcrumbList</code><span> Shows the page's path in search results, improving navigation context.</span></li>
+                         <li class="flex items-center"><code class="bg-slate-700 text-pink-400 px-2 py-1 rounded-md mr-3">WebSite</code><span> Enables the sitelinks search box feature for your brand.</span></li>
+                     </ul>
+                </div>
+                <div class="bg-slate-900 p-4 rounded-lg font-mono text-sm overflow-x-auto">
+<pre><code class="language-json text-green-300">{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "Stylish Running Sneaker",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "128"
+  },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "119.99",
+    "availability": "https://schema.org/InStock"
+  }
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advanced SEO & Security -->
+        <section id="advanced" class="my-16 md:my-24">
+             <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Advanced & Future-Facing SEO</h2>
+                <p class="max-w-2xl mx-auto text-lg text-slate-600 mt-4">Stay ahead of the curve by focusing on security, global reach, and the next generation of search.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card p-8">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">HTTPS Everywhere</h3>
+                    <p class="text-slate-600">A site-wide SSL certificate (HTTPS) is mandatory for trust and security. Ensure all resources (images, scripts) are loaded over HTTPS to prevent mixed content issues.</p>
+                </div>
+                 <div class="card p-8">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">International SEO (Hreflang)</h3>
+                    <p class="text-slate-600">If you sell in multiple countries or languages, use `hreflang` tags to tell Google which version of a page to show to users in different regions, preventing duplicate content issues.</p>
+                </div>
+                <div class="card p-8">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">AI & Generative Search</h3>
+                    <p class="text-slate-600">The future of search is conversational. Optimizing with <a href="https://aarry.org/services/ai-seo-optimization.html" class="text-indigo-600 font-semibold hover:underline">AI SEO</a> means focusing on structured data and clear, authoritative content to be featured in AI-powered results.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="my-16 md:my-24 bg-indigo-600 rounded-lg text-white">
+            <div class="container mx-auto px-6 py-12 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Elevate Your eCommerce SEO?</h2>
+                <p class="max-w-2xl mx-auto text-lg text-indigo-200 mb-8">
+                    Stop guessing and start growing. Our team of experts combines technical mastery with proven strategies to deliver measurable results for Shopify stores.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <a href="https://aarry.org/services/shopify-seo-services.html" class="bg-white text-indigo-600 font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-indigo-50 transition-transform transform hover:scale-105 w-full sm:w-auto">Explore Our Shopify SEO Services</a>
+                    <a href="https://aarry.org/case-studies.html" class="bg-indigo-500 hover:bg-indigo-400 font-bold py-3 px-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 w-full sm:w-auto">View Our Case Studies</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-300">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 Aarry.org. All Rights Reserved.</p>
+            <p class="text-sm text-slate-400 mt-2">Your expert partner in technical eCommerce growth.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+</html>
+
