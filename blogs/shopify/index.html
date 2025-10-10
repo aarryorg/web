@@ -1,1 +1,237 @@
-list 
+/<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Aarry Limited SEO Blog | E-commerce & AI Strategies</title>
+    <meta name="description" content="Your central hub for expert insights on E-commerce SEO, Shopify optimization, and AI-driven strategies. Explore our guides, case studies, and more.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Schema Markup for Blog Landing Page -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "The Aarry Limited SEO Blog",
+      "description": "The central hub for all blog posts and articles from Aarry Limited, focusing on E-commerce SEO, Shopify, and AI strategies.",
+      "url": "https://aarry.org/blogs/seo/",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Aarry Limited",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://placehold.co/600x60/111827/ffffff?text=Aarry+Limited"
+        }
+      },
+      "hasPart": [
+        {
+          "@type": "BlogPosting",
+          "headline": "10 Proven Tips to Boost Your Shopify Collection Page SEO",
+          "url": "https://aarry.org/blogs/seo/10-proven-tips-shopify-collection-page-seo.html"
+        },
+        {
+            "@type": "TechArticle",
+            "headline": "Product Optimization for E-commerce & Shopify SEO",
+            "url": "https://aarry.org/blogs/seo/product-optimization-for-ecommerce-or-shopify-store-seo.html"
+        },
+        {
+          "@type": "BlogPosting",
+          "headline": "The 3 Pillars of Generative Engine Optimization",
+          "url": "https://aarry.org/blogs/seo/The-3-Pillars-of-Generative-Engine-Optimization.html"
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #4f46e5, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-hover-effect {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .dark .card-hover-effect:hover {
+             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 antialiased">
+
+    <!-- Header & Hero Section -->
+    <header class="bg-white dark:bg-gray-800 shadow-md">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-gray-900 dark:text-white">
+                <a href="#">Aarry <span class="text-indigo-500">Blog</span></a>
+            </div>
+            <div>
+                 <button id="theme-toggle" class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <!-- Icons will be injected by JS -->
+                </button>
+            </div>
+        </nav>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center py-20 lg:py-28">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+                Insights for <span class="gradient-text">E-commerce Growth</span>
+            </h1>
+            <p class="mt-6 max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-400">
+                Your go-to resource for expert guides, data-driven strategies, and actionable tips on Shopify, AI, and the future of search.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+        <!-- Shopify & E-commerce SEO Category -->
+        <section id="shopify-ecommerce-seo" class="mb-16">
+            <div class="flex items-center gap-4 mb-8">
+                <svg class="h-8 w-8 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c.51 0 .962-.343 1.087-.835l.383-1.437M7.5 14.25L5.106 5.165A2.25 2.25 0 002.854 3H2.25" /></svg>
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Shopify & E-commerce SEO</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog Post Card 1 -->
+                <a href="seo/10-proven-tips-shopify-collection-page-seo.html" class="block bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md card-hover-effect">
+                    <img src="https://placehold.co/600x400/374151/ffffff?text=Collection+Page+SEO" alt="Shopify collection page on a laptop screen" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <p class="text-sm text-indigo-500 font-semibold">Shopify SEO</p>
+                        <h3 class="mt-2 text-xl font-bold text-gray-900 dark:text-white">10 Proven Tips to Boost Collection Page SEO</h3>
+                        <p class="mt-3 text-gray-600 dark:text-gray-400 text-sm">Turn your collection pages into traffic-driving machines with these data-backed strategies.</p>
+                    </div>
+                </a>
+                <!-- Blog Post Card 2 -->
+                <a href="seo/product-optimization-for-ecommerce-or-shopify-store-seo.html" class="block bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md card-hover-effect">
+                    <img src="https://placehold.co/600x400/4f46e5/ffffff?text=A/B+Testing" alt="A diagram showing A/B testing principles" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <p class="text-sm text-indigo-500 font-semibold">CRO & Testing</p>
+                        <h3 class="mt-2 text-xl font-bold text-gray-900 dark:text-white">Product Page Optimization & A/B Testing Guide</h3>
+                        <p class="mt-3 text-gray-600 dark:text-gray-400 text-sm">A comprehensive guide to improving your product pages through data-driven A/B testing.</p>
+                    </div>
+                </a>
+                <!-- Blog Post Card 3 -->
+                <div class="block bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md card-hover-effect">
+                    <a href="seo/Shopify-SEO-Apps-Infographic-2025" class="block">
+                        <img src="https://placehold.co/600x400/10b981/ffffff?text=Infographic" alt="Infographic showing top Shopify SEO apps" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <p class="text-sm text-indigo-500 font-semibold">Infographics</p>
+                            <h3 class="mt-2 text-xl font-bold text-gray-900 dark:text-white">Top Shopify SEO Apps for 2025</h3>
+                            <p class="mt-3 text-gray-600 dark:text-gray-400 text-sm">A visual guide to the must-have Shopify apps for improving your store's SEO performance.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI & SEO Strategy Category -->
+        <section id="ai-seo-strategy">
+            <div class="flex items-center gap-4 mb-8">
+                <svg class="h-8 w-8 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.624L16.5 21.75l-.398-1.126a3.375 3.375 0 00-2.456-2.456L12.75 18l1.126-.398a3.375 3.375 0 002.456-2.456L16.5 14.25l.398 1.126a3.375 3.375 0 002.456 2.456L20.25 18l-1.126.398a3.375 3.375 0 00-2.456 2.456z" /></svg>
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">AI & SEO Strategy</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                 <!-- Add more cards as new articles are created -->
+                <a href="seo/The-Definitive-Top-10-AI-SEO-Tools.html" class="block bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md card-hover-effect">
+                    <img src="https://placehold.co/600x400/7c3aed/ffffff?text=AI+Tools" alt="Abstract representation of AI tools" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <p class="text-sm text-purple-500 font-semibold">AI Tools</p>
+                        <h3 class="mt-2 text-xl font-bold text-gray-900 dark:text-white">The Definitive Top 10 AI SEO Tools</h3>
+                        <p class="mt-3 text-gray-600 dark:text-gray-400 text-sm">A deep dive into the top AI-powered tools that are reshaping the SEO landscape.</p>
+                    </div>
+                </a>
+                <a href="seo/The-3-Pillars-of-Generative-Engine-Optimization.html" class="block bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md card-hover-effect">
+                    <img src="https://placehold.co/600x400/db2777/ffffff?text=GEO" alt="Three pillars representing a concept" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <p class="text-sm text-pink-500 font-semibold">Strategy</p>
+                        <h3 class="mt-2 text-xl font-bold text-gray-900 dark:text-white">The 3 Pillars of Generative Engine Optimization</h3>
+                        <p class="mt-3 text-gray-600 dark:text-gray-400 text-sm">Understand the core concepts of GEO to prepare your site for the future of AI search.</p>
+                    </div>
+                </a>
+                <a href="seo/ai-search-strategy-seen-trusted.html" class="block bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md card-hover-effect">
+                    <img src="https://placehold.co/600x400/ea580c/ffffff?text=AI+Search" alt="Magnifying glass over AI text" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <p class="text-sm text-orange-500 font-semibold">AI Search</p>
+                        <h3 class="mt-2 text-xl font-bold text-gray-900 dark:text-white">AI Search Strategy: How to Be Seen & Trusted</h3>
+                        <p class="mt-3 text-gray-600 dark:text-gray-400 text-sm">Learn how to adapt your content strategy to build trust and visibility in an AI-first world.</p>
+                    </div>
+                </a>
+                 <a href="seo/AI-SEO-Tools-Infographic.html" class="block bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md card-hover-effect">
+                    <img src="https://placehold.co/600x400/0891b2/ffffff?text=Infographic" alt="Infographic about AI SEO tools" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <p class="text-sm text-cyan-500 font-semibold">Infographic</p>
+                        <h3 class="mt-2 text-xl font-bold text-gray-900 dark:text-white">AI SEO Tools Infographic</h3>
+                        <p class="mt-3 text-gray-600 dark:text-gray-400 text-sm">A visual breakdown of the essential AI tools every SEO professional needs.</p>
+                    </div>
+                </a>
+                <a href="seo/AI-SEO-Tools-Interactive-Dashboard.html" class="block bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md card-hover-effect">
+                    <img src="https://placehold.co/600x400/65a30d/ffffff?text=Dashboard" alt="Interactive dashboard showing data" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <p class="text-sm text-lime-500 font-semibold">Interactive</p>
+                        <h3 class="mt-2 text-xl font-bold text-gray-900 dark:text-white">AI SEO Tools Interactive Dashboard</h3>
+                        <p class="mt-3 text-gray-600 dark:text-gray-400 text-sm">Explore data and insights on the top AI SEO tools with our interactive dashboard.</p>
+                    </div>
+                </a>
+                <!-- Placeholder for new articles -->
+                <div class="border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center p-6 text-center">
+                    <div>
+                        <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
+                        <h3 class="mt-2 text-lg font-medium text-gray-900 dark:text-white">More Articles Coming Soon</h3>
+                        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Stay tuned for more expert insights and guides.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-600 dark:text-gray-400">
+            <p>&copy; 2025 Aarry Limited. All Rights Reserved.</p>
+            <p class="text-sm mt-2">Published on aarry.org/blogs/seo/</p>
+        </div>
+    </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const sunIcon = `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>`;
+        const moonIcon = `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>`;
+
+        const applyTheme = (theme) => {
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+                themeToggleBtn.innerHTML = sunIcon;
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeToggleBtn.innerHTML = moonIcon;
+            }
+        };
+
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const currentTheme = savedTheme ? savedTheme : (prefersDark ? 'dark' : 'light');
+        applyTheme(currentTheme);
+
+        themeToggleBtn.addEventListener('click', () => {
+            const newTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+            localStorage.setItem('theme', newTheme);
+            applyTheme(newTheme);
+        });
+    });
+</script>
+
+</body>
+</html>
