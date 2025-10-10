@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopify SEO Service: Rank Higher, Convert More & Skyrocket Sales</title>
+    <meta name="description" content="Expert Shopify SEO Service by Aarry Limited. We fix technical faults (duplicate content, speed) and build domain authority to drive high-intent organic traffic and scale sales.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1a202c;
+        }
+
+        /* --- AARRY BRANDING COLORS & STYLES --- */
+        .brand-indigo { background-color: #4f46e5; }
+        .brand-gradient-text {
+            background: linear-gradient(to right, #4f46e5, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e293b 0%, #312e81 100%);
+        }
+
+        /* CTA Button Styling */
+        .cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.39);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(79, 70, 229, 0.5);
+        }
+        
+        /* Service Page Specific Styles */
+        .section-header {
+            border-left: 5px solid #4f46e5;
+            padding-left: 1rem;
+        }
+
+        /* Mobile Nav Overrides */
+        .mobile-nav-overlay {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-nav-overlay.open {
+            transform: translateX(0);
+        }
+        body.overflow-hidden {
+            overflow: hidden;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-in-out;
+        }
+        .client-logo-item {
+            filter: grayscale(100%) opacity(70%);
+            transition: all 0.3s;
+        }
+        .client-logo-item:hover {
+            filter: grayscale(0%) opacity(100%);
+        }
+        .faq-category {
+            border: 1px solid #e0e7ff;
+        }
+
+        /* Desktop Navigation Style */
+        .desktop-nav a {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .desktop-nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            background-color: #4f46e5;
+            transition: all 0.3s ease-in-out;
+        }
+        .desktop-nav a:hover:after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .desktop-nav { display: none; }
+        }
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; line-height: 1.2; }
+            .hero-content p { font-size: 1.125rem; }
+            .case-study-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .faq-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+            .hero-content { padding: 1.5rem; }
+            .step-card { padding: 1.5rem; }
+            .social-ticker-wrap {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem; 
+            }
+        }
+    </style>
+
+    <!-- ========= COMPREHENSIVE SCHEMA MARKUP ========= -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "Aarry Limited",
+          "url": "https://www.aarry.org",
+          "logo": "https://www.aarry.org/assets/logo.png",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-980-XXX-XXXX", 
+            "contactType": "Sales",
+            "email": "info@aarrylimited.com",
+            "areaServed": "US"
+          },
+          "address": [
+            {
+              "@type": "PostalAddress",
+              "streetAddress": "123 Commerce St",
+              "addressLocality": "Charlotte",
+              "addressRegion": "NC",
+              "postalCode": "28202",
+              "addressCountry": "US"
+            },
+            {
+              "@type": "PostalAddress",
+              "streetAddress": "456 Digital Avenue",
+              "addressLocality": "Dhaka",
+              "postalCode": "1212",
+              "addressCountry": "BD"
+            }
+          ]
+        },
+        {
+          "@type": "WebPage",
+          "name": "Shopify SEO Service: Rank Higher, Convert More & Skyrocket Sales",
+          "url": "https://www.aarry.org/services/shopify-seo-service.html",
+          "description": "Aarry Limited's expert Shopify SEO service fixes technical faults, builds domain authority, and implements high-intent content strategies to drive sustainable organic sales growth for e-commerce brands.",
+          "provider": {
+            "@type": "Organization",
+            "name": "Aarry Limited"
+          }
+        },
+        {
+          "@type": "Service",
+          "serviceType": "Shopify SEO Service",
+          "provider": {
+            "@type": "Organization",
+            "name": "Aarry Limited"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "Worldwide"
+          },
+          "description": "A comprehensive Shopify SEO service designed to increase organic traffic and sales. The service includes technical SEO audits, content strategy, authority building, and ROI-focused reporting for Shopify and Shopify Plus stores.",
+          "offers": [
+            {
+              "@type": "Offer",
+              "name": "Technical Foundation Package",
+              "price": "1500",
+              "priceCurrency": "USD"
+            },
+            {
+              "@type": "Offer",
+              "name": "Growth Accelerator Package",
+              "price": "3000",
+              "priceCurrency": "USD"
+            },
+            {
+              "@type": "Offer",
+              "name": "Market Leader Package"
+            }
+          ],
+          "review": [
+            {
+                "@type": "Review",
+                "author": {"@type": "Person", "name": "Jane Doe, Founder of Wellness Gear"},
+                "reviewRating": {"@type": "Rating", "ratingValue": "5"},
+                "reviewBody": "Aarry's technical deep dive saved us. They fixed the duplicate content issues that three previous agencies couldn't figure out. Our non-brand organic traffic is up 120%."
+            },
+            {
+                "@type": "Review",
+                "author": {"@type": "Person", "name": "Alex Chen, CEO of Outdoor Tech"},
+                "reviewRating": {"@type": "Rating", "ratingValue": "5"},
+                "reviewBody": "The strategic keyword mapping was game-changing. We moved from ranking for generic terms to dominating high-intent, long-tail product queries. The ROI speaks for itself."
+            }
+          ]
+        },
+        {
+          "@type": "Article",
+          "mainEntityOfPage": "https://www.aarry.org/services/shopify-seo-service.html#case-study",
+          "headline": "Case Study: From Ad Dependency to Organic Dominance for Artisan Decor Co.",
+          "author": {
+            "@type": "Organization",
+            "name": "Aarry Limited"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Aarry Limited",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.aarry.org/assets/logo.png"
+            }
+          },
+          "datePublished": "2025-10-10",
+          "description": "A case study detailing how Aarry Limited helped Artisan Decor Co. achieve a +350% increase in organic traffic and a +180% lift in organic revenue in 9 months by implementing a holistic Shopify SEO strategy."
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How long does it take to see results from Shopify SEO?",
+              "acceptedAnswer": { "@type": "Answer", "text": "While technical fixes and on-page optimization show immediate positive shifts (within 1-2 months), substantial organic traffic and ranking improvements typically begin within 4 to 6 months. Achieving top positions on highly competitive keywords usually takes 9-12 months of consistent effort and authority building." }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the most critical technical SEO issue on Shopify?",
+              "acceptedAnswer": { "@type": "Answer", "text": "The most common and critical issue is **duplicate content** created by the platform's collection filtering and product tagging system. We dedicate significant effort to fixing these crawl budget and indexation issues using advanced canonical tag implementation and structured site architecture." }
+            },
+            {
+              "@type": "Question",
+              "name": "How do you find high-converting keywords for e-commerce?",
+              "acceptedAnswer": { "@type": "Answer", "text": "We prioritize **transactional and commercial investigation** keywords (e.g., 'best durable hiking boots' vs. 'what are boots'). We analyze competitor ranking pages, search intent, and use conversion data to target long-tail terms that signal buyer readiness." }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="https://aarry.org/index.html" class="text-2xl font-black text-gray-900 tracking-tighter">Aarry Limited</a>
+            
+            <nav class="desktop-nav hidden lg:flex items-center space-x-8 font-semibold text-gray-700">
+                <a href="#services" class="hover:text-indigo-600">Services</a>
+                <a href="#case-study" class="hover:text-indigo-600">Case Study</a>
+                <a href="#pricing" class="hover:text-indigo-600">Pricing</a>
+                <a href="https://aarry.org/about.html" class="hover:text-indigo-600">About Us</a>
+                <a href="#faq" class="hover:text-indigo-600">FAQs</a>
+            </nav>
+            <a href="https://calendly.com/kaocher/meeting" class="hidden lg:inline-block cta-button bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-5 rounded-lg text-sm">
+                Book a Call
+            </a>
+
+            <button id="mobile-menu-open-button" class="lg:hidden text-gray-600 hover:text-indigo-600 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <div id="mobile-nav" class="mobile-nav-overlay fixed inset-0 bg-white z-[100] p-4">
+        <div class="flex justify-between items-center mb-10">
+            <span class="text-2xl font-black text-gray-900 tracking-tighter">Menu</span>
+            <button id="mobile-menu-close-button" class="text-gray-500 hover:text-gray-900">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-2">
+             <div>
+                <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
+                    <span>Services</span>
+                    <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content pl-6 pt-1">
+                    <a href="https://aarry.org/services/shopify.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">eCommerce Development</a>
+                    <a href="https://aarry.org/services/shopify-seo-services.html" class="nav-link block py-2 text-indigo-600 font-bold">Digital Marketing (Shopify SEO)</a> 
+                    <a href="https://aarry.org/services/ai-seo-optimization.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">AI SEO</a>
+                </div>
+            </div>
+            <a href="https://aarry.org/case-studies.html" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Case Studies</a>
+            <a href="https://aarry.org/portfolio.html" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Portfolio</a>
+            <a href="https://aarry.org/about.html" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">About Us</a>
+            <a href="https://calendly.com/kaocher/meeting" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Book a Call</a>
+        </nav>
+    </div>
+
+    <main>
+        <section class="py-16 md:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center hero-content">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
+                    <span class="brand-gradient-text">Shopify SEO Services</span> to Scale Your E-commerce Revenue
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+                    We are a dedicated Shopify SEO agency. Our team of <a href="https://aarry.org/about.html" class="text-indigo-600 hover:underline font-semibold">e-commerce experts</a> crafts strategic, data-led SEO campaigns for ambitious <a href="https://aarry.org/services/shopify.html" class="text-indigo-600 hover:underline font-semibold">Shopify & Shopify Plus</a> brands.
+                </p>
+                <div class="grid md:grid-cols-2 gap-8 text-left max-w-4xl mx-auto mb-10">
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <p class="text-gray-700">Your store is beautifully designed, but in a crowded landscape, that isn't enough. You need to attract a consistent stream of customers who are actively searching for what you offer.</p>
+                    </div>
+                    <div class="bg-indigo-50 p-6 rounded-lg border border-indigo-200">
+                        <p class="text-gray-800"><strong>That’s where we come in.</strong> We transform your store into a sales-generating asset, reducing your reliance on expensive <a href="https://aarry.org/services/paid-media-ads.html" class="text-indigo-600 hover:underline font-semibold">paid advertising</a> and building a foundation for sustainable growth.</p>
+                    </div>
+                </div>
+                 <a href="#contact" class="inline-block cta-button bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-xl text-lg md:text-xl uppercase tracking-wider">
+                    Ready to Maximize Your Visibility?
+                </a>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 section-header inline-block">Increase Sales & Visibility With Shopify SEO</h2>
+                    <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+                        Most stores focus on aesthetics, but the most valuable customers come from organic search. A staggering **95% of web experiences begin with a search engine**, and if your store isn't visible, you're losing sales. Our expert strategies put your products in front of ready-to-buy customers. It's time to build an e-commerce empire.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="py-12 bg-gray-100 border-t border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p class="text-gray-500 font-semibold uppercase tracking-widest mb-6">Brands Featured In Our <a href="https://aarry.org/portfolio.html" class="text-indigo-600 hover:underline">Portfolio</a></p>
+                <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
+                    <img src="https://placehold.co/100x30/ffffff/4f46e5?text=DTC+Brand" alt="DTC Brand Logo" class="client-logo-item h-7">
+                    <img src="https://placehold.co/100x30/ffffff/4f46e5?text=Luxury+Goods" alt="Luxury Goods Logo" class="client-logo-item h-7">
+                    <img src="https://placehold.co/100x30/ffffff/4f46e5?text=Health+Co" alt="Health Co Logo" class="client-logo-item h-7">
+                    <img src="https://placehold.co/100x30/ffffff/4f46e5?text=Fashion+Retailer" alt="Fashion Retailer Logo" class="client-logo-item h-7">
+                    <img src="https://placehold.co/100x30/ffffff/4f46e5?text=C+P+G" alt="CPG Brand Logo" class="client-logo-item h-7">
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="py-16 md:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                 <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold section-header inline-block">Our Holistic Shopify SEO Approach</h2>
+                    <p class="text-lg text-gray-600 mt-3 max-w-3xl mx-auto">We combine technical expertise with commercial insight to deliver results that matter. Our process is transparent, thorough, and tailored for Shopify.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition">
+                        <h3 class="text-xl font-bold text-indigo-600 mb-2">1. Commercial Discovery & Competitive Blueprint</h3>
+                        <p class="text-gray-700">We begin with a comprehensive site review and commercially-centric keyword research to build a winning strategy that targets your most profitable customers from day one.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition">
+                        <h3 class="text-xl font-bold text-indigo-600 mb-2">2. Fortifying Your Technical Bedrock</h3>
+                        <p class="text-gray-700">Our <a href="https://aarry.org/services/e-commerce-seo-services.html" class="text-indigo-600 hover:underline font-semibold">e-commerce SEO</a> audit ensures a flawless technical foundation, optimizing site speed, architecture, and crawlability.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition">
+                        <h3 class="text-xl font-bold text-indigo-600 mb-2">3. Crafting High-Conversion Content</h3>
+                        <p class="text-gray-700">We optimize your <a href="https://aarry.org/services/products-page-seo.html" class="text-indigo-600 hover:underline font-semibold">product pages</a> and <a href="https://aarry.org/blogs/seo/10-proven-tips-shopify-collection-page-seo.html" class="text-indigo-600 hover:underline font-semibold">collection pages</a> to align with search intent, turning them into SEO powerhouses.</p>
+                    </div>
+                     <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition">
+                        <h3 class="text-xl font-bold text-indigo-600 mb-2">4. Building Unshakeable Domain Authority</h3>
+                        <p class="text-gray-700">We build your store's authority with high-quality backlinks from relevant sources, leveraging our <a href="https://aarry.org/blogs.html" class="text-indigo-600 hover:underline font-semibold">content marketing</a> efforts to establish you as a leader.</p>
+                    </div>
+                     <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition md:col-span-2 lg:col-span-1">
+                        <h3 class="text-xl font-bold text-indigo-600 mb-2">5. ROI-Focused Analytics & Iteration</h3>
+                        <p class="text-gray-700">Our work doesn't stop. We continuously analyze performance data and refine our strategy to ensure we are always driving commercially significant results.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="case-study" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-header">
+                    <a href="https://aarry.org/case-studies.html" class="text-gray-900 hover:text-indigo-600 transition">Case Study Spotlight: Real Results for Shopify Stores</a>
+                </h2>
+                <div class="bg-indigo-50 rounded-xl shadow-xl p-8 md:p-12 grid md:grid-cols-2 gap-8 items-center case-study-grid">
+                    <div>
+                        <p class="text-sm font-bold text-indigo-600 uppercase tracking-wider mb-2">CLIENT: ARTISAN DECOR CO.</p>
+                        <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">From Ad Dependency to Organic Dominance</h3>
+                        <p class="text-gray-600 mb-6">Artisan Decor Co. relied almost entirely on expensive, inconsistent social media ads. They were invisible on Google for profitable terms like "handmade ceramic vases" and "minimalist wall art."</p>
+                        <blockquote class="border-l-4 border-indigo-500 pl-4 italic text-gray-700">
+                            "Before Aarry, our organic traffic was stagnant. Now, it's our primary sales channel. Their process delivered beyond our expectations."
+                        </blockquote>
+                        <p class="font-semibold text-gray-900 mt-4">- Michael Carter, Founder</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-inner">
+                        <h4 class="text-xl font-bold text-center mb-4">The Results (9 Months)</h4>
+                        <img src="https://placehold.co/600x400/e0e7ff/4f46e5?text=Organic+Revenue+Growth+Chart" alt="A line graph showing a sharp upward trend in website traffic and revenue over 12 months" class="rounded-lg mb-6 w-full">
+                        <div class="grid grid-cols-2 gap-4 text-center">
+                            <div>
+                                <p class="text-3xl font-extrabold text-green-600">+350%</p>
+                                <p class="text-sm text-gray-600">Increase in Organic Traffic</p>
+                            </div>
+                            <div>
+                                <p class="text-3xl font-extrabold text-green-600">+180%</p>
+                                <p class="text-sm text-gray-600">Lift in Organic Revenue</p>
+                            </div>
+                            <div class="col-span-2">
+                                <p class="text-3xl font-extrabold text-green-600">Top 3</p>
+                                <p class="text-sm text-gray-600">Rankings for 15 High-Intent Keywords</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-header">
+                    What Our Clients Say About Our SEO
+                </h2>
+                <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <div class="bg-indigo-50 p-6 rounded-xl shadow-md border-t-4 border-indigo-600">
+                        <p class="text-gray-700 italic mb-4">"Aarry's technical deep dive saved us. They fixed the duplicate content issues that three previous agencies couldn't figure out. Our non-brand organic traffic is up 120%."</p>
+                        <p class="font-semibold text-gray-900">- Jane Doe, Founder of Wellness Gear</p>
+                        <p class="text-sm text-indigo-700">Client since 2023</p>
+                    </div>
+                    <div class="bg-indigo-50 p-6 rounded-xl shadow-md border-t-4 border-indigo-600">
+                        <p class="text-gray-700 italic mb-4">"The strategic keyword mapping was game-changing. We moved from ranking for generic terms to dominating high-intent, long-tail product queries. The ROI speaks for itself."</p>
+                        <p class="font-semibold text-gray-900">- Alex Chen, CEO of Outdoor Tech</p>
+                        <p class="text-sm text-indigo-700">Shopify Plus Migration + SEO</p>
+                    </div>
+                    <div class="bg-indigo-50 p-6 rounded-xl shadow-md border-t-4 border-indigo-600">
+                        <p class="text-gray-700 italic mb-4">"Their team is true Shopify SEO experts. We achieved page one rankings for our most competitive product category within 8 months, massively reducing our reliance on paid search."</p>
+                        <p class="font-semibold text-gray-900">- Sarah Miller, Head of E-commerce, Global Skincare</p>
+                        <p class="text-sm text-indigo-700">4x ROAS on Organic Channel</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 section-header">
+                        <a href="https://aarry.org/services/shopify-seo-services-plan.html" class="text-gray-900 hover:text-indigo-600 transition">Our Shopify SEO Service Packages</a>
+                    </h2>
+                    <p class="text-lg text-gray-600 mt-3 max-w-3xl mx-auto">Transparent pricing for every stage of your e-commerce journey. Choose the plan that fits your ambition.</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch pricing-grid">
+                    
+                    <div class="bg-white rounded-xl shadow-lg p-8 flex flex-col border-t-4 border-gray-300">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Technical Foundation</h3>
+                        <p class="text-gray-500 mb-6">Ideal for new stores or those needing to fix critical SEO errors.</p>
+                        <p class="text-4xl font-extrabold text-gray-900 mb-6">$1,500<span class="text-lg font-medium text-gray-500">/month</span></p>
+                        <ul class="space-y-4 text-gray-700 mb-8 flex-grow">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Complete Technical SEO Audit</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Duplicate Content Resolution</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Core Web Vitals Optimization</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Schema Markup Implementation</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Monthly Performance Report</li>
+                        </ul>
+                        <a href="https://calendly.com/kaocher/meeting" class="w-full text-center mt-auto cta-button bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-6 rounded-lg">Get Started</a>
+                    </div>
+        
+                    <div class="bg-white rounded-xl shadow-2xl p-8 flex flex-col border-t-4 border-indigo-600 transform lg:scale-105 relative">
+                        <span class="absolute top-0 right-4 -mt-4 bg-indigo-600 text-white text-xs font-bold uppercase px-3 py-1 rounded-full">Most Popular</span>
+                        <h3 class="text-2xl font-bold text-indigo-600 mb-2">Growth Accelerator</h3>
+                        <p class="text-gray-500 mb-6">Designed for established stores ready to scale organic traffic and sales.</p>
+                        <p class="text-4xl font-extrabold text-gray-900 mb-6">$3,000<span class="text-lg font-medium text-gray-500">/month</span></p>
+                        <ul class="space-y-4 text-gray-700 mb-8 flex-grow">
+                            <li class="flex items-center font-semibold"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Everything in Technical Foundation</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>High-Intent Keyword Research</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>On-Page & Product Copy Optimization</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>2 High-Value Blog Posts per Month</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Foundational Backlink Building</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>ROI-Focused Reporting</li>
+                        </ul>
+                        <a href="https://calendly.com/kaocher/meeting" class="w-full text-center mt-auto cta-button bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg">Choose Growth</a>
+                    </div>
+        
+                    <div class="bg-white rounded-xl shadow-lg p-8 flex flex-col border-t-4 border-gray-900">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Market Leader</h3>
+                        <p class="text-gray-500 mb-6">For competitive niches requiring aggressive authority building and content strategy.</p>
+                        <p class="text-4xl font-extrabold text-gray-900 mb-6">Let's Talk<span class="text-lg font-medium text-gray-500"></span></p>
+                        <ul class="space-y-4 text-gray-700 mb-8 flex-grow">
+                            <li class="flex items-center font-semibold"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Everything in Growth Accelerator</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Aggressive Digital PR & Outreach</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Full Topic Cluster Content Strategy</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><a href="https://aarry.org/services/shopify-cro-service.html" class="text-indigo-600 hover:underline">Conversion Rate Optimization (CRO)</a></li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Dedicated Account Strategist</li>
+                        </ul>
+                        <a href="https://calendly.com/kaocher/meeting" class="w-full text-center mt-auto cta-button bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-6 rounded-lg">Book a Strategy Call</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="faq" class="py-24 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 section-header">
+                        Deep Dive: Your Shopify SEO Questions Answered
+                    </h2>
+                    <p class="text-lg text-gray-600 mt-3 max-w-3xl mx-auto">We cut through the noise with practical, expert answers designed for serious e-commerce growth.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto faq-grid">
+                    
+                    <div class="space-y-4 p-6 bg-white rounded-xl shadow-lg faq-category">
+                        <h3 class="text-2xl font-bold text-indigo-600 mb-4">Technical SEO & Speed Fixes</h3>
+                        
+                        <div class="border-b border-gray-100">
+                            <button class="w-full flex justify-between items-center py-4 text-left font-semibold accordion-button">
+                                <span>How do you eliminate Shopify's duplicate content issues?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content pb-4">
+                                <p class="text-gray-600">We utilize custom Liquid code edits to implement advanced canonical tags, control `noindex` directives on low-value pages (like filter URLs and tag pages), and optimize your robots.txt to guide Google's crawl budget effectively, preventing signal dilution.</p>
+                            </div>
+                        </div>
+
+                        <div class="border-b border-gray-100">
+                            <button class="w-full flex justify-between items-center py-4 text-left font-semibold accordion-button">
+                                <span>What is the biggest speed bottleneck on Shopify stores?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content pb-4">
+                                <p class="text-gray-600">It's nearly always third-party <a href="https://aarry.org/blogs/seo/Shopify-SEO-Apps-Infographic-2025" class="text-indigo-600 hover:underline">Shopify SEO apps</a> and unoptimized images. We conduct a deep audit to remove unnecessary JavaScript and CSS, lazy-load media, and ensure images are served in modern formats to pass Google’s Core Web Vitals tests.</p>
+                            </div>
+                        </div>
+
+                        <div class="border-b border-gray-100">
+                            <button class="w-full flex justify-between items-center py-4 text-left font-semibold accordion-button">
+                                <span>What Structured Data is most important for a Shopify store?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content pb-4">
+                                <p class="text-gray-600">The most vital schemas are **Product, Review (AggregateRating), and Offer**, as these enable Rich Snippets in search results, boosting your Click-Through Rate (CTR) and visibility over competitors.</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="space-y-4 p-6 bg-white rounded-xl shadow-lg faq-category">
+                        <h3 class="text-2xl font-bold text-indigo-600 mb-4">Content Strategy & Authority</h3>
+                        
+                        <div class="border-b border-gray-100">
+                            <button class="w-full flex justify-between items-center py-4 text-left font-semibold accordion-button">
+                                <span>How do you find high-converting keywords for e-commerce?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content pb-4">
+                                <p class="text-gray-600">We prioritize **transactional and commercial investigation** keywords (e.g., "best durable hiking boots" rather than "what are boots"). We analyze competitor ranking pages, search intent, and use conversion data to target long-tail terms that signal buyer readiness.</p>
+                            </div>
+                        </div>
+
+                        <div class="border-b border-gray-100">
+                            <button class="w-full flex justify-between items-center py-4 text-left font-semibold accordion-button">
+                                <span>How often should we blog for SEO?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content pb-4">
+                                <p class="text-gray-600">Quality trumps quantity. We recommend publishing 2-4 comprehensive articles (2,000+ words) monthly, focused on **topic clusters** that establish your brand as an authority (E-A-T) and internally link back to your money-making product and collection pages.</p>
+                            </div>
+                        </div>
+
+                        <div class="border-b border-gray-100">
+                            <button class="w-full flex justify-between items-center py-4 text-left font-semibold accordion-button">
+                                <span>How does AI influence your SEO strategy?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content pb-4">
+                                <p class="text-gray-600">We leverage cutting-edge <a href="https://aarry.org/services/ai-seo-optimization.html" class="text-indigo-600 hover:underline">AI SEO tools</a> for deeper data analysis, competitor intelligence, and content ideation. This allows us to build more effective, data-driven strategies. See our guide to the <a href="https://aarry.org/blogs/seo/The-Definitive-Top-10-AI-SEO-Tools.html" class="text-indigo-600 hover:underline">top AI SEO tools</a>.</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="space-y-4 p-6 bg-white rounded-xl shadow-lg faq-category">
+                        <h3 class="text-2xl font-bold text-indigo-600 mb-4">Investment & Growth Timeline</h3>
+                        
+                        <div class="border-b border-gray-100">
+                            <button class="w-full flex justify-between items-center py-4 text-left font-semibold accordion-button">
+                                <span>How long until I see measurable organic sales results?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content pb-4">
+                                <p class="text-gray-600">You will see **technical improvements and indexation boosts within 1-2 months**. Significant traffic and keyword growth usually begins between 4-6 months. Our goal is to see a major impact on **organic revenue growth** starting in month 6, peaking between 9-12 months.</p>
+                            </div>
+                        </div>
+
+                        <div class="border-b border-gray-100">
+                            <button class="w-full flex justify-between items-center py-4 text-left font-semibold accordion-button">
+                                <span>Is Shopify Plus mandatory for advanced SEO?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content pb-4">
+                                <p class="text-gray-600">No, but Plus gives us greater control over complex tasks like multi-region Hreflang setups. For large-scale international or B2B operations, or for stores considering <a href="https://aarry.org/services/headless-shopify-development.html" class="text-indigo-600 hover:underline">Headless Commerce</a>, we strongly recommend leveraging the power of Plus.</p>
+                            </div>
+                        </div>
+
+                        <div class="border-b border-gray-100">
+                            <button class="w-full flex justify-between items-center py-4 text-left font-semibold accordion-button">
+                                <span>Do you guarantee a \#1 ranking on Google?</span>
+                                <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </button>
+                            <div class="accordion-content pb-4">
+                                <p class="text-gray-600">No reputable <a href="https://aarry.org/services/shopify-seo-expert.html" class="text-indigo-600 hover:underline">Shopify SEO expert</a> can guarantee a #1 ranking. We **guarantee compliance** with all best practices, **transparent reporting**, and a **proven methodology** designed to maximize your organic revenue.</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="py-24 bg-gray-50">
+            <div class="container mx-auto px-4 text-center">
+                <div class="max-w-2xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Ready to Elevate Your Brand?</h2>
+                    <p class="text-lg text-gray-600 mb-8">Schedule a complimentary, no-obligation strategy call to discuss your project and unlock your growth potential.</p>
+                    <a href="https://calendly.com/kaocher/meeting" target="_blank" rel="noopener noreferrer" class="cta-button inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-10 rounded-full text-lg">
+                        Book Your Free Consultation
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+            <div>
+                <h3 class="text-2xl font-black tracking-tighter mb-4">Aarry.</h3>
+                <p class="text-gray-400">Your global partner in strategic Shopify growth. We serve clients from our offices in Dhaka and Charlotte.</p>
+                <div class="flex justify-center md:justify-start space-x-4 mt-4">
+                    <a href="https://www.linkedin.com/company/aarry" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-indigo-500 transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Core Services</h3>
+                <ul class="space-y-3">
+                    <li><a href="https://aarry.org/services/shopify.html" class="text-gray-400 hover:text-white transition-colors">Shopify Plus Development</a></li>
+                    <li><a href="https://aarry.org/services/headless-shopify-development.html" class="text-gray-400 hover:text-white transition-colors">Headless Commerce</a></li>
+                    <li><a href="https://aarry.org/services/shopify-seo-service.html" class="text-indigo-400 font-semibold hover:text-white transition-colors">Digital Marketing (SEO)</a></li>
+                    <li><a href="https://aarry.org/services/shopify-seo-services-plan.html" class="text-gray-400 hover:text-white transition-colors">Growth Consulting</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Company</h3>
+                <ul class="space-y-3">
+                    <li><a href="https://aarry.org/about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="https://aarry.org/portfolio.html" class="text-gray-400 hover:text-white transition-colors">Portfolio</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Connect</h3>
+                <ul class="space-y-3">
+                    <li><a href="mailto:info@aarrylimited.com" class="text-gray-400 hover:text-white transition-colors">info@aarrylimited.com</a></li>
+                    <li><a href="https://www.linkedin.com/company/aarry" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-12 container mx-auto px-4 text-center border-t border-gray-700 pt-8">
+            <p class="text-gray-500">&copy; <span id="year"></span> Aarry Limited. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.body;
+
+            // --- Mobile Menu Handler ---
+            const mobileNav = document.getElementById('mobile-nav');
+            const openNavButton = document.getElementById('mobile-menu-open-button');
+            const closeNavButton = document.getElementById('mobile-menu-close-button');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            const openMobileNav = () => { mobileNav.classList.add('open'); body.classList.add('overflow-hidden'); };
+            const closeMobileNav = () => { mobileNav.classList.remove('open'); body.classList.remove('overflow-hidden'); };
+
+            openNavButton.addEventListener('click', openMobileNav);
+            closeNavButton.addEventListener('click', closeMobileNav);
+            navLinks.forEach(link => link.addEventListener('click', closeMobileNav));
+
+            // --- Accordion Handler ---
+            const accordionButtons = document.querySelectorAll('.accordion-button, .mobile-accordion-button');
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('svg');
+                    
+                    const isOpening = !content.classList.contains('open');
+                    
+                    const parentColumn = button.closest('.faq-category');
+                    if (parentColumn) {
+                        parentColumn.querySelectorAll('.accordion-content.open').forEach(openContent => {
+                            if (openContent !== content) {
+                                openContent.classList.remove('open');
+                                openContent.style.maxHeight = '0';
+                                const openIcon = openContent.previousElementSibling.querySelector('svg');
+                                if(openIcon) openIcon.classList.remove('rotate-180');
+                            }
+                        });
+                    }
+                    
+                    if(isOpening){
+                        content.classList.add('open');
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        if(icon) icon.classList.add('rotate-180');
+                    } else {
+                        content.classList.remove('open');
+                        content.style.maxHeight = '0';
+                        if(icon) icon.classList.remove('rotate-180');
+                    }
+                });
+            });
+
+            // --- CTA Smooth Scroll Handler ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        const headerOffset = 80;
+                        const elementPosition = targetSection.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                             top: offsetPosition,
+                             behavior: "smooth"
+                        });
+                    }
+                });
+            });
+            
+            // --- Dynamic Year in Footer ---
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
+
