@@ -336,11 +336,139 @@
         </div>
     </main>
 
-    <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-8">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-600 dark:text-gray-400">
-            <p>&copy; 2025 Aarry Limited. All Rights Reserved.</p>
+<!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+            <div>
+                <h3 class="text-2xl font-black tracking-tighter mb-4">Aarry.</h3>
+                <p class="text-gray-400">Your global partner in strategic Shopify growth. We serve clients from our offices in Dhaka and Charlotte.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Core Services</h3>
+                <ul class="space-y-3">
+                    <li><a href="services/shopify.html" class="text-gray-400 hover:text-white transition-colors">Shopify Plus Development</a></li>
+                    <li><a href="services/headless-shopify-development.html" class="text-gray-400 hover:text-white transition-colors">Headless Commerce</a></li>
+                    <li><a href="services/shopifyseo" class="text-gray-400 hover:text-white transition-colors">Digital Marketing</a></li>
+                    <li><a href="services/shopify-seo-services-plan.html" class="text-gray-400 hover:text-white transition-colors">Growth Consulting</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Company</h3>
+                 <ul class="space-y-3">
+                    <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                 
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Connect</h3>
+                <ul class="space-y-3">
+                     <li><a href="mailto:ask@aarry.org" class="text-gray-400 hover:text-white transition-colors">ask@aarry.org</a></li>
+                     <li><a href="ttps://www.linkedin.com/company/aarry" class="text-gray-400 hover:text-white transition-colors">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-12 container mx-auto px-4 text-center border-t border-gray-700 pt-8">
+            <p class="text-gray-500">&copy; <span id="year"></span> Aarry Limited. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.body;
+
+            // --- Mobile Menu Handler ---
+            const mobileNav = document.getElementById('mobile-nav');
+            const openNavButton = document.getElementById('mobile-menu-open-button');
+            const closeNavButton = document.getElementById('mobile-menu-close-button');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            const openMobileNav = () => { mobileNav.classList.add('open'); body.classList.add('overflow-hidden'); };
+            const closeMobileNav = () => { mobileNav.classList.remove('open'); body.classList.remove('overflow-hidden'); };
+
+            openNavButton.addEventListener('click', openMobileNav);
+            closeNavButton.addEventListener('click', closeMobileNav);
+            navLinks.forEach(link => link.addEventListener('click', closeMobileNav));
+
+            // --- Accordion Handler ---
+            const accordionButtons = document.querySelectorAll('.accordion-button, .mobile-accordion-button');
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('svg');
+                    const isOpening = content.classList.toggle('open');
+                    
+                    if (icon) { icon.classList.toggle('rotate-180'); }
+
+                    content.style.maxHeight = isOpening ? content.scrollHeight + 'px' : '0';
+                });
+            });
+
+            // --- CTA Smooth Scroll Handler ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // --- Animate Sections on Scroll ---
+            const hiddenSections = document.querySelectorAll('.hidden-section');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('open');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            hiddenSections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+
+
+            // --- Dynamic Year in Footer ---
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+    </script>
+
+
+     // --- Whatsapp Sections  ---
+    <div class="whatsapp-widget-container">
+
+    <div class="whatsapp-chat-button" id="whatsapp-toggle">
+        <img src="https://aarry.org/image/whatsapp.png" alt="WhatsApp Icon">
+    </div>
+
+    <div class="whatsapp-widget-header" id="whatsapp-widget">
+        <div class="widget-header-close" id="widget-close-button">&times;</div>
+        <div class="widget-header-content">
+            <img class="widget-person-img" src="https://aarry.org/image/WhatsApp%20Image%202025-09-24%20at%2004.58.46%20(1).jpeg" alt="Support Person">
+            <div class="widget-person-info">
+                <h3>Kaocher Ahmed</h3>
+                <p>Shopify Expert </p>
+            </div>
+        </div>
+        <div class="widget-chat-start">
+            <a href="https://wa.me/8801777510221?text=Hello!%20I%20have%20a%20question%20from%20your%20website." target="_blank">
+                Start Chat
+            </a>
+        </div>
+    </div>
+
+</div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
