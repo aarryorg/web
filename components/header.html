@@ -1,0 +1,54 @@
+<header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="https://aarry.org/" class="text-2xl font-black text-gray-900 tracking-tighter">Aarry Limited</a>
+        <button id="mobile-menu-open-button" class="text-gray-600 hover:text-indigo-600 focus:outline-none">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+    </div>
+</header>
+
+<!-- Mobile Navigation Overlay -->
+<div id="mobile-nav" class="mobile-nav-overlay fixed inset-0 bg-white z-[100] p-4">
+    <div class="flex justify-between items-center mb-10">
+        <span class="text-2xl font-black text-gray-900 tracking-tighter">Menu</span>
+        <button id="mobile-menu-close-button" class="text-gray-500 hover:text-gray-900">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    </div>
+    <nav class="flex flex-col space-y-2">
+         <div>
+            <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
+                <span>Development Services</span>
+                <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content pl-6 pt-1">
+                <a href="https://aarry.org/services/shopify.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">eCommerce Development</a>
+                <a href="https://aarry.org/services/headless-shopify-development.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Headless eCommerce</a>
+                <a href="https://aarry.org/services/shopify-migration-service.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Store Migration</a>
+            </div>
+        </div>
+        <div>
+            <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
+                <span>Digital Marketing</span>
+                <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content pl-6 pt-1">
+                <a href="https://aarry.org/services/shopify-seo-services.html" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Shopify SEO</a>
+                <a href="https://aarry.org/services/shopify-cro-service.html" class="nav-link block py-2 text-indigo-600 font-bold">Shopify CRO</a>
+                 <a href="https://aarry.org/services/paid-media-ads.html" class="nav-link block py-2 text-indigo-600 font-bold">Paid Media Management</a>
+            </div>
+        </div>
+        <div>
+            <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
+                <span>AI Tools</span>
+                <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content pl-6 pt-1">
+                <!-- Add AI tools links here -->
+            </div>
+        </div>
+        <a href="https://aarry.org/blogs" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Blogs</a>
+        <a href="https://aarry.org/shopify-seo-expert.html" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Shopify seo Expert</a>
+        <a href="https://aarry.org/case-studies.html" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Case Studies</a>
+    </nav>
+</div>
