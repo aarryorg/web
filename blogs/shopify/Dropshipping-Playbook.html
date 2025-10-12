@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropshipping Agent Playbook: Mobile-Native</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- ADVANCED SEO: JSON-LD Schema Markup (FAQPage) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do I need to register a company before starting dropshipping?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For initial testing, no. You can operate as a sole proprietor. However, once you start generating consistent revenue, it is highly recommended (especially in the US/UK/CA/AU) to register a legal entity (like an LLC or Ltd.) for liability protection and tax purposes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much capital do I need to start dropshipping?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The minimum recommended capital is $500 - $1,000 USD. This covers the Shopify subscription ($29/month), a domain name, and the critical initial advertising budget to test 3-5 products ($300-$500)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which e-commerce platform is better: Shopify or WooCommerce?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For new dropshippers, <span class='font-bold text-green-700'>Shopify is highly recommended</span> due to its ease of use, integrated payment processing, and extensive app marketplace. WooCommerce (WordPress) offers more customization but requires more technical knowledge."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the recommended minimum profit margin?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Aim for a profit margin that allows for a gross markup of at least <span class='font-bold text-green-700'>200% - 300%</span> (selling price is 3x the cost). This is crucial to cover high ad costs, refunds, and still ensure net profit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is white-label dropshipping?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "White-label dropshipping is when the supplier ships the product directly to the customer, but the packaging and shipping labels only display the retailer's (your) branding, making the customer believe the product shipped directly from your company. This builds brand loyalty."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How quickly should I respond to customer support tickets?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You must respond to all customer queries within <span class='font-bold text-red-600'>24 hours</span>. Slow response times lead to low customer satisfaction, negative reviews, and a higher risk of chargebacks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a 'break-even' ROAS?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Break-even ROAS (Return on Ad Spend) is the ratio where your ad revenue exactly equals your total cost (product cost + ad spend). For dropshipping, the break-even ROAS is often between 1.8x and 2.2x. Anything consistently below this means you are losing money."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should I scale an ad budget?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only scale an ad that has shown consistent profitability (ROAS > 2.5x) for at least 3-5 days. Increase the budget incrementally (e.g., 20% every 48 hours) to maintain performance without disrupting the algorithm."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How to handle abandoned carts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Implement an automated email sequence to recover lost sales. The first email should be sent within 1 hour, the second within 24 hours (possibly offering a 5% discount), and the third after 72 hours."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it safe to dropship electronics?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Electronics are high-risk due to potential quality issues, high return rates, and complex certifications. If you do dropship electronics, only use suppliers with excellent reviews and a proven track record for reliability."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        /* Mobile-Native Styling & Typography */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light gray background for contrast */
+            padding-top: 100px; /* Space for the fixed header/nav */
+            scroll-behavior: smooth; /* Smooth scroll when jumping to sections */
+        }
+        /* Fixed Header/Navigation for easy browsing on mobile */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        /* Style for the main container */
+        .main-container {
+            max-width: 100%;
+            padding: 1rem;
+        }
+        /* Step Card Styling - Highly Tappable */
+        .step-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #c3dafe; /* Lighter blue border */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .step-card:active {
+            transform: scale(0.98); /* Native press effect */
+        }
+        /* Phase Header Styling */
+        .phase-banner {
+            background-color: #1e3a8a; /* Dark blue primary color */
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .faq-question {
+            cursor: pointer;
+            user-select: none;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Fixed Header Navigation for Mobile Focus -->
+    <header class="fixed-header bg-white">
+        <div class="p-3 border-b border-blue-200">
+            <h1 class="text-xl font-extrabold text-blue-700">A-Z Dropshipping Playbook</h1>
+        </div>
+        <!-- Scrollable Navigation Links -->
+        <nav class="flex overflow-x-auto space-x-3 px-3 py-2 text-sm whitespace-nowrap bg-blue-50 border-b">
+            <a href="#intro" class="flex-shrink-0 text-gray-700 hover:text-blue-600 font-medium bg-white px-3 py-1 rounded-full shadow-sm">Overview</a>
+            <a href="#phase1" class="flex-shrink-0 bg-blue-500 text-white px-3 py-1 rounded-full font-semibold shadow-md">Phase 1: Setup</a>
+            <a href="#phase2" class="flex-shrink-0 bg-blue-500 text-white px-3 py-1 rounded-full font-semibold shadow-md">Phase 2: Build</a>
+            <a href="#phase3" class="flex-shrink-0 bg-blue-500 text-white px-3 py-1 rounded-full font-semibold shadow-md">Phase 3: Scale</a>
+            <a href="#risks" class="flex-shrink-0 text-gray-700 hover:text-blue-600 font-medium bg-white px-3 py-1 rounded-full shadow-sm">Risks/D&D</a>
+            <a href="#general-faq" class="flex-shrink-0 text-gray-700 hover:text-blue-600 font-medium bg-white px-3 py-1 rounded-full shadow-sm">General FAQ</a>
+        </nav>
+    </header>
+
+    <div class="main-container mx-auto">
+        <!-- Main Introduction -->
+        <section id="intro" class="bg-white p-6 rounded-xl shadow-lg mb-8 mt-4">
+            <h2 class="text-2xl font-extrabold text-gray-900 mb-3">Welcome to the Dropshipping Playbook</h2>
+            <p class="text-base text-gray-600">This guide provides a detailed, step-by-step roadmap for launching a profitable dropshipping venture targeting the <span class="font-bold text-blue-700">US, UK, Canada, and Australia</span> markets. Follow the phases in order to ensure a solid foundation.</p>
+        </section>
+
+        <!-- 1. Core Model & Risks -->
+        <section class="mb-10">
+            <h2 id="risks" class="text-xl font-bold mb-4 text-gray-800 border-b pb-2">1. Core Model and Restrictions</h2>
+            <div class="step-card">
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">Understanding the Business Model</h3>
+                
+                <!-- VISUAL: Dropshipping Cycle Diagram -->
+                <img src="https://placehold.co/600x150/52c678/ffffff?text=Customer+%E2%86%92+Store+(You)+%E2%86%92+Supplier+%E2%86%92+Customer" alt="Dropshipping Cycle Diagram" class="w-full rounded-lg shadow-md mb-4"/>
+
+                <p class="text-gray-700 mb-4">You act as the <span class="font-bold text-blue-700">marketing layer</span> between the customer and the <span class="font-bold text-blue-700">supplier</span>. You never hold inventory, eliminating storage costs but increasing supply chain risks.</p>
+                
+                <h4 class="font-bold text-red-600 mb-2 mt-4">Key Restrictions/Risks:</h4>
+                <ol class="list-disc list-inside space-y-2 text-gray-700 ml-4 text-sm">
+                    <li><span class="font-semibold">Quality Control Loss:</span> You cannot inspect products before they ship. Supplier quality is paramount.</li>
+                    <li><span class="font-semibold">Shipping Volatility:</span> Overseas shipping times (15-30 days) are unacceptable in Western markets. <span class="font-bold text-green-700">Mitigation: Focus exclusively on local (US/UK/CA/AU) suppliers.</span></li>
+                    <li><span class="font-semibold">High Competition:</span> Success is determined by superior marketing, not product uniqueness.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- 2. The 7-Step Categorized Launch Plan -->
+        <section id="launch-plan" class="mb-10">
+            <h2 class="text-xl font-bold mb-4 text-gray-800 border-b pb-2">2. The 7-Step Categorized Launch Plan</h2>
+            
+            
+            <!-- PHASE 1: FOUNDATION & SOURCING -->
+            <div id="phase1" class="phase-banner">
+                PHASE 1: FOUNDATION & SOURCING (Steps 1 & 2)
+            </div>
+
+            <!-- Step 1 -->
+            <a href="#step1-details" class="block no-underline step-toggle">
+                <div class="step-card hover:bg-blue-50">
+                    <h3 class="text-xl font-extrabold text-blue-700 flex items-center mb-1">
+                        <!-- Updated Symbol -->
+                        <span class="text-3xl mr-3 font-mono">🔍</span> Niche & Product Selection
+                    </h3>
+                    <p class="text-sm font-bold text-gray-600 ml-11">Goal: Identify a problem-solving product with a high profit margin.</p>
+                    <h4 class="font-semibold text-gray-800 mb-2 ml-11 text-xs uppercase tracking-wider mt-2">Tap to View Actions & FAQs <span class="text-xl inline-block transition-transform duration-300 transform step-arrow">+</span></h4>
+                </div>
+            </a>
+            <div id="step1-details" class="details-section bg-white p-4 rounded-b-xl mb-4 border-t-2 border-blue-500 shadow-inner hidden">
+                <!-- VISUAL for Step 1 -->
+                <img src="https://placehold.co/400x100/f97316/ffffff?text=Product+Research+%26+Profit+Margin" alt="Product Research Visual" class="w-full rounded-lg shadow-md mb-4"/>
+                
+                <h4 class="font-semibold text-gray-800 mb-2">ACTIONS TO TAKE:</h4>
+                <ul class="list-decimal list-outside space-y-2 text-gray-700 ml-5 text-base">
+                    <li>**Market Research:** Use trend analysis tools (e.g., Google Trends, TikTok trends) to find products experiencing growth.</li>
+                    <li>**Profit Analysis:** Calculate the Cost of Goods Sold (COGS). Ensure a <span class="font-extrabold text-green-700">200% minimum markup</span> is possible to cover ads and profit.</li>
+                    <li>**Avoid:** Items that are heavy, fragile, or commonly sold by major retailers.</li>
+                </ul>
+                
+                <h4 class="font-bold text-lg text-blue-700 mt-6 mb-3 border-t pt-3">❓ Common Questions (FAQs)</h4>
+                <div class="faq-item mb-2">
+                    <button class="faq-question w-full text-left py-2 px-3 bg-gray-50 hover:bg-gray-100 rounded-md font-semibold text-sm flex justify-between items-center transition duration-150 ease-in-out">
+                        <span>What is a "winning product"?</span>
+                        <span class="arrow-icon text-blue-500 transition-transform duration-300">+</span>
+                    </button>
+                    <div class="faq-answer mt-1 px-3 py-2 text-gray-600 text-sm hidden bg-white border border-gray-200 rounded-b-md">
+                        A winning product is one that solves a clear pain point, is hard to find locally, and can be sold at a <span class="font-extrabold text-green-700">200% to 300% markup</span> while still offering competitive value.
+                    </div>
+                </div>
+                 <div class="faq-item mb-2">
+                    <button class="faq-question w-full text-left py-2 px-3 bg-gray-50 hover:bg-gray-100 rounded-md font-semibold text-sm flex justify-between items-center transition duration-150 ease-in-out">
+                        <span>How much should my markup be?</span>
+                        <span class="arrow-icon text-blue-500 transition-transform duration-300">+</span>
+                    </button>
+                    <div class="faq-answer mt-1 px-3 py-2 text-gray-600 text-sm hidden bg-white border border-gray-200 rounded-b-md">
+                        Aim for a selling price that is at least 3 times (300%) your product cost, including shipping. This ensures you have enough buffer for ad spend, refunds, and profit.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <a href="#step2-details" class="block no-underline step-toggle">
+                <div class="step-card hover:bg-blue-50">
+                    <h3 class="text-xl font-extrabold text-blue-700 flex items-center mb-1">
+                        <!-- Updated Symbol -->
+                        <span class="text-3xl mr-3 font-mono">🤝</span> Supplier Vetting & Test Order
+                    </h3>
+                    <p class="text-sm font-bold text-gray-600 ml-11">Goal: Secure a reliable supplier with fast shipping lines.</p>
+                    <h4 class="font-semibold text-gray-800 mb-2 ml-11 text-xs uppercase tracking-wider mt-2">Tap to View Actions & FAQs <span class="text-xl inline-block transition-transform duration-300 transform step-arrow">+</span></h4>
+                </div>
+            </a>
+            <div id="step2-details" class="details-section bg-white p-4 rounded-b-xl mb-4 border-t-2 border-blue-500 shadow-inner hidden">
+                 <!-- VISUAL for Step 2 -->
+                <img src="https://placehold.co/400x100/10b981/ffffff?text=Local+Warehouse+%26+Quality+Check" alt="Supplier Vetting Visual" class="w-full rounded-lg shadow-md mb-4"/>
+
+                <h4 class="font-semibold text-gray-800 mb-2">ACTIONS TO TAKE:</h4>
+                <ul class="list-decimal list-outside space-y-2 text-gray-700 ml-5 text-base">
+                    <li>**Prioritize Local:** Use platforms (Spocket, CJDropshipping) to find suppliers with **US/UK/CA/AU warehouses** (3-7 day shipping).</li>
+                    <li>**Vetting Protocol:** Always <span class="font-extrabold text-red-700">place a test order IMMEDIATELY</span> to verify the product quality, packaging, and the actual shipping speed.</li>
+                    <li>**Secure Backup:** Never rely on a single supplier. Have at least one verified backup source.</li>
+                </ul>
+                <h4 class="font-bold text-lg text-blue-700 mt-6 mb-3 border-t pt-3">❓ Common Questions (FAQs)</h4>
+                <div class="faq-item mb-2">
+                    <button class="faq-question w-full text-left py-2 px-3 bg-gray-50 hover:bg-gray-100 rounded-md font-semibold text-sm flex justify-between items-center transition duration-150 ease-in-out">
+                        <span>Why is a test order mandatory?</span>
+                        <span class="arrow-icon text-blue-500 transition-transform duration-300">+</span>
+                    </button>
+                    <div class="faq-answer mt-1 px-3 py-2 text-gray-600 text-sm hidden bg-white border border-gray-200 rounded-b-md">
+                        A test order is the only way to check the true quality, packaging professionalism, and actual delivery speed. Never trust advertised data alone.
+                    </div>
+                </div>
+                <div class="faq-item mb-2">
+                    <button class="faq-question w-full text-left py-2 px-3 bg-gray-50 hover:bg-gray-100 rounded-md font-semibold text-sm flex justify-between items-center transition duration-150 ease-in-out">
+                        <span>What's the best shipping time goal?</span>
+                        <span class="arrow-icon text-blue-500 transition-transform duration-300">+</span>
+                    </button>
+                    <div class="faq-answer mt-1 px-3 py-2 text-gray-600 text-sm hidden bg-white border border-gray-200 rounded-b-md">
+                        For Western markets (US, UK, CA, AU), the absolute maximum acceptable shipping time is <span class="font-bold text-red-600">7-10 days</span>. Ideally, aim for 3-5 days using local suppliers.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PHASE 2: STORE SETUP & LISTING -->
+            <div id="phase2" class="phase-banner">
+                PHASE 2: STORE SETUP & LISTING (Steps 3 & 4)
+            </div>
+
+            <!-- Step 3 -->
+            <a href="#step3-details" class="block no-underline step-toggle">
+                <div class="step-card hover:bg-blue-50">
+                    <h3 class="text-xl font-extrabold text-blue-700 flex items-center mb-1">
+                         <!-- Updated Symbol -->
+                        <span class="text-3xl mr-3 font-mono">🛒</span> Build Your E-commerce Store
+                    </h3>
+                    <p class="text-sm font-bold text-gray-600 ml-11">Goal: Create a trustworthy, high-converting digital storefront.</p>
+                    <h4 class="font-semibold text-gray-800 mb-2 ml-11 text-xs uppercase tracking-wider mt-2">Tap to View Actions & FAQs <span class="text-xl inline-block transition-transform duration-300 transform step-arrow">+</span></h4>
+                </div>
+            </a>
+            <div id="step3-details" class="details-section bg-white p-4 rounded-b-xl mb-4 border-t-2 border-blue-500 shadow-inner hidden">
+                 <!-- VISUAL for Step 3 -->
+                <img src="https://placehold.co/400x100/3b82f6/ffffff?text=Mobile+Optimized+Store+%26+Legal+Pages" alt="Ecommerce Store Visual" class="w-full rounded-lg shadow-md mb-4"/>
+                
+                <h4 class="font-semibold text-gray-800 mb-2">ACTIONS TO TAKE:</h4>
+                <ul class="list-decimal list-outside space-y-2 text-gray-700 ml-5 text-base">
+                    <li>**Platform:** Use **Shopify**. Choose a clean, professional theme optimized for mobile checkout.</li>
+                    <li>**Mandatory Legal Pages:** Publish legally sound pages: <span class="font-bold text-green-700">Shipping Policy, Refund Policy, Privacy Policy & Terms of Service.</span> (This builds trust).</li>
+                    <li>**Trust Badges:** Add payment provider icons (Visa, Mastercard, etc.) and security seals on product pages.</li>
+                </ul>
+                <h4 class="font-bold text-lg text-blue-700 mt-6 mb-3 border-t pt-3">❓ Common Questions (FAQs)</h4>
+                <div class="faq-item mb-2">
+                    <button class="faq-question w-full text-left py-2 px-3 bg-gray-50 hover:bg-gray-100 rounded-md font-semibold text-sm flex justify-between items-center transition duration-150 ease-in-out">
+                        <span>Do I need a custom logo?</span>
+                        <span class="arrow-icon text-blue-500 transition-transform duration-300">+</span>
+                    </button>
+                    <div class="faq-answer mt-1 px-3 py-2 text-gray-600 text-sm hidden bg-white border border-gray-200 rounded-b-md">
+                        While not strictly mandatory for initial testing, a simple, clean, and professional logo is highly recommended to establish brand identity and trust.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <a href="#step4-details" class="block no-underline step-toggle">
+                <div class="step-card hover:bg-blue-50">
+                    <h3 class="text-xl font-extrabold text-blue-700 flex items-center mb-1">
+                        <!-- Updated Symbol -->
+                        <span class="text-3xl mr-3 font-mono">✍️</span> Product Listing & Conversion Copy
+                    </h3>
+                    <p class="text-sm font-bold text-gray-600 ml-11">Goal: Write persuasive copy and use visuals that sell the product's value.</p>
+                    <h4 class="font-semibold text-gray-800 mb-2 ml-11 text-xs uppercase tracking-wider mt-2">Tap to View Actions & FAQs <span class="text-xl inline-block transition-transform duration-300 transform step-arrow">+</span></h4>
+                </div>
+            </a>
+            <div id="step4-details" class="details-section bg-white p-4 rounded-b-xl mb-4 border-t-2 border-blue-500 shadow-inner hidden">
+                 <!-- VISUAL for Step 4 -->
+                <img src="https://placehold.co/400x100/9333ea/ffffff?text=Benefit-Driven+Copy+%26+Video+Demo" alt="Copywriting Visual" class="w-full rounded-lg shadow-md mb-4"/>
+                
+                <h4 class="font-semibold text-gray-800 mb-2">ACTIONS TO TAKE:</h4>
+                <ul class="list-decimal list-outside space-y-2 text-gray-700 ml-5 text-base">
+                    <li>**Copywriting:** Focus 80% on <span class="font-bold text-blue-700">benefits</span> (what the product does for them) and 20% on features. Use clear, concise language.</li>
+                    <li>**Visuals:** Use the best quality photos and <span class="font-bold text-red-700">create a short video demonstration</span> if possible. Poor visuals equal zero sales.</li>
+                    <li>**Review Integration:** Embed customer reviews (even mock reviews initially) to provide social proof.</li>
+                </ul>
+                <h4 class="font-bold text-lg text-blue-700 mt-6 mb-3 border-t pt-3">❓ Common Questions (FAQs)</h4>
+                <div class="faq-item mb-2">
+                    <button class="faq-question w-full text-left py-2 px-3 bg-gray-50 hover:bg-gray-100 rounded-md font-semibold text-sm flex justify-between items-center transition duration-150 ease-in-out">
+                        <span>How important are video demonstrations?</span>
+                        <span class="arrow-icon text-blue-500 transition-transform duration-300">+</span>
+                    </button>
+                    <div class="faq-answer mt-1 px-3 py-2 text-gray-600 text-sm hidden bg-white border border-gray-200 rounded-b-md">
+                        Video demonstrations are <span class="font-extrabold text-red-700">critical</span> for conversion. They show the product in use, immediately addressing customer skepticism and conveying its value much faster than text or static images.
+                    </div>
+                </div>
+            </div>
+            
+            
+            <!-- PHASE 3: TRAFFIC, FULFILLMENT & SCALE -->
+            <div id="phase3" class="phase-banner">
+                PHASE 3: TRAFFIC, FULFILLMENT & SCALE (Steps 5, 6, & 7)
+            </div>
+
+            <!-- Step 5 -->
+            <a href="#step5-details" class="block no-underline step-toggle">
+                <div class="step-card hover:bg-blue-50">
+                    <h3 class="text-xl font-extrabold text-blue-700 flex items-center mb-1">
+                        <!-- Updated Symbol -->
+                        <span class="text-3xl mr-3 font-mono">🚀</span> Launching & Testing Paid Traffic
+                    </h3>
+                    <p class="text-sm font-bold text-gray-600 ml-11">Goal: Determine product viability through fast, controlled testing.</p>
+                    <h4 class="font-semibold text-gray-800 mb-2 ml-11 text-xs uppercase tracking-wider mt-2">Tap to View Actions & FAQs <span class="text-xl inline-block transition-transform duration-300 transform step-arrow">+</span></h4>
+                </div>
+            </a>
+            <div id="step5-details" class="details-section bg-white p-4 rounded-b-xl mb-4 border-t-2 border-blue-500 shadow-inner hidden">
+                 <!-- VISUAL for Step 5 -->
+                <img src="https://placehold.co/400x100/ef4444/ffffff?text=Ad+Creative+%26+ROAS+Testing" alt="Paid Traffic Visual" class="w-full rounded-lg shadow-md mb-4"/>
+                
+                <h4 class="font-semibold text-gray-800 mb-2">ACTIONS TO TAKE:</h4>
+                <ul class="list-decimal list-outside space-y-2 text-gray-700 ml-5 text-base">
+                    <li>**Initial Focus:** <span class="font-bold text-blue-700">Paid Social (Meta Ads/TikTok)</span> is the fastest way to test if a product sells.</li>
+                    <li>**Ad Creative:** Use engaging video ads that immediately demonstrate the product solving a problem (the "Hook"). Video is mandatory for modern dropshipping success.</li>
+                    <li>**Testing Budget:** Allocate a small, fixed daily budget to test 3-5 different ad creatives. **Stop** ads immediately if they show poor performance (ROAS < 1.0) after 72 hours.</li>
+                </ul>
+                <h4 class="font-bold text-lg text-blue-700 mt-6 mb-3 border-t pt-3">❓ Common Questions (FAQs)</h4>
+                <div class="faq-item mb-2">
+                    <button class="faq-question w-full text-left py-2 px-3 bg-gray-50 hover:bg-gray-100 rounded-md font-semibold text-sm flex justify-between items-center transition duration-150 ease-in-out">
+                        <span>What is a good starting budget for testing?</span>
+                        <span class="arrow-icon text-blue-500 transition-transform duration-300">+</span>
+                    </button>
+                    <div class="faq-answer mt-1 px-3 py-2 text-gray-600 text-sm hidden bg-white border border-gray-200 rounded-b-md">
+                        A minimum of <span class="font-bold text-red-600">$20 per ad set per day</span> is often recommended to gather data quickly. A total budget of $150-$300 per product is usually sufficient to determine viability.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6 -->
+            <a href="#step6-details" class="block no-underline step-toggle">
+                <div class="step-card hover:bg-blue-50">
+                    <h3 class="text-xl font-extrabold text-blue-700 flex items-center mb-1">
+                        <!-- Updated Symbol -->
+                        <span class="text-3xl mr-3 font-mono">📦</span> Order Fulfillment & Customer Care
+                    </h3>
+                    <p class="text-sm font-bold text-gray-600 ml-11">Goal: Automate order processing and build trust post-purchase.</p>
+                    <h4 class="font-semibold text-gray-800 mb-2 ml-11 text-xs uppercase tracking-wider mt-2">Tap to View Actions & FAQs <span class="text-xl inline-block transition-transform duration-300 transform step-arrow">+</span></h4>
+                </div>
+            </a>
+            <div id="step6-details" class="details-section bg-white p-4 rounded-b-xl mb-4 border-t-2 border-blue-500 shadow-inner hidden">
+                 <!-- VISUAL for Step 6 -->
+                <img src="https://placehold.co/400x100/f59e0b/ffffff?text=Automated+Fulfillment+%26+24hr+Support" alt="Fulfillment Visual" class="w-full rounded-lg shadow-md mb-4"/>
+                
+                <h4 class="font-semibold text-gray-800 mb-2">ACTIONS TO TAKE:</h4>
+                <ul class="list-decimal list-outside space-y-2 text-gray-700 ml-5 text-base">
+                    <li>**Automation:** Use fulfillment apps (like DSers) to send customer order data to the supplier automatically.</li>
+                    <li>**Tracking:** Provide the customer with the tracking number within 48 hours. Use automated emails for status updates.</li>
+                    <li>**Service:** Use a dedicated business email for support. Handle all refund/return requests quickly and professionally.</li>
+                </ul>
+                <h4 class="font-bold text-lg text-blue-700 mt-6 mb-3 border-t pt-3">❓ Common Questions (FAQs)</h4>
+                <div class="faq-item mb-2">
+                    <button class="faq-question w-full text-left py-2 px-3 bg-gray-50 hover:bg-gray-100 rounded-md font-semibold text-sm flex justify-between items-center transition duration-150 ease-in-out">
+                        <span>How do I handle customer support effectively?</span>
+                        <span class="arrow-icon text-blue-500 transition-transform duration-300">+</span>
+                    </button>
+                    <div class="faq-answer mt-1 px-3 py-2 text-gray-600 text-sm hidden bg-white border border-gray-200 rounded-b-md">
+                        Provide multiple contact methods (email, chat widget). Set up auto-responses for common questions. Respond to all queries within <span class="font-bold text-red-600">24 hours</span> to maintain high customer satisfaction.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 7 -->
+            <a href="#step7-details" class="block no-underline step-toggle">
+                <div class="step-card hover:bg-blue-50">
+                    <h3 class="text-xl font-extrabold text-blue-700 flex items-center mb-1">
+                        <!-- Updated Symbol -->
+                        <span class="text-3xl mr-3 font-mono">📈</span> Analysis and Scaling
+                    </h3>
+                    <p class="text-sm font-bold text-gray-600 ml-11">Goal: Maximize profits by reinforcing winners and cutting losers.</p>
+                    <h4 class="font-semibold text-gray-800 mb-2 ml-11 text-xs uppercase tracking-wider mt-2">Tap to View Actions & FAQs <span class="text-xl inline-block transition-transform duration-300 transform step-arrow">+</span></h4>
+                </div>
+            </a>
+            <div id="step7-details" class="details-section bg-white p-4 rounded-b-xl mb-4 border-t-2 border-blue-500 shadow-inner hidden">
+                 <!-- VISUAL for Step 7 -->
+                <img src="https://placehold.co/400x100/1e40af/ffffff?text=Scale+Winning+Ads+by+20%25" alt="Scaling Visual" class="w-full rounded-lg shadow-md mb-4"/>
+                
+                <h4 class="font-semibold text-gray-800 mb-2">ACTIONS TO TAKE:</h4>
+                <ul class="list-decimal list-outside space-y-2 text-gray-700 ml-5 text-base">
+                    <li>**Analyze ROAS:** Your primary metric. If it's consistently <span class="font-extrabold text-green-700">2.5x or higher</span>, the product is a "<span class="font-extrabold text-green-700">Winner.</span>"</li>
+                    <li>**Scale Winning Ads:** If an ad set is profitable, slowly and strategically increase the budget (e.g., 20% increase every 48 hours).</li>
+                    <li>**Optimization:** Use data to tweak targeting, improve your product page, and test different price points.</li>
+                </ul>
+                <h4 class="font-bold text-lg text-blue-700 mt-6 mb-3 border-t pt-3">❓ Common Questions (FAQs)</h4>
+                <div class="faq-item mb-2">
+                    <button class="faq-question w-full text-left py-2 px-3 bg-gray-50 hover:bg-gray-100 rounded-md font-semibold text-sm flex justify-between items-center transition duration-150 ease-in-out">
+                        <span>What does ROAS 2.5x mean?</span>
+                        <span class="arrow-icon text-blue-500 transition-transform duration-300">+</span>
+                    </button>
+                    <div class="faq-answer mt-1 px-3 py-2 text-gray-600 text-sm hidden bg-white border border-gray-200 rounded-b-md">
+                        ROAS (Return on Ad Spend) 2.5x means for every $1 you spend on ads, you generate $2.50 in revenue. This high multiplier ensures you have enough profit after subtracting product and shipping costs.
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        
+        <!-- Do's and Don'ts Table -->
+        <section id="dos-donts" class="bg-white p-6 rounded-xl shadow-lg mb-10">
+            <h2 class="text-xl font-bold mb-4 text-gray-800 border-b pb-2">3. Essential Do's and Don'ts</h2>
+            <div class="overflow-x-auto rounded-lg shadow-md mt-4">
+                <table class="min-w-full text-sm text-left text-gray-600">
+                    <thead>
+                        <tr class="bg-green-100 text-green-800">
+                            <th scope="col" class="py-3 px-4 font-bold">DO's (Actionable Steps)</th>
+                            <th scope="col" class="py-3 px-4 font-bold">DON'Ts (Critical Mistakes)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="py-3 px-4 font-medium text-gray-900"><span class="font-extrabold text-green-700">DO</span> focus on <span class="font-bold">one winning product</span> at a time until profitable, then diversify.</td>
+                            <td class="py-3 px-4"><span class="font-extrabold text-red-700">DON'T</span> rely on just one supplier. Have a backup in case of stock outages or quality issues.</td>
+                        </tr>
+                        <tr class="border-b hover:bg-gray-50 bg-gray-50">
+                            <td class="py-3 px-4 font-medium text-gray-900"><span class="font-extrabold text-green-700">DO</span> use a dedicated business email.</td>
+                            <td class="py-3 px-4"><span class="font-extrabold text-red-700">DON'T</span> use personal email addresses for customer support.</td>
+                        </tr>
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="py-3 px-4 font-medium text-gray-900"><span class="font-extrabold text-green-700">DO</span> secure your store with an SSL Certificate.</td>
+                            <td class="py-3 px-4"><span class="font-extrabold text-red-700">DON'T</span> ignore legal policy pages (Refunds, Privacy).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 4. General FREQUENTLY ASKED QUESTIONS (FAQ) Section -->
+        <section id="general-faq" class="mb-10 bg-white p-6 rounded-xl shadow-lg">
+            <h2 class="text-2xl font-extrabold text-blue-700 mb-6 border-b pb-2">4. General Agent FAQ (20 Questions)</h2>
+            
+            <!-- Category 1: Setup and Legality -->
+            <h3 class="text-xl font-bold text-gray-800 mb-3 border-l-4 border-blue-500 pl-3">⚙️ Setup and Legality</h3>
+
+            <div class="faq-container space-y-3 mb-6">
+                <!-- Q1 -->
+                <div class="faq-item rounded-lg border border-gray-200">
+                    <button class="faq-question w-full text-left py-3 px-4 bg-gray-50 hover:bg-gray-100 rounded-t-lg font-semibold text-base flex justify-between items-center transition duration-150 ease-in-out">
+                        <span>Do I need to register a company before starting dropshipping?</span>
+                        <span class="arrow-icon text-blue-500 transition-transform duration-300 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer mt-0 px-4 py-3 text-gray-700 text-base hidden bg-white rounded-b-lg border-t border-gray-200">
+                        For initial testing, no. You can operate as a sole proprietor. However, once you start generating consistent revenue, it is highly recommended (especially in the US/UK/CA/AU) to register a legal entity (like an <span class="font-bold text-blue-700">LLC or Ltd.</span>) for liability protection and tax purposes.
+                    </div>
+                </div>
+                <!-- Q2 -->
+                <div class="faq-item rounded-lg border border-gray-200">
+                    <button class="faq-question w-full text-left py-3 px-4 bg-gray-50 hover:bg-gray-100 rounded-t-lg font-semibold text-base flex justify-between items-center transition duration-150 ease-in-out">
+                        <span>How much capital do I need to start dropshipping?</span>
+                        <span class="arrow-icon text-blue-500 transition-transform duration-300 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer mt-0 px-4 py-3 text-gray-700 text-base hidden bg-white rounded-b-lg border-t border-gray-200">
+                        The minimum recommended capital is <span class="font-bold text-green-700">$500 - $1,000 USD</span>. This covers the Shopify subscription ($29/month), a domain name, and the critical initial advertising budget to test 3-5 products ($300-$500).
+                    </div>
+                </div>
+                <!-- Q3 -->
+                <div class="faq-item rounded-lg border border-gray-200">
+                    <button class="faq-question w-full text-left py-3 px-4 bg-gray-50 hover:bg-gray-100 rounded-t-lg font-semibold text-base flex justify-between items-center transition duration-150 ease-in-out">
+                        <span>Do I need a VAT/GST number in the target countries (UK/AU/CA)?</span>
+                        <span class="arrow-icon text-blue-500 transition-transform duration-300 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer mt-0 px-4 py-3 text-gray-700 text-base hidden bg-white rounded-b-lg border-t border-gray-200">
+                        Yes, if you meet the annual revenue threshold set by that country. Even if you don't, some countries require registration for non-resident e-commerce sellers. Always consult a local tax professional.
+                    </div>
+                </div>
+                 <!-- Q4 -->
+                <div class="faq-item rounded-lg border border-gray-200">
+                    <button class="faq-question w-full text-left py-3 px-4 bg-gray-50 hover:bg-gray-100 rounded-t-lg font-semibold text-base flex justify-between items-center transition duration-150 ease-in-out">
+                        <span>Which e-commerce platform is better: Shopify or WooCommerce?</span>
+                        <span class="arrow-icon text-blue-500 transition-transform duration-300 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer mt-0 px-4 py-3 text-gray-700 text-base hidden bg-white rounded-b-lg border-t border-gray-200">
+                        For new dropshippers, <span class="font-bold text-green-700">Shopify is highly recommended</span> due to its ease of use, integrated payment processing, and extensive app marketplace. WooCommerce (WordPress) offers more customization but requires more technical knowledge.
+                    </div>
+                </div>
+                 <!-- Q5 -->
+                <div class="faq-item rounded-lg border border-gray-200">
+                    <button class="faq-question w-full text-left py-3 px-4 bg-gray-50 hover:bg-gray-100 rounded-t-lg font-semibold text-base flex justify-between items-center transition duration-150 ease-in-out">
+                        <span>How long does it typically take to make the first sale?</span>
+                        <span class="arrow-icon text-blue-500 transition-transform duration-300 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer mt-0 px-4 py-3 text-gray-700 text-base hidden bg-white rounded-b-lg border-t border-gray-200">
+                        With paid advertising (Meta/TikTok), you should aim to get your first sale within the first <span class="font-bold text-red-600">48-72 hours</span> of launching ads. If no sales occur within this window, the product/ad creative needs immediate review or replacement.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 2: Products and Sourcing -->
+            <h3 class="text-xl font-bold text-gray-800 mb-3 border-l-4 border-blue-500 pl-3">🎁 Products and Sourcing</h3>
+
+            <div class="faq-container space-y-3 mb-6">
+                 <!-- Q6 -->
+                <div class="faq-item rounded-lg border border-gray-200">
+                    <button class="faq-question w-full text-left py-3 px-4 bg-gray-50 hover:bg-gray-100 rounded-t-lg font-semibold text-base flex justify-between items-center transition duration-150 ease-in-out">
+                        <span>How do I find local suppliers in the US/UK/CA/AU?</span>
+                        <span class="arrow-icon text-blue-500 transition-transform duration-300 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer mt-0 px-4 py-3 text-gray-700 text-base hidden bg-white rounded-b-lg border-t border-gray-200">
+                        Use specialized dropshipping apps and marketplaces like **Spocket, Zendrop, or CJdropshipping** (filtering by local warehouse locations). You can also directly contact manufacturers/wholesalers in the target countries.
+                    </div>
+                </div>
+                <!-- Q7 -->
+                <div class="faq-item rounded-lg border border-gray-200">
+                    <button class="faq-question w-full text-left py-3 px-4 bg-gray-50 hover:bg-gray-100 rounded-t-lg font-semibold text-base flex justify-between items-center transition duration-150 ease-in-out">
+                        <span>Should I dropship copyrighted or trademarked products (e.g., licensed characters)?</span>
+                        <span class="arrow-icon text-blue-500 transition-transform duration-300 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer mt-0 px-4 py-3 text-gray-700 text-base hidden bg-white rounded-b-lg border-t border-gray-200">
+                        <span class="font-bold text-red-700">ABSOLUTELY NOT.</span> Selling counterfeit, fake, or trademark-infringing goods will lead to immediate store shutdown, payment account freezing, and potential legal action from the brand owner.
+                    </div>
+                </div>
+                <!-- Q8 -->
+                <div class="faq-item rounded-lg border border-gray-200">
+                    <button class="faq-question w-full text-left py-3 px-4 bg-gray-50 hover:bg-gray-100 rounded-t-lg font-semibold text-base flex justify-between items-center transition duration-150 ease-in-out">
+                        <span>What is white-label dropshipping?</span>
+                        <span class="arrow-icon text-blue-500 transition-transform duration-300 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer mt-0 px-4 py-3 text-gray-700 text-base hidden bg-white rounded-b-lg border-t border-gray-200">
+                        White-label dropshipping is when the supplier ships the product directly to the customer, but the packaging and shipping labels only display the retailer's (your) branding, making the customer believe the product shipped directly from your company. This builds brand loyalty.
+                    </div>
+                </div>
+                 <!-- Q9 -->
+                <div class="faq-item rounded-lg border border-gray-200">
+                    <button class="faq-question w-full text-left py-3 px-4 bg-gray-50 hover:bg-gray-100 rounded-t-lg font-semibold text-base flex justify-between items-center transition duration-150 ease-in-out">
+                        <span>Is it safe to dropship electronics?</span>
+                        <span class="arrow-icon text-blue-500 transition-transform duration-300 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer mt-0 px-4 py-3 text-gray-700 text-base hidden bg-white rounded-b-lg border-t border-gray-200">
+                        Electronics are high-risk due to potential quality issues, high return rates, and complex certifications. If you do dropship electronics, only use suppliers with <span class="font-bold text-red-700">excellent reviews and a proven track record</span> for reliability.
+                    </div>
+                </div>
+                 <!-- Q10 -->
+                <div class="faq-item rounded-lg border border-gray-200">
+                    <button class="faq-question w-full text-left py-3 px-4 bg-gray-50 hover:bg-gray-100 rounded-t-lg font-semibold text-base flex justify-between items-center transition duration-150 ease-in-out">
+                        <span>How many products should I start testing with?</span>
+                        <span class="arrow-icon text-blue-500 transition-transform duration-300 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer mt-0 px-4 py-3 text-gray-700 text-base hidden bg-white rounded-b-lg border-t border-gray-200">
+                        Focus your energy on testing **one single product thoroughly** (with 3-5 different ad creatives) until you determine if it is a winner or a loser. Avoid testing many products simultaneously unless you have a large budget.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 3: Marketing and Scaling -->
+            <h3 class="text-xl font-bold text-gray-800 mb-3 border-l-4 border-blue-500 pl-3">🚀 Marketing and Scaling</h3>
+            
+            <div class="faq-container space-y-3 mb-6">
+                <!-- Q11 -->
+                <div class="faq-item rounded-lg border border-gray-200">
+                    <button class="faq-question w-full text-left py-3 px-4 bg-gray-50 hover:bg-gray-100 rounded-t-lg font-semibold text-base flex justify-between items-center transition duration-150 ease-in-out">
+                        <span>Which platform is best for initial paid ads (Meta/TikTok/Google)?</span>
+                        <span class="arrow-icon text-blue-500 transition-transform duration-300 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer mt-0 px-4 py-3 text-gray-700 text-base hidden bg-white rounded-b-lg border-t border-gray-200">
+                        For quick product testing and virality potential, <span class="font-bold text-blue-700">TikTok and Meta Ads (Facebook/Instagram)</span> are generally the fastest. Google Ads (Search/Shopping) is better for scaling proven products based on existing demand.
+                    </div>
+                </div>
+                <!-- Q12 -->
+                <div class="faq-item rounded-lg border border-gray-200">
+                    <button class="faq-question w-full text-left py-3 px-4 bg-gray-50 hover:bg-gray-100 rounded-t-lg font-semibold text-base flex justify-between items-center transition duration-150 ease-in-out">
+                        <span>What is a 'break-even' ROAS?</span>
+                        <span class="arrow-icon text-blue-500 transition-transform duration-300 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer mt-0 px-4 py-3 text-gray-700 text-base hidden bg-white rounded-b-lg border-t border-gray-200">
+                        Break-even ROAS (Return on Ad Spend) is the ratio where your ad revenue exactly equals your total cost (product cost + ad spend). For dropshipping, the break-even ROAS is often between <span class="font-bold text-red-600">1.8x and 2.2x</span>. Anything consistently below this means you are losing money.
+                    </div>
+                </div>
+                <!-- Q13 -->
+                <div class="faq-item rounded-lg border border-gray-200">
+                    <button class="faq-question w-full text-left py-3 px-4 bg-gray-50 hover:bg-gray-100 rounded-t-lg font-semibold text-base flex justify-between items-center transition duration-150 ease-in-out">
+                        <span>How to handle abandoned carts?</span>
+                        <span class="arrow-icon text-blue-500 transition-transform duration-300 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer mt-0 px-4 py-3 text-gray-700 text-base hidden bg-white rounded-b-lg border-t border-gray-200">
+                        Implement an automated email sequence to recover lost sales. The first email should be sent within <span class="font-bold">1 hour</span>, the second within 24 hours (possibly offering a 5% discount), and the third after 72 hours.
+                    </div>
+                </div>
+                <!-- Q14 -->
+                <div class="faq-item rounded-lg border border-gray-200">
+                    <button class="faq-question w-full text-left py-3 px-4 bg-gray-50 hover:bg-gray-100 rounded-t-lg font-semibold text-base flex justify-between items-center transition duration-150 ease-in-out">
+                        <span>When should I raise my ad budget?</span>
+                        <span class="arrow-icon text-blue-500 transition-transform duration-300 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer mt-0 px-4 py-3 text-gray-700 text-base hidden bg-white rounded-b-lg border-t border-gray-200">
+                        Only scale an ad that has shown consistent profitability (ROAS > 2.5x) for at least 3-5 days. Increase the budget incrementally (e.g., <span class="font-bold">20% increase every 48 hours</span>) to maintain performance without disrupting the algorithm.
+                    </div>
+                </div>
+                <!-- Q15 -->
+                <div class="faq-item rounded-lg border border-gray-200">
+                    <button class="faq-question w-full text-left py-3 px-4 bg-gray-50 hover:bg-gray-100 rounded-t-lg font-semibold text-base flex justify-between items-center transition duration-150 ease-in-out">
+                        <span>How to deal with bank chargebacks?</span>
+                        <span class="arrow-icon text-blue-500 transition-transform duration-300 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer mt-0 px-4 py-3 text-gray-700 text-base hidden bg-white rounded-b-lg border-t border-gray-200">
+                        Chargebacks often occur due to "Item Not Received" (slow shipping) or "Item Not As Described" (poor quality). Always submit tracking evidence and proof of delivery. Consistent high chargebacks will lead to payment processor suspension.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Footer -->
+        <footer class="text-center pt-8 text-gray-500 text-sm border-t mt-8">
+            <p>Dropshipping is a data game. Test, analyze, and optimize constantly.</p>
+        </footer>
+
+    </div>
+
+    <!-- JavaScript for Tapping/Accordion Behavior (Simulating Native Interaction) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Main Step Accordion Logic
+            const stepLinks = document.querySelectorAll('a[href$="-details"]');
+            
+            stepLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetDetails = document.getElementById(targetId);
+                    const arrowIcon = link.querySelector('.step-arrow');
+                    
+                    if (targetDetails) {
+                        const isHidden = targetDetails.classList.contains('hidden');
+                        
+                        // Close all other open detail sections
+                        document.querySelectorAll('.details-section').forEach(detail => {
+                            if (detail !== targetDetails) {
+                                detail.classList.add('hidden');
+                                // Reset the arrow for the closed section's link
+                                const relatedLink = document.querySelector(`a[href="#${detail.id}"]`);
+                                if (relatedLink && relatedLink.querySelector('.step-arrow')) {
+                                    relatedLink.querySelector('.step-arrow').classList.remove('rotate-45');
+                                    relatedLink.querySelector('.step-arrow').textContent = '+';
+                                }
+                                // Ensure nested FAQs are also closed when the main step closes
+                                detail.querySelectorAll('.faq-answer').forEach(ans => ans.classList.add('hidden'));
+                                detail.querySelectorAll('.faq-question .arrow-icon').forEach(icon => icon.textContent = '+');
+
+                            }
+                        });
+
+                        // Toggle the current detail section
+                        if (isHidden) {
+                            targetDetails.classList.remove('hidden');
+                            arrowIcon.classList.add('rotate-45');
+                            arrowIcon.textContent = '-';
+                            link.scrollIntoView({ behavior: 'smooth', block: 'start' }); 
+                        } else {
+                            targetDetails.classList.add('hidden');
+                            arrowIcon.classList.remove('rotate-45');
+                            arrowIcon.textContent = '+';
+                        }
+                    }
+                });
+            });
+
+            // Universal FAQ Accordion Logic (Handles both step-FAQs and general-FAQs)
+            document.querySelectorAll('.faq-question').forEach(button => {
+                button.addEventListener('click', () => {
+                    const answer = button.nextElementSibling;
+                    const arrow = button.querySelector('.arrow-icon');
+                    
+                    // Determine the scope (parent container)
+                    const parentContainer = button.closest('.details-section') || button.closest('.faq-container');
+                    
+                    if (parentContainer) {
+                        // Close all other open FAQs within the same scope
+                        parentContainer.querySelectorAll('.faq-answer').forEach(ans => {
+                            if (ans !== answer && !ans.classList.contains('hidden')) {
+                                 ans.classList.add('hidden');
+                                 ans.previousElementSibling.querySelector('.arrow-icon').textContent = '+';
+                            }
+                        });
+                    }
+
+
+                    // Toggle the current FAQ answer
+                    if (answer.classList.contains('hidden')) {
+                        answer.classList.remove('hidden');
+                        arrow.textContent = '-';
+                    } else {
+                        answer.classList.add('hidden');
+                        arrow.textContent = '+';
+                    }
+                });
+            });
+
+
+            // Handle navigation links scrolling smoothly
+            document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
+
