@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On-Page SEO for AI Search Engines (2025)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles for Readability */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f8f8;
+            color: #1f2937;
+            line-height: 1.7; /* Enhanced line height for readability */
+        }
+        main strong {
+            font-weight: 700; /* Ensure strong is visibly bold */
+        }
+        /* Custom scroll behavior for internal links */
+        html {
+            scroll-behavior: smooth;
+        }
+        .header-sticky {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .page-title-bg {
+            background-color: #2d3aff;
+        }
+        /* Chapter background colors for visual separation */
+        .chapter-bg-1 { background-color: #8888cf; } /* Chapter 1/Start */
+        .chapter-bg-2 { background-color: #0e5899; } /* Chapter 2 */
+        .chapter-bg-3 { background-color: #00abff; } /* Chapter 3 */
+        .chapter-bg-4 { background-color: #1ac06e; } /* Chapter 4 */
+        .chapter-bg-5 { background-color: #ef4444; } /* Chapter 5 (Red) */
+        .chapter-bg-6 { background-color: #10b981; } /* Chapter 6 (Green) */
+
+        /* Infographic and Data Styling */
+        .infographic-container {
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem; /* More rounded */
+            padding: 2rem;
+            margin: 2.5rem auto;
+            background-color: #ffffff;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .bar-chart-label {
+            width: 100%;
+            height: 1.75rem; /* Slightly taller */
+            line-height: 1.75rem;
+            text-align: center;
+            color: white;
+            font-weight: 700;
+            border-radius: 0.25rem;
+            transition: width 1s ease-out;
+        }
+        /* Style for the colored alert boxes */
+        .alert-box-info {
+            background-color: #e0f2fe; /* light blue */
+            border-color: #38bdf8; /* sky blue */
+        }
+
+        /* Mobile specific adjustments for readability on small screens */
+        @media (max-width: 640px) {
+            .text-xl { font-size: 1.125rem; }
+            .list-disc { padding-left: 1rem; }
+            .infographic-container { padding: 1rem; margin: 1.5rem auto; }
+        }
+    </style>
+
+    <!-- Schema Markup for SEO and Rich Results -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "headline": "On-Page SEO for AI Search Engines (2025)",
+          "description": "The complete guide to mastering on-page SEO, including strategies for traditional search engines, user experience, and modern AI/LLM citation.",
+          "image": "https://placehold.co/1200x630/4F46E5/FFFFFF?text=Aarry+SEO+Guide+Banner",
+          "datePublished": "2024-01-01T08:00:00+00:00",
+          "dateModified": "2025-10-14T08:00:00+00:00",
+          "author": {
+            "@type": "Organization",
+            "name": "Aarry Content Team",
+            "url": "https://aarry.org/"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Aarry.org",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://placehold.co/600x600/2d3aff/ffffff?text=Aarry+Logo"
+            }
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is the difference between off-page SEO and on-page SEO?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Off-page SEO focuses on optimizing signals that occur outside your website, such as building backlinks and establishing a social media presence. On-page SEO involves optimizing elements directly on your webpages, like content, meta tags, and internal links."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the difference between on-page SEO and technical SEO?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "On-page SEO deals with optimizing individual web pages to improve their search engine rankings and user experience. Technical SEO involves optimizing the technical aspects of your entire website (e.g., site speed, crawlability, mobile-friendliness). The goal is to ensure it’s crawlable, indexable, and performs well from a technical standpoint."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How often should I perform on-page SEO?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Due to constant algorithm updates and the rapid evolution of AI Search, on-page SEO requires ongoing maintenance, not a one-time fix. We recommend routine monitoring and minor updates at least monthly, with a comprehensive content review (checking for LLM chunking, information gain, and E-E-A-T signals) conducted quarterly."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What are the key elements of modern on-page SEO?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Key elements of modern on-page SEO go beyond keywords. They include optimizing title tags and meta descriptions, ensuring strong information gain, improving user experience, and critically, implementing LLM-friendly content structures (semantic chunking, clear headings, quotable definitions) to encourage AI citation."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How important is on-page SEO for overall website performance in the age of AI?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "On-page SEO is integral to performance. A page that is poorly optimized will struggle to rank in traditional search, and it will be nearly invisible to generative AI models. Strong on-page signals (structure, E-E-A-T, and relevance) are the foundation for gaining traffic from both human searchers and AI summaries."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Are there tools available to assist with modern on-page SEO?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, several tools can help. Platforms like Semrush, along with newer AI-specific tools, offer features for keyword research, content optimization based on topical authority, and technical checks to ensure your content is ready for both search engine crawlers and large language models."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Header/Navigation Bar -->
+    <header class="header-sticky bg-white shadow-lg">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 lg:h-20">
+            <!-- Logo - Renamed for Aarry.org -->
+            <a href="#" class="flex-shrink-0 text-2xl font-extrabold text-blue-900">
+                Aarry.org
+            </a>
+            
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden lg:flex space-x-8 text-base font-medium">
+                <a href="#" class="text-gray-600 hover:text-teal-600 transition-colors">Articles</a>
+                <a href="#" class="text-gray-600 hover:text-teal-600 transition-colors">Tools</a>
+                <a href="#" class="text-gray-600 hover:text-teal-600 transition-colors">Templates</a>
+                <a href="#" class="text-gray-600 hover:text-teal-600 transition-colors">About</a>
+                <a href="#" class="text-gray-600 hover:text-teal-600 transition-colors">Newsletter</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <button class="hidden lg:inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-teal-500 hover:bg-teal-600 transition-colors">
+                Check My Site's SEO
+            </button>
+            
+            <!-- Mobile Menu Button (Placeholder for JS toggle) -->
+            <button class="lg:hidden p-2 rounded-md text-gray-700 hover:text-gray-900 focus:outline-none">
+                <!-- Hamburger Icon -->
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="min-h-screen">
+        
+        <!-- Hero Section -->
+        <section class="page-title-bg text-white pt-16 pb-12 sm:pt-20 sm:pb-16">
+            <div class="container mx-auto px-4 max-w-4xl text-center">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-8">
+                    <strong>On-Page SEO for AI Search Engines:</strong> The Definitive Guide
+                </h1>
+                <div class="border-b border-white/20 pb-8 mb-8">
+                    <p class="text-sm font-light uppercase tracking-widest opacity-80 mb-4">Last updated Oct. 14, 2025</p>
+                    <div class="flex items-center justify-center space-x-4 text-sm font-light opacity-90">
+                        <div class="flex items-center space-x-2">
+                             <!-- Simple Author Placeholder -->
+                            <div class="w-6 h-6 bg-gray-300 rounded-full"></div>
+                            <p class="text-base">Written by <span><a href="#" class="underline hover:text-teal-300">Aarry Content Team</a></span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Intro Content -->
+                <div class="flex flex-col md:flex-row items-start md:space-x-8 text-xl">
+                    <div class="md:w-1/2 mb-8 md:mb-0 text-left leading-relaxed">
+                        <p class="mb-4">Mastering on-page SEO can have a HUGE effect on your rankings, traffic, and **AI citations**.</p>
+                        <p class="font-semibold mb-2">In this guide, you’ll learn how to:</p>
+                        <ul class="list-disc list-inside space-y-1 ml-4 text-lg opacity-90">
+                            <li>Create search engine and user-friendly content</li>
+                            <li>Craft SEO-optimized URLs that boost CTR</li>
+                            <li>Write click-worthy titles that drive organic traffic</li>
+                            <li>Develop unique, high-value content</li>
+                            <li><strong class="text-yellow-300">Format your content to increase LLM citations</strong></li>
+                            <li>Integrate keywords for maximum SEO impact</li>
+                            <li>And more</li>
+                        </ul>
+                        <p class="mt-4">Let’s get started!</p>
+                    </div>
+                    <div class="md:w-1/2 flex justify-center items-center">
+                        <!-- Hero Image -->
+                        <img src="https://placehold.co/400x300/4F46E5/FFFFFF?text=Aarry+AI+SEO+Guide" alt="On-page SEO visual guide focusing on AI" class="w-full max-w-xs md:max-w-full mx-auto rounded-lg shadow-2xl">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Table of Contents Section -->
+        <section class="bg-gray-100 py-12 border-b border-gray-300">
+            <div class="container mx-auto px-4 max-w-4xl text-center">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800">Contents</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <a href="#on-page-seo-basics" class="p-6 bg-white rounded-lg shadow-xl hover:bg-gray-50 transition-colors flex flex-col items-center text-center space-y-3">
+                        <img src="https://placehold.co/100x100/0D9488/FFFFFF?text=1" alt="Chapter 1 Icon" class="w-16 h-16 mb-2 rounded-full border-4 border-teal-500">
+                        <h6 class="text-lg font-semibold text-gray-800"><span>1. </span><span>On-Page SEO Basics + Template</span></h6>
+                    </a>
+                    <a href="#optimize-title-and-description-tags" class="p-6 bg-white rounded-lg shadow-xl hover:bg-gray-50 transition-colors flex flex-col items-center text-center space-y-3">
+                        <img src="https://placehold.co/100x100/3B82F6/FFFFFF?text=2" alt="Chapter 2 Icon" class="w-16 h-16 mb-2 rounded-full border-4 border-blue-500">
+                        <h6 class="text-lg font-semibold text-gray-800"><span>2. </span><span>Optimize Title and Description Tags</span></h6>
+                    </a>
+                    <a href="#write-seo-content" class="p-6 bg-white rounded-lg shadow-xl hover:bg-gray-50 transition-colors flex flex-col items-center text-center space-y-3">
+                        <img src="https://placehold.co/100x100/9333EA/FFFFFF?text=3" alt="Chapter 3 Icon" class="w-16 h-16 mb-2 rounded-full border-4 border-purple-600">
+                        <h6 class="text-lg font-semibold text-gray-800"><span>3. </span><span>Craft Content for <strong>E-E-A-T</strong> and AI Value</span></h6>
+                    </a>
+                    <a href="#optimize-your-content-for-seo" class="p-6 bg-white rounded-lg shadow-xl hover:bg-gray-50 transition-colors flex flex-col items-center text-center space-y-3">
+                        <img src="https://placehold.co/100x100/D97706/FFFFFF?text=4" alt="Chapter 4 Icon" class="w-16 h-16 mb-2 rounded-full border-4 border-amber-600">
+                        <h6 class="text-lg font-semibold text-gray-800"><span>4. </span><span>Structure Your Content for <strong>AI Passage Citation</strong></span></h6>
+                    </a>
+                    <a href="#optimize-for-ctr" class="p-6 bg-white rounded-lg shadow-xl hover:bg-gray-50 transition-colors flex flex-col items-center text-center space-y-3">
+                        <img src="https://placehold.co/100x100/EF4444/FFFFFF?text=5" alt="Chapter 5 Icon" class="w-16 h-16 mb-2 rounded-full border-4 border-red-500">
+                        <h6 class="text-lg font-semibold text-gray-800"><span>5. </span><span>Optimize for CTR</span></h6>
+                    </a>
+                    <a href="#on-page-ux-signals" class="p-6 bg-white rounded-lg shadow-xl hover:bg-gray-50 transition-colors flex flex-col items-center text-center space-y-3">
+                        <img src="https://placehold.co/100x100/10B981/FFFFFF?text=6" alt="Chapter 6 Icon" class="w-16 h-16 mb-2 rounded-full border-4 border-emerald-500">
+                        <h6 class="text-lg font-semibold text-gray-800"><span>6. </span><span>On-Page UX & <strong>Engagement Signals</strong></span></h6>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 1: On-Page SEO Basics + Template -->
+        <section id="on-page-seo-basics" class="chapter-bg-1 text-white pt-10 pb-6 border-b border-white/20">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-center">
+                    <strong>Chapter 1:</strong> On-Page SEO Basics + Template
+                </h2>
+            </div>
+        </section>
+        <section class="bg-white py-10">
+            <div class="container mx-auto px-4 max-w-3xl">
+                <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8">
+                    <div class="md:w-1/2 mt-6 md:mt-0">
+                        <p class="text-xl leading-relaxed mb-4">In this chapter, I’ll demystify why on-page SEO remains a linchpin for digital success in 2025.</p>
+                        <p class="text-xl leading-relaxed">So if you’re looking for the key to enhancing visibility and user experience, this chapter will answer all of your burning questions.</p>
+                    </div>
+                    <div class="md:w-1/2">
+                        <img src="https://placehold.co/300x345/8888CF/FFFFFF?text=Ch+1+Visual" alt="On-Page SEO Basics visual" class="w-full max-w-xs md:max-w-full mx-auto rounded-lg shadow-lg">
+                    </div>
+                </div>
+
+                <div class="my-12 pt-6 border-t border-gray-200">
+                    <h2 class="text-3xl font-extrabold mb-8 text-center text-gray-800">What Is On-Page SEO?</h2>
+                    <p class="text-xl leading-relaxed mb-6">On-page SEO (also known as “on-site SEO”) is the practice of optimizing webpage content for <strong>search engines, AI platforms and LLMs</strong>, and users.</p>
+                    <p class="text-xl leading-relaxed mb-6">Common on-page SEO practices include optimizing <strong>title tags</strong>, content, <strong>internal links</strong>, <strong>URLs</strong>, and other ranking factors.</p>
+                    <p class="text-xl leading-relaxed mb-6">This is different from off-page SEO, which is optimizing for signals that happen off of your website.</p>
+                    
+                    <!-- Comparison Table -->
+                    <div class="overflow-x-auto my-8">
+                        <table class="min-w-full divide-y divide-gray-300 rounded-lg overflow-hidden shadow-xl">
+                            <thead class="bg-teal-600 text-white">
+                                <tr>
+                                    <th scope="col" class="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider"></th>
+                                    <th scope="col" class="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">On-Page SEO</th>
+                                    <th scope="col" class="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">Off-Page SEO</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200 text-base">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap font-bold text-gray-900">Definition</td>
+                                    <td class="px-6 py-4 text-gray-700">Optimization of elements on a website’s pages</td>
+                                    <td class="px-6 py-4 text-gray-700">Strategies performed outside the website to boost authority and visibility</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="px-6 py-4 whitespace-nowrap font-bold text-gray-900">Goal</td>
+                                    <td class="px-6 py-4 text-gray-700">Enhance individual page visibility and relevance</td>
+                                    <td class="px-6 py-4 text-gray-700">Boost overall website authority and trustworthiness</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap font-bold text-gray-900">Examples</td>
+                                    <td class="px-6 py-4 text-gray-700">
+                                        Keyword optimization, Meta tags, Schema markup, Internal linking, Images, Featured snippet optimization, 
+                                        <strong class="text-red-600">LLM-friendly content structuring (NEW)</strong>
+                                    </td>
+                                    <td class="px-6 py-4 text-gray-700">Link building, Social media, Public relations, Influencer marketing, Local SEO, Brand mentions, LLM-friendly publishing</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="px-6 py-4 whitespace-nowrap font-bold text-gray-900">Tools Used</td>
+                                    <td class="px-6 py-4 text-gray-700">On-page analysis tools, content optimization tools, site crawlers, analytics tools, <strong class="text-red-600">AI tools (NEW)</strong></td>
+                                    <td class="px-6 py-4 text-gray-700">Backlink analysis tools, social media analytics and platforms, Google Business Profile, outreach management tools</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- End Comparison Table -->
+
+                    <!-- Resource Box -->
+                    <div class="my-6 p-5 border-2 border-blue-500 alert-box-info rounded-lg text-gray-700 shadow-md">
+                        <p class="font-bold mb-2 flex items-center space-x-2">
+                            <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path></svg>
+                            <span class="text-xl">Resource:</span>
+                        </p>
+                        <p class="text-lg">Want a cheatsheet to optimize your content for key on-page factors? Download our <a href="#" class="text-blue-700 underline hover:text-blue-900 font-semibold">free on-page SEO checklist (+ tracker)</a> and follow it for all your pages to boost your search performance.</p>
+                    </div>
+
+                    <h2 class="text-3xl font-extrabold mb-8 mt-12 text-gray-800">Why Is On-Page SEO Important?</h2>
+                    <p class="text-xl leading-relaxed mb-6">On-page SEO is important because it can improve your rankings and traffic for individual pages on your website targeting specific keywords. This can help you drive targeted traffic that is more likely to convert into subscribers or customers. But beyond keywords, you also need to optimize your content for:</p>
+                    <ul class="list-disc list-inside space-y-2 ml-6 text-xl leading-relaxed mb-6">
+                        <li>User experience</li>
+                        <li>Bounce rate and dwell time</li>
+                        <li>Search intent</li>
+                        <li>Page loading speed</li>
+                        <li>Click-through rate</li>
+                        <li>Desktop and mobile devices</li>
+                        <li><strong class="text-red-600">LLM-friendly formatting (AI)</strong></li>
+                    </ul>
+                    <p class="text-xl leading-relaxed mb-6 font-bold">On-page SEO is about making your content stand out and providing value that users want to read AND that traditional and AI search engines want to rank and cite.</p>
+                    
+                    <h2 class="text-3xl font-extrabold mb-8 mt-12 text-center text-gray-800">A Quick Way to Do On-Page SEO: Interactive Checklist</h2>
+                    <p class="text-xl leading-relaxed mb-6">Use this interactive checklist and tracker to monitor the optimization process for any page. Your progress is saved automatically via your browser, and you can reset the list when you start a new page.</p>
+                    
+                    <!-- INTERACTIVE CHECKLIST AND TRACKER -->
+                    <div id="seo-checklist-app" class="infographic-container max-w-3xl border-4 border-red-600 bg-red-50/50 shadow-2xl">
+                        <div class="flex flex-col sm:flex-row justify-between items-center mb-6 border-b pb-4 border-red-300">
+                            <h3 class="text-2xl font-bold text-gray-800">On-Page Optimization Checklist</h3>
+                            <div class="text-lg font-bold flex items-center mt-3 sm:mt-0">
+                                Progress: <span id="progress-text" class="ml-2 text-red-600">0%</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Progress Bar -->
+                        <div class="mb-6">
+                            <div class="h-4 w-full bg-gray-200 rounded-full overflow-hidden">
+                                <div id="progress-bar" class="h-full bg-red-600 transition-all duration-500 ease-in-out" style="width: 0%;"></div>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-2">Current Page Optimization Status</p>
+                        </div>
+                        
+                        <!-- Checklist Table/List -->
+                        <div class="bg-white rounded-lg p-4 shadow-inner">
+                            <div class="grid grid-cols-5 font-bold text-sm text-gray-700 uppercase mb-3 border-b pb-2">
+                                <span class="col-span-4">Optimization</span>
+                                <span id="done-header" class="col-span-1 text-center cursor-pointer hover:text-red-600 transition-colors" title="Click to reset all checkboxes"><u>Done?</u></span>
+                            </div>
+                            <div id="checklist-items" class="space-y-3">
+                                <!-- Items rendered by JavaScript -->
+                            </div>
+                        </div>
+
+                        <p class="text-sm text-gray-500 mt-6 text-center">
+                            Tip: To reset all checkboxes for a new page, click on the <u>Done?</u> label above.
+                        </p>
+
+                        <div class="mt-8 text-center">
+                            <a href="#" class="inline-flex items-center px-10 py-4 border border-transparent text-xl font-extrabold rounded-xl shadow-lg text-white bg-blue-600 hover:bg-blue-700 transition-colors transform hover:scale-105">
+                                Try Semrush On-Page SEO Checker
+                            </a>
+                        </div>
+                    </div>
+                    <!-- END INTERACTIVE CHECKLIST AND TRACKER -->
+
+                    <p class="text-xl leading-relaxed mb-6 mt-8">The rest of this guide will walk you through how to implement these optimizations step-by-step. But feel free to keep the checklist open so you can follow along.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 2: Optimize Title and Description Tags -->
+        <section id="optimize-title-and-description-tags" class="chapter-bg-2 text-white pt-10 pb-6 border-b border-white/20">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-center">
+                    <strong>Chapter 2:</strong> Optimize Title and Description Tags
+                </h2>
+            </div>
+        </section>
+        <section class="bg-white py-10">
+            <div class="container mx-auto px-4 max-w-3xl">
+                <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8">
+                    <div class="md:w-1/2 mt-6 md:mt-0">
+                        <p class="text-xl leading-relaxed mb-4">In this chapter, you’ll learn how to optimize your <strong>title tags</strong> and <strong>meta descriptions</strong> for SEO. Title tags still help with your rankings, so they’re worth optimizing.</p>
+                        <p class="text-xl leading-relaxed mb-4">Google might not use your meta description for ranking, but searchers use it to figure out which result to click on. This makes them crucial for boosting CTR.</p>
+                        <p class="mt-4 text-xl leading-relaxed">This chapter will show you how to write SEO-friendly title tags and descriptions.</p>
+                    </div>
+                    <div class="md:w-1/2">
+                        <img src="https://placehold.co/300x345/0e5899/FFFFFF?text=Ch+2+Visual" alt="Optimize Title Tags visual" class="w-full max-w-xs md:max-w-full mx-auto rounded-lg shadow-lg">
+                    </div>
+                </div>
+
+                <div class="my-12 pt-6 border-t border-gray-200">
+                    <h2 class="text-3xl font-extrabold mb-8 text-center text-gray-800">Make Click-Worthy Titles</h2>
+                    <p class="text-xl leading-relaxed mb-6">To improve your chances of Google using your preferred title tag, limit them to <strong>50 to 60 characters</strong> (or 600 pixels). In my experience, the closer the keyword is to the beginning of the title tag, the higher your chances of ranking for that keyword.</p>
+
+                    <h3 class="text-2xl font-bold mt-8 mb-4 text-gray-800">The Power of Freshness & Emotion on CTR</h3>
+                    <p class="text-xl leading-relaxed mb-6">Adding perceived value (like the current year or emotional words) to your title tag is a huge <strong>real-world win</strong> for CTR. Our data shows a measurable difference:</p>
+
+                    <!-- CTR Bar Chart Infographic -->
+                    <div class="infographic-container max-w-xl text-left border-2 border-slate-300">
+                        <h4 class="text-lg font-bold mb-4 text-gray-700 text-center">CTR Lift from Title Tag Modifiers</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="text-base font-medium mb-1">Titles with Current Year (e.g., 2025)</p>
+                                <div class="bg-gray-200 rounded-lg">
+                                    <div class="bar-chart-label bg-green-600" style="width: 85%;">85% Effectiveness</div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="text-base font-medium mb-1">Titles with Positive Emotion</p>
+                                <div class="bg-gray-200 rounded-lg">
+                                    <div class="bar-chart-label bg-blue-600" style="width: 75%;">75% Effectiveness</div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="text-base font-medium mb-1">Titles with Keyword First</p>
+                                <div class="bg-gray-200 rounded-lg">
+                                    <div class="bar-chart-label bg-purple-600" style="width: 65%;">65% Effectiveness</div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-4 text-center">*Effectiveness refers to the likelihood of increasing overall organic click-through rates.</p>
+                    </div>
+                    
+                    <h2 class="text-3xl font-extrabold mb-8 mt-12 text-gray-800">Use Unique, Relevant Meta Descriptions</h2>
+                    <p class="text-xl leading-relaxed mb-6">A good meta description helps your result stand out, which can boost <strong>your organic CTR</strong>. You also want to include your keyword in your description because Google <strong>bolds terms</strong> that match the person’s query.</p>
+
+                    <p class="text-xl font-bold mb-4 mt-6">Here are a few other tips for making your meta descriptions click-worthy:</p>
+                    <ul class="list-disc list-inside space-y-2 ml-6 text-xl leading-relaxed mb-6">
+                        <li><strong>Be concise:</strong> Keep your meta description under ~160 characters (or ~120 characters for mobile).</li>
+                        <li><strong>Use unique descriptions:</strong> Craft distinct meta descriptions for each page.</li>
+                        <li><strong>Focus on value:</strong> Highlight the unique selling points or key information.</li>
+                        <li><strong>Be clear:</strong> Communicate the content and purpose of your page.</li>
+                        <li><strong>Front-load important information:</strong> Place critical details near the beginning.</li>
+                        <li><strong>Avoid clickbait:</strong> Make sure your meta description aligns with your content.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 3: Craft Captivating and Valuable SEO Content -->
+        <section id="write-seo-content" class="chapter-bg-3 text-white pt-10 pb-6 border-b border-white/20">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-center">
+                    <strong>Chapter 3:</strong> Craft Content for <strong>E-E-A-T</strong> and AI Value
+                </h2>
+            </div>
+        </section>
+        <section class="bg-white py-10">
+            <div class="container mx-auto px-4 max-w-3xl">
+                <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8">
+                    <div class="md:w-1/2 mt-6 md:mt-0">
+                        <p class="text-xl leading-relaxed mb-4">Now it’s time to publish content that deserves to rank #1 and get cited by <strong>AI search engines and LLMs</strong>.</p>
+                        <p class="font-semibold mb-2 text-xl">This process goes beyond keywords, focusing on:</p>
+                        <ul class="list-disc list-inside space-y-1 ml-6 text-lg leading-relaxed">
+                            <li>Unique and fresh perspectives</li>
+                            <li>Super valuable information</li>
+                            <li>Optimization for search intent</li>
+                            <li><strong>Formatting for quick scanning and LLM consumption</strong></li>
+                        </ul>
+                        <p class="mt-4 text-xl leading-relaxed">In this chapter, I’ll show you how to make sure your SEO content strategy checks all of these boxes.</p>
+                    </div>
+                    <div class="md:w-1/2">
+                         <img src="https://placehold.co/300x345/00abff/FFFFFF?text=Ch+3+Visual" alt="Craft Captivating SEO Content visual" class="w-full max-w-xs md:max-w-full mx-auto rounded-lg shadow-lg">
+                    </div>
+                </div>
+
+                <div class="my-12 pt-6 border-t border-gray-200">
+                    <h2 class="text-3xl font-extrabold mb-8 text-center text-gray-800">Create Unique Content (Information Gain)</h2>
+                    <p class="text-xl leading-relaxed mb-6">When I say “unique,” I mean publishing something that doesn’t just regurgitate the same stuff that’s already out there. In other words: fresh content that brings something new to the table, what we call <strong>"information gain."</strong></p>
+                    
+                    <h3 class="text-2xl font-bold mt-8 mb-4 text-gray-800">Information Gain: The Key to AI Visibility & E-E-A-T</h3>
+                    <p class="text-xl leading-relaxed mb-6">Content with high information gain (original research, case studies, unique perspectives) is consistently prioritized in AI summaries and citations. This is critical for building <strong>E-E-A-T (Experience, Expertise, Authoritativeness, and Trustworthiness)</strong>.</p>
+                    
+                    <p class="text-xl font-bold mb-4 mt-6">That "something new" can be:</p>
+                    <ul class="list-disc list-inside space-y-2 ml-6 text-xl leading-relaxed mb-6">
+                        <li>A new tip or strategy</li>
+                        <li>A better list of curated resources</li>
+                        <li>Strong design and UX</li>
+                        <li>A new case study</li>
+                        <li><strong>Original research</strong> or data (crucial for E-E-A-T)</li>
+                        <li>Downloadable resources</li>
+                        <li>A streamlined step-by-step process</li>
+                    </ul>
+
+                    <!-- NEW: E-E-A-T Callout -->
+                    <div class="my-8 p-6 bg-yellow-50 border-l-4 border-yellow-600 rounded-lg shadow-md">
+                        <h4 class="text-xl font-bold text-yellow-800 mb-3 flex items-center space-x-2">
+                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            <span>E-E-A-T Signal Boost Tip</span>
+                        </h4>
+                        <p class="text-lg text-gray-700">Ensure every long-form guide clearly displays the author's credentials, links to their professional profiles, and cites authoritative sources. For service/product pages, prominent customer reviews (with Review Schema) and easily verifiable contact information are the strongest E-E-A-T signals.</p>
+                    </div>
+
+                    <p class="text-xl leading-relaxed mb-6 font-bold text-red-600">
+                        Pages with strong information gain are more likely to get cited by AI tools like ChatGPT or Perplexity. This can greatly improve your visibility outside of traditional Google results.
+                    </p>
+
+                    <h2 class="text-3xl font-extrabold mb-8 mt-12 text-gray-800">Provide Value</h2>
+                    <p class="text-xl leading-relaxed mb-6">For your content to stand out, it needs to be <strong>SUPER valuable</strong>. Here are a few ways that you can make your SEO content insanely valuable:</p>
+                    <ul class="list-disc list-inside space-y-2 ml-6 text-xl leading-relaxed mb-6">
+                        <li><strong>Go into detail:</strong> Images, screenshots, and clear steps make it easy for someone to put your content into practice.</li>
+                        <li><strong>Use crisp writing:</strong> Strong copywriting will make your content more engaging.</li>
+                        <li><strong>Use up-to-date material:</strong> Brand new strategies, steps that work today, and fresh examples go a long way.</li>
+                        <li><strong>Consult expert authors:</strong> Content from someone with first-hand experience is going to be more valuable than something written by a random freelance writer.</li>
+                        <li><strong>Keep it accurate:</strong> Provide trustworthy, up-to-date information for your audience.</li>
+                    </ul>
+
+                    <h2 class="text-3xl font-extrabold mb-8 mt-12 text-center text-gray-800">Satisfy Search Intent</h2>
+                    <p class="text-xl leading-relaxed mb-6">Unique, valuable content can get you to the first page of Google. But if you want to stay there, your page has to satisfy <strong>search intent</strong>. Your page has to be EXACTLY what a Google searcher wants. Otherwise, your page will likely be buried on the 3rd page.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 4: Optimize Your Content for Key SEO Factors -->
+        <section id="optimize-your-content-for-seo" class="chapter-bg-4 text-white pt-10 pb-6 border-b border-white/20">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-center">
+                    <strong>Chapter 4:</strong> Structure Your Content for <strong>AI Passage Citation</strong>
+                </h2>
+            </div>
+        </section>
+        <section class="bg-white py-10">
+            <div class="container mx-auto px-4 max-w-3xl">
+                <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8">
+                    <div class="md:w-1/2 mt-6 md:mt-0">
+                        <p class="text-xl leading-relaxed mb-4">On-page SEO involves more than just the art of crafting compelling content. It’s about: <strong>Strategically placing your target keywords, creating a seamless structure, and employing tactics that signal to traditional and AI search engine crawlers that your page is an authoritative source on a specific topic.</strong></p>
+                        <p class="mt-4 text-xl leading-relaxed">In this chapter, I’ll go through actionable techniques that can elevate your on-page SEO game.</p>
+                    </div>
+                    <div class="md:w-1/2">
+                         <img src="https://placehold.co/300x345/1AC06E/FFFFFF?text=Ch+4+Visual" alt="Optimize for SEO factors visual" class="w-full max-w-xs md:max-w-full mx-auto rounded-lg shadow-lg">
+                    </div>
+                </div>
+
+                <div class="my-12 pt-6 border-t border-gray-200">
+                    <h2 class="text-3xl font-extrabold mb-8 text-center text-gray-800">Structure Your Content for LLM Summarization and Passage Ranking</h2>
+                    <p class="text-xl leading-relaxed mb-6 font-bold text-red-600">Keywords still matter, but content structure is paramount if you want to show up in AI tools like ChatGPT and Gemini. LLMs extract, summarize, and cite the clearest chunks of content.</p>
+                    
+                    <!-- LLM Chunking Infographic -->
+                    <div class="infographic-container max-w-2xl text-left border-2 border-slate-300">
+                        <h3 class="text-xl font-bold text-gray-800 mb-6 text-center">Content Structure and LLM Citation Rate</h3>
+                        <div class="space-y-4">
+                            <!-- Old Style -->
+                            <div class="p-4 bg-red-50 rounded-lg border-2 border-red-300">
+                                <p class="text-base font-bold text-red-600 mb-2">Old Way: Long Text Blocks & Vague Headers</p>
+                                <div class="h-6 w-full bg-red-500 rounded-full mb-1" style="width: 25%;"></div>
+                                <p class="text-sm text-gray-600">LLM Citation Rate: ~10-20%</p>
+                            </div>
+                            <!-- New Style -->
+                            <div class="p-4 bg-green-50 rounded-lg border-2 border-green-300">
+                                <p class="text-base font-bold text-green-600 mb-2">New Way: Semantic Chunking & Descriptive H2s</p>
+                                <div class="h-6 w-full bg-green-600 rounded-full mb-1" style="width: 80%;"></div>
+                                <p class="text-sm text-gray-600">LLM Citation Rate: ~70-80% (Real-World Shift)</p>
+                            </div>
+                        </div>
+                        <p class="text-base font-bold mt-4 text-red-600 text-center">Chunked and structured content is 4x more likely to be cited by generative AI.</p>
+                    </div>
+
+                    <h3 class="text-3xl font-extrabold mb-8 mt-12 text-gray-800">Use Your Target Keyword in the First 100 Words</h3>
+                    <p class="text-xl leading-relaxed mb-6">This is an old-school on-page SEO tactic that still makes a difference. All you need to do is use your main keyword once in the first 100-150 words of your article. This is important because <strong>Google puts more weight on terms that show up early on your page.</strong></p>
+                    
+                    <h3 class="text-3xl font-extrabold mb-8 mt-12 text-gray-800">Wrap Your Keywords into Headings (H1-H6)</h3>
+                    <p class="text-xl leading-relaxed mb-6">Using your target keyword (and other relevant keywords) within the H1 to H6 tags communicates the <strong>topical relevance to search engines</strong> and enhances the user experience by providing a clear hierarchy.</p>
+
+                    <p class="text-xl leading-relaxed my-6 p-4 border-2 border-indigo-500 bg-indigo-50/50 rounded-lg text-indigo-800">
+                        <strong>Pro Tip:</strong> Use the "People Also Search For" section at the bottom of the Google search results page to find relevant <strong>long-tail keywords</strong> to include in your content.
+                    </p>
+
+                    <p class="text-xl font-bold mb-4 mt-6">Here’s how to increase your <strong>LLM visibility</strong>:</p>
+                    <ul class="list-disc list-inside space-y-2 ml-6 text-xl leading-relaxed mb-6">
+                        <li><strong>Use semantic chunking:</strong> Break content into clearly defined sections with H2s, short paragraphs, and summary intros.</li>
+                        <li><strong>Lead with the answer:</strong> Start each section with a clear, concise response to the question your heading poses.</li>
+                        <li><strong>Use descriptive subheadings:</strong> Skip vague headers like “Step 1.” Use headers that mirror search queries (“How to Set Up GA4 for Content Tracking”).</li>
+                        <li><strong>Make key points quotable:</strong> Write clear, authoritative sentences that convey complete ideas that can be pulled into summaries.</li>
+                        <li><strong>Use structured data (Schema):</strong> Helps AI systems interpret your content’s structure and meaning.</li>
+                    </ul>
+
+                    <h2 class="text-3xl font-extrabold mb-8 mt-12 text-gray-800">Optimize Your Images (Alt Text and Speed)</h2>
+                    <p class="text-xl leading-relaxed mb-6">Image optimization is vital for: helping crawlers understand visual content, appearing in image search, <strong>providing context for LLMs (alt text)</strong>, and improving page load times.</p>
+                    <p class="text-xl leading-relaxed mb-6">Give every image on your site a descriptive filename and <strong>alt text</strong>. Use a filename that includes your target keyword (e.g., `on-page-seo-chart.png`). This helps Google, LLMs, and visually impaired users.</p>
+                    <p class="text-xl leading-relaxed my-6 p-4 border-2 border-blue-400 bg-blue-50/50 rounded-lg text-blue-800">
+                        <strong>Further reading:</strong> Check out our <a href="#" class="text-blue-600 underline hover:text-blue-800">image SEO guide</a> to find out about techniques like lazy loading and optimal image file size.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 5: Optimize for CTR -->
+        <section id="optimize-for-ctr" class="chapter-bg-5 text-white pt-10 pb-6 border-b border-white/20">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-center">
+                    <strong>Chapter 5:</strong> Optimize for CTR
+                </h2>
+            </div>
+        </section>
+        <section class="bg-white py-10">
+            <div class="container mx-auto px-4 max-w-3xl">
+                <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8">
+                    <div class="md:w-1/2 mt-6 md:mt-0">
+                        <p class="text-xl leading-relaxed mb-4">Your <strong>organic click-through rate (CTR)</strong> is important for two reasons: First, Google likely uses clicks to help determine rankings. Second, increasing your CTR can <strong>drive more organic traffic</strong> to your site.</p>
+                        <p class="mt-4 text-xl leading-relaxed">In this chapter, I’ll show you practical ways that you can improve your organic CTR.</p>
+                    </div>
+                    <div class="md:w-1/2">
+                         <img src="https://placehold.co/300x345/EF4444/FFFFFF?text=Ch+5+Visual" alt="Optimize for CTR visual" class="w-full max-w-xs md:max-w-full mx-auto rounded-lg shadow-lg">
+                    </div>
+                </div>
+
+                <div class="my-12 pt-6 border-t border-gray-200">
+                    <h2 class="text-3xl font-extrabold mb-8 text-center text-gray-800">Optimize Your Content for Featured Snippets</h2>
+                    <p class="text-xl leading-relaxed mb-6">Ranking in a <strong>featured snippet</strong> can make a HUGE difference to your CTR. You need to find first-page results that have a featured snippet <strong>AND</strong> you already rank for.</p>
+                    
+                    <h3 class="text-2xl font-bold mt-8 mb-4 text-gray-800">The Modern Snippet Strategy</h3>
+                    <p class="text-xl leading-relaxed mb-6">Whether it's a traditional featured snippet or an AI-generated answer, the same principles apply: present the clearest, most concise answer first.</p>
+                    
+                    <ul class="list-disc list-inside space-y-2 ml-6 text-xl leading-relaxed mb-6">
+                        <li><strong>Definition Snippets:</strong> Include a short, concise <strong>definition</strong> in a two-sentence paragraph immediately after an H2 question (e.g., "What is CTR?").</li>
+                        <li><strong>List Snippets:</strong> If the snippet is a list of steps or tips, format your content using an <strong>ordered list (&lt;ol&gt;)</strong> or <strong>unordered list (&lt;ul&gt;)</strong>.</li>
+                        <li><strong>Monitor and Adapt:</strong> Use tools to see which of your ranking pages are eligible for snippets and model your content after the required format.</li>
+                    </ul>
+
+                    <h2 class="text-3xl font-extrabold mb-8 mt-12 text-gray-800">Use Schema (Structured Data)</h2>
+                    <p class="text-xl leading-relaxed mb-6">Schema (a type of structured data) <strong>don’t directly help your SEO</strong>, but it can lead to you getting <strong>rich snippets</strong> which <strong>CAN</strong> help you get more clicks.</p>
+                    
+                    <!-- Rich Snippet Visual Infographic -->
+                    <div class="infographic-container max-w-2xl text-left border-2 border-slate-300">
+                        <h3 class="text-xl font-bold text-gray-800 mb-6 text-center">Schema's Impact: Rich Snippet vs. Standard Result</h3>
+                        
+                        <div class="grid grid-cols-2 gap-4 text-center">
+                            <div class="p-4 bg-gray-50 border border-gray-300 rounded-lg">
+                                <p class="text-base font-bold text-gray-700 mb-2">Standard Result (No Schema)</p>
+                                <div class="bg-gray-200 h-20 rounded-lg flex items-center justify-center">
+                                    <p class="text-sm text-gray-600">Title, URL, 2 Lines of Text</p>
+                                </div>
+                                <p class="text-base font-bold text-red-600 mt-3">SERP Real Estate: 1x</p>
+                            </div>
+                            <div class="p-4 bg-yellow-50 border border-yellow-400 rounded-lg">
+                                <p class="text-base font-bold text-yellow-800 mb-2">Rich Snippet (With Schema)</p>
+                                <div class="bg-yellow-300 h-40 rounded-lg flex items-center justify-center">
+                                    <p class="text-sm text-yellow-900">Title, URL, 4 Lines of Text, Star Rating, FAQ Dropdown</p>
+                                </div>
+                                <p class="text-base font-bold text-green-600 mt-3">SERP Real Estate: ~3-4x</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-xl font-bold mb-4 mt-6">Key Schema Types for CTR:</p>
+                    <ul class="list-disc list-inside space-y-2 ml-6 text-xl leading-relaxed mb-6">
+                        <li><strong>FAQ Schema:</strong> Creates dropdown lists directly in search results, increasing your SERP real estate.</li>
+                        <li><strong>Product Schema:</strong> Displays star ratings, price ranges, and availability information, building immediate trust.</li>
+                        <li><strong>How-to Schema:</strong> Perfect for tutorial content, showing step-by-step instructions directly in search results.</li>
+                        <li><strong>Review Schema:</strong> Highlights customer reviews and star ratings, increasing credibility.</li>
+                    </ul>
+
+                    <h2 class="text-3xl font-extrabold mb-8 mt-12 text-gray-800">Add the Current Year to Your Title and Description</h2>
+                    <p class="text-xl leading-relaxed mb-6">Adding the year to your title and description won't break your CTR, but in my experience, it does help—especially for content that can go out of date quickly, like "Best Smartphones" or "SEO Guide 2025."</p>
+
+                    <p class="text-xl leading-relaxed my-6 p-4 border-2 border-red-400 bg-red-50/50 rounded-lg text-red-800">
+                        <strong>Pro Tip:</strong> Don’t add the year or date to your <strong>URL slugs</strong> unless absolutely necessary. If you update the post, you want to avoid unnecessary 301 redirects and potential ranking volatility.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 6: On-Page UX Optimization -->
+        <section id="on-page-ux-signals" class="chapter-bg-6 text-white pt-10 pb-6 border-b border-white/20">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-center">
+                    <strong>Chapter 6:</strong> On-Page UX & <strong>Engagement Signals</strong> (How AI Measures Quality)
+                </h2>
+            </div>
+        </section>
+        <section class="bg-white py-10">
+            <div class="container mx-auto px-4 max-w-3xl">
+                <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8">
+                    <div class="md:w-1/2 mt-6 md:mt-0">
+                        <p class="text-xl leading-relaxed mb-4">In this chapter, I’ll show you how to optimize your content for a better <strong>user experience (UX)</strong>. This will keep users on your pages for longer and make them more likely to become a regular reader, subscriber, or even customer.</p>
+                        <p class="mt-4 text-xl leading-relaxed">It’s time to make sure that your content keeps Google searchers on your page.</p>
+                    </div>
+                    <div class="md:w-1/2">
+                         <img src="https://placehold.co/300x345/10B981/FFFFFF?text=Ch+6+Visual" alt="On-Page UX Optimization visual" class="w-full max-w-xs md:max-w-full mx-auto rounded-lg shadow-lg">
+                    </div>
+                </div>
+
+                <div class="my-12 pt-6 border-t border-gray-200">
+                    <h2 class="text-3xl font-extrabold mb-8 text-center text-gray-800">Push Important Content Above the Fold</h2>
+                    <p class="text-xl leading-relaxed mb-6">When someone lands on your site from Google, they want their answer <strong>FAST</strong>. This is why you want to avoid massive images or unnecessary elements "above the fold."</p>
+                    
+                    <h3 class="text-2xl font-bold mt-8 mb-4 text-gray-800">The 'Fast Answer' Rule and User Retention</h3>
+                    <p class="text-xl leading-relaxed mb-6">Instead, put your <strong>headline and introduction front and center</strong>. If a user has to scroll significantly before seeing content, it creates a poor user experience and negatively affects <strong>dwell time</strong> and <strong>bounce rate</strong>—which Google monitors closely.</p>
+                    
+                    <h2 class="text-3xl font-extrabold mb-8 mt-12 text-gray-800">Chunk Your Content for Mobile Usability & AI</h2>
+                    <p class="text-xl leading-relaxed mb-6">We talked about chunking to get your brand cited by LLMs. But it’s also <strong>VERY helpful</strong> for keeping your audience around longer and making your content super easy to skim. Especially on mobile devices where space is limited, use:</p>
+                    <ul class="list-disc list-inside space-y-2 ml-6 text-xl leading-relaxed mb-6">
+                        <li>Plenty of descriptive <strong>H2/H3 subheadings</strong>.</li>
+                        <li><strong>Short sentences and paragraphs</strong> (1-3 sentences max) to improve mobile scannability.</li>
+                        <li><strong>Bulleted lists</strong> and <strong>ordered lists</strong> for easy consumption.</li>
+                        <li>Relevant <strong>images</strong> and <strong>screenshots</strong> to break up text.</li>
+                    </ul>
+
+                    <h2 class="text-3xl font-extrabold mb-8 mt-12 text-gray-800">Regularly Monitor and Adapt Your On-Page SEO Efforts</h2>
+                    <p class="text-xl leading-relaxed mb-6">Achieving optimal on-page SEO isn’t a one-time task. Monitoring your content’s performance on a regular basis allows you to adapt to changes in algorithms and user behavior. To maintain peak performance, monitor these metrics:</p>
+                    <ul class="list-disc list-inside space-y-2 ml-6 text-xl leading-relaxed mb-6">
+                        <li><strong>Traffic trends:</strong> Keep an eye on your website traffic. Sudden drops may indicate issues with your content or on-page SEO strategy.</li>
+                        <li><strong>Bounce rate:</strong> A high bounce rate suggests visitors aren’t finding what they expect. Regularly assess and improve content to lower bounce rates.</li>
+                        <li><strong>Click-through rate (CTR):</strong> Monitor your CTR to evaluate how well your title tags and meta descriptions are performing.</li>
+                        <li><strong>Keyword rankings:</strong> Track the performance of your target keywords. If search rankings decline, it may be time to revisit and optimize your content.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section class="bg-gray-100 py-12">
+            <div class="container mx-auto px-4 max-w-3xl text-center">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">Conclusion</h2>
+                <p class="text-xl leading-relaxed mb-8">Congratulations on completing this comprehensive guide to mastering on-page SEO! You’ve equipped yourself with the knowledge and actionable insights needed to optimize your content effectively.</p>
+                <p class="text-xl leading-relaxed mb-8 font-semibold">Ready to dive deeper into the world of SEO and digital marketing? Explore Aarry.org's array of in-depth marketing guides covering topics like off-page SEO, technical SEO, inbound link building, and more.</p>
+                
+                <a href="#" class="inline-flex items-center px-8 py-4 border border-transparent text-lg font-bold rounded-lg shadow-sm text-white bg-red-600 hover:bg-red-700 transition-colors">
+                    Explore More Aarry.org Guides
+                </a>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="bg-white py-12" id="faq">
+            <div class="container mx-auto px-4 max-w-3xl">
+                <h2 class="text-3xl font-extrabold mb-8 text-center text-gray-800">FAQ</h2>
+                
+                <div class="space-y-6">
+                    <!-- FAQ 1: Off-Page vs On-page -->
+                    <div class="border-b pb-4">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">What is the difference between off-page SEO and on-page SEO?</h3>
+                        <p class="text-xl leading-relaxed text-gray-600">Off-page SEO focuses on optimizing signals that occur outside your website, such as building backlinks and establishing a social media presence. On-page SEO involves optimizing elements directly on your webpages, like content, meta tags, and internal links.</p>
+                    </div>
+                    <!-- FAQ 2: On-page vs Technical -->
+                    <div class="border-b pb-4">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">What is the difference between on-page SEO and technical SEO?</h3>
+                        <p class="text-xl leading-relaxed text-gray-600">On-page SEO deals with optimizing individual web pages to improve their search engine rankings and user experience. <strong>Technical SEO</strong> involves optimizing the technical aspects of your entire website (e.g., site speed, crawlability, mobile-friendliness). The goal is to ensure it’s crawlable, indexable, and performs well from a technical standpoint.</p>
+                    </div>
+                    <!-- FAQ 3: How often to perform (AI Update) -->
+                    <div class="border-b pb-4">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">How often should I perform on-page SEO (especially with AI Search updates)?</h3>
+                        <p class="text-xl leading-relaxed text-gray-600">Due to constant algorithm updates and the rapid evolution of <strong>AI Search</strong>, on-page SEO requires ongoing maintenance, not a one-time fix. We recommend routine monitoring and minor updates at least <strong>monthly</strong>. Conduct a comprehensive content review (checking for LLM chunking, information gain, and E-E-A-T signals) conducted <strong>quarterly</strong>.</p>
+                    </div>
+                    <!-- FAQ 4: Key elements (AI Update) -->
+                    <div class="border-b pb-4">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">What are the key elements of modern on-page SEO?</h3>
+                        <p class="text-xl leading-relaxed text-gray-600">Key elements of modern on-page SEO go beyond keywords. They include optimizing title tags and meta descriptions, ensuring strong information gain (original value), improving user experience, and critically, implementing <strong>LLM-friendly content structures</strong> (semantic chunking, clear headings, quotable definitions) to encourage <strong>AI citation</strong>.</p>
+                    </div>
+                    <!-- FAQ 5: Importance (AI Update) -->
+                    <div class="border-b pb-4">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">How important is on-page SEO for overall website performance in the age of AI?</h3>
+                        <p class="text-xl leading-relaxed text-gray-600">On-page SEO is <strong>integral</strong> to performance. A page that is poorly optimized will struggle to rank in traditional search, and it will be nearly **invisible to generative AI models**. Strong on-page signals (structure, E-E-A-T, and relevance) are the foundation for gaining traffic from both human searchers and AI summaries.</p>
+                    </div>
+                    <!-- FAQ 6: Tools -->
+                    <div class="border-b pb-4">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Are there tools available to assist with modern on-page SEO?</h3>
+                        <p class="text-xl leading-relaxed text-gray-600">Yes, several tools can help you. Platforms like Semrush and others offer features for keyword research, content optimization based on topical authority, and technical checks to ensure your content is ready for both search engine crawlers and large language models.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-10 mt-12">
+        <div class="container mx-auto px-4 text-center text-sm">
+            &copy; 2025 Aarry.org. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        const STORAGE_KEY = 'aarry_seo_checklist_v1';
+        const CHECKLIST_ITEMS = [
+            "Keyword-optimized, compelling title tag",
+            "Click-worthy meta description",
+            "Keyword in URL slug",
+            "Target keyword in first 100 words",
+            "Content provides unique value",
+            "Meets search intent",
+            "Targeting featured snippet",
+            "Logical heading structure",
+            "Main keyword in at least one heading",
+            "Short sentences and paragraphs",
+            "Original, optimized images/graphics",
+            "Suitable number of internal links",
+            "Logical use of structured data"
+        ];
+        
+        // Load state or initialize
+        let checklistState = loadState();
+
+        function loadState() {
+            try {
+                const storedState = localStorage.getItem(STORAGE_KEY);
+                if (storedState) {
+                    const parsedState = JSON.parse(storedState);
+                    // Ensure loaded state matches the current item list length and structure
+                    if (Array.isArray(parsedState) && parsedState.length === CHECKLIST_ITEMS.length) {
+                        return parsedState;
+                    }
+                }
+            } catch (e) {
+                console.error("Could not load checklist state from localStorage", e);
+            }
+            // Default initialization (all false)
+            return CHECKLIST_ITEMS.map(() => false);
+        }
+
+        function saveState() {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(checklistState));
+            } catch (e) {
+                console.error("Could not save checklist state to localStorage", e);
+            }
+        }
+
+        function updateProgress() {
+            const totalItems = CHECKLIST_ITEMS.length;
+            const completedItems = checklistState.filter(item => item === true).length;
+            const percentage = totalItems > 0 ? Math.round((completedItems / totalItems) * 100) : 0;
+
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
+
+            if (progressBar && progressText) {
+                progressBar.style.width = `${percentage}%`;
+                progressText.textContent = `${percentage}%`;
+                progressText.classList.toggle('text-green-600', percentage === 100);
+                progressText.classList.toggle('text-red-600', percentage !== 100);
+            }
+        }
+
+        function renderChecklist() {
+            const checklistContainer = document.getElementById('checklist-items');
+            if (!checklistContainer) return;
+
+            checklistContainer.innerHTML = CHECKLIST_ITEMS.map((item, index) => `
+                <div class="grid grid-cols-5 items-center py-2 px-1 border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                    <label for="check-${index}" class="col-span-4 text-base text-gray-700 cursor-pointer hover:text-gray-900 transition-colors">${item}</label>
+                    <div class="col-span-1 flex justify-center">
+                        <input type="checkbox" id="check-${index}" data-index="${index}" ${checklistState[index] ? 'checked' : ''} class="w-5 h-5 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring-red-500 cursor-pointer">
+                    </div>
+                </div>
+            `).join('');
+
+            // Add event listeners after rendering
+            checklistContainer.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', handleCheckboxChange);
+            });
+        }
+
+        function handleCheckboxChange(event) {
+            const index = parseInt(event.target.dataset.index);
+            checklistState[index] = event.target.checked;
+            saveState();
+            updateProgress();
+        }
+
+        function handleResetClick() {
+            if (confirm("Are you sure you want to reset the checklist for a new page? All progress will be cleared.")) {
+                checklistState = CHECKLIST_ITEMS.map(() => false); // Reset all to false
+                saveState();
+                renderChecklist();
+                updateProgress();
+            }
+        }
+
+        // Initialize App on DOM load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderChecklist();
+            updateProgress();
+            
+            // Event listener for the reset functionality
+            const doneHeader = document.getElementById('done-header');
+            if (doneHeader) {
+                doneHeader.addEventListener('click', handleResetClick);
+            }
+        });
+    </script>
+</body>
+</html>
