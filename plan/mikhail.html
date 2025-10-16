@@ -38,6 +38,13 @@
             background-color: #10b981; /* Darker green header */
             color: white;
         }
+        /* Custom style for summary to show collapse arrow */
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary span:last-child {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 <body class="p-4 sm:p-8">
@@ -45,7 +52,7 @@
     <div class="max-w-4xl mx-auto">
         <!-- Header and Preamble -->
         <header class="text-center mb-10 p-8 bg-white card shadow-xl border-b-8 border-teal-500">
-            <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-3">
+            <h1 class="4xl sm:text-5xl font-extrabold text-gray-900 mb-3">
                 E-commerce Leverage Strategy
             </h1>
             <p class="text-xl text-teal-600 font-bold tracking-wide">
@@ -58,6 +65,23 @@
                 Key US Financial Setup is URGENT before your move to Kazakhstan.
             </p>
         </header>
+
+        <!-- Video Embed Section (New) -->
+        <div class="mb-10 p-6 bg-white card">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center section-header">Video Insight: How High-Scale E-commerce Works</h2>
+            <!-- 16:9 aspect ratio container for responsiveness -->
+            <div class="relative w-full overflow-hidden rounded-lg" style="padding-top: 56.25%">
+                <iframe class="absolute top-0 left-0 w-full h-full rounded-lg shadow-xl"
+                    src="https://www.youtube.com/embed/ow77v1CM31k" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <p class="text-center text-sm text-gray-600 mt-4">
+                "How I Made 10 Million Selling Digital Products (By 22)" - An example of the potential of digital-first entrepreneurship.
+            </p>
+        </div>
 
         <!-- Value Proposition -->
         <section class="mb-10 p-6 bg-white card">
@@ -213,7 +237,7 @@
 
         <!-- Section V: Long-Term Growth Roadmap -->
         <section class="mb-10 p-6 bg-white card">
-            <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center section-header">V. Long-Term Growth Roadmap (Scaling Potential)</h2>
+            <h2 class="3xl font-bold text-gray-800 mb-4 text-center section-header">V. Long-Term Growth Roadmap (Scaling Potential)</h2>
             <div class="space-y-4 mt-6">
                 <div class="p-4 bg-indigo-50 rounded-lg border-l-4 border-indigo-600">
                     <h3 class="text-xl font-bold text-indigo-700 mb-1">Phase 1: Validation & Optimization (Months 1-3)</h3>
@@ -270,54 +294,263 @@
         
         <!-- Section VII: Profit Split -->
         <section class="mb-10 p-6 bg-white card border-t-4 border-green-600">
-            <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center section-header">VII. The Final Offer: 50% / 50% Net Profit Split</h2>
+            <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center section-header">VII. The Final Offer: 50% / 50% Net Profit Split (Annual Target: $100K)</h2>
             
-            <p class="text-lg font-medium text-gray-700 mb-4 text-center">We share the <span class="font-extrabold text-green-600">Net Profit</span> equally after all operating costs have been automatically deducted from the US account.</p>
+            <p class="text-lg font-medium text-gray-700 mb-2 text-center">
+                Mikhail, as <span class="font-extrabold text-orange-600">equal partners</span>, all expenses (Supplier, Ads, Apps, etc.) are paid by the **business entity** first. The 50/50 split applies only to the final, clean Net Profit, targeting **$100,000 per year** in this high-growth example.
+            </p>
 
-            <div class="overflow-x-auto rounded-lg shadow-lg">
+            <div class="overflow-x-auto rounded-lg shadow-lg mt-4">
                 <table class="w-full text-left border-collapse profit-table text-gray-700 text-sm sm:text-base">
                     <thead>
                         <tr>
                             <th class="p-3 font-extrabold uppercase">Financial Step</th>
-                            <th class="p-3 font-extrabold uppercase">Value Example</th>
-                            <th class="p-3 font-extrabold uppercase hidden sm:table-cell">Payer/Receiver</th>
+                            <th class="p-3 font-extrabold uppercase">Value Example (Monthly)</th>
+                            <th class="p-3 font-extrabold uppercase hidden sm:table-cell">Details</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="p-3 font-semibold">Customer Order (Revenue)</td>
-                            <td class="p-3 text-green-600 font-bold">$50.00</td>
-                            <td class="p-3 hidden sm:table-cell">Mikhail’s US Account</td>
+                            <td class="p-3 font-semibold">Gross Revenue (Total Sales)</td>
+                            <td class="p-3 text-green-600 font-bold">$25,000.00</td>
+                            <td class="p-3 hidden sm:table-cell">Total customer payments received</td>
                         </tr>
                         <tr>
-                            <td class="p-3">Cost of Goods Sold (COGS)</td>
-                            <td class="p-3 text-red-600 font-medium">-$20.00</td>
-                            <td class="p-3 hidden sm:table-cell">Paid to Supplier</td>
+                            <td class="p-3">Cost of Goods Sold (COGS) & Shipping</td>
+                            <td class="p-3 text-red-600 font-medium">-$10,000.00</td>
+                            <td class="p-3 hidden sm:table-cell">Paid by the business to suppliers (approx. 40% of revenue)</td>
                         </tr>
                         <tr>
-                            <td class="p-3">Ad Spend & Fees</td>
-                            <td class="p-3 text-red-600 font-medium">-$10.00</td>
-                            <td class="p-3 hidden sm:table-cell">Paid to Ad Platforms / Shopify</td>
+                            <td class="p-3">Paid Advertising (Ad Spend)</td>
+                            <td class="p-3 text-red-600 font-medium">-$5,000.00</td>
+                            <td class="p-3 hidden sm:table-cell">Paid by the business for marketing investment</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3">Shopify Subscription & Apps</td>
+                            <td class="p-3 text-red-600 font-medium">-$166.67</td>
+                            <td class="p-3 hidden sm:table-cell">Paid by the business for platform and essential growth tools</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-semibold text-red-800">Site Dev, Mgmt, & Operational Cost</td>
+                            <td class="p-3 text-red-600 font-medium">-$1,500.00</td>
+                            <td class="p-3 hidden sm:table-cell">Business cost for development, premium tools, and maintenance</td>
                         </tr>
                         <tr class="bg-green-300 font-extrabold">
-                            <td class="p-3 text-green-900">Net Profit Available</td>
-                            <td class="p-3 text-green-900">$20.00</td>
-                            <td class="p-3 hidden sm:table-cell">Ready for Distribution</td>
+                            <td class="p-3 text-green-900">Net Profit Available (Annual Target: $100K)</td>
+                            <td class="p-3 text-green-900">$8,333.33</td>
+                            <td class="p-3 hidden sm:table-cell">Final profit ready for 50/50 distribution</td>
                         </tr>
                         <tr>
-                            <td class="p-3 font-semibold text-blue-800">Kaocher’s Share (50%)</td>
-                            <td class="p-3 text-blue-600 font-bold">$10.00</td>
-                            <td class="p-3 hidden sm:table-cell">Transferred Monthly</td>
+                            <td class="p-3 font-semibold text-blue-800">Kaocher’s Partner Share (50%)</td>
+                            <td class="p-3 text-blue-600 font-bold">$4,166.67</td>
+                            <td class="p-3 hidden sm:table-cell">Passive income share distributed to BD Account</td>
                         </tr>
                         <tr>
-                            <td class="p-3 font-semibold text-orange-800">Mikhail’s Share (50%)</td>
-                            <td class="p-3 text-orange-600 font-bold">$10.00</td>
-                            <td class="p-3 hidden sm:table-cell">Retained in US Account</td>
+                            <td class="p-3 font-semibold text-orange-800">Mikhail’s Partner Share (50%)</td>
+                            <td class="p-3 text-orange-600 font-bold">$4,166.67</td>
+                            <td class="p-3 hidden sm:table-cell">Passive income share retained in US Account</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </section>
+
+        <!-- New Section IX: Initial Investment Structure -->
+        <section class="mb-10 p-6 bg-white card border-t-4 border-blue-600">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center section-header">IX. Initial Investment Structure: Cash vs. Expertise</h2>
+            <p class="text-lg font-medium text-gray-700 mb-6 text-center">
+                Mikhail's cash provides the **Working Capital**. Kaocher's expertise and cash cover the **Operational Engine**. All costs are deducted from **Gross Revenue** before the 50/50 profit split.
+            </p>
+
+            <div class="overflow-x-auto rounded-lg shadow-lg">
+                <table class="w-full text-left border-collapse profit-table text-gray-700 text-sm sm:text-base">
+                    <thead>
+                        <tr>
+                            <th class="p-3 font-extrabold uppercase bg-gray-700 text-white">Cost Component</th>
+                            <th class="p-3 font-extrabold uppercase bg-orange-600 text-white">Mikhail's Cash Investment</th>
+                            <th class="p-3 font-extrabold uppercase bg-blue-600 text-white">Kaocher's Investment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Upfront Cash / Setup Costs -->
+                        <tr class="font-semibold bg-gray-100">
+                            <td class="p-3">Actionable Launch Budget (Ads & COGS)</td>
+                            <td class="p-3 text-orange-700">$500 - $1,500 USD</td>
+                            <td class="p-3 text-gray-500">N/A</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 text-gray-700">LLC Setup & Related Fees</td>
+                            <td class="p-3 text-orange-700 font-semibold">$200 - $500 USD</td>
+                            <td class="p-3 text-gray-500">N/A</td>
+                        </tr>
+
+                        <!-- Expertise & Time Investment (No upfront charge to Mikhail) -->
+                        <tr class="border-b border-gray-300">
+                            <td class="p-3 text-gray-700 font-semibold">Store Setup, Design, Technical Issues (First Time)</td>
+                            <td class="p-3 text-gray-500">N/A</td>
+                            <td class="p-3 text-blue-700 font-semibold">$500 - $1,500 USD (Initial Cash Investment)</td>
+                        </tr>
+                        
+                        <!-- Ongoing Operating Costs -->
+                        <tr>
+                            <td class="p-3 text-gray-700">Shopify Subscription & Apps</td>
+                            <td class="p-3 text-orange-700 font-semibold">Initial $39 - $99 / Month</td>
+                            <td class="p-3 text-gray-500">N/A</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 text-gray-700">SEO, Content, & Daily Management</td>
+                            <td class="p-3 text-gray-500">N/A</td>
+                            <td class="p-3 text-blue-700 font-semibold">$300 - $500 / Month Value (Time/Tools)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 text-gray-700">Customer Support & Fulfillment</td>
+                            <td class="p-3 text-gray-500">N/A</td>
+                            <td class="p-3 text-blue-700 font-semibold">100% Covered (My Time/Expertise)</td>
+                        </tr>
+
+                        <!-- Summary -->
+                        <tr class="font-extrabold bg-teal-100">
+                            <td class="p-3 text-teal-900">Summary: Investment Focus</td>
+                            <td class="p-3 text-orange-800">Cash Flow & Financial Gateway</td>
+                            <td class="p-3 text-blue-800">Execution, Development & Operational Support</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="mt-6 text-base text-gray-700 font-semibold p-3 bg-red-50 rounded-lg border border-red-200">
+                Next Step Cash Requirement: Mikhail must fund the initial **$500 - $1,500** for Ad Spend and COGS to run the pilot launch.
+            </p>
+        </section>
+
+        <!-- New Section VIII: Detailed FAQ & Business Deep Dive -->
+        <section class="mb-10 p-6 bg-white card">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center section-header">VIII. Detailed Business Deep Dive & FAQ</h2>
+            <p class="text-lg text-gray-700 leading-relaxed mb-6 text-center font-semibold">
+                Click on any title to expand the detailed explanation.
+            </p>
+
+            <!-- Dropshipping Model Explained -->
+            <details class="mb-4 rounded-lg bg-gray-50 p-4 border border-gray-200">
+                <summary class="font-bold text-xl text-teal-700 cursor-pointer list-none flex justify-between items-center transition duration-300 hover:bg-gray-100 p-1 -m-1 rounded">
+                    <span>What is the Dropshipping Business Model?</span>
+                    <span class="text-2xl ml-2 transition-transform duration-300">▼</span>
+                </summary>
+                <div class="mt-3 pt-3 border-t border-gray-200 text-gray-700">
+                    <p class="font-semibold mb-2">The Model in 3 Steps:</p>
+                    <ul class="list-decimal list-inside ml-4 space-y-1 text-sm">
+                        <li>A customer buys a product from our Shopify store at the <span class="font-semibold text-green-600">Retail Price</span> (e.g., $50).</li>
+                        <li>We then immediately purchase the product from the supplier at the <span class="font-semibold text-red-600">Wholesale Price</span> (e.g., $20).</li>
+                        <li>The supplier ships the product directly to the customer. <span class="font-extrabold text-blue-700">We never hold inventory.</span></li>
+                    </ul>
+                    <p class="mt-3 font-semibold text-gray-800">The Future (Scaling):</p>
+                    <p class="text-sm">This model allows for rapid product testing and expansion (Phase I & II). Once we find consistent winners, we move to private labeling (Phase III) for greater brand control and higher profit margins.</p>
+                </div>
+            </details>
+
+            <!-- FAQ: Costs and Expenses -->
+            <details class="mb-4 rounded-lg bg-gray-50 p-4 border border-gray-200">
+                <summary class="font-bold text-xl text-teal-700 cursor-pointer list-none flex justify-between items-center transition duration-300 hover:bg-gray-100 p-1 -m-1 rounded">
+                    <span>FAQ: What are the key running costs (Management, Supplier, Marketing)?</span>
+                    <span class="text-2xl ml-2 transition-transform duration-300">▼</span>
+                </summary>
+                <div class="mt-3 pt-3 border-t border-gray-200 text-gray-700">
+                    <ul class="list-disc list-inside ml-4 space-y-2 text-sm">
+                        <li><span class="font-semibold text-red-600">Marketing Spend (Largest Cost):</span> This is the daily investment in ads (Meta/TikTok) that generates the sales. We only scale budgets when Return on Ad Spend (ROAS) is highly profitable.</li>
+                        <li><span class="font-semibold">Supplier/COGS:</span> The wholesale cost of the product, automatically deducted when an order is placed.</li>
+                        <li><span class="font-semibold">Shopify & App Fees:</span> The monthly subscription fee (Shopify) and fees for essential automation apps (e.g., fulfillment software). Minimal compared to revenue.</li>
+                        <li><span class="font-semibold">Store Management Cost:</span> Zero. My expertise is covered by the 50% Net Profit share.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <!-- FAQ: Growth and Profit -->
+            <details class="mb-4 rounded-lg bg-gray-50 p-4 border border-gray-200">
+                <summary class="font-bold text-xl text-teal-700 cursor-pointer list-none flex justify-between items-center transition duration-300 hover:bg-gray-100 p-1 -m-1 rounded">
+                    <span>FAQ: What is the 2-3 Year Growth/Profit Potential & Tax?</span>
+                    <span class="text-2xl ml-2 transition-transform duration-300">▼</span>
+                </summary>
+                <div class="mt-3 pt-3 border-t border-gray-200 text-gray-700">
+                    <p class="font-semibold text-gray-800">Profit:</p>
+                    <p class="text-sm">We target a Net Profit Margin (after all expenses) of 15% - 25%. The 50/50 split applies to this final net figure. Our goal is to achieve $100,000 in monthly Gross Revenue, yielding significant five-figure monthly net profit for the partnership.</p>
+                    <p class="font-semibold text-gray-800 mt-3">Tax & Compliance:</p>
+                    <p class="text-sm">As the US entity owner, <span class="font-extrabold">Mikhail's responsibility is tax compliance</span>. I provide the clean, verified monthly P&L reports necessary for easy filing.</p>
+                    <p class="font-semibold text-gray-800 mt-3">Growth Opportunity (Refer to Section V):</p>
+                    <ul class="list-disc list-inside ml-4 space-y-1 text-sm">
+                        <li><span class="font-semibold">Year 1:</span> Establish consistent US profit ($1K+ daily revenue).</li>
+                        <li><span class="font-semibold">Year 2-3:</span> Expand to the UK/EU markets and migrate to private label sourcing for an <span class="font-extrabold text-green-600">estimated 30%+ increase in profit margins</span>.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <!-- Top Revenue Examples -->
+            <details class="mb-4 rounded-lg bg-gray-50 p-4 border border-gray-200" open>
+                <summary class="font-bold text-xl text-teal-700 cursor-pointer list-none flex justify-between items-center transition duration-300 hover:bg-gray-100 p-1 -m-1 rounded">
+                    <span>Top 5 High-Revenue Dropshipping Models (Verified Potential)</span>
+                    <span class="text-2xl ml-2 transition-transform duration-300">▼</span>
+                </summary>
+                <div class="mt-3 pt-3 border-t border-gray-200 text-gray-700 space-y-4">
+                    <p class="font-semibold text-gray-800 text-lg">Mikhail, these examples show the potential for <span class="text-orange-600">significant profit leverage</span> in the E-commerce space. The specific brands often change, but these *models* are proven to drive <span class="font-extrabold">million-dollar revenues</span>:</p>
+                    
+                    <div class="p-3 bg-white rounded-md border border-gray-300 shadow-sm">
+                        <p class="font-semibold text-lg text-blue-700">1. Pet Niche (Problem-Solving Products)</p>
+                        <p class="text-sm"><span class="font-semibold">Model:</span> Selling unique, high-margin pet care gadgets (e.g., self-cleaning brushes, anti-anxiety beds). The US pet market is huge and emotionally driven.</p>
+                        <p class="text-sm mt-1"><span class="font-semibold text-green-600">Potential Revenue:</span> $2M+ Annual Gross Revenue in 2-3 years.</p>
+                        <p class="text-xs text-gray-500 mt-1">Check online for case studies like 'PupSocks' or similar high-scale pet brands that started with dropshipping concepts.</p>
+                    </div>
+
+                    <div class="p-3 bg-white rounded-md border border-gray-300 shadow-sm">
+                        <p class="font-semibold text-lg text-blue-700">2. Home Organization (High-Demand Trends)</p>
+                        <p class="text-sm"><span class="font-semibold">Model:</span> Capitalizing on viral trends (TikTok, Instagram) for home storage, cleaning hacks, and minimalist decor. High volume of impulse buys.</p>
+                        <p class="text-sm mt-1"><span class="font-semibold text-green-600">Potential Revenue:</span> $1.5M+ Annual Gross Revenue. Focused on high volume, low-cost fulfillment.</p>
+                        <p class="text-xs text-gray-500 mt-1">Search 'home gadgets dropshipping success' for examples of stores generating over $50K/month in this model.</p>
+                    </div>
+
+                    <div class="p-3 bg-white rounded-md border border-gray-300 shadow-sm">
+                        <p class="font-semibold text-lg text-blue-700">3. Functional Fitness Gear (Specific Audience)</p>
+                        <p class="text-sm"><span class="font-semibold">Model:</span> Selling small, portable fitness items (resistance bands, specialty rollers) that cater to at-home workout routines. Repeat customers are common.</p>
+                        <p class="text-sm mt-1"><span class="font-semibold text-green-600">Potential Revenue:</span> $800K - $1.2M Annual Gross Revenue. Higher product cost, higher Average Order Value (AOV).</p>
+                        <p class="text-xs text-gray-500 mt-1">Many specialized equipment retailers follow this trajectory. Search for 'niche fitness dropship brands'.</p>
+                    </div>
+
+                     <div class="p-3 bg-white rounded-md border border-gray-300 shadow-sm">
+                        <p class="font-semibold text-lg text-blue-700">4. Automotive Accessories (Enthusiast Market)</p>
+                        <p class="text-sm"><span class="font-semibold">Model:</span> Selling non-essential, high-margin, unique interior/exterior accessories or cleaning products. Customers in this niche are highly dedicated.</p>
+                        <p class="text-sm mt-1"><span class="font-semibold text-green-600">Potential Revenue:</span> $600K+ Annual Gross Revenue with excellent margins.</p>
+                        <p class="text-xs text-gray-500 mt-1">Look up "car detailing dropshipping stores" to see low-inventory, high-profit examples.</p>
+                    </div>
+
+                    <div class="p-3 bg-white rounded-md border border-gray-300 shadow-sm">
+                        <p class="font-semibold text-lg text-blue-700">5. Sustainable/Eco-Friendly Goods (Brand Focus)</p>
+                        <p class="text-sm"><span class="font-semibold">Model:</span> Dropshipping reusable goods, bamboo products, or ethical alternatives. This niche is great for Phase III (Private Labeling) and building a strong, high-value brand.</p>
+                        <p class="text-sm mt-1"><span class="font-semibold text-green-600">Potential Revenue:</span> Grows steadily, aiming for $1M+ in Gross Revenue by Year 2.</p>
+                        <p class="text-xs text-gray-500 mt-1">This path offers the best long-term exit opportunity due to strong brand identity.</p>
+                    </div>
+
+                    <p class="text-xs italic mt-4 text-center text-gray-500">
+                        The key to profitability is my expertise in market research and paid media, which ensures ad spend is directed only towards guaranteed converting products.
+                    </p>
+                </div>
+            </details>
+        </section>
+
+        <!-- Second Video Embed Section (New) -->
+        <div class="mb-10 p-6 bg-white card">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center section-header">Full Dropshipping Tutorial (Deep Dive)</h2>
+            <!-- 16:9 aspect ratio container for responsiveness -->
+            <div class="relative w-full overflow-hidden rounded-lg" style="padding-top: 56.25%">
+                <iframe class="absolute top-0 left-0 w-full h-full rounded-lg shadow-xl"
+                    src="https://www.youtube.com/embed/XMLjZB1ASUM" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <p class="text-center text-sm text-gray-600 mt-4">
+                "The ONLY Shopify Dropshipping Tutorial You Need 2025" - For a complete understanding of the business mechanics.
+            </p>
+        </div>
+
 
         <!-- Next Steps Call to Action -->
         <section class="text-center p-8 bg-teal-600 card text-white shadow-2xl">
