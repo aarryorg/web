@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aarry Limited | Professional Ecommerce Digital Growth Serivces in Bangladesh</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Font Awesome Icons (for services) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" xintegrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        /* Typography and Base Colors (Matching USA Page) */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* bg-slate-50 */
+            color: #1a202c; /* text-gray-900 */
+        }
+        
+        /* Accent Color Matching USA Page: Indigo Gradient */
+        .brand-gradient-text {
+            background: linear-gradient(to right, #4f46e5, #818cf8); /* Indigo 600 to 400 */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.39);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(79, 70, 229, 0.5);
+        }
+
+        /* --- Mega Menu Custom Styles --- */
+        .mega-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+            transform: translateY(10px);
+            width: 100%;
+            padding-top: 1rem;
+            z-index: 50;
+        }
+        .group:hover .mega-menu {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .mega-menu-content {
+            background-color: #ffffff;
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0; /* border-gray-200 */
+        }
+        .mega-menu-column h4 {
+            color: #4f46e5; /* indigo-600 */
+            border-bottom: 2px solid #e0e7ff; /* indigo-100 */
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .service-link:hover {
+            color: #4f46e5;
+            text-decoration: underline;
+        }
+
+
+        /* Mobile Nav Styling (Matching USA Page) */
+        .mobile-nav-overlay {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-nav-overlay.open {
+            transform: translateX(0);
+        }
+        body.overflow-hidden {
+            overflow: hidden;
+        }
+
+        /* Scroll Animation Styles (Matching USA Page) */
+        .hidden-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+        }
+        .hidden-section.open {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Accordion styles (Copied from USA Page) */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-in-out;
+        }
+        .accordion-content.open {
+            max-height: 2000px; /* Large value for content */
+        }
+        
+        /* --- Dynamic Details Panel Styles (In-line Display) --- */
+        #dynamic-details-container {
+            /* Fix: rely on max-height for smooth flow */
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease-in-out;
+        }
+        #dynamic-details-container.open {
+            /* JS sets accurate height on load/click */
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+        }
+        .details-card {
+            position: relative; /* Ensure the close button is relative to this card */
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+            border-left: 5px solid #4f46e5; /* Indigo 600 */
+        }
+        
+        .video-responsive {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 0.5rem;
+        }
+        .video-responsive iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Loading Fix - Ensure visibility on load */
+        .page-wrapper {
+            opacity: 1; 
+            transition: opacity 0.3s;
+        }
+        .tab-button.active-tab {
+            border-bottom-color: #4f46e5 !important;
+            color: #1a202c !important; /* text-gray-900 */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Mobile Navigation Overlay (Matching USA Page Structure) -->
+    <div id="mobile-nav" class="mobile-nav-overlay fixed inset-0 bg-white z-[100] p-4 md:hidden">
+        <div class="flex justify-between items-center mb-10">
+            <span class="text-2xl font-black text-gray-900 tracking-tighter">মেনু</span>
+            <button id="mobile-menu-close-button" class="text-gray-500 hover:text-gray-900">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-2">
+            <!-- Mobile Mega Menu: Web & Software -->
+            <div class="border-b border-gray-100">
+                <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
+                    <span>ওয়েব ও সফটওয়্যার</span>
+                    <i class="fas fa-chevron-down ml-3 text-gray-500 transition-transform"></i>
+                </button>
+                <div class="accordion-content pl-6 pt-1">
+                    <h5 class="text-indigo-600 font-semibold mb-2">ওয়েবসাইট ও কন্টেন্ট</h5>
+                    <ul class="space-y-1 text-sm text-gray-600">
+                        <li><a href="#pricing" class="block py-1 hover:text-indigo-600">Web Design & Development</a></li>
+                        <li><a href="#pricing" class="block py-1 hover:text-indigo-600">E-Commerce Site</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Website Maintenance</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Newspaper Site</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Company Website</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Educational Site</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Custom Website</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Domain & Hosting Service</a></li>
+                    </ul>
+                    <h5 class="text-indigo-600 font-semibold mt-4 mb-2">বিজনেস সফটওয়্যার ও অ্যাপস</h5>
+                    <ul class="space-y-1 text-sm text-gray-600">
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Mobile Application Development</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">POS Software</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Accounting Software</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Micro-credit Mgmt System</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Dealership Management</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">n8n Automation Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mobile Mega Menu: Marketing & Creative -->
+            <div class="border-b border-gray-100">
+                <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
+                    <span>মার্কেটিং ও ক্রিয়েটিভ</span>
+                    <i class="fas fa-chevron-down ml-3 text-gray-500 transition-transform"></i>
+                </button>
+                <div class="accordion-content pl-6 pt-1">
+                    <h5 class="text-indigo-600 font-semibold mb-2">অর্গানিক গ্রোথ ও এসইও</h5>
+                    <ul class="space-y-1 text-sm text-gray-600">
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Professional SEO Service</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Local SEO</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">SEO for E-Commerce / Garments / Travel Agents</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Google Ads (PPC)</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">SEO for SMM Panel</a></li>
+                    </ul>
+                    <h5 class="text-indigo-600 font-semibold mt-4 mb-2">সোশ্যাল ও ব্র্যান্ডিং</h5>
+                    <ul class="space-y-1 text-sm text-gray-600">
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Social Media Marketing (SMM)</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Facebook Marketing & Promotion</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Facebook Page Promotion Likes</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Facebook Page Verify</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Brands / Products Advertisement</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Boost Your Business</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Corporate & Personal Branding</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Wikipedia Page Creation</a></li>
+                    </ul>
+                    <h5 class="text-indigo-600 font-semibold mt-4 mb-2">ক্রিয়েটিভ ডিজাইন ও মিডিয়া</h5>
+                    <ul class="space-y-1 text-sm text-gray-600">
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Logo Design</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">UI / UX Design</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Graphic & Ads Design</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Video Editing & Production</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mobile Mega Menu: AI Automation -->
+            <div class="border-b border-gray-100">
+                <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
+                    <span>এআই অটোমেশন</span>
+                    <i class="fas fa-chevron-down ml-3 text-gray-500 transition-transform"></i>
+                </button>
+                <div class="accordion-content pl-6 pt-1">
+                    <h5 class="text-indigo-600 font-semibold mb-2">লিড জেনারেশন ও সেলস</h5>
+                    <ul class="space-y-1 text-sm text-gray-600">
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">AI Powered Lead Generation and Personalized Outreach</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">AI Sales Research and Email Generation Assistant</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Automated Lead Processing with AI Phone Calls</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Google Maps Business Lead Scraper with Emails</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Automated Lead Generation and Email Outreach System</a></li>
+                    </ul>
+                    <h5 class="text-indigo-600 font-semibold mt-4 mb-2">কন্টেন্ট ও মিডিয়া অটোমেশন</h5>
+                    <ul class="space-y-1 text-sm text-gray-600">
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Automated Social Media Content Creator and Publisher</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Automated LinkedIn Post Generation from Research Topics</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">AI Product Image to CGI Video Generator</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">AI UGC Video Ad Generator</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">AI-Powered Multi-Step Research and Report Generator</a></li>
+                    </ul>
+                    <h5 class="text-indigo-600 font-semibold mt-4 mb-2">ইন্টারনাল ওয়ার্কফ্লো ও সাপোর্ট</h5>
+                    <ul class="space-y-1 text-sm text-gray-600">
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Automated Hiring Process Management System</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Telegram AI Assistant for Email and Calendar</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">AI Support Agent with Email Escalation</a></li>
+                    </ul>
+                    <h5 class="text-indigo-600 font-semibold mt-4 mb-2">গবেষণা ও বিশ্লেষণ</h5>
+                    <ul class="space-y-1 text-sm text-gray-600">
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Facebook Ad Spy and Analysis Tool</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">YouTube Video Comment Analysis and Report Generator</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Reddit Business Problem Research and Analysis Tool</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Standalone Links -->
+            <a href="#clients" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">আমাদের ক্লায়েন্ট</a>
+            <a href="#partners" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">আমাদের পার্টনার</a>
+            <a href="#team" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">আমাদের টিম</a>
+            <a href="#contact" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">যোগাযোগ</a>
+
+            <div class="pt-4 border-t border-gray-100">
+                <span class="block p-3 text-sm text-gray-500">অঞ্চল: <span class="font-bold text-indigo-600">বাংলাদেশ (BD)</span></span>
+            </div>
+        </nav>
+    </div>
+
+    <div class="page-wrapper">
+        <!-- Header -->
+        <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+            <div class="container mx-auto px-4 py-4 flex justify-between items-center max-w-7xl">
+                <!-- Logo -->
+                <a href="./" class="text-2xl font-black text-gray-900 tracking-tighter">Aarry Limited</a>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-6 items-center">
+                    <!-- Mega Menu 1: Web & Software -->
+                    <div class="group relative">
+                        <a href="#services-dev" class="text-base font-medium text-gray-600 hover:text-indigo-600 flex items-center">
+                            ওয়েব ও সফটওয়্যার <i class="fas fa-chevron-down ml-1 text-xs transition-transform group-hover:rotate-180"></i>
+                        </a>
+                        <div class="mega-menu absolute hidden group-hover:block" style="width: 800px; left: 50%; transform: translateX(-50%);">
+                            <div class="mega-menu-content grid grid-cols-3 gap-6">
+                                <!-- Column 1: Website & Content -->
+                                <div class="mega-menu-column">
+                                    <h4 class="text-lg font-bold mb-2">ওয়েবসাইট ও কন্টেন্ট</h4>
+                                    <ul class="space-y-1 text-sm">
+                                        <li><a href="#pricing" class="block text-gray-700 hover:text-indigo-600">Web Design & Development</a></li>
+                                        <li><a href="#pricing" class="block text-gray-700 hover:text-indigo-600">E-Commerce Website</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Newspaper Site</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Company Website</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Educational Site</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Health / Medical Site</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Custom Website</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Domain & Hosting Service</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Column 2: Digital Infrastructure -->
+                                <div class="mega-menu-column">
+                                    <h4 class="text-lg font-bold mb-2">ডিজিটাল ইনফ্রাস্ট্রাকচার</h4>
+                                    <ul class="space-y-1 text-sm">
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Website Maintenance</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Web Support</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Google Tag Manager Service</a></li>
+                                    </ul>
+                                    <h4 class="text-lg font-bold mt-4 mb-2">বিজনেস সফটওয়্যার ও অ্যাপস</h4>
+                                    <ul class="space-y-1 text-sm">
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Mobile Application Development</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">POS & Accounting Software</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Micro-credit Mgmt System</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Column 3: Specialized Software -->
+                                <div class="mega-menu-column">
+                                    <h4 class="text-lg font-bold mb-2">বিশেষায়িত সলিউশন</h4>
+                                    <ul class="space-y-1 text-sm">
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Courier Service Software</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Pharmacy Software</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">SMS Marekting Software</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Dealership Management</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">n8n Automation Service</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mega Menu 2: Marketing & Creative -->
+                    <div class="group relative">
+                        <a href="#services-marketing" class="text-base font-medium text-gray-600 hover:text-indigo-600 flex items-center">
+                            মার্কেটিং ও ক্রিয়েটিভ <i class="fas fa-chevron-down ml-1 text-xs transition-transform group-hover:rotate-180"></i>
+                        </a>
+                        <div class="mega-menu absolute hidden group-hover:block" style="width: 800px; left: 50%; transform: translateX(-50%);">
+                            <div class="mega-menu-content grid grid-cols-3 gap-6">
+                                <!-- Column 1: Digital Growth & SEO -->
+                                <div class="mega-menu-column">
+                                    <h4 class="text-lg font-bold mb-2">ডিজিটাল গ্রোথ ও এসইও</h4>
+                                    <ul class="space-y-1 text-sm">
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Professional SEO Service</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Local SEO</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">SEO for E-Commerce / Garments / Travel Agents</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Google Ads (PPC)</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">SEO for SMM Panel</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Column 2: Social & Branding (Updated with all Facebook/Boost items) -->
+                                <div class="mega-menu-column">
+                                    <h4 class="text-lg font-bold mb-2">সোশ্যাল ও ব্র্যান্ডিং</h4>
+                                    <ul class="space-y-1 text-sm">
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Social Media Marketing (SMM)</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Facebook Marketing & Promotion</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Facebook Page Promotion Likes</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Facebook Page Verify</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Brands / Products Advertisement</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Boost Your Business</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Corporate & Personal Branding</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Wikipedia Page Creation</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Column 3: Creative Design -->
+                                <div class="mega-menu-column">
+                                    <h4 class="text-lg font-bold mb-2">ক্রিয়েটিভ ডিজাইন ও মিডিয়া</h4>
+                                    <ul class="space-y-1 text-sm">
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Logo Design</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">UI / UX Design</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Graphic & Ads Design</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Video Editing & Production</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mega Menu 3: AI Automation -->
+                    <div class="group relative">
+                        <a href="#ai-automation" class="text-base font-medium text-gray-600 hover:text-indigo-600 flex items-center">
+                            এআই অটোমেশন <i class="fas fa-chevron-down ml-1 text-xs transition-transform group-hover:rotate-180"></i>
+                        </a>
+                        <div class="mega-menu absolute hidden group-hover:block" style="width: 1000px; left: 50%; transform: translateX(-50%);">
+                            <div class="mega-menu-content grid grid-cols-4 gap-6">
+                                <!-- Column 1: Lead Generation & Sales -->
+                                <div class="mega-menu-column">
+                                    <h4 class="text-lg font-bold mb-2">লিড জেনারেশন ও সেলস</h4>
+                                    <ul class="space-y-1 text-sm">
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">AI Powered Lead Generation and Personalized Outreach</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">AI Sales Research and Email Generation Assistant</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Automated Lead Processing with AI Phone Calls</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Google Maps Business Lead Scraper with Emails</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Automated Lead Generation and Email Outreach System</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Column 2: Content & Media Automation -->
+                                <div class="mega-menu-column">
+                                    <h4 class="text-lg font-bold mb-2">কন্টেন্ট ও মিডিয়া অটোমেশন</h4>
+                                    <ul class="space-y-1 text-sm">
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Automated Social Media Content Creator and Publisher</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Automated LinkedIn Post Generation from Research Topics</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">AI Product Image to CGI Video Generator</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">AI UGC Video Ad Generator</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">AI-Powered Multi-Step Research and Report Generator</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Column 3: Internal Workflow & Support -->
+                                <div class="mega-menu-column">
+                                    <h4 class="text-lg font-bold mb-2">ইন্টারনাল ওয়ার্কফ্লো ও সাপোর্ট</h4>
+                                    <ul class="space-y-1 text-sm">
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Automated Hiring Process Management System</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Telegram AI Assistant for Email and Calendar</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">AI Support Agent with Email Escalation</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Column 4: Research & Analysis -->
+                                <div class="mega-menu-column">
+                                    <h4 class="text-lg font-bold mb-2">গবেষণা ও বিশ্লেষণ</h4>
+                                    <ul class="space-y-1 text-sm">
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Facebook Ad Spy and Analysis Tool</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">YouTube Video Comment Analysis and Report Generator</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Reddit Business Problem Research and Analysis Tool</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact CTA -->
+                    <a href="#contact" class="cta-button bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-6 rounded-full text-sm">
+                        Request a Quote
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex items-center md:hidden">
+                    <button id="mobile-menu-open-button" class="text-gray-600 hover:text-indigo-600 focus:outline-none">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Content Container -->
+        <main>
+            <!-- Home/Hero Section -->
+            <section id="home" class="py-24 md:py-32 bg-white">
+                <div class="container mx-auto px-4 text-center max-w-7xl">
+                    <h1 class="text-3xl md:text-5xl font-black text-gray-900 leading-tight tracking-tighter mb-6">
+                        Professional Ecommerce Solutions & Digital Growth Marketing <span class="brand-gradient-text"> AI Automation Services</span> in Bangladesh
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-10 max-w-3xl mx-auto">
+                        Aarry Limited delivers quality, affordable, and secure web development, custom software, and targeted digital marketing services specifically tailored for the Bangladeshi market।
+                    </p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="https://wa.me/+8801789363695" target="_blank" class="cta-button bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-8 rounded-full text-lg shadow-lg">
+                            <i class="fab fa-whatsapp mr-2"></i> আপনার প্রোজেক্ট আলোচনা করুন
+                        </a>
+                        <a href="#contact" class="bg-gray-200 text-gray-900 inline-flex items-center px-6 py-4 border border-transparent text-lg font-medium rounded-full shadow-lg hover:bg-gray-300">
+                            <i class="fas fa-phone-volume mr-2"></i> বিক্রয় টিমের সাথে যোগাযোগ
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- --- OUR CORE SERVICE PILLARS SECTION (New Tabbed System) --- -->
+            <section id="core-pillars" class="py-16 bg-white hidden-section">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-extrabold text-center text-gray-900 mb-12">
+                        আমাদের মূল সেবার ক্ষেত্র: ডিজিটাল সাফল্যের ভিত্তি
+                    </h2>
+
+                    <div class="bg-gray-100 rounded-xl shadow-lg p-6">
+                        <!-- Tab Navigation -->
+                        <div class="flex flex-wrap justify-center border-b border-gray-300 mb-6">
+                            <button data-tab="web-software-tab" class="tab-button px-6 py-3 text-lg font-semibold border-b-4 border-transparent text-gray-600 hover:text-indigo-600 transition-colors active-tab">
+                                ওয়েব ও সফটওয়্যার
+                            </button>
+                            <button data-tab="marketing-creative-tab" class="tab-button px-6 py-3 text-lg font-semibold border-b-4 border-transparent text-gray-600 hover:text-indigo-600 transition-colors">
+                                মার্কেটিং ও ক্রিয়েটিভ
+                            </button>
+                            <button data-tab="ai-automation-tab" class="tab-button px-6 py-3 text-lg font-semibold border-b-4 border-transparent text-gray-600 hover:text-indigo-600 transition-colors">
+                                এআই অটোমেশন
+                            </button>
+                        </div>
+                        
+                        <!-- Tab Content -->
+                        <div id="tab-content" class="min-h-[250px] p-4">
+                            <!-- Content will be dynamically inserted here by JS -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- --- END CORE SERVICE PILLARS SECTION --- -->
+
+            <!-- --- CUSTOMER STAGE FOCUS SECTION --- -->
+            <section id="customer-focus" class="py-24 bg-gray-50 hidden-section">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-extrabold text-center text-gray-900 mb-16">
+                        আপনার ডিজিটাল সাফল্যের পথ বেছে নিন
+                    </h2>
+
+                    <div class="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
+                        
+                        <!-- Card 1: F-COMMERCE STARTER -->
+                        <div class="flex flex-col bg-white rounded-xl shadow-xl p-6 border-t-4 border-indigo-500 hover:shadow-2xl transition duration-300">
+                            <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
+                                <i class="fas fa-shopping-bag text-indigo-600 mr-3"></i> ধাপ ১: এফ-কমার্স স্টার্টার
+                            </h3>
+                            <p class="text-gray-600 text-sm mb-4 flex-grow">
+                                **আপনি দ্রুত এবং সহজে বিক্রি শুরু করতে চান** কিন্তু এখনই একটি পূর্ণাঙ্গ ওয়েবসাইটের প্রয়োজন নেই। আপনার জন্য আমাদের ফোকাস হলো সামাজিক প্ল্যাটফর্মে দ্রুত উপস্থিতি এবং ট্রাফিক তৈরি করা।
+                            </p>
+                            <h4 class="text-md font-semibold text-gray-800 mb-2">প্রাসঙ্গিক সেবা:</h4>
+                            <ul class="text-sm text-gray-500 mb-6 space-y-1">
+                                <li><i class="fas fa-check text-green-500 mr-2"></i> **Facebook Page Setup** ও Maintenance</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i> Facebook Boost ও Ads Management</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i> Logo ও Banner Design</li>
+                            </ul>
+                            <div class="space-y-3 mt-auto">
+                                <button data-stage="f-commerce-services" class="details-button block w-full text-center px-4 py-3 border border-transparent text-sm font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700 transition cta-button">
+                                    আমাদের সার্ভিস বিস্তারিত দেখুন
+                                </button>
+                                <button data-stage="f-commerce-guide" class="details-button block w-full text-center px-4 py-3 border border-indigo-600 text-sm font-medium rounded-full text-indigo-600 bg-white hover:bg-indigo-50 transition">
+                                    শুরু করার গাইডলাইন দেখুন
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: E-COMMERCE UPGRADER -->
+                        <div class="flex flex-col bg-white rounded-xl shadow-xl p-6 border-t-4 border-indigo-500 hover:shadow-2xl transition duration-300">
+                            <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
+                                <i class="fas fa-store-alt text-indigo-600 mr-3"></i> ধাপ ২: ই-কমার্স আপগ্রেডার
+                            </h3>
+                            <p class="text-gray-600 text-sm mb-4 flex-grow">
+                                **আপনার সোশ্যাল সেলিং থেকে একটি পেশাদার, স্কেলযোগ্য ই-কমার্স স্টোরে আপগ্রেড করার প্রয়োজন**, যার মধ্যে ড্রপশিপিং বা ঐতিহ্যবাহী ব্যবসা মডেল অন্তর্ভুক্ত।
+                            </p>
+                            <h4 class="text-md font-semibold text-gray-800 mb-2">প্রাসঙ্গিক সেবা:</h4>
+                            <ul class="text-sm text-gray-500 mb-6 space-y-1">
+                                <li><i class="fas fa-check text-green-500 mr-2"></i> **E-Commerce Website** (মূল্য নিচে দেখুন)</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i> Domain/Hosting Setup</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i> UI/UX Design ও Brand Identity</li>
+                            </ul>
+                            <div class="space-y-3 mt-auto">
+                                <button data-stage="ecommerce-upgrade" class="details-button block w-full text-center px-4 py-3 border border-transparent text-sm font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700 transition cta-button">
+                                    আমাদের সার্ভিস বিস্তারিত দেখুন
+                                </button>
+                                <button data-stage="ecommerce-upgrade-guide" class="details-button block w-full text-center px-4 py-3 border border-indigo-600 text-sm font-medium rounded-full text-indigo-600 bg-white hover:bg-indigo-50 transition">
+                                    আপগ্রেড করার গাইডলাইন দেখুন
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: GROWTH & BRANDING SEEKER -->
+                        <div class="flex flex-col bg-white rounded-xl shadow-xl p-6 border-t-4 border-indigo-500 hover:shadow-2xl transition duration-300">
+                            <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
+                                <i class="fas fa-rocket text-indigo-600 mr-3"></i> ধাপ ৩: গ্রোথ ও ব্র্যান্ডিং সিকার
+                            </h3>
+                            <p class="text-gray-600 text-sm mb-4 flex-grow">
+                                আপনার একটি প্রতিষ্ঠিত ব্যবসা রয়েছে এবং বিক্রি বাড়ানো, ব্র্যান্ডের ভাবমূর্তি উন্নত করা, এবং অর্গানিক সার্চে আধিপত্য বিস্তার করা প্রয়োজন।
+                            </p>
+                            <h4 class="text-md font-semibold text-gray-800 mb-2">প্রাসঙ্গিক সেবা:</h4>
+                            <ul class="text-sm text-gray-500 mb-6 space-y-1">
+                                <li><i class="fas fa-check text-green-500 mr-2"></i> **Professional SEO Service**</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i> Corporate & Personal Branding</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i> Advanced Social Media Management</li>
+                            </ul>
+                            <div class="space-y-3 mt-auto">
+                                <button data-stage="growth-branding-services" class="details-button block w-full text-center px-4 py-3 border border-transparent text-sm font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700 transition cta-button">
+                                    আমাদের সার্ভিস বিস্তারিত দেখুন
+                                </button>
+                                <button data-stage="growth-branding-guide" class="details-button block w-full text-center px-4 py-3 border border-indigo-600 text-sm font-medium rounded-full text-indigo-600 bg-white hover:bg-indigo-50 transition">
+                                    গ্রোথ গাইডলাইন দেখুন
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: CORPORATE & AUTOMATION -->
+                        <div class="flex flex-col bg-white rounded-xl shadow-xl p-6 border-t-4 border-indigo-500 hover:shadow-2xl transition duration-300">
+                            <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
+                                <i class="fas fa-industry text-indigo-600 mr-3"></i> ধাপ ৪: কর্পোরেট ও অটোমেশন
+                            </h3>
+                            <p class="text-gray-600 text-sm mb-4 flex-grow">
+                                **আপনি একটি বড় প্রতিষ্ঠান বা এন্টারপ্রাইজ যা কাস্টম সফটওয়্যার, ইআরপি ইন্টিগ্রেশন,** বা পূর্ণাঙ্গ এআই অটোমেশন ওয়ার্কফ্লো খুঁজছে।
+                            </p>
+                            <h4 class="text-md font-semibold text-gray-800 mb-2">প্রাসঙ্গিক সেবা:</h4>
+                            <ul class="text-sm text-gray-500 mb-6 space-y-1">
+                                <li><i class="fas fa-check text-green-500 mr-2"></i> **Custom Software Development**</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i> AI Automation (n8n, Vapi Integration)</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i> Micro-credit / POS / Accounting Software</li>
+                            </ul>
+                            <div class="space-y-3 mt-auto">
+                                <button data-stage="corporate-automation-services" class="details-button block w-full text-center px-4 py-3 border border-transparent text-sm font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700 transition cta-button">
+                                    আমাদের সার্ভিস বিস্তারিত দেখুন
+                                </button>
+                                <button data-stage="corporate-automation-guide" class="details-button block w-full text-center px-4 py-3 border border-indigo-600 text-sm font-medium rounded-full text-indigo-600 bg-white hover:bg-indigo-50 transition">
+                                    অটোমেশন গাইডলাইন দেখুন
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- --- DYNAMIC DETAILS PANEL (In-Line Content) --- -->
+            <div id="dynamic-details-container" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-white" style="max-height: 0; overflow: hidden; transition: max-height 0.6s ease-in-out;">
+                <div id="details-card-content" class="details-card shadow-2xl">
+                    <!-- Dynamic content will be loaded here -->
+                </div>
+            </div>
+            <!-- --- END DYNAMIC DETAILS PANEL --- -->
+
+            <!-- --- OUR WORK PROCESS SECTION --- -->
+            <section id="work-process" class="py-24 bg-gray-900 hidden-section text-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-center text-white mb-16">
+                        আমাদের কর্মপদ্ধতি: একসাথে আমরা আপনার বৃদ্ধি নিশ্চিত করি
+                    </h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                        
+                        <!-- Step 1 -->
+                        <div class="text-center p-6 bg-gray-800 rounded-lg shadow-lg relative pt-12">
+                            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-indigo-600 text-white w-10 h-10 flex items-center justify-center rounded-full text-lg font-bold border-4 border-gray-900">১</div>
+                            <h3 class="text-xl font-bold text-indigo-400 mb-3 mt-2">গভীর বিশ্লেষণ (Deep Due Diligence)</h3>
+                            <p class="text-gray-400">
+                                আপনার বর্তমান ডিজিটাল উপস্থিতি, অবকাঠামো এবং মার্কেটিং ফানেলের ব্যাপক অডিট করে আমরা উন্নতির প্রধান ক্ষেত্রগুলো চিহ্নিত করি।
+                            </p>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="text-center p-6 bg-gray-800 rounded-lg shadow-lg relative pt-12">
+                            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-indigo-600 text-white w-10 h-10 flex items-center justify-center rounded-full text-lg font-bold border-4 border-gray-900">২</div>
+                            <h3 class="text-xl font-bold text-indigo-400 mb-3 mt-2">ব্লুপ্রিন্ট তৈরি</h3>
+                            <p class="text-gray-400">
+                                প্রয়োজনীয়তার পরিষ্কার ধারণা নিয়ে আমরা আপনার বৃদ্ধির লক্ষ্য অনুযায়ী একটি ত্রুটিমুক্ত এবং কার্যকর কৌশলগত ব্লুপ্রিন্ট তৈরি করি।
+                            </p>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="text-center p-6 bg-gray-800 rounded-lg shadow-lg relative pt-12">
+                            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-indigo-600 text-white w-10 h-10 flex items-center justify-center rounded-full text-lg font-bold border-4 border-gray-900">৩</div>
+                            <h3 class="text-xl font-bold text-indigo-400 mb-3 mt-2">পরিকল্পনা বাস্তবায়ন</h3>
+                            <p class="text-gray-400">
+                                আমাদের বিশেষজ্ঞ দল (ডেভেলপার, মার্কেটার, এআই স্পেশালিস্ট) পরিকল্পনাটি কার্যকর করে এবং প্রত্যাশিত বাধা অতিক্রম করতে রিয়েল-টাইমে পরিবর্তন আনে।
+                            </p>
+                        </div>
+                        
+                        <!-- Step 4 -->
+                        <div class="text-center p-6 bg-gray-800 rounded-lg shadow-lg relative pt-12">
+                            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-indigo-600 text-white w-10 h-10 flex items-center justify-center rounded-full text-lg font-bold border-4 border-gray-900">৪</div>
+                            <h3 class="text-xl font-bold text-indigo-400 mb-3 mt-2">পর্যবেক্ষণ ও রিপোর্ট</h3>
+                            <p class="text-gray-400">
+                                আমরা কর্মক্ষমতা ক্রমাগত পর্যবেক্ষণ করি এবং বিস্তারিত রিপোর্ট ও পোস্ট-লঞ্চ সাপোর্ট প্রদান করি যাতে আপনার বৃদ্ধি টেকসই হয়।
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-16">
+                        <p class="text-xl font-semibold text-gray-100 mb-6">Aarry Limited হোক আপনার ব্যবসা এবং সাফল্যের মাঝে সেতুবন্ধন।</p>
+                        <a href="#contact" class="cta-button bg-white hover:bg-gray-200 text-gray-900 font-bold py-4 px-10 rounded-full text-lg shadow-lg">
+                            বিনামূল্যে অডিট শুরু করুন
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <!-- --- END WORK PROCESS SECTION --- -->
+
+            <!-- --- OUR VALUED CLIENTS SECTION --- -->
+            <section id="clients" class="py-24 bg-gray-50 hidden-section">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-extrabold text-center text-gray-900 mb-12">
+                        আমাদের সম্মানিত ক্লায়েন্ট
+                    </h2>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 justify-items-center">
+                        <!-- Client Logos (Using placeholders for visibility) -->
+                        <div class="p-4 bg-white rounded-lg shadow-md hover:shadow-xl transition"><img src="https://placehold.co/150x50/e0e7ff/4f46e5?text=Daraz" alt="Daraz Bangladesh" class="h-10 w-auto object-contain"></div>
+                        <div class="p-4 bg-white rounded-lg shadow-md hover:shadow-xl transition"><img src="https://placehold.co/150x50/e0e7ff/4f46e5?text=Chaldal" alt="Chaldal Bangladesh" class="h-10 w-auto object-contain"></div>
+                        <div class="p-4 bg-white rounded-lg shadow-md hover:shadow-xl transition"><img src="https://placehold.co/150x50/e0e7ff/4f46e5?text=Prothom+Alo" alt="Prothom Alo" class="h-10 w-auto object-contain"></div>
+                        <div class="p-4 bg-white rounded-lg shadow-md hover:shadow-xl transition"><img src="https://placehold.co/150x50/e0e7ff/4f46e5?text=Kaler+Kantho" alt="Kaler Kantho" class="h-10 w-auto object-contain"></div>
+                        <div class="p-4 bg-white rounded-lg shadow-md hover:shadow-xl transition"><img src="https://placehold.co/150x50/e0e7ff/4f46e5?text=Jugantor" alt="Jugantor" class="h-10 w-auto object-contain"></div>
+                        <div class="p-4 bg-white rounded-lg shadow-md hover:shadow-xl transition"><img src="https://placehold.co/150x50/e0e7ff/4f46e5?text=Shajgoj" alt="Shajgoj Bangladesh" class="h-10 w-auto object-contain"></div>
+                        <div class="p-4 bg-white rounded-lg shadow-md hover:shadow-xl transition"><img src="https://placehold.co/150x50/e0e7ff/4f46e5?text=Pickaboo" alt="Pickaboo Bangladesh" class="h-10 w-auto object-contain"></div>
+                        <div class="p-4 bg-white rounded-lg shadow-md hover:shadow-xl transition"><img src="https://placehold.co/150x50/e0e7ff/4f46e5?text=Rokomari" alt="Rokomari Bangladesh" class="h-10 w-auto object-contain"></div>
+                        <div class="p-4 bg-white rounded-lg shadow-md hover:shadow-xl transition"><img src="https://placehold.co/150x50/e0e7ff/4f46e5?text=TigerIT" alt="TigerIT Bangladesh Ltd" class="h-10 w-auto object-contain"></div>
+                        <div class="p-4 bg-white rounded-lg shadow-md hover:shadow-xl transition"><img src="https://placehold.co/150x50/e0e7ff/4f46e5?text=BJIT" alt="BJIT Group" class="h-10 w-auto object-contain"></div>
+                        <div class="p-4 bg-white rounded-lg shadow-md hover:shadow-xl transition"><img src="https://placehold.co/150x50/e0e7ff/4f46e5?text=Vivasoft" alt="Vivasoft Bangladesh" class="h-10 w-auto object-contain"></div>
+                        <div class="p-4 bg-white rounded-lg shadow-md hover:shadow-xl transition"><img src="https://placehold.co/150x50/e0e7ff/4f46e5?text=Datasoft" alt="Datasoft Systems Bangladesh Limited" class="h-10 w-auto object-contain"></div>
+                    </div>
+                </div>
+            </section>
+            <!-- --- END CLIENTS SECTION --- -->
+
+            <!-- --- OUR VALUED PARTNERS SECTION --- -->
+            <section id="partners" class="py-24 bg-white hidden-section">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-extrabold text-center text-gray-900 mb-12">
+                        আমাদের মূল্যবান অংশীদার
+                    </h2>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 justify-items-center">
+                        <!-- Partner Logos (Using placeholders for visibility) -->
+                        <div class="p-4 rounded-lg hover:shadow-xl transition"><img src="https://placehold.co/150x50/ffffff/4f46e5?text=aamarpay" alt="aamarpay" class="h-10 w-auto object-contain"></div>
+                        <div class="p-4 rounded-lg hover:shadow-xl transition"><img src="https://placehold.co/150x50/ffffff/4f46e5?text=ShurjoPay" alt="ShurjoPay" class="h-10 w-auto object-contain"></div>
+                        <div class="p-4 rounded-lg hover:shadow-xl transition"><img src="https://placehold.co/150x50/ffffff/4f46e5?text=PortWallet" alt="PortWallet" class="h-10 w-auto object-contain"></div>
+                        <div class="p-4 rounded-lg hover:shadow-xl transition"><img src="https://placehold.co/150x50/ffffff/4f46e5?text=Easy+Pay+Way" alt="Easy Pay Way" class="h-10 w-auto object-contain"></div>
+                        <div class="p-4 rounded-lg hover:shadow-xl transition"><img src="https://placehold.co/150x50/ffffff/4f46e5?text=The+Daily+Ittefaq" alt="The Daily Ittefaq" class="h-10 w-auto object-contain"></div>
+                        <div class="p-4 rounded-lg hover:shadow-xl transition"><img src="https://placehold.co/150x50/ffffff/4f46e5?text=BrainStation23" alt="Brain Station 23" class="h-10 w-auto object-contain"></div>
+                    </div>
+                </div>
+            </section>
+            <!-- --- END PARTNERS SECTION --- -->
+
+            <!-- Other sections (Our Team, Contact, etc.) follow here -->
+            <section id="team" class="py-12 bg-gray-50 hidden-section">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h2 class="text-2xl font-bold text-gray-900">আমাদের টিম</h2>
+                    <p class="mt-2 text-gray-600">আপনার সাফল্যের জন্য প্রতিশ্রুতিবদ্ধ আমাদের প্রত্যয়িত বিশেষজ্ঞদের সাথে পরিচিত হোন।</p>
+                </div>
+            </section>
+            <section id="pr-agency" class="py-12 bg-white hidden-section">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h2 class="text-2xl font-bold text-gray-900">পি আর এজেন্সি</h2>
+                    <p class="mt-2 text-gray-600">বাংলাদেশের বাজারের জন্য তৈরি কৌশলগত গণসংযোগ সেবা।</p>
+                </div>
+            </section>
+
+            <!-- Final Contact Section -->
+            <section id="contact" class="py-24 bg-gray-900 hidden-section">
+                <div class="container mx-auto px-4 text-center">
+                    <div class="max-w-2xl mx-auto">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">আপনার ব্র্যান্ডকে উন্নত করতে প্রস্তুত?</h2>
+                        <p class="text-lg text-gray-400 mb-8">আপনার প্রজেক্ট নিয়ে আলোচনা করতে এবং বৃদ্ধির সম্ভাবনা উন্মোচন করতে একটি বিনামূল্যে কৌশলগত কলের সময় নিন।</p>
+                        <a href="https://wa.me/+8801789363695" target="_blank" rel="noopener noreferrer" class="cta-button inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-10 rounded-full text-lg">
+                            আপনার বিনামূল্যে পরামর্শ বুক করুন
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white py-16">
+            <div class="container mx-auto px-4 grid grid-cols-2 md:grid-cols-5 gap-12 text-center md:text-left max-w-7xl">
+                <!-- Column 1: Aarry Limited (Brand Info) -->
+                <div>
+                    <h3 class="text-2xl font-black tracking-tighter mb-4 text-white">Aarry Limited.</h3>
+                    <p class="text-gray-400 text-sm">
+                        ডিজিটাল বাংলাদেশ এবং বিশ্বজুড়ে অত্যাধুনিক প্রযুক্তি ও মানব অন্তর্দৃষ্টি দিয়ে ডিজিটাল বৃদ্ধি নিশ্চিত করি।
+                    </p>
+                    <div class="mt-4 text-gray-300 text-sm space-y-1">
+                         <p>ফোন: +880 1789 363695</p>
+                         <p>ইমেইল: info@aarry.org</p>
+                    </div>
+                </div>
+                <!-- Column 2: Web & App Solutions -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 border-b-2 border-indigo-600 inline-block">ওয়েব ও অ্যাপ সলিউশন</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#pricing" class="text-gray-400 hover:text-white transition-colors">E-Commerce Website</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Custom Website</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Mobile App Dev</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">POS & ERP Software</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Domain & Hosting</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3: Digital Growth & Marketing -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 border-b-2 border-indigo-600 inline-block">ডিজিটাল গ্রোথ ও মার্কেটিং</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Professional SEO</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Social Media Marketing (SMM)</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Facebook Ad Boost</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Google Ads (PPC)</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">SMS Marketing</a></li>
+                    </ul>
+                </div>
+                 <!-- Column 4: Creative & Branding -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 border-b-2 border-indigo-600 inline-block">ক্রিয়েটিভ ও ব্র্যান্ডিং</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Logo Design</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">UI / UX Design</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Corporate Branding</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Video Production</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Wikipedia Page Creation</a></li>
+                    </ul>
+                </div>
+                <!-- Column 5: Company & Resources -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 border-b-2 border-indigo-600 inline-block">কোম্পানি ও রিসোর্স</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#clients" class="text-gray-400 hover:text-white transition-colors">Our Clients</a></li>
+                        <li><a href="#team" class="text-gray-400 hover:text-white transition-colors">Our Team</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blogs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Case Studies</a></li>
+                        <li class="pt-2"><a href="#" class="text-gray-500 hover:text-white transition-colors">Privacy policy</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-white transition-colors">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 container mx-auto px-4 text-center border-t border-gray-700 pt-8 max-w-7xl">
+                <p class="text-gray-500 text-sm">&copy; <span id="year"></span> Aarry Limited. All Rights Reserved. Crafted for the Digital Bangladesh.</p>
+            </div>
+        </footer>
+    </div>
+
+
+    <script>
+        const serviceContent = {
+            'web-software-tab': `
+                <div class="space-y-4">
+                    <p class="text-lg text-gray-700">We build fast, secure, and scalable digital platforms using local and global best practices for the Bangladeshi market।</p>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 text-base">
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <i class="fas fa-desktop text-indigo-600 mt-1 flex-shrink-0"></i>
+                            <span class="font-medium">Web Design & Development:</span> <a href="#pricing" class="service-link ml-1">Custom PHP, WordPress & E-Commerce sites।</a>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <i class="fas fa-mobile-alt text-indigo-600 mt-1 flex-shrink-0"></i>
+                            <span class="font-medium">App & Software Solutions:</span> <a href="#contact" class="service-link ml-1">Native Mobile Apps (Android/iOS) and custom web apps (POS, ERP)।</a>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <i class="fas fa-server text-indigo-600 mt-1 flex-shrink-0"></i>
+                            <span class="font-medium">Infrastructure:</span> <a href="#contact" class="service-link ml-1">Reliable Domain Registration & Secure Hosting Services।</a>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <i class="fas fa-cubes text-indigo-600 mt-1 flex-shrink-0"></i>
+                            <span class="font-medium">Business Efficiency:</span> <a href="#contact" class="service-link ml-1">Micro-credit Management, Accounting, and Courier Software।</a>
+                        </li>
+                    </ul>
+                </div>
+            `,
+            'marketing-creative-tab': `
+                <div class="space-y-4">
+                    <p class="text-lg text-gray-700">Drive targeted traffic, maximize conversions, and build powerful brand recognition across all digital channels।</p>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 text-base">
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <i class="fas fa-search-plus text-indigo-600 mt-1 flex-shrink-0"></i>
+                            <span class="font-medium">SEO & Traffic:</span> <a href="#contact" class="service-link ml-1">Local, E-Commerce, and Professional SEO strategies for ranking।</a>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <i class="fab fa-facebook-square text-indigo-600 mt-1 flex-shrink-0"></i>
+                            <span class="font-medium">Social Marketing:</span> <a href="#contact" class="service-link ml-1">Full Facebook Marketing, Promotion, Ads, and Verification services।</a>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <i class="fas fa-paint-brush text-indigo-600 mt-1 flex-shrink-0"></i>
+                            <span class="font-medium">Creative Design:</span> <a href="#contact" class="service-link ml-1">UI/UX, Logo Design, Graphic Design, and Ad Campaigns visuals।</a>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <i class="fas fa-bullhorn text-indigo-600 mt-1 flex-shrink-0"></i>
+                            <span class="font-medium">Branding & PR:</span> <a href="#contact" class="service-link ml-1">Corporate Identity, Personal Branding, and Wikipedia Page Creation।</a>
+                        </li>
+                    </ul>
+                </div>
+            `,
+            'ai-automation-tab': `
+                <div class="space-y-4">
+                    <p class="text-lg text-gray-700">Integrate next-generation AI and automation tools (n8n, Gemini) to reduce operational costs and accelerate growth।</p>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 text-base">
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <i class="fas fa-robot text-indigo-600 mt-1 flex-shrink-0"></i>
+                            <span class="font-medium">AI Sales Automation:</span> <a href="#contact" class="service-link ml-1">AI-powered lead scraping, personalized outreach, and automated phone calls।</a>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <i class="fas fa-cogs text-indigo-600 mt-1 flex-shrink-0"></i>
+                            <span class="font-medium">Workflow Integration:</span> <a href="#contact" class="service-link ml-1">Automate hiring, support, email, calendar, and internal data processing with n8n।</a>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <i class="fas fa-video text-indigo-600 mt-1 flex-shrink-0"></i>
+                            <span class="font-medium">AI Content Production:</span> <a href="#contact" class="service-link ml-1">Generate social media posts, CGI video ads, and detailed reports automatically।</a>
+                        </li>
+                        <li class="flex items-start space-x-3 text-gray-700">
+                            <i class="fas fa-flask text-indigo-600 mt-1 flex-shrink-0"></i>
+                            <span class="font-medium">Research & Analysis:</span> <a href="#contact" class="service-link ml-1">AI tools for competitor ad spying, YouTube comment analysis, and market research।</a>
+                        </li>
+                    </ul>
+                </div>
+            `,
+            'f-commerce-services': {
+                introTitle: 'এফ-কমার্স সার্ভিস বিস্তারিত',
+                intro: 'বাংলাদেশের সবচেয়ে জনপ্রিয় প্ল্যাটফর্মগুলো (Facebook, Instagram, TikTok) ব্যবহার করে আপনার নাগাল বাড়াতে এবং তাৎক্ষণিক বিক্রি চালাতে আমাদের বিশেষ এফ-কমার্স সার্ভিসগুলো ফোকাস করে।',
+                services: [
+                    { name: 'Facebook Page Setup & Design', link: '#contact' },
+                    { name: 'Facebook Ad Management & Boost Campaigns', link: '#contact' },
+                    { name: 'Brands / Products Advertisement', link: '#contact' },
+                    { name: 'Graphic Design for Engaging Posts', link: '#contact' },
+                    { name: 'Video Editing for Social Media', link: '#contact' },
+                    { name: 'Social Media Marketing (SMM)', link: '#contact' }
+                ]
+            },
+            'f-commerce-guide': {
+                title: 'ই কমার্স ব্যবসা শুরু করার সহজ উপায় | Launching F-Commerce in 4 Steps',
+                desc: `
+                    <div class="p-4 bg-red-50 border border-red-300 rounded-lg mb-6">
+                        <h3 class="text-xl font-extrabold text-red-800 mb-2">আপনি নিজেই শুরু করতে পারেন!</h3>
+                        <p class="text-red-700 mb-4">সহজ কাজগুলোর জন্য বেশি খরচ না করে এই সহজ ধাপগুলো অনুসরণ করে আপনি নিজেই একটি সাধারণ এফ-কমার্স ব্যবসা শুরু করতে পারেন।</p>
+                        <p class="text-red-700 font-semibold">যদি আপনি পেশাদার এবং সহজ সমাধান চান, তবে আমাদের <a href="#core-pillars" class="text-indigo-600 hover:text-indigo-800 underline">পেশাদার সার্ভিস প্ল্যান প্যাক</a>টি দেখুন—আমরা আপনার জন্য সবকিছু প্রস্তুত করে দেবো; শুধু বিজ্ঞাপন চালিয়ে বিক্রি শুরু করুন!</p>
+                        <a href="#contact" class="mt-4 inline-block cta-button bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-full text-sm shadow-md">
+                            সোশ্যাল ও ব্র্যান্ডিং সার্ভিস চেক করুন
+                        </a>
+                    </div>
+                `,
+                showVideoUrl: 'https://www.youtube.com/embed/Hu3T-ZDROx8', // Specific embed URL
+                funnel: [
+                    {
+                        stage: "ধাপ ১: পরিচিতি ও উপস্থিতি (Awareness & Presence)",
+                        icon: 'fas fa-map-marker-alt',
+                        steps: [
+                            "<b>প্ল্যাটফর্ম সেটআপ:</b> আপনার Facebook Business Page এবং Instagram Profile তৈরি ও অপটিমাইজ করুন।",
+                            "<b>বিজ্ঞাপন কৌশল:</b> Facebook ও Instagram-এ স্থানীয় টার্গেটে কম খরচে <b>Reach and Engagement Ads</b> দিয়ে শুরু করুন।",
+                            "<b>ভিজ্যুয়াল আইডেন্টিটি:</b> প্রথম দিন থেকেই পেশাদার দেখাতে উচ্চ মানের <b>লোগো ও ব্যানার ডিজাইন</b> (ক্রিয়েটিভ সার্ভিস) ব্যবহার করুন।",
+                            "<b>ভাইরাল মিডিয়া:</b> মনোযোগ আকর্ষণ করতে TikTok/YouTube Shorts-এ ছোট ভিডিও টেস্টিং শুরু করুন।"
+                        ],
+                        learn: '<a href="#" class="service-link text-indigo-600 hover:text-indigo-800">আমাদের ব্লগে ফেসবুক শপ সেটআপ সম্পর্কে আরও জানুন।</a>'
+                    },
+                    {
+                        stage: "ধাপ ২: এনগেজমেন্ট ও বিশ্বাস (Engagement & Trust)",
+                        icon: 'fas fa-heart',
+                        steps: [
+                            "<b>কন্টেন্ট ক্যালেন্ডার:</b> নিয়মিত (দিনে ২-৩ বার) আকর্ষণীয় কন্টেন্ট পোস্ট করুন (পর্দার পেছনের দৃশ্য, গ্রাহকের রিভিউ, প্রোডাক্ট টিপস)।",
+                            "<b>মিথস্ক্রিয়া:</b> সব কমেন্ট, মেসেজ ও অনুসন্ধানের সক্রিয়ভাবে জবাব দিন এবং পেশাদার হ্যান্ডলিংয়ের জন্য <b>Facebook Page Maintenance</b> সার্ভিস ব্যবহার করুন।",
+                            "<b>ভেরিফিকেশন (ঐচ্ছিক):</b> বিশ্বাসযোগ্যতা বাড়াতে যোগ্য হলে <b>Facebook Page Verify</b>-এর জন্য পরিকল্পনা করুন।"
+                        ],
+                        learn: '<a href="#" class="service-link text-indigo-600 hover:text-indigo-800">অডিয়েন্সের বিশ্বাস ও এনগেজমেন্ট বাড়ানোর গাইড পড়ুন।</a>'
+                    },
+                    {
+                        stage: "ধাপ ৩: রূপান্তর ও বিক্রি (Conversion & Sales)",
+                        icon: 'fas fa-dollar-sign',
+                        steps: [
+                            "<b>রূপান্তর বিজ্ঞাপন:</b> Conversion Ads (Boost Your Business)-এ বাজেট স্থানান্তর করুন, যা পূর্বে এনগেজ করা বা প্রোডাক্ট দেখা ব্যবহারকারীদের টার্গেট করবে।",
+                            "<b>পরিষ্কার CTA:</b> নিশ্চিত করুন প্রতিটি পোস্ট এবং বিজ্ঞাপনে একটি স্পষ্ট <b>Call-to-Action</b> থাকে (যেমন: 'অর্ডার করতে মেসেজ করুন', 'হোয়াটসঅ্যাপ করুন')।",
+                            "<b>অর্ডার ব্যবস্থাপনা:</b> দ্রুত অর্ডার প্রক্রিয়াকরণের জন্য Messenger বা WhatsApp (SMS Marketing) ব্যবহার করুন।"
+                        ],
+                        learn: 'উচ্চ-রূপান্তরকারী বিজ্ঞাপন ক্যাম্পেইন সেটআপে সহায়তা প্রয়োজন? <a href="#contact" class="service-link text-indigo-600 hover:text-indigo-800">আমাদের ডিজিটাল মার্কেটিং টিমের সাথে যোগাযোগ করুন।</a>'
+                    },
+                    {
+                        stage: "ধাপ ৪: স্কেল ও বৃদ্ধি (Scale & Grow)",
+                        icon: 'fas fa-chart-line',
+                        steps: [
+                            "<b>ডেটা বিশ্লেষণ:</b> কোন প্রোডাক্ট এবং অ্যাড সেটগুলো সেরা পারফর্ম করেছে তা বিশ্লেষণ করুন। যা কাজ করছে তাতে বিনিয়োগ বাড়ান।",
+                            "<b>পুনঃটার্গেটিং:</b> যারা কার্টে যোগ করেছে কিন্তু কেনেনি, তাদের জন্য টার্গেটেড <b>Retargeting Ads</b> চালান।",
+                            "<b>ই-কমার্স আপগ্রেড:</b> বিক্রির পরিমাণ বাড়লে, স্বয়ংক্রিয় ইনভেন্টরি ও পেশাদার স্কেলেবিলিটির জন্য <b>E-Commerce Website</b>-এ স্থানান্তরিত হন (ধাপ ২)।"
+                        ],
+                        learn: '<a href="#" class="service-link text-indigo-600 hover:text-indigo-800">সম্পূর্ণ YouTube ভিডিওটি দেখুন: ই কমার্স ব্যবসা শুরু করার সহজ উপায়।</a>'
+                    }
+                ]
+            },
+            'ecommerce-upgrade': {
+                introTitle: 'ই-কমার্স আপগ্রেড সার্ভিস বিস্তারিত',
+                intro: 'আপনার বিদ্যমান এফ-কমার্স বা ড্রপশিপিং মডেল আপগ্রেড করার জন্য দীর্ঘমেয়াদী স্কেলেবিলিটি এবং বিশ্বাসের জন্য একটি স্থিতিশীল, উচ্চ-পারফরম্যান্স ওয়েবসাইটের ভিত্তি প্রয়োজন।',
+                services: [
+                    { name: 'E-Commerce Website (WordPress / Custom PHP)', link: '#pricing' },
+                    { name: 'Secure Domain and Hosting Service', link: '#contact' },
+                    { name: 'UI / UX Design Audit and Optimization', link: '#contact' },
+                    { name: 'Aamarpay / ShurjoPay Payment Gateway Integration', link: '#partners' },
+                    { name: 'Courier & Logistics Software Integration', link: '#contact' },
+                    { name: 'Technical SEO for E-Commerce', link: '#contact' }
+                ],
+                funnel: [
+                    {
+                        stage: "পর্যায় ১: ভিত্তি ও পরিকল্পনা",
+                        icon: 'fas fa-laptop-code',
+                        steps: [
+                            "<b>প্রয়োজনীয়তা মূল্যায়ন:</b> কাস্টম ফিচার, ইনভেন্টরি সাইজ এবং ইন্টিগ্রেশন প্রয়োজনীয়তা (POS/ERP) নির্ধারণ করা।",
+                            "<b>টেক স্ট্যাক:</b> সঠিক প্রযুক্তি (WordPress, PHP, Laravel) নির্বাচন করা এবং স্কেলযোগ্য <b>Domain & Hosting Service</b> বেছে নেওয়া।",
+                            "<b>সাইট ম্যাপ ও ওয়্যারফ্রেম:</b> স্বজ্ঞাত নেভিগেশন ও উচ্চ পারফরম্যান্স নিশ্চিত করতে ব্যবহারকারীর প্রবাহের পরিকল্পনা করা।"
+                        ]
+                    },
+                    {
+                        stage: "পর্যায় ২: ডেভেলপমেন্ট ও ডিজাইন",
+                        icon: 'fas fa-paint-brush',
+                        steps: [
+                            "<b>কাস্টম ডেভেলপমেন্ট:</b> ই-কমার্স ফ্রেমওয়ার্ক (প্রোডাক্ট পেজ, কার্ট, চেকআউট) তৈরি করা এবং নিরাপত্তা বৈশিষ্ট্য ইন্টিগ্রেট করা।",
+                            "<b>UI/UX ডিজাইন:</b> রূপান্তর এবং স্পষ্ট প্রোডাক্ট প্রদর্শনের উপর ফোকাস করে একটি আধুনিক, মোবাইল-ফার্স্ট ডিজাইন বাস্তবায়ন করা।",
+                            "<b>কন্টেন্ট মাইগ্রেশন:</b> আপনার পূর্বের প্ল্যাটফর্ম থেকে বিদ্যমান প্রোডাক্ট ডেটা এবং গ্রাহকের তথ্য নিরাপদে স্থানান্তর করা।"
+                        ]
+                    },
+                    {
+                        stage: "পর্যায় ৩: ইন্টিগ্রেশন ও লঞ্চের প্রস্তুতি",
+                        icon: 'fas fa-wrench',
+                        steps: [
+                            "<b>পেমেন্ট গেটওয়ে:</b> <b>Aamarpay, ShurjoPay, বা PortWallet</b> এর মতো স্থানীয় পেমেন্ট সলিউশন ইন্টিগ্রেট করা।",
+                            "<b>লজিস্টিকস:</b> নির্বিঘ্ন অর্ডার পূরণের জন্য স্থানীয় কুরিয়ার সার্ভিসের সাথে ইন্টিগ্রেট করা বা <b>Courier Service Software</b> স্থাপন করা।",
+                            "<b>টেস্টিং:</b> লঞ্চের আগে কঠোর QA, গতি পরীক্ষা, এবং ডিভাইস সামঞ্জস্য পরীক্ষা করা।"
+                        ]
+                    },
+                    {
+                        stage: "পর্যায় ৪: অপটিমাইজেশন ও গ্রোথ",
+                        icon: 'fas fa-chart-line',
+                        steps: [
+                            "<b>এসইও:</b> অর্গানিক ট্রাফিক ক্যাপচার করতে <b>E-Commerce এর জন্য টেকনিক্যাল SEO</b> (Product Schema, সাইটের গতি) প্রয়োগ করা।",
+                            "<b>রক্ষণাবেক্ষণ:</b> নিয়মিত আপডেট এবং নিরাপত্তা পর্যবেক্ষণের জন্য <b>Website Maintenance</b> প্যাকেজে তালিকাভুক্ত হওয়া।",
+                            "<b>মার্কেটিং:</b> বিক্রয় বাড়ানোর জন্য টার্গেটেড Google Ads (PPC) এবং রি-টার্গেটিং ক্যাম্পেইন শুরু করা।"
+                        ]
+                    }
+                ]
+            },
+            'growth-branding': {
+                introTitle: 'গ্রোথ ও ব্র্যান্ডিং সার্ভিস বিস্তারিত',
+                intro: 'ব্র্যান্ডের কর্তৃত্ব বাড়ানো, ডিজিটাল নাগাল প্রসারিত করা এবং বিদ্যমান ট্র্যাফিককে রূপান্তর করার মাধ্যমে বাজারের নেতৃত্ব ও দ্রুত রাজস্ব বৃদ্ধি অর্জন করুন।',
+                services: [
+                    { name: 'Professional SEO Service', link: '#contact' },
+                    { name: 'Google Ads (PPC) Management', link: '#contact' },
+                    { name: 'Corporate & Personal Branding Strategy', link: '#contact' },
+                    { name: 'Video Editing & Production', link: '#contact' },
+                    { name: 'Wikipedia Page Creation', link: '#contact' },
+                    { name: 'UI / UX Design Audit', link: '#contact' }
+                ],
+                funnel: [
+                    {
+                        stage: "পর্যায় ১: অডিট ও বিশ্লেষণ",
+                        icon: 'fas fa-chart-bar',
+                        steps: [
+                            "<b>গ্রোথ অডিট:</b> বর্তমান এসইও, রূপান্তর হার, এবং পেইড অ্যাড পারফরম্যান্সের ব্যাপক পর্যালোচনা করা।",
+                            "<b>ব্র্যান্ড ধারণা:</b> খ্যাতি এবং কর্তৃত্বের ফাঁকগুলি চিহ্নিত করতে জনগণের এবং সার্চের দৃশ্যমানতা বিশ্লেষণ করা।",
+                            "<b>প্রতিযোগী বিশ্লেষণ:</b> সাদা স্থানগুলি উন্মোচন করতে শীর্ষ বাজার প্রতিযোগীদের বিস্তারিত বিশ্লেষণ করা।"
+                        ]
+                    },
+                    {
+                        stage: "পর্যায় ২: কৌশল ও কর্তৃত্ব নির্মাণ",
+                        icon: 'fas fa-sitemap',
+                        steps: [
+                            "<b>এসইও রোডম্যাপ:</b> উচ্চ-ভলিউম, লেনদেনমূলক কীওয়ার্ডগুলিতে ফোকাস করে <b>Professional SEO Service</b> বাস্তবায়ন করা।",
+                            "<b>ব্র্যান্ডিং কৌশল:</b> কর্পোরেট/ব্যক্তিগত ব্র্যান্ডের পরিচয় ও বার্তা সংজ্ঞায়িত বা পরিমার্জন করা।",
+                            "<b>বিশ্বাসযোগ্যতা:</b> বিশ্বাস বাড়ানোর জন্য <b>Wikipedia Page Creation</b> এবং উচ্চ-কর্তৃত্বের পিআর স্থাপন কার্যকর করা।"
+                        ]
+                    },
+                    {
+                        stage: "পর্যায় ৩: ট্র্যাফিক অর্জন ও অপটিমাইজেশন",
+                        icon: 'fas fa-dollar-sign',
+                        steps: [
+                            "<b>PPC:</b> অবিলম্বে ROI-এর জন্য অপটিমাইজড <b>Google Ads (PPC)</b> এবং রি-টার্গেটিং ক্যাম্পেইন চালু করা।",
+                            "<b>রূপান্তর বৃদ্ধি:</b> আরও বেশি দর্শককে ক্রেতায় পরিণত করতে A/B টেস্টিং এবং UX উন্নতি বাস্তবায়ন করা।",
+                            "<b>কন্টেন্ট মার্কেটিং:</b> থট লিডারশিপ প্রতিষ্ঠার জন্য বিশেষজ্ঞ ভিডিও এবং লিখিত কন্টেন্ট তৈরি করা।"
+                        ]
+                    },
+                    {
+                        stage: "পর্যায় ৪: রক্ষণাবেক্ষণ ও বাজার আধিপত্য",
+                        icon: 'fas fa-trophy',
+                        steps: [
+                            "<b>রিপোর্টিং:</b> অর্গানিক গ্রোথ এবং রূপান্তর হারের পরিবর্তনগুলির উপর ধারাবাহিক, ডেটা-চালিত রিপোর্টিং প্রদান করা।",
+                            "<b>স্কেলিং:</b> দ্রুত স্কেলিংয়ের জন্য উচ্চ-পারফর্মিং চ্যানেলগুলিতে সফল ক্যাম্পেইনের বাজেট বরাদ্দ করা।",
+                            "<b>দীর্ঘমেয়াদী মূল্য:</b> উচ্চ LTV এর জন্য গ্রাহক ধরে রাখার কৌশলগুলিতে (ইমেইল/SMS মার্কেটিং) ফোকাস করা।"
+                        ]
+                    }
+                ]
+            },
+            'corporate-automation': {
+                introTitle: 'কর্পোরেট ও অটোমেশন সার্ভিস বিস্তারিত',
+                intro: 'কাস্টম সফটওয়্যার এবং এআই ইন্টিগ্রেশনের মাধ্যমে জটিল ওয়ার্কফ্লো অপটিমাইজ করুন, ম্যানুয়াল ত্রুটি কমিয়ে আনুন এবং এন্টারপ্রাইজ-স্তরের দক্ষতা অর্জন করুন।',
+                services: [
+                    { name: 'Custom Software Development (Web/App)', link: '#contact' },
+                    { name: 'Micro-credit / POS / Accounting Software', link: '#contact' },
+                    { name: 'n8n Automation Service & API Integration', link: '#contact' },
+                    { name: 'Automated Hiring Process Management System', link: '#contact' },
+                    { name: 'AI Lead Processing & Support Agents', link: '#contact' },
+                    { name: 'Courier Service Software', link: '#contact' }
+                ],
+                funnel: [
+                    {
+                        stage: "পর্যায় ১: ডিসকভারি ও অডিট",
+                        icon: 'fas fa-search',
+                        steps: [
+                            "<b>ওয়ার্কফ্লো ম্যাপিং:</b> সকল ম্যানুয়াল প্রক্রিয়া (HR, সেলস, ইনভেন্টরি, ফাইন্যান্স) এর বিস্তারিত অডিট করা।",
+                            "<b>গ্যাপ বিশ্লেষণ:</b> কাস্টম সফটওয়্যার বা অটোমেশন (n8n, Vapi) প্রয়োজন এমন বাধাগুলি চিহ্নিত করা।",
+                            "<b>সিস্টেমের প্রয়োজনীয়তা:</b> মূল অ্যাপ্লিকেশন (ERP, POS, ইত্যাদি) এর জন্য প্রযুক্তিগত স্পেসিফিকেশন সংজ্ঞায়িত করা।"
+                        ]
+                    },
+                    {
+                        stage: "পর্যায় ২: সলিউশন ডিজাইন ও ডেভেলপমেন্ট",
+                        icon: 'fas fa-code',
+                        steps: [
+                            "<b>আর্কিটেকচারাল ডিজাইন:</b> প্রযুক্তিগত আর্কিটেকচার (মাইক্রো-ক্রেডিট, পিওএস, বা কাস্টম সফটওয়্যার) ডেভেলপ করা।",
+                            "<b>কোর কোডিং:</b> নিরাপত্তা, স্কেলেবিলিটি এবং ব্যবহার সহজলভ্যতার উপর ফোকাস করে অ্যাপ্লিকেশন তৈরি করা।",
+                            "<b>অটোমেশন ব্লুপ্রিন্ট:</b> নতুন সিস্টেমের সাথে ইন্টিগ্রেট করার জন্য এআই/n8n ওয়ার্কফ্লো (যেমন <b>Automated Hiring</b> বা <b>Lead Processing</b>) ডিজাইন করা।"
+                        ]
+                    },
+                    {
+                        stage: "পর্যায় ৩: ইন্টিগ্রেশন ও স্থাপন",
+                        icon: 'fas fa-rocket',
+                        steps: [
+                            "<b>ডেটা মাইগ্রেশন:</b> উত্তরাধিকারী ডেটা নতুন সিস্টেমে নিরাপদে স্থানান্তর করা।",
+                            "<b>ব্যবহারকারী প্রশিক্ষণ:</b> নতুন সফটওয়্যার এবং অটোমেশন সরঞ্জাম ব্যবহার করার জন্য সকল কর্মীর জন্য ব্যাপক প্রশিক্ষণ।",
+                            "<b>গো-লাইভ:</b> ক্রমাগত পর্যবেক্ষণ সহ কাস্টম সফটওয়্যারের পর্যায়ক্রমে স্থাপন।"
+                        ]
+                    },
+                    {
+                        stage: "পর্যায় ৪: ক্রমাগত অপটিমাইজেশন",
+                        icon: 'fas fa-sync-alt',
+                        steps: [
+                            "<b>সাপোর্ট:</b> স্থাপন করা সমস্ত সফটওয়্যারের জন্য দীর্ঘমেয়াদী প্রযুক্তিগত সাপোর্ট ও রক্ষণাবেক্ষণ প্রদান করা।",
+                            "<b>ফিডব্যাক লুপ:</b> ক্রমাগত উন্নতি এবং ফিচার প্রসারের জন্য ব্যবহারকারীর ফিডব্যাক সংগ্রহ করা।",
+                            "<b>নতুন অটোমেশন:</b> এআই-চালিত দক্ষতা অর্জনের জন্য নিয়মিত ওয়ার্কফ্লো পর্যালোচনা করা।"
+                        ]
+                    }
+                ]
+            }
+        };
+
+        let currentActiveStage = null;
+
+        /**
+         * Renders the tab content for the Core Pillars section.
+         * @param {string} tabKey The key for the serviceContent (e.g., 'web-software-tab').
+         */
+        const renderTabContent = (tabKey) => {
+            const tabContent = document.getElementById('tab-content');
+            if (tabContent && serviceContent[tabKey]) {
+                tabContent.innerHTML = serviceContent[tabKey];
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('active-tab');
+                    btn.style.borderBottomColor = 'transparent';
+                });
+                const activeBtn = document.querySelector(`.tab-button[data-tab="${tabKey}"]`);
+                if (activeBtn) {
+                    activeBtn.classList.add('active-tab');
+                    activeBtn.style.borderBottomColor = '#4f46e5'; /* indigo-600 */
+                }
+            }
+        };
+
+        /**
+         * Renders the dynamic details panel for customer stages.
+         * @param {string} stageKey The key for the customer stage data (e.g., 'f-commerce-guide').
+         * @param {string} type 'services' or 'guide'.
+         */
+        const renderDetails = (stageKey, type = 'services') => {
+            const container = document.getElementById('dynamic-details-container');
+            const contentDiv = document.getElementById('details-card-content');
+            const data = serviceContent[stageKey];
+            
+            if (!data || !container || !contentDiv) return;
+
+            // Step 1: Check if panel should close (if clicking the currently active button)
+            const isClosing = container.classList.contains('open') && currentActiveStage === stageKey;
+            
+            if (isClosing) {
+                container.classList.remove('open');
+                container.style.maxHeight = '0';
+                currentActiveStage = null;
+                return;
+            }
+            
+            // Step 2: Generate Content
+            let htmlContent = '';
+            
+            if (type === 'services') {
+                htmlContent = `
+                    <button onclick="closeDetailsPanel()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-900 transition"><i class="fas fa-times text-2xl"></i></button>
+                    <h2 class="text-gray-900 font-bold mb-4 text-3xl">${data.introTitle || 'Recommended Services'}</h2>
+                    <p class="text-gray-600 mb-8">${data.intro}</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                `;
+                data.services.forEach(service => {
+                    htmlContent += `
+                        <div class="p-4 border border-gray-200 rounded-lg bg-gray-50 hover:bg-white transition">
+                            <a href="${service.link}" class="text-indigo-600 font-semibold service-link block">
+                                <i class="fas fa-angle-right mr-2 text-sm"></i> ${service.name}
+                            </a>
+                        </div>
+                    `;
+                });
+                htmlContent += `</div>`;
+            } else if (type === 'guide') {
+                // Guide content includes the new promotional header
+                const promoHeader = (stageKey === 'f-commerce-guide' && data.desc) ? data.desc : '';
+
+                htmlContent = `
+                    <button onclick="closeDetailsPanel()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-900 transition"><i class="fas fa-times text-2xl"></i></button>
+                    ${promoHeader}
+                    <h2 class="text-gray-900 font-bold mb-4 text-3xl">${data.title}</h2>
+                    
+                    ${data.showVideoUrl ? `
+                        <div class="mb-8">
+                            <div class="video-responsive">
+                                <iframe src="${data.showVideoUrl}?autoplay=0&rel=0&modestbranding=1" title="${data.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <p class="text-sm text-gray-500 mt-2 text-center">ভিডিওটি দেখুন এবং কৌশলটি ভিজ্যুয়ালি বুঝে নিন।</p>
+                        </div>
+                    ` : ''}
+
+                    <h3 class="text-2xl font-bold text-indigo-600 mb-6">৪-ধাপের ফানেল কৌশল:</h3>
+                    <div class="space-y-8">
+                `;
+                
+                data.funnel.forEach((step, index) => {
+                    htmlContent += `
+                        <div class="p-6 bg-gray-50 rounded-xl border border-gray-200">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 flex items-center justify-center rounded-full bg-indigo-600 text-white text-xl mr-4 font-bold">${index + 1}</div>
+                                <h4 class="text-xl font-extrabold text-gray-900">${step.stage}</h4>
+                            </div>
+                            <div class="pl-14 pt-2 border-l-2 border-indigo-200 space-y-3">
+                                ${step.steps.map(s => `<p class="text-gray-700 flex items-start"><i class="fas fa-angle-right text-indigo-500 mr-2 mt-1 flex-shrink-0"></i> <span>${s}</span></p>`).join('')}
+                            </div>
+                            <p class="mt-4 text-sm text-gray-500">${step.learn}</p>
+                        </div>
+                    `;
+                });
+
+                htmlContent += `</div>`;
+            }
+
+            contentDiv.innerHTML = htmlContent;
+            
+            // Step 3: Calculate Height and Reveal
+            // Use a slight delay to ensure browser calculates the scrollHeight correctly after content injection
+            setTimeout(() => {
+                const contentHeight = contentDiv.scrollHeight;
+                container.style.maxHeight = contentHeight + 100 + 'px'; // +100px for padding and margin buffer
+                container.classList.add('open');
+                currentActiveStage = stageKey;
+                
+                // Scroll to the content for better UX
+                container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        };
+
+        /**
+         * Closes the dynamic details panel.
+         */
+        const closeDetailsPanel = () => {
+            const container = document.getElementById('dynamic-details-container');
+            if (container) {
+                container.classList.remove('open');
+                container.style.maxHeight = '0';
+                currentActiveStage = null;
+            }
+        };
+        
+        /**
+         * Initializes the default content and handles auto-open.
+         */
+        const renderDefaultContent = () => {
+            // 1. Initialize Default Tab Content
+            const defaultTabButton = document.querySelector('.tab-button[data-tab="web-software-tab"]');
+            if (defaultTabButton) {
+                renderTabContent('web-software-tab');
+            }
+
+            // 2. Auto-open F-Commerce guide on page load
+            const container = document.getElementById('dynamic-details-container');
+            if (container) {
+                renderDetails('f-commerce-guide', 'guide');
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.body;
+            const mobileNav = document.getElementById('mobile-nav');
+            const openNavButton = document.getElementById('mobile-menu-open-button');
+            const closeNavButton = document.getElementById('mobile-menu-close-button');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const accordionButtons = document.querySelectorAll('.accordion-button, .mobile-accordion-button');
+            const detailButtons = document.querySelectorAll('.details-button');
+            const tabButtons = document.querySelectorAll('.tab-button');
+            
+            // Initial rendering of the core content
+            renderDefaultContent();
+
+            // Tab Click Handler
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabKey = button.getAttribute('data-tab');
+                    renderTabContent(tabKey);
+                });
+            });
+
+            // --- Dynamic Customer Card Handler ---
+            detailButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const stage = button.getAttribute('data-stage');
+                    // Determine if the content is the guide or the services list
+                    const type = button.textContent.includes('গাইডলাইন') ? 'guide' : 'services';
+                    renderDetails(stage, type);
+                });
+            });
+
+            // --- Mobile Menu Handler ---
+            const openMobileNav = () => { mobileNav.classList.add('open'); body.classList.add('overflow-hidden'); };
+            const closeMobileNav = () => { mobileNav.classList.remove('open'); body.classList.remove('overflow-hidden'); };
+
+            openNavButton.addEventListener('click', openMobileNav);
+            closeNavButton.addEventListener('click', closeMobileNav);
+            navLinks.forEach(link => link.addEventListener('click', closeMobileNav));
+
+            // --- Accordion Handler (Mobile Menu) ---
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('i');
+                    const isOpening = content.classList.toggle('open');
+                    
+                    if (icon) { icon.classList.toggle('rotate-180'); }
+
+                    if (isOpening) {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    } else {
+                        content.style.maxHeight = '0';
+                    }
+                });
+            });
+
+            // --- Scroll Animation Handler ---
+            const hiddenSections = document.querySelectorAll('.hidden-section');
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('open');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            hiddenSections.forEach(section => { sectionObserver.observe(section); });
+
+            // --- Dynamic Year in Footer ---
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
