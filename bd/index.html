@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aarry Limited | Professional Web, App & Digital Growth in Bangladesh</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Font Awesome Icons (for services) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" xintegrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        /* Typography and Base Colors (Matching USA Page) */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* bg-slate-50 */
+            color: #1a202c; /* text-gray-900 */
+        }
+        
+        /* Accent Color Matching USA Page: Indigo Gradient */
+        .brand-gradient-text {
+            background: linear-gradient(to right, #4f46e5, #818cf8); /* Indigo 600 to 400 */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.39);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(79, 70, 229, 0.5);
+        }
+
+        /* --- Mega Menu Custom Styles --- */
+        .mega-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+            transform: translateY(10px);
+            width: 100%;
+            padding-top: 1rem;
+            z-index: 50;
+        }
+        .group:hover .mega-menu {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .mega-menu-content {
+            background-color: #ffffff;
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0; /* border-gray-200 */
+        }
+        .mega-menu-column h4 {
+            color: #4f46e5; /* indigo-600 */
+            border-bottom: 2px solid #e0e7ff; /* indigo-100 */
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Mobile Nav Styling (Matching USA Page) */
+        .mobile-nav-overlay {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-nav-overlay.open {
+            transform: translateX(0);
+        }
+        body.overflow-hidden {
+            overflow: hidden;
+        }
+
+        /* Scroll Animation Styles (Matching USA Page) */
+        .hidden-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+        }
+        .hidden-section.open {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Accordion styles (Copied from USA Page) */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-in-out;
+        }
+        .accordion-content.open {
+            max-height: 2000px; /* Large value for content */
+        }
+        
+        /* --- Dynamic Details Panel Styles (In-line Display) --- */
+        #dynamic-details-container {
+            display: none; /* Controlled by JS to appear inline */
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        #dynamic-details-container.open {
+            display: block;
+            opacity: 1;
+        }
+        .details-card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+            margin-top: 2.5rem;
+            border-left: 5px solid #4f46e5; /* Indigo 600 */
+        }
+        .details-card h2 {
+            font-size: 1.875rem;
+            line-height: 2.25rem;
+        }
+
+        .service-link {
+            transition: color 0.2s;
+        }
+        .service-link:hover {
+            color: #4f46e5; /* indigo-600 */
+            text-decoration: underline;
+        }
+        
+        .video-responsive {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 0.5rem;
+        }
+        .video-responsive iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Mobile Navigation Overlay (Matching USA Page Structure) -->
+    <div id="mobile-nav" class="mobile-nav-overlay fixed inset-0 bg-white z-[100] p-4 md:hidden">
+        <div class="flex justify-between items-center mb-10">
+            <span class="text-2xl font-black text-gray-900 tracking-tighter">Menu</span>
+            <button id="mobile-menu-close-button" class="text-gray-500 hover:text-gray-900">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-2">
+            <!-- Mobile Mega Menu: Web & Software -->
+            <div class="border-b border-gray-100">
+                <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
+                    <span>Web & Software</span>
+                    <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content pl-6 pt-1">
+                    <h5 class="text-indigo-600 font-semibold mb-2">Website & Content</h5>
+                    <ul class="space-y-1 text-sm text-gray-600">
+                        <li><a href="#pricing" class="block py-1 hover:text-indigo-600">Web Design & Development</a></li>
+                        <li><a href="#pricing" class="block py-1 hover:text-indigo-600">E-Commerce Site</a></li>
+                        <li><a href="#about" class="block py-1 hover:text-indigo-600">Website Maintenance</a></li>
+                        <li><a href="#about" class="block py-1 hover:text-indigo-600">Newspaper Site</a></li>
+                        <li><a href="#about" class="block py-1 hover:text-indigo-600">Health / Medical Site</a></li>
+                        <li><a href="#about" class="block py-1 hover:text-indigo-600">Educational Site</a></li>
+                        <li><a href="#about" class="block py-1 hover:text-indigo-600">Company Website</a></li>
+                        <li><a href="#about" class="block py-1 hover:text-indigo-600">Custom Website</a></li>
+                        <li><a href="#about" class="block py-1 hover:text-indigo-600">Domain & Hosting Service</a></li>
+                    </ul>
+                    <h5 class="text-indigo-600 font-semibold mt-4 mb-2">Business Software & Apps</h5>
+                    <ul class="space-y-1 text-sm text-gray-600">
+                        <li><a href="#about" class="block py-1 hover:text-indigo-600">Mobile Application Development</a></li>
+                        <li><a href="#about" class="block py-1 hover:text-indigo-600">POS Software</a></li>
+                        <li><a href="#about" class="block py-1 hover:text-indigo-600">Accounting Software</a></li>
+                        <li><a href="#about" class="block py-1 hover:text-indigo-600">Micro-credit Mgmt System</a></li>
+                        <li><a href="#about" class="block py-1 hover:text-indigo-600">Dealership Management</a></li>
+                        <li><a href="#about" class="block py-1 hover:text-indigo-600">n8n Automation Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mobile Mega Menu: Marketing & Creative -->
+            <div class="border-b border-gray-100">
+                <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
+                    <span>Marketing & Creative</span>
+                    <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content pl-6 pt-1">
+                    <h5 class="text-indigo-600 font-semibold mb-2">Organic Growth & SEO</h5>
+                    <ul class="space-y-1 text-sm text-gray-600">
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Professional SEO Service</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Local SEO</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">SEO for E-Commerce / Garments / Travel Agents</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Google Ads (PPC)</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">SEO for SMM Panel</a></li>
+                    </ul>
+                    <h5 class="text-indigo-600 font-semibold mt-4 mb-2">Social & Branding</h5>
+                    <ul class="space-y-1 text-sm text-gray-600">
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Social Media Marketing (SMM)</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Facebook Marketing & Promotion</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Facebook Page Promotion Likes</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Facebook Page Verify</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Facebook Page Maintenance</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Facebook Page Setup</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Brands / Products Advertisement</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Boost Your Business</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Corporate & Personal Branding</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Wikipedia Page Creation</a></li>
+                    </ul>
+                    <h5 class="text-indigo-600 font-semibold mt-4 mb-2">Creative Design & Media</h5>
+                    <ul class="space-y-1 text-sm text-gray-600">
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Logo Design</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">UI / UX Design</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Graphic & Ads Design</a></li>
+                        <li><a href="#contact" class="block py-1 hover:text-indigo-600">Video Editing & Production</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Standalone Links -->
+            <a href="#clients" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Our Clients</a>
+            <a href="#team" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Our Team</a>
+            <a href="#pr-agency" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">PR Agency</a>
+            <a href="#contact" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Contact</a>
+
+            <div class="pt-4 border-t border-gray-100">
+                <span class="block p-3 text-sm text-gray-500">Region: <span class="font-bold text-indigo-600">Bangladesh (BD)</span></span>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center max-w-7xl">
+            <!-- Logo -->
+            <a href="./" class="text-2xl font-black text-gray-900 tracking-tighter">Aarry Limited</a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-6 items-center">
+                <!-- Mega Menu 1: Web & Software -->
+                <div class="group relative">
+                    <a href="#services-dev" class="text-base font-medium text-gray-600 hover:text-indigo-600 flex items-center">
+                        Web & Software <i class="fas fa-chevron-down ml-1 text-xs transition-transform group-hover:rotate-180"></i>
+                    </a>
+                    <div class="mega-menu absolute hidden group-hover:block" style="width: 800px; left: 50%; transform: translateX(-50%);">
+                        <div class="mega-menu-content grid grid-cols-3 gap-6">
+                            <!-- Column 1: Website & Content -->
+                            <div class="mega-menu-column">
+                                <h4 class="text-lg font-bold mb-2">Website & Content</h4>
+                                <ul class="space-y-1 text-sm">
+                                    <li><a href="#pricing" class="block text-gray-700 hover:text-indigo-600">Web Design & Development</a></li>
+                                    <li><a href="#pricing" class="block text-gray-700 hover:text-indigo-600">E-Commerce Website</a></li>
+                                    <li><a href="#about" class="block text-gray-700 hover:text-indigo-600">Newspaper Site</a></li>
+                                    <li><a href="#about" class="block text-gray-700 hover:text-indigo-600">Company Website</a></li>
+                                    <li><a href="#about" class="block text-gray-700 hover:text-indigo-600">Educational Site</a></li>
+                                    <li><a href="#about" class="block text-gray-700 hover:text-indigo-600">Health / Medical Site</a></li>
+                                    <li><a href="#about" class="block text-gray-700 hover:text-indigo-600">Custom PHP Development</a></li>
+                                    <li><a href="#about" class="block text-gray-700 hover:text-indigo-600">Blogging & Portfolio Sites</a></li>
+                                </ul>
+                            </div>
+                            <!-- Column 2: Digital Infrastructure -->
+                            <div class="mega-menu-column">
+                                <h4 class="text-lg font-bold mb-2">Digital Infrastructure</h4>
+                                <ul class="space-y-1 text-sm">
+                                    <li><a href="#about" class="block text-gray-700 hover:text-indigo-600">Domain & Hosting Service</a></li>
+                                    <li><a href="#about" class="block text-gray-700 hover:text-indigo-600">Web Support & Maintenance</a></li>
+                                    <li><a href="#about" class="block text-gray-700 hover:text-indigo-600">Google Tag Manager Service</a></li>
+                                </ul>
+                                <h4 class="text-lg font-bold mt-4 mb-2">Business Software</h4>
+                                <ul class="space-y-1 text-sm">
+                                    <li><a href="#about" class="block text-gray-700 hover:text-indigo-600">Mobile Application Dev</a></li>
+                                    <li><a href="#about" class="block text-gray-700 hover:text-indigo-600">POS & Accounting Software</a></li>
+                                    <li><a href="#about" class="block text-gray-700 hover:text-indigo-600">Micro-credit & Dealership Mgmt</a></li>
+                                </ul>
+                            </div>
+                            <!-- Column 3: Specialized Software -->
+                            <div class="mega-menu-column">
+                                <h4 class="text-lg font-bold mb-2">Specialized Solutions</h4>
+                                <ul class="space-y-1 text-sm">
+                                    <li><a href="#about" class="block text-gray-700 hover:text-indigo-600">Courier Service Software</a></li>
+                                    <li><a href="#about" class="block text-gray-700 hover:text-indigo-600">Pharmacy Software</a></li>
+                                    <li><a href="#about" class="block text-gray-700 hover:text-indigo-600">SMS Marketing Solutions</a></li>
+                                    <li><a href="#about" class="block text-gray-700 hover:text-indigo-600">n8n Automation Service</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mega Menu 2: Marketing & Creative -->
+                <div class="group relative">
+                    <a href="#services-marketing" class="text-base font-medium text-gray-600 hover:text-indigo-600 flex items-center">
+                        Marketing & Creative <i class="fas fa-chevron-down ml-1 text-xs transition-transform group-hover:rotate-180"></i>
+                    </a>
+                    <div class="mega-menu absolute hidden group-hover:block" style="width: 800px; left: 50%; transform: translateX(-50%);">
+                        <div class="mega-menu-content grid grid-cols-3 gap-6">
+                            <!-- Column 1: Digital Growth & SEO (Cleaned Up) -->
+                            <div class="mega-menu-column">
+                                <h4 class="text-lg font-bold mb-2">Digital Growth & SEO</h4>
+                                <ul class="space-y-1 text-sm">
+                                    <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Professional SEO Service</a></li>
+                                    <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Local SEO</a></li>
+                                    <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">SEO for E-Commerce / Garments</a></li>
+                                    <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Google Ads (PPC)</a></li>
+                                    <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">SEO for Travel Agents</a></li>
+                                    <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">SEO for SMM Panel</a></li>
+                                </ul>
+                            </div>
+                            <!-- Column 2: Social & Branding (Updated with all Facebook/Boost items) -->
+                            <div class="mega-menu-column">
+                                <h4 class="text-lg font-bold mb-2">Social & Branding</h4>
+                                <ul class="space-y-1 text-sm">
+                                    <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Social Media Marketing (SMM)</a></li>
+                                    <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Facebook Marketing & Promotion</a></li>
+                                    <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Facebook Page Promotion Likes</a></li>
+                                    <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Facebook Page Verify</a></li>
+                                    <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Facebook Page Maintenance</a></li>
+                                    <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Facebook Page Setup</a></li>
+                                    <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Brands / Products Advertisement</a></li>
+                                    <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Boost Your Business</a></li>
+                                    <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Corporate & Personal Branding</a></li>
+                                    <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Wikipedia Page Creation</a></li>
+                                </ul>
+                            </div>
+                            <!-- Column 3: Creative Design -->
+                            <div class="mega-menu-column">
+                                <h4 class="text-lg font-bold mb-2">Creative Design & Media</h4>
+                                <ul class="space-y-1 text-sm">
+                                    <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Logo Design</a></li>
+                                    <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">UI / UX Design</a></li>
+                                    <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Graphic & Ads Design</a></li>
+                                    <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Video Editing & Production</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Standalone Links -->
+                <a href="#clients" class="text-base font-medium text-gray-600 hover:text-indigo-600">Our Clients</a>
+                <a href="#team" class="text-base font-medium text-gray-600 hover:text-indigo-600">Our Team</a>
+                <a href="#pr-agency" class="text-base font-medium text-gray-600 hover:text-indigo-600">PR Agency</a>
+                <a href="#contact" class="text-base font-medium text-gray-600 hover:text-indigo-600">Contact</a>
+                
+                <div class="flex items-center space-x-2 border-l pl-4">
+                    <i class="fas fa-globe text-gray-400"></i>
+                    <span class="text-sm font-semibold text-gray-900">Bangladesh (BD)</span>
+                </div>
+            </nav>
+
+            <!-- CTA/Mobile Menu Button -->
+            <div class="flex items-center">
+                <a href="#contact" class="hidden md:inline-block cta-button bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-6 rounded-full text-sm">
+                    Request a Quote
+                </a>
+                <button id="mobile-menu-open-button" class="md:hidden text-gray-600 hover:text-indigo-600 focus:outline-none ml-4">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Content Container -->
+    <main>
+        <!-- Home/Hero Section -->
+        <section id="home" class="py-24 md:py-32 bg-white">
+            <div class="container mx-auto px-4 text-center max-w-7xl">
+                <h1 class="text-3xl md:text-5xl font-black text-gray-900 leading-tight tracking-tighter mb-6">
+                    Professional Web & App Solutions & Digital Growth Marketing <span class="brand-gradient-text">and AI Automation Service</span> in Bangladesh
+                </h1>
+                <p class="text-lg text-gray-600 mb-10 max-w-3xl mx-auto">
+                    Aarry Limited delivers quality, affordable, and secure web development, custom software, and targeted digital marketing services specifically tailored for the Bangladeshi market.
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <a href="https://wa.me/+8801789363695" target="_blank" class="cta-button bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-8 rounded-full text-lg shadow-lg">
+                        <i class="fab fa-whatsapp mr-2"></i> Live Chat (WhatsApp)
+                    </a>
+                    <a href="tel:+8801789363695" class="bg-gray-200 text-gray-900 inline-flex items-center px-6 py-4 border border-transparent text-lg font-medium rounded-full shadow-lg hover:bg-gray-300">
+                        <i class="fas fa-phone-volume mr-2"></i> Call Now
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- CUSTOMER STAGE FOCUS SECTION --- -->
+        <section id="customer-focus" class="py-24 bg-gray-50 hidden-section">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-extrabold text-center text-gray-900 mb-16">
+                    Choose Your Path to Digital Success
+                </h2>
+
+                <div class="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
+                    
+                    <!-- Card 1: F-COMMERCE STARTER -->
+                    <div class="flex flex-col bg-white rounded-xl shadow-xl p-6 border-t-4 border-indigo-500 hover:shadow-2xl transition duration-300">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
+                            <i class="fas fa-shopping-bag text-indigo-600 mr-3"></i> Stage 1: F-Commerce Starter
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow">
+                            **You want to launch sales quickly without a full website.** Our focus is on high-impact social presence and immediate traffic generation.
+                        </p>
+                        <h4 class="text-md font-semibold text-gray-800 mb-2">Relevant Services:</h4>
+                        <ul class="text-sm text-gray-500 mb-6 space-y-1">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> **Facebook Page Setup** & Maintenance</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Facebook Boost & Ads Management</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Logo & Banner Design</li>
+                        </ul>
+                        <div class="space-y-3 mt-auto">
+                            <button data-stage="f-commerce-service" class="details-button block w-full text-center px-4 py-3 border border-transparent text-sm font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700 transition cta-button">
+                                Check Details of Our Service
+                            </button>
+                            <button data-stage="f-commerce-guide" class="details-button block w-full text-center px-4 py-3 border border-indigo-600 text-sm font-medium rounded-full text-indigo-600 bg-white hover:bg-indigo-50 transition">
+                                Guideline To Get Started
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: E-COMMERCE UPGRADER -->
+                    <div class="flex flex-col bg-white rounded-xl shadow-xl p-6 border-t-4 border-indigo-500 hover:shadow-2xl transition duration-300">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
+                            <i class="fas fa-store-alt text-indigo-600 mr-3"></i> Stage 2: E-commerce Upgrader
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow">
+                            **You need to move from social selling to a professional, scalable e-commerce store** (including dropshipping or traditional business models).
+                        </p>
+                        <h4 class="text-md font-semibold text-gray-800 mb-2">Relevant Services:</h4>
+                        <ul class="text-sm text-gray-500 mb-6 space-y-1">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> **E-Commerce Website** (View Pricing below)</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Domain/Hosting Setup</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> UI/UX Design & Brand Identity</li>
+                        </ul>
+                        <button data-stage="ecommerce-upgrade" class="details-button block w-full text-center px-4 py-3 border border-transparent text-sm font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700 transition cta-button mt-auto">
+                            Check Details of Our Service
+                        </button>
+                    </div>
+
+                    <!-- Card 3: GROWTH & BRANDING SEEKER -->
+                    <div class="flex flex-col bg-white rounded-xl shadow-xl p-6 border-t-4 border-indigo-500 hover:shadow-2xl transition duration-300">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
+                            <i class="fas fa-rocket text-indigo-600 mr-3"></i> Stage 3: Growth & Branding Seeker
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow">
+                            **You already have a website and need advanced strategies** for higher sales, brand authority, and automated marketing flows.
+                        </p>
+                        <h4 class="text-md font-semibold text-gray-800 mb-2">Relevant Services:</h4>
+                        <ul class="text-sm text-gray-500 mb-6 space-y-1">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> **Professional SEO** & Local SEO</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Google Ads Management (PPC)</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Corporate & Personal Branding</li>
+                        </ul>
+                        <button data-stage="growth-branding" class="details-button block w-full text-center px-4 py-3 border border-transparent text-sm font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700 transition cta-button mt-auto">
+                            Check Details of Our Service
+                        </button>
+                    </div>
+
+                    <!-- Card 4: CORPORATE & AUTOMATION -->
+                    <div class="flex flex-col bg-white rounded-xl shadow-xl p-6 border-t-4 border-indigo-500 hover:shadow-2xl transition duration-300">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
+                            <i class="fas fa-robot text-indigo-600 mr-3"></i> Stage 4: Corporate & Automation
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow">
+                            **You run a complex operation or institution that requires dedicated software** or powerful AI/workflow automation solutions.
+                        </p>
+                        <h4 class="text-md font-semibold text-gray-800 mb-2">Relevant Services:</h4>
+                        <ul class="text-sm text-gray-500 mb-6 space-y-1">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> **Custom App/Software Development**</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Micro-credit / POS / Accounting Systems</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> n8n Automation & GTM Integration</li>
+                        </ul>
+                        <button data-stage="corporate-automation" class="details-button block w-full text-center px-4 py-3 border border-transparent text-sm font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700 transition cta-button mt-auto">
+                            Check Details of Our Service
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- DYNAMIC SERVICE DETAILS PANEL (IN-LINE) --- -->
+        <section id="dynamic-details-container" class="bg-gray-100 py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div id="service-details-card" class="details-card">
+                    <!-- Default message before interaction -->
+                    <p class="text-lg text-gray-600 text-center">Click one of the buttons above to see detailed services or a step-by-step guideline!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Placeholder for other sections (Contact, Pricing, etc.) -->
+
+        <!-- Our Clients (Placeholder for content from USA site or custom) -->
+        <section id="clients" class="py-24 bg-white hidden-section">
+            <div class="container mx-auto px-4 text-center max-w-7xl">
+                <h2 class="text-3xl font-extrabold text-gray-900 mb-4">Our Valued Clients</h2>
+                <p class="text-lg text-gray-600 mb-12">Proudly supporting businesses and organizations across Bangladesh and abroad.</p>
+                <!-- Client Logos Placeholder -->
+                <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
+                    <span class="text-gray-400 text-lg">BASF</span>
+                    <span class="text-gray-400 text-lg">Bashundhara Group</span>
+                    <span class="text-gray-400 text-lg">Uttara University</span>
+                    <span class="text-gray-400 text-lg">Local Boutiques</span>
+                    <span class="text-gray-400 text-lg">Tech Startups</span>
+                </div>
+                <a href="#contact" class="cta-button bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-6 rounded-full text-sm mt-12 inline-block">See Full Portfolio</a>
+            </div>
+        </section>
+
+        <section id="team" class="py-24 bg-gray-50 hidden-section">
+            <div class="container mx-auto px-4 text-center max-w-7xl">
+                <h2 class="text-3xl font-extrabold text-gray-900">Our Team</h2>
+                <p class="text-lg text-gray-600 mt-3">Dedicated experts committed to your success.</p>
+                <p class="mt-8 text-gray-500">Content for Team Profiles and Expertise goes here.</p>
+            </div>
+        </section>
+
+        <section id="pr-agency" class="py-24 bg-white hidden-section">
+            <div class="container mx-auto px-4 text-center max-w-7xl">
+                <h2 class="text-3xl font-extrabold text-gray-900">PR Agency Services</h2>
+                <p class="text-lg text-gray-600 mt-3">Elevating your reputation with strategic public relations and media outreach.</p>
+                <p class="mt-8 text-gray-500">Content detailing PR services (media relations, crisis management, press releases) goes here.</p>
+            </div>
+        </section>
+
+        <section id="contact" class="py-24 bg-gray-900 hidden-section">
+            <div class="container mx-auto px-4 text-center max-w-7xl text-white">
+                <h2 class="text-3xl font-extrabold mb-4">Ready to Start Your Project?</h2>
+                <p class="text-lg text-gray-400 mb-8">Contact us today for a free consultation or discussion.</p>
+                <div class="flex justify-center space-x-4">
+                    <a href="https://wa.me/+8801789363695" target="_blank" class="cta-button bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-8 rounded-full text-lg shadow-lg">
+                        <i class="fab fa-whatsapp mr-2"></i> Discuss Project
+                    </a>
+                    <a href="mailto:info@aarry.org" class="bg-white text-gray-900 inline-flex items-center px-8 py-4 border border-transparent text-lg font-medium rounded-full shadow-lg hover:bg-gray-200">
+                        <i class="fas fa-envelope mr-2"></i> Email Us
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left max-w-7xl">
+            <div>
+                <h3 class="text-2xl font-black tracking-tighter mb-4">Aarry.</h3>
+                <p class="text-gray-400">Digital Solutions focused on Growth, Branding, and Automation for the Bangladeshi market.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Web & Software</h3>
+                <ul class="space-y-3">
+                    <li><a href="#pricing" class="text-gray-400 hover:text-white transition-colors">Web Design & Dev</a></li>
+                    <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">E-Commerce Solutions</a></li>
+                    <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">Custom App Dev</a></li>
+                    <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">Automation Services</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Marketing & Branding</h3>
+                <ul class="space-y-3">
+                    <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">SEO & Digital Growth</a></li>
+                    <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Facebook Marketing</a></li>
+                    <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Logo & UI/UX Design</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Company</h3>
+                <ul class="space-y-3">
+                    <li><a href="#clients" class="text-gray-400 hover:text-white transition-colors">Our Clients</a></li>
+                    <li><a href="#team" class="text-gray-400 hover:text-white transition-colors">Our Team</a></li>
+                    <li><a href="#pr-agency" class="text-gray-400 hover:text-white transition-colors">PR Agency</a></li>
+                    <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-12 container mx-auto px-4 text-center border-t border-gray-700 pt-8 max-w-7xl">
+            <p class="text-gray-500">&copy; <span id="year"></span> Aarry Limited, Dhaka, Bangladesh. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.body;
+            const mobileNav = document.getElementById('mobile-nav');
+            const openNavButton = document.getElementById('mobile-menu-open-button');
+            const closeNavButton = document.getElementById('mobile-menu-close-button');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            const openMobileNav = () => { mobileNav.classList.add('open'); body.classList.add('overflow-hidden'); };
+            const closeMobileNav = () => { mobileNav.classList.remove('open'); body.classList.remove('overflow-hidden'); };
+
+            openNavButton.addEventListener('click', openMobileNav);
+            closeNavButton.addEventListener('click', closeMobileNav);
+            navLinks.forEach(link => link.addEventListener('click', closeMobileNav));
+
+            // --- Mobile Accordion Handler ---
+            const accordionButtons = document.querySelectorAll('.mobile-accordion-button');
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('svg');
+                    const isOpening = content.classList.toggle('open');
+                    
+                    if (icon) { icon.classList.toggle('rotate-180'); }
+
+                    if (isOpening) {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    } else {
+                        content.style.maxHeight = '0';
+                    }
+                });
+            });
+
+            // --- Dynamic In-line Content/Service Panel Logic ---
+            const detailsButtons = document.querySelectorAll('.details-button');
+            const dynamicContainer = document.getElementById('dynamic-details-container');
+            const detailsCard = document.getElementById('service-details-card');
+            
+            const serviceContent = {
+                'f-commerce-service': {
+                    title: 'Stage 1: F-Commerce Starter — High-Impact Launch Services',
+                    intro: 'For rapid entry into the market using social media platforms. Our services focus on establishing your presence and driving immediate, measurable traffic.',
+                    list: [
+                        { text: 'Facebook Page Setup & Optimization', link: '#contact', icon: 'fab fa-facebook-square' },
+                        { text: 'Social Media Marketing (SMM) Strategy', link: '#contact', icon: 'fas fa-chart-line' },
+                        { text: 'Targeted Facebook Boost & Ads Management', link: '#contact', icon: 'fas fa-bullhorn' },
+                        { text: 'Logo Design & Social Banner Graphics', link: '#contact', icon: 'fas fa-palette' },
+                        { text: 'SMS Marketing (for local outreach)', link: '#contact', icon: 'fas fa-sms' },
+                    ],
+                    nextStep: 'Ready to launch? Click Discuss Project or review our step-by-step guideline.',
+                    showVideoUrl: null,
+                },
+                'f-commerce-guide': {
+                    title: 'Step-by-Step Guideline: Launching Your F-Commerce Business',
+                    intro: 'Follow this roadmap to successfully start selling your first items using social media. Consistency and targeted advertising are key!',
+                    list: [
+                        { text: 'Step 1: **Page Setup** - Create professional Facebook & Instagram pages. Ensure clear product photos and detailed descriptions.', icon: 'fas fa-pager' },
+                        { text: 'Step 2: **Content Strategy** - Plan 15-20 days of engaging content (photos, videos, live streams) before running ads.', icon: 'fas fa-pen-nib' },
+                        { text: 'Step 3: **Targeted Boosting** - Start with small, highly segmented boost campaigns to find your core audience.', icon: 'fas fa-location-arrow' },
+                        { text: 'Step 4: **Engagement & Support** - Dedicate time to reply instantly to all comments and messages. Excellent support builds trust.', icon: 'fas fa-headset' },
+                        { text: 'Step 5: **Review & Scale** - Analyze which ads worked best (CTR, conversion) and scale the successful ones. Look to migrate to a full e-commerce site (Stage 2) once sales stabilize.', icon: 'fas fa-chart-bar' },
+                    ],
+                    resources: [
+                        { text: 'Read: [Your Blog Link] - The definitive guide to F-Commerce in Bangladesh.', link: 'https://aarry.com/bd/f-commerce-guide' },
+                    ],
+                    // FIX: Added the video URL for the Guideline section
+                    showVideoUrl: 'https://www.youtube.com/watch?v=Hu3T-ZDROx8', // Placeholder URL for demonstration
+                },
+                'ecommerce-upgrade': {
+                    title: 'Stage 2: E-commerce Upgrader — Professional Site Development',
+                    intro: 'Moving beyond social media requires a robust, secure e-commerce platform. We build the foundation for scaling your business with local payment gateway integration and inventory management.',
+                    list: [
+                        { text: 'E-Commerce Website Development (Standard/Custom)', link: '#pricing', icon: 'fas fa-store' },
+                        { text: 'Domain Service & Reliable Hosting Service', link: '#about', icon: 'fas fa-server' },
+                        { text: 'UI / UX Design for optimal conversion rates', link: '#contact', icon: 'fas fa-laptop-code' },
+                        { text: 'Web Maintenance & Security Support', link: '#about', icon: 'fas fa-lock' },
+                        { text: 'Google Analytics & GTM Integration', link: '#about', icon: 'fas fa-chart-pie' },
+                    ],
+                    nextStep: 'Ready for a dedicated e-commerce platform? View our pricing or contact us for a customized quote.',
+                    showVideoUrl: null,
+                },
+                'growth-branding': {
+                    title: 'Stage 3: Growth & Branding Seeker — Advanced Marketing & Authority',
+                    intro: 'For established businesses looking for sustainable growth, increased brand visibility, and higher search engine rankings. We turn visitors into loyal customers.',
+                    list: [
+                        { text: 'Professional SEO Service (Technical & Content)', link: '#contact', icon: 'fas fa-search-plus' },
+                        { text: 'Local SEO optimization for location-based services', link: '#contact', icon: 'fas fa-map-marker-alt' },
+                        { text: 'Google Ads (PPC) and Brands / Products Advertisement', link: '#contact', icon: 'fas fa-ad' },
+                        { text: 'Corporate & Personal Branding Strategy', link: '#contact', icon: 'fas fa-users' },
+                        { text: 'Facebook Page Verify & Advanced SMM', link: '#contact', icon: 'fas fa-user-check' },
+                        { text: 'Video Editing & Production for engaging content', link: '#contact', icon: 'fas fa-video' },
+                    ],
+                    nextStep: 'Elevate your brand presence and market reach. Let\'s create a tailored growth roadmap.',
+                    showVideoUrl: null,
+                },
+                'corporate-automation': {
+                    title: 'Stage 4: Corporate & Automation — Custom Software & Efficiency',
+                    intro: 'Solutions for complex business operations requiring bespoke software, workflow automation, or enterprise-grade systems for efficient management.',
+                    list: [
+                        { text: 'Custom App/Software Development (PHP, .NET)', link: '#contact', icon: 'fas fa-cubes' },
+                        { text: 'Micro-credit, POS, Accounting Software Solutions', link: '#about', icon: 'fas fa-calculator' },
+                        { text: 'Dealership Management Systems', link: '#about', icon: 'fas fa-diagnoses' },
+                        { text: 'n8n Automation Service (AI-powered workflow)', link: '#about', icon: 'fas fa-robot' },
+                        { text: 'Courier Service & Pharmacy Software', link: '#about', icon: 'fas fa-truck' },
+                    ],
+                    nextStep: 'Streamline your operations and reduce overhead with custom software. Contact us for a detailed feasibility study.',
+                    showVideoUrl: null,
+                },
+            };
+
+            const renderDetails = (stage) => {
+                const data = serviceContent[stage];
+                if (!data) {
+                    detailsCard.innerHTML = '<p class="text-red-500">Service data not found.</p>';
+                    return;
+                }
+
+                let html = `
+                    <div class="flex justify-between items-start mb-6">
+                        <h2 class="font-black text-gray-900">${data.title}</h2>
+                        <button id="close-details-button" class="text-gray-500 hover:text-gray-900 transition text-2xl p-2 rounded-full hover:bg-gray-100">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <p class="text-lg text-gray-700 mb-6">${data.intro}</p>
+                `;
+                
+                // Add Video if URL exists
+                if (data.showVideoUrl) {
+                    html += `
+                        <h4 class="font-bold text-indigo-600 mb-3">Watch Our Launch Guide:</h4>
+                        <div class="video-responsive mb-8">
+                            <iframe src="${data.showVideoUrl}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    `;
+                }
+
+                html += `<div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-4">`;
+
+                data.list.forEach(item => {
+                    html += `
+                        <a href="${item.link}" class="flex items-start space-x-3 text-gray-800 service-link">
+                            <i class="${item.icon} text-indigo-600 pt-1"></i>
+                            <span class="text-base">${item.text}</span>
+                        </a>
+                    `;
+                });
+
+                html += `</div>
+                    <div class="mt-8 border-t border-gray-200 pt-6">
+                        <p class="text-md text-gray-600">${data.nextStep}</p>
+                `;
+
+                if (data.resources && data.resources.length > 0) {
+                    html += `<h4 class="font-bold mt-4 mb-2 text-indigo-600">Learn More:</h4><ul class="space-y-1 text-sm text-gray-700">`;
+                    data.resources.forEach(res => {
+                        html += `<li><a href="${res.link}" target="_blank" class="service-link block hover:underline">${res.text}</a></li>`;
+                    });
+                    html += `</ul>`;
+                }
+
+                // Add main CTA button for service discussion
+                html += `<div class="mt-6">
+                    <a href="https://wa.me/+8801789363695" target="_blank" class="cta-button inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full text-md shadow-lg">
+                        <i class="fab fa-whatsapp mr-2"></i> Discuss Your Project on WhatsApp
+                    </a>
+                    </div>
+                </div>`;
+
+                detailsCard.innerHTML = html;
+                dynamicContainer.classList.add('open');
+                
+                // Scroll to the new details section
+                detailsCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                document.getElementById('close-details-button').addEventListener('click', closeDetailsPanel);
+            };
+
+            const closeDetailsPanel = () => {
+                dynamicContainer.classList.remove('open');
+                // Clear content after animation for cleanliness
+                detailsCard.innerHTML = '<p class="text-lg text-gray-600 text-center">Click one of the buttons above to see detailed services or a step-by-step guideline!</p>';
+                detailsCard.removeAttribute('data-current-stage');
+                // Re-scroll to the top of the customer-focus section when closing the details panel
+                document.getElementById('customer-focus').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            };
+            
+
+            detailsButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const stage = button.getAttribute('data-stage');
+                    
+                    if (detailsCard.getAttribute('data-current-stage') === stage) {
+                         closeDetailsPanel();
+                    } else {
+                        detailsCard.setAttribute('data-current-stage', stage);
+                        renderDetails(stage);
+                    }
+                });
+            });
+
+
+            // --- CTA Smooth Scroll Handler (Copied from USA page) ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                        // Also close mobile nav if open
+                        if (mobileNav.classList.contains('open')) {
+                            closeMobileNav();
+                        }
+                    }
+                });
+            });
+
+            // --- Animate Sections on Scroll (Copied from USA page) ---
+            const hiddenSections = document.querySelectorAll('.hidden-section');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('open');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            hiddenSections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+
+
+            // --- Dynamic Year in Footer ---
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
