@@ -265,6 +265,126 @@
             color: #1a202c !important; /* text-gray-900 */
         }
     </style>
+    <!-- JSON-LD SCHEMA MARKUP for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://aarry.org/#organization",
+          "name": "Aarry Limited",
+          "url": "https://aarry.org/",
+          "logo": "https://aarry.org/assets/logo.png",
+          "sameAs": [
+            "https://www.facebook.com/AarryLimited/",
+            "https://www.linkedin.com/company/aarry",
+            "https://x.com/AarryLimited"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+8801777510221",
+            "contactType": "Sales and Support",
+            "areaServed": ["BD", "US", "Global"]
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://aarry.org/bd/index.html#webpage", 
+          "url": "https://aarry.org/bd/index.html",
+          "name": "Comprehensive Digital Services | Aarry Limited",
+          "description": "Expert services in Web & Software Development, Digital Marketing, Creative Design, and cutting-edge AI Automation solutions.",
+          "isPartOf": {"@id": "https://aarry.org/#organization"}
+        },
+        {
+          "@type": "ProfessionalService",
+          "name": "Web & Software Solutions",
+          "description": "Custom development, e-commerce solutions (Shopify, Headless), business software, app development, and technical consulting.",
+          "serviceType": "Web Development Agency",
+          "provider": {"@id": "https://aarry.org/#organization"},
+          "url": "https://aarry.org/bd/index.html#nav-web-software"
+        },
+        {
+          "@type": "ProfessionalService",
+          "name": "Marketing & Creative Services",
+          "description": "Full-stack digital growth including SEO, CRO, PPC management, social media marketing (SMM), branding, logo design, and video production.",
+          "serviceType": "Digital Marketing Agency",
+          "provider": {"@id": "https://aarry.org/#organization"},
+          "url": "https://aarry.org/bd/index.html#nav-marketing-creative"
+        },
+        {
+          "@type": "ProfessionalService",
+          "name": "AI Automation Solutions",
+          "description": "Automation services for lead generation, sales research, content creation, internal workflows (HR, support), and market intelligence tools.",
+          "serviceType": "Business Automation & AI Consulting",
+          "provider": {"@id": "https://aarry.org/#organization"},
+          "url": "https://aarry.org/bd/index.html#nav-ai-automation"
+        }
+      ]
+    }
+    </script>
+    <!-- END JSON-LD SCHEMA MARKUP -->
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fc;
+            color: #333;
+        }
+
+        /* --- Nested Accordion Styles for Left Menu --- */
+
+        /* General visibility control for sub-content on the right */
+        .sub-content-display {
+            display: none;
+        }
+        .sub-content-display.active {
+            display: block;
+        }
+        
+        /* Container for nested sub-menu items on the left */
+        .nested-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
+        }
+        .nested-content.open {
+            max-height: 500px; /* A large value to ensure visibility */
+        }
+
+        /* Active styling for the Level 2 button */
+        .sub-nav-button.active {
+            background-color: #eef2ff; /* Indigo 50 */
+            color: #4f46e5; /* Indigo 600 */
+            font-weight: 600;
+        }
+        /* Active hover styling for the Level 2 button */
+        .sub-nav-button:hover:not(.active) {
+            background-color: #eef2ff;
+        }
+
+        /* Styling for the icon inside the main accordion button */
+        .main-accordion-button i {
+            transition: transform 0.3s ease;
+        }
+        .main-accordion-button.active i {
+            transform: rotate(180deg);
+        }
+
+        /* Styling for the accordion content on the right */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
+        }
+        .accordion-content.open {
+            max-height: 1500px; 
+        }
+        .accordion-button.active i {
+            transform: rotate(180deg);
+        }
+    </style>
 </head>
 <body class="antialiased">
     <div class="page-wrapper">
@@ -587,33 +707,414 @@
             </section>
 
             <!-- --- OUR CORE SERVICE PILLARS SECTION (New Tabbed System) --- -->
-            <section id="core-pillars" class="py-16 bg-white hidden-section">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-3xl font-extrabold text-center text-gray-900 mb-12">
-                        Our Core Service Pillars: Building Digital Success
-                    </h2>
-
-                    <div class="bg-gray-100 rounded-xl shadow-lg p-6">
-                        <!-- Tab Navigation -->
-                        <div class="flex flex-wrap justify-center border-b border-gray-300 mb-6">
-                            <button data-tab="web-software-tab" class="tab-button px-6 py-3 text-lg font-semibold border-b-4 border-transparent text-gray-600 hover:text-indigo-600 transition-colors active-tab">
-                                Web & Software
-                            </button>
-                            <button data-tab="marketing-creative-tab" class="tab-button px-6 py-3 text-lg font-semibold border-b-4 border-transparent text-gray-600 hover:text-indigo-600 transition-colors">
-                                Marketing & Creative
-                            </button>
-                            <button data-tab="ai-automation-tab" class="tab-button px-6 py-3 text-lg font-semibold border-b-4 border-transparent text-gray-600 hover:text-indigo-600 transition-colors">
-                                AI Automation
-                            </button>
-                        </div>
-                        
-                        <!-- Tab Content -->
-                        <div id="tab-content" class="min-h-[250px] p-4">
-                            <!-- Content will be dynamically inserted here by JS -->
+              <!-- Advanced Services Section (Web, Marketing, AI) -->
+    <section id="advanced-services" class="py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-7xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Comprehensive Digital Services</h2>
+                <p class="text-gray-600 mt-2 max-w-3xl mx-auto">From robust software development to cutting-edge AI automation, we power your entire digital landscape.</p>
+            </div>
+            
+            <!-- IMAGE PLACEHOLDER: Visual Introduction to Services -->
+            <div class="mb-12">
+                <img src="https://placehold.co/1200x400/4f46e5/ffffff?text=Your+Partner+for+Digital+Transformation" 
+                     alt="Placeholder image representing digital transformation and technology solutions" 
+                     class="w-full rounded-2xl shadow-2xl border-4 border-indigo-100 object-cover h-48 md:h-64">
+            </div>
+            
+            <!-- Main Content Area: Left side is nested navigation, Right side is service details -->
+            <div class="flex flex-col md:flex-row gap-12"> 
+                
+                <!-- Left-side Navigation (Level 1 & 2) -->
+                <div class="md:w-1/3 p-4 bg-white rounded-2xl shadow-xl space-y-2 h-fit"> 
+                    
+                    <!-- L1 Web & Software -->
+                    <div id="nav-web-software" class="main-nav-item rounded-xl shadow-xl transition-all duration-300">
+                        <button class="main-accordion-button active w-full p-6 text-left bg-indigo-600 text-white rounded-xl flex justify-between items-center text-xl font-bold">
+                            <h3 class="flex items-center"><i class="fas fa-code mr-3"></i> Web & Software</h3>
+                            <i class="fas fa-chevron-down w-4 h-4 transition-transform duration-300 rotate-180"></i>
+                        </button>
+                        <div class="nested-content open space-y-1 p-2 bg-gray-50 rounded-b-xl border border-t-0 border-gray-100">
+                            <!-- L2 Subcategories -->
+                            <button data-content-id="sub-content-web-content" class="sub-nav-button w-full p-3 text-left rounded-lg transition hover:bg-indigo-100">Website & Content</button>
+                            <button data-content-id="sub-content-business-software" class="sub-nav-button w-full p-3 text-left rounded-lg text-gray-700 transition hover:bg-indigo-100">Business Software & Apps</button>
+                            <button data-content-id="sub-content-strategy-consulting" class="sub-nav-button w-full p-3 text-left rounded-lg text-gray-700 transition hover:bg-indigo-100">Strategy & Consulting</button>
                         </div>
                     </div>
+
+                    <!-- L1 Marketing & Creative -->
+                    <div id="nav-marketing-creative" class="main-nav-item rounded-xl shadow-md transition-all duration-300">
+                        <button class="main-accordion-button w-full p-6 text-left bg-gray-100 rounded-xl flex justify-between items-center text-xl font-bold text-gray-800">
+                            <h3 class="flex items-center"><i class="fas fa-bullhorn mr-3"></i> Marketing & Creative</h3>
+                            <i class="fas fa-chevron-down w-4 h-4 transition-transform duration-300"></i>
+                        </button>
+                        <div class="nested-content space-y-1 p-2 bg-gray-50 rounded-b-xl border border-t-0 border-gray-100">
+                            <!-- L2 Subcategories -->
+                            <button data-content-id="sub-content-growth-ads" class="sub-nav-button w-full p-3 text-left rounded-lg text-gray-700 transition hover:bg-indigo-100">Organic Growth & Paid Advertising</button>
+                            <button data-content-id="sub-content-social-branding" class="sub-nav-button w-full p-3 text-left rounded-lg text-gray-700 transition hover:bg-indigo-100">Social & Branding</button>
+                            <button data-content-id="sub-content-creative-media" class="sub-nav-button w-full p-3 text-left rounded-lg text-gray-700 transition hover:bg-indigo-100">Creative Design & Media</button>
+                        </div>
+                    </div>
+                    
+                    <!-- L1 AI Automation -->
+                    <div id="nav-ai-automation" class="main-nav-item rounded-xl shadow-md transition-all duration-300">
+                        <button class="main-accordion-button w-full p-6 text-left bg-gray-100 rounded-xl flex justify-between items-center text-xl font-bold text-gray-800">
+                            <h3 class="flex items-center"><i class="fas fa-robot mr-3"></i> AI Automation</h3>
+                            <i class="fas fa-chevron-down w-4 h-4 transition-transform duration-300"></i>
+                        </button>
+                        <div class="nested-content space-y-1 p-2 bg-gray-50 rounded-b-xl border border-t-0 border-gray-100">
+                            <!-- L2 Subcategories -->
+                            <button data-content-id="sub-content-lead-sales" class="sub-nav-button w-full p-3 text-left rounded-lg text-gray-700 transition hover:bg-indigo-100">Lead Generation & Sales Automation</button>
+                            <button data-content-id="sub-content-content-media" class="sub-nav-button w-full p-3 text-left rounded-lg text-gray-700 transition hover:bg-indigo-100">Content & Media Automation</button>
+                            <button data-content-id="sub-content-internal-support" class="sub-nav-button w-full p-3 text-left rounded-lg text-gray-700 transition hover:bg-indigo-100">Internal Workflow & Support</button>
+                            <button data-content-id="sub-content-research-analysis" class="sub-nav-button w-full p-3 text-left rounded-lg text-gray-700 transition hover:bg-indigo-100">Research & Analysis</button>
+                        </div>
+                    </div>
+
                 </div>
-            </section>
+
+                <!-- Right-side Content (Displays only the selected Subcategory's services) -->
+                <div class="md:w-2/3 p-8 bg-white rounded-2xl shadow-xl space-y-10">
+
+                    <!-- Default/Initial Message -->
+                    <div id="initial-message" class="sub-content-display active text-center p-12 bg-gray-50 rounded-xl shadow-inner border-t-4 border-indigo-500">
+                        <h4 class="text-3xl font-extrabold text-indigo-700 mb-4">Select a Service Subcategory</h4>
+                        <p class="text-gray-600">Click on any subcategory from the left menu (e.g., **Website & Content**) to view the detailed services and solutions we offer.</p>
+                    </div>
+
+                    <!-- 1. Web & Software - Sub Content: Website & Content -->
+                    <div id="sub-content-web-content" class="sub-content-display space-y-8">
+                        <h4 class="text-3xl font-bold text-gray-900 border-b pb-2">Website & Content Services</h4>
+                        <p class="text-gray-700">We specialize in designing and developing highly functional, engaging web platforms, from simple company sites to complex e-commerce solutions. Our services ensure your digital face is fast, secure, and professional.</p>
+                        
+                        <div class="bg-gray-50 p-6 rounded-xl shadow-inner border-l-4 border-indigo-500 space-y-3">
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">Web Design & Development (Shopify, Custom, E-Commerce)</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">We craft visually stunning, responsive, and high-performing custom websites tailored to your brand identity. This includes general web development, bespoke **Custom Websites**, **Shopify Store Setup**, and advanced **Headless E-Commerce** solutions.</p></div>
+                            </div>
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">Specialized Site Development (Newspaper, Educational, Health)</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">Tailored web solutions for niche industries, including high-traffic **Newspaper Sites**, structured **Educational Portals**, **Health/Medical Sites**, or robust **Corporate/Company Websites**, designed for unique functional requirements.</p></div>
+                            </div>
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">Website Maintenance, Support, and Hosting</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">Comprehensive ongoing **Website Maintenance**, proactive **Web Support**, and reliable **Domain & Hosting Service** management to ensure your site is secure, fast, and always available to your audience.</p></div>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <a href="#contact" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">Discuss Your Website Needs</a>
+                        </div>
+                    </div>
+                    
+                    <!-- 1. Web & Software - Sub Content: Business Software & Apps -->
+                    <div id="sub-content-business-software" class="sub-content-display space-y-8">
+                        <h4 class="text-3xl font-bold text-gray-900 border-b pb-2">Business Software & App Development</h4>
+                        <p class="text-gray-700">We develop robust, scalable software and mobile applications to streamline your internal processes, manage finances, and deliver superior customer experiences.</p>
+                        <div class="bg-gray-50 p-6 rounded-xl shadow-inner border-l-4 border-indigo-500 space-y-3">
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">Mobile Application Development</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">Building native or cross-platform mobile apps for iOS and Android, turning your innovative ideas into fast, reliable, and user-friendly mobile experiences that drive engagement.</p></div>
+                            </div>
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">POS & Accounting Software Solutions</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">Custom integrated **Point of Sale (POS)** and comprehensive **Accounting Software** designed to streamline your retail operations, inventory tracking, and financial reporting for seamless business flow.</p></div>
+                            </div>
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">Specialized Management Systems (Micro-credit, Dealership)</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">Bespoke software solutions for niche operational demands, including sophisticated **Micro-credit Management Systems**, integrated **Dealership Management** platforms, and more.</p></div>
+                            </div>
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">Logistics & Industry Software (Courier, Pharmacy, SMS)</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">Custom development for highly regulated or unique industries, covering **Courier Service Software**, **Pharmacy Software** for inventory and dispensing, and specialized **SMS Marketing Software** platforms.</p></div>
+                            </div>
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">Third-Party App Integration & n8n Automation Service</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">Connecting your digital ecosystem by implementing third-party apps and developing complex workflow automation using **n8n** to streamline communication between all your business systems.</p></div>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <a href="#contact" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">Start Your Software Project</a>
+                        </div>
+                    </div>
+
+                    <!-- 1. Web & Software - Sub Content: Strategy & Consulting -->
+                    <div id="sub-content-strategy-consulting" class="sub-content-display space-y-8">
+                        <h4 class="text-3xl font-bold text-gray-900 border-b pb-2">Strategy & Consulting Services</h4>
+                        <p class="text-gray-700">Gain a strategic advantage with our expert consulting, covering technical infrastructure, platform migration planning, and long-term digital growth roadmaps.</p>
+                        <div class="bg-gray-50 p-6 rounded-xl shadow-inner border-l-4 border-indigo-500 space-y-3">
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">eCommerce Roadmapping & Technical Audits</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">We provide long-term strategic planning to ensure scalable growth. This includes comprehensive **Technical Audits** to identify and resolve performance bottlenecks, accessibility issues, and core web vital problems.</p></div>
+                            </div>
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">Platform Migrations & Replatforming</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">Seamlessly move your store from platforms like Magento or WooCommerce to Shopify. We manage the entire **Platform Migration** process, ensuring zero data loss and maintaining SEO integrity during the replatforming transition.</p></div>
+                            </div>
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">Internationalization Strategy</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">Strategic planning for global expansion, covering multi-currency support, regional content, localized payment options, and multi-store architecture implementation to serve international customers effectively.</p></div>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <a href="#contact" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">Book a Strategy Session</a>
+                        </div>
+                    </div>
+
+                    <!-- 2. Marketing & Creative - Sub Content: Organic Growth & Paid Advertising -->
+                    <div id="sub-content-growth-ads" class="sub-content-display space-y-8">
+                        <h4 class="text-3xl font-bold text-gray-900 border-b pb-2">Organic Growth & Paid Advertising</h4>
+                        <p class="text-gray-700">We develop data-driven strategies to maximize your visibility and acquisition channels, driving high-quality traffic through search engine optimization, content, and targeted paid campaigns.</p>
+                        <div class="bg-gray-50 p-6 rounded-xl shadow-inner border-l-4 border-indigo-500 space-y-3">
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">Professional SEO Service, Local SEO & AEO (AI SEO)</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">Comprehensive SEO strategies covering technical audits, keyword research, on-page optimization, and link building. Includes specialized **Local SEO** and cutting-edge **AEO (AI SEO)** to optimize for modern search results.</p></div>
+                            </div>
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">Specialized SEO (E-Commerce, SMM Panel, Garments, Travel)</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">Targeted SEO campaigns tailored for specific industries, including **E-Commerce/Shopify**, **Garments**, **Travel Agents**, and niche platforms like **SMM Panels**, ensuring maximum visibility within your market.</p></div>
+                            </div>
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">Google Ads (PPC) Management & Content Strategy</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">Expert management of Pay-Per-Click campaigns focused on maximizing ROI, combined with robust **Content Strategy** planning to ensure all organic and paid traffic converts effectively.</p></div>
+                            </div>
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">CRO (Conversion Rate Optimization) & Email/SMS Automation</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">Data-driven **CRO** via A/B testing combined with retention-focused strategies utilizing automated **Email & SMS Automation** flows to re-engage customers and increase customer lifetime value (CLV).</p></div>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <a href="#contact" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">Request a Marketing Strategy</a>
+                        </div>
+                    </div>
+
+                    <!-- 2. Marketing & Creative - Sub Content: Social & Branding -->
+                    <div id="sub-content-social-branding" class="sub-content-display space-y-8">
+                        <h4 class="text-3xl font-bold text-gray-900 border-b pb-2">Social & Branding Services</h4>
+                        <p class="text-gray-700">We help you build a resonant brand identity and manage effective social media strategies, ensuring your message is consistent, engaging, and reaches the right audience.</p>
+                        <div class="bg-gray-50 p-6 rounded-xl shadow-inner border-l-4 border-indigo-500 space-y-3">
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">Social Media Marketing (SMM) & Promotions</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">Full-service SMM, including strategy development, content creation, community management, and targeted promotion campaigns (**Brands/Products Advertisement, Boost Your Business**) to maximize visibility.</p></div>
+                            </div>
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">Advanced Social Media Management & Verification</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">Specialized Facebook services, including managing **Facebook Marketing & Promotion**, driving **Page Promotion Likes**, and assisting with **Facebook Page Verify** status to build authority and trust.</p></div>
+                            </div>
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">Corporate & Personal Branding / Wikipedia Creation</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">Developing a strong, consistent, and resonant brand identity—for both corporations and high-profile individuals—including specialized services like professional **Wikipedia Page Creation** for authoritative presence.</p></div>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <a href="#contact" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">Build My Brand Identity</a>
+                        </div>
+                    </div>
+
+                    <!-- 2. Marketing & Creative - Sub Content: Creative Design & Media -->
+                    <div id="sub-content-creative-media" class="sub-content-display space-y-8">
+                        <h4 class="text-3xl font-bold text-gray-900 border-b pb-2">Creative Design & Media Services</h4>
+                        <p class="text-gray-700">We provide high-impact creative services, ensuring your visual assets and media production are professional, engaging, and perfectly aligned with your brand identity.</p>
+                        <div class="bg-gray-50 p-6 rounded-xl shadow-inner border-l-4 border-indigo-500 space-y-3">
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">Logo & UI/UX Design</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">Creating unique, memorable **Logos** and designing intuitive, conversion-focused **UI/UX** interfaces that ensure a seamless and enjoyable user journey across all platforms.</p></div>
+                            </div>
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">Graphic Design & Video Production</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">High-quality visual production, including stunning **Graphic & Ads Design** for campaigns and professional **Video Editing & Production** for brand stories, product demos, and social content.</p></div>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <a href="#contact" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">Get Creative Design Support</a>
+                        </div>
+                    </div>
+                    
+                    <!-- 3. AI Automation - Sub Content: Lead Generation & Sales Automation -->
+                    <div id="sub-content-lead-sales" class="sub-content-display space-y-8">
+                        <h4 class="text-3xl font-bold text-gray-900 border-b pb-2">Lead Generation & Sales Automation</h4>
+                        <p class="text-gray-700">Implement cutting-edge AI tools to revolutionize your sales pipeline, automating lead identification, research, personalized outreach, and conversion tracking.</p>
+                        <div class="bg-gray-50 p-6 rounded-xl shadow-inner border-l-4 border-indigo-500 space-y-3">
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">AI Powered Lead Generation and Personalized Outreach Systems</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">Automating the identification of ideal prospects, generating hyper-personalized outreach messages, and sequencing follow-ups for massive sales efficiency and higher conversion rates. Includes comprehensive **Automated Lead Generation and Email Outreach Systems**.</p></div>
+                            </div>
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">AI Sales Research and Automated Processing</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">Systems for automated lead qualification, competitive intelligence gathering (**AI Sales Research**), and generation of tailored email scripts. Includes advanced solutions like **Automated Lead Processing with AI Phone Calls** and the **Google Maps Business Lead Scraper**.</p></div>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <a href="#contact" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">Automate Lead Generation</a>
+                        </div>
+                    </div>
+
+                    <!-- 3. AI Automation - Sub Content: Content & Media Automation -->
+                    <div id="sub-content-content-media" class="sub-content-display space-y-8">
+                        <h4 class="text-3xl font-bold text-gray-900 border-b pb-2">Content & Media Automation</h4>
+                        <p class="text-gray-700">Dramatically increase your content output and media quality using AI to handle social media planning, content drafting, and large-scale video production for ads and organic posts.</p>
+                        <div class="bg-gray-50 p-6 rounded-xl shadow-inner border-l-4 border-indigo-500 space-y-3">
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">Automated Social Media Content Creator and Publisher</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">AI systems that monitor trends, generate relevant captions, create visual content drafts, and schedule posts across all your social channels automatically, including targeted **Automated LinkedIn Post Generation**.</p></div>
+                            </div>
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">AI Video Generator (CGI/UGC Ads)</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">Leveraging advanced AI models to quickly transform static product images into dynamic **CGI Videos** or realistic **UGC Video Ads** for faster, cheaper, and more scalable creative testing.</p></div>
+                            </div>
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">AI-Powered Multi-Step Research and Report Generator</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">Automating deep analysis by querying multiple data sources and synthesizing findings into custom, well-structured, ready-to-present business **Reports** for strategic decision-making.</p></div>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <a href="#contact" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">Scale Content Creation</a>
+                        </div>
+                    </div>
+
+                    <!-- 3. AI Automation - Sub Content: Internal Workflow & Support -->
+                    <div id="sub-content-internal-support" class="sub-content-display space-y-8">
+                        <h4 class="text-3xl font-bold text-gray-900 border-b pb-2">Internal Workflow & Support Automation</h4>
+                        <p class="text-gray-700">Streamline operational bottlenecks in HR and customer service by implementing AI-powered assistants, automated management systems, and smart routing solutions.</p>
+                        <div class="bg-gray-50 p-6 rounded-xl shadow-inner border-l-4 border-indigo-500 space-y-3">
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">Automated Hiring Process Management System</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">Implementing AI to screen resumes, automate scheduling, conduct initial candidate assessments, and manage communication throughout the entire hiring pipeline, saving HR time.</p></div>
+                            </div>
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">AI Support Agent with Email Escalation</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">Deploying AI chatbots to handle Tier 1 customer support, providing instant answers 24/7, and seamlessly escalating complex issues to a human agent via email or other channels.</p></div>
+                            </div>
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">Telegram AI Assistant for Email and Calendar</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">Connecting an AI assistant directly to Telegram to manage emails, schedule calendar events, and provide executive support via chat, keeping workflows running smoothly even on the go.</p></div>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <a href="#contact" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">Optimize Internal Workflows</a>
+                        </div>
+                    </div>
+
+                    <!-- 3. AI Automation - Sub Content: Research & Analysis (NEW) -->
+                    <div id="sub-content-research-analysis" class="sub-content-display space-y-8">
+                        <h4 class="text-3xl font-bold text-gray-900 border-b pb-2">AI-Powered Research & Analysis</h4>
+                        <p class="text-gray-700">Gain actionable, data-driven insights faster than ever using our AI-powered competitive analysis and consumer sentiment tools.</p>
+                        <div class="bg-gray-50 p-6 rounded-xl shadow-inner border-l-4 border-indigo-500 space-y-3">
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">Facebook Ad Spy and Analysis Tool</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">Automated system that monitors competitor ad campaigns on Facebook, analyzing creative, targeting, and effectiveness to provide real-time competitive intelligence for your marketing strategy.</p></div>
+                            </div>
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">YouTube Video Comment Analysis and Report Generator</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">AI-driven sentiment analysis of YouTube comments across target videos, identifying audience pain points, feature requests, and engagement trends to inform your content and product development.</p></div>
+                            </div>
+                            <div class="border-b border-gray-200 last:border-b-0 pb-3">
+                                <div class="flex justify-between items-center cursor-pointer accordion-button group/item">
+                                    <h5 class="text-lg font-semibold text-gray-800 group-hover/item:text-indigo-600 transition">Reddit Business Problem Research and Analysis Tool</h5>
+                                    <i class="fas fa-chevron-down w-4 h-4 text-gray-500 transition-transform duration-300"></i>
+                                
+                                </div>
+                                <div class="accordion-content pt-2"><p class="text-gray-600 leading-relaxed">Scraping and analyzing conversations on Reddit (and other forums) to uncover unmet business needs, trending concerns, and user-generated feedback, offering invaluable market intelligence.</p></div>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <a href="#contact" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">Unlock Market Intelligence</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
             <!-- --- END CORE SERVICE PILLARS SECTION --- -->
 
             <!-- --- CUSTOMER STAGE FOCUS SECTION --- -->
@@ -1525,6 +2026,145 @@
 
             // --- Dynamic Year in Footer ---
             document.getElementById('year').textContent = new Date().getFullYear();
+        });
+    </script>
+    <script>
+        // --- Main Accordion (Level 1) Logic ---
+        const mainAccordionButtons = document.querySelectorAll('.main-accordion-button');
+        const allMainNavItems = document.querySelectorAll('.main-nav-item');
+        const allSubContentDisplays = document.querySelectorAll('.sub-content-display');
+        const initialMessage = document.getElementById('initial-message');
+
+        mainAccordionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const parentItem = button.closest('.main-nav-item');
+                const nestedContent = button.nextElementSibling;
+                
+                // 1. Handle Accordion Toggle (Open/Close)
+                const isCurrentlyOpen = nestedContent.classList.contains('open');
+
+                // Close all main accordions and remove active styling
+                allMainNavItems.forEach(item => {
+                    const content = item.querySelector('.nested-content');
+                    const btn = item.querySelector('.main-accordion-button');
+                    
+                    content.classList.remove('open');
+                    btn.classList.remove('active');
+                    btn.classList.remove('bg-indigo-600', 'text-white', 'shadow-xl');
+                    btn.classList.add('bg-gray-100', 'text-gray-800', 'shadow-md');
+                    item.querySelector('i').classList.remove('rotate-180');
+                    item.classList.remove('shadow-xl');
+                    item.classList.add('shadow-md');
+                });
+                
+                // If it was not open, open it and apply active styles
+                if (!isCurrentlyOpen) {
+                    nestedContent.classList.add('open');
+                    button.classList.add('active');
+                    button.classList.remove('bg-gray-100', 'text-gray-800');
+                    button.classList.add('bg-indigo-600', 'text-white');
+                    parentItem.classList.remove('shadow-md');
+                    parentItem.classList.add('shadow-xl');
+                    button.querySelector('i').classList.add('rotate-180');
+                    
+                    // 2. Auto-select the FIRST sub-tab and display its content
+                    const firstSubButton = nestedContent.querySelector('.sub-nav-button');
+                    if (firstSubButton) {
+                        subNavSwitchingLogic(firstSubButton);
+                    }
+                }
+            });
+        });
+
+
+        // --- Sub Navigation (Level 2) Logic ---
+        function subNavSwitchingLogic(button) {
+            
+            // 1. Deactivate all Level 2 sub-nav buttons across ALL main containers
+            document.querySelectorAll('.sub-nav-button').forEach(btn => {
+                btn.classList.remove('active', 'bg-indigo-50', 'text-indigo-700');
+                btn.classList.add('text-gray-700', 'hover:bg-indigo-100');
+            });
+
+            // 2. Hide all detailed content sections on the right
+            allSubContentDisplays.forEach(content => {
+                content.classList.remove('active');
+            });
+            initialMessage.classList.remove('active');
+
+            // 3. Activate the clicked Level 2 button
+            button.classList.add('active', 'bg-indigo-50', 'text-indigo-700');
+            button.classList.remove('text-gray-700', 'hover:bg-indigo-100');
+
+            // 4. Show the corresponding detailed content on the right
+            const contentId = button.getAttribute('data-content-id');
+            const contentToShow = document.getElementById(contentId);
+            if (contentToShow) {
+                contentToShow.classList.add('active');
+
+                // 5. Close all accordions in the newly activated content area
+                contentToShow.querySelectorAll('.accordion-content.open').forEach(openContent => {
+                    openContent.classList.remove('open');
+                    openContent.previousElementSibling.querySelector('i').classList.remove('rotate-180');
+                });
+            }
+        }
+
+        // Listener for the Level 2 sub-nav buttons
+        document.querySelectorAll('.sub-nav-button').forEach(button => {
+            button.addEventListener('click', () => subNavSwitchingLogic(button));
+        });
+
+
+        // --- Service Accordion Logic (Inner Dropdowns) ---
+        const accordionButtons = document.querySelectorAll('.accordion-button');
+        accordionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('i');
+
+                if (content.classList.contains('open')) {
+                    content.classList.remove('open');
+                    icon.classList.remove('rotate-180');
+                } else {
+                    // Close other open accordions in the current sub-tab content area (so only one is open at a time)
+                    const parentContent = button.closest('.sub-content-display');
+                    if (parentContent) {
+                        parentContent.querySelectorAll('.accordion-content.open').forEach(openContent => {
+                            openContent.classList.remove('open');
+                            openContent.previousElementSibling.querySelector('i').classList.remove('rotate-180');
+                        });
+                    }
+                    
+                    content.classList.add('open');
+                    icon.classList.add('rotate-180');
+                }
+            });
+        });
+
+
+        // --- Initial Load Setup ---
+        window.addEventListener('load', () => {
+            // Find the initially active L1 button (Web & Software) and auto-select its first L2 item.
+            const initialMainButton = document.querySelector('#nav-web-software .main-accordion-button');
+            const initialSubButton = document.querySelector('#nav-web-software .sub-nav-button:first-child');
+            
+            if (initialMainButton && initialSubButton) {
+                // Manually apply active styles to the initial L1 button
+                initialMainButton.classList.add('active');
+                initialMainButton.classList.remove('bg-gray-100', 'text-gray-800');
+                initialMainButton.classList.add('bg-indigo-600', 'text-white');
+                initialMainButton.querySelector('i').classList.add('rotate-180');
+
+                // Manually open the nested content
+                initialMainButton.nextElementSibling.classList.add('open');
+
+                // Auto-select the first sub-button and display its content
+                subNavSwitchingLogic(initialSubButton);
+            } else {
+                // If anything fails, just show the initial message
+                initialMessage.classList.add('active');
+            }
         });
     </script>
 </body>
