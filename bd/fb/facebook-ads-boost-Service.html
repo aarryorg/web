@@ -253,6 +253,10 @@
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
+        /* Accordion for Learning Hub */
+        #guide-content.expanded {
+            max-height: 5000px; /* Large value for smooth transition */
+        }
     </style>
     <script>
         tailwind.config = {
@@ -284,6 +288,7 @@
             <a href="#why-choose" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-indigo-50 rounded-lg">কেন Aarry?</a>
             <a href="#packages-details" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-indigo-50 rounded-lg">প্যাকেজসমূহ</a>
             <a href="#process" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-indigo-50 rounded-lg">কার্যপ্রক্রিয়া</a>
+            <a href="#learning-hub" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-indigo-50 rounded-lg">গাইড</a>
             <a href="#faq" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-indigo-50 rounded-lg">প্রশ্নোত্তর</a>
             <a href="#contact" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-indigo-50 rounded-lg">যোগাযোগ</a>
             <div class="pt-4 border-t border-gray-100">
@@ -440,19 +445,19 @@
                 <h2 class="text-xl font-bold text-center text-gray-700 mb-6">আমাদের অন্যান্য জনপ্রিয় সার্ভিস</h2>
                 <div class="flex flex-wrap justify-center gap-3">
                     <!-- Updated links to point to contact/top where new pages will reside for now -->
-                    <a href="#contact" class="quick-link-button flex items-center space-x-2 px-4 py-2 rounded-full font-semibold text-sm">
+                    <a href="page-setup.html" class="quick-link-button flex items-center space-x-2 px-4 py-2 rounded-full font-semibold text-sm">
                         <i class="fab fa-facebook-square text-primary"></i> <span>প্রফেশনাল ফেসবুক পেইজ</span>
                     </a>
                     <a href="#contact" class="quick-link-button flex items-center space-x-2 px-4 py-2 rounded-full font-semibold text-sm">
                         <i class="fas fa-bullhorn text-primary"></i> <span>ফেসবুক মার্কেটিং</span>
                     </a>
-                    <a href="#contact" class="quick-link-button flex items-center space-x-2 px-4 py-2 rounded-full font-semibold text-sm">
+                    <a href="page-verification.html" class="quick-link-button flex items-center space-x-2 px-4 py-2 rounded-full font-semibold text-sm">
                         <i class="fas fa-shield-alt text-primary"></i> <span>ফেসবুক পেজ ভেরিফিকেশন</span>
                     </a>
                     <a href="#contact" class="quick-link-button flex items-center space-x-2 px-4 py-2 rounded-full font-semibold text-sm">
                         <i class="fas fa-sms text-primary"></i> <span>এসএমএস মার্কেটিং</span>
                     </a>
-                    <a href="#hero" class="quick-link-button flex items-center space-x-2 px-4 py-2 rounded-full font-semibold text-sm bg-primary text-white border-primary hover:bg-indigo-700">
+                    <a href="#" class="quick-link-button flex items-center space-x-2 px-4 py-2 rounded-full font-semibold text-sm bg-primary text-white border-primary hover:bg-indigo-700">
                         <i class="fas fa-ad text-secondary"></i> <span>ফেসবুক অ্যাডস</span>
                     </a>
                     <a href="#contact" class="quick-link-button flex items-center space-x-2 px-4 py-2 rounded-full font-semibold text-sm">
@@ -543,6 +548,128 @@
                         <div class="text-4xl text-primary font-extrabold mb-3 bg-secondary/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto">3</div>
                         <h3 class="text-xl font-bold mb-2 text-gray-900">অ্যাড এক্টিভেশন ও পেমেন্ট</h3>
                         <p class="text-gray-700">আমরা বুস্ট করে দেবো এবং তা শিঘ্রই একটিভ হয়ে যাবে, অতঃপর আপনাকে পেমেন্ট করতে হবে।</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Learning Hub Section -->
+        <section id="learning-hub" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center text-primary mb-6">বিজ্ঞাপন নিজে চালাতে চান? আপনার জন্য বিস্তারিত গাইড</h2>
+                <p class="text-lg text-center max-w-3xl mx-auto mb-10 text-gray-600">ফেসবুক অ্যাডস সম্পর্কে বিস্তারিত জানুন এবং সফলভাবে ক্যাম্পেইন পরিচালনার নিয়মগুলো শিখুন।</p>
+                
+                <!-- Toggle Button for the Guide -->
+                <div class="text-center mb-8">
+                    <button id="guide-toggle-button" class="bg-secondary text-gray-900 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-amber-600 transition duration-300 cta-button-aarry">
+                        বিস্তারিত গাইড দেখতে ক্লিক করুন <i class="fas fa-chevron-down ml-2 transition-transform duration-300" id="guide-icon"></i>
+                    </button>
+                </div>
+                
+                <!-- Collapsible Content Area -->
+                <div id="guide-content" class="max-h-0 overflow-hidden transition-all duration-700 ease-in-out bg-gray-50 rounded-xl p-0 shadow-lg">
+                    <div class="p-8 space-y-10">
+                        
+                        <!-- Section 1: Introduction -->
+                        <div>
+                            <h3 class="text-2xl font-extrabold text-primary mb-3">ফেসবুক অ্যাডস এবং এর গুরুত্ব</h3>
+                            <p class="text-gray-700 mb-4">
+                                ফেসবুক বর্তমানে বিশ্বের সবচেয়ে বড় সোশ্যাল মিডিয়া প্ল্যাটফর্ম। Statista-এর তথ্য অনুযায়ী ২০২৫ সালের জানুয়ারি পর্যন্ত, ফেসবুকের মাসিক সক্রিয় ব্যবহারকারী সংখ্যা প্রায় ৩.০৭ বিলিয়ন, যা বিশ্বব্যাপী সোশ্যাল মিডিয়া ব্যবহারকারীদের প্রায় ৫৯.৩৮% প্রতিনিধিত্ব করে।
+                            </p>
+                            <p class="text-gray-700">
+                                ব্যবসায়ীরা এখন ডিজিটাল মার্কেটিংয়ে ফেসবুককে প্রাধান্য দিচ্ছে কারণ এটি খুব নির্দিষ্ট অডিয়েন্সের কাছে পৌঁছানোর সুযোগ দেয়। বিশেষ করে বাংলাদেশে, ৫ কোটি মানুষ নিয়মিত ফেসবুক ব্যবহার করে, যা স্থানীয় ব্যবসার জন্য লক্ষ্যভিত্তিক বিজ্ঞাপনের ক্ষেত্রে গুরুত্বপূর্ণ। ফেসবুক অ্যাডসের মাধ্যমে ব্যবসা কেবল ব্র্যান্ড সচেতনতা নয়, বিক্রয় এবং ওয়েবসাইট ট্রাফিকও বাড়াতে পারে।
+                            </p>
+                            <div class="mt-4 p-4 bg-indigo-100 rounded-lg text-sm text-gray-800">
+                                Meta for Business -এর তথ্য অনুযায়ী, ফেসবুকের বিজ্ঞাপন দর্শকদের সংখ্যা <strong class="text-primary">২.২৮ বিলিয়ন</strong>, এবং ব্যবহারকারীরা প্রতি মাসে গড়ে <strong class="text-primary">১২টি বিজ্ঞাপনে ক্লিক করেন</strong>।
+                            </div>
+                        </div>
+
+                        <!-- Section 2: What is Facebook Ads? -->
+                        <div>
+                            <h3 class="2xl font-extrabold text-primary mb-3">ফেসবুক অ্যাডস কি? এবং কিভাবে কাজ করে?</h3>
+                            <p class="text-gray-700 mb-4">
+                                ফেসবুক অ্যাডস হলো ফেসবুকের নিজস্ব পেইড মার্কেটিং সিস্টেম যেখানে ব্যবসা প্রতিষ্ঠান, ব্র্যান্ড বা ব্যক্তি ফেসবুক এবং এর মালিকানাধীন অন্যান্য প্ল্যাটফর্ম (যেমন ইনস্টাগ্রাম, মেসেঞ্জার, অডিয়েন্স নেটওয়ার্ক)–এ তাদের বিজ্ঞাপন প্রদর্শন করতে পারে। এর মূল উদ্দেশ্য হলো সঠিক সময়ে, সঠিক বার্তা নিয়ে সঠিক মানুষের কাছে পৌঁছানো।
+                            </p>
+                            
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">টার্গেটিং এর শক্তি:</h4>
+                            <ul class="space-y-1 text-gray-700 list-disc ml-6">
+                                <li>ডেমোগ্রাফিক টার্গেটিংঃ বয়স, লিঙ্গ, পেশা, শিক্ষার স্তর</li>
+                                <li>জিও-টার্গেটিংঃ শহর, জেলা, এমনকি নির্দিষ্ট এলাকার চারপাশের ১ কিলোমিটার পর্যন্ত</li>
+                                <li>ইন্টারেস্ট টার্গেটিংঃ খেলাধুলা, বিনোদন, ফ্যাশন, প্রযুক্তি ইত্যাদিতে আগ্রহ</li>
+                                <li>বিহেভিয়ারাল টার্গেটিংঃ অনলাইনে কেনাকাটার অভ্যাস, ডিভাইস ব্যবহার</li>
+                                <li>কাস্টম ও লুকঅ্যালাইক অডিয়েন্সঃ বিদ্যমান গ্রাহকের মতো নতুন সম্ভাব্য গ্রাহক খোঁজা</li>
+                            </ul>
+                        </div>
+
+                        <!-- Section 3: Why it's important -->
+                        <div>
+                            <h3 class="2xl font-extrabold text-primary mb-3">ফেসবুক অ্যাডস কেন গুরুত্বপূর্ণ?</h3>
+                            <p class="text-gray-700 mb-4">
+                                বাংলাদেশে প্রতিদিন গড়ে <strong class="text-primary">৫ কোটি+ সক্রিয় ফেসবুক ব্যবহারকারী</strong> রয়েছে। ফেসবুক অ্যাডস গুরুত্বপূর্ণ কারণ এটি কম খরচে উচ্চ রিচ, টার্গেটিংয়ের নির্ভুলতা এবং দ্রুত ফলাফল নিশ্চিত করে।
+                            </p>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">গুরুত্বের মূল দিক:</h4>
+                            <ul class="space-y-1 text-gray-700 list-disc ml-6">
+                                <li>কম খরচে উচ্চ রিচ: গ্লোবাল CPC ($0.94) হলেও, বাংলাদেশে কিছু ইন্ডাস্ট্রিতে CPC $0.20–$0.40 পর্যন্ত হয়।</li>
+                                <li>টার্গেটিংয়ের নির্ভুলতা: কেবল প্রাসঙ্গিক মানুষদেরকেই বিজ্ঞাপন দেখানো যায়।</li>
+                                <li>দ্রুত ফলাফল: বিজ্ঞাপন চালু হওয়ার কয়েক ঘণ্টার মধ্যেই আপনি রিচ, ক্লিক, মেসেজ পেতে পারেন।</li>
+                                <li>মাল্টি-প্ল্যাটফর্ম রিচ: একটি ক্যাম্পেইনের মাধ্যমে ফেসবুক, ইনস্টাগ্রাম, মেসেঞ্জার সব জায়গায় পৌঁছানো যায়।</li>
+                            </ul>
+                        </div>
+
+                        <!-- Section 4: Ad Setup Guide -->
+                        <div>
+                            <h3 class="2xl font-extrabold text-primary mb-3">সফল ফেসবুক অ্যাডস ক্যাম্পেইন সেটআপ করার ৬টি নিয়ম</h3>
+                            <ol class="space-y-4 text-gray-700">
+                                <li class="p-3 bg-white rounded-lg shadow-md border-l-4 border-secondary">
+                                    <strong class="text-primary">১. ফেসবুক বিজনেস পেজ তৈরি ও ভেরিফাই করা:</strong> বিজ্ঞাপন চালানোর জন্য পেজটিকে পেশাদারভাবে সাজান। কন্টাক্ট ইনফো এবং বায়ো পরিষ্কার রাখুন। ভেরিফিকেশন (ব্লু টিক) সম্ভব হলে গ্রাহকের আস্থা বাড়ায়।
+                                </li>
+                                <li class="p-3 bg-white rounded-lg shadow-md border-l-4 border-secondary">
+                                    <strong class="text-primary">২. ফেসবুক অ্যাডস ম্যানেজার সেটআপ করা:</strong> অ্যাডস ম্যানেজারকে বিজনেস পেজের সাথে কানেক্ট করুন। পেমেন্ট মেথড (যেমন- বিকাশ/কার্ড) যোগ করুন। <strong class="text-primary">ফেসবুক পিক্সেল ইনস্টল</strong> করুন ওয়েবসাইটের ভিজিটর ট্র্যাক করার জন্য।
+                                </li>
+                                <li class="p-3 bg-white rounded-lg shadow-md border-l-4 border-secondary">
+                                    <strong class="text-primary">৩. সঠিক ক্যাম্পেইন অবজেক্টিভ বেছে নেওয়া:</strong> আপনার মূল লক্ষ্য কী (Awareness, Traffic, Engagement, Sales/Conversions) তা বুঝে অবজেক্টিভ নির্বাচন করুন। ভুল অবজেক্টিভ বাজেট নষ্ট করতে পারে।
+                                </li>
+                                <li class="p-3 bg-white rounded-lg shadow-md border-l-4 border-secondary">
+                                    <strong class="text-primary">৪. টার্গেট অডিয়েন্স ঠিক করা:</strong> ডেমোগ্রাফিক, লোকেশন, ইন্টারেস্ট এবং বিহেভিয়র টার্গেটিংয়ের মাধ্যমে আপনার <strong class="text-primary">আদর্শ গ্রাহককে</strong> খুঁজে বের করুন।
+                                </li>
+                                <li class="p-3 bg-white rounded-lg shadow-md border-l-4 border-secondary">
+                                    <strong class="text-primary">৫. বাজেট ও সময়সূচি ঠিক করা:</strong> প্রতিদিনের বাজেট (Daily Budget) অথবা পুরো ক্যাম্পেইনের বাজেট (Lifetime Budget) নির্ধারণ করুন। আপনার গ্রাহকরা অনলাইনে সক্রিয় থাকার সময়সূচি অনুযায়ী বিজ্ঞাপন চালান।
+                                </li>
+                                <li class="p-3 bg-white rounded-lg shadow-md border-l-4 border-secondary">
+                                    <strong class="text-primary">৬. বিজ্ঞাপনের কনটেন্ট তৈরি করা:</strong> উচ্চ মানের, পেশাদার এবং আকর্ষণীয় ছবি/ভিডিও ব্যবহার করুন। লেখা (Copy) ছোট ও প্রভাবশালী রাখুন এবং স্পষ্ট Call to Action (CTA) দিন।
+                                </li>
+                            </ol>
+                        </div>
+
+                        <!-- Section 5: Ad Types -->
+                        <div>
+                            <h3 class="2xl font-extrabold text-primary mb-3">ফেসবুকে কোন কোন ধরনের বিজ্ঞাপন দেওয়া যায়?</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="p-4 bg-white rounded-lg border border-indigo-200">
+                                    <strong class="text-primary">ক্যারাসেল আর কালেকশন বিজ্ঞাপন:</strong> একসাথে একাধিক ছবি/ভিডিও বা পণ্যের ভ্যারিয়েশন দেখানোর জন্য উপযুক্ত। মোবাইল ব্যবহারকারীদের জন্য কেনাকাটার অভিজ্ঞতা সহজ করে।
+                                </div>
+                                <div class="p-4 bg-white rounded-lg border border-indigo-200">
+                                    <strong class="text-primary">লিড জেনারেশন বিজ্ঞাপন:</strong> ব্যবহারকারীর তথ্য (নাম, ফোন) সরাসরি ফেসবুকের মধ্যে সংগ্রহ করে, যা সেবা-ভিত্তিক ব্যবসার জন্য খুবই উপযোগী।
+                                </div>
+                                <div class="p-4 bg-white rounded-lg border border-indigo-200">
+                                    <strong class="text-primary">মেসেঞ্জার আর হোয়াটসঅ্যাপ বিজ্ঞাপন:</strong> গ্রাহকের সাথে সরাসরি কথোপকথন শুরু করার জন্য ব্যবহৃত হয়। বিজ্ঞাপনে ক্লিক করলেই চ্যাট শুরু হয়।
+                                </div>
+                                <div class="p-4 bg-white rounded-lg border border-indigo-200">
+                                    <strong class="text-primary">ডাইনামিক প্রোডাক্ট ও রিটার্গেটিং বিজ্ঞাপন:</strong> যারা আপনার সাইটে ভিজিট করেছে কিন্তু কেনেনি, তাদের কাছে তাদের পছন্দের পণ্যগুলি স্বয়ংক্রিয়ভাবে দেখায়।
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Section 6: Warning & CTA -->
+                        <div class="mt-10 p-6 bg-red-100 border-l-4 border-red-500 rounded-lg">
+                            <h3 class="text-xl font-bold text-red-700 mb-2">বিপজ্জনক ভুলগুলো এড়িয়ে চলুন!</h3>
+                            <ul class="space-y-1 text-red-600 list-disc ml-6 text-sm">
+                                <li>অস্পষ্ট লক্ষ্য নির্ধারণ করবেন না (যেমন- শুধু 'রিচ' বাড়ানো)।</li>
+                                <li>অডিয়েন্স সঠিকভাবে টার্গেট না করলে বাজেট নষ্ট হবে।</li>
+                                <li>কম মানের ছবি বা ভিডিও ব্যবহার করবেন না।</li>
+                                <li>বিজ্ঞাপনের ডেটা বিশ্লেষণ না করে বারবার চালাবেন না।</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -821,7 +948,27 @@
             const openNavButton = document.getElementById('mobile-menu-open-button');
             const closeNavButton = document.getElementById('mobile-menu-close-button');
             const navLinks = document.querySelectorAll('.nav-link');
+            const guideToggleButton = document.getElementById('guide-toggle-button');
+            const guideContent = document.getElementById('guide-content');
+            const guideIcon = document.getElementById('guide-icon');
             
+            // --- Guide Toggle Logic ---
+            if (guideToggleButton && guideContent) {
+                guideToggleButton.addEventListener('click', () => {
+                    const isExpanded = guideContent.classList.toggle('expanded');
+                    if (isExpanded) {
+                        // Set max-height based on scrollHeight for smooth opening
+                        guideContent.style.maxHeight = guideContent.scrollHeight + 100 + 'px';
+                        guideIcon.classList.add('rotate-180');
+                    } else {
+                        // Set max-height to 0 to trigger smooth closing
+                        guideContent.style.maxHeight = '0';
+                        guideIcon.classList.remove('rotate-180');
+                    }
+                });
+            }
+
+            // --- Mobile Menu Logic ---
             const openMobileNav = () => { 
                 mobileNav.classList.add('open'); 
                 body.classList.add('overflow-hidden'); 
