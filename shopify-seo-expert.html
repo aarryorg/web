@@ -109,28 +109,63 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       ]
     }
     </script>
-     <style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1a202c;
         }
-        .gradient-bg {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        /* Accordion-specific styles */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-in-out;
         }
-        .page-header-bg {
-             background-image: linear-gradient(rgba(227, 238, 255, 0.9), rgba(243, 231, 233, 0.9)), url('image/Blue & Yellow Gradient Personal LinkedIn Banner.png');
-             background-size: cover;
-             background-position: center;
+        .accordion-content.open {
+            max-height: 2000px; /* Large value for content */
         }
-        .case-study-card {
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+        /* Styles for sections that animate on scroll */
+        .hidden-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
         }
-        .case-study-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        .hidden-section.open {
+            opacity: 1;
+            transform: translateY(0);
         }
-        /* Style for lazy loading images to prevent layout shift */
-        img {
-            background-color: #f0f2f5; /* Light grey placeholder */
+        
+        .mobile-nav-overlay {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-nav-overlay.open {
+            transform: translateX(0);
+        }
+        body.overflow-hidden {
+            overflow: hidden;
+        }
+        .brand-gradient-text {
+            background: linear-gradient(to right, #4f46e5, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.39);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(79, 70, 229, 0.5);
+        }
+        .client-logo {
+            filter: grayscale(100%) opacity(60%);
+            transition: all 0.3s ease;
+        }
+        .client-logo:hover {
+            filter: grayscale(0%) opacity(100%);
         }
     </style>
 </head>
@@ -145,7 +180,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         
      <div id="header-placeholder"></div>
     
-   
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+            <div class="text-2xl font-bold text-secondary">
+                <span class="text-primary">Shopify SEO </span> Consultant
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#story" class="text-gray-600 hover:text-primary transition duration-300">My Story</a>
+                <a href="#shopify-seo-intro" class="text-gray-600 hover:text-primary transition duration-300">Shopify SEO</a>
+                <a href="#portfolio" class="text-gray-600 hover:text-primary transition duration-300">Portfolio</a>
+                <a href="#blog" class="text-gray-600 hover:text-primary transition duration-300">Blog</a>
+                <a href="#contact-form" class="text-white bg-primary px-3 py-1.5 rounded-full hover:bg-highlight transition duration-300">Get in Touch</a>
+            </div>
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button class="md:hidden text-gray-600" aria-label="Toggle menu" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute w-full bg-white shadow-xl">
+            <div class="px-4 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
+                <a href="#story" class="block w-full text-center text-gray-600 py-2 hover:bg-gray-50 rounded-lg">My Story</a>
+                <a href="#shopify-seo-intro" class="block w-full text-center text-gray-600 py-2 hover:bg-gray-50 rounded-lg">Shopify SEO</a>
+                <a href="#portfolio" class="block w-full text-center text-gray-600 py-2 hover:bg-gray-50 rounded-lg">Portfolio</a>
+                <a href="https://aarry.org/blogs" class="block w-full text-center text-gray-600 py-2 hover:bg-gray-50 rounded-lg">Blog</a>
+                <a href="#contact-form" class="block w-full text-center text-white bg-primary mt-2 py-2 rounded-lg hover:bg-highlight">Get in Touch</a>
+            </div>
+        </div>
+    </header>
 
     <main class="pt-8">
         <!-- 1. Hero Section -->
