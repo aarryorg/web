@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aarry Limited - Digital Growth & AI Automation in Bangladesh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Using a light blue/indigo as primary and primary-blue/dark-navy from the original design */
+            --aarry-primary: #4f46e5; 
+            --aarry-secondary: #e0e7ff; 
+            --dropship-dark: #151E3A;
+            --dropship-gray: #434C69;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dropship-dark);
+            background-color: #F8F9FB; /* Light background used throughout the site */
+        }
+        .text-aarry-primary { color: var(--aarry-primary); }
+        .bg-aarry-primary { background-color: var(--aarry-primary); }
+        .bg-aarry-secondary { background-color: var(--aarry-secondary); }
+
+        /* Custom Dropdown Styling (simulated mega menu hover) */
+        .mega-menu-trigger:hover .mega-menu-content {
+            display: flex;
+        }
+        .mega-menu-content {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        /* Mobile Menu Toggle */
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+            transform: translateY(-100%);
+            display: none;
+        }
+        #mobile-menu.active {
+            transform: translateY(0);
+            display: flex;
+        }
+        /* Style for the Tab Menu for horizontal scroll hint */
+        .tab-menu-scroll {
+             -ms-overflow-style: none; /* IE and Edge */
+             scrollbar-width: none; /* Firefox */
+        }
+        .tab-menu-scroll::-webkit-scrollbar {
+             display: none; /* Chrome, Safari, Opera */
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#4f46e5', /* Aarry Primary Color */
+                        'accent-red': '#D71313', /* Kept for strong CTA contrast */
+                        'dark-navy': '#151E3A',
+                        'medium-gray': '#434C69',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Top Banner (Adapted from Dropship to Aarry context) -->
+    <div class="bg-dark-navy text-white text-center p-2 text-sm font-medium">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center relative">
+            Region: Bangladesh (BD) | Ecommerce Solutions, Digital Growth & AI Automation.
+            <button class="absolute right-0 top-1/2 transform -translate-y-1/2 p-1 rounded-full hover:bg-white/10 transition duration-150">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="sticky top-0 bg-white shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="/" class="flex-shrink-0 text-dark-navy font-bold text-2xl">
+                    <div class="w-32 h-8 flex items-center space-x-2">
+                        <!-- Simplified Aarry Logo Placeholder -->
+                        <div class="w-2 h-6 bg-primary-blue rounded"></div>
+                        <span class="text-xl font-extrabold text-dark-navy">Aarry Limited</span>
+                    </div>
+                </a>
+
+                <!-- Navigation Links (Desktop) -->
+                <nav class="hidden lg:flex lg:space-x-4 xl:space-x-8 items-center h-full">
+                    <!-- Web & Software Mega Menu -->
+                    <div class="relative group h-full flex items-center mega-menu-trigger">
+                        <button class="flex items-center text-medium-gray hover:text-dark-navy transition font-medium text-sm focus:outline-none">
+                            Web & Software
+                            <svg class="w-4 h-4 ml-1 transform transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="mega-menu-content hidden absolute left-1/2 transform -translate-x-1/2 top-full w-[600px] bg-white rounded-xl border border-gray-100 z-50 p-6 pt-4">
+                            <div class="flex w-full">
+                                <div class="w-full grid grid-cols-2 gap-x-6 gap-y-4">
+                                    <div class="col-span-2 text-sm font-semibold text-medium-gray mb-2 border-b pb-2">Web & Software Solutions</div>
+                                    
+                                    <!-- Web & Software Links -->
+                                    <a href="#pricing" class="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded-lg transition duration-150">
+                                        <div class="w-10 h-10 rounded-lg bg-primary-blue/10 flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-primary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-sm text-dark-navy">Web Design & Development</p>
+                                            <p class="text-xs text-medium-gray">Custom sites, E-commerce, Portals</p>
+                                        </div>
+                                    </a>
+                                    <a href="#contact" class="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded-lg transition duration-150">
+                                        <div class="w-10 h-10 rounded-lg bg-primary-blue/10 flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-primary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-sm text-dark-navy">Mobile App Development</p>
+                                            <p class="text-xs text-medium-gray">iOS and Android native/cross-platform</p>
+                                        </div>
+                                    </a>
+                                    <a href="#contact" class="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded-lg transition duration-150">
+                                        <div class="w-10 h-10 rounded-lg bg-primary-blue/10 flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-primary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 2h2m-4 0h-2m-4 0h-2M13 10V4"></path></svg>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-sm text-dark-navy">POS & Accounting Software</p>
+                                            <p class="text-xs text-medium-gray">Custom ERP and Management Systems</p>
+                                        </div>
+                                    </a>
+                                    <a href="#contact" class="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded-lg transition duration-150">
+                                        <div class="w-10 h-10 rounded-lg bg-primary-blue/10 flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-primary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-sm text-dark-navy">Website Maintenance & Hosting</p>
+                                            <p class="text-xs text-medium-gray">Domain, hosting, security & support</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Marketing & Creative Mega Menu -->
+                    <div class="relative group h-full flex items-center mega-menu-trigger">
+                        <button class="flex items-center text-medium-gray hover:text-dark-navy transition font-medium text-sm focus:outline-none">
+                            Marketing & Creative
+                            <svg class="w-4 h-4 ml-1 transform transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="mega-menu-content hidden absolute left-1/2 transform -translate-x-1/2 top-full w-[600px] bg-white rounded-xl border border-gray-100 z-50 p-6 pt-4">
+                            <div class="flex w-full">
+                                <div class="w-full grid grid-cols-2 gap-x-6 gap-y-4">
+                                    <div class="col-span-2 text-sm font-semibold text-medium-gray mb-2 border-b pb-2">Digital Growth & Branding</div>
+
+                                    <!-- Marketing & Creative Links -->
+                                    <a href="#contact" class="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded-lg transition duration-150">
+                                        <div class="w-10 h-10 rounded-lg bg-primary-blue/10 flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-primary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-sm text-dark-navy">Professional SEO Service</p>
+                                            <p class="text-xs text-medium-gray">Local SEO & specialized industry packages</p>
+                                        </div>
+                                    </a>
+                                    <a href="#contact" class="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded-lg transition duration-150">
+                                        <div class="w-10 h-10 rounded-lg bg-primary-blue/10 flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-primary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.636a2 2 0 01-1.789-2.894l3.5-7A2 2 0 0114 10zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-sm text-dark-navy">Social Media Marketing (SMM)</p>
+                                            <p class="text-xs text-medium-gray">Management, promotion, and page verification</p>
+                                        </div>
+                                    </a>
+                                    <a href="#contact" class="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded-lg transition duration-150">
+                                        <div class="w-10 h-10 rounded-lg bg-primary-blue/10 flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-primary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8V6m0 10v2"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20H4a2 2 0 01-2-2V6a2 2 0 012-2h16a2 2 0 012 2v6"></path></svg>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-sm text-dark-navy">Google Ads (PPC) & SMM Boost</p>
+                                            <p class="text-xs text-medium-gray">Targeted campaigns for maximum ROI</p>
+                                        </div>
+                                    </a>
+                                    <a href="#contact" class="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded-lg transition duration-150">
+                                        <div class="w-10 h-10 rounded-lg bg-primary-blue/10 flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-primary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-sm text-dark-navy">Creative Design & Media</p>
+                                            <p class="text-xs text-medium-gray">Logo, UI/UX, Graphic Design & Video Production</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Automation Mega Menu -->
+                    <div class="relative group h-full flex items-center mega-menu-trigger">
+                        <button class="flex items-center text-medium-gray hover:text-dark-navy transition font-medium text-sm focus:outline-none">
+                            AI Automation
+                            <svg class="w-4 h-4 ml-1 transform transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="mega-menu-content hidden absolute left-1/2 transform -translate-x-1/2 top-full w-[800px] bg-white rounded-xl border border-gray-100 z-50 p-6 pt-4">
+                            <div class="flex w-full">
+                                <div class="w-full grid grid-cols-2 gap-x-6 gap-y-4">
+                                    <div class="col-span-2 text-sm font-semibold text-medium-gray mb-2 border-b pb-2">AI & Workflow Automation</div>
+
+                                    <!-- AI Automation Links -->
+                                    <a href="#contact" class="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded-lg transition duration-150">
+                                        <div class="w-10 h-10 rounded-lg bg-primary-blue/10 flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-primary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-sm text-dark-navy">AI Powered Lead Generation</p>
+                                            <p class="text-xs text-medium-gray">Personalized outreach and automated processing</p>
+                                        </div>
+                                    </a>
+                                    <a href="#contact" class="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded-lg transition duration-150">
+                                        <div class="w-10 h-10 rounded-lg bg-primary-blue/10 flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-primary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.586a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-sm text-dark-navy">Content & Media Automation</p>
+                                            <p class="text-xs text-medium-gray">Automated social posting and video generation</p>
+                                        </div>
+                                    </a>
+                                    <a href="#contact" class="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded-lg transition duration-150">
+                                        <div class="w-10 h-10 rounded-lg bg-primary-blue/10 flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-primary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2z"></path></svg>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-sm text-dark-navy">Internal Workflow Automation</p>
+                                            <p class="text-xs text-medium-gray">Hiring management, n8n integration, AI Support</p>
+                                        </div>
+                                    </a>
+                                    <a href="#contact" class="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded-lg transition duration-150">
+                                        <div class="w-10 h-10 rounded-lg bg-primary-blue/10 flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-primary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0v-5a2 2 0 012-2h2a2 2 0 012 2v5m-6-10h.01"></path></svg>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-sm text-dark-navy">Research & Analysis Tools</p>
+                                            <p class="text-xs text-medium-gray">Ad Spy, Comment Analysis & Market Intelligence</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="bg-primary-blue hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-150 text-sm shadow-md">Request a Quote</a>
+                </nav>
+
+                <!-- CTA and Mobile Menu Button (Only mobile menu button remains on desktop) -->
+                <div class="flex items-center space-x-4">
+                    <button id="mobile-menu-button" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition duration-150">
+                        <svg class="w-6 h-6 text-dark-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="lg:hidden absolute top-20 w-full h-[calc(100vh-5rem)] bg-white p-4 shadow-lg z-40 overflow-y-auto">
+            <div class="flex flex-col space-y-4">
+                <a href="#services-dev" class="text-lg font-medium text-dark-navy hover:text-primary-blue transition">Web & Software</a>
+                <a href="#services-marketing" class="text-lg font-medium text-dark-navy hover:text-primary-blue transition">Marketing & Creative</a>
+                <a href="#ai-automation" class="text-lg font-medium text-dark-navy hover:text-primary-blue transition">AI Automation</a>
+                <a href="#contact" class="bg-primary-blue hover:bg-indigo-700 text-white text-center font-semibold py-3 rounded-lg transition duration-150 shadow-md mt-4">Request a Quote</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-wrapper">
+        <!-- 1. Hero Section -->
+        <section class="py-16 md:py-24 bg-aarry-secondary/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <!-- Hero Content -->
+                    <div class="text-center lg:text-left">
+                        <div class="flex justify-center lg:justify-start mb-6">
+                            <div class="p-4 bg-aarry-secondary rounded-xl">
+                                <svg class="w-8 h-8 text-primary-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1.5-1.5M14 10l-4 4m2 2l-2 2"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a10 10 0 100 20 10 10 0 000-20z"></path></svg>
+                            </div>
+                        </div>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-dark-navy leading-tight mb-4">Driving <span class="text-primary-blue">E-commerce, Digital Growth,</span> and AI Automation in Bangladesh</h1>
+                        <p class="text-lg text-medium-gray mb-8 max-w-lg mx-auto lg:mx-0">Aarry Limited delivers quality, affordable, and secure web development, custom software, and targeted digital marketing services specifically tailored for the Bangladeshi market.</p>
+                        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                            <a href="https://wa.me/+8801777510221" target="_blank" class="flex-1 bg-primary-blue hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-150 shadow-lg text-center">Discuss Your Project on WhatsApp</a>
+                            <a href="#contact" class="flex-1 border border-medium-gray text-medium-gray hover:text-dark-navy hover:border-dark-navy font-semibold py-3 px-6 rounded-lg transition duration-150 text-center flex items-center justify-center space-x-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                <span>Contact Sales Team</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Hero Image / Video Placeholder -->
+                    <div class="relative flex justify-center lg:justify-end max-w-full">
+                        <div class="p-4 bg-white rounded-2xl shadow-xl max-w-full border border-primary-blue/20">
+                            <div class="p-2 rounded-xl border-4 border-primary-blue relative overflow-hidden">
+                                <img src="https://placehold.co/1200x700/4f46e5/ffffff?text=Aarry+Digital+Services+Overview" alt="Aarry Digital Services Overview" class="w-full h-auto rounded-lg shadow-2xl"/>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="p-4 rounded-full bg-primary-blue/80 hover:bg-primary-blue transition-all duration-300 transform scale-100 hover:scale-105 cursor-pointer">
+                                        <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 3l14 9-14 9V3z"></path></svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Core Services Grid Section (Comprehensive Digital Services) -->
+        <section class="py-16 md:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-dark-navy mb-4">Comprehensive Digital Services</h2>
+                    <p class="text-lg text-medium-gray max-w-2xl mx-auto">From robust software development to cutting-edge AI automation, we power your entire digital landscape.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Service Card 1: Web & Software -->
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border-t-4 border-primary-blue flex flex-col justify-start min-h-[300px]">
+                        <h3 class="text-xl font-semibold text-primary-blue mb-3">Web & Software</h3>
+                        <p class="text-base text-medium-gray mb-4 flex-grow">Website & Content, Business Software & Apps, Strategy & Consulting. We build your digital infrastructure.</p>
+                        <ul class="text-sm space-y-1 list-disc list-inside text-dark-navy">
+                            <li>E-Commerce Site</li>
+                            <li>Mobile App Dev</li>
+                            <li>POS Software</li>
+                        </ul>
+                    </div>
+                    <!-- Service Card 2: Marketing & Creative -->
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border-t-4 border-primary-blue flex flex-col justify-start min-h-[300px]">
+                        <h3 class="text-xl font-semibold text-primary-blue mb-3">Marketing & Creative</h3>
+                        <p class="text-base text-medium-gray mb-4 flex-grow">Organic Growth & Paid Advertising, Social & Branding, Creative Design & Media. Grow your traffic and reputation.</p>
+                        <ul class="text-sm space-y-1 list-disc list-inside text-dark-navy">
+                            <li>Professional SEO</li>
+                            <li>Social Media Marketing</li>
+                            <li>Logo & UI/UX Design</li>
+                        </ul>
+                    </div>
+                    <!-- Service Card 3: AI Automation -->
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border-t-4 border-primary-blue flex flex-col justify-start min-h-[300px]">
+                        <h3 class="text-xl font-semibold text-primary-blue mb-3">AI Automation</h3>
+                        <p class="text-base text-medium-gray mb-4 flex-grow">Lead Generation & Sales Automation, Content & Media Automation, Internal Workflow & Support. Maximize efficiency.</p>
+                        <ul class="text-sm space-y-1 list-disc list-inside text-dark-navy">
+                            <li>AI Lead Generation</li>
+                            <li>Automated Social Content</li>
+                            <li>AI Support Agent</li>
+                        </ul>
+                    </div>
+                    <!-- Service Card 4: Strategy & Consulting -->
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border-t-4 border-primary-blue flex flex-col justify-start min-h-[300px]">
+                        <h3 class="text-xl font-semibold text-primary-blue mb-3">Strategy & Consulting</h3>
+                        <p class="text-base text-medium-gray mb-4 flex-grow">Technical Audits, Platform Migrations & Replatforming, Internationalization Strategy. Expert guidance for scaling.</p>
+                        <ul class="text-sm space-y-1 list-disc list-inside text-dark-navy">
+                            <li>Technical Audits</li>
+                            <li>Shopify Migrations</li>
+                            <li>International Strategy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Product Features (Tabbed) Section - Focused on Key Services -->
+        <section id="services-dev" class="py-16 md:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-dark-navy mb-4">Detailed Service Capabilities</h2>
+                    <p class="text-lg text-medium-gray max-w-3xl mx-auto">Click on a category to see the depth of our expertise and how we deliver measurable results.</p>
+                </div>
+
+                <div class="w-full max-w-5xl mx-auto">
+                    <!-- Tab Menu -->
+                    <div class="flex flex-nowrap overflow-x-auto mb-8 space-x-4 border-b border-gray-200 pb-1 tab-menu-scroll">
+                        <button class="tab-link active bg-primary-blue text-white px-6 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap" data-tab="1">Web Design & Content</button>
+                        <button class="tab-link text-medium-gray hover:text-dark-navy px-6 py-2.5 rounded-full text-sm font-semibold transition whitespace-nowrap" data-tab="2">Business Software & App Dev</button>
+                        <button class="tab-link text-medium-gray hover:text-dark-navy px-6 py-2.5 rounded-full text-sm font-semibold transition whitespace-nowrap" data-tab="3">Organic Growth & Paid Ads</button>
+                        <button class="tab-link text-medium-gray hover:text-dark-navy px-6 py-2.5 rounded-full text-sm font-semibold transition whitespace-nowrap" data-tab="4">AI Sales Automation</button>
+                    </div>
+
+                    <!-- Tab Content 1: Web Design -->
+                    <div id="tab-content-1" class="tab-pane bg-aarry-secondary/50 p-6 rounded-xl border border-primary-blue/20">
+                        <h3 class="text-2xl font-bold text-dark-navy mb-4">Website & Content Services</h3>
+                        <p class="text-medium-gray leading-relaxed mb-4">We specialize in designing and developing highly functional, engaging web platforms, from simple company sites to complex e-commerce solutions. Our services ensure your digital face is fast, secure, and professional.</p>
+                        <ul class="text-dark-navy space-y-1 text-sm">
+                            <li>- Custom Websites, Shopify Store Setup, Headless E-Commerce solutions</li>
+                            <li>- Specialized Site Development (Newspaper, Educational, Health)</li>
+                            <li>- Website Maintenance, Proactive Web Support, and reliable Domain & Hosting Service</li>
+                        </ul>
+                    </div>
+                    <!-- Tab Content 2: Software & Apps -->
+                    <div id="tab-content-2" class="tab-pane hidden bg-aarry-secondary/50 p-6 rounded-xl border border-primary-blue/20">
+                        <h3 class="text-2xl font-bold text-dark-navy mb-4">Business Software & App Development</h3>
+                        <p class="text-medium-gray leading-relaxed mb-4">We develop robust, scalable software and mobile applications to streamline your internal processes, manage finances, and deliver superior customer experiences.</p>
+                         <ul class="text-dark-navy space-y-1 text-sm">
+                            <li>- Mobile App Development for iOS and Android</li>
+                            <li>- Custom Point of Sale (POS) and comprehensive Accounting Software</li>
+                            <li>- Specialized Management Systems (Micro-credit, Dealership, Courier, Pharmacy)</li>
+                        </ul>
+                    </div>
+                    <!-- Tab Content 3: Digital Growth -->
+                    <div id="tab-content-3" class="tab-pane hidden bg-aarry-secondary/50 p-6 rounded-xl border border-primary-blue/20">
+                        <h3 class="text-2xl font-bold text-dark-navy mb-4">Organic Growth & Paid Advertising</h3>
+                        <p class="text-medium-gray leading-relaxed mb-4">We develop data-driven strategies to maximize your visibility and acquisition channels, driving high-quality traffic through search engine optimization and targeted paid campaigns.</p>
+                        <ul class="text-dark-navy space-y-1 text-sm">
+                            <li>- Professional SEO Service, Local SEO & AEO (AI SEO)</li>
+                            <li>- Specialized SEO campaigns for E-Commerce, Garments, and Travel Agents</li>
+                            <li>- Expert management of Google Ads (PPC), CRO, and Email/SMS Automation</li>
+                        </ul>
+                    </div>
+                    <!-- Tab Content 4: AI Automation -->
+                    <div id="tab-content-4" class="tab-pane hidden bg-aarry-secondary/50 p-6 rounded-xl border border-primary-blue/20">
+                         <h3 class="text-2xl font-bold text-dark-navy mb-4">AI Automation & Research</h3>
+                        <p class="text-medium-gray leading-relaxed mb-4">Implement cutting-edge AI tools to revolutionize your sales pipeline, content creation, and market analysis for superior efficiency.</p>
+                        <ul class="text-dark-navy space-y-1 text-sm">
+                            <li>- AI Powered Lead Generation and Automated Email Outreach Systems</li>
+                            <li>- Automated Social Media Content Creation and AI Video Generation (CGI/UGC)</li>
+                            <li>- Automated Hiring, AI Support Agents, and Facebook/Reddit Market Research Tools</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Client Paths Section (Simulated Slider) -->
+        <section id="partners" class="py-16 md:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-end mb-12">
+                    <div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-dark-navy mb-2">Choose Your Path to Digital Success</h2>
+                        <p class="text-lg text-medium-gray">Tailored solutions based on your current business stage and goals.</p>
+                    </div>
+                    <!-- Navigation Placeholder -->
+                    <div class="hidden md:flex space-x-3">
+                        <button class="p-3 border border-gray-300 rounded-full hover:bg-gray-100 transition duration-150">
+                            <svg class="w-4 h-4 text-medium-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        </button>
+                        <button class="p-3 border border-gray-300 rounded-full hover:bg-gray-100 transition duration-150">
+                            <svg class="w-4 h-4 text-medium-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Paths (Simulated Slider Content - 4 Columns) -->
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Path 1: F-Commerce Starter -->
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 min-h-[350px] flex flex-col">
+                        <h3 class="text-xl font-semibold text-dark-navy mb-2">F-Commerce Starter</h3>
+                        <p class="text-base text-medium-gray mb-4 flex-grow">You want to launch sales quickly without a full website. Focus is on high-impact social presence and immediate traffic generation.</p>
+                        <p class="font-semibold text-primary-blue mb-2">Relevant Services:</p>
+                        <ul class="text-sm space-y-1 list-disc list-inside text-dark-navy">
+                            <li>Facebook Page Setup & Maintenance</li>
+                            <li>Facebook Boost & Ads Management</li>
+                            <li>Logo & Banner Design</li>
+                        </ul>
+                    </div>
+                    <!-- Path 2: E-commerce Website -->
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 min-h-[350px] flex flex-col">
+                         <h3 class="text-xl font-semibold text-dark-navy mb-2">E-commerce Website</h3>
+                        <p class="text-base text-medium-gray mb-4 flex-grow">You need to move from social selling to a professional, scalable e-commerce store (dropshipping or traditional models).</p>
+                        <p class="font-semibold text-primary-blue mb-2">Relevant Services:</p>
+                        <ul class="text-sm space-y-1 list-disc list-inside text-dark-navy">
+                            <li>E-Commerce Website (Shopify/Custom)</li>
+                            <li>Domain/Hosting Setup</li>
+                            <li>UI/UX Design & Brand Identity</li>
+                        </ul>
+                    </div>
+                    <!-- Path 3: Ecommerce Growth & Branding -->
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 min-h-[350px] flex flex-col">
+                        <h3 class="text-xl font-semibold text-dark-navy mb-2">Ecommerce Growth & Branding</h3>
+                        <p class="text-base text-medium-gray mb-4 flex-grow">You have an established business and need to scale sales, enhance brand image, and dominate organic search performance.</p>
+                        <p class="font-semibold text-primary-blue mb-2">Relevant Services:</p>
+                        <ul class="text-sm space-y-1 list-disc list-inside text-dark-navy">
+                            <li>Professional SEO Service</li>
+                            <li>Corporate & Personal Branding</li>
+                            <li>Advanced Social Media Management</li>
+                        </ul>
+                    </div>
+                    <!-- Path 4: Corporate & Automation -->
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 min-h-[350px] flex flex-col">
+                        <h3 class="text-xl font-semibold text-dark-navy mb-2">Corporate & Automation Services</h3>
+                        <p class="text-base text-medium-gray mb-4 flex-grow">You are a large enterprise seeking custom software, ERP integration, or full AI workflow automation to maximize efficiency.</p>
+                        <p class="font-semibold text-primary-blue mb-2">Relevant Services:</p>
+                        <ul class="text-sm space-y-1 list-disc list-inside text-dark-navy">
+                            <li>Custom Software Development</li>
+                            <li>AI Automation (n8n, Vapi Integration)</li>
+                            <li>Micro-credit / POS / Accounting Software</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Final CTA Section -->
+        <section id="contact" class="py-16 md:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-dark-navy text-white rounded-3xl overflow-hidden shadow-xl lg:flex lg:items-center">
+                    <div class="lg:w-1/2 p-8 sm:p-12">
+                        <div class="inline-block bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">Start Your Growth Journey</div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold mb-4 leading-tight">Ready to Elevate Your Brand?</h2>
+                        <p class="text-lg opacity-80 mb-8">Schedule a complimentary, no-obligation strategy call to discuss your project and unlock your growth potential.</p>
+                        <a href="https://wa.me/+8801789363695" target="_blank" class="inline-block bg-accent-red hover:bg-red-700 text-white font-semibold py-3 px-8 rounded-lg transition duration-150 shadow-lg text-lg">Book Your Free Consultation</a>
+                    </div>
+                    <div class="lg:w-1/2 flex justify-center">
+                        <img src="https://placehold.co/800x450/4f46e5/FFFFFF?text=Aarry+Consultation+Mockup" alt="Aarry Consultation Mockup" class="w-full h-auto object-cover"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-10 lg:gap-16 mb-12">
+                <!-- Footer Left (Logo & Address) -->
+                <div class="col-span-2 md:col-span-2">
+                    <a href="/" class="mb-4 inline-block">
+                         <div class="w-32 h-8 flex items-center space-x-2">
+                            <div class="w-2 h-6 bg-primary-blue rounded"></div>
+                            <span class="text-xl font-extrabold text-dark-navy">Aarry Limited</span>
+                        </div>
+                    </a>
+                    <p class="text-sm font-medium text-dark-navy mb-4">Driving digital growth across Bangladesh.</p>
+                    <p class="text-xs text-medium-gray leading-relaxed mb-4">Phone: +880 1777510221<br/>Email: ask@aarry.org</p>
+                </div>
+
+                <!-- Footer Links Columns -->
+                <div class="md:col-span-1">
+                    <p class="text-sm font-semibold text-dark-navy mb-4">Web & App Solutions</p>
+                    <nav class="space-y-2 text-sm">
+                        <a href="#pricing" class="block text-medium-gray hover:text-dark-navy transition">E-Commerce Website</a>
+                        <a href="#contact" class="block text-medium-gray hover:text-dark-navy transition">Custom Website</a>
+                        <a href="#contact" class="block text-medium-gray hover:text-dark-navy transition">Mobile App Dev</a>
+                        <a href="#contact" class="block text-medium-gray hover:text-dark-navy transition">POS & ERP Software</a>
+                        <a href="#contact" class="block text-medium-gray hover:text-dark-navy transition">Domain & Hosting</a>
+                    </nav>
+                </div>
+                <div class="md:col-span-1">
+                    <p class="text-sm font-semibold text-dark-navy mb-4">Digital Growth & Marketing</p>
+                    <nav class="space-y-2 text-sm">
+                        <a href="#contact" class="block text-medium-gray hover:text-dark-navy transition">Professional SEO</a>
+                        <a href="#contact" class="block text-medium-gray hover:text-dark-navy transition">Social Media Marketing</a>
+                        <a href="#contact" class="block text-medium-gray hover:text-dark-navy transition">Facebook Ad Boost</a>
+                        <a href="#contact" class="block text-medium-gray hover:text-dark-navy transition">Google Ads (PPC)</a>
+                        <a href="#contact" class="block text-medium-gray hover:text-dark-navy transition">SMS Marketing</a>
+                    </nav>
+                </div>
+                <div class="md:col-span-1">
+                    <p class="text-sm font-semibold text-dark-navy mb-4">Creative & Branding</p>
+                    <nav class="space-y-2 text-sm">
+                        <a href="#contact" class="block text-medium-gray hover:text-dark-navy transition">Logo Design</a>
+                        <a href="#contact" class="block text-medium-gray hover:text-dark-navy transition">UI / UX Design</a>
+                        <a href="#contact" class="block text-medium-gray hover:text-dark-navy transition">Corporate Branding</a>
+                        <a href="#contact" class="block text-medium-gray hover:text-dark-navy transition">Video Production</a>
+                        <a href="#contact" class="block text-medium-gray hover:text-dark-navy transition">Wikipedia Page Creation</a>
+                    </nav>
+                </div>
+                <div class="md:col-span-1">
+                    <p class="text-sm font-semibold text-dark-navy mb-4">Company & Resources</p>
+                    <nav class="space-y-2 text-sm">
+                        <a href="#about" class="block text-medium-gray hover:text-dark-navy transition">About Us</a>
+                        <a href="#clients" class="block text-medium-gray hover:text-dark-navy transition">Our Clients</a>
+                        <a href="#team" class="block text-medium-gray hover:text-dark-navy transition">Our Team</a>
+                        <a href="#" class="block text-medium-gray hover:text-dark-navy transition">Blogs</a>
+                        <a href="#" class="block text-medium-gray hover:text-dark-navy transition">Privacy Policy</a>
+                        <a href="#" class="block text-medium-gray hover:text-dark-navy transition">Terms & Conditions</a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Bottom Footer (Copyright & Social) -->
+            <div class="pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <div class="text-xs text-medium-gray">
+                    © Aarry Limited. All Rights Reserved. Crafted for the Digital Bangladesh.
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" aria-label="Instagram" class="w-5 h-5 text-medium-gray hover:text-dark-navy transition">
+                         <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.0007 3.50945C12.1144 3.50945 12.3649 3.51736 13.1997 3.55551C16.4909 7.88592 16.483 12.3639 16.4448 13.1987C13.2645 17.8688 7.85092 17.9163 10.0007 17.9163C7.85092 17.9163 7.58103 17.907 6" /></svg>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactions -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle Logic
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+            });
+
+            // Tab Switching Logic
+            const tabLinks = document.querySelectorAll('.tab-link');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            tabLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    // Prevent default form/anchor action if necessary
+                    e.preventDefault(); 
+                    
+                    const targetTab = e.target.getAttribute('data-tab');
+
+                    // Deactivate all links and hide all panes
+                    tabLinks.forEach(l => {
+                        l.classList.remove('active', 'bg-primary-blue', 'text-white');
+                        l.classList.add('text-medium-gray');
+                    });
+                    tabPanes.forEach(p => p.classList.add('hidden'));
+
+                    // Activate the clicked link
+                    e.target.classList.add('active', 'bg-primary-blue', 'text-white');
+                    e.target.classList.remove('text-medium-gray');
+
+                    // Show the target pane
+                    document.getElementById(`tab-content-${targetTab}`).classList.remove('hidden');
+                });
+            });
+
+            // Set initial active tab state (if necessary, though handled by initial HTML)
+            const initialActiveLink = document.querySelector('.tab-link.active');
+            if (initialActiveLink) {
+                initialActiveLink.classList.add('bg-primary-blue', 'text-white');
+                initialActiveLink.classList.remove('text-medium-gray');
+            }
+        });
+    </script>
+</body>
+</html>
