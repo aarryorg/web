@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopify Store Optimization Service Plans | Aarry Limited</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font import for modern look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc; /* Light gray background */
+        }
+        /* Custom CSS for the accordion icons */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+        }
+        .accordion-item[data-open="true"] .accordion-content {
+            max-height: 500px; /* Arbitrary large value to allow content expansion */
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .accordion-item[data-open="true"] svg {
+            transform: rotate(180deg);
+        }
+    </style>
+
+    <!-- ADVANCED SEO: JSON-LD SCHEMA MARKUP for AI SEARCH ENGINES -->
+    <!-- This structure data tells search engines exactly what the page is about (A Service with pricing offers). -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Shopify Store Optimization, Speed, CRO, and Technical SEO",
+      "name": "Shopify Store Optimization Service Plans by Aarry Limited",
+      "description": "Comprehensive Shopify optimization covering speed, conversion rate (CRO), and advanced AI-ready technical SEO, including JSON-LD structured data and Schema Markup implementation for enhanced search visibility.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Aarry Limited",
+        "url": "http://aarry.org"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Global"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Starter Optimization Plan",
+          "priceCurrency": "USD",
+          "price": "299",
+          "url": "mailto:kaochar.ahmed@aarry.org?subject=Inquiry:%20Starter%20Optimization%20Plan%20($299)",
+          "areaServed": { "@type": "Country", "name": "Global" },
+          "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "billingIncrement": 1,
+              "unitCode": "ANN",
+              "priceType": "OneTimeCharge"
+          },
+          "description": "Optimization for stores up to 10 pages. Includes speed, mobile optimization, and basic CRO/SEO cleanup."
+        },
+        {
+          "@type": "Offer",
+          "name": "Pro Optimization Plan",
+          "priceCurrency": "USD",
+          "price": "499",
+          "url": "mailto:kaochar.ahmed@aarry.org?subject=Inquiry:%20Pro%20Optimization%20Plan%20($499)",
+          "areaServed": { "@type": "Country", "name": "Global" },
+          "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "billingIncrement": 1,
+              "unitCode": "ANN",
+              "priceType": "OneTimeCharge"
+          },
+          "description": "Comprehensive optimization for stores up to 50 pages. Includes guaranteed 90+ speed score, advanced CRO, and technical AI-ready SEO (full Schema Markup implementation)."
+        }
+      ]
+    }
+    </script>
+</head>
+<body class="text-gray-800 antialiased">
+
+    <!-- Header / Navbar (Professional, Tailwind-based) -->
+    <header class="sticky top-0 z-10 bg-white border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="http://aarry.org" class="text-2xl font-bold text-indigo-700 hover:text-indigo-900 transition duration-300">
+                Aarry Limited
+            </a>
+            <nav class="hidden md:flex space-x-6 lg:space-x-8">
+                <a href="http://aarry.org" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150">Home</a>
+                <a href="https://aarry.org/case-studies.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150">Case Studies</a>
+                <a href="https://aarry.org/portfolio.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150">Portfolio</a>
+                <a href="https://aarry.org/about.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-150">About</a>
+                <a href="https://aarry.org/services/shopify.html" class="text-indigo-600 font-medium border-b-2 border-indigo-600">Services</a>
+            </nav>
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button class="md:hidden text-gray-600 hover:text-indigo-600" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2 bg-gray-50 border-t border-gray-100">
+            <a href="http://aarry.org" class="block text-gray-600 hover:text-indigo-600 font-medium">Home</a>
+            <a href="https://aarry.org/case-studies.html" class="block text-gray-600 hover:text-indigo-600 font-medium">Case Studies</a>
+            <a href="https://aarry.org/portfolio.html" class="block text-gray-600 hover:text-indigo-600 font-medium">Portfolio</a>
+            <a href="https://aarry.org/about.html" class="block text-gray-600 hover:text-indigo-600 font-medium">About</a>
+            <a href="https://aarry.org/services/shopify.html" class="block text-indigo-600 font-medium">Services</a>
+            <a href="#cta" class="block w-full text-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-medium mt-2">View Pricing Plans</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <!-- Expert Tag -->
+            <p class="text-sm font-semibold text-orange-500 uppercase tracking-wider mb-3">
+                Kaocher Ahmed, Shopify Optimization Expert
+            </p>
+            <!-- Headline -->
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-gray-900">
+                All-in-One <span class="text-indigo-600">Shopify Store Optimization</span> Service Plans
+            </h2>
+            <!-- Subheadline / Value Proposition -->
+            <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
+                Transform your Shopify store into a revenue engine with guaranteed improvements in **Speed, Conversion Rate (CRO), and Advanced AI-Ready SEO**. Our tailored plans deliver measurable growth.
+            </p>
+            <!-- Main CTA -->
+            <div class="mt-10 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#cta" class="w-full sm:w-auto px-8 py-4 text-lg font-semibold text-white bg-indigo-600 rounded-xl shadow-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-[1.02]">
+                    View Optimization Plans
+                </a>
+                <a href="#process" class="w-full sm:w-auto px-8 py-4 text-lg font-medium text-indigo-600 bg-indigo-100 rounded-xl hover:bg-indigo-200 transition duration-300">
+                    What's Included?
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Optimization Pillars Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-gray-900 sm:text-4xl">
+                    Three Pillars of Store Optimization
+                </h3>
+            </div>
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+                <!-- Pillar 1: Speed & Performance (Mobile Optimized) -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-red-500 hover:shadow-xl transition duration-300">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-red-100 text-red-600 mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">Lightning Speed & Mobile Core Vitals</h4>
+                    <p class="text-gray-600">Achieve 90+ PageSpeed Scores. Fix LCP/CLS errors, optimize Liquid code, and ensure **flawless mobile responsiveness** to prevent bounce and boost SEO ranking.</p>
+                </div>
+
+                <!-- Pillar 2: Conversion Rate Optimization (CRO) -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-green-500 hover:shadow-xl transition duration-300">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-green-100 text-green-600 mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19h12M9 19c0 1.105-.895 2-2 2s-2-.895-2-2m-2-10a4 4 0 100-8 4 4 0 000 8z"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">CRO & User Experience Audit</h4>
+                    <p class="text-gray-600">Identify friction points in the checkout, product pages, and navigation. Implement changes to increase AOV and conversion rates instantly.</p>
+                </div>
+
+                <!-- Pillar 3: SEO & Visibility (AI Ready) -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-indigo-500 hover:shadow-xl transition duration-300">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-100 text-indigo-600 mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">Advanced AI-Ready SEO Implementation</h4>
+                    <p class="text-gray-600">Ensure proper sitemap submission, fix broken links, and implement **JSON-LD Structured Data (Schema Markup)** across key pages for next-generation search.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Optimization Process Section -->
+    <section id="process" class="py-16 md:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-gray-900 sm:text-4xl">
+                    Your Path to a High-Performing Store
+                </h3>
+                <p class="mt-4 text-lg text-gray-600">
+                    Our tailored plan ensures every aspect of your store is professionally optimized.
+                </p>
+            </div>
+
+            <!-- Step 1: Audit & Strategy -->
+            <div class="lg:flex lg:items-center lg:space-x-12 mb-12">
+                <div class="lg:w-1/2 p-6 bg-indigo-50 rounded-xl shadow-md border-l-4 border-indigo-600 mb-6 lg:mb-0">
+                    <span class="text-3xl font-extrabold text-indigo-600 mr-3">1.</span>
+                    <h4 class="text-2xl font-semibold mb-2 inline">Deep Audit & Custom Strategy Creation</h4>
+                    <p class="text-gray-700 mt-2">We analyze your entire store—from theme files to app performance and user flow—to create a personalized optimization roadmap targeting speed, CRO, and SEO gaps.</p>
+                </div>
+                <div class="lg:w-1/2">
+                    <img src="http://aarry.org/products/Shopify-Store-Design-Redesign/shopify%20store%20management%20.png" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/FFFFFF?text=Audit+Report+Mockup'"
+                         alt="Shopify Store Management Mockup" class="w-full h-auto rounded-lg shadow-xl" loading="lazy" />
+                </div>
+            </div>
+
+            <!-- Step 2: Implementation & Refinement -->
+            <div class="lg:flex lg:flex-row-reverse lg:items-center lg:space-x-reverse lg:space-x-12 mb-12">
+                <div class="lg:w-1/2 p-6 bg-indigo-50 rounded-xl shadow-md border-r-4 border-indigo-600 mb-6 lg:mb-0">
+                    <span class="text-3xl font-extrabold text-indigo-600 mr-3">2.</span>
+                    <h4 class="text-2xl font-semibold mb-2 inline">Expert Code & UX Implementation</h4>
+                    <p class="text-gray-700 mt-2">Using a secure development theme, we implement all necessary code clean-up, image/asset optimization, Liquid code refinement, and CRO/SEO improvements, ensuring no disruption to your live site.</p>
+                </div>
+                <div class="lg:w-1/2">
+                    <img src="http://aarry.org/products/Shopify-Store-Design-Redesign/build-a-one-product-shopify-store-for-your-business.jpg" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/FFFFFF?text=Code+Screen+Mockup'"
+                         alt="Building a One-Product Shopify Store" class="w-full h-auto rounded-lg shadow-xl" loading="lazy" />
+                </div>
+            </div>
+
+            <!-- Step 3: Launch & Guaranteed Monitoring -->
+            <div class="lg:flex lg:items-center lg:space-x-12">
+                <div class="lg:w-1/2 p-6 bg-indigo-50 rounded-xl shadow-md border-l-4 border-indigo-600 mb-6 lg:mb-0">
+                    <span class="text-3xl font-extrabold text-indigo-600 mr-3">3.</span>
+                    <h4 class="text-2xl font-semibold mb-2 inline">Launch, Verification & 6-Month Support</h4>
+                    <p class="text-gray-700 mt-2">After your final approval, we launch the optimized theme. We then provide post-launch support and stability monitoring to ensure your performance gains are maintained long-term.</p>
+                </div>
+                <div class="lg:w-1/2">
+                    <img src="http://aarry.org/products/Shopify-Store-Design-Redesign/shopify%20virtual%20assistant%20or%20shopify%20store%20manager.png" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/FFFFFF?text=Verification+Check'"
+                         alt="Shopify Virtual Assistant / Store Manager" class="w-full h-auto rounded-lg shadow-xl" loading="lazy" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VERIFIED PLATFORM REVIEWS -->
+    <section id="reviews" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-gray-900 sm:text-4xl">
+                    Verified 5-Star Client Reviews
+                </h3>
+                <p class="mt-4 text-lg text-gray-600">
+                    See what real store owners on Upwork and Fiverr are saying about our performance results.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1: Massive Score Jump -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-lg border border-indigo-200">
+                    <div class="flex items-center mb-4">
+                        <span class="text-3xl mr-2 text-yellow-500">⭐</span>
+                        <span class="text-xl font-bold text-gray-900">5.0 Star Rating</span>
+                    </div>
+                    <p class="italic text-gray-700 mb-4 text-lg leading-relaxed">
+                        "He consistently surpasses expectations... His remarkable ability to elevate website speed from **46 to 97** in under 24 hours solidifies his reputation as the go-to expert."
+                    </p>
+                    <p class="font-semibold text-indigo-600 text-sm">- Ahmed Client (Source: EComposer)</p>
+                </div>
+
+                <!-- Review 2: Safety & Layout Integrity -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-lg border border-indigo-200">
+                    <div class="flex items-center mb-4">
+                        <span class="text-3xl mr-2 text-yellow-500">⭐</span>
+                        <span class="text-xl font-bold text-gray-900">5.0 Star Rating</span>
+                    </div>
+                    <p class="italic text-gray-700 mb-4 text-lg leading-relaxed">
+                        "Very nice experience... My concern was **not to change the layout** of the website during optimization, and **he didn't**. Got the website to the level he promised."
+                    </p>
+                    <p class="font-semibold text-indigo-600 text-sm">- Dhrona Millet Foods (Source: Shopify Partner Review)</p>
+                </div>
+
+                <!-- Review 3: Speed & Responsiveness -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-lg border border-indigo-200">
+                    <div class="flex items-center mb-4">
+                        <span class="text-3xl mr-2 text-yellow-500">⭐</span>
+                        <span class="text-xl font-bold text-gray-900">5.0 Star Rating</span>
+                    </div>
+                    <p class="italic text-gray-700 mb-4 text-lg leading-relaxed">
+                        "Shabir is fast and very responsive. My website was really slow and he was able to **fix everything less than 24 hours**."
+                    </p>
+                    <p class="font-semibold text-indigo-600 text-sm">- Keishanels Boutique & Fashion (Source: Shopify Partner Review)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO / DESIGN SHOWCASE SECTION -->
+    <section id="portfolio" class="py-16 md:py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-gray-900 sm:text-4xl">
+                    See the Results: Optimized Store Designs
+                </h3>
+                <p class="mt-4 text-lg text-gray-600">
+                    Optimization starts with quality design. Here is a small glimpse of the high-converting Shopify stores we have designed and optimized.
+                </p>
+                <a href="https://aarry.org/portfolio.html" class="mt-4 inline-block text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                    View Full Portfolio & Case Studies &rarr;
+                </a>
+            </div>
+
+            <!-- Responsive 4-Column Image Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Image 1 -->
+                <div class="relative overflow-hidden rounded-xl shadow-lg group">
+                    <img src="http://aarry.org/products/Shopify-Store-Design-Redesign/Aarry%20Banner%20.png" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/0000FF/FFFFFF?text=Design+Sample+1'" 
+                         alt="Shopify Store Design Sample 1" 
+                         loading="lazy"
+                         class="w-full h-48 object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-indigo-900 bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <span class="text-white font-bold text-lg p-2 rounded bg-black bg-opacity-50">CRO Focused</span>
+                    </div>
+                </div>
+                
+                <!-- Image 2 -->
+                <div class="relative overflow-hidden rounded-xl shadow-lg group">
+                    <img src="http://aarry.org/products/Shopify-Store-Design-Redesign/Drop%20shiping%20store%20.png" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/FF5733/FFFFFF?text=Design+Sample+2'" 
+                         alt="Shopify Store Design Sample 2" 
+                         loading="lazy"
+                         class="w-full h-48 object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-indigo-900 bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <span class="text-white font-bold text-lg p-2 rounded bg-black bg-opacity-50">Dropshipping Ready</span>
+                    </div>
+                </div>
+                
+                <!-- Image 3 -->
+                <div class="relative overflow-hidden rounded-xl shadow-lg group">
+                    <img src="http://aarry.org/products/Shopify-Store-Design-Redesign/shopify%20store%20design%20.png" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/33FF57/000000?text=Design+Sample+3'" 
+                         alt="Shopify Store Design Sample 3" 
+                         loading="lazy"
+                         class="w-full h-48 object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-indigo-900 bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <span class="text-white font-bold text-lg p-2 rounded bg-black bg-opacity-50">Optimized for Speed</span>
+                    </div>
+                </div>
+
+                <!-- Image 4 -->
+                <div class="relative overflow-hidden rounded-xl shadow-lg group">
+                    <img src="http://aarry.org/products/Shopify-Store-Design-Redesign/Gemini_Generated_Image_932gxn932gxn932g.png" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/FF00FF/FFFFFF?text=Design+Sample+4'" 
+                         alt="Shopify Store Design Sample 4" 
+                         loading="lazy"
+                         class="w-full h-48 object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-indigo-900 bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <span class="text-white font-bold text-lg p-2 rounded bg-black bg-opacity-50">Seamless UX</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing / Final CTA Section (Revised) -->
+    <section id="cta" class="py-16 md:py-20 bg-indigo-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <h3 class="text-4xl font-extrabold mb-4">
+                Choose the Right Optimization Plan
+            </h3>
+            <p class="text-xl opacity-90 mb-12">
+                Select the plan that matches your store's size and complexity. Both include full speed, CRO, and SEO optimization.
+            </p>
+            
+            <!-- Pricing Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <!-- Plan 1: Starter Optimization (Below 10 Pages - $299) -->
+                <div class="bg-white text-gray-900 p-8 sm:p-10 rounded-2xl shadow-2xl transition duration-300 transform hover:scale-[1.03]">
+                    <h4 class="text-3xl font-bold text-indigo-600 mb-2">Starter Optimization</h4>
+                    <p class="text-gray-500 font-medium mb-4">Ideal for new or smaller Shopify stores.</p>
+                    
+                    <p class="text-5xl font-extrabold mb-4">
+                        $299<span class="text-xl font-medium text-gray-500"> / one-time</span>
+                    </p>
+                    
+                    <ul class="text-left space-y-3 mb-8 text-gray-700">
+                        <li class="flex items-center"><svg class="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            **Optimization for Stores with up to 10 Pages**
+                        </li>
+                        <li class="flex items-center"><svg class="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            Guaranteed Speed Score 80+
+                        </li>
+                        <li class="flex items-center"><svg class="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            Mobile Optimization & Basic CRO Cleanup
+                        </li>
+                        <li class="flex items-center"><svg class="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            3 Months Post-Launch Support
+                        </li>
+                    </ul>
+
+                    <a href="mailto:kaochar.ahmed@aarry.org?subject=Inquiry:%20Starter%20Optimization%20Plan%20($299)" class="w-full inline-block px-10 py-4 text-xl font-bold text-white bg-green-500 rounded-xl hover:bg-green-600 transition duration-300 shadow-lg">
+                        Get Started ($299)
+                    </a>
+                </div>
+
+                <!-- Plan 2: Pro Optimization (Up to 50 Pages - $499) -->
+                <div class="bg-indigo-50 text-gray-900 p-8 sm:p-10 rounded-2xl shadow-2xl transition duration-300 transform hover:scale-[1.03] border-4 border-indigo-500 relative">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-red-500 text-white text-sm font-bold py-1 px-3 rounded-full shadow-md">
+                        BEST VALUE
+                    </div>
+                    <h4 class="text-3xl font-bold text-indigo-800 mb-2">Pro Optimization</h4>
+                    <p class="text-gray-600 font-medium mb-4">Recommended for established, growing e-commerce businesses.</p>
+
+                    <p class="text-5xl font-extrabold mb-4">
+                        $499<span class="text-xl font-medium text-gray-500"> / one-time</span>
+                    </p>
+
+                    <ul class="text-left space-y-3 mb-8 text-gray-700">
+                        <li class="flex items-center"><svg class="w-5 h-5 mr-2 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            **Optimization for Stores with up to 50 Pages**
+                        </li>
+                        <li class="flex items-center"><svg class="w-5 h-5 mr-2 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            Guaranteed Speed Score **90+** (Desktop & Mobile-First)
+                        </li>
+                        <li class="flex items-center"><svg class="w-5 h-5 mr-2 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            **Full Technical SEO & AI Search Prep** (JSON-LD Schema Markup)
+                        </li>
+                        <li class="flex items-center"><svg class="w-5 h-5 mr-2 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            **6 Months** Post-Launch Support & Stability Monitoring
+                        </li>
+                    </ul>
+
+                    <a href="mailto:kaochar.ahmed@aarry.org?subject=Inquiry:%20Pro%20Optimization%20Plan%20($499)" class="w-full inline-block px-10 py-4 text-xl font-bold text-white bg-indigo-600 rounded-xl hover:bg-indigo-700 transition duration-300 shadow-lg">
+                        Select Pro Plan ($499)
+                    </a>
+                </div>
+            </div>
+            
+            <p class="mt-8 text-sm opacity-80">
+                100% money-back guarantee if we fail to meet the guaranteed performance targets.
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ Section (Included and functional) -->
+    <section id="faq" class="py-16 md:py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-gray-900 sm:text-4xl">
+                    Frequently Asked Questions (FAQs)
+                </h3>
+                <p class="mt-4 text-lg text-gray-600">
+                    Everything you need to know about our comprehensive Shopify Optimization Plans.
+                </p>
+            </div>
+
+            <div id="accordion-container" class="space-y-4">
+
+                <!-- FAQ Item 1: Functionality & Design -->
+                <div class="accordion-item bg-gray-50 rounded-xl shadow-md border border-gray-200" data-open="false">
+                    <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-lg text-gray-800 hover:bg-gray-100 rounded-xl transition duration-150" onclick="toggleAccordion(this)">
+                        Will optimization affect my store's existing design or functionality?
+                        <svg class="w-6 h-6 text-indigo-600 transition duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content px-5 border-t border-gray-100">
+                        <p class="text-gray-600">
+                            **Your design integrity is guaranteed.** We work exclusively on a **duplicate, unpublished theme** for all speed, CRO, and SEO optimizations. Your live store remains untouched, and we only publish the optimized version after your full review and approval.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2: Score Possibility -->
+                <div class="accordion-item bg-gray-50 rounded-xl shadow-md border border-gray-200" data-open="false">
+                    <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-lg text-gray-800 hover:bg-gray-100 rounded-xl transition duration-150" onclick="toggleAccordion(this)">
+                        What are the guaranteed performance metrics of the optimization plan?
+                        <svg class="w-6 h-6 text-indigo-600 transition duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2004/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content px-5 border-t border-gray-100">
+                        <p class="text-gray-600">
+                            We guarantee a minimum Google PageSpeed Score of **90+ on Desktop** and **80+ on Mobile** (for the Pro Plan), alongside verifiable improvements in **Core Web Vitals (LCP, CLS)**. This is a commitment; we work until these targets are met.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3: Plan Scope (Advanced SEO) -->
+                <div class="accordion-item bg-gray-50 rounded-xl shadow-md border border-gray-200" data-open="false">
+                    <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-lg text-gray-800 hover:bg-gray-100 rounded-xl transition duration-150" onclick="toggleAccordion(this)">
+                        What is "AI-Ready SEO" and why is it important?
+                        <svg class="w-6 h-6 text-indigo-600 transition duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2004/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content px-5 border-t border-gray-100">
+                        <p class="text-gray-600">
+                            **AI-Ready SEO** focuses on implementing **Structured Data (Schema Markup)** using **JSON-LD**. This is code that tells advanced search engines and AI models (like Google's SGE or other large language models) exactly what your content means, not just what it says. This significantly improves your eligibility for rich snippets and direct AI answers.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4: Support -->
+                <div class="accordion-item bg-gray-50 rounded-xl shadow-md border border-gray-200" data-open="false">
+                    <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-lg text-gray-800 hover:bg-gray-100 rounded-xl transition duration-150" onclick="toggleAccordion(this)">
+                        What kind of post-launch support is included?
+                        <svg class="w-6 h-6 text-indigo-600 transition duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2004/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content px-5 border-t border-gray-100">
+                        <p class="text-gray-600">
+                            The Starter Plan includes **3 months of support**, while the Pro Plan includes **6 months of post-launch stability monitoring and support**. This ensures your store remains fast and stable long after the optimization is complete.
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8 border-b border-gray-700 pb-8 mb-8">
+                <!-- Company Info -->
+                <div class="col-span-2 md:col-span-1">
+                    <h5 class="text-xl font-bold text-indigo-400 mb-4">Aarry Limited</h5>
+                    <p class="text-sm text-gray-400">
+                        Expert Shopify optimization, development, and marketing services by Kaocher Ahmed.
+                    </p>
+                </div>
+                
+                <!-- Main Links -->
+                <div>
+                    <h5 class="font-semibold mb-4 text-white">Company</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="http://aarry.org" class="text-gray-400 hover:text-indigo-400 transition">Home</a></li>
+                        <li><a href="https://aarry.org/about.html" class="text-gray-400 hover:text-indigo-400 transition">About Us</a></li>
+                        <li><a href="https://aarry.org/portfolio.html" class="text-gray-400 hover:text-indigo-400 transition">Portfolio</a></li>
+                        <li><a href="https://aarry.org/case-studies.html" class="text-gray-400 hover:text-indigo-400 transition">Case Studies</a></li>
+                    </ul>
+                </div>
+
+                <!-- Core Services (Internal Links) -->
+                <div>
+                    <h5 class="font-semibold mb-4 text-white">Core Services</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="https://aarry.org/services/shopify-seo-services-plan.html" class="text-gray-400 hover:text-indigo-400 transition">Shopify SEO Plans</a></li>
+                        <li><a href="https://aarry.org/services/shopify-cro-service.html" class="text-gray-400 hover:text-indigo-400 transition">Shopify CRO</a></li>
+                        <li><a href="https://aarry.org/services/headless-shopify-development.html" class="text-gray-400 hover:text-indigo-400 transition">Headless Development</a></li>
+                        <li><a href="https://aarry.org/services/ai-seo-optimization.html" class="text-gray-400 hover:text-indigo-400 transition">AI SEO Optimization</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Migration & Dev Services (Internal Links) -->
+                <div class="md:col-span-2">
+                    <h5 class="font-semibold mb-4 text-white">Other Services</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="https://aarry.org/services/shopify-migration-service.html" class="text-gray-400 hover:text-indigo-400 transition">Shopify Migration</a></li>
+                        <li><a href="https://aarry.org/services/e-commerce-seo-services.html" class="text-gray-400 hover:text-indigo-400 transition">E-commerce SEO</a></li>
+                        <li><a href="https://aarry.org/services/shopify-seo-services.html" class="text-gray-400 hover:text-indigo-400 transition">Advanced SEO Services</a></li>
+                        <li><a href="https://aarry.org/services/shopify.html" class="text-gray-400 hover:text-indigo-400 transition">All Shopify Services</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="text-center text-sm text-gray-500">
+                <p>&copy; 2025 Aarry Limited. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for the FAQ accordion functionality
+        function toggleAccordion(button) {
+            const item = button.closest('.accordion-item');
+            const content = item.querySelector('.accordion-content');
+            const isOpen = item.getAttribute('data-open') === 'true';
+
+            // Close all other accordions
+            document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.setAttribute('data-open', 'false');
+                    otherItem.querySelector('.accordion-content').style.maxHeight = '0';
+                    otherItem.querySelector('.accordion-content').style.paddingTop = '0';
+                    otherItem.querySelector('.accordion-content').style.paddingBottom = '0';
+                }
+            });
+
+            // Toggle the clicked one
+            if (isOpen) {
+                item.setAttribute('data-open', 'false');
+                content.style.maxHeight = '0';
+                content.style.paddingTop = '0';
+                content.style.paddingBottom = '0';
+            } else {
+                item.setAttribute('data-open', 'true');
+                // The max-height transition is handled by the CSS when data-open="true"
+            }
+        }
+    </script>
+</body>
+</html>
