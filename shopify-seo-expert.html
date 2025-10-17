@@ -235,30 +235,56 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
 
             <!-- 2. My Story -->
-          <section id="story" class="mb-20 pt-8">
-    <div class="md:grid md:grid-cols-2 md:gap-12 items-center">
-        <div class="mb-8 md:mb-0">
-            <img 
-                src="https://aarry.org/image/WhatsApp%20Image%202025-09-24%20at%2004.58.46%20(1).jpeg" 
-                alt="Kaocher Ahmed - Aarry Limited Founder" 
-                class="w-full h-auto rounded-lg shadow-lg mb-8" 
-            />
-            <span class="text-sm font-semibold text-primary uppercase">My Story</span>
-            <h2 class="text-4xl font-bold text-gray-900 mt-2">A Freelancer with 10 Years of Experience</h2>
-        </div>
-        <div>
-            <p class="text-lg text-gray-600 mb-4">
-                Hello, I'm Kaocher Ahmed. As a certified Shopify Expert and seasoned SEO strategist, I help e-commerce entrepreneurs resolve the deep technical issues that hinder their growth. My approach is tailored, data-driven, and relentlessly focused on your ROI.
-            </p>
-            <p class="text-lg text-gray-600 mb-4">
-                From custom checkouts to features Shopify doesn’t usually allow, I find ways to make it work. I focus on real, maintainable results, which is why most of my clients come back and stay long-term.
-            </p>
-            <p class="text-lg text-gray-600">
-                Whether you're launching a new store or scaling an existing one, I provide a clear path to success. If your Shopify store feels limiting, we can fix that.
-            </p>
-        </div>
+          <!-- Wrapper for centering and max width -->
+    <div class="max-w-6xl mx-auto">
+        <section id="story" class="py-16 md:py-24">
+            <!-- items-end ensures both columns align their content to the very bottom -->
+            <div class="md:grid md:grid-cols-2 md:gap-12 items-end">
+                
+                <!-- Left Column: Image Only -->
+                <div class="mb-10 md:mb-0 flex justify-center md:justify-start">
+                    <!-- Image Block -->
+                    <div class="w-full md:max-w-md bg-white rounded-xl shadow-2xl overflow-hidden transform transition duration-500 hover:scale-[1.02] hover:shadow-primary/50">
+                        <!-- Image with Fallback -->
+                        <img 
+                            src="https://aarry.org/image/WhatsApp%20Image%202025-09-24%20at%2004.58.46%20(1).jpeg" 
+                            alt="Kaocher Ahmed - Aarry Limited Founder" 
+                            class="w-full h-auto object-cover rounded-xl" 
+                            onerror="this.onerror=null; this.src='https://placehold.co/500x500/10b981/ffffff?text=Kaocher+Ahmed+Placeholder';"
+                        />
+                    </div>
+                </div>
+
+                <!-- Right Column: All Text Content -->
+                <div class="flex flex-col">
+                    
+                    <!-- Top Text -->
+                    <span class="text-sm font-semibold text-primary uppercase tracking-widest mb-2">My Story</span>
+                    <h2 class="text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight mb-8">
+                       A Freelancer with 10 Years of Experience
+                    </h2>
+
+                    <!-- Quote and Body Content -->
+                    <p class="text-xl text-gray-700 mb-6 border-l-4 border-primary pl-4 italic">
+                        "I help e-commerce entrepreneurs resolve the deep technical issues that hinder their growth."
+                    </p>
+                    <p class="text-lg text-gray-600 mb-4">
+                        Hello, I'm **Kaocher Ahmed**. As a certified **Shopify Expert** and seasoned **SEO strategist**, I help e-commerce entrepreneurs resolve the deep technical issues that hinder their growth. My approach is tailored, data-driven, and relentlessly focused on your ROI.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-4">
+                        From custom checkouts to features Shopify doesn’t usually allow, I find ways to make it work. I focus on real, maintainable results, which is why most of my clients come back and stay long-term.
+                    </p>
+                    <p class="text-lg text-gray-600">
+                        Whether you're launching a new store or scaling an existing one, I provide a clear path to success. If your Shopify store feels limiting, **we can fix that**.
+                    </p>
+                    
+                    <a href="#" class="inline-block self-start mt-8 px-6 py-3 text-lg font-medium text-white bg-primary rounded-full shadow-lg shadow-primary/50 hover:bg-emerald-600 transition duration-300 transform hover:-translate-y-0.5">
+                        Start a Project Today &rarr;
+                    </a>
+                </div>
+            </div>
+        </section>
     </div>
-</section>
 
             <!-- 3. Career Journey -->
             <section id="career" class="mb-20 pt-8">
