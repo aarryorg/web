@@ -5,9 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cryptographic AI Browser: GCI Resolver Demo</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons for Navigation -->
+    <script src="https://unpkg.com/lucide@latest"></script> 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #f7f9fc; }
+        /* Adjusted body padding for fixed header */
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f7f9fc; 
+            padding-top: 6rem; /* Add padding for the fixed header */
+        }
         .card { background-color: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); }
         .data-box { background-color: #eef2ff; padding: 10px; border-radius: 6px; font-family: monospace; overflow-x: auto; font-size: 0.85rem; }
         .loading-ring { border: 4px solid #f3f3f3; border-top: 4px solid #4f46e5; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; display: inline-block; }
@@ -21,9 +28,36 @@
         .phone-frame * {
             box-sizing: border-box;
         }
+        /* List styles for n8n guide */
+        .list-circle { list-style-type: circle; }
     </style>
 </head>
 <body class="p-4 md:p-8">
+
+    <!-- Fixed Top Navigation Bar (NEW) -->
+    <header class="fixed top-0 left-0 right-0 bg-white border-b border-gray-200 shadow-md z-40 p-3">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold text-gray-800">C-AI Demo</h1>
+            <nav class="flex space-x-3">
+                <a href="#gci-ingest" class="text-gray-600 hover:text-indigo-600 transition duration-150 p-2 rounded-lg bg-gray-50 flex items-center" title="GCI Ingestion">
+                    <i data-lucide="scan" class="w-5 h-5"></i>
+                </a>
+                <a href="#gci-resolve" class="text-gray-600 hover:text-indigo-600 transition duration-150 p-2 rounded-lg bg-gray-50 flex items-center" title="GCI Resolution">
+                    <i data-lucide="database" class="w-5 h-5"></i>
+                </a>
+                <a href="#external-content" class="text-gray-600 hover:text-indigo-600 transition duration-150 p-2 rounded-lg bg-gray-50 flex items-center" title="External Content">
+                    <i data-lucide="link" class="w-5 h-5"></i>
+                </a>
+                <button id="deviceViewNavBtn" class="text-gray-600 hover:text-indigo-600 transition duration-150 p-2 rounded-lg bg-gray-50 flex items-center" title="Device View">
+                    <i data-lucide="smartphone" class="w-5 h-5"></i>
+                </button>
+                <a href="#n8n-guide" class="text-gray-600 hover:text-indigo-600 transition duration-150 p-2 rounded-lg bg-gray-50 flex items-center" title="n8n Guide">
+                    <i data-lucide="book-open" class="w-5 h-5"></i>
+                </a>
+            </nav>
+        </div>
+    </header>
+
     <div class="max-w-4xl mx-auto">
         <h1 class="text-3xl font-bold text-gray-800 mb-2">Cryptographic AI Browser (Concept Demo)</h1>
         <p class="text-gray-600 mb-6">Simulating GCI resolution, lossy compression, and AI data reconstruction.</p>
@@ -36,7 +70,7 @@
         </div>
 
         <!-- Ingestion / Simulation Panel -->
-        <div class="card p-5 mb-6">
+        <div class="card p-5 mb-6" id="gci-ingest">
             <h2 class="text-xl font-semibold text-indigo-600 mb-3">1. Content Ingestion Simulation</h2>
             <p class="text-sm text-gray-500 mb-4">Simulates indexing and lossy compression of a large asset (e.g., a 28 GB LLM weight file).</p>
             
@@ -53,7 +87,7 @@
         </div>
 
         <!-- Resolution Panel -->
-        <div class="card p-5">
+        <div class="card p-5" id="gci-resolve">
             <h2 class="text-xl font-semibold text-indigo-600 mb-3">2. GCI Resolution & Reconstruction</h2>
             <p class="text-sm text-gray-500 mb-4">Simulates the browser requesting the GCI and the AI Model reconstructing the data.</p>
             
@@ -75,7 +109,7 @@
         </div>
 
         <!-- External Content Panel -->
-        <div class="card p-5 mt-6">
+        <div class="card p-5 mt-6" id="external-content">
             <h2 class="text-xl font-semibold text-indigo-600 mb-3">3. External Content Viewer (Simulation)</h2>
             <p class="text-sm text-gray-500 mb-4">Simulate navigating to an external URL (YouTube, Docs, etc.) which are not GCI-indexed.</p>
             
@@ -87,7 +121,7 @@
             </div>
         </div>
         
-        <!-- Device Screen View Simulation (NEW SECTION) -->
+        <!-- Device Screen View Simulation -->
         <div class="card p-5 mt-6">
             <h2 class="text-xl font-semibold text-indigo-600 mb-3">4. Device View Simulation</h2>
             <p class="text-sm text-gray-500 mb-4">Simulates a secure, framed view of the current device viewport, mimicking a mobile overlay.</p>
@@ -96,10 +130,74 @@
                 Simulate Device Screen View
             </button>
         </div>
+
+        <!-- N8N HTTP Request Node Guide (NEW SECTION) -->
+        <div class="card p-5 mt-6" id="n8n-guide">
+            <h2 class="text-xl font-semibold text-indigo-600 mb-3 flex items-center space-x-2">
+                <i data-lucide="book-open" class="w-6 h-6"></i>
+                <span>5. n8n HTTP Request Node Guide</span>
+            </h2>
+            <p class="text-sm text-gray-500 mb-4">A comprehensive guide for configuring HTTP requests within n8n workflows.</p>
+
+            <details class="group cursor-pointer">
+                <summary class="text-lg font-bold text-gray-700 p-2 rounded-md bg-gray-100 hover:bg-gray-200 transition duration-150">
+                    HTTP Request Node: Overview & Configuration
+                </summary>
+                <div class="p-4 mt-2 border border-gray-200 rounded-md bg-white">
+                    <p class="mb-3">The HTTP Request node is highly versatile, allowing you to query data from any app or service with a REST API. It can be used as a regular node or attached to an **AI agent** as a **tool**.</p>
+
+                    <h3 class="text-md font-semibold mt-4 mb-2 border-b pb-1 text-gray-800">Credentials & Parameters</h3>
+                    
+                    <ul class="list-disc list-inside space-y-2 text-sm text-gray-700 ml-4">
+                        <li><strong>Method:</strong> Select the HTTP method (DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT).</li>
+                        <li><strong>URL:</strong> Enter the target API endpoint.</li>
+                        <li><strong>Authentication:</strong>
+                            <ul class="list-circle list-inside ml-6 mt-1 space-y-1">
+                                <li>**Predefined Credentials:** Recommended for n8n supported integrations.</li>
+                                <li>**Generic Credentials:** Requires manual configuration (Basic auth, Custom auth, OAuth, etc.) for unsupported integrations.</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h3 class="text-md font-semibold mt-4 mb-2 border-b pb-1 text-gray-800">Sending Request Data</h3>
+                    <ul class="list-disc list-inside space-y-2 text-sm text-gray-700 ml-4">
+                        <li><strong>Query Parameters:</strong> Used as filters (Name/Value pairs or JSON).</li>
+                        <li><strong>Headers:</strong> Contains metadata about your request (Name/Value pairs or JSON).</li>
+                        <li><strong>Body Content:</strong> Select content type and format:
+                            <ul class="list-circle list-inside ml-6 mt-1 space-y-1">
+                                <li>**Form URLencoded:** For <code>application/x-www-form-urlencoded</code>.</li>
+                                <li>**Form-Data:** For <code>multipart/form-data</code> (can use n8n Binary File).</li>
+                                <li>**JSON:** For sending structured JSON data.</li>
+                                <li>**n8n Binary File:** Sends the contents of an n8n file as the body.</li>
+                                <li>**Raw:** Sends raw data with a specified <code>Content-Type</code>.</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h3 class="text-md font-semibold mt-4 mb-2 border-b pb-1 text-gray-800">Node Options & Control</h3>
+                    <ul class="list-disc list-inside space-y-2 text-sm text-gray-700 ml-4">
+                        <li>**Batching:** Controls processing of large input items (Items per Batch, Batch Interval).</li>
+                        <li>**Timeout:** Maximum time to wait for the server response (in milliseconds).</li>
+                        <li>**Ignore SSL Issues:** Allows receiving responses even if SSL validation fails.</li>
+                        <li>**Response Control:** Options to include headers/status, never error, and select response format (Autodetect, File, JSON, Text).</li>
+                        <li>**Pagination:** Used for handling large result sets (e.g., updating a parameter or using a Next URL from the response).</li>
+                    </ul>
+
+                    <h3 class="text-md font-semibold mt-4 mb-2 text-red-600 border-b pb-1">Tool-only Options (For AI Agents)</h3>
+                    <ul class="list-disc list-inside space-y-2 text-sm text-gray-700 ml-4">
+                        <li>**Optimize Response:** Reduces data passed to the LLM (for cost and performance). Response types include JSON, HTML, and Text, each with truncation/field selection options.</li>
+                    </ul>
+                    
+                    <h3 class="text-md font-semibold mt-4 mb-2 border-b pb-1 text-gray-800">Import cURL Command</h3>
+                    <p class="text-sm text-gray-600">You can paste a standard <code>curl</code> command into the node's import function to automatically configure all request settings. This overwrites any existing configuration.</p>
+
+                </div>
+            </details>
+        </div>
         
     </div>
 
-    <!-- Modal for Device View (NEW) -->
+    <!-- Modal for Device View -->
     <div id="deviceModal" class="fixed inset-0 bg-gray-900 bg-opacity-75 hidden flex items-center justify-center p-4 z-50">
         <div class="phone-frame w-[360px] h-[720px] bg-black p-4 rounded-[40px] shadow-2xl relative">
             <!-- Inner Screen -->
@@ -144,9 +242,10 @@
         const reconstructedDataEl = document.getElementById('reconstructedData');
         const urlInputEl = document.getElementById('urlInput');
         const openUrlBtn = document.getElementById('openUrlBtn');
-        const deviceViewBtn = document.getElementById('deviceViewBtn'); // NEW
-        const deviceModalEl = document.getElementById('deviceModal'); // NEW
-        const closeDeviceViewBtn = document.getElementById('closeDeviceViewBtn'); // NEW
+        const deviceViewBtn = document.getElementById('deviceViewBtn'); 
+        const deviceModalEl = document.getElementById('deviceModal');
+        const closeDeviceViewBtn = document.getElementById('closeDeviceViewBtn'); 
+        const deviceViewNavBtn = document.getElementById('deviceViewNavBtn'); // NEW
 
         // --- Utility Functions ---
         
@@ -426,8 +525,9 @@
                 ingestBtn.addEventListener('click', ingestContent);
                 resolveBtn.addEventListener('click', resolveGCI);
                 openUrlBtn.addEventListener('click', openExternalUrl);
-                deviceViewBtn.addEventListener('click', openDeviceViewModal); // NEW LISTENER
-                closeDeviceViewBtn.addEventListener('click', closeDeviceViewModal); // NEW LISTENER
+                deviceViewBtn.addEventListener('click', openDeviceViewModal); 
+                closeDeviceViewBtn.addEventListener('click', closeDeviceViewModal); 
+                deviceViewNavBtn.addEventListener('click', openDeviceViewModal); // NEW LISTENER for fixed header button
 
             } catch (e) {
                 console.error("Initialization Error:", e);
