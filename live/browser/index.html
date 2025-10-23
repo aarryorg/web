@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptographic AI Browser: GCI Resolver Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9fc; }
+        .card { background-color: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); }
+        .data-box { background-color: #eef2ff; padding: 10px; border-radius: 6px; font-family: monospace; overflow-x: auto; font-size: 0.85rem; }
+        .loading-ring { border: 4px solid #f3f3f3; border-top: 4px solid #4f46e5; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; display: inline-block; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        /* CSS for Phone Frame Simulation */
+        .phone-frame {
+            box-shadow: 0 0 0 10px #333, 0 0 0 12px #999, inset 0 0 3px 2px #000;
+            position: relative;
+            box-sizing: content-box;
+        }
+        .phone-frame * {
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">Cryptographic AI Browser (Concept Demo)</h1>
+        <p class="text-gray-600 mb-6">Simulating GCI resolution, lossy compression, and AI data reconstruction.</p>
+
+        <!-- Configuration and Status -->
+        <div class="card p-5 mb-6">
+            <h2 class="text-xl font-semibold text-indigo-600 mb-3">System Status</h2>
+            <div id="status" class="text-sm font-medium">Initializing...</div>
+            <div id="userIdDisplay" class="text-xs mt-2 p-2 bg-gray-100 rounded-lg"></div>
+        </div>
+
+        <!-- Ingestion / Simulation Panel -->
+        <div class="card p-5 mb-6">
+            <h2 class="text-xl font-semibold text-indigo-600 mb-3">1. Content Ingestion Simulation</h2>
+            <p class="text-sm text-gray-500 mb-4">Simulates indexing and lossy compression of a large asset (e.g., a 28 GB LLM weight file).</p>
+            
+            <button id="ingestBtn" class="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition duration-150 disabled:opacity-50" disabled>
+                Ingest & Compress LLM Block
+            </button>
+            <div id="ingestOutput" class="mt-4 hidden">
+                <p class="font-medium text-sm text-green-600 mb-2">✅ Content Indexed. GCI & Manifest Stored.</p>
+                <p class="text-xs font-semibold">Generated GCI:</p>
+                <div id="generatedGCI" class="data-box break-all"></div>
+                <p class="text-xs font-semibold mt-2">Simulated Compressed Block (280 MB kernel):</p>
+                <div id="compressedBlock" class="data-box break-all"></div>
+            </div>
+        </div>
+
+        <!-- Resolution Panel -->
+        <div class="card p-5">
+            <h2 class="text-xl font-semibold text-indigo-600 mb-3">2. GCI Resolution & Reconstruction</h2>
+            <p class="text-sm text-gray-500 mb-4">Simulates the browser requesting the GCI and the AI Model reconstructing the data.</p>
+            
+            <div class="flex flex-col md:flex-row gap-3">
+                <input type="text" id="gciInput" placeholder="Paste GCI here..." class="flex-grow p-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 text-sm" disabled>
+                <button id="resolveBtn" class="bg-green-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-700 transition duration-150 disabled:opacity-50 flex items-center justify-center" disabled>
+                    <span id="resolveText">Resolve GCI</span>
+                    <span id="resolveLoader" class="loading-ring ml-2 hidden"></span>
+                </button>
+            </div>
+            
+            <div id="resolutionOutput" class="mt-4">
+                <p class="text-xs font-semibold mt-2">Resolution Process:</p>
+                <div id="processLog" class="data-box max-h-48 overflow-y-auto"></div>
+                
+                <p class="text-xs font-semibold mt-4 text-purple-600">Final Reconstructed Data (Simulated 28 GB Model):</p>
+                <div id="reconstructedData" class="data-box break-all bg-purple-50"></div>
+            </div>
+        </div>
+
+        <!-- External Content Panel -->
+        <div class="card p-5 mt-6">
+            <h2 class="text-xl font-semibold text-indigo-600 mb-3">3. External Content Viewer (Simulation)</h2>
+            <p class="text-sm text-gray-500 mb-4">Simulate navigating to an external URL (YouTube, Docs, etc.) which are not GCI-indexed.</p>
+            
+            <div class="flex flex-col md:flex-row gap-3">
+                <input type="url" id="urlInput" placeholder="Enter URL (e.g., https://www.youtube.com/watch?v=...) or File Path" class="flex-grow p-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 text-sm">
+                <button id="openUrlBtn" class="bg-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-purple-700 transition duration-150">
+                    Open/Navigate URL
+                </button>
+            </div>
+        </div>
+        
+        <!-- Device Screen View Simulation (NEW SECTION) -->
+        <div class="card p-5 mt-6">
+            <h2 class="text-xl font-semibold text-indigo-600 mb-3">4. Device View Simulation</h2>
+            <p class="text-sm text-gray-500 mb-4">Simulates a secure, framed view of the current device viewport, mimicking a mobile overlay.</p>
+            
+            <button id="deviceViewBtn" class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition duration-150">
+                Simulate Device Screen View
+            </button>
+        </div>
+        
+    </div>
+
+    <!-- Modal for Device View (NEW) -->
+    <div id="deviceModal" class="fixed inset-0 bg-gray-900 bg-opacity-75 hidden flex items-center justify-center p-4 z-50">
+        <div class="phone-frame w-[360px] h-[720px] bg-black p-4 rounded-[40px] shadow-2xl relative">
+            <!-- Inner Screen -->
+            <div class="device-screen w-full h-full bg-white rounded-[25px] overflow-hidden p-4 flex flex-col items-center justify-center text-center">
+                <p class="font-bold text-lg text-gray-800">Device View Active</p>
+                <p class="text-sm text-gray-600 mt-2">This simulates the browser rendering its current viewport within a secured, framed mobile environment.</p>
+                <p class="text-xs text-red-500 mt-4">Note: Actual device screen access is blocked for security.</p>
+                <!-- Close button is given an explicit ID for clean JS handling -->
+                <button id="closeDeviceViewBtn" class="mt-4 bg-red-500 text-white px-3 py-1 rounded-lg text-sm hover:bg-red-600 transition duration-150">Close Frame</button>
+            </div>
+            <!-- Mock camera/speaker cutout -->
+            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-20 h-2 bg-gray-700 rounded-b-lg"></div>
+        </div>
+    </div>
+    
+    <!-- Firebase Imports -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        
+        // --- Global Firebase Configuration (MANDATORY) ---
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        let db, auth, userId = null;
+        let isAuthReady = false;
+
+        // --- DOM Elements ---
+        const statusEl = document.getElementById('status');
+        const userIdDisplayEl = document.getElementById('userIdDisplay');
+        const ingestBtn = document.getElementById('ingestBtn');
+        const ingestOutputEl = document.getElementById('ingestOutput');
+        const generatedGCIEl = document.getElementById('generatedGCI');
+        const compressedBlockEl = document.getElementById('compressedBlock');
+        const gciInputEl = document.getElementById('gciInput');
+        const resolveBtn = document.getElementById('resolveBtn');
+        const resolveTextEl = document.getElementById('resolveText');
+        const resolveLoaderEl = document.getElementById('resolveLoader');
+        const processLogEl = document.getElementById('processLog');
+        const reconstructedDataEl = document.getElementById('reconstructedData');
+        const urlInputEl = document.getElementById('urlInput');
+        const openUrlBtn = document.getElementById('openUrlBtn');
+        const deviceViewBtn = document.getElementById('deviceViewBtn'); // NEW
+        const deviceModalEl = document.getElementById('deviceModal'); // NEW
+        const closeDeviceViewBtn = document.getElementById('closeDeviceViewBtn'); // NEW
+
+        // --- Utility Functions ---
+        
+        /** Generates a simple 28-byte hash simulation (hex string). */
+        const generateHash = (content) => {
+            const hash = btoa(content).substring(0, 37).replace(/=/g, 'a').padEnd(37, 'a');
+            return hash; // Simulating 28 bytes (37 Base64 chars) for display clarity
+        };
+
+        /** Generates a simulated GCI (32 bytes structure represented as a string). */
+        const generateGCI = (contentHash, cti, cType, rmIdx) => {
+            // Convert to hex representation for display simplicity
+            const ctiHex = cti.toString(16).padStart(2, '0');
+            const cTypeHex = cType.toString(16).padStart(2, '0');
+            const rmIdxHex = rmIdx.toString(16).padStart(4, '0');
+            
+            // GCI: Content Hash (28 bytes) + CTI (1) + C_TYPE (1) + RM_IDX (2)
+            // Displaying as a concatenated string for this simulation
+            return contentHash + ctiHex + cTypeHex + rmIdxHex;
+        };
+
+        /** Simulates the Nanoblockchain Integrity Check. */
+        const integrityCheck = (gci, storedHash) => {
+            // In a real system, we'd calculate the hash from the resolved content.
+            // Here, we check if the GCI's embedded hash matches the stored hash (simulating pre-verified data).
+            const gciHash = gci.substring(0, 37); // Get the 28-byte hash portion
+            
+            if (gciHash === storedHash) {
+                return { success: true, log: `[${new Date().toLocaleTimeString()}] ✅ Nanoblockchain: GCI hash verified locally. Integrity assured.` };
+            } else {
+                return { success: false, log: `[${new Date().toLocaleTimeString()}] ❌ Nanoblockchain: Hash mismatch! Data integrity compromised.` };
+            }
+        };
+
+        /** Simulates AI Model Reconstruction (Lossy C_TYPE=02) */
+        const reconstructData = async (compressedBlock, reconstructionManifest) => {
+            const { Expansion_Parameters, Compression_Algorithm } = reconstructionManifest;
+
+            const log = [];
+            log.push(`[${new Date().toLocaleTimeString()}] 🧠 AI Model Active: C_TYPE=02 (Lossy) detected.`);
+            log.push(`[${new Date().toLocaleTimeString()}] 🛠️ Loading RM: ${Compression_Algorithm}.`);
+            
+            // Simulate intensive reconstruction process
+            await new Promise(resolve => setTimeout(resolve, 1500)); 
+            
+            // Simulate mathematical reconstruction
+            const restoredData = `LLM Model v1.2 Reconstructed. \n| Params Restored: ${Expansion_Parameters.matrices} \n| Original Size: 28 GB \n| Core Kernel Size: 280 MB \n| Accuracy Loss: ~0.5% (Acceptable) \n| Data Verified: OK`;
+
+            log.push(`[${new Date().toLocaleTimeString()}] ✨ Reconstruction Complete. Usable data restored.`);
+            
+            return { restoredData, log };
+        };
+        
+        /** Handles opening external URLs in a new tab. */
+        const openExternalUrl = () => {
+            const url = urlInputEl.value.trim();
+            if (url) {
+                // Add https:// if missing, for basic URL opening safety
+                let sanitizedUrl = url.startsWith('http') ? url : 'https://' + url;
+                
+                // Use window.open to simulate the browser navigating
+                try {
+                    window.open(sanitizedUrl, '_blank');
+                } catch (error) {
+                    console.error("Failed to open URL in new window:", error);
+                }
+            }
+        };
+
+        /** Opens the device view modal. (NEW) */
+        const openDeviceViewModal = () => {
+            deviceModalEl.classList.remove('hidden');
+        };
+
+        /** Closes the device view modal. (NEW) */
+        const closeDeviceViewModal = () => {
+            deviceModalEl.classList.add('hidden');
+        };
+
+
+        // --- Firestore Interaction ---
+
+        /** Constructs the Firestore path for the GCI Index (Public Data) */
+        const getGciDocRef = (gci) => {
+            // Store GCI Index data in a public collection
+            const gciCollectionPath = `/artifacts/${appId}/public/data/gci_index`;
+            return doc(db, gciCollectionPath, gci);
+        };
+        
+        /** Constructs the Firestore path for the Reconstruction Manifests (Public Data) */
+        const getRmDocRef = (rmIdx) => {
+            // Store RM data in a public collection
+            const rmCollectionPath = `/artifacts/${appId}/public/data/rm_manifests`;
+            return doc(db, rmCollectionPath, rmIdx);
+        };
+
+        // --- Core Logic ---
+
+        /** Simulates the content ingestion, GCI generation, and storage process. */
+        const ingestContent = async () => {
+            if (!isAuthReady || !db) {
+                console.error("Firebase not ready.");
+                return;
+            }
+
+            // 1. Simulate Content and Compression
+            const rawContent = 'Very large LLM weight data block (28GB of floats)';
+            const compressedBlockText = 'Compressed LLM core kernel (280 MB)';
+            const contentHash = generateHash(rawContent);
+
+            // 2. Define Architecture components for this block
+            const CTI = 3; // 03 = LLM Weight
+            const C_TYPE = 2; // 02 = Lossy (AI Model)
+            const RM_IDX = Math.floor(Math.random() * 9999) + 1000; // Simulated 2-byte index (1000-9999)
+            const GCI = generateGCI(contentHash, CTI, C_TYPE, RM_IDX);
+
+            // 3. Create Reconstruction Manifest (RM)
+            const reconstructionManifest = {
+                Compression_Algorithm: 'Quantization (8-bit) + Pruning',
+                Core_Kernel_GCI: GCI,
+                Expansion_Parameters: {
+                    matrices: 4096,
+                    bias: 512,
+                    layer: 'Transformer'
+                },
+            };
+            
+            // 4. Create GCI Index Entry
+            const gciIndexEntry = {
+                gci: GCI,
+                content_hash: contentHash,
+                content_type: CTI,
+                compression_type: C_TYPE,
+                rm_index: RM_IDX,
+                compressed_data: compressedBlockText,
+                timestamp: new Date().toISOString(),
+                // In a real system, this would point to the nanoblockchain root hash
+                nanoblockchain_root: generateHash(GCI + JSON.stringify(reconstructionManifest)), 
+            };
+
+            try {
+                // 5. Store RM and GCI Index in Firestore
+                await setDoc(getRmDocRef(RM_IDX.toString()), reconstructionManifest);
+                await setDoc(getGciDocRef(GCI), gciIndexEntry);
+
+                // Update UI
+                ingestOutputEl.classList.remove('hidden');
+                generatedGCIEl.textContent = GCI;
+                compressedBlockEl.textContent = compressedBlockText + " (RM Index: " + RM_IDX + ")";
+                gciInputEl.value = GCI; // Populate the resolve input
+
+            } catch (error) {
+                console.error("Error during ingestion:", error);
+                // Custom modal or message box would be used here instead of alert()
+                console.log("Error: Could not store data in Firestore. Check console for details.");
+            }
+        };
+
+        /** Simulates the browser resolving a GCI to fetch and reconstruct content. */
+        const resolveGCI = async () => {
+            if (!isAuthReady || !db) return;
+
+            resolveBtn.disabled = true;
+            resolveTextEl.textContent = 'Resolving...';
+            resolveLoaderEl.classList.remove('hidden');
+            
+            processLogEl.innerHTML = '';
+            reconstructedDataEl.textContent = 'Awaiting data...';
+
+            const GCI = gciInputEl.value.trim();
+            if (GCI.length < 44) {
+                processLogEl.innerHTML += `<p class="text-red-500">[${new Date().toLocaleTimeString()}] ❌ Error: Invalid GCI format. Expected 44+ chars.</p>`;
+                resolveBtn.disabled = false;
+                resolveTextEl.textContent = 'Resolve GCI';
+                resolveLoaderEl.classList.add('hidden');
+                return;
+            }
+
+            try {
+                // 1. Resolve GCI Index
+                processLogEl.innerHTML += `<p class="text-indigo-600">[${new Date().toLocaleTimeString()}] 🔍 Looking up GCI in Local Index...</p>`;
+                const gciDoc = await getDoc(getGciDocRef(GCI));
+
+                if (!gciDoc.exists()) {
+                    processLogEl.innerHTML += `<p class="text-red-500">[${new Date().toLocaleTimeString()}] ❌ Error: GCI not found in local index.</p>`;
+                    return;
+                }
+
+                const gciData = gciDoc.data();
+                const { content_hash, compression_type, rm_index, compressed_data, nanoblockchain_root } = gciData;
+                
+                processLogEl.innerHTML += `<p class="text-indigo-600">[${new Date().toLocaleTimeString()}] ✅ GCI Found. C_TYPE: ${compression_type} (Lossy).</p>`;
+
+                // 2. Nanoblockchain Integrity Check
+                const { success, log } = integrityCheck(GCI, content_hash);
+                processLogEl.innerHTML += `<p class="${success ? 'text-green-600' : 'text-red-500'}">${log}</p>`;
+
+                if (!success) return;
+
+                // 3. Lossy Content Resolution (C_TYPE = 02)
+                if (compression_type === 2) {
+                    processLogEl.innerHTML += `<p class="text-indigo-600">[${new Date().toLocaleTimeString()}] 🔍 Fetching Reconstruction Manifest (RM_IDX: ${rm_index})...</p>`;
+                    const rmDoc = await getDoc(getRmDocRef(rm_index.toString()));
+                    
+                    if (!rmDoc.exists()) {
+                        processLogEl.innerHTML += `<p class="text-red-500">[${new Date().toLocaleTimeString()}] ❌ Critical Error: Reconstruction Manifest missing!</p>`;
+                        return;
+                    }
+
+                    const rmData = rmDoc.data();
+                    processLogEl.innerHTML += `<p class="text-indigo-600">[${new Date().toLocaleTimeString()}] ✅ RM Found. Preparing AI Reconstruction...</p>`;
+
+                    // 4. AI Reconstruction Simulation
+                    const { restoredData, log: reconLog } = await reconstructData(compressed_data, rmData);
+                    reconLog.forEach(line => processLogEl.innerHTML += `<p class="text-purple-700">${line}</p>`);
+                    reconstructedDataEl.textContent = restoredData;
+
+                } else {
+                    // For C_TYPE 00 or 01 (None/Lossless) - simply return compressed_data
+                    processLogEl.innerHTML += `<p class="text-green-600">[${new Date().toLocaleTimeString()}] 📦 C_TYPE: 00/01 detected. Returning Lossless Data.</p>`;
+                    reconstructedDataEl.textContent = compressed_data;
+                }
+
+            } catch (error) {
+                console.error("Error during GCI resolution:", error);
+                processLogEl.innerHTML += `<p class="text-red-500">[${new Date().toLocaleTimeString()}] 🛑 UNEXPECTED ERROR: ${error.message}</p>`;
+            } finally {
+                resolveBtn.disabled = false;
+                resolveTextEl.textContent = 'Resolve GCI';
+                resolveLoaderEl.classList.add('hidden');
+            }
+        };
+
+        // --- Initialization ---
+
+        const initApp = () => {
+            if (!firebaseConfig) {
+                statusEl.textContent = '❌ ERROR: Firebase config is missing.';
+                statusEl.classList.add('text-red-600');
+                return;
+            }
+
+            try {
+                // Initialize Firebase
+                const app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+                setLogLevel('error');
+
+                // Handle Authentication
+                onAuthStateChanged(auth, async (user) => {
+                    if (user) {
+                        userId = user.uid;
+                    } else if (initialAuthToken) {
+                        // Sign in with the provided custom token
+                        await signInWithCustomToken(auth, initialAuthToken);
+                        userId = auth.currentUser.uid;
+                    } else {
+                        // Sign in anonymously if no custom token is available
+                        await signInAnonymously(auth);
+                        userId = auth.currentUser.uid;
+                    }
+
+                    isAuthReady = true;
+                    statusEl.textContent = '✅ System Ready: Firebase Initialized and Authenticated.';
+                    statusEl.classList.remove('text-red-600');
+                    statusEl.classList.add('text-green-600');
+                    userIdDisplayEl.textContent = `User ID (for Public Indexing): ${userId}`;
+                    
+                    // Enable buttons once ready
+                    ingestBtn.disabled = false;
+                    resolveBtn.disabled = false;
+                    gciInputEl.disabled = false;
+                });
+
+                // Attach Event Listeners
+                ingestBtn.addEventListener('click', ingestContent);
+                resolveBtn.addEventListener('click', resolveGCI);
+                openUrlBtn.addEventListener('click', openExternalUrl);
+                deviceViewBtn.addEventListener('click', openDeviceViewModal); // NEW LISTENER
+                closeDeviceViewBtn.addEventListener('click', closeDeviceViewModal); // NEW LISTENER
+
+            } catch (e) {
+                console.error("Initialization Error:", e);
+                statusEl.textContent = `❌ Initialization Failed: ${e.message}`;
+                statusEl.classList.add('text-red-600');
+            }
+        };
+
+        window.onload = initApp;
+
+    </script>
+</body>
+</html>
