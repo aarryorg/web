@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>System Bridge Hybrid Live Shell (AI Analyst Bridge)</title>
+    <title>System Bridge Hybrid Live Shell (Backend Simulation)</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -45,7 +45,7 @@
 
         /* --- LIVE SCREEN MODE STYLES (The 'Broadcasting' Visual) --- */
         .live-screen-mode {
-            --simulated-screen-url: url('https://placehold.co/1920x1080/1a1a1a/cccccc?text=SIMULATED+LIVE+DEVICE+SCREEN');
+            --simulated-screen-url: url('https://placehold.co/1920x1080/1a1a1a/cccccc?text=LIVE+DEVICE+VIEW+STREAMING');
             background-image: var(--simulated-screen-url); 
             background-size: cover;
             background-position: center;
@@ -86,12 +86,12 @@
     <script type="module">
         import { 
             createIcons, Zap, Database, Clock, User, Settings, AlertTriangle, Cpu, MemoryStick, Activity, 
-            Send, List, Check, X, LogIn, Menu, Monitor, Users, Folder, Code, Server, HardDrive, GitBranch, ArrowUpRight, Lock, Key, Dices, Layers, Aperture, PlugZap, Fingerprint
+            Send, List, Check, X, LogIn, Menu, Monitor, Users, Folder, Code, Server, HardDrive, GitBranch, ArrowUpRight, Lock, Key, Dices, Layers, Aperture, PlugZap, Fingerprint, Cloud, Bot, MessageSquareText, Shield
         } from 'https://cdn.jsdelivr.net/npm/lucide@latest/dist/esm/lucide.js';
         
         const allIcons = { 
-            Zap, Database, Clock, User, Settings, AlertTriangle, Cpu, MemoryStick, Activity, 
-            Send, List, Check, X, LogIn, Menu, Monitor, Users, Folder, Code, Server, HardDrive, GitBranch, ArrowUpRight, Lock, Key, Dices, Layers, Aperture, PlugZap, Fingerprint
+            createIcons, Zap, Database, Clock, User, Settings, AlertTriangle, Cpu, MemoryStick, Activity, 
+            Send, List, Check, X, LogIn, Menu, Monitor, Users, Folder, Code, Server, HardDrive, GitBranch, ArrowUpRight, Lock, Key, Dices, Layers, Aperture, PlugZap, Fingerprint, Cloud, Bot, MessageSquareText, Shield
         };
 
         window.createIcons = createIcons;
@@ -102,7 +102,7 @@
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-500 light">
 
-<!-- 1. MANDATORY PERMISSIONS GATEWAY (Now visible by default) -->
+<!-- 1. MANDATORY PERMISSIONS GATEWAY -->
 <div id="permissions-view" class="fixed inset-0 bg-gray-50 dark:bg-gray-900 z-50 flex items-center justify-center p-4">
     <div class="max-w-xl w-full bg-white dark:bg-gray-800 p-8 md:p-10 rounded-3xl shadow-2xl border-t-8 border-indigo-600 space-y-6">
         <h1 class="text-3xl font-extrabold text-gray-900 dark:text-white flex items-center">
@@ -110,7 +110,7 @@
             Bridge OS Authorization Required
         </h1>
         <p class="text-gray-600 dark:text-gray-300">
-            To establish a secure, decentralized connection to the device's kernel and utilize the **Bridge Ledger (Blockchain)** for logging, please review and grant the following permissions.
+            To establish a secure, decentralized connection to the device's kernel and utilize the **Bridge Ledger (Blockchain)** for logging, please review and grant the following permissions. **Note: Live access features are simulated for safety.**
         </p>
         
         <h2 class="text-xl font-bold mt-4 text-gray-900 dark:text-white">Required Permissions:</h2>
@@ -225,13 +225,13 @@
                     </div>
                 </div>
                 
-                <!-- NEW: Keyless Authentication Audit Card -->
+                <!-- Keyless Authentication Audit Card -->
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-t-4 border-blue-600">
                     <h3 class="text-2xl font-bold text-blue-700 dark:text-blue-400 flex items-center mb-4">
                         <i data-lucide="fingerprint" class="w-6 h-6 mr-2"></i> Keyless Authentication Audit
                     </h3>
                     <p class="text-gray-700 dark:text-gray-300 mb-4">
-                        Simulate and log a device-level, passwordless authentication attempt for security auditing and anomaly detection.
+                        Simulate and log a device-level, passwordless authentication attempt for security auditing.
                     </p>
                     <div class="flex flex-wrap gap-4">
                         <button onclick="simulateKeylessAttempt('success')" class="px-6 py-3 bg-blue-600 text-white font-bold rounded-xl shadow-lg hover:bg-blue-700 transition duration-300 flex items-center">
@@ -270,6 +270,9 @@
                 <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white border-b pb-3 border-gray-200 dark:border-gray-700">
                     Device Browser (Simulated Local Access)
                 </h2>
+                <p class="text-gray-600 dark:text-gray-400">
+                    Simulated secure read access to the device's filesystem. This represents the local device access granted by the authorization block.
+                </p>
                 
                 <!-- Current Path Bar -->
                 <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg flex items-center">
@@ -288,44 +291,62 @@
             <!-- 3. Connection Hub View -->
             <div id="connection-hub-view" class="view-content hidden space-y-6">
                 <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white border-b pb-3 border-gray-200 dark:border-gray-700">
-                    Connection Hub (External Services)
+                    Connection Hub (External Bridges & Automation)
                 </h2>
 
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-t-4 border-gray-600">
-                    <div class="flex items-start justify-between">
-                        <div>
-                            <h3 class="text-xl font-medium text-gray-900 dark:text-white flex items-center">
-                                <i data-lucide="git-branch" class="w-5 h-5 mr-2 text-gray-500"></i>
-                                Open Source Repo Sync
-                            </h3>
-                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Simulate syncing a public GitHub repository or open source project files.</p>
-                        </div>
-                        <button onclick="handleConnectionAction('GitHub', 'sync-repo'); updateIcons();" class="px-4 py-2 bg-gray-700 text-white font-semibold rounded-lg shadow-md hover:bg-gray-800 transition duration-300 flex items-center">
-                            <i data-lucide="arrow-up-right" class="w-4 h-4 mr-2"></i> Sync Now
-                        </button>
-                    </div>
-                </div>
+                <!-- Decentralized Automation Bridges -->
+                <div class="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl shadow-lg border-t-4 border-purple-600">
+                    <h3 class="text-2xl font-bold text-purple-700 dark:text-purple-400 flex items-center mb-4">
+                        <i data-lucide="bot" class="w-6 h-6 mr-2"></i> Decentralized Automation Bridges (Simulated)
+                    </h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4 text-sm">
+                        Simulated status and control for external automation endpoints (GitHub Actions, n8n, custom nodes) which require secure, token-based access to the local bridge.
+                    </p>
 
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-t-4 border-red-600">
-                    <div class="flex items-start justify-between">
-                        <div>
-                            <h3 class="text-xl font-medium text-gray-900 dark:text-white flex items-center">
-                                <i data-lucide="code" class="w-5 h-5 mr-2 text-red-500"></i>
-                                SSH / Node Endpoint Access
-                            </h3>
-                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Simulate connecting to a secure shell or open Node.js runtime environment.</p>
+                    <!-- GitHub Action Runner Status -->
+                    <div class="bg-white dark:bg-gray-800 p-4 rounded-lg mb-3 border border-gray-200 dark:border-gray-600">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <i data-lucide="git-branch" class="w-5 h-5 mr-3 text-gray-700 dark:text-gray-300"></i>
+                                <div>
+                                    <p class="font-semibold text-gray-900 dark:text-white">GitHub Action Runner</p>
+                                    <p class="text-sm text-green-600 dark:text-green-400 font-medium flex items-center">
+                                        <span class="inline-block w-2 h-2 mr-2 bg-green-500 rounded-full animate-pulse"></span>
+                                        Status: Listening (Idle)
+                                    </p>
+                                </div>
+                            </div>
+                            <button onclick="simulateAutomation('github')" class="px-3 py-1 bg-purple-600 text-white text-sm font-semibold rounded-lg hover:bg-purple-700 transition duration-300">
+                                Trigger Workflow
+                            </button>
                         </div>
-                        <button onclick="handleConnectionAction('SSH Node', 'connect-endpoint'); updateIcons();" class="px-4 py-2 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 transition duration-300 flex items-center">
-                            <i data-lucide="server" class="w-4 h-4 mr-2"></i> Connect
-                        </button>
+                    </div>
+
+                    <!-- n8n Webhook Listener Status -->
+                    <div class="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-600">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <i data-lucide="plug-zap" class="w-5 h-5 mr-3 text-gray-700 dark:text-gray-300"></i>
+                                <div>
+                                    <p class="font-semibold text-gray-900 dark:text-white">n8n Webhook Listener</p>
+                                    <p class="text-sm text-yellow-600 dark:text-yellow-400 font-medium flex items-center">
+                                        <span class="inline-block w-2 h-2 mr-2 bg-yellow-500 rounded-full"></span>
+                                        Status: Active (Awaiting Trigger)
+                                    </p>
+                                </div>
+                            </div>
+                             <button onclick="simulateAutomation('n8n')" class="px-3 py-1 bg-purple-600 text-white text-sm font-semibold rounded-lg hover:bg-purple-700 transition duration-300">
+                                Send Payload
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Open Source Model Integration -->
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-t-4 border-purple-600">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-t-4 border-gray-600">
                     <h3 class="text-xl font-medium text-gray-900 dark:text-white flex items-center mb-4">
-                        <i data-lucide="aperture" class="w-5 h-5 mr-2 text-purple-500"></i>
-                        Open Source Model Integration
+                        <i data-lucide="aperture" class="w-5 h-5 mr-2 text-gray-500"></i>
+                        Open Source LLM Bridge
                     </h3>
                     <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Simulate connection and testing of a local or remote open source LLM endpoint (e.g., Llama, Mistral).</p>
 
@@ -496,7 +517,7 @@
     let currentMetrics = {}; // Stores current system metrics
     let metricsIntervalId = null; // ID for the simulation interval
     
-    // NEW: Open Source Model Bridge State
+    // Open Source Model Bridge State
     let openSourceEndpoint = 'http://localhost:8080/llama/generate';
     let isConnectedToOpenSource = false;
 
@@ -625,6 +646,7 @@ fi
             isAuthorized = true;
             
             // --- CORE CHANGE: Force Live Screen Mode ON (Start Broadcasting) ---
+            // This fulfills the user request for a "live screen view and browse" environment
             setLiveScreenMode(true, false); 
             
             // 4. Transition UI
@@ -1050,7 +1072,7 @@ ${content}
         });
     }
 
-    // --- NEW: SIMULATED KEYLESS AUTHENTICATION LOGGING ---
+    // --- KEYLESS AUTHENTICATION LOGGING ---
     const deviceIds = ['0x4a9b...', '0x7c3f...', '0x2e8d...'];
 
     const simulateKeylessAttempt = (type) => {
@@ -1071,6 +1093,40 @@ ${content}
         logActivity(logType, message);
     }
 
+
+    // --- SIMULATED AUTOMATION BRIDGES LOGIC (NEW) ---
+    
+    const simulateAutomation = (service) => {
+        let message;
+        let logType = 'success';
+        
+        switch(service) {
+            case 'github':
+                message = "GitHub Action 'deploy-to-bridge' triggered. Running local device script: /home/user/run_script.sh";
+                logType = 'request';
+                break;
+            case 'n8n':
+                message = "n8n Webhook received payload. Executing workflow: 'Local File Sync'. Data size: 4.5KB";
+                logType = 'request';
+                break;
+            case 'backend-process':
+                const messages = [
+                    "Initializing secure kernel patch sequence.",
+                    "Backend process 'NetScan_443' started.",
+                    "Resource allocation successful for 'Bridge-Sync-A'.",
+                    "WARN: High latency detected on ledger sync operation.",
+                    "System check complete. Status: OK."
+                ];
+                message = messages[Math.floor(Math.random() * messages.length)];
+                logType = message.startsWith('WARN') ? 'warn' : 'info';
+                break;
+            default:
+                message = "Unknown automation trigger.";
+                logType = 'error';
+        }
+        
+        logActivity(logType, message);
+    }
 
     // --- SYSTEM SIMULATION ---
 
@@ -1159,7 +1215,7 @@ ${content}
                 currentPath = newPath;
             }
         }
-        logActivity('info', `Mapsd to directory: ${currentPath}`);
+        logActivity('info', `Mapped to directory: ${currentPath}`);
         renderFilesystem();
     }
 
@@ -1205,7 +1261,7 @@ ${content}
         logActivity('request', `Opened file details for: ${filename}.`);
     }
 
-    // --- CONNECTION HUB LOGIC (NEW) ---
+    // --- CONNECTION HUB LOGIC (LLM Bridge) ---
     
     /**
      * Handles the simulated connection to the Open Source Model endpoint.
@@ -1307,26 +1363,6 @@ Token lookahead is an optimization technique used in modern large language model
         updateIcons();
     }
 
-    // --- OTHER HANDLERS ---
-    
-    const handleConnectionAction = (service, action) => {
-        logActivity('warn', `Simulated action '${action}' triggered for service: ${service}. (Requires external endpoint)`);
-    }
-
-    const runMockProcess = () => {
-        const messages = [
-            "Initializing secure kernel patch sequence.",
-            "Backend process 'NetScan_443' started.",
-            "Resource allocation successful for 'Bridge-Sync-A'.",
-            "WARN: High latency detected on ledger sync operation.",
-            "System check complete. Status: OK."
-        ];
-        const randomMsg = messages[Math.floor(Math.random() * messages.length)];
-        const type = randomMsg.startsWith('WARN') ? 'warn' : 'info';
-        
-        logActivity(type, randomMsg);
-    }
-
     // --- INITIALIZATION ---
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -1344,7 +1380,8 @@ Token lookahead is an optimization technique used in modern large language model
         $('#generate-analysis-btn').addEventListener('click', generateSystemAnalysis);
         
         // Ledger Mock Process Button
-        $('#run-process-btn').addEventListener('click', runMockProcess);
+        // Note: runMockProcess is aliased to simulateAutomation('backend-process')
+        $('#run-process-btn').addEventListener('click', () => simulateAutomation('backend-process'));
 
         // Settings Toggles
         $('#dark-mode-toggle').addEventListener('click', () => setDarkMode(!isDarkModeEnabled, true));
