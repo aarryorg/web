@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>n8n Local Launcher</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col items-center justify-center p-4">
+
+    <div class="w-full max-w-lg bg-white shadow-xl rounded-xl p-8 space-y-6">
+        <header class="text-center">
+            <h1 class="text-3xl font-extrabold text-blue-600">n8n Local Development Bridge</h1>
+            <p class="text-gray-500 mt-2">Connects your public GitHub page to your local, running n8n instance.</p>
+        </header>
+
+        <!-- Dynamic Port Input -->
+        <div class="space-y-4">
+            <label for="n8nPort" class="block text-sm font-medium text-gray-700">
+                1. Verify Local n8n Port (Default: 5678)
+            </label>
+            <input type="number" id="n8nPort" value="5678" min="1024" max="65535"
+                   class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-lg font-mono transition duration-150 ease-in-out"
+                   oninput="updateN8NLink()" onchange="updateN8NLink()">
+            <p id="currentLocalUrl" class="text-sm text-gray-500 text-center font-semibold"></p>
+        </div>
+
+        <!-- Launch Button -->
+        <a id="n8nLauncherLink" href="http://localhost:5678" target="_blank"
+           class="w-full flex items-center justify-center px-6 py-3 border border-transparent text-base font-bold rounded-lg shadow-lg text-white bg-green-600 hover:bg-green-700 transition duration-150 ease-in-out transform hover:scale-[1.02]">
+            2. Launch Local n8n Instance
+            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+            </svg>
+        </a>
+
+        <!-- Instructions -->
+        <div class="text-sm text-gray-600 pt-4 border-t border-gray-200">
+            <h3 class="font-bold text-gray-800 mb-2">Important Note on Remote Access:</h3>
+            <p class="space-y-2">
+                The reason we must redirect you is due to modern browser security (Same-Origin Policy). A public web page cannot securely talk to your private `localhost` URL.
+                <br>
+                **Before clicking the button:** Make sure your local n8n instance is running on your Mac via the automated script:
+                <code class="block mt-1 p-2 bg-gray-100 rounded-md text-xs font-mono select-all">~/Desktop/launch_n8n.sh</code>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function updateN8NLink() {
+            const port = document.getElementById('n8nPort').value;
+            const linkElement = document.getElementById('n8nLauncherLink');
+            const urlDisplay = document.getElementById('currentLocalUrl');
+            
+            const newUrl = `http://localhost:${port}`;
+            
+            linkElement.href = newUrl;
+            urlDisplay.textContent = `Targeting: ${newUrl}`;
+            
+            // This is the key: The external page can only open a new tab/window
+            // to the local address. The user's browser (since it is the local device)
+            // is the only thing that can successfully connect to localhost.
+        }
+
+        // Initialize on load
+        window.onload = updateN8NLink;
+    </script>
+
+</body>
+</html>
