@@ -1,0 +1,59 @@
+name: Bridge OS Automation Deployment
+
+on:
+  # Allows manual triggering of the workflow from the GitHub Actions UI
+  workflow_dispatch:
+    inputs:
+      deployment_target:
+        description: 'Target component to update (e.g., config, files, screen)'
+        required: true
+        default: 'config'
+      use_n8n:
+        description: 'Send completion webhook to n8n'
+        required: false
+        type: boolean
+        default: true
+
+jobs:
+  run_local_system_update:
+    # CRITICAL: This tag ensures the job only runs on the runner connected to your device.
+    runs-on: local-bridge-os 
+    environment: Production
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Firebase Logging Utility (Simulated)
+        # In a real runner setup, you might install a utility or dependency here
+        # that allows the local script to write structured JSON logs to Firestore.
+        run: |
+          echo "::notice::Ensuring Firestore connection utility is available..."
+          # Example: npm install -g @bridge/logging-cli
+          # For now, this is just a setup placeholder.
+
+      - name: System Bridge - Pre-Execution Log
+        # This simulates logging the start of the process to the Bridge Ledger 
+        # (as seen in the "Activity Log" of the previous app).
+        run: echo "::notice::Bridge Runner starting deployment to target ${{ github.event.inputs.deployment_target }}"
+
+      - name: Execute Local Bridge Script
+        id: bridge_execution
+        # The runner executes this script, which is located on your local machine
+        run: |
+          chmod +x ./local_bridge_script.sh
+          ./local_bridge_script.sh "${{ github.event.inputs.deployment_target }}"
+
+      - name: Send Completion Webhook to n8n
+        if: ${{ success() && github.event.inputs.use_n8n }}
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // This is where you would call the n8n webhook listener (simulated in the Connection Hub)
+            console.log("Sending successful execution signal to n8n webhook...");
+            // fetch('https://your-n8n-instance/webhook/bridge-success', { method: 'POST', ... });
+            console.log("::notice::n8n webhook simulated successfully.");
+
+      - name: System Bridge - Post-Execution Log
+        if: ${{ always() }}
+        run: echo "::notice::Bridge Runner deployment finished for target ${{ github.event.inputs.deployment_target }}"
