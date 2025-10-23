@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>n8n Local Launcher</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col items-center justify-center p-4">
+
+    <div class="w-full max-w-lg bg-white shadow-xl rounded-xl p-8 space-y-6">
+        <header class="text-center">
+            <h1 class="text-3xl font-extrabold text-blue-600">n8n Local Development Bridge</h1>
+            <p class="text-gray-500 mt-2">Connects your public GitHub page to your local, running n8n instance.</p>
+            <p id="statusMessage" class="text-sm font-semibold mt-2 h-5 text-red-500"></p>
+        </header>
+
+        <!-- Dynamic Port Input -->
+        <div class="space-y-4">
+            <label for="n8nPort" class="block text-sm font-medium text-gray-700">
+                1. Verify Local n8n Port (Default: 5678)
+            </label>
+            <input type="number" id="n8nPort" value="5678" min="1024" max="65535"
+                   class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 text-lg font-mono transition duration-150 ease-in-out"
+                   oninput="updateN8NLink()" onchange="updateN8NLink()">
+            <p id="currentLocalUrl" class="text-sm text-gray-500 text-center font-semibold"></p>
+        </div>
+
+        <!-- Live Local Screen Preview -->
+        <div class="bg-gray-800 rounded-lg overflow-hidden border border-gray-700">
+            <video id="screenPreview" autoplay muted class="w-full h-auto max-h-64 object-contain hidden"></video>
+            <div id="previewPlaceholder" class="p-8 text-center text-gray-400">Local Screen Preview (Acquire Stream First)</div>
+        </div>
+
+        <!-- Launch Button (Remains for direct UI access) -->
+        <a id="n8nLauncherLink" href="http://localhost:5678" target="_blank"
+           class="w-full flex items-center justify-center px-6 py-3 border border-transparent text-base font-bold rounded-lg shadow-lg text-white bg-green-600 hover:bg-green-700 transition duration-150 ease-in-out transform hover:scale-[1.02] mb-4">
+            2. Launch Local n8n UI
+            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+            </svg>
+        </a>
+        
+        <!-- Screen Share & Webhook Trigger Button -->
+        <button onclick="startScreenShareAndAutomate()" id="screenShareButton"
+           class="w-full flex items-center justify-center px-6 py-3 border border-transparent text-base font-bold rounded-lg shadow-lg text-white bg-purple-600 hover:bg-purple-700 transition duration-150 ease-in-out transform hover:scale-[1.02] disabled:bg-purple-400">
+            3. Grant Permissions & Start n8n Broadcast Automation
+            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="9" y1="12" x2="15" y2="12"></line>
+                <line x1="12" y1="9" x2="12" y2="15"></line>
+            </svg>
+        </button>
+
+        <!-- Instructions -->
+        <div class="text-sm text-gray-600 pt-4 border-t border-gray-200">
+            <h3 class="font-bold text-gray-800 mb-2">Automation Workflow:</h3>
+            <ul class="list-disc list-inside space-y-1 ml-4">
+                <li>**Step 1 (Browser):** Clicking the button requests screen access and displays a local preview.</li>
+                <li>**Step 2 (n8n):** Upon success, the page **sends a Webhook command** to your local n8n.</li>
+                <li>**Step 3 (Automation):** Your n8n workflow takes over to perform the broadcast (e.g., notifying a server, starting a recording process, etc.).</li>
+                <li>**Local Script:** Ensure n8n is running via: <code class="block mt-1 p-2 bg-gray-100 rounded-md text-xs font-mono select-all">~/Desktop/launch_n8n.sh</code></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Default Webhook path as defined in the N8N workflow JSON
+        const WEBHOOK_PATH = "/webhook/screen-share-trigger";
+
+        function updateN8NLink() {
+            const port = document.getElementById('n8nPort').value;
+            const uiUrl = `http://localhost:${port}`;
+            const webhookUrl = `${uiUrl}${WEBHOOK_PATH}`;
+            
+            // Update UI
+            document.getElementById('n8nLauncherLink').href = uiUrl;
+            document.getElementById('currentLocalUrl').textContent = `Targeting: ${uiUrl} (UI) & ${webhookUrl.substring(webhookUrl.lastIndexOf('/'))} (Webhook)`;
+        }
+
+        async function startScreenShareAndAutomate() {
+            const port = document.getElementById('n8nPort').value;
+            const webhookUrl = `http://localhost:${port}${WEBHOOK_PATH}`;
+            const statusElement = document.getElementById('statusMessage');
+            const preview = document.getElementById('screenPreview');
+            const placeholder = document.getElementById('previewPlaceholder');
+            const button = document.getElementById('screenShareButton');
+
+            // 1. Request Browser Screen Sharing Permission (WebRTC API)
+            try {
+                button.disabled = true;
+                statusElement.textContent = "Awaiting screen permission...";
+                
+                // Request the display media (screen/window/tab)
+                const stream = await navigator.mediaDevices.getDisplayMedia({ video: true, audio: false });
+
+                // Display local preview
+                preview.srcObject = stream;
+                preview.classList.remove('hidden');
+                placeholder.classList.add('hidden');
+                statusElement.textContent = "Screen sharing is active locally. Triggering n8n...";
+                
+                // Add event listener to reset UI when sharing stops
+                stream.getVideoTracks()[0].onended = () => {
+                    statusElement.textContent = "Screen sharing stopped by user. Resetting.";
+                    preview.classList.add('hidden');
+                    placeholder.classList.remove('hidden');
+                    button.disabled = false;
+                };
+
+                // 2. Trigger n8n Webhook
+                const response = await fetch(webhookUrl, {
+                    method: 'GET',
+                    mode: 'cors' // Necessary for localhost interaction
+                });
+
+                if (response.ok) {
+                    statusElement.textContent = "SUCCESS: n8n workflow triggered! Automation is starting.";
+                    console.log('n8n Webhook triggered successfully.');
+                } else {
+                    statusElement.textContent = `ERROR: n8n responded with status ${response.status}. Is n8n running?`;
+                    console.error('Webhook failed:', response);
+                }
+
+            } catch (error) {
+                statusElement.textContent = `Permission Denied or Error: ${error.name}. Make sure n8n is running.`;
+                console.error('Screen Share or Webhook Error:', error);
+            } finally {
+                // If the stream was successfully captured, keep the button disabled until stream ends.
+                if (!preview.srcObject) {
+                    button.disabled = false;
+                }
+            }
+        }
+
+        // Initialize on load
+        window.onload = updateN8NLink;
+    </script>
+
+</body>
+</html>
