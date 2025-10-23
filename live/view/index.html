@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Bridge Hybrid Live Shell (AI Analyst Bridge)</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .dark {
+            background-color: #0d1117;
+            color: #c9d1d9;
+        }
+        .metric-card {
+            transition: transform 0.2s;
+        }
+        .metric-card:hover {
+            transform: translateY(-2px);
+        }
+        /* Custom scrollbar for log/browser views */
+        .scrollbar-custom::-webkit-scrollbar {
+            width: 8px;
+        }
+        .scrollbar-custom::-webkit-scrollbar-track {
+            background: #21262d;
+        }
+        .scrollbar-custom::-webkit-scrollbar-thumb {
+            background: #30363d;
+            border-radius: 4px;
+        }
+        .file-entry:hover {
+            cursor: pointer;
+        }
+        .dark .file-entry:hover {
+             background-color: rgba(255, 255, 255, 0.05);
+        }
+        .light .file-entry:hover {
+            background-color: rgba(0, 0, 0, 0.03);
+        }
+
+        /* --- LIVE SCREEN MODE STYLES (The 'Broadcasting' Visual) --- */
+        .live-screen-mode {
+            --simulated-screen-url: url('https://placehold.co/1920x1080/1a1a1a/cccccc?text=SIMULATED+LIVE+DEVICE+SCREEN');
+            background-image: var(--simulated-screen-url); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            background-color: #0d1117; 
+        }
+
+        .main-content-wrapper {
+            transition: all 0.5s ease;
+        }
+
+        .live-screen-mode .main-content-wrapper {
+            max-width: 900px; 
+            margin-left: auto;
+            margin-right: auto;
+            padding: 2rem;
+            background-color: rgba(20, 27, 33, 0.95); 
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+            border-radius: 1.5rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            min-height: calc(100vh - 100px); 
+            margin-top: 50px;
+        }
+        
+        .light.live-screen-mode .main-content-wrapper {
+            background-color: rgba(255, 255, 255, 0.95); 
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .live-screen-mode main {
+            margin-top: 0 !important;
+        }
+        
+    </style>
+    <!-- Load Lucide Icons and render static ones -->
+    <script type="module">
+        import { 
+            createIcons, Zap, Database, Clock, User, Settings, AlertTriangle, Cpu, MemoryStick, Activity, 
+            Send, List, Check, X, LogIn, Menu, Monitor, Users, Folder, Code, Server, HardDrive, GitBranch, ArrowUpRight, Lock, Key, Dices, Layers, Aperture, PlugZap, Fingerprint
+        } from 'https://cdn.jsdelivr.net/npm/lucide@latest/dist/esm/lucide.js';
+        
+        const allIcons = { 
+            Zap, Database, Clock, User, Settings, AlertTriangle, Cpu, MemoryStick, Activity, 
+            Send, List, Check, X, LogIn, Menu, Monitor, Users, Folder, Code, Server, HardDrive, GitBranch, ArrowUpRight, Lock, Key, Dices, Layers, Aperture, PlugZap, Fingerprint
+        };
+
+        window.createIcons = createIcons;
+        window.allIcons = allIcons;
+        
+        createIcons({ icons: allIcons });
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-500 light">
+
+<!-- 1. MANDATORY PERMISSIONS GATEWAY (Now visible by default) -->
+<div id="permissions-view" class="fixed inset-0 bg-gray-50 dark:bg-gray-900 z-50 flex items-center justify-center p-4">
+    <div class="max-w-xl w-full bg-white dark:bg-gray-800 p-8 md:p-10 rounded-3xl shadow-2xl border-t-8 border-indigo-600 space-y-6">
+        <h1 class="text-3xl font-extrabold text-gray-900 dark:text-white flex items-center">
+            <i data-lucide="lock" class="w-8 h-8 mr-3 text-indigo-600"></i>
+            Bridge OS Authorization Required
+        </h1>
+        <p class="text-gray-600 dark:text-gray-300">
+            To establish a secure, decentralized connection to the device's kernel and utilize the **Bridge Ledger (Blockchain)** for logging, please review and grant the following permissions.
+        </p>
+        
+        <h2 class="text-xl font-bold mt-4 text-gray-900 dark:text-white">Required Permissions:</h2>
+        <ul class="space-y-3 p-4 bg-gray-100 dark:bg-gray-700 rounded-xl">
+            <li class="flex items-center text-gray-800 dark:text-gray-200">
+                <i data-lucide="monitor" class="w-5 h-5 mr-3 text-red-500"></i> **Live Screen Access:** View simulated device desktop background (High Risk/High Utility).
+            </li>
+            <li class="flex items-center text-gray-800 dark:text-gray-200">
+                <i data-lucide="cpu" class="w-5 h-5 mr-3 text-indigo-500"></i> **System Metrics:** Read CPU, RAM, and Network performance data.
+            </li>
+            <li class="flex items-center text-gray-800 dark:text-gray-200">
+                <i data-lucide="folder" class="w-5 h-5 mr-3 text-green-500"></i> **Filesystem Read:** Browse simulated device directory structure.
+            </li>
+            <li class="flex items-center text-gray-800 dark:text-gray-200">
+                <i data-lucide="database" class="w-5 h-5 mr-3 text-yellow-500"></i> **Bridge Ledger Write:** Log all actions to the secure, distributed ledger.
+            </li>
+        </ul>
+
+        <button id="authorize-btn" class="w-full mt-6 px-6 py-4 bg-indigo-600 text-white font-bold rounded-xl shadow-lg hover:bg-indigo-700 transition duration-300 flex items-center justify-center disabled:opacity-50">
+            <i data-lucide="key" class="w-5 h-5 mr-3"></i>
+            Authorize Connection & Mint Authorization Block
+        </button>
+        <p id="auth-status-message" class="text-center text-sm text-gray-500 dark:text-gray-400 mt-3 hidden">
+            <i data-lucide="dices" class="w-4 h-4 mr-1 inline-block animate-pulse"></i> Initializing Proof of Work...
+        </p>
+    </div>
+</div>
+
+<!-- 2. MAIN APPLICATION CONTAINER (Hidden initially) -->
+<div id="app-container" class="min-h-screen flex flex-col lg:flex-row hidden">
+    <!-- Sidebar -->
+    <nav id="sidebar" class="w-full lg:w-64 bg-white dark:bg-gray-800 border-b lg:border-r border-gray-200 dark:border-gray-700 p-4 shadow-xl lg:shadow-none fixed lg:sticky top-0 z-20">
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-2xl font-bold text-indigo-600 dark:text-indigo-400 flex items-center">
+                <i data-lucide="hard-drive" class="w-6 h-6 mr-2"></i>
+                Bridge OS
+            </h1>
+            <button id="mobile-menu-btn" class="lg:hidden text-gray-700 dark:text-gray-300">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+        <div id="nav-links" class="hidden lg:block space-y-2">
+            <button onclick="changeView('dashboard')" class="nav-item w-full flex items-center px-4 py-3 rounded-lg font-medium transition-colors bg-indigo-600 text-white" data-view="dashboard">
+                <i data-lucide="monitor" class="w-5 h-5 mr-3"></i> Dashboard
+            </button>
+            <button onclick="changeView('device-browser')" class="nav-item w-full flex items-center px-4 py-3 rounded-lg font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700" data-view="device-browser">
+                <i data-lucide="folder" class="w-5 h-5 mr-3"></i> Device Browser
+            </button>
+            <button onclick="changeView('connection-hub')" class="nav-item w-full flex items-center px-4 py-3 rounded-lg font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700" data-view="connection-hub">
+                <i data-lucide="server" class="w-5 h-5 mr-3"></i> Connection Hub
+            </button>
+            <button onclick="changeView('activity')" class="nav-item w-full flex items-center px-4 py-3 rounded-lg font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700" data-view="activity">
+                <i data-lucide="database" class="w-5 h-5 mr-3"></i> Bridge Ledger
+            </button>
+            <button onclick="changeView('settings')" class="nav-item w-full flex items-center px-4 py-3 rounded-lg font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700" data-view="settings">
+                <i data-lucide="settings" class="w-5 h-5 mr-3"></i> Settings
+            </button>
+        </div>
+        
+        <!-- User Status -->
+        <div class="absolute bottom-4 left-4 right-4 p-3 bg-gray-100 dark:bg-gray-700 rounded-xl hidden lg:block">
+            <div class="text-xs font-medium text-gray-600 dark:text-gray-300 mb-1">Authenticated Bridge User</div>
+            <div class="flex items-center text-sm font-medium">
+                <i data-lucide="user" class="w-4 h-4 mr-2 text-indigo-500"></i>
+                <code id="user-status" class="truncate text-gray-800 dark:text-white">Awaiting Authorization...</code>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-4 md:p-8 lg:mt-0 mt-[100px] transition-colors duration-500">
+        <div id="loading-overlay" class="fixed inset-0 bg-white/50 dark:bg-gray-900/50 flex items-center justify-center z-50 hidden">
+            <div class="text-center p-8 bg-white dark:bg-gray-800 rounded-xl shadow-2xl">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
+                <p class="text-lg font-semibold dark:text-white">Establishing Secure Bridge...</p>
+            </div>
+        </div>
+        
+        <!-- Wrapper for the "small bar" overlay (visible in Live Screen Mode) -->
+        <div id="main-content-wrapper" class="max-w-6xl mx-auto main-content-wrapper p-4 md:p-8">
+            
+            <!-- 1. Dashboard View (Updated with Gemini Feature) -->
+            <div id="dashboard-view" class="view-content space-y-8">
+                <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white border-b pb-3 border-gray-200 dark:border-gray-700">
+                    System Overview
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="metric-card bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-t-4 border-indigo-600">
+                        <div class="flex justify-between items-start">
+                            <i data-lucide="clock" class="w-8 h-8 text-indigo-500"></i>
+                            <span class="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">System Uptime</span>
+                        </div>
+                        <p id="metric-uptime" class="text-4xl font-bold mt-2">0d 0h 0m</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Live since last reboot.</p>
+                    </div>
+                    <div class="metric-card bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-t-4 border-green-600">
+                        <div class="flex justify-between items-start">
+                            <i data-lucide="users" class="w-8 h-8 text-green-500"></i>
+                            <span class="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">Active Sessions</span>
+                        </div>
+                        <p id="metric-users" class="text-4xl font-bold mt-2">1</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Users connected to the bridge.</p>
+                    </div>
+                    <div class="metric-card bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-t-4 border-yellow-600">
+                        <div class="flex justify-between items-start">
+                            <i data-lucide="memory-stick" class="w-8 h-8 text-yellow-500"></i>
+                            <span class="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">System RAM</span>
+                        </div>
+                        <p id="metric-ram" class="text-4xl font-bold mt-2">3.2 GB</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Currently in use (of 8 GB).</p>
+                    </div>
+                </div>
+                
+                <!-- NEW: Keyless Authentication Audit Card -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-t-4 border-blue-600">
+                    <h3 class="text-2xl font-bold text-blue-700 dark:text-blue-400 flex items-center mb-4">
+                        <i data-lucide="fingerprint" class="w-6 h-6 mr-2"></i> Keyless Authentication Audit
+                    </h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Simulate and log a device-level, passwordless authentication attempt for security auditing and anomaly detection.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="simulateKeylessAttempt('success')" class="px-6 py-3 bg-blue-600 text-white font-bold rounded-xl shadow-lg hover:bg-blue-700 transition duration-300 flex items-center">
+                            <i data-lucide="check" class="w-5 h-5 mr-2"></i> Log Successful Attempt
+                        </button>
+                        <button onclick="simulateKeylessAttempt('fail')" class="px-6 py-3 bg-red-600 text-white font-bold rounded-xl shadow-lg hover:bg-red-700 transition duration-300 flex items-center">
+                            <i data-lucide="x" class="w-5 h-5 mr-2"></i> Log Failure Attempt (Anomaly)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- AI Analyst Feature: System Analysis -->
+                <div class="bg-indigo-50 dark:bg-indigo-900/40 p-6 rounded-xl shadow-lg border border-indigo-600/50">
+                    <h3 class="text-2xl font-bold text-indigo-700 dark:text-indigo-400 flex items-center mb-4">
+                        <i data-lucide="aperture" class="w-6 h-6 mr-2"></i> AI Analyst Bridge
+                    </h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Generate a comprehensive health and security report based on current system metrics and the latest ledger activity, including **Keyless Auth Anomaly Detection.**
+                    </p>
+                    <button id="generate-analysis-btn" class="px-6 py-3 bg-indigo-600 text-white font-bold rounded-xl shadow-lg hover:bg-indigo-700 transition duration-300 flex items-center disabled:opacity-50 disabled:cursor-not-allowed">
+                        <i data-lucide="zap" class="w-5 h-5 mr-2"></i> ✨ Generate System Analysis Report
+                    </button>
+                    
+                    <div id="analysis-output" class="mt-6 p-4 bg-white dark:bg-gray-800 border-l-4 border-indigo-500 rounded-lg hidden">
+                        <h4 class="font-semibold text-lg mb-2 text-gray-900 dark:text-white flex items-center">
+                            <i data-lucide="layers" class="w-5 h-5 mr-2 text-indigo-500"></i>
+                            System Analysis Report (AI-Generated)
+                        </h4>
+                        <p id="analysis-text" class="text-gray-700 dark:text-gray-300 whitespace-pre-wrap"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Device Browser View (Simulated File System - Modal Added) -->
+            <div id="device-browser-view" class="view-content hidden space-y-6">
+                <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white border-b pb-3 border-gray-200 dark:border-gray-700">
+                    Device Browser (Simulated Local Access)
+                </h2>
+                
+                <!-- Current Path Bar -->
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg flex items-center">
+                    <i data-lucide="hard-drive" class="w-6 h-6 mr-3 text-indigo-500 flex-shrink-0"></i>
+                    <code id="current-path-display" class="font-mono text-lg font-medium text-gray-700 dark:text-gray-300 truncate">/</code>
+                </div>
+
+                <!-- File System Display -->
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg h-[60vh] overflow-y-auto scrollbar-custom">
+                    <div id="filesystem-content" class="space-y-1">
+                        <!-- Simulated Files and Folders will be inserted here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Connection Hub View -->
+            <div id="connection-hub-view" class="view-content hidden space-y-6">
+                <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white border-b pb-3 border-gray-200 dark:border-gray-700">
+                    Connection Hub (External Services)
+                </h2>
+
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-t-4 border-gray-600">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <h3 class="text-xl font-medium text-gray-900 dark:text-white flex items-center">
+                                <i data-lucide="git-branch" class="w-5 h-5 mr-2 text-gray-500"></i>
+                                Open Source Repo Sync
+                            </h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Simulate syncing a public GitHub repository or open source project files.</p>
+                        </div>
+                        <button onclick="handleConnectionAction('GitHub', 'sync-repo'); updateIcons();" class="px-4 py-2 bg-gray-700 text-white font-semibold rounded-lg shadow-md hover:bg-gray-800 transition duration-300 flex items-center">
+                            <i data-lucide="arrow-up-right" class="w-4 h-4 mr-2"></i> Sync Now
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-t-4 border-red-600">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <h3 class="text-xl font-medium text-gray-900 dark:text-white flex items-center">
+                                <i data-lucide="code" class="w-5 h-5 mr-2 text-red-500"></i>
+                                SSH / Node Endpoint Access
+                            </h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Simulate connecting to a secure shell or open Node.js runtime environment.</p>
+                        </div>
+                        <button onclick="handleConnectionAction('SSH Node', 'connect-endpoint'); updateIcons();" class="px-4 py-2 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 transition duration-300 flex items-center">
+                            <i data-lucide="server" class="w-4 h-4 mr-2"></i> Connect
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Open Source Model Integration -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-t-4 border-purple-600">
+                    <h3 class="text-xl font-medium text-gray-900 dark:text-white flex items-center mb-4">
+                        <i data-lucide="aperture" class="w-5 h-5 mr-2 text-purple-500"></i>
+                        Open Source Model Integration
+                    </h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Simulate connection and testing of a local or remote open source LLM endpoint (e.g., Llama, Mistral).</p>
+
+                    <!-- Connection Section -->
+                    <div class="space-y-3 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                        <label for="os-endpoint-input" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Endpoint URL (Simulated)</label>
+                        <div class="flex space-x-2">
+                            <input type="url" id="os-endpoint-input" placeholder="e.g., http://127.0.0.1:8080/v1/generate" class="flex-1 p-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-800 dark:text-white focus:ring-purple-500 focus:border-purple-500" value="http://localhost:8080/llama/generate">
+                            <button id="os-connect-btn" onclick="handleOpenSourceConnect()" class="px-4 py-2 bg-purple-600 text-white font-semibold rounded-lg shadow-md hover:bg-purple-700 transition duration-300 flex items-center disabled:opacity-50">
+                                <i data-lucide="plug-zap" class="w-4 h-4 mr-2"></i> Connect
+                            </button>
+                        </div>
+                        <p id="os-connection-status" class="text-sm font-medium text-red-500">Status: Disconnected</p>
+                    </div>
+
+                    <!-- Test Section -->
+                    <div id="os-test-section" class="mt-4 p-4 bg-purple-50 dark:bg-purple-900/40 rounded-lg border border-purple-600/50 hidden">
+                        <h4 class="text-lg font-semibold text-purple-700 dark:text-purple-400 mb-3">Test Model Endpoint</h4>
+                        <label for="os-prompt-input" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Test Prompt</label>
+                        <textarea id="os-prompt-input" rows="2" placeholder="Ask the model something..." class="w-full mt-1 p-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-800 dark:text-white focus:ring-purple-500 focus:border-purple-500">Explain the concept of token lookahead.</textarea>
+                        
+                        <button id="os-test-btn" onclick="handleOpenSourceTest()" class="mt-3 px-4 py-2 bg-purple-600 text-white font-semibold rounded-lg shadow-md hover:bg-purple-700 transition duration-300 flex items-center disabled:opacity-50">
+                            <i data-lucide="send" class="w-4 h-4 mr-2"></i> Run Test Query
+                        </button>
+                        
+                        <div id="os-test-output" class="mt-4 p-3 bg-white dark:bg-gray-800 rounded-lg border border-gray-300 dark:border-gray-600 text-sm font-mono text-gray-700 dark:text-gray-200 whitespace-pre-wrap hidden">
+                            <!-- Simulated response goes here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Live Activity View (Bridge Ledger) -->
+            <div id="activity-view" class="view-content hidden space-y-6">
+                <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white border-b pb-3 border-gray-200 dark:border-gray-700">
+                    Bridge Ledger (Secure Activity Stream)
+                </h2>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+                    <p class="text-lg font-medium">The ledger records all critical bridge actions and security events.</p>
+                    <button id="run-process-btn" class="px-6 py-3 bg-red-600 text-white font-semibold rounded-xl shadow-md hover:bg-red-700 transition duration-300 flex items-center disabled:opacity-50">
+                        <i data-lucide="send" class="w-5 h-5 mr-2"></i>
+                        Run Mock Backend Process
+                    </button>
+                </div>
+                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-xl shadow-inner h-96 overflow-y-auto scrollbar-custom">
+                    <h3 class="text-xl font-semibold mb-3 border-b pb-2 border-gray-300 dark:border-gray-700 flex items-center">
+                        <i data-lucide="list" class="w-5 h-5 mr-2 text-indigo-500"></i>
+                        Ledger Log (<span id="log-count">0</span> entries)
+                    </h3>
+                    <div id="activity-log" class="space-y-2">
+                        <!-- Log entries will be inserted here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Settings View -->
+            <div id="settings-view" class="view-content hidden space-y-6">
+                <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white border-b pb-3 border-gray-200 dark:border-gray-700">
+                    User Settings
+                </h2>
+                
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-xl font-medium text-gray-900 dark:text-white">Live Screen Mode</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                                Transforms the browser background into a simulated device screen, placing the dashboard in a floating overlay.
+                            </p>
+                        </div>
+                        <button id="live-screen-toggle" class="relative inline-flex h-8 w-14 items-center rounded-full transition-colors duration-300 bg-gray-200">
+                            <span id="live-screen-slider" class="inline-block h-6 w-6 transform rounded-full bg-white transition duration-300 translate-x-1" />
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-xl font-medium text-gray-900 dark:text-white">Dark Mode Sync</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                                This setting is stored in your private Firestore data and synchronizes across all your devices.
+                            </p>
+                        </div>
+                        <button id="dark-mode-toggle" class="relative inline-flex h-8 w-14 items-center rounded-full transition-colors duration-300 bg-gray-200 dark:bg-indigo-600">
+                            <span id="dark-mode-slider" class="inline-block h-6 w-6 transform rounded-full bg-white transition duration-300 translate-x-1 dark:translate-x-7" />
+                        </button>
+                    </div>
+                </div>
+                 <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-2">Bridge User Identity</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                        Your unique user ID for this bridge session (private data is linked to this ID):
+                    </p>
+                    <code id="user-id-display" class="block mt-3 p-3 bg-gray-100 dark:bg-gray-700 rounded-lg text-sm break-all font-mono">
+                        ...
+                    </code>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- --- FILE DETAILS MODAL (Component for Feature 2) --- -->
+<div id="file-details-modal" class="fixed inset-0 bg-black bg-opacity-75 z-[60] flex items-center justify-center hidden p-4" onclick="this.classList.add('hidden')">
+    <div class="bg-white dark:bg-gray-900 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden transform transition-all" onclick="event.stopPropagation()">
+        <div class="p-6 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center">
+                <i data-lucide="folder" class="w-6 h-6 mr-2 text-indigo-500" id="modal-icon"></i>
+                <span id="modal-filename">File Details</span>
+            </h3>
+            <button class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300" onclick="$('#file-details-modal').classList.add('hidden')">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+        
+        <div class="p-6 space-y-4">
+            <div id="modal-content-container" class="max-h-60 overflow-y-auto bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
+                <code id="modal-file-content" class="text-sm whitespace-pre-wrap font-mono text-gray-800 dark:text-gray-200"></code>
+            </div>
+
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+                 <button id="analyze-file-btn" class="px-4 py-2 bg-purple-600 text-white font-bold rounded-lg shadow-md hover:bg-purple-700 transition duration-300 flex items-center disabled:opacity-50 disabled:cursor-not-allowed">
+                    <i data-lucide="zap" class="w-5 h-5 mr-2"></i> ✨ Analyze File Content
+                </button>
+            </div>
+            
+            <div id="file-analysis-output" class="p-4 bg-purple-50 dark:bg-purple-900/40 border-l-4 border-purple-500 rounded-lg hidden mt-4">
+                <h4 class="font-semibold text-base mb-2 text-purple-700 dark:text-purple-400 flex items-center">
+                    <i data-lucide="layers" class="w-4 h-4 mr-2"></i> AI File Summary
+                </h4>
+                <p id="file-analysis-text" class="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-wrap"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Firebase and App Logic -->
+<script type="module">
+    // --- MANDATORY GLOBAL VARIABLES ---
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+    const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+    const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+    
+    // --- GEMINI API Configuration ---
+    const GEMINI_API_KEY = ""; 
+    const GEMINI_MODEL = 'gemini-2.5-flash-preview-09-2025';
+    const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
+
+
+    // --- FIREBASE IMPORTS ---
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc, getDoc, onSnapshot, collection, query, addDoc, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    
+    // setLogLevel('Debug'); 
+
+    let app;
+    let db;
+    let auth;
+    let userId = null;
+    let isAuthReady = false;
+    let isAuthorized = false; 
+    let isDarkModeEnabled = false;
+    let isLiveScreenEnabled = false; 
+    let currentPath = '/'; 
+    let currentLedgerLogs = []; // Stores recent logs for AI Analysis
+    let currentMetrics = {}; // Stores current system metrics
+    let metricsIntervalId = null; // ID for the simulation interval
+    
+    // NEW: Open Source Model Bridge State
+    let openSourceEndpoint = 'http://localhost:8080/llama/generate';
+    let isConnectedToOpenSource = false;
+
+    const PUBLIC_LEDGER_COLLECTION = 'bridge_ledger'; 
+    const PRIVATE_SETTINGS_PATH = 'user_settings/bridge-settings';
+
+    // --- SIMULATED FILE SYSTEM & CONTENT (FOR AI ANALYSIS) ---
+    const FILE_SYSTEM_MOCK_CONTENT = {
+        '/home/user/bridge_config.json': `
+{
+  "protocol": "Bridge/OS v3.1",
+  "port": 443,
+  "heartbeat_interval_ms": 5000,
+  "allowed_ips": ["192.168.1.0/24", "10.0.0.0/8"],
+  "security_level": "medium",
+  "log_verbosity": "debug"
+}
+`,
+        '/home/user/run_script.sh': `
+#!/bin/bash
+# Bridge Initialization Script v1.4
+echo "Starting Bridge OS services..."
+/usr/bin/service bridge-core start
+sleep 2
+echo "Checking network connectivity..."
+ping -c 3 gateway.local
+if [ $? -ne 0 ]; then
+  echo "ERROR: Gateway unreachable. Falling back to default settings."
+  /usr/sbin/set_default_network
+fi
+/usr/bin/log_event "System ready."
+`,
+        '/var/log/access.log': `
+[2025-10-24 01:30:10] [INFO] Connection established from IP 192.168.1.101, User: admin
+[2025-10-24 01:30:15] [WARN] Attempted login failure for user 'root' from 10.10.1.5
+[2025-10-24 01:30:22] [INFO] File access granted: /home/user/docs/report.pdf
+[2025-10-24 01:30:30] [ERROR] Service 'bridge-net-sync' crashed. Restarting...
+`
+    };
+
+    const getFileContent = (path) => FILE_SYSTEM_MOCK_CONTENT[path] || `File content not available for deep analysis. This file is a simulated placeholder.`;
+
+    const FILE_SYSTEM_MOCK = {
+        '/': [
+            { name: 'home', type: 'dir' },
+            { name: 'etc', type: 'dir' },
+            { name: 'var', type: 'dir' },
+            { name: 'README.md', type: 'file', size: '1.2 KB' },
+        ],
+        '/home': [
+            { name: 'user', type: 'dir' },
+            { name: 'temp', type: 'dir' },
+            { name: 'notes.txt', type: 'file', size: '54 B' },
+        ],
+        '/home/user': [
+            { name: 'Documents', type: 'dir' },
+            { name: 'bridge_config.json', type: 'file', size: '3.1 KB' }, // Has content
+            { name: 'run_script.sh', type: 'file', size: '200 B' }, // Has content
+        ],
+        '/etc': [
+            { name: 'system_auth.conf', type: 'file', size: '8.9 KB' },
+            { name: 'network', type: 'dir' },
+        ],
+        '/var': [
+            { name: 'log', type: 'dir' },
+            { name: 'cache', type: 'dir' },
+        ],
+        '/var/log': [
+            { name: 'bridge.log', type: 'file', size: '150 MB' },
+            { name: 'access.log', type: 'file', size: '5 MB' }, // Has content
+        ],
+        '/var/cache': [
+            { name: 'temp_data.bin', type: 'file', size: '40 KB' },
+        ],
+    };
+
+    // --- FIREBASE AND AUTH SETUP ---
+
+    const setupFirebase = () => {
+        if (!app) {
+            app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            auth = getAuth(app);
+            // This listener is now used ONLY for syncing settings after authorization
+            onAuthStateChanged(auth, async (user) => {
+                if (user && isAuthorized) { // Only run if successfully authorized
+                    userId = user.uid;
+                    isAuthReady = true;
+                    await loadSettings();
+                    updateUserIdDisplay();
+                    renderFilesystem();
+                    listenToLedger();
+                } else {
+                    // For unauthorized state, the UI remains on the permissions screen
+                    userId = null;
+                }
+            });
+        }
+    }
+
+    /**
+     * Handles the authorization button click, which is the start of the application.
+     */
+    const authorizeConnection = async () => {
+        const btn = $('#authorize-btn');
+        const statusMsg = $('#auth-status-message');
+
+        btn.disabled = true;
+        statusMsg.classList.remove('hidden');
+        statusMsg.innerHTML = '<i data-lucide="dices" class="w-4 h-4 mr-1 inline-block animate-pulse"></i> Initializing Proof of Work...';
+        updateIcons();
+
+        try {
+            // 1. Authenticate with Firebase (Crucial step that starts the session)
+            if (initialAuthToken) {
+                await signInWithCustomToken(auth, initialAuthToken);
+            } else {
+                await signInAnonymously(auth);
+            }
+            
+            // 2. Simulate Blockchain Proof of Work (Delay)
+            const hash = await generateBlockchainProofOfWork();
+            statusMsg.innerHTML = `<i data-lucide="check" class="w-4 h-4 mr-1 inline-block text-green-500"></i> Auth Block Minted: ${hash.substring(0, 10)}...`;
+
+            // 3. Successful Authorization Actions
+            isAuthorized = true;
+            
+            // --- CORE CHANGE: Force Live Screen Mode ON (Start Broadcasting) ---
+            setLiveScreenMode(true, false); 
+            
+            // 4. Transition UI
+            $('#permissions-view').classList.add('hidden');
+            $('#app-container').classList.remove('hidden');
+            $('#loading-overlay').classList.add('hidden'); // Ensure loading is hidden
+
+            // 5. Start Services (The onAuthStateChanged listener will handle loadSettings/listenToLedger)
+            startSystemSimulation();
+            logActivity('success', 'Bridge Authorization Block Minted. Live Session Initialized and Live Screen Access Granted.');
+
+
+        } catch (error) {
+            console.error("Authorization Failed:", error);
+            statusMsg.innerHTML = '<i data-lucide="x" class="w-4 h-4 mr-1 inline-block text-red-500"></i> Authorization failed. Retrying...';
+            btn.disabled = false;
+            btn.innerHTML = '<i data-lucide="key" class="w-5 h-5 mr-3"></i> Try Again';
+            logActivity('error', `Authorization failed: ${error.message.substring(0, 50)}...`);
+        } finally {
+            updateIcons();
+        }
+    }
+
+    // --- GEMINI API UTILITY ---
+    
+    /**
+     * Core utility function to call the Gemini API with exponential backoff.
+     */
+    const callGeminiApi = async (systemPrompt, userQuery, maxRetries = 3) => {
+        const url = GEMINI_API_URL;
+        const payload = {
+            contents: [{ parts: [{ text: userQuery }] }],
+            systemInstruction: { parts: [{ text: systemPrompt }] },
+        };
+
+        for (let attempt = 1; attempt <= maxRetries; attempt++) {
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                    if (text) {
+                        return text;
+                    } else {
+                        throw new Error("Received empty response text from API.");
+                    }
+                } else if (response.status === 429 && attempt < maxRetries) {
+                    const delay = Math.pow(2, attempt) * 1000 + Math.random() * 1000;
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                } else {
+                    throw new Error(`API call failed with status: ${response.status} ${response.statusText}`);
+                }
+            } catch (error) {
+                if (attempt === maxRetries) {
+                    console.error("Gemini API call failed after multiple retries:", error);
+                    throw new Error(`Failed to generate content: ${error.message}`);
+                }
+            }
+        }
+    };
+
+    // --- GEMINI FEATURE 1: SYSTEM ANALYSIS (Updated for Auth Audit) ---
+    
+    const generateSystemAnalysis = async () => {
+        const btn = $('#generate-analysis-btn');
+        const outputEl = $('#analysis-output');
+        const textEl = $('#analysis-text');
+        
+        btn.disabled = true;
+        btn.innerHTML = '<div class="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div> Generating Report...';
+        outputEl.classList.add('hidden');
+        updateIcons();
+        
+        const systemStatus = `
+System Uptime: ${currentMetrics.uptime}, 
+RAM Usage: ${currentMetrics.ram}, 
+Active Sessions: ${currentMetrics.users}
+`;
+        
+        // Filter and prepare log entries for AI analysis
+        const recentLedger = currentLedgerLogs.slice(0, 15).map(log => `[${log.timestamp.substring(11, 19)}] ${log.type.toUpperCase()}: ${log.message}`).join('\n');
+        
+        // Count keyless authentication failures
+        const authFailures = currentLedgerLogs.filter(log => 
+            log.message.includes("Keyless Authentication Failure")
+        ).length;
+
+
+        const systemPrompt = `
+You are an advanced AI System Health and Security Analyst, specializing in device identity and keyless authentication auditing. Your task is to analyze the provided system metrics and the latest ledger activity. 
+Generate a concise, formal report (maximum 150 words) that includes:
+1. An overall system health assessment (Green/Yellow/Red).
+2. A summary of operational metrics (RAM, Uptime).
+3. **Keyless Authentication Audit:** Report on any anomalies detected in the last 15 ledger entries, specifically noting the number of 'Keyless Authentication Failure' events. Provide a brief security recommendation based on these failures.
+Format the output as a professional security bulletin.
+`;
+
+        const userQuery = `
+System Metrics:
+${systemStatus}
+Keyless Auth Failure Count (Last 15 logs): ${authFailures}
+
+Recent Bridge Ledger Entries (Last 15):
+${recentLedger || "No recent activity to report."}
+`;
+        
+        try {
+            await logActivity('request', 'AI Analyst requested System Health Report and Keyless Auth Audit from Gemini.');
+            const analysisText = await callGeminiApi(systemPrompt, userQuery);
+
+            textEl.textContent = analysisText;
+            outputEl.classList.remove('hidden');
+            await logActivity('success', 'AI Analyst Report generated and displayed.');
+
+        } catch (e) {
+            textEl.textContent = `Error generating analysis: ${e.message}. Please check your connection.`;
+            outputEl.classList.remove('hidden');
+            logActivity('error', `AI Analyst failed to generate report. ${e.message.substring(0, 50)}`);
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = '<i data-lucide="zap" class="w-5 h-5 mr-2"></i> ✨ Generate System Analysis Report';
+            updateIcons();
+        }
+    }
+
+
+    // --- GEMINI FEATURE 2: FILE CONTENT ANALYSIS ---
+    
+    const analyzeFileContent = async (fullPath, filename, content) => {
+        const btn = $('#analyze-file-btn');
+        const outputEl = $('#file-analysis-output');
+        const textEl = $('#file-analysis-text');
+
+        btn.disabled = true;
+        btn.innerHTML = '<div class="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div> Analyzing...';
+        outputEl.classList.add('hidden');
+        updateIcons();
+        
+        const systemPrompt = `
+You are a Cyber System Auditor AI. Your task is to analyze the provided file content. 
+Generate a concise, two-paragraph analysis of the file:
+1. **Purpose & Key Parameters:** What is the file's primary function (e.g., config file, shell script, log)? What are the 2-3 most critical configuration values or commands?
+2. **Security Assessment:** Based on its content, provide a brief security risk assessment (Low/Medium/High). Highlight any unusual or risky settings (e.g., 'debug' verbosity, broad 'allowed_ips', 'root' attempts, service crashes).
+The output must be strictly informative and professional.
+`;
+
+        const userQuery = `
+Analyze the following file named '${filename}' with the following content:
+---
+${content}
+---
+`;
+
+        try {
+            await logActivity('request', `AI Analyst requested deep file analysis for: ${filename}.`);
+            const analysisText = await callGeminiApi(systemPrompt, userQuery);
+
+            textEl.textContent = analysisText;
+            outputEl.classList.remove('hidden');
+            await logActivity('success', `AI File Analysis for ${filename} completed.`);
+
+        } catch (e) {
+            textEl.textContent = `Error generating file analysis: ${e.message}. The file content was not processed.`;
+            outputEl.classList.remove('hidden');
+            logActivity('error', `AI File Analysis for ${filename} failed. ${e.message.substring(0, 50)}`);
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = '<i data-lucide="zap" class="w-5 h-5 mr-2"></i> ✨ Analyze File Content';
+            updateIcons();
+        }
+    }
+
+
+    // --- SIMULATED BLOCKCHAIN HASHING ---
+    const generateBlockchainProofOfWork = async () => {
+        const hashTime = 1500 + Math.random() * 1000;
+        await new Promise(resolve => setTimeout(resolve, hashTime));
+        return '0x' + crypto.randomUUID().replace(/-/g, '').substring(0, 32);
+    }
+
+    // --- UTILITY FUNCTIONS ---
+
+    const updateIcons = () => {
+        if (window.createIcons && window.allIcons) {
+            window.createIcons({ icons: window.allIcons });
+        }
+    }
+
+    const $ = (selector) => document.querySelector(selector);
+    const $$ = (selector) => document.querySelectorAll(selector);
+
+    const formatUserId = (uid) => uid ? `${uid.substring(0, 6)}...` : 'Not Signed In';
+    const getCurrentTime = () => new Date().toISOString();
+
+    /**
+     * Toggles the Live Screen Mode class on the body.
+     * @param {boolean} enabled - True to enable, false to disable.
+     * @param {boolean} save - Whether to save the setting to Firestore.
+     */
+    const setLiveScreenMode = (enabled, save = true) => {
+        isLiveScreenEnabled = enabled;
+        const body = $('body');
+        const slider = $('#live-screen-slider');
+        const toggleBtn = $('#live-screen-toggle');
+
+        if (enabled) {
+            body.classList.add('live-screen-mode');
+            toggleBtn.classList.add('bg-indigo-600');
+            toggleBtn.classList.remove('bg-gray-200');
+            slider.classList.add('translate-x-7');
+            slider.classList.remove('translate-x-1');
+        } else {
+            body.classList.remove('live-screen-mode');
+            toggleBtn.classList.remove('bg-indigo-600');
+            toggleBtn.classList.add('bg-gray-200');
+            slider.classList.remove('translate-x-7');
+            slider.classList.add('translate-x-1');
+        }
+
+        if (save && isAuthReady) {
+            saveSettings();
+        }
+    };
+    
+    /**
+     * Toggles the Dark Mode class on the body.
+     * @param {boolean} enabled - True to enable, false to disable.
+     * @param {boolean} save - Whether to save the setting to Firestore.
+     */
+    const setDarkMode = (enabled, save = true) => {
+        isDarkModeEnabled = enabled;
+        const body = $('body');
+        const slider = $('#dark-mode-slider');
+        const toggleBtn = $('#dark-mode-toggle');
+
+        if (enabled) {
+            body.classList.add('dark');
+            body.classList.remove('light');
+            toggleBtn.classList.add('bg-indigo-600');
+            toggleBtn.classList.remove('bg-gray-200');
+            slider.classList.add('translate-x-7');
+            slider.classList.remove('translate-x-1');
+        } else {
+            body.classList.remove('dark');
+            body.classList.add('light');
+            toggleBtn.classList.remove('bg-indigo-600');
+            toggleBtn.classList.add('bg-gray-200');
+            slider.classList.remove('translate-x-7');
+            slider.classList.add('translate-x-1');
+        }
+
+        if (save && isAuthReady) {
+            saveSettings();
+        }
+    };
+
+    /**
+     * Updates the user ID display in the sidebar and settings view.
+     */
+    const updateUserIdDisplay = () => {
+        if (userId) {
+            $('#user-status').textContent = formatUserId(userId);
+            $('#user-id-display').textContent = userId;
+        } else {
+            $('#user-status').textContent = 'Unauthorized';
+            $('#user-id-display').textContent = 'Please authorize the connection.';
+        }
+    }
+
+
+    // --- DATA HANDLING (LEDGER & SETTINGS) ---
+
+    /**
+     * Saves user settings to a private Firestore document.
+     */
+    const saveSettings = async () => {
+        if (!userId || !isAuthReady) return;
+        const docRef = doc(db, 'artifacts', appId, 'users', userId, PRIVATE_SETTINGS_PATH);
+        try {
+            await setDoc(docRef, {
+                isDarkModeEnabled: isDarkModeEnabled,
+                isLiveScreenEnabled: isLiveScreenEnabled,
+                lastUpdated: getCurrentTime()
+            }, { merge: true });
+        } catch (e) {
+            console.error("Error saving settings:", e);
+        }
+    };
+
+    /**
+     * Loads user settings from a private Firestore document.
+     */
+    const loadSettings = async () => {
+        if (!userId || !isAuthReady) {
+            // If settings aren't loaded, default to system preference or light mode
+            setDarkMode(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches, false);
+            setLiveScreenMode(isLiveScreenEnabled, false); // Keep the forced state from auth
+            return;
+        }
+
+        const docRef = doc(db, 'artifacts', appId, 'users', userId, PRIVATE_SETTINGS_PATH);
+        try {
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                const data = docSnap.data();
+                setDarkMode(data.isDarkModeEnabled || false, false);
+                // Note: Live Screen Mode is FORCED ON during initial authorization. 
+                // We only load the saved state if it exists, otherwise we keep the forced ON state.
+                if (data.isLiveScreenEnabled !== undefined) {
+                     setLiveScreenMode(data.isLiveScreenEnabled, false); 
+                }
+            } else {
+                // Save defaults if no document exists
+                await saveSettings();
+            }
+        } catch (e) {
+            console.error("Error loading settings:", e);
+        }
+    };
+
+    /**
+     * Logs an activity to the shared Bridge Ledger (public collection).
+     */
+    const logActivity = async (type, message) => {
+        if (!isAuthReady) return; 
+
+        const ledgerRef = collection(db, 'artifacts', appId, 'public/data', PUBLIC_LEDGER_COLLECTION);
+        
+        const logEntry = {
+            userId: userId,
+            timestamp: getCurrentTime(),
+            type: type, // 'info', 'success', 'error', 'warn', 'request'
+            message: message,
+            // Only store the first 100 characters of the message to prevent large document sizes
+            message_summary: message.substring(0, 100) + (message.length > 100 ? '...' : '') 
+        };
+
+        try {
+            await addDoc(ledgerRef, logEntry);
+        } catch (e) {
+            console.error("Error writing to ledger:", e);
+        }
+    };
+
+    /**
+     * Sets up a real-time listener for the Bridge Ledger activity.
+     */
+    const listenToLedger = () => {
+        if (!isAuthReady) return; 
+
+        const ledgerRef = collection(db, 'artifacts', appId, 'public/data', PUBLIC_LEDGER_COLLECTION);
+        const q = query(ledgerRef); // Note: Sorting is avoided to prevent required index issues.
+
+        onSnapshot(q, (snapshot) => {
+            currentLedgerLogs = [];
+            snapshot.docs.forEach(doc => {
+                currentLedgerLogs.push(doc.data());
+            });
+
+            // Sort in memory by timestamp descending
+            currentLedgerLogs.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            
+            renderActivityLog(currentLedgerLogs);
+        }, (error) => {
+            console.error("Error listening to ledger:", error);
+            const logEl = $('#activity-log');
+            logEl.innerHTML = `<p class="text-red-500">Failed to connect to Bridge Ledger: ${error.message}</p>`;
+        });
+    };
+
+    /**
+     * Renders the activity log UI from the ledger data.
+     */
+    const renderActivityLog = (logs) => {
+        const logEl = $('#activity-log');
+        const countEl = $('#log-count');
+        logEl.innerHTML = '';
+
+        countEl.textContent = logs.length;
+
+        logs.slice(0, 50).forEach(log => {
+            const time = new Date(log.timestamp).toLocaleTimeString();
+            let colorClass;
+            switch (log.type) {
+                case 'success':
+                    colorClass = 'text-green-500';
+                    break;
+                case 'error':
+                    colorClass = 'text-red-500 font-bold';
+                    break;
+                case 'warn':
+                    colorClass = 'text-yellow-500';
+                    break;
+                case 'request':
+                    colorClass = 'text-purple-500';
+                    break;
+                default:
+                    colorClass = 'text-gray-400';
+            }
+
+            const entry = document.createElement('div');
+            entry.className = 'text-sm p-2 rounded-lg transition-colors hover:bg-gray-200 dark:hover:bg-gray-700';
+            entry.innerHTML = `
+                <div class="flex items-center space-x-2">
+                    <span class="font-mono text-xs text-gray-500 dark:text-gray-400">
+                        [${time}]
+                    </span>
+                    <span class="font-semibold uppercase ${colorClass}">
+                        ${log.type}
+                    </span>
+                    <span class="text-xs text-gray-500 dark:text-gray-400 truncate">
+                        (${formatUserId(log.userId)})
+                    </span>
+                </div>
+                <p class="text-gray-700 dark:text-gray-200 mt-1 pl-2 whitespace-pre-wrap">${log.message}</p>
+            `;
+            logEl.appendChild(entry);
+        });
+    }
+
+    // --- NEW: SIMULATED KEYLESS AUTHENTICATION LOGGING ---
+    const deviceIds = ['0x4a9b...', '0x7c3f...', '0x2e8d...'];
+
+    const simulateKeylessAttempt = (type) => {
+        const randomDevice = deviceIds[Math.floor(Math.random() * deviceIds.length)];
+        let logType = 'success';
+        let message = `Device ID ${randomDevice} successfully verified keyless token.`;
+        
+        if (type === 'fail') {
+            logType = 'error';
+            // 20% chance of being an "unknown" anomaly
+            if (Math.random() < 0.2) {
+                 message = `Keyless Authentication Failure: Unknown Device ID ${crypto.randomUUID().substring(0, 6)} attempted access. (Anomaly)`;
+            } else {
+                 message = `Keyless Authentication Failure: Device ID ${randomDevice} signature mismatch.`;
+            }
+        }
+
+        logActivity(logType, message);
+    }
+
+
+    // --- SYSTEM SIMULATION ---
+
+    /**
+     * Simulates the continuous updating of system metrics.
+     */
+    const startSystemSimulation = () => {
+        let uptimeSeconds = 0;
+        const startTime = Date.now();
+
+        const updateMetrics = () => {
+            uptimeSeconds = Math.floor((Date.now() - startTime) / 1000);
+            
+            // Format uptime
+            const days = Math.floor(uptimeSeconds / 86400);
+            const hours = Math.floor((uptimeSeconds % 86400) / 3600);
+            const minutes = Math.floor((uptimeSeconds % 3600) / 60);
+
+            const ramUsed = (3 + Math.random()).toFixed(1); // Simulate RAM fluctuation
+
+            currentMetrics = {
+                uptime: `${days}d ${hours}h ${minutes}m`,
+                ram: `${ramUsed} GB`,
+                users: Math.floor(1 + Math.random() * 3) // 1 to 3 users
+            };
+
+            $('#metric-uptime').textContent = currentMetrics.uptime;
+            $('#metric-ram').textContent = currentMetrics.ram;
+            $('#metric-users').textContent = currentMetrics.users;
+        };
+
+        if (metricsIntervalId) clearInterval(metricsIntervalId);
+        updateMetrics();
+        metricsIntervalId = setInterval(updateMetrics, 5000); // Update every 5 seconds
+    }
+
+
+    // --- FILE BROWSER LOGIC ---
+    
+    /**
+     * Renders the simulated file system based on the currentPath state.
+     */
+    const renderFilesystem = () => {
+        const contentEl = $('#filesystem-content');
+        const pathDisplayEl = $('#current-path-display');
+        pathDisplayEl.textContent = currentPath;
+        contentEl.innerHTML = '';
+        
+        // Up directory entry
+        if (currentPath !== '/') {
+            const upEntry = createFileEntry('..', 'dir', '', () => navigateDirectory('..'));
+            contentEl.appendChild(upEntry);
+        }
+
+        const files = FILE_SYSTEM_MOCK[currentPath] || [];
+
+        if (files.length === 0 && currentPath !== '/') {
+             contentEl.innerHTML += `<p class="text-gray-500 dark:text-gray-400 p-2">Directory is empty or path not found in simulation.</p>`;
+             return;
+        }
+
+        files.forEach(item => {
+            const fullPath = currentPath + (currentPath !== '/' ? '/' : '') + item.name;
+
+            const clickHandler = item.type === 'dir' 
+                ? () => navigateDirectory(item.name) 
+                : () => showFileDetailsModal(fullPath, item.name); // New modal handler
+
+            const entry = createFileEntry(item.name, item.type, item.size, clickHandler);
+            contentEl.appendChild(entry);
+        });
+        updateIcons();
+    }
+
+    /**
+     * Navigates the simulated directory structure.
+     */
+    const navigateDirectory = (name) => {
+        if (name === '..') {
+            const parts = currentPath.split('/').filter(p => p.length > 0);
+            parts.pop();
+            currentPath = parts.length > 0 ? '/' + parts.join('/') : '/';
+        } else {
+            const newPath = currentPath + (currentPath !== '/' ? '/' : '') + name;
+            if (FILE_SYSTEM_MOCK[newPath]) {
+                currentPath = newPath;
+            }
+        }
+        logActivity('info', `Mapsd to directory: ${currentPath}`);
+        renderFilesystem();
+    }
+
+    /**
+     * Creates a file/directory entry element for the browser view.
+     */
+    const createFileEntry = (name, type, size, clickHandler) => {
+        const isDir = type === 'dir';
+        const icon = isDir ? 'folder' : 'code';
+        const color = isDir ? 'text-blue-400' : 'text-green-400';
+
+        const entry = document.createElement('div');
+        entry.className = 'file-entry flex items-center p-2 rounded-lg transition-colors';
+        entry.onclick = clickHandler;
+
+        entry.innerHTML = `
+            <i data-lucide="${icon}" class="w-5 h-5 mr-3 ${color}"></i>
+            <span class="flex-1 font-medium text-gray-900 dark:text-white">${name}</span>
+            <span class="text-sm text-gray-500 dark:text-gray-400">${isDir ? 'DIR' : size}</span>
+        `;
+        return entry;
+    }
+    
+    /**
+     * Displays the File Details Modal and sets up the analysis button.
+     */
+    const showFileDetailsModal = (fullPath, filename) => {
+        const content = getFileContent(fullPath);
+        
+        $('#modal-filename').textContent = filename;
+        $('#modal-file-content').textContent = content;
+        $('#file-details-modal').classList.remove('hidden');
+        $('#file-analysis-output').classList.add('hidden'); // Clear previous analysis
+
+        const analyzeBtn = $('#analyze-file-btn');
+        // Check if content is placeholder content
+        analyzeBtn.disabled = content.includes("not available for deep analysis"); 
+        
+        analyzeBtn.onclick = () => analyzeFileContent(fullPath, filename, content);
+        analyzeBtn.innerHTML = '<i data-lucide="zap" class="w-5 h-5 mr-2"></i> ✨ Analyze File Content';
+        updateIcons();
+
+        logActivity('request', `Opened file details for: ${filename}.`);
+    }
+
+    // --- CONNECTION HUB LOGIC (NEW) ---
+    
+    /**
+     * Handles the simulated connection to the Open Source Model endpoint.
+     */
+    const handleOpenSourceConnect = () => {
+        const input = $('#os-endpoint-input');
+        const statusEl = $('#os-connection-status');
+        const testSection = $('#os-test-section');
+        const btn = $('#os-connect-btn');
+        
+        openSourceEndpoint = input.value.trim();
+        
+        if (!openSourceEndpoint || !openSourceEndpoint.startsWith('http')) {
+            isConnectedToOpenSource = false;
+            statusEl.textContent = 'Status: Invalid URL Format (Disconnected)';
+            statusEl.classList.add('text-red-500');
+            statusEl.classList.remove('text-green-500');
+            testSection.classList.add('hidden');
+            logActivity('error', 'Attempted to connect to Open Source model with invalid endpoint URL.');
+            btn.disabled = false;
+            btn.innerHTML = '<i data-lucide="plug-zap" class="w-4 h-4 mr-2"></i> Connect';
+            updateIcons();
+            return;
+        }
+
+        // Simulate connection success
+        isConnectedToOpenSource = true;
+        statusEl.textContent = `Status: Connected to ${openSourceEndpoint}`;
+        statusEl.classList.remove('text-red-500');
+        statusEl.classList.add('text-green-500');
+        testSection.classList.remove('hidden');
+        
+        btn.innerHTML = '<i data-lucide="check" class="w-4 h-4 mr-2"></i> Connected';
+        btn.disabled = true;
+
+        logActivity('success', `Open Source Model Bridge established to: ${openSourceEndpoint}`);
+        updateIcons();
+    }
+
+    /**
+     * Handles the simulated test query to the Open Source Model endpoint.
+     */
+    const handleOpenSourceTest = async () => {
+        if (!isConnectedToOpenSource) {
+            logActivity('warn', 'Cannot run test: Open Source Model Bridge is disconnected.');
+            $('#os-test-output').textContent = "ERROR: Not connected. Please connect first.";
+            $('#os-test-output').classList.remove('hidden');
+            return;
+        }
+
+        const prompt = $('#os-prompt-input').value;
+        const btn = $('#os-test-btn');
+        const outputEl = $('#os-test-output');
+        
+        btn.disabled = true;
+        btn.innerHTML = '<div class="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div> Running Test...';
+        outputEl.classList.remove('hidden');
+        outputEl.textContent = 'Awaiting simulated model response...';
+        updateIcons();
+
+        await logActivity('request', `Testing Open Source Model at ${openSourceEndpoint}. Prompt: ${prompt.substring(0, 50)}...`);
+
+        // Simulate model inference time and response
+        await new Promise(resolve => setTimeout(resolve, 2000)); 
+        
+        const mockResponse = `
+// Model: Llama-7B-Simulated, Temperature: 0.8
+// Token Lookahead Explained:
+Token lookahead is an optimization technique used in modern large language models (LLMs) to speed up the decoding process. Instead of generating one token at a time, the model proposes a small sequence of future tokens (the "lookahead" or "draft"). It then uses a faster, simpler model (or the model's own cheaper, initial layers) to verify this entire sequence in parallel. If verified, the whole chunk is accepted, resulting in much faster generation. If not, the process reverts to sequential generation from the point of failure. This significantly reduces latency.
+        `;
+
+        outputEl.textContent = mockResponse.trim();
+        await logActivity('success', `Received response from Open Source Model endpoint. Tokens: 125.`);
+
+        btn.disabled = false;
+        btn.innerHTML = '<i data-lucide="send" class="w-4 h-4 mr-2"></i> Run Test Query';
+        updateIcons();
+    }
+
+
+    // --- VIEW MANAGEMENT ---
+
+    /**
+     * Changes the main application view (tab switching).
+     */
+    const changeView = (viewId) => {
+        $$('.view-content').forEach(el => el.classList.add('hidden'));
+        $$('.nav-item').forEach(el => {
+            el.classList.remove('bg-indigo-600', 'text-white');
+            el.classList.add('text-gray-700', 'hover:bg-gray-100', 'dark:text-gray-300', 'dark:hover:bg-gray-700');
+        });
+
+        $(`#${viewId}-view`).classList.remove('hidden');
+        $(`.nav-item[data-view="${viewId}"]`).classList.add('bg-indigo-600', 'text-white');
+        $(`.nav-item[data-view="${viewId}"]`).classList.remove('text-gray-700', 'hover:bg-gray-100', 'dark:text-gray-300', 'dark:hover:bg-gray-700');
+
+        // Close mobile menu if open
+        $('#nav-links').classList.add('hidden');
+        updateIcons();
+    }
+
+    // --- OTHER HANDLERS ---
+    
+    const handleConnectionAction = (service, action) => {
+        logActivity('warn', `Simulated action '${action}' triggered for service: ${service}. (Requires external endpoint)`);
+    }
+
+    const runMockProcess = () => {
+        const messages = [
+            "Initializing secure kernel patch sequence.",
+            "Backend process 'NetScan_443' started.",
+            "Resource allocation successful for 'Bridge-Sync-A'.",
+            "WARN: High latency detected on ledger sync operation.",
+            "System check complete. Status: OK."
+        ];
+        const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+        const type = randomMsg.startsWith('WARN') ? 'warn' : 'info';
+        
+        logActivity(type, randomMsg);
+    }
+
+    // --- INITIALIZATION ---
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initialize Firebase services
+        setupFirebase();
+
+        // Setup event listeners
+        $('#authorize-btn').addEventListener('click', authorizeConnection);
+
+        $('#mobile-menu-btn').addEventListener('click', () => {
+            $('#nav-links').classList.toggle('hidden');
+        });
+
+        // Dashboard Analysis Button
+        $('#generate-analysis-btn').addEventListener('click', generateSystemAnalysis);
+        
+        // Ledger Mock Process Button
+        $('#run-process-btn').addEventListener('click', runMockProcess);
+
+        // Settings Toggles
+        $('#dark-mode-toggle').addEventListener('click', () => setDarkMode(!isDarkModeEnabled, true));
+        $('#live-screen-toggle').addEventListener('click', () => setLiveScreenMode(!isLiveScreenEnabled, true));
+
+        // Connection Hub Initialization
+        $('#os-endpoint-input').value = openSourceEndpoint;
+
+
+        // Initial UI state setup (before auth):
+        $('#loading-overlay').classList.add('hidden');
+        $('#app-container').classList.add('hidden');
+        $('#permissions-view').classList.remove('hidden');
+        updateUserIdDisplay(); // Shows 'Unauthorized' initially
+    });
+</script>
