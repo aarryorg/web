@@ -167,6 +167,362 @@
         const liveVideoButton = document.getElementById('live-toggle-button');
         const localVideo = document.getElementById('local-video');
         const statusMessage = document.getElementById('live-status-message');
+        const liveContentWrapper = document.getElementById('live-content-wrapper');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        
+        // --- Chat Data and Logic ---
+        // Generate a simple, unique "Broadcaster" username for this session
+        const myUsername = "Broadcaster_" + Math.floor(Math.random() * 999 + 100);
+        // Load messages from local storage or start with an empty array
+        let messages = JSON.parse(localStorage.getItem('liveChatMessages') || '[]');
+
+        /**
+         * Renders all stored chat messages.
+         */
+        function renderChat() {
+            chatMessages.innerHTML = messages.map(msg => {
+                const isMe = msg.user === myUsername;
+                const alignment = isMe ? 'justify-end' : 'justify-start';
+                const bgColor = isMe ? 'bg-indigo-100' : 'bg-gray-200';
+                const nameColor = isMe ? 'text-indigo-600' : 'text-gray-700';
+
+                return `
+                    <div class="flex ${alignment}">
+                        <div class="max-w-xs md:max-w-full lg:max-w-xs p-3 rounded-xl ${bgColor}">
+                            <div class="text-xs font-bold ${nameColor} mb-1">${msg.user}</div>
+                            <p class="text-gray-800 break-words">${msg.text}</p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            // Scroll to the bottom to show the newest message
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        /**
+         * Sends a new message to the chat.
+         */
+        function sendMessage() {
+            const text = chatInput.value.trim();
+            if (text === '') return;
+
+            const newMessage = {
+                user: myUsername,
+                text: text,
+                timestamp: Date.now()
+            };
+
+            messages.push(newMessage);
+            localStorage.setItem('liveChatMessages', JSON.stringify(messages));
+            chatInput.value = '';
+            renderChat();
+        }
+
+        // --- Stream Management Functions ---
+
+        /**
+         * Renders the navigation sidebar buttons.
+         */
+        function renderNav() {
+            navContainer.innerHTML = '';
+            Object.keys(STREAM_DATA).forEach(category => {
+                const button = document.createElement('button');
+                button.className = `category-button w-full text-left p-3 my-1 rounded-lg text-gray-700 font-semibold flex items-center ${category === currentCategory ? 'active' : ''}`;
+                button.textContent = category;
+                button.setAttribute('data-category', category);
+                button.onclick = () => {
+                    currentCategory = category;
+                    renderNav(); // Update active state
+                    renderStreams(category); // Load new streams
+                };
+                navContainer.appendChild(button);
+            });
+        }
+
+        /**
+         * Generates the HTML card for a single stream.
+         */
+        function createStreamCard(stream) {
+            const statusColor = {
+                'Live': `bg-${stream.color}-500`,
+                'Replay': 'bg-gray-400',
+                'Scheduled': 'bg-yellow-500',
+                'Offline': 'bg-red-700'
+            }[stream.status] || 'bg-gray-500';
+
+            const statusText = stream.status === 'Live' ? 'LIVE' : stream.status.toUpperCase();
+            const viewersText = stream.status === 'Live' || stream.status === 'Replay' ? `${stream.viewers.toLocaleString()} viewers` : stream.duration;
+            const liveBadge = stream.status === 'Live' ? `<span class="px-3 py-1 text-xs font-bold text-white uppercase rounded-full bg-red-600 animate-pulse mr-2">LIVE</span>` : '';
+
+            return `
+                <div class="stream-card bg-white p-6 rounded-xl border border-gray-100 flex flex-col justify-between">
+                    <div class="flex items-start mb-4">
+                        <div class="p-3 rounded-xl ${statusColor} text-white text-2xl mr-4">${stream.icon}</div>
+                        <div class="flex-grow">
+                            <p class="text-xs text-gray-500 font-medium">${stream.status}</p>
+                            <h3 class="text-xl font-bold text-gray-800 line-clamp-2">${stream.title}</h3>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+                        <p class="text-lg font-extrabold text-gray-800 flex items-center">
+                            ${liveBadge}
+                            ${viewersText}
+                        </p>
+                        <button class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition duration-150 text-sm font-semibold">
+                            Watch
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+
+        /**
+         * Renders the streams for the given category.
+         */
+        function renderStreams(categoryName) {
+            contentTitle.textContent = categoryName;
+            const streams = STREAM_DATA[categoryName] || [];
+
+            if (streams.length === 0) {
+                streamListContainer.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                streamListContainer.classList.add('hidden');
+            } else {
+                streamListContainer.innerHTML = streams.map(createStreamCard).join('');
+                emptyState.classList.add('hidden');
+                streamListContainer.classList.remove('hidden');
+            }
+        }
+        
+        /**
+         * Toggles the live stream on or off.
+         */
+        function toggleLiveStream() {
+            if (localStream) {
+                stopLiveStream();
+            } else {
+                startLiveStream();
+            }
+        }
+
+        /**
+         * Starts the live stream by capturing screen and audio, with a camera/mic fallback. (FIXED FOR CANCELLATION)
+         */
+        async function startLiveStream() {
+            localStream = null;
+            updateStatus('info', 'Awaiting permission to access your media...');
+
+            let streamAcquired = false;
+
+            // --- 1. Attempt Screen Share (video and system audio) ---
+            try {
+                localStream = await navigator.mediaDevices.getDisplayMedia({ video: true, audio: true });
+                
+                if (localStream) {
+                    // Success: stream object is present
+                    updateStatus('success', 'Screen Share and Audio active. You are live! (Username: ' + myUsername + ')');
+                    streamAcquired = true;
+                } else {
+                    // User clicked 'Cancel' on the screen selection prompt (localStream is null)
+                    console.warn("Screen share cancelled by user, attempting Camera/Mic fallback.");
+                }
+            } catch (screenError) {
+                // Screen share explicitly denied (throws error)
+                console.warn("Screen share denied or failed, attempting Camera/Mic fallback:", screenError);
+            }
+
+            // --- 2. Attempt Camera/Mic Fallback if Screen Share failed/cancelled ---
+            if (!streamAcquired) {
+                try {
+                    localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+                    
+                    if (localStream) {
+                        updateStatus('success', 'Camera and Mic active. You are live! (Username: ' + myUsername + ')');
+                        streamAcquired = true;
+                    }
+                } catch (cameraError) {
+                    console.error("Camera/Mic access also denied or failed:", cameraError);
+                    
+                    // Final failure status update
+                    if (cameraError.name === 'NotAllowedError' || cameraError.name === 'PermissionDeniedError') {
+                        updateStatus('error', 'Permission denied. Please allow camera/mic and screen access in your browser settings.');
+                    } else {
+                        updateStatus('error', 'Could not start stream. Check your hardware connections or browser settings.');
+                    }
+                    return; // Critical failure, exit
+                }
+            }
+
+            // --- 3. Final UI Update ---
+            if (streamAcquired) {
+                localVideo.srcObject = localStream;
+                liveContentWrapper.classList.remove('hidden', 'md:flex');
+                liveContentWrapper.classList.add('flex');
+                localVideo.play();
+                
+                // Update button state to STOP
+                liveVideoButton.textContent = 'Stop Sharing';
+                liveVideoButton.classList.remove('bg-red-600', 'shadow-red-300/50');
+                liveVideoButton.classList.add('bg-green-600', 'live', 'shadow-green-300/50');
+                
+                // Add listener to stop sharing if the user clicks the browser's stop button
+                localStream.getTracks().forEach(track => {
+                    track.onended = () => { stopLiveStream(true); };
+                });
+                
+                renderChat();
+            } else {
+                 // User cancelled all prompts or silent failure occurred
+                 stopLiveStream(false);
+                 updateStatus('error', 'Broadcast initiation cancelled. You must select a screen/window or allow camera/mic access.');
+            }
+        }
+
+        /**
+         * Stops the live stream and cleans up.
+         * @param {boolean} updateMsg - Whether to update the status message (default true).
+         */
+        function stopLiveStream(updateMsg = true) {
+            if (localStream) {
+                localStream.getTracks().forEach(track => track.stop());
+                localStream = null;
+            }
+
+            localVideo.srcObject =             transition: transform 0.2s;
+        }
+        .stream-card:hover {
+            transform: translateY(-2px);
+        }
+        /* Custom styles for the live button */
+        #live-toggle-button.live {
+            background-color: #10b981; /* Green color when live */
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+        }
+        #live-toggle-button.live:hover {
+            background-color: #059669;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <div id="app" class="flex flex-col md:flex-row min-h-screen">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar w-full md:w-64 p-4 md:flex-shrink-0">
+            <h2 class="text-xl font-bold text-indigo-700 mb-6">Live Streams</h2>
+            <nav id="category-nav">
+                <!-- Buttons will be injected here by JavaScript -->
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content flex-grow p-4 md:p-8">
+            
+            <!-- GO LIVE AREA & CHAT -->
+            <div id="live-broadcast-area" class="mb-8 p-6 bg-white rounded-xl border border-indigo-200 shadow-xl">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-4">
+                    <h2 class="text-2xl font-bold text-gray-800">Start Your Broadcast Now</h2>
+                    <button id="live-toggle-button" onclick="toggleLiveStream()" class="mt-4 md:mt-0 px-6 py-3 bg-red-600 text-white font-bold rounded-full hover:bg-red-700 transition duration-300 shadow-lg shadow-red-300/50 flex items-center transform active:scale-95">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.552 4.552a1 1 0 010 1.414l-4.552 4.552M12 21V3m0 0v18m0-9h9.22m-4.552 4.552L15 10l-4.552 4.552m0 0a1 1 0 001.414 1.414l4.552-4.552m0 0L12 18m0 3v-3m0 3h-3.22m3.22 0a1 1 0 001.414-1.414L15 10l-4.552 4.552m0 0V3"></path></svg>
+                        Go Live Now
+                    </button>
+                </div>
+
+                <!-- Live Content Container (Video & Chat) - Hidden by default -->
+                <div id="live-content-wrapper" class="hidden md:flex md:space-x-6 mt-4 flex-col md:flex-row">
+                    
+                    <!-- Video Area (3/4 width on desktop, full width on mobile) -->
+                    <div class="md:w-3/4 w-full">
+                        <!-- Video element uses w-full inside its container -->
+                        <video id="local-video" class="w-full rounded-xl border-4 border-indigo-500" autoplay muted></video>
+                    </div>
+
+                    <!-- Chat Box (1/4 width on desktop, full width on mobile) -->
+                    <div id="live-chat" class="md:w-1/4 w-full flex flex-col h-96 border border-gray-200 rounded-xl overflow-hidden shadow-md bg-white mt-4 md:mt-0">
+                        <div class="p-3 bg-indigo-600 text-white font-bold text-lg text-center">Live Chat</div>
+                        <div id="chat-messages" class="flex-grow overflow-y-auto p-3 space-y-3 text-sm">
+                            <!-- Messages go here -->
+                        </div>
+                        <div class="p-3 border-t border-gray-200 bg-gray-50 flex">
+                            <input type="text" id="chat-input" placeholder="Type message..." class="flex-grow p-2 border border-gray-300 rounded-l-lg focus:ring-indigo-500 focus:border-indigo-500 text-sm" onkeydown="if(event.key === 'Enter') sendMessage()">
+                            <button onclick="sendMessage()" class="bg-indigo-600 text-white p-2 rounded-r-lg hover:bg-indigo-700 transition duration-150 flex items-center justify-center">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Status Message (for errors/info) -->
+                <div id="live-status-message" class="mt-4 p-3 rounded-lg text-center font-medium hidden"></div>
+
+            </div>
+            <!-- END GO LIVE AREA & CHAT -->
+
+            <header class="mb-8">
+                <h1 class="text-3xl font-extrabold text-gray-800" id="content-title">Welcome to the Directory</h1>
+                <p class="text-gray-500 mt-1">Select a category to see live broadcasts.</p>
+            </header>
+
+            <!-- Stream List -->
+            <div id="stream-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Stream cards will be injected here by JavaScript -->
+            </div>
+            
+            <!-- Empty State -->
+            <div id="empty-state" class="hidden text-center py-20 bg-white rounded-xl mt-8 border border-gray-200">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-16 w-16 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.552 4.552a1 1 0 010 1.414l-4.552 4.552M12 21V3m0 0v18m0-9h9.22m-4.552 4.552L15 10l-4.552 4.552m0 0a1 1 0 001.414 1.414l4.552-4.552m0 0L12 18m0 3v-3m0 3h-3.22m3.22 0a1 1 0 001.414-1.414L15 10l-4.552 4.552m0 0V3"/>
+                </svg>
+                <h3 class="mt-2 text-sm font-medium text-gray-900">No Streams Found</h3>
+                <p class="mt-1 text-sm text-gray-500">
+                    It looks like this category has no active streams right now.
+                </p>
+            </div>
+        </main>
+
+    </div>
+
+    <script>
+        const STREAM_DATA = {
+            'News & Politics': [
+                { title: "Global Events: UN Summit Live", viewers: 45000, status: "Live", duration: "3h 15m", color: "red", icon: "📰" },
+                { title: "Local Election Coverage", viewers: 12800, status: "Live", duration: "1h 40m", color: "indigo", icon: "🗳️" },
+                { title: "Market Open Analysis", viewers: 7800, status: "Replay", duration: "1d 2h", color: "gray", icon: "📈" },
+            ],
+            'Gaming': [
+                { title: "Esports Final: Pro League Day 3", viewers: 205000, status: "Live", duration: "4h 0m", color: "purple", icon: "🎮" },
+                { title: "Retro Speedrun Challenge", viewers: 3100, status: "Live", duration: "0h 58m", color: "pink", icon: "🕹️" },
+                { title: "New Release First Look", viewers: 55000, status: "Live", duration: "2h 30m", color: "red", icon: "🔥" },
+                { title: "Dev Q&A Session", viewers: 800, status: "Scheduled", duration: "Starts 2PM", color: "yellow", icon: "💻" },
+            ],
+            'Nature & Wildlife': [
+                { title: "African Waterhole Cam", viewers: 9000, status: "Live", duration: "24/7", color: "green", icon: "🦓" },
+                { title: "Arctic Lights: Aurora Borealis", viewers: 1500, status: "Live", duration: "8h 0m", color: "blue", icon: "🌌" },
+            ],
+            'Travel & Webcams': [
+                { title: "Tokyo Shibuya Crossing", viewers: 5200, status: "Live", duration: "24/7", color: "blue", icon: "🏙️" },
+                { title: "Venice Canal View", viewers: 2100, status: "Live", duration: "24/7", color: "cyan", icon: "🛶" },
+                { title: "Mountain Ski Resort Cam", viewers: 500, status: "Offline", duration: "Snow Melt", color: "gray", icon: "⛷️" },
+            ],
+            'Education': [
+                { title: "Advanced Python Coding", viewers: 14000, status: "Live", duration: "1h 10m", color: "teal", icon: "🎓" },
+                { title: "History of Ancient Rome", viewers: 600, status: "Replay", duration: "2d 4h", color: "gray", icon: "🏛️" },
+            ]
+        };
+
+        let currentCategory = 'News & Politics'; // Default view
+        let localStream = null;
+
+        // --- DOM Element References ---
+        const navContainer = document.getElementById('category-nav');
+        const streamListContainer = document.getElementById('stream-list');
+        const contentTitle = document.getElementById('content-title');
+        const emptyState = document.getElementById('empty-state');
+        const liveVideoButton = document.getElementById('live-toggle-button');
+        const localVideo = document.getElementById('local-video');
+        const statusMessage = document.getElementById('live-status-message');
         const liveContentWrapper = document.getElementById('live-content-wrapper'); // NEW
         const chatMessages = document.getElementById('chat-messages'); // NEW
         const chatInput = document.getElementById('chat-input'); // NEW
