@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & Business Workflow Automation Services | Aarry Limited BD</title>
+    <meta name="description" content="Deploy AI-driven workflows for lead generation, content creation, sales research, and internal process automation (using n8n) to significantly scale your business operations in Bangladesh.">
+    
+    <link rel="canonical" href="https://aarry.org/bd/ai-automation-services.html">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        /* Replicating key styles from the home page for visual consistency */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* bg-slate-50 */
+            color: #1a202c; /* text-gray-900 */
+        }
+        
+        .brand-gradient-text {
+            background: linear-gradient(to right, #4f46e5, #818cf8); /* Indigo 600 to 400 */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.39);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(79, 70, 229, 0.5);
+        }
+        /* Active style for the service links */
+        .service-link.active {
+            background-color: #eef2ff; /* Indigo 50 */
+            color: #4f46e5; /* Indigo 600 */
+            font-weight: 600;
+            border-left: 4px solid #4f46e5;
+        }
+        .service-link {
+            transition: background-color 0.15s ease, border-color 0.15s ease;
+            border-left: 4px solid transparent;
+        }
+        .service-link:hover:not(.active) {
+            background-color: #f0f4ff; /* Lighter hover */
+        }
+
+        /* Utility for content visibility based on JS */
+        .service-detail {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .service-detail.active {
+            display: block;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="page-wrapper">
+        <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+            <div class="container mx-auto px-4 py-4 flex justify-between items-center max-w-7xl">
+                <a href="./" class="text-2xl font-black text-gray-900 tracking-tighter">Aarry Limited</a>
+                <nav class="hidden md:flex space-x-6 items-center">
+                    <a href="./" class="text-base font-medium text-gray-600 hover:text-indigo-600">Home</a>
+                    <a href="#services" class="text-base font-medium text-indigo-600 font-bold">AI Automation</a>
+                    <a href="#contact" class="px-4 py-2 text-sm font-semibold rounded-lg bg-indigo-600 text-white cta-button">Get Started</a>
+                </nav>
+                <button id="mobile-menu-button" class="md:hidden text-gray-900">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </header>
+        <main class="pt-8">
+            <div class="container mx-auto px-4 max-w-7xl">
+
+                <nav class="text-sm font-medium mb-6" aria-label="Breadcrumb">
+                    <ol class="list-none p-0 inline-flex">
+                        <li class="flex items-center">
+                            <a href="./" class="text-gray-500 hover:text-indigo-600">Home</a>
+                            <i class="fas fa-chevron-right mx-2 text-xs text-gray-400"></i>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-gray-900">AI Automation Services</span>
+                        </li>
+                    </ol>
+                </nav>
+
+                <section class="mb-16 text-center">
+                    <span class="text-sm font-semibold text-indigo-600 uppercase tracking-wider">Future-Proof Your Business in BD</span>
+                    <h1 class="text-5xl md:text-6xl font-extrabold mt-2 mb-4 leading-tight">
+                        <span class="brand-gradient-text">AI Workflow Automation</span> & Business Intelligence
+                    </h1>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Automate sales, marketing, content creation, and internal operations with custom, advanced AI workflows built on platforms like **n8n**. Reduce costs, eliminate errors, and achieve massive scale.
+                    </p>
+                    <a href="#contact-form" class="inline-block mt-8 px-8 py-3 text-lg font-semibold rounded-lg bg-indigo-600 text-white cta-button">
+                        Start Automating Now <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </section>
+
+                <section id="services" class="bg-white rounded-xl shadow-lg p-6 md:p-10 mb-20 border border-gray-100">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center md:text-left">Our Core AI Automation Solutions</h2>
+                    <div class="flex flex-col md:flex-row gap-8">
+                        
+                        <div class="md:w-1/3 flex-shrink-0 bg-gray-50 rounded-lg p-4 space-y-2 border-r border-gray-200">
+                            <h3 class="text-lg font-bold text-indigo-600 mb-4 border-b border-indigo-100 pb-2">Automation Categories</h3>
+                            
+                            <button data-service="lead-sales" class="service-link w-full text-left p-3 rounded-lg flex items-center transition-colors active">
+                                <i class="fas fa-rocket w-5 mr-3 text-indigo-500"></i> AI Lead Generation & Sales
+                            </button>
+
+                            <button data-service="content-media" class="service-link w-full text-left p-3 rounded-lg flex items-center">
+                                <i class="fas fa-robot w-5 mr-3 text-indigo-500"></i> Automated Content & Media
+                            </button>
+
+                            <button data-service="internal-workflow" class="service-link w-full text-left p-3 rounded-lg flex items-center">
+                                <i class="fas fa-cogs w-5 mr-3 text-indigo-500"></i> Internal Workflow Automation (n8n)
+                            </button>
+
+                            <button data-service="research-analysis" class="service-link w-full text-left p-3 rounded-lg flex items-center">
+                                <i class="fas fa-chart-line w-5 mr-3 text-indigo-500"></i> Market Research & Analysis Tools
+                            </button>
+                        </div>
+
+                        <div class="md:w-2/3">
+
+                            <div id="lead-sales-detail" class="service-detail active">
+                                <h3 class="text-3xl font-bold mb-4 text-indigo-600">AI Lead Generation & Personalized Outreach</h3>
+                                <p class="text-gray-700 mb-6">
+                                    Stop manual prospecting. Our AI workflows automatically identify, qualify, and initiate personalized outreach to your ideal clients from platforms like Google Maps, LinkedIn, and corporate directories.
+                                </p>
+                                <ul class="space-y-4">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-indigo-500 mt-1 mr-3 flex-shrink-0"></i>
+                                        <div>
+                                            <strong class="text-gray-800">Automated Prospecting:</strong> Scrape business leads with verified emails from Google Maps and industry directories, saving hundreds of hours.
+                                        </div>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-indigo-500 mt-1 mr-3 flex-shrink-0"></i>
+                                        <div>
+                                            <strong class="text-gray-800">Personalized Email Assistant:</strong> AI generates highly-converting, hyper-personalized email drafts based on the prospect's recent activities and profile.
+                                        </div>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-indigo-500 mt-1 mr-3 flex-shrink-0"></i>
+                                        <div>
+                                            <strong class="text-gray-800">AI Phone Call Processing:</strong> Deploy AI agents to handle initial lead qualification and transfer warm leads directly to your sales team.
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div id="content-media-detail" class="service-detail">
+                                <h3 class="text-3xl font-bold mb-4 text-indigo-600">Automated Content Creation and Publishing</h3>
+                                <p class="text-gray-700 mb-6">
+                                    Maintain a relentless, high-quality content schedule without a massive team. Our AI generates ready-to-publish content and media across all your channels.
+                                </p>
+                                <ul class="space-y-4">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-paint-brush text-indigo-500 mt-1 mr-3 flex-shrink-0"></i>
+                                        <div>
+                                            <strong class="text-gray-800">AI Product Image to CGI Video:</strong> Convert static e-commerce images into dynamic, engaging video ads instantly for social media.
+                                        </div>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-bullhorn text-indigo-500 mt-1 mr-3 flex-shrink-0"></i>
+                                        <div>
+                                            <strong class="text-gray-800">Social Media Publisher:</strong> Automate content research, generation, graphic design, and scheduled posting to Facebook, LinkedIn, and Instagram.
+                                        </div>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-file-alt text-indigo-500 mt-1 mr-3 flex-shrink-0"></i>
+                                        <div>
+                                            <strong class="text-gray-800">AI-Powered Blog Writer:</strong> Automatically research keywords and generate full, SEO-optimized blog posts or news articles based on internal data feeds.
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div id="internal-workflow-detail" class="service-detail">
+                                <h3 class="text-3xl font-bold mb-4 text-indigo-600">Internal Workflow Automation & Integration</h3>
+                                <p class="text-gray-700 mb-6">
+                                    Streamline repetitive business processes using **n8n** and custom software integrations, connecting your internal systems (POS, ERP, HR) with your cloud tools.
+                                </p>
+                                <ul class="space-y-4">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-briefcase text-indigo-500 mt-1 mr-3 flex-shrink-0"></i>
+                                        <div>
+                                            <strong class="text-gray-800">Automated Hiring Process:</strong> From candidate screening via AI to scheduling interviews and sending personalized follow-ups.
+                                        </div>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-headset text-indigo-500 mt-1 mr-3 flex-shrink-0"></i>
+                                        <div>
+                                            <strong class="text-gray-800">AI Support Agent with Escalation:</strong> A smart Telegram/Email bot handles 80% of support queries and automatically creates tickets for complex issues.
+                                        </div>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-handshake text-indigo-500 mt-1 mr-3 flex-shrink-0"></i>
+                                        <div>
+                                            <strong class="text-gray-800">Data Synchronization:</strong> Seamlessly sync inventory, sales, and customer data between your e-commerce site, POS software, and accounting system.
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div id="research-analysis-detail" class="service-detail">
+                                <h3 class="text-3xl font-bold mb-4 text-indigo-600">AI Market Research and Competitive Analysis</h3>
+                                <p class="text-gray-700 mb-6">
+                                    Gain an unfair advantage with AI-powered tools that scan the market, competitors, and customer feedback to deliver actionable insights automatically.
+                                </p>
+                                <ul class="space-y-4">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-search-dollar text-indigo-500 mt-1 mr-3 flex-shrink-0"></i>
+                                        <div>
+                                            <strong class="text-gray-800">Facebook Ad Spy and Analysis:</strong> Automatically monitor, categorize, and analyze your competitors' active Facebook ad strategies.
+                                        </div>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-comments text-indigo-500 mt-1 mr-3 flex-shrink-0"></i>
+                                        <div>
+                                            <strong class="text-gray-800">Comment & Sentiment Analysis:</strong> Analyze thousands of YouTube comments or Facebook post replies to instantly gauge public sentiment and identify pain points.
+                                        </div>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-lightbulb text-indigo-500 mt-1 mr-3 flex-shrink-0"></i>
+                                        <div>
+                                            <strong class="text-gray-800">Niche Problem Finder:</strong> Automated scanning of Reddit and specialized forums to identify unaddressed customer needs and business opportunities.
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <section id="contact-form" class="hidden-section bg-indigo-600 rounded-xl shadow-xl p-8 md:p-16 text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">
+                        Ready to Automate Your Business Growth?
+                    </h2>
+                    <p class="text-xl text-indigo-200 max-w-2xl mx-auto mb-8">
+                        Let's discuss a custom AI workflow that can save your business time, money, and scale your operations in Bangladesh.
+                    </p>
+                    <a href="mailto:contact@aarry.org" class="inline-block px-8 py-3 text-lg font-bold rounded-lg bg-white text-indigo-600 hover:bg-indigo-50 transition duration-300 shadow-lg">
+                        Book a Free Automation Consultation
+                    </a>
+                </section>
+
+            </div>
+        </main>
+
+        <footer class="bg-gray-800 text-white py-8">
+            <div class="container mx-auto px-4 max-w-7xl text-center">
+                <p>&copy; <span id="year"></span> Aarry Limited. AI Automation & Software Development.</p>
+                <div class="mt-2 text-sm text-gray-400">
+                    <a href="#" class="hover:text-indigo-400 mx-2">Privacy Policy</a> | 
+                    <a href="#" class="hover:text-indigo-400 mx-2">Terms of Service</a>
+                </div>
+            </div>
+        </footer>
+        </div>
+    
+    <script>
+        // Set current year for the footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // --- JavaScript for Service Menu Interactivity ---
+        const serviceButtons = document.querySelectorAll('.service-link');
+        const detailContainers = document.querySelectorAll('.service-detail');
+
+        serviceButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetService = button.getAttribute('data-service');
+                const targetDetailId = `${targetService}-detail`;
+
+                // 1. Update Button Active State
+                serviceButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // 2. Update Detail Content Visibility
+                detailContainers.forEach(detail => {
+                    if (detail.id === targetDetailId) {
+                        // Use a brief delay to ensure a noticeable transition
+                        setTimeout(() => {
+                             detail.classList.add('active');
+                        }, 50);
+                    } else {
+                        detail.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // --- JavaScript for Mobile Menu (Needs implementation for the mobile overlay) ---
+        // (Assuming you have logic from your main page to toggle a class on the body/overlay)
+        // const mobileMenuButton = document.getElementById('mobile-menu-button');
+        // const mobileMenu = document.getElementById('mobile-nav');
+        // mobileMenuButton.addEventListener('click', () => {
+        //    mobileMenu.classList.toggle('open');
+        //    document.body.classList.toggle('overflow-hidden');
+        // });
+        // ... and the mobile-menu-close-button logic ...
+        
+        // --- JavaScript for Scroll Animation (Replicate from home page for hidden-section) ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('open');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.hidden-section').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
