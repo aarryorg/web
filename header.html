@@ -1,59 +1,692 @@
-<div id="mobile-nav" class="mobile-nav-overlay fixed inset-0 bg-white z-[100] p-4 md:hidden">
-    <div class="flex justify-between items-center mb-10">
-        <span class="text-2xl font-black text-gray-900 tracking-tighter">Menu</span>
-        <button id="mobile-menu-close-button" class="text-gray-500 hover:text-gray-900">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-        </button>
-    </div>
-    <nav class="flex flex-col space-y-2">
-        <div class="border-b border-gray-100">
-            <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
-                <span>Web & Software</span>
-                <i class="fas fa-chevron-down ml-3 text-gray-500 transition-transform"></i>
-            </button>
-            <div class="accordion-content pl-6 pt-1">
-                </div>
-        </div>
-
-        <a href="#clients" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Our Clients</a>
-        <a href="#partners" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Our Partners</a>
-        <a href="#team" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Our Team</a>
-        <a href="#contact" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Contact</a>
-
-        <div class="pt-4 border-t border-gray-100">
-            <span class="block p-3 text-sm text-gray-500">Region: <span class="font-bold text-indigo-600">Bangladesh (BD)</span></span>
-        </div>
-    </nav>
-</div>
-
-<header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center max-w-7xl">
-        <a href="./" class="text-2xl font-black text-gray-900 tracking-tighter">Aarry Limited</a>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- --- SEO METADATA START --- -->
+    <title>AI E-commerce Automation Scale Growth in Bangladesh</title>
+    <meta name="description" content="We deploy AI-driven workflows to automate budget allocation across advertising platforms (Google, Facebook), dynamically adjust ad creative based on performance data, and ensure seamless synchronization of your product catalogs and customer interactions across all social media channels.">
+    
+    <!-- Canonical URL for SEO optimization -->
+    <link rel="canonical" href="https://aarry.org/bd/index.html">
+    
+    <!-- JSON-LD Structured Data for Organization and Services (AI Search Engine Optimization) -->
+    <script type="application/ld+json">
+[
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Aarry Limited",
+        "url": "https://aarry.org",
+        "logo": "https://aarry.org/assets/logo.png",
+        "sameAs": [
+            "https://www.linkedin.com/company/aarry",
+            "https://www.facebook.com/AarryLimited",
+            "https://www.youtube.com/@AarryLimited"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+880 1777510221",
+            "contactType": "Sales and Support",
+            "areaServed": ["BD", "GB", "CA", "US"]
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Mirpur 1",
+            "addressLocality": "Dhaka",
+            "addressCountry": "BD"
+        }
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "url": "https://aarry.org/bd/index.html",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://aarry.org/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Web & Software Development",
+        "description": "Comprehensive services including E-commerce solutions, custom PHP development, Mobile App development, and essential business software (POS, ERP).",
+        "provider": {
+            "@type": "Organization",
+            "name": "Aarry Limited"
+        },
+        "areaServed": ["BD"],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Web and Software Solutions",
+            "itemListElement": [
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Custom E-Commerce Website Development"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "POS & Accounting Software"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Mobile Application Development"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Domain and Hosting Service"}}
+            ]
+        }
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Digital Marketing & Branding",
+        "description": "Result-oriented SEO, paid advertising (PPC), social media marketing (SMM), and corporate branding services for the Bangladeshi market.",
+        "provider": {
+            "@type": "Organization",
+            "name": "Aarry Limited"
+        },
+        "areaServed": ["BD"],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Digital Marketing & Creative Services",
+            "itemListElement": [
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Professional SEO & Local SEO"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Facebook Marketing and Ad Boost"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Corporate & Personal Branding Strategy"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "UI/UX & Graphic Design"}}
+            ]
+        }
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "AI Workflow Automation",
+        "description": "Advanced AI services including lead generation automation, content creation workflows, and internal process efficiency using tools like n8n.",
+        "provider": {
+            "@type": "Organization",
+            "name": "Aarry Limited"
+        },
+        "areaServed": ["BD"],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "AI and Automation Services",
+            "itemListElement": [
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AI Powered Lead Generation"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Automated Content Creation and Publishing"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Internal Workflow Automation (n8n)"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AI Sales Research and Analysis Tools"}}
+            ]
+        }
+    }
+]
+    </script>
+    <!-- --- SEO METADATA END --- -->
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Font Awesome Icons (for services) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" xintegrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        /* Typography and Base Colors (Matching USA Page) */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* bg-slate-50 */
+            color: #1a202c; /* text-gray-900 */
+        }
         
-        <nav class="hidden md:flex space-x-6 items-center">
-            <div class="group relative">
-                <a href="#services-dev" class="text-base font-medium text-gray-600 hover:text-indigo-600 flex items-center">
-                    Web & Software <i class="fas fa-chevron-down ml-1 text-xs transition-transform group-hover:rotate-180"></i>
-                </a>
-                <div class="mega-menu absolute hidden group-hover:block" style="width: 800px; left: 50%; transform: translateX(-50%);">
-                    <div class="mega-menu-content grid grid-cols-3 gap-6">
-                        <div class="mega-menu-column">
-                            <h4 class="text-lg font-bold mb-2">Website & Content</h4>
-                            <ul class="space-y-1 text-sm">
-                                <li><a href="#pricing" class="block text-gray-700 hover:text-indigo-600">Web Design & Development</a></li>
-                                </ul>
+        /* Accent Color Matching USA Page: Indigo Gradient */
+        .brand-gradient-text {
+            background: linear-gradient(to right, #4f46e5, #818cf8); /* Indigo 600 to 400 */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.39);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(79, 70, 229, 0.5);
+        }
+
+        /* --- Mega Menu Custom Styles --- */
+        .mega-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+            transform: translateY(10px);
+            width: 100%;
+            padding-top: 1rem;
+            z-index: 50;
+        }
+        .group:hover .mega-menu {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .mega-menu-content {
+            background-color: #ffffff;
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0; /* border-gray-200 */
+        }
+        .mega-menu-column h4 {
+            color: #4f46e5; /* indigo-600 */
+            border-bottom: 2px solid #e0e7ff; /* indigo-100 */
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .service-link:hover {
+            color: #4f46e5;
+            text-decoration: underline;
+        }
+
+
+        /* Mobile Nav Styling (Matching USA Page) */
+        .mobile-nav-overlay {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-nav-overlay.open {
+            transform: translateX(0);
+        }
+        body.overflow-hidden {
+            overflow: hidden;
+        }
+
+        /* Scroll Animation Styles (Matching USA Page) */
+        .hidden-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+        }
+        .hidden-section.open {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Accordion styles (Copied from USA Page) */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-in-out;
+        }
+        .accordion-content.open {
+            max-height: 2000px; /* Large value for content */
+        }
+        
+        /* --- Dynamic Details Panel Styles (In-line Display) --- */
+        #dynamic-details-container {
+            /* Fix: rely on max-height for smooth flow */
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease-in-out;
+        }
+        #dynamic-details-container.open {
+            /* JS sets accurate height on load/click */
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+        }
+        .details-card {
+            position: relative; /* Ensure the close button is relative to this card */
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+            border-left: 5px solid #4f46e5; /* Indigo 600 */
+        }
+        
+        .video-responsive {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 0.5rem;
+        }
+        .video-responsive iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Loading Fix - Ensure visibility on load */
+        .page-wrapper {
+            opacity: 1; 
+            transition: opacity 0.3s;
+        }
+        .tab-button.active-tab {
+            border-bottom-color: #4f46e5 !important;
+            color: #1a202c !important; /* text-gray-900 */
+        }
+    </style>
+    <!-- JSON-LD SCHEMA MARKUP for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://aarry.org/#organization",
+          "name": "Aarry Limited",
+          "url": "https://aarry.org/",
+          "logo": "https://aarry.org/assets/logo.png",
+          "sameAs": [
+            "https://www.facebook.com/AarryLimited/",
+            "https://www.linkedin.com/company/aarry",
+            "https://x.com/AarryLimited"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+8801777510221",
+            "contactType": "Sales and Support",
+            "areaServed": ["BD", "US", "Global"]
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://aarry.org/bd/index.html#webpage", 
+          "url": "https://aarry.org/bd/index.html",
+          "name": "Comprehensive Digital Services | Aarry Limited",
+          "description": "E-commerce expert services in Development, Digital Marketing, Creative Design, and cutting-edge AI Automation solutions.",
+          "isPartOf": {"@id": "https://aarry.org/#organization"}
+        },
+        {
+          "@type": "ProfessionalService",
+          "name": "Web & Software Solutions",
+          "description": "Custom E-commerce development, e-commerce solutions (Shopify, Headless), business software, app development, and technical consulting.",
+          "serviceType": "Web Development Agency",
+          "provider": {"@id": "https://aarry.org/#organization"},
+          "url": "https://aarry.org/bd/index.html#nav-web-software"
+        },
+        {
+          "@type": "ProfessionalService",
+          "name": "E-commerce Marketing & Creative Services",
+          "description": "Full-stack digital growth including SEO, CRO, PPC management, social media marketing (SMM), branding, logo design, and video production.",
+          "serviceType": "Digital Marketing Agency",
+          "provider": {"@id": "https://aarry.org/#organization"},
+          "url": "https://aarry.org/bd/index.html#nav-marketing-creative"
+        },
+        {
+          "@type": "ProfessionalService",
+          "name": "E-commerce AI Automation Solutions",
+          "description": "E-commerce Automation services for lead generation, sales research, content creation, internal workflows (HR, support), and market intelligence tools.",
+          "serviceType": "E-commerce Business Automation & AI Consulting",
+          "provider": {"@id": "https://aarry.org/#organization"},
+          "url": "https://aarry.org/bd/index.html#nav-ai-automation"
+        }
+      ]
+    }
+    </script>
+    <!-- END JSON-LD SCHEMA MARKUP -->
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fc;
+            color: #333;
+        }
+
+        /* --- Nested Accordion Styles for Left Menu --- */
+
+        /* General visibility control for sub-content on the right */
+        .sub-content-display {
+            display: none;
+        }
+        .sub-content-display.active {
+            display: block;
+        }
+        
+        /* Container for nested sub-menu items on the left */
+        .nested-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
+        }
+        .nested-content.open {
+            max-height: 500px; /* A large value to ensure visibility */
+        }
+
+        /* Active styling for the Level 2 button */
+        .sub-nav-button.active {
+            background-color: #eef2ff; /* Indigo 50 */
+            color: #4f46e5; /* Indigo 600 */
+            font-weight: 600;
+        }
+        /* Active hover styling for the Level 2 button */
+        .sub-nav-button:hover:not(.active) {
+            background-color: #eef2ff;
+        }
+
+        /* Styling for the icon inside the main accordion button */
+        .main-accordion-button i {
+            transition: transform 0.3s ease;
+        }
+        .main-accordion-button.active i {
+            transform: rotate(180deg);
+        }
+
+        /* Styling for the accordion content on the right */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
+        }
+        .accordion-content.open {
+            max-height: 1500px; 
+        }
+        .accordion-button.active i {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="page-wrapper">
+        <!-- Mobile Navigation Overlay (Matching USA Page Structure) -->
+        <div id="mobile-nav" class="mobile-nav-overlay fixed inset-0 bg-white z-[100] p-4 md:hidden">
+            <div class="flex justify-between items-center mb-10">
+                <span class="text-2xl font-black text-gray-900 tracking-tighter">Menu</span>
+                <button id="mobile-menu-close-button" class="text-gray-500 hover:text-gray-900">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <nav class="flex flex-col space-y-2">
+                <!-- Mobile Mega Menu: Web & Software -->
+                <div class="border-b border-gray-100">
+                    <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
+                        <span>Web & Software</span>
+                        <i class="fas fa-chevron-down ml-3 text-gray-500 transition-transform"></i>
+                    </button>
+                    <div class="accordion-content pl-6 pt-1">
+                        <h5 class="text-indigo-600 font-semibold mb-2">Website & Content</h5>
+                        <ul class="space-y-1 text-sm text-gray-600">
+                            <li><a href="#pricing" class="block py-1 hover:text-indigo-600">Web Design & Development</a></li>
+                            <li><a href="#pricing" class="block py-1 hover:text-indigo-600">E-Commerce Site</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">Website Maintenance</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">AI Newspaper Site</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">AI Company Website</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">AI Educational Site</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">Custom Website</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">Domain & Hosting Service</a></li>
+                        </ul>
+                        <h5 class="text-indigo-600 font-semibold mt-4 mb-2">Business Software & Apps</h5>
+                        <ul class="space-y-1 text-sm text-gray-600">
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">Mobile Application Development</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">POS Software</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">AI Accounting Software</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">AI Micro-credit Mgmt System</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">AI Dealership Management</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">n8n AI Automation Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Mobile Mega Menu: Marketing & Creative -->
+                <div class="border-b border-gray-100">
+                    <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
+                        <span>Marketing & Creative</span>
+                        <i class="fas fa-chevron-down ml-3 text-gray-500 transition-transform"></i>
+                    </button>
+                    <div class="accordion-content pl-6 pt-1">
+                        <h5 class="text-indigo-600 font-semibold mb-2">Organic Growth & SEO</h5>
+                        <ul class="space-y-1 text-sm text-gray-600">
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">Professional SEO Service</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">Local SEO</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">SEO for E-Commerce / Garments / Travel Agents</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">Google Ads (PPC)</a></li>
+                            <li><a href href="#contact" class="block py-1 hover:text-indigo-600">SEO for SMM Panel</a></li>
+                        </ul>
+                        <h5 class="text-indigo-600 font-semibold mt-4 mb-2">Social & Branding</h5>
+                        <ul class="space-y-1 text-sm text-gray-600">
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">Social Media Marketing (SMM)</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">Facebook Marketing & Promotion</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">Facebook Page Promotion Likes</a></li>
+                            <li><a href="https://aarry.org/bd/fb/page-verification.html" class="block py-1 hover:text-indigo-600">Facebook Page Verify</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">Brands / Products Advertisement</a></li>
+                            <li><a href="https://aarry.org/bd/fb/facebook-ads-boost-Service.html" class="block py-1 hover:text-indigo-600">Boost Your Business</a></li>
+                            <li><a href="https://aarry.org/bd/fb/page-setup.html" class="block py-1 hover:text-indigo-600">Corporate & Personal Branding</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">Wikipedia Page Creation</a></li>
+                        </ul>
+                        <h5 class="text-indigo-600 font-semibold mt-4 mb-2">Creative Design & Media</h5>
+                        <ul class="space-y-1 text-sm text-gray-600">
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">Logo Design</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">UI / UX Design</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">Graphic & Ads Design</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">Video Editing & Production</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Mobile Mega Menu: AI Automation -->
+                <div class="border-b border-gray-100">
+                    <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
+                        <span>AI Automation</span>
+                        <i class="fas fa-chevron-down ml-3 text-gray-500 transition-transform"></i>
+                    </button>
+                    <div class="accordion-content pl-6 pt-1">
+                        <h5 class="text-indigo-600 font-semibold mb-2">Lead Generation & Sales</h5>
+                        <ul class="space-y-1 text-sm text-gray-600">
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">AI Lead Generation</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">AI Sales Agent </a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">AI Phone Calls Agent </a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">Maps Lead Scraper</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">Automated Email Outreach System</a></li>
+                        </ul>
+                        <h5 class="text-indigo-600 font-semibold mt-4 mb-2">Content & Media Automation</h5>
+                        <ul class="space-y-1 text-sm text-gray-600">
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">Social Content Automation</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">AI LinkedIn Automation</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">AI Product Video Generator</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">AI UGC Video Ad Generator</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">AI Report Gen</a></li>
+                        </ul>
+                        <h5 class="text-indigo-600 font-semibold mt-4 mb-2">n8n Workflow & Support</h5>
+                        <ul class="space-y-1 text-sm text-gray-600">
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">Custom Workflow</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">AI Hiring Manager</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">Telegram AI Assist</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">AI Support Escalator</a></li>
+                        </ul>
+                        <h5 class="text-indigo-600 font-semibold mt-4 mb-2">Research & Analysis</h5>
+                        <ul class="space-y-1 text-sm text-gray-600">
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">AI FB Ad Spy</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">AI YouTube Comment Rpt</a></li>
+                            <li><a href="#contact" class="block py-1 hover:text-indigo-600">Reddit Problem R&A</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Standalone Links -->
+                <a href="#clients" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Our Clients</a>
+                <a href="#partners" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Our Partners</a>
+                <a href="#team" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Our Team</a>
+                <a href="#contact" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Contact</a>
+
+                <div class="pt-4 border-t border-gray-100">
+                    <span class="block p-3 text-sm text-gray-500">Region: <span class="font-bold text-indigo-600">Bangladesh (BD)</span></span>
+                </div>
+
+
+                
+            </nav>
+        </div>
+
+        <!-- Header -->
+        <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+            <div class="container mx-auto px-4 py-4 flex justify-between items-center max-w-7xl">
+                <!-- Logo -->
+                <a href="./" class="text-2xl font-black text-gray-900 tracking-tighter">Aarry Limited</a>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-6 items-center">
+                    <!-- Mega Menu 1: Web & Software -->
+                    <div class="group relative">
+                        <a href="#services-dev" class="text-base font-medium text-gray-600 hover:text-indigo-600 flex items-center">
+                            Web & Software <i class="fas fa-chevron-down ml-1 text-xs transition-transform group-hover:rotate-180"></i>
+                        </a>
+                        <div class="mega-menu absolute hidden group-hover:block" style="width: 800px; left: 50%; transform: translateX(-50%);">
+                            <div class="mega-menu-content grid grid-cols-3 gap-6">
+                                <!-- Column 1: Website & Content -->
+                                <div class="mega-menu-column">
+                                    <h4 class="text-lg font-bold mb-2">Website & Content</h4>
+                                    <ul class="space-y-1 text-sm">
+                                        <li><a href="#pricing" class="block text-gray-700 hover:text-indigo-600">Web Design & Development</a></li>
+                                        <li><a href="#pricing" class="block text-gray-700 hover:text-indigo-600">E-Commerce Website</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Newspaper Site</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Company Website</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Educational Site</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Health / Medical Site</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Custom Website</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Domain & Hosting Service</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Column 2: Digital Infrastructure -->
+                                <div class="mega-menu-column">
+                                    <h4 class="text-lg font-bold mb-2">Digital Infrastructure</h4>
+                                    <ul class="space-y-1 text-sm">
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Website Maintenance</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Web Support</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Google Tag Manager Service</a></li>
+                                    </ul>
+                                    <h4 class="text-lg font-bold mt-4 mb-2">Business Software & Apps</h4>
+                                    <ul class="space-y-1 text-sm">
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Mobile Application Development</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">POS & Accounting Software</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Micro-credit Mgmt System</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Column 3: Specialized Software -->
+                                <div class="mega-menu-column">
+                                    <h4 class="text-lg font-bold mb-2">Specialized Solutions</h4>
+                                    <ul class="space-y-1 text-sm">
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Courier Service Software</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Pharmacy Software</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">SMS Marekting Software</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Dealership Management</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">n8n Automation Service</a></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+
+                    <!-- Mega Menu 2: Marketing & Creative -->
+                    <div class="group relative">
+                        <a href="#services-marketing" class="text-base font-medium text-gray-600 hover:text-indigo-600 flex items-center">
+                            Marketing & Creative <i class="fas fa-chevron-down ml-1 text-xs transition-transform group-hover:rotate-180"></i>
+                        </a>
+                        <div class="mega-menu absolute hidden group-hover:block" style="width: 800px; left: 50%; transform: translateX(-50%);">
+                            <div class="mega-menu-content grid grid-cols-3 gap-6">
+                                <!-- Column 1: Digital Growth & SEO -->
+                                <div class="mega-menu-column">
+                                    <h4 class="text-lg font-bold mb-2">Digital Growth & SEO</h4>
+                                    <ul class="space-y-1 text-sm">
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Professional SEO Service</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Local SEO</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">SEO for E-Commerce / Garments / Travel Agents</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Google Ads (PPC)</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">SEO for SMM Panel</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Column 2: Social & Branding (Updated with all Facebook/Boost items) -->
+                                <div class="mega-menu-column">
+                                    <h4 class="text-lg font-bold mb-2">Social & Branding</h4>
+                                    <ul class="space-y-1 text-sm">
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Social Media Marketing (SMM)</a></li>
+                                        <li><a href="" class="block text-gray-700 hover:text-indigo-600">Facebook Marketing & Promotion</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Facebook Page Promotion Likes</a></li>
+                                        <li><a href="https://aarry.org/bd/fb/page-verification.html" class="block text-gray-700 hover:text-indigo-600">Facebook Page Verify</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Brands / Products Advertisement</a></li>
+                                        <li><a href="https://aarry.org/bd/fb/facebook-ads-boost-Service.html" class="block text-gray-700 hover:text-indigo-600">Boost Your Business</a></li>
+                                        <li><a href="https://aarry.org/bd/fb/page-setup.html" class="block text-gray-700 hover:text-indigo-600">Corporate & Personal Branding</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Wikipedia Page Creation</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Column 3: Creative Design -->
+                                <div class="mega-menu-column">
+                                    <h4 class="text-lg font-bold mb-2">Creative Design & Media</h4>
+                                    <ul class="space-y-1 text-sm">
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Logo Design</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">UI / UX Design</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Graphic & Ads Design</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Video Editing & Production</a></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                    
+                    <!-- Mega Menu 3: AI Automation -->
+                    <div class="group relative">
+                        <a href="#ai-automation" class="text-base font-medium text-gray-600 hover:text-indigo-600 flex items-center">
+                            AI Automation <i class="fas fa-chevron-down ml-1 text-xs transition-transform group-hover:rotate-180"></i>
+                        </a>
+                        <div class="mega-menu absolute hidden group-hover:block" style="width: 1000px; left: 50%; transform: translateX(-50%);">
+                            <div class="mega-menu-content grid grid-cols-4 gap-6">
+                                <!-- Column 1: Lead Generation & Sales -->
+                                <div class="mega-menu-column">
+                                    <h4 class="text-lg font-bold mb-2">Lead Generation & Sales</h4>
+                                    <ul class="space-y-1 text-sm">
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">AI Lead Generation</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">AI Sales Assistant</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">AI Lead Processing with AI Phone Calls</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">AI Phone Calls Agent</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Maps Scraper </a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Automated Outreach System</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Column 2: Content & Media Automation -->
+                                <div class="mega-menu-column">
+                                    <h4 class="text-lg font-bold mb-2">Content & Media Automation</h4>
+                                    <ul class="space-y-1 text-sm">
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Social Media Automation</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">LinkedIn Automation</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">AI Product Image to CGI Video</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">AI UGC Video Ad Generator</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">AI Research and Report Generator</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Column 3: Internal Workflow & Support -->
+                                <div class="mega-menu-column">
+                                    <h4 class="text-lg font-bold mb-2">Internal Workflow & Support</h4>
+                                    <ul class="space-y-1 text-sm">
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">AI  Hiring Manager</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">AI Telegram </a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">AI Support Agent </a></li>
+                                    </ul>
+                                </div>
+                                <!-- Column 4: Research & Analysis -->
+                                <div class="mega-menu-column">
+                                    <h4 class="text-lg font-bold mb-2">Research & Analysis</h4>
+                                    <ul class="space-y-1 text-sm">
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Facebook Ad Spy</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">YouTube Video Comment</a></li>
+                                        <li><a href="#contact" class="block text-gray-700 hover:text-indigo-600">Reddit Business Analysis Tool</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact CTA -->
+                    <a href="#contact" class="cta-button bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-6 rounded-full text-sm">
+                        Request a Quote
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex items-center md:hidden">
+                    <button id="mobile-menu-open-button" class="text-gray-600 hover:text-indigo-600 focus:outline-none">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
                 </div>
             </div>
+        </header>
 
-            </nav>
-        
-        <div class="flex items-center space-x-4">
-            <a href="#contact" class="hidden lg:inline-block bg-indigo-600 text-white font-semibold py-2 px-5 rounded-full cta-button hover:bg-indigo-700 text-sm">Get an Offer</a>
-            <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-indigo-600">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
-        </div>
-    </div>
-</header>
+    </body>
