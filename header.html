@@ -1,0 +1,59 @@
+<div id="mobile-nav" class="mobile-nav-overlay fixed inset-0 bg-white z-[100] p-4 md:hidden">
+    <div class="flex justify-between items-center mb-10">
+        <span class="text-2xl font-black text-gray-900 tracking-tighter">Menu</span>
+        <button id="mobile-menu-close-button" class="text-gray-500 hover:text-gray-900">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    </div>
+    <nav class="flex flex-col space-y-2">
+        <div class="border-b border-gray-100">
+            <button class="mobile-accordion-button w-full flex justify-between items-center p-3 text-left text-lg text-gray-800 font-bold rounded-lg hover:bg-gray-50">
+                <span>Web & Software</span>
+                <i class="fas fa-chevron-down ml-3 text-gray-500 transition-transform"></i>
+            </button>
+            <div class="accordion-content pl-6 pt-1">
+                </div>
+        </div>
+
+        <a href="#clients" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Our Clients</a>
+        <a href="#partners" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Our Partners</a>
+        <a href="#team" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Our Team</a>
+        <a href="#contact" class="nav-link block p-3 text-lg text-gray-800 font-bold hover:bg-gray-50 rounded-lg">Contact</a>
+
+        <div class="pt-4 border-t border-gray-100">
+            <span class="block p-3 text-sm text-gray-500">Region: <span class="font-bold text-indigo-600">Bangladesh (BD)</span></span>
+        </div>
+    </nav>
+</div>
+
+<header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center max-w-7xl">
+        <a href="./" class="text-2xl font-black text-gray-900 tracking-tighter">Aarry Limited</a>
+        
+        <nav class="hidden md:flex space-x-6 items-center">
+            <div class="group relative">
+                <a href="#services-dev" class="text-base font-medium text-gray-600 hover:text-indigo-600 flex items-center">
+                    Web & Software <i class="fas fa-chevron-down ml-1 text-xs transition-transform group-hover:rotate-180"></i>
+                </a>
+                <div class="mega-menu absolute hidden group-hover:block" style="width: 800px; left: 50%; transform: translateX(-50%);">
+                    <div class="mega-menu-content grid grid-cols-3 gap-6">
+                        <div class="mega-menu-column">
+                            <h4 class="text-lg font-bold mb-2">Website & Content</h4>
+                            <ul class="space-y-1 text-sm">
+                                <li><a href="#pricing" class="block text-gray-700 hover:text-indigo-600">Web Design & Development</a></li>
+                                </ul>
+                        </div>
+                        </div>
+                </div>
+            </div>
+
+            </nav>
+        
+        <div class="flex items-center space-x-4">
+            <a href="#contact" class="hidden lg:inline-block bg-indigo-600 text-white font-semibold py-2 px-5 rounded-full cta-button hover:bg-indigo-700 text-sm">Get an Offer</a>
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-indigo-600">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </div>
+</header>
